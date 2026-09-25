@@ -1,0 +1,116 @@
+{
+  "_about": "Learned layer. Written by Gate answers and `rot.py learn` (artifact syncs). Overrides patch curated achievements; ingest turns every text change into an append-only supersession in resume.db. Never delete entries — retire them.",
+  "achievements": [],
+  "bullets": [],
+  "overrides": {
+    "psp-closed-deals": {
+      "_gate": "gate1-q1 (2026-09-25): PSP ended Aug 2026; 5 signed deals confirmed.",
+      "confidence": "verified",
+      "notes": "Confirmed at Gate 1: 5 signed deals. LinkedIn's '3' is out of date.",
+      "retire_variants": [
+        "conservative"
+      ]
+    },
+    "psp-net-revenue": {
+      "_gate": "gate1-q3: deal count only; no closed-revenue figure on resumes.",
+      "retired": true
+    },
+    "psp-pipeline-discovery": {
+      "_gate": "gate1-q3: ~$115K pipeline approved for use.",
+      "confidence": "verified",
+      "variants": {
+        "change": "Ran a diagnostic, discovery-first approach — mapping stakeholders and how an organization operates before proposing anything that changes it."
+      }
+    },
+    "psp-125-leads": {
+      "_gate": "gate1-q1: role ended — past tense.",
+      "variants": {
+        "ops": "Added ~125 net-new qualified accounts weekly in Salesforce, ZoomInfo, and Sales Navigator while maintaining pipeline stage and forecast discipline."
+      }
+    },
+    "psp-full-cycle-ownership": {
+      "_gate": "gate1-q1: role ended — past tense.",
+      "canonical": "Owned the full sales cycle in a pure new-business role — prospecting, discovery, pricing, proposal, negotiation, and close — with no SDR layer.",
+      "variants": {
+        "player-coach": "Carried an individual revenue target on a self-built book, running full-cycle discovery, proposal, negotiation, and close."
+      }
+    },
+    "psp-cpm-business-case": {
+      "_gate": "gate1-q1: role ended — past tense.",
+      "variants": {
+        "media": "Sold integrated print and digital as one buy — benchmarked 77–78% print recall vs. 44–46% digital and priced the placement against category CPA."
+      }
+    },
+    "psp-board-memo": {
+      "_gate": "gate1-q1: role ended — past tense.",
+      "variants": {
+        "generic": "Built the business case the champion defends without the seller present — authored a board memo written as the client's own document."
+      }
+    },
+    "psp-verticals": {
+      "_gate": "gate1-q1: role ended — past tense.",
+      "canonical": "Sold across automotive, retail, hospitality, building products, commercial fleet, and property management, qualifying each against the budget that funds it.",
+      "variants": {
+        "weather": "Sold into weather-exposed categories — automotive, building products, fleet, property management, regional retail — where purchase timing is condition-driven."
+      }
+    },
+    "tekl-coaching": {
+      "_gate": "gate1-q2: formal lead with 3–5 direct reports.",
+      "confidence": "verified",
+      "notes": "Confirmed at Gate 1: formal lead, 3–5 direct reports (rendered as 'up to 5').",
+      "canonical": "Led a team of up to 5 direct reports inside a 30-person practice, coaching performance through daily process reviews and 1:1 metric sessions.",
+      "variants": {
+        "player-coach": "Led up to 5 direct reports while carrying an individual book — daily process reviews, 1:1 metric tracking, and deal inspection against quota.",
+        "leader": "Led, coached, and developed up to 5 direct reports inside a 30-person practice, including hiring, onboarding, and ramp for new team members."
+      },
+      "tags": {
+        "team-coaching": 1.0,
+        "performance-management": 1.0,
+        "player-coach": 0.8,
+        "hiring-onboarding": 0.6
+      }
+    },
+    "lim-staffing-restructure": {
+      "_gate": "gate1-q4: recommendations adopted — completed verbs.",
+      "variants": {
+        "services": "Cut a proposed $950K/year, five-person engineering build to roughly a quarter of the cost without cutting the core deliverable."
+      }
+    },
+    "lim-build-vs-buy": {
+      "_gate": "gate1-q4: adopted.",
+      "notes": "Confirmed at Gate 1: recommendations adopted, so completed verbs stand."
+    },
+    "lim-data-rights": {
+      "_gate": "gate1-q4: adopted.",
+      "notes": "Confirmed at Gate 1: adopted. Counterparty is never named in output."
+    }
+  },
+  "profile_overrides": {
+    "roles": {
+      "psp": {
+        "end": "2026-08",
+        "date_note": "Gate 1: ended August 2026 (matches LinkedIn)."
+      },
+      "liminal": {
+        "engagement": "Part-time consulting engagement"
+      }
+    }
+  },
+  "baseline_overrides": {
+    "_gate": "gate1-q1/q2/q5",
+    "summary": "Revenue and go-to-market operator with eight years of full-cycle B2B, media, and enterprise technology sales, currently advising the CEO and board of an AI start-up on go-to-market, pricing, and buy-vs-build strategy. Wins net-new business from cold — Fortune 500 accounts at TEKsystems, NFL and MLB team partnerships at Professional Sports Publications — by qualifying on the budget that can actually fund a buy and building the CPM, CPA, and unit-economics case a client's finance team can defend. Has led a team of up to five, coaching performance against daily process and 1:1 metrics, and uses Claude and OpenAI models daily to compress research, account mapping, and proposal cycles.",
+    "caps": {
+      "liminal": 5,
+      "psp": 6,
+      "tek_lead": 4,
+      "tek_recruiter": 4,
+      "demanddrive": 2,
+      "nyl": 2,
+      "yri": 1,
+      "massdot": 1
+    },
+    "layout": {
+      "expertise_block": "after_education"
+    }
+  }
+}

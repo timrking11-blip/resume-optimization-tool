@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{title}}</title>
+<style>
+  @page { size: Letter; margin: 0.5in 0.6in; }
+  :root { --navy:#1F3864; --grey:#595959; --muted:#777; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; }
+  body { font-family: Calibri, Carlito, "Segoe UI", Arial, Helvetica, sans-serif; font-size:10.2pt; line-height:1.27; color:#111; background:#fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { max-width:7.3in; margin:0 auto; }
+  h1 { font-size:20pt; margin:0; text-align:center; letter-spacing:.5px; color:#000; }
+  .headline { text-align:center; font-size:8.6pt; font-weight:700; color:var(--navy); letter-spacing:.4px; margin:2px 0 1px; }
+  .contact { text-align:center; font-size:8.8pt; color:#222; margin:0 0 7px; }
+  .contact a { color:var(--navy); text-decoration:none; }
+  .summary { margin:0 0 4px; text-align:justify; }
+  h2 { font-size:9.6pt; color:var(--navy); text-transform:uppercase; letter-spacing:.8px; border-bottom:1.5px solid var(--navy); margin:9px 0 4px; padding-bottom:2px; }
+  .comp { margin:0 0 3px; }
+  .sys { margin:0 0 2px; font-size:9.6pt; }
+  .sys b, .skill b { color:var(--navy); }
+  .skill { margin:0 0 2px; font-size:9.6pt; }
+  .role { margin-top:6px; break-inside:avoid-page; }
+  .role-head { display:flex; justify-content:space-between; align-items:baseline; gap:12px; }
+  .role-title { font-weight:700; font-size:10.5pt; }
+  .role-title .emp { font-weight:400; }
+  .role-dates { font-size:9pt; color:var(--grey); white-space:nowrap; }
+  .role-meta { font-size:8.8pt; color:var(--grey); font-style:italic; margin:0 0 1px; }
+  ul { margin:1px 0 0 0; padding-left:15px; }
+  li { margin:0 0 2px; padding-left:1px; }
+  li::marker { color:var(--navy); }
+  .edu { margin:1px 0; }
+  @media screen { body { background:#e9e9e9; } .page { background:#fff; box-shadow:0 0 8px rgba(0,0,0,.15); margin:18px auto; padding:0.5in 0.6in; max-width:8.5in; } }
+</style>
+</head>
+<body>
+<div class="page">
+{{body}}
+</div>
+</body>
+</html>

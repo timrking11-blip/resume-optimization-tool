@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+*.db-journal
+*.db-wal
+*.db-shm
+.env
+.env.*
+learnings*.json
+.DS_Store

@@ -1,0 +1,23 @@
+SAMPLE JOB DESCRIPTION (synthetic, for testing rot.py match — not a real posting)
+
+Director, Go-To-Market — Advertiser Partnerships
+New York, NY (Hybrid)
+
+About the role
+We are an AI-native ad-tech company helping brands reach high-intent audiences across conversational surfaces. We're hiring a Director of Go-To-Market to own our advertiser partnerships motion from first conversation to signed contract, and to build the playbook the next five sellers will run.
+
+What you'll do
+- Own full-cycle new business with brands and agencies: prospecting, discovery, business case, negotiation, and close.
+- Build ROI and cost-per-acquisition business cases that a CMO and CFO can both defend; fluency in CPM, CPA, ROAS, and measurement is essential.
+- Define segmentation, positioning, and pricing for new verticals; partner with product on packaging.
+- Stand up channel and agency partnerships that scale beyond direct sales.
+- Build forecasting and pipeline discipline in Salesforce; report weekly to the executive team.
+- Hire, coach, and develop a small team of account executives as a player-coach.
+
+What you'll bring
+- 7+ years in advertising sales, media sales, or ad tech with a track record of exceeding quota.
+- Experience selling into complex, multi-stakeholder buying committees at enterprise brands.
+- Working knowledge of clean rooms, CDPs, identity resolution, and first-party data.
+- Comfort presenting to C-suite and board-level stakeholders.
+- Hands-on use of generative AI tools (ChatGPT, Claude) in your daily workflow.
+- Bonus: experience at an early-stage startup or building a GTM function from zero.

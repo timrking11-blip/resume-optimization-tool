@@ -1,0 +1,997 @@
+{
+  "_about": "Profile facts that are not bullets: identity, roles, competencies, technologies, certifications, education, summaries. Merged from Resume 1 + Resume 2 + all role-specific resumes + LinkedIn (2026-09-25). Confidential names live only here and are never rendered.",
+  "identity": {
+    "name": "Tim King",
+    "formal_name": "Timothy King",
+    "location": "New York, NY",
+    "phone": "(617) 960-7176",
+    "email": "tim.r.king11@gmail.com",
+    "linkedin": "linkedin.com/in/timothy-king1124",
+    "headline_default": "GO-TO-MARKET STRATEGY · ENTERPRISE & MEDIA SALES · AI-ENABLED REVENUE",
+    "linkedin_headline": "Sales Professional | Marketing, Advertising, Product, Services, & Sales GTM Strategist Providing Advisory Services | Systems Thinker | Process Engineer | AI Adoption Enthusiast"
+  },
+  "roles": [
+    {
+      "key": "liminal",
+      "order": 1,
+      "employer": "Confidential Healthcare AI Start-Up",
+      "employer_private": "Liminal Psychiatry (behavioral-health AI, pre-seed)",
+      "confidential": true,
+      "title": "Chief Strategy Consultant",
+      "title_variants": [
+        "Chief Strategy Officer",
+        "Chief of Strategy",
+        "Principal Business Strategy Consultant"
+      ],
+      "location": "New York, NY",
+      "start": "2026-07",
+      "end": null,
+      "engagement": "Consulting engagement, part-time (5–10 hrs/week), concurrent with role below",
+      "section": "experience",
+      "date_note": "R1/R6 say August 2026; BAS resumes and LinkedIn say July 2026. Using July.",
+      "context_line": "Board-level strategy for an AI compliance product sold into independent clinical practices"
+    },
+    {
+      "key": "psp",
+      "order": 2,
+      "employer": "Professional Sports Publications",
+      "confidential": false,
+      "title": "Advertising Sales Director, Pro Division",
+      "title_variants": [
+        "Ad Sales Director",
+        "Advertising Sales Director"
+      ],
+      "location": "New York, NY",
+      "start": "2026-03",
+      "end": null,
+      "engagement": "Full-time",
+      "section": "experience",
+      "date_note": "LinkedIn shows end Aug 2026. Gate-1 question.",
+      "context_line": "Official NFL & MLB team publication advertising and sponsorship"
+    },
+    {
+      "key": "nyl",
+      "order": 3,
+      "employer": "New York Life Insurance Company",
+      "confidential": false,
+      "title": "Financial Services Professional",
+      "title_variants": [
+        "Financial Professional"
+      ],
+      "location": "New York, NY",
+      "start": "2025-12",
+      "end": "2026-03",
+      "engagement": "Full-time",
+      "section": "experience",
+      "hidden_by_default": true,
+      "date_note": "Fundraising resume only; not in LinkedIn experience.",
+      "context_line": ""
+    },
+    {
+      "key": "tek_lead",
+      "order": 4,
+      "employer": "TEKsystems",
+      "confidential": false,
+      "title": "Specialized Lead – Data Analytics & Data Insights",
+      "title_variants": [
+        "Specialized Lead – Cloud Applications & Data Analytics"
+      ],
+      "location": "New York, NY",
+      "start": "2024",
+      "end": "2025",
+      "engagement": "Full-time",
+      "section": "experience",
+      "date_note": "LinkedIn: Nov 2024 – Oct 2025 under a different title. Year-only display (2024 – 2025) matches both.",
+      "context_line": "Enterprise technology and data solution sales · Media & Entertainment, Parks, Utilities, Life Sciences"
+    },
+    {
+      "key": "tek_recruiter",
+      "order": 5,
+      "employer": "TEKsystems",
+      "confidential": false,
+      "title": "Enterprise Recruiter – Global Services",
+      "title_variants": [
+        "National Recruiter – Data Analytics & Insights"
+      ],
+      "location": "Boston, MA",
+      "start": "2021",
+      "end": "2024",
+      "engagement": "Full-time",
+      "section": "experience",
+      "date_note": "LinkedIn: Mar 2021 – Nov 2024.",
+      "context_line": ""
+    },
+    {
+      "key": "demanddrive",
+      "order": 6,
+      "employer": "Amazon Business / demandDrive",
+      "confidential": false,
+      "title": "Sales Development Representative / Inside Sales Representative",
+      "title_variants": [
+        "Inside Sales Representative"
+      ],
+      "location": "Waltham, MA",
+      "start": "2018",
+      "end": "2020",
+      "engagement": "Full-time",
+      "section": "experience",
+      "date_note": "Resumes say 2018–2021; LinkedIn says Aug 2018 – Sep 2020. Using 2018 – 2020.",
+      "context_line": "E-commerce and retail technology"
+    },
+    {
+      "key": "yri",
+      "order": 7,
+      "employer": "YRI Custom Designs",
+      "confidential": false,
+      "title": "Marketing and Product Development Intern",
+      "title_variants": [],
+      "location": "Portsmouth, NH",
+      "start": "2016-08",
+      "end": "2017-05",
+      "engagement": "Internship",
+      "section": "experience",
+      "hidden_by_default": true,
+      "date_note": "LinkedIn only.",
+      "context_line": ""
+    },
+    {
+      "key": "massdot",
+      "order": 8,
+      "employer": "Massachusetts Department of Transportation, EZ Pass Services",
+      "confidential": false,
+      "title": "Marketing and Communications Intern",
+      "title_variants": [],
+      "location": "Weston, MA",
+      "start": "2016-05",
+      "end": "2016-09",
+      "engagement": "Internship",
+      "section": "experience",
+      "hidden_by_default": true,
+      "date_note": "LinkedIn only.",
+      "context_line": ""
+    }
+  ],
+  "education": [
+    {
+      "school": "University of Maine Business School",
+      "degree": "B.S., Finance & Marketing (Double Major)",
+      "degree_variants": [
+        "Bachelor of Science, Business Administration – Finance & Marketing",
+        "BS Finance + BBA Marketing (LinkedIn lists two degrees)"
+      ],
+      "location": "Orono, ME",
+      "year": "2018",
+      "date_note": "Resumes: Spring 2018 / Sept 2014 – Dec 2018. LinkedIn: 2013 – 2018.",
+      "bullet_ids": [
+        "edu-capstone"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Claude 101",
+      "issuer": "Anthropic",
+      "date": "2026-08",
+      "credential_id": "xid9zxhxo3mw",
+      "source": "LinkedIn + BAS resumes",
+      "tags": [
+        "ai-in-workflow"
+      ]
+    },
+    {
+      "name": "Claude Code 101",
+      "issuer": "Anthropic",
+      "date": "2026",
+      "credential_id": null,
+      "source": "BAS resumes",
+      "tags": [
+        "building-with-ai",
+        "ai-in-workflow"
+      ]
+    },
+    {
+      "name": "Claude for CoWork",
+      "issuer": "Anthropic",
+      "date": null,
+      "status": "In progress",
+      "source": "BAS resumes",
+      "tags": [
+        "ai-in-workflow"
+      ]
+    },
+    {
+      "name": "Insurance Broker License — Accident, Health, Life, Variable Life & Variable Annuity",
+      "issuer": "New York State Department of Financial Services",
+      "date": "2025-12",
+      "credential_id": null,
+      "source": "LinkedIn",
+      "tags": [
+        "referral-network"
+      ]
+    },
+    {
+      "name": "Data Analytics & Insights: Data Insights",
+      "issuer": "TEKsystems",
+      "date": "2023-12",
+      "credential_id": null,
+      "source": "LinkedIn + BAS resumes",
+      "tags": [
+        "data-solutions"
+      ]
+    }
+  ],
+  "technologies": [
+    {
+      "name": "Salesforce",
+      "category": "CRM & Sales Tools",
+      "tags": [
+        "crm-discipline",
+        "pipeline-management"
+      ]
+    },
+    {
+      "name": "LinkedIn Sales Navigator",
+      "category": "CRM & Sales Tools",
+      "tags": [
+        "prospecting"
+      ]
+    },
+    {
+      "name": "ZoomInfo",
+      "category": "CRM & Sales Tools",
+      "tags": [
+        "prospecting"
+      ]
+    },
+    {
+      "name": "Tableau (beginner)",
+      "category": "Analytics",
+      "tags": [
+        "data-solutions",
+        "forecasting"
+      ]
+    },
+    {
+      "name": "Microsoft Excel & Office Suite",
+      "category": "Productivity",
+      "tags": [
+        "revenue-modeling"
+      ]
+    },
+    {
+      "name": "Microsoft Copilot",
+      "category": "AI",
+      "tags": [
+        "ai-in-workflow"
+      ]
+    },
+    {
+      "name": "Claude (Opus 5, Sonnet 5, Fable 5)",
+      "category": "AI",
+      "tags": [
+        "ai-in-workflow"
+      ]
+    },
+    {
+      "name": "Claude Code",
+      "category": "AI",
+      "tags": [
+        "building-with-ai"
+      ]
+    },
+    {
+      "name": "OpenAI (GPT-5.6, Sol, Terra, Luna)",
+      "category": "AI",
+      "tags": [
+        "ai-in-workflow"
+      ]
+    },
+    {
+      "name": "Trello",
+      "category": "Productivity",
+      "tags": [
+        "operating-cadence"
+      ]
+    },
+    {
+      "name": "Canva",
+      "category": "Design",
+      "tags": [
+        "enablement-collateral"
+      ]
+    },
+    {
+      "name": "Miro",
+      "category": "Design",
+      "tags": [
+        "enablement-collateral"
+      ]
+    }
+  ],
+  "domain_fluency": [
+    {
+      "name": "Azure cloud infrastructure",
+      "tags": [
+        "cloud-infrastructure"
+      ]
+    },
+    {
+      "name": "Adobe Enterprise Suite",
+      "tags": [
+        "cloud-infrastructure"
+      ]
+    },
+    {
+      "name": "Graph databases",
+      "tags": [
+        "data-solutions"
+      ]
+    },
+    {
+      "name": "Computer vision / machine learning",
+      "tags": [
+        "ai-ml-solutions"
+      ]
+    },
+    {
+      "name": "Customer data platforms, data clean rooms, identity graphs, ad measurement",
+      "tags": [
+        "adtech-fluency"
+      ]
+    },
+    {
+      "name": "Healthcare compliance (HIPAA, 42 CFR Part 2, SOC 2, EHR)",
+      "tags": [
+        "healthcare-regulatory"
+      ]
+    }
+  ],
+  "competencies": [
+    {
+      "text": "Go-To-Market Strategy",
+      "tags": [
+        "gtm-strategy"
+      ]
+    },
+    {
+      "text": "Market Segmentation & Positioning",
+      "tags": [
+        "market-segmentation",
+        "positioning-messaging"
+      ]
+    },
+    {
+      "text": "Pricing & Channel Strategy",
+      "tags": [
+        "pricing-packaging",
+        "channel-strategy"
+      ]
+    },
+    {
+      "text": "New Business Development",
+      "tags": [
+        "new-business"
+      ]
+    },
+    {
+      "text": "Full-Cycle Enterprise Sales (Prospect to Close)",
+      "tags": [
+        "full-cycle-sales",
+        "closing"
+      ]
+    },
+    {
+      "text": "Lead Generation & Prospecting",
+      "tags": [
+        "prospecting",
+        "demand-generation"
+      ]
+    },
+    {
+      "text": "Consultative & Diagnostic Discovery",
+      "tags": [
+        "discovery"
+      ]
+    },
+    {
+      "text": "Contract & Proposal Development",
+      "tags": [
+        "proposal-development",
+        "negotiation"
+      ]
+    },
+    {
+      "text": "Complex Multi-Stakeholder Negotiation",
+      "tags": [
+        "multi-stakeholder-selling",
+        "negotiation"
+      ]
+    },
+    {
+      "text": "Executive & Board-Level Communication",
+      "tags": [
+        "executive-communication",
+        "board-advisory",
+        "executive-selling"
+      ]
+    },
+    {
+      "text": "Revenue Forecasting & KPI Management",
+      "tags": [
+        "forecasting",
+        "quota-attainment"
+      ]
+    },
+    {
+      "text": "Pipeline Development & CRM Discipline",
+      "tags": [
+        "pipeline-management",
+        "crm-discipline"
+      ]
+    },
+    {
+      "text": "Strategic Account Planning & Expansion",
+      "tags": [
+        "account-management",
+        "account-expansion"
+      ]
+    },
+    {
+      "text": "Media & Sponsorship Sales",
+      "tags": [
+        "media-ad-sales",
+        "sponsorship"
+      ]
+    },
+    {
+      "text": "CPM, CPA & ROI Business Cases",
+      "tags": [
+        "cpm-cpa-modeling",
+        "audience-measurement"
+      ]
+    },
+    {
+      "text": "Ad-Tech Fluency (CDP, Clean Rooms, Identity Graphs, Measurement)",
+      "tags": [
+        "adtech-fluency"
+      ]
+    },
+    {
+      "text": "Funding-Source Diagnostics (Co-Op, MDF, Sponsorship, 501(c)(3))",
+      "tags": [
+        "funding-source-diagnostics"
+      ]
+    },
+    {
+      "text": "Buy-vs-Build & Competitive Analysis",
+      "tags": [
+        "buy-vs-build",
+        "competitive-analysis"
+      ]
+    },
+    {
+      "text": "Unit Economics & Revenue Modeling",
+      "tags": [
+        "unit-economics",
+        "revenue-modeling",
+        "growth-efficiency"
+      ]
+    },
+    {
+      "text": "Market Sizing & Scenario Planning",
+      "tags": [
+        "market-sizing",
+        "scenario-planning"
+      ]
+    },
+    {
+      "text": "Sales Team Coaching & Performance Management",
+      "tags": [
+        "team-coaching",
+        "performance-management"
+      ]
+    },
+    {
+      "text": "Hiring, Onboarding & Seller Ramp",
+      "tags": [
+        "hiring-onboarding"
+      ]
+    },
+    {
+      "text": "Business Process Improvement",
+      "tags": [
+        "process-improvement"
+      ]
+    },
+    {
+      "text": "Operating Cadence Design (RACI, Decision Logs)",
+      "tags": [
+        "operating-cadence"
+      ]
+    },
+    {
+      "text": "Change Readiness & Stakeholder Alignment",
+      "tags": [
+        "readiness-assessment",
+        "stakeholder-alignment"
+      ]
+    },
+    {
+      "text": "Primary Research & Customer Discovery",
+      "tags": [
+        "primary-research",
+        "customer-discovery"
+      ]
+    },
+    {
+      "text": "AI & Data Platform Solution Selling",
+      "tags": [
+        "data-solutions",
+        "ai-ml-solutions"
+      ]
+    },
+    {
+      "text": "Prompt Engineering & AI-Enabled Workflow",
+      "tags": [
+        "ai-in-workflow",
+        "building-with-ai"
+      ]
+    },
+    {
+      "text": "Strategic Partnerships & Channel",
+      "tags": [
+        "strategic-partnerships",
+        "channel-partnerships"
+      ]
+    },
+    {
+      "text": "Data Rights & Partner Terms",
+      "tags": [
+        "data-rights",
+        "partner-negotiation"
+      ]
+    },
+    {
+      "text": "Board & Trustee Engagement",
+      "tags": [
+        "board-trustee-engagement"
+      ]
+    },
+    {
+      "text": "Prospect Identification & Moves Management",
+      "tags": [
+        "moves-management",
+        "donor-relations"
+      ]
+    },
+    {
+      "text": "Business Analysis & Advisory",
+      "tags": [
+        "board-advisory",
+        "feasibility-roadmap"
+      ]
+    }
+  ],
+  "summaries": [
+    {
+      "source": "R3_fundraising",
+      "tags": [
+        "moves-management",
+        "institutional-partnerships",
+        "funding-source-diagnostics"
+      ],
+      "text": "Eight years of relationship-driven revenue work built on the cycle advancement runs on: identify, qualify, cultivate, solicit, close, steward. Currently structures institutional partnerships for independent schools, chambers of commerce, and 501(c)(3) organizations — matching every ask to the funding source that can fund it. Writes the proposal, handles the objection, and builds the case a champion can carry to her own board."
+    },
+    {
+      "source": "R4_openai_client_partner_me",
+      "tags": [
+        "media-ad-sales",
+        "adtech-fluency",
+        "new-business",
+        "ai-in-workflow"
+      ],
+      "text": "Advertising and partnership seller who owns revenue end-to-end — prospect, qualify, build the business case, negotiate, close. Eight years across sports and entertainment media sales, enterprise revenue inside Disney/ESPN and Universal Parks, and consultative selling into ad-tech decision-makers on CDPs, clean rooms, identity graphs, and ad measurement. Sells with quantified, CPM- and ROI-modeled business cases rather than inventory sheets."
+    },
+    {
+      "source": "R5_luminance_commercial_director",
+      "tags": [
+        "team-coaching",
+        "hiring-onboarding",
+        "proof-of-value",
+        "ai-ml-solutions"
+      ],
+      "text": "Enterprise sales leader with eight years of full-cycle B2B revenue ownership and a track record of winning net-new Fortune 500 business from cold. Led a direct-report team of quota-carrying sellers through daily process coaching, 1:1 metric reviews, and forecast accountability — and spent four years as an enterprise recruiter before that, which makes hiring, ramping, and retaining sellers a core competency. Sells technology through diagnostic discovery and proof-of-value."
+    },
+    {
+      "source": "R6_admarketplace_director",
+      "tags": [
+        "cpm-cpa-modeling",
+        "adtech-fluency",
+        "board-advisory",
+        "unit-economics"
+      ],
+      "text": "Media and technology seller who sells intent and acquisition economics rather than impressions. Eight years of full-cycle, top-performing B2B and media revenue ownership — including net-new Fortune 500 wins from cold and a proof-of-concept that opened a multi-million-dollar expansion. Concurrently serves as strategy consultant to a healthcare AI startup, building board-level competitive analyses and unit-economics models, which keeps the commercial conversation fluent at the CFO and founder level."
+    },
+    {
+      "source": "R7_fox_weather_director",
+      "tags": [
+        "sponsorship",
+        "cross-platform",
+        "cpm-cpa-modeling",
+        "vertical-gtm"
+      ],
+      "text": "Media and sponsorship seller with eight years of revenue ownership, currently selling integrated print-and-digital partnerships across NFL and MLB team properties. Builds proposals the way a client's finance team evaluates them — blended cross-platform CPM, reach and recall benchmarking, and cost-per-acquisition modeled against category benchmarks — so the investment is defensible at renewal, not just at signature."
+    },
+    {
+      "source": "R8_bairesdev_vp_sales",
+      "tags": [
+        "managed-services-sales",
+        "team-coaching",
+        "buy-vs-build",
+        "new-business"
+      ],
+      "text": "In technology services, the competitor is almost never the other vendor on the shortlist. It is the client's own hiring plan. I spent five years inside an IT services and staffing firm learning that objection from the inside — opening net-new managed services logos, producing more than half the revenue on a major pharma account, and winning a proof-of-concept that converted into a multi-million-dollar expansion — and now sit on the buy side of that same conversation as strategy consultant to an early-stage AI company."
+    },
+    {
+      "source": "R9_knit_growth_marketing",
+      "tags": [
+        "demand-generation",
+        "qualification",
+        "growth-efficiency",
+        "marketing-sales-alignment"
+      ],
+      "text": "Most pipeline problems are definitional before they are volumetric. Marketing and sales rarely mean the same thing by 'qualified,' and the gap between those definitions is where forecast accuracy quietly dies. I have spent eight years on the receiving end of it — sourcing 125 net-new qualified leads a week and qualifying on budget mechanics rather than expressed interest — and most recently built a GTM engine from nothing: segmentation, channel strategy, pricing, and the efficiency targets the business is managed against."
+    },
+    {
+      "source": "R10_mri_simmons_audience",
+      "tags": [
+        "data-solutions",
+        "multi-stakeholder-selling",
+        "account-expansion",
+        "primary-research"
+      ],
+      "text": "Selling into a holding company is rarely a selling problem. It is a routing problem. Eight years of enterprise selling has mostly been that routing work — finding the team whose problem the incumbent relationship did not touch. Translating what a dataset makes possible into something a buyer can commit budget to is the throughline."
+    },
+    {
+      "source": "R11_magellan_measurement",
+      "tags": [
+        "audience-measurement",
+        "account-expansion",
+        "growth-efficiency",
+        "media-ad-sales"
+      ],
+      "text": "Measurement rarely stalls on the technology. It stalls on accountability. I come at it from both sides of the ad transaction — selling advertising and working advertisers through their budget mechanics to understand who answers for how it performs — and most recently built the measurement framework an AI business is now run against. Setting the metric and telling the story from it are the same job."
+    },
+    {
+      "source": "R12_meridian_gtm",
+      "tags": [
+        "gtm-strategy",
+        "market-segmentation",
+        "customer-discovery",
+        "unit-economics"
+      ],
+      "text": "I think about go-to-market the way an economist thinks about a market: start at the macro level and work down until you find the specific thing creating the gap. Most of the time the 'no' isn't about the product — it's a systemic issue in how a business is funded, structured, or governed that nobody has named yet. What I bring to a GTM team is the diagnostic front end — discovery that produces a real segmentation, competitive work that produces a defensible position, and unit economics that tell you early whether the motion can ever pay back."
+    },
+    {
+      "source": "R13_samba_platform_sales",
+      "tags": [
+        "data-solutions",
+        "partner-negotiation",
+        "multi-stakeholder-selling",
+        "market-sizing"
+      ],
+      "text": "Selling data into a platform is not a media sale. It is a roadmap decision, routed through people who carry no media number — product, engineering, legal, finance. I have spent most of my career selling into exactly that kind of room, and now translate data into the frameworks decisions actually get made on — a category sized, comparables benchmarked, a decision tree with base-rate odds attached to each path."
+    },
+    {
+      "source": "R14_smartly_agency_partnerships",
+      "tags": [
+        "player-coach",
+        "performance-management",
+        "operating-cadence",
+        "multi-stakeholder-selling"
+      ],
+      "text": "The failure mode of a player-coach seat is predictable: the quota you carry gets your Tuesday; the pod's number becomes something you inspect on Friday. The leaders who beat that run their own deals on the same standard they hold the team to. That is the shape my last two roles have taken, and the other half of the job — building structure that does not exist yet — is what I have spent this year doing: RACI, escalation thresholds, weekly capacity forecast, one-page decision log."
+    },
+    {
+      "source": "R15_versant_transformation",
+      "tags": [
+        "readiness-assessment",
+        "stakeholder-alignment",
+        "influence-without-authority",
+        "operating-cadence"
+      ],
+      "text": "Adoption is not a communications problem, which is why communications plans so often fail to produce it. People adopt a change when the new way is easier than the workaround and when someone they report to is visibly accountable. Eight years of my career has been spent working through organizations I had no authority inside, and I do readiness work directly now — launch-readiness assessments, dated plans with named owners, and the operating cadence a company runs on."
+    },
+    {
+      "source": "R16_admarketplace_adv_success",
+      "tags": [
+        "account-expansion",
+        "team-coaching",
+        "funding-source-diagnostics",
+        "operating-cadence"
+      ],
+      "text": "The growth inside an advertiser book is almost never where the account plan says it is. It sits with a stakeholder nobody has met yet, behind a budget nobody has traced. Most of my career has been spent finding that — first for my own accounts, then teaching a team to find it without me in the room. I would rather set the standard once and let a team execute against it than inspect every deliverable that crosses my desk."
+    }
+  ],
+  "expertise_areas": [
+    {
+      "label": "Go-To-Market & Revenue",
+      "items": [
+        {
+          "text": "GTM strategy",
+          "tags": [
+            "gtm-strategy"
+          ]
+        },
+        {
+          "text": "market segmentation",
+          "tags": [
+            "market-segmentation"
+          ]
+        },
+        {
+          "text": "positioning & messaging",
+          "tags": [
+            "positioning-messaging"
+          ]
+        },
+        {
+          "text": "pricing & channel strategy",
+          "tags": [
+            "pricing-packaging",
+            "channel-strategy"
+          ]
+        },
+        {
+          "text": "new-logo development",
+          "tags": [
+            "new-business"
+          ]
+        },
+        {
+          "text": "full-cycle enterprise sales",
+          "tags": [
+            "full-cycle-sales",
+            "multi-stakeholder-selling"
+          ]
+        },
+        {
+          "text": "consultative & challenger discovery",
+          "tags": [
+            "discovery"
+          ]
+        },
+        {
+          "text": "proposal & RFP development",
+          "tags": [
+            "proposal-development",
+            "rfp-response"
+          ]
+        },
+        {
+          "text": "contract negotiation",
+          "tags": [
+            "negotiation"
+          ]
+        },
+        {
+          "text": "pipeline & forecast discipline",
+          "tags": [
+            "pipeline-management",
+            "forecasting"
+          ]
+        },
+        {
+          "text": "account planning & expansion",
+          "tags": [
+            "account-management",
+            "account-expansion"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Strategy & Finance",
+      "items": [
+        {
+          "text": "buy-vs-build analysis",
+          "tags": [
+            "buy-vs-build"
+          ]
+        },
+        {
+          "text": "unit economics (CAC, payback, churn, TTFV)",
+          "tags": [
+            "unit-economics",
+            "growth-efficiency"
+          ]
+        },
+        {
+          "text": "revenue & P&L modeling",
+          "tags": [
+            "revenue-modeling"
+          ]
+        },
+        {
+          "text": "market sizing",
+          "tags": [
+            "market-sizing"
+          ]
+        },
+        {
+          "text": "competitive intelligence",
+          "tags": [
+            "competitive-analysis"
+          ]
+        },
+        {
+          "text": "scenario & decision-tree planning",
+          "tags": [
+            "scenario-planning",
+            "exit-path-modeling"
+          ]
+        },
+        {
+          "text": "non-dilutive capital strategy (SBIR)",
+          "tags": [
+            "capital-strategy"
+          ]
+        },
+        {
+          "text": "funding-source diagnostics (co-op, MDF, 501(c)(3))",
+          "tags": [
+            "funding-source-diagnostics"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Media & AdTech",
+      "items": [
+        {
+          "text": "media & sponsorship sales",
+          "tags": [
+            "media-ad-sales",
+            "sponsorship"
+          ]
+        },
+        {
+          "text": "integrated print & digital",
+          "tags": [
+            "cross-platform"
+          ]
+        },
+        {
+          "text": "CPM / CPA / ROI business cases",
+          "tags": [
+            "cpm-cpa-modeling"
+          ]
+        },
+        {
+          "text": "audience & recall benchmarking",
+          "tags": [
+            "audience-measurement"
+          ]
+        },
+        {
+          "text": "CDPs, clean rooms, identity graphs, ad measurement",
+          "tags": [
+            "adtech-fluency"
+          ]
+        },
+        {
+          "text": "sports & entertainment media",
+          "tags": [
+            "sports-media"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Leadership & Operations",
+      "items": [
+        {
+          "text": "team leadership & 1:1 coaching",
+          "tags": [
+            "team-coaching",
+            "performance-management"
+          ]
+        },
+        {
+          "text": "hiring & seller ramp",
+          "tags": [
+            "hiring-onboarding"
+          ]
+        },
+        {
+          "text": "operating cadence (RACI, escalation, decision logs)",
+          "tags": [
+            "operating-cadence"
+          ]
+        },
+        {
+          "text": "sales process design",
+          "tags": [
+            "process-improvement"
+          ]
+        },
+        {
+          "text": "CRM hygiene & adoption",
+          "tags": [
+            "crm-discipline"
+          ]
+        },
+        {
+          "text": "executive & board communication",
+          "tags": [
+            "executive-communication",
+            "board-advisory"
+          ]
+        },
+        {
+          "text": "cross-functional influence",
+          "tags": [
+            "influence-without-authority",
+            "stakeholder-alignment"
+          ]
+        },
+        {
+          "text": "primary research & customer discovery",
+          "tags": [
+            "primary-research",
+            "customer-discovery"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "AI & Tools",
+      "items": [
+        {
+          "text": "Claude (Opus 5, Sonnet 5, Fable 5)",
+          "tags": [
+            "ai-in-workflow"
+          ]
+        },
+        {
+          "text": "Claude Code",
+          "tags": [
+            "building-with-ai"
+          ]
+        },
+        {
+          "text": "OpenAI",
+          "tags": [
+            "ai-in-workflow"
+          ]
+        },
+        {
+          "text": "Microsoft Copilot",
+          "tags": [
+            "ai-in-workflow"
+          ]
+        },
+        {
+          "text": "prompt engineering & workflow automation",
+          "tags": [
+            "ai-in-workflow"
+          ]
+        },
+        {
+          "text": "Salesforce, ZoomInfo, LinkedIn Sales Navigator",
+          "tags": [
+            "crm-discipline",
+            "prospecting"
+          ]
+        },
+        {
+          "text": "Tableau, Excel",
+          "tags": [
+            "data-solutions",
+            "revenue-modeling"
+          ]
+        }
+      ]
+    }
+  ]
+}

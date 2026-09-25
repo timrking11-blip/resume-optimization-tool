@@ -1,0 +1,793 @@
+<title>Resume Match Desk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+:root{
+  --ground:#EDF0F5; --surface:#FFFFFF; --surface-2:#F5F7FA; --ink:#16233B; --muted:#5A6478; --line:#D5DBE5;
+  --navy:#1F3864; --navy-ink:#FFFFFF; --focus:#3B6FD4;
+  --hl:#E4F36A; --hl-ink:#1B2410;
+  --ok:#1E7A55; --ok-bg:#E3F3EB; --warn:#A86A0C; --warn-bg:#FBF0DA; --gap:#B3261E; --gap-bg:#FBE4E2;
+  --sheet:#FFFFFF; --sheet-ink:#141414; --sheet-navy:#1F3864; --sheet-muted:#5B5B5B;
+  --shadow:0 1px 2px rgba(22,35,59,.06),0 6px 24px rgba(22,35,59,.08);
+  --ui:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --cond:"IBM Plex Sans Condensed","IBM Plex Sans",system-ui,"Segoe UI",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  --doc:"Source Sans 3",Calibri,"Segoe UI",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --ground:#0E141F; --surface:#161F30; --surface-2:#1B263A; --ink:#E4E9F2; --muted:#9AA5B8; --line:#2A3650;
+    --navy:#8FB0E8; --navy-ink:#0E141F; --focus:#8FB0E8;
+    --hl:#C9DA3F; --hl-ink:#12170A;
+    --ok:#5CC596; --ok-bg:#15352A; --warn:#E3AA4A; --warn-bg:#3A2C12; --gap:#F08A80; --gap-bg:#3D1C1A;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 28px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#0E141F; --surface:#161F30; --surface-2:#1B263A; --ink:#E4E9F2; --muted:#9AA5B8; --line:#2A3650;
+  --navy:#8FB0E8; --navy-ink:#0E141F; --focus:#8FB0E8;
+  --hl:#C9DA3F; --hl-ink:#12170A;
+  --ok:#5CC596; --ok-bg:#15352A; --warn:#E3AA4A; --warn-bg:#3A2C12; --gap:#F08A80; --gap-bg:#3D1C1A;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 28px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:var(--ui);font-size:14px;line-height:1.5;padding-inline:16px;padding-block:0 48px}
+.wrap{max-width:1240px;margin:0 auto;display:grid;gap:20px}
+header.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px;padding-block:22px 4px;border-bottom:1px solid var(--line)}
+.brand h1{font-family:var(--cond);font-weight:700;font-size:26px;letter-spacing:.2px;margin:0;color:var(--ink);text-wrap:balance}
+.brand p{margin:2px 0 0;color:var(--muted);font-size:13px}
+.stats{display:flex;flex-wrap:wrap;gap:6px}
+.stat{font-family:var(--mono);font-size:12px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-variant-numeric:tabular-nums}
+.stat b{color:var(--ink);font-weight:500}
+ol.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+ol.steps li{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:8px;background:var(--surface);border:1px solid var(--line);color:var(--muted);font-size:13px;min-width:0}
+ol.steps li .n{font-family:var(--cond);font-weight:700;font-size:15px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--line);flex:none;color:var(--muted)}
+ol.steps li.done .n{background:var(--ok);border-color:var(--ok);color:var(--surface)}
+ol.steps li.active{border-color:var(--navy);color:var(--ink)}
+ol.steps li.active .n{background:var(--navy);border-color:var(--navy);color:var(--navy-ink)}
+ol.steps li span.t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:20px;align-items:start}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:grid;gap:12px;min-width:0}
+.panel h2{font-family:var(--cond);font-weight:600;font-size:17px;margin:0;letter-spacing:.2px;display:flex;align-items:center;gap:8px;text-wrap:balance}
+.panel h2 .tag{font-family:var(--mono);font-size:11px;font-weight:500;padding:1px 7px;border-radius:4px;background:var(--hl);color:var(--hl-ink)}
+.col{display:grid;gap:20px;min-width:0}
+label.f{display:grid;gap:4px;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}
+input[type=text],textarea,select{font:inherit;color:var(--ink);background:var(--surface-2);border:1px solid var(--line);border-radius:6px;padding:8px 10px;width:100%;text-transform:none;letter-spacing:0}
+textarea{resize:vertical;line-height:1.45}
+#jd{min-height:230px;font-size:13px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+button{font:inherit;cursor:pointer;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:7px 12px;font-weight:500}
+button.primary{background:var(--navy);border-color:var(--navy);color:var(--navy-ink)}
+button.ghost{background:transparent;border-color:transparent;color:var(--navy);padding-inline:6px}
+button:disabled{opacity:.5;cursor:not-allowed}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,[contenteditable]:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.hint{font-size:12px;color:var(--muted)}
+.scorebox{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.score{font-family:var(--cond);font-weight:700;font-size:44px;line-height:1;font-variant-numeric:tabular-nums;color:var(--ink)}
+.score small{font-size:18px;color:var(--muted);font-weight:600}
+.meter{height:8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden;flex:1;min-width:140px}
+.meter i{display:block;height:100%;background:var(--navy)}
+.reqs{display:grid;gap:4px;max-height:340px;overflow:auto;padding-right:4px}
+.req{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px;align-items:center;padding:5px 8px;border-radius:6px;background:var(--surface-2);font-size:13px}
+.pill{font-family:var(--mono);font-size:11px;padding:1px 7px;border-radius:999px;white-space:nowrap}
+.pill.ok{background:var(--ok-bg);color:var(--ok)} .pill.warn{background:var(--warn-bg);color:var(--warn)} .pill.gap{background:var(--gap-bg);color:var(--gap)}
+.req .lbl{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.req .lbl em{font-style:normal;color:var(--muted);font-size:12px}
+.w{font-family:var(--mono);font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.wbar{display:inline-block;width:36px;height:5px;border-radius:3px;background:var(--line);vertical-align:middle;margin-left:4px;overflow:hidden}
+.wbar i{display:block;height:100%;background:var(--navy)}
+.status{font-size:13px;color:var(--muted);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.spin{width:14px;height:14px;border-radius:50%;border:2px solid var(--line);border-top-color:var(--navy);animation:sp 0.9s linear infinite;flex:none}
+@keyframes sp{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion: reduce){.spin{animation:none}}
+.q{display:grid;gap:6px;padding:12px;border:1px solid var(--line);border-radius:8px;background:var(--surface-2)}
+.q .qh{display:flex;gap:8px;align-items:baseline}
+.q .qn{font-family:var(--cond);font-weight:700;color:var(--navy);font-size:15px}
+.q p{margin:0}
+.q .why{font-size:12px;color:var(--muted)}
+.q textarea{min-height:64px;background:var(--surface)}
+.q .meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12px;color:var(--muted)}
+.q select{width:auto;padding:4px 8px;font-size:12px;background:var(--surface)}
+.jdview{font-size:12.5px;line-height:1.55;max-height:220px;overflow:auto;white-space:pre-wrap;background:var(--surface-2);border-radius:6px;padding:10px;border:1px solid var(--line)}
+mark{background:var(--hl);color:var(--hl-ink);border-radius:2px;padding:0 1px}
+/* ---------- the paper sheet ---------- */
+.sheetwrap{position:sticky;top:12px;display:grid;gap:10px;min-width:0}
+.sheetbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+.badge{font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:4px;border:1px solid var(--line);color:var(--muted);background:var(--surface)}
+.badge.final{border-color:var(--ok);color:var(--ok);background:var(--ok-bg)}
+.sheet{background:var(--sheet);color:var(--sheet-ink);font-family:var(--doc);font-size:12.2px;line-height:1.3;padding:30px 34px;border-radius:4px;box-shadow:var(--shadow);max-height:calc(100vh - 110px);overflow:auto;border:1px solid var(--line)}
+.sheet h3{font-size:24px;text-align:center;margin:0;color:#000;letter-spacing:.3px}
+.sheet .hl{text-align:center;font-size:10.2px;font-weight:700;color:var(--sheet-navy);letter-spacing:.4px;margin:2px 0 1px}
+.sheet .ct{text-align:center;font-size:10.6px;margin:0 0 6px}
+.sheet h4{font-size:11.2px;color:var(--sheet-navy);text-transform:uppercase;letter-spacing:.8px;border-bottom:1.5px solid var(--sheet-navy);margin:10px 0 4px;padding-bottom:2px}
+.sheet p{margin:0 0 3px}
+.sheet .sum{text-align:justify}
+.sheet .sys b,.sheet .skill b{color:var(--sheet-navy)}
+.sheet .role{margin-top:7px}
+.sheet .rh{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.sheet .rt{font-weight:700;font-size:12.6px}
+.sheet .rt span{font-weight:400}
+.sheet .rd{font-size:10.8px;color:var(--sheet-muted);white-space:nowrap}
+.sheet .rm{font-size:10.6px;color:var(--sheet-muted);font-style:italic}
+.sheet ul{margin:2px 0 0;padding-left:16px}
+.sheet li{margin:0 0 2px;position:relative}
+.sheet li::marker{color:var(--sheet-navy)}
+.sheet li .bt{outline:none;border-radius:2px}
+.sheet li.new .bt{background:#EEF6D0}
+.sheet li .ctl{display:inline-flex;gap:2px;margin-left:6px;vertical-align:1px;opacity:0;transition:opacity .15s}
+.sheet li:hover .ctl,.sheet li:focus-within .ctl{opacity:1}
+.sheet li .ctl button{font-family:var(--ui);font-size:10.5px;padding:0 6px;line-height:18px;border-radius:3px;background:#F1F3F7;color:#1F3864;border:1px solid #D5DBE5}
+.sheet li .cc{font-family:var(--mono);font-size:9.5px;color:#8A8F99;margin-left:4px}
+.sheet li .cc.over{color:#B3261E}
+@media (hover:none){.sheet li .ctl{opacity:1}}
+.learn{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.learn h3{font-family:var(--cond);font-size:14px;margin:0 0 6px;font-weight:600}
+.learn ul{margin:0;padding-left:18px;font-size:13px}
+.learn li{margin-bottom:2px}
+.note{font-size:12.5px;color:var(--muted);background:var(--surface-2);border-left:3px solid var(--navy);padding:8px 10px;border-radius:0 6px 6px 0}
+.err{color:var(--gap)}
+.toast{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom, 0px));transform:translateX(-50%);background:var(--ink);color:var(--surface);padding:8px 14px;border-radius:6px;font-size:13px;box-shadow:var(--shadow);z-index:5}
+@media (max-width:900px){
+  .grid{grid-template-columns:1fr}
+  .sheetwrap{position:static}
+  .sheet{max-height:none;padding:20px 18px}
+  ol.steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .learn{grid-template-columns:1fr}
+}
+@media (max-width:420px){ .row2{grid-template-columns:1fr} .score{font-size:36px} }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <h1>Resume Match Desk</h1>
+      <p>Paste a job description. The desk pulls from your bullet bank, drafts a tailored resume, asks five questions, and builds the final PDF.</p>
+    </div>
+    <div class="stats" id="stats"><span class="stat">loading bullet bank…</span></div>
+  </header>
+
+  <ol class="steps" id="steps" aria-label="Progress">
+    <li data-s="1"><span class="n">1</span><span class="t">Paste the job description</span></li>
+    <li data-s="2"><span class="n">2</span><span class="t">Review the draft</span></li>
+    <li data-s="3"><span class="n">3</span><span class="t">Answer 5 questions</span></li>
+    <li data-s="4"><span class="n">4</span><span class="t">Download the final</span></li>
+  </ol>
+
+  <div class="grid">
+    <div class="col">
+      <section class="panel" aria-labelledby="jdh">
+        <h2 id="jdh">Job description <span class="tag" id="jdTag">SAMPLE</span></h2>
+        <div class="row2">
+          <label class="f" for="company">Company<input type="text" id="company" placeholder="auto-detected"></label>
+          <label class="f" for="role">Role title<input type="text" id="role" placeholder="auto-detected"></label>
+        </div>
+        <label class="f" for="jd">Posting text<textarea id="jd" spellcheck="false"></textarea></label>
+        <div class="row">
+          <button class="primary" id="matchBtn">Match against my bullet bank</button>
+          <button id="clearBtn">Clear</button>
+          <span class="hint" id="jdHint"></span>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="mh">
+        <h2 id="mh">Match</h2>
+        <div class="scorebox">
+          <div class="score" id="score">–<small>%</small></div>
+          <div style="flex:1;display:grid;gap:6px;min-width:160px">
+            <div class="meter"><i id="meter" style="width:0"></i></div>
+            <div class="hint" id="scoreHint">Weighted share of the posting's requirements your draft already proves.</div>
+          </div>
+        </div>
+        <div class="status" id="claude1Status" hidden></div>
+        <div class="reqs" id="reqs" role="list"></div>
+        <details>
+          <summary class="hint">Show matched phrases in the posting</summary>
+          <div class="jdview" id="jdview"></div>
+        </details>
+      </section>
+
+      <section class="panel" aria-labelledby="qh">
+        <h2 id="qh">Five questions</h2>
+        <p class="hint" id="qIntro">Each question targets a heavily weighted requirement the draft proves weakly, or experience you likely have but haven't written down. Specifics beat adjectives: numbers, scope, outcome.</p>
+        <div class="status" id="qStatus"></div>
+        <div id="questions" style="display:grid;gap:10px"></div>
+        <div class="row">
+          <button class="primary" id="finalBtn" disabled>Build the final resume</button>
+          <button class="ghost" id="quickQBtn" hidden>Use quick questions instead</button>
+          <span class="status" id="finalStatus"></span>
+        </div>
+      </section>
+    </div>
+
+    <div class="sheetwrap">
+      <div class="sheetbar">
+        <div class="row">
+          <span class="badge" id="phaseBadge">DRAFT</span>
+          <span class="hint" id="sheetHint">Hover a bullet to keep, swap, or drop it. Click its text to edit.</span>
+        </div>
+        <div class="row">
+          <button id="copyBtn">Copy text</button>
+          <button class="primary" id="pdfBtn">Download PDF</button>
+        </div>
+      </div>
+      <article class="sheet" id="sheet" aria-label="Resume preview"></article>
+    </div>
+  </div>
+
+  <section class="panel" aria-labelledby="lh">
+    <h2 id="lh">What the bank has learned</h2>
+    <div class="learn">
+      <div><h3>Most requested across saved postings</h3><ul id="lReq"><li class="hint">Saved postings appear here after your first match.</li></ul></div>
+      <div><h3>New bullets waiting to sync</h3><ul id="lInbox"><li class="hint">Answers you turn into bullets land here, and future matches can use them right away.</li></ul></div>
+      <div><h3>Your feedback so far</h3><ul id="lFb"><li class="hint">Keep and Drop clicks raise or lower a bullet's future score.</li></ul></div>
+    </div>
+    <div class="row">
+      <button id="exportBtn">Download learnings JSON</button>
+      <span class="hint">To fold these into the GitHub database, ask Claude to "sync the Resume Match Desk". Or run <code>python rot.py learn learnings.json</code>.</span>
+    </div>
+  </section>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+"use strict";
+const SAMPLE_JD = `Director, Go-To-Market — Advertiser Partnerships
+New York, NY (Hybrid)
+
+About the role
+We are an AI-native ad-tech company helping brands reach high-intent audiences across conversational surfaces. We're hiring a Director of Go-To-Market to own our advertiser partnerships motion from first conversation to signed contract, and to build the playbook the next five sellers will run.
+
+What you'll do
+- Own full-cycle new business with brands and agencies: prospecting, discovery, business case, negotiation, and close.
+- Build ROI and cost-per-acquisition business cases that a CMO and CFO can both defend; fluency in CPM, CPA, ROAS, and measurement is essential.
+- Define segmentation, positioning, and pricing for new verticals; partner with product on packaging.
+- Stand up channel and agency partnerships that scale beyond direct sales.
+- Build forecasting and pipeline discipline in Salesforce; report weekly to the executive team.
+- Hire, coach, and develop a small team of account executives as a player-coach.
+
+What you'll bring
+- 7+ years in advertising sales, media sales, or ad tech with a track record of exceeding quota.
+- Experience selling into complex, multi-stakeholder buying committees at enterprise brands.
+- Working knowledge of clean rooms, CDPs, identity resolution, and first-party data.
+- Comfort presenting to C-suite and board-level stakeholders.
+- Hands-on use of generative AI tools (ChatGPT, Claude) in your daily workflow.
+- Bonus: experience at an early-stage startup or building a GTM function from zero.`;
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const escRe = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const fmtDate = v => !v ? "Present" : (/^\d{4}-\d{2}$/.test(v) ? `${MONTHS[+v.slice(5)-1]} ${v.slice(0,4)}` : v);
+const REQ_HINT = /(require|qualif|must|you have|you bring|what you.ll need|experience with|proven|track record|responsib|you will|what you.ll do|preferred|bonus|nice to have)/i;
+
+const S = {
+  lib:null, db:null, sample:null, downloads:null,
+  jd:"", req:{}, uncatalogued:[], chosen:{}, cov:{}, score:null,
+  runId:null, phase:"idle",
+  excluded:new Set(), pinned:new Set(), textChoice:{}, edits:{},
+  summary:null, headline:null, compOrder:null, summarySource:"baseline",
+  questions:[], newAch:[], adj:{}, inbox:[], runs:[], feedback:[],
+  ctl1:null, ctl2:null, writeChain:{}
+};
+
+function toast(msg){ const t=$("#toast"); t.textContent=msg; t.hidden=false; clearTimeout(toast._t); toast._t=setTimeout(()=>t.hidden=true, 3200); }
+function setStep(n){ document.querySelectorAll("#steps li").forEach(li=>{ const s=+li.dataset.s; li.classList.toggle("done", s<n); li.classList.toggle("active", s===n); }); }
+
+/* ------------------------------ matching engine (port of rot.py) ------------------------------ */
+function extractRequirements(text){
+  const lines = text.split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
+  const boost = new Set(); let inReq=false;
+  lines.forEach((l,i)=>{ if(l.length<80 && REQ_HINT.test(l)) inReq=true; else if(l.length<60 && l.endsWith(":") && !REQ_HINT.test(l)) inReq=false; if(inReq) boost.add(i); });
+  const low = lines.map(l=>l.toLowerCase()); const req={};
+  for (const [tid,t] of Object.entries(S.lib.tags)){
+    let hits=0; const phrases=new Set();
+    for (const syn of t.synonyms){
+      const re = new RegExp("(?<![a-z0-9-])"+escRe(syn.toLowerCase())+"(?![a-z0-9])","g");
+      low.forEach((l,i)=>{ const m=l.match(re); if(m){ hits += m.length*(syn.length>4?1:0.6)*(boost.has(i)?1.4:1); phrases.add(syn);} });
+    }
+    if(hits) req[tid]={weight:Math.round(Math.min(hits,3)*100)/100, phrases:[...phrases].sort()};
+  }
+  return req;
+}
+function textAdj(t){ return (t.score_adj||0) + (S.adj[t.id]||0); }
+function allAchievements(){
+  const base = S.lib.achievements.map(a=>({...a, texts:[...a.texts], has_metrics:(a.metrics||[]).length>0}));
+  const byId = Object.fromEntries(base.map(a=>[a.id,a]));
+  for (const b of S.inbox){
+    if (b.achievement_id && byId[b.achievement_id]) byId[b.achievement_id].texts.push({id:"inbox:"+b._id, kind:"learned", angle:b.angle||"learned", text:b.text, score_adj:0});
+    else if (b.role) base.push({id:"inbox-"+b._id, role:b.role, confidence:"asserted", tags:Object.fromEntries((b.tags||[]).filter(t=>S.lib.tags[t]).map(t=>[t,1])), metrics:[], has_metrics:/\d/.test(b.text), texts:[{id:"inbox:"+b._id, kind:"learned", angle:"learned", text:b.text, score_adj:0}]});
+  }
+  for (const a of S.newAch){
+    if (a.attach && byId[a.attach]) { byId[a.attach].texts.push(a.text); }
+    else base.push(a.ach);
+  }
+  return base;
+}
+function scoreAch(a, req){
+  const tags=S.lib.tags, keys=Object.keys(req);
+  if(!keys.length) return [0,[]];
+  const famW={}; for(const tid of keys){ const f=tags[tid].family; famW[f]=(famW[f]||0)+req[tid].weight; }
+  let s=0; const why=[];
+  for(const [tid,w] of Object.entries(a.tags)){ if(req[tid]){ s+=w*req[tid].weight; why.push(tid);} else if(tags[tid]) s+=0.25*w*Math.min(famW[tags[tid].family]||0,2); }
+  const adj=Math.max(...a.texts.map(textAdj));
+  const conf={verified:1,asserted:0.95,conflict:0.9}[a.confidence] ?? 0.9;
+  return [(s+adj)*conf, why];
+}
+function angleScore(m, req){
+  if(m.tag) return req[m.tag]?.weight||0;
+  if(m.tags) return Math.max(0,...m.tags.map(t=>req[t]?.weight||0));
+  if(m.family) return Math.max(0,...Object.entries(req).filter(([t])=>S.lib.tags[t].family===m.family).map(([,r])=>r.weight));
+  return 0;
+}
+function pickText(a, req){
+  const canon=a.texts.find(t=>t.kind==="canonical")||a.texts[0];
+  if(S.textChoice[a.id]){ const t=a.texts.find(x=>x.id===S.textChoice[a.id]); if(t) return t; }
+  const newest=a.texts.find(t=>t.fresh); if(newest) return newest;
+  const sc=S.lib.baseline.scoring||{};
+  const canonRel=Math.max(0,...Object.keys(a.tags).filter(t=>req[t]).map(t=>req[t].weight));
+  let best=canon, bestS=0;
+  for(const t of a.texts){ if(t.kind!=="variant"&&t.kind!=="learned") continue;
+    const m=S.lib.baseline.angle_map[t.angle||""];
+    const s = m ? angleScore(m,req) : (t.kind==="learned" ? canonRel+0.1+textAdj(t) : 0);
+    if(s>bestS){best=t;bestS=s;} }
+  if(best!==canon && bestS>=(sc.variant_min??1.5) && bestS>(sc.variant_margin??1.25)*canonRel) return best;
+  if(best!==canon && best.kind==="learned" && bestS>=canonRel) return best;
+  return canon;
+}
+function select(req){
+  const L=S.lib, prio=L.baseline.priority, caps=L.baseline.caps, sc=L.baseline.scoring||{};
+  const hasReq=Object.keys(req).length>0, byRole={};
+  for(const a of allAchievements()){
+    if(a.role==="education" || S.excluded.has(a.id)) continue;
+    let [s,why]=scoreAch(a,req);
+    const plist=prio[a.role]||[]; const ix=plist.indexOf(a.id); const rank= ix>=0?ix:99;
+    if(hasReq){ s+=(sc.priority_bonus??1.5)*Math.max(0,1-rank/Math.max(plist.length,1)); s+= a.has_metrics?(sc.metric_bonus??0.5):0; }
+    if(S.pinned.has(a.id)) s+=1000;
+    (byRole[a.role] ||= []).push({s:Math.round(s*1000)/1000, rank, a, why});
+  }
+  const chosen={};
+  for(const [role,items] of Object.entries(byRole)){
+    items.sort((x,y)=>(y.s-x.s)||(x.rank-y.rank));
+    const info=L.roles.find(r=>r.key===role); if(!info) continue;
+    const pinnedHere=items.some(i=>S.pinned.has(i.a.id));
+    if(info.hidden && !pinnedHere && (!hasReq || items[0].s < (sc.hidden_role_min??4))) continue;
+    const cap=(caps[role]??3) + items.filter(i=>i.a.fresh).length;
+    chosen[role]=items.slice(0,cap).map(i=>({...i, t:pickText(i.a,req)}));
+  }
+  return chosen;
+}
+function coverage(req, chosen){
+  const cov={};
+  for(const tid of Object.keys(req)){ let best=0; for(const items of Object.values(chosen)) for(const i of items) if(i.a.tags[tid]) best=Math.max(best,i.a.tags[tid]); cov[tid]=best; }
+  return cov;
+}
+function matchScore(req,cov){ const tot=Object.values(req).reduce((a,r)=>a+r.weight,0)||1; return Object.entries(req).reduce((a,[t,r])=>a+r.weight*Math.min(cov[t]||0,1),0)/tot; }
+function rankCompetencies(req){
+  const b=S.lib.baseline, n=b.competency_count;
+  if(S.compOrder) return S.compOrder.slice(0,n);
+  if(!Object.keys(req).length) return b.competency_order.slice(0,n);
+  const sc=S.lib.competencies.map(c=>({t:c.text,s:c.tags.reduce((a,t)=>a+(req[t]?.weight||0),0)})).sort((x,y)=>y.s-x.s);
+  const out=sc.filter(c=>c.s>0).slice(0,n).map(c=>c.t);
+  for(const t of b.competency_order){ if(out.length>=n) break; if(!out.includes(t)) out.push(t); }
+  return out;
+}
+function rankTech(req){ return S.lib.technologies.map((t,i)=>({n:t.name,i,s:t.tags.reduce((a,x)=>a+(req[x]?.weight||0),0)})).sort((a,b)=>(b.s-a.s)||(a.i-b.i)).map(t=>t.n); }
+function rankExpertise(req){
+  const n=S.lib.baseline.expertise_items_per_area||7;
+  return S.lib.expertise_areas.map(a=>({label:a.label, items:a.items.map((it,i)=>({t:it.text,i,s:it.tags.reduce((x,t)=>x+(req[t]?.weight||0),0)})).sort((x,y)=>(y.s-x.s)||(x.i-y.i)).slice(0,n).map(x=>x.t)}));
+}
+
+/* ------------------------------ resume model ------------------------------ */
+function resumeModel(){
+  const L=S.lib, req=S.req;
+  const roles=[...Object.keys(S.chosen)].map(k=>L.roles.find(r=>r.key===k)).filter(Boolean).sort((a,b)=>a.sort-b.sort);
+  const edu=L.education.map(e=>({...e, bullets:e.bullet_ids.map(id=>{ const a=L.achievements.find(x=>x.id===id); return a?(a.texts.find(t=>t.kind==="canonical")||a.texts[0]).text:null; }).filter(Boolean)}));
+  const certs=L.certifications.map(c=>{ const when=c.status?"In progress":(c.date?fmtDate(c.date):""); return `${c.name} — ${c.issuer}${when?` (${when})`:""}`; });
+  return {
+    identity:L.identity, headline:S.headline||L.baseline.headline, summary:S.summary||L.baseline.summary,
+    competencies:rankCompetencies(req), technologies:rankTech(req),
+    roles:roles.map(r=>({key:r.key, title:r.title, employer:r.employer, location:r.location, dates:r.dates,
+      context: r.key==="hc_ai_strategy" ? r.engagement : (r.context||""),
+      bullets:S.chosen[r.key].map(i=>({aid:i.a.id, tid:i.t.id, text:S.edits[i.a.id]??i.t.text, fresh:!!i.a.fresh||!!i.t.fresh}))})),
+    certifications:certs, education:edu,
+    expertise:(L.baseline.layout?.expertise_block||"none")!=="none" ? rankExpertise(req) : []
+  };
+}
+
+/* ------------------------------ rendering ------------------------------ */
+function renderStats(){
+  const L=S.lib; const nb=L.achievements.reduce((a,x)=>a+x.texts.length,0);
+  $("#stats").innerHTML = [
+    `<span class="stat"><b>${L.achievements.length}</b> achievements</span>`,
+    `<span class="stat"><b>${nb}</b> bullets</span>`,
+    `<span class="stat"><b>${Object.keys(L.tags).length}</b> tags</span>`,
+    `<span class="stat">R1 band <b>${L.length_band.p10}–${L.length_band.hard_ceiling}</b> chars</span>`,
+    `<span class="stat"><b>${S.runs.length}</b> saved postings</span>`
+  ].join("");
+}
+function renderMatch(){
+  const req=S.req, cov=S.cov, tags=S.lib.tags;
+  const pct = S.score==null ? "–" : Math.round(S.score*100);
+  $("#score").innerHTML = `${pct}<small>%</small>`;
+  $("#meter").style.width = (S.score==null?0:Math.round(S.score*100))+"%";
+  const rows = Object.entries(req).sort((a,b)=>b[1].weight-a[1].weight).map(([t,r])=>{
+    const c=cov[t]||0, st=c>=0.8?["ok","proven"]:(c>0?["warn","partial"]:["gap","gap"]);
+    return `<div class="req" role="listitem"><span class="pill ${st[0]}">${st[1]}</span><span class="lbl" title="${esc(r.phrases.join(", "))}">${esc(tags[t].label)} <em>· ${esc(r.phrases.slice(0,3).join(", "))}</em></span><span class="w">${r.weight.toFixed(1)}<span class="wbar"><i style="width:${Math.round(r.weight/3*100)}%"></i></span></span></div>`;
+  });
+  for(const u of S.uncatalogued) rows.push(`<div class="req" role="listitem"><span class="pill gap">new</span><span class="lbl" title="Not in the tag taxonomy yet">${esc(u.phrase)} <em>· not in taxonomy</em></span><span class="w">${(+u.weight||1).toFixed(1)}</span></div>`);
+  $("#reqs").innerHTML = rows.join("") || `<p class="hint">No requirements detected yet.</p>`;
+  // highlighted posting
+  const phrases=[...new Set(Object.values(req).flatMap(r=>r.phrases))].sort((a,b)=>b.length-a.length);
+  let h=esc(S.jd);
+  if(phrases.length){ const re=new RegExp("(?<![A-Za-z0-9-])("+phrases.map(p=>escRe(esc(p))).join("|")+")(?![A-Za-z0-9])","gi"); h=h.replace(re,"<mark>$1</mark>"); }
+  $("#jdview").innerHTML=h;
+}
+function renderSheet(){
+  const m=resumeModel(), i=m.identity, band=S.lib.length_band;
+  const final=S.phase==="final";
+  const li = b => { const n=b.text.length, over=n>band.hard_ceiling;
+    return `<li class="${b.fresh?"new":""}" data-aid="${esc(b.aid)}"><span class="bt" contenteditable="true" spellcheck="true" data-aid="${esc(b.aid)}">${esc(b.text)}</span><span class="cc ${over?"over":""}" title="characters (Resume 1 ceiling ${band.hard_ceiling})">${n}</span><span class="ctl"><button data-act="keep" data-aid="${esc(b.aid)}" title="Keep: pin and raise its future score">Keep</button><button data-act="swap" data-aid="${esc(b.aid)}" title="Swap for the next-best bullet in this role">Swap</button><button data-act="drop" data-aid="${esc(b.aid)}" title="Drop: remove and lower its future score">Drop</button></span></li>`; };
+  $("#sheet").innerHTML = `
+    <h3>${esc(i.name)}</h3><div class="hl">${esc(m.headline)}</div>
+    <div class="ct">${esc(i.location)} · ${esc(i.phone)} · ${esc(i.email)} · ${esc(i.linkedin)}</div>
+    <h4>Professional Summary</h4><p class="sum">${esc(m.summary)}</p>
+    <h4>Core Competencies</h4><p>${m.competencies.map(esc).join(" · ")}</p>
+    <p class="sys"><b>Systems:</b> ${m.technologies.map(esc).join(" · ")}</p>
+    <h4>Professional Experience</h4>
+    ${m.roles.map(r=>`<div class="role"><div class="rh"><span class="rt">${esc(r.title)} <span>| ${esc(r.employer)}</span></span><span class="rd">${esc(r.dates)}</span></div><div class="rm">${esc(r.location||"")}${r.context?" · "+esc(r.context):""}</div><ul>${r.bullets.map(li).join("")}</ul></div>`).join("")}
+    <h4>Certifications</h4><ul>${m.certifications.map(c=>`<li>${esc(c)}</li>`).join("")}</ul>
+    <h4>Education</h4>${m.education.map(e=>`<p><b>${esc(e.degree)}</b> | ${esc(e.school)} | ${esc(e.year)}</p><ul>${e.bullets.map(b=>`<li>${esc(b)}</li>`).join("")}</ul>`).join("")}
+    ${m.expertise.length?`<h4>Areas of Expertise</h4>${m.expertise.map(a=>`<p class="skill"><b>${esc(a.label)}:</b> ${esc(a.items.join(", "))}</p>`).join("")}`:""}`;
+  $("#phaseBadge").textContent = final ? "FINAL" : (S.phase==="idle"?"BASELINE":"DRAFT");
+  $("#phaseBadge").classList.toggle("final", final);
+}
+function renderQuestions(){
+  const roles=S.lib.roles.filter(r=>!r.hidden||S.chosen[r.key]);
+  $("#questions").innerHTML = S.questions.map((q,ix)=>`
+    <div class="q"><div class="qh"><span class="qn">${ix+1}</span><p>${esc(q.question)}</p></div>
+      ${q.why?`<div class="why">${esc(q.why)}</div>`:""}
+      <textarea id="ans${ix}" data-ix="${ix}" placeholder="${esc(q.hint||"What you did, the scope, the measurable result. Leave blank to skip.")}">${esc(q.answer||"")}</textarea>
+      <div class="meta"><span>Proves: <b>${esc(S.lib.tags[q.tag]?.label||q.tag||"—")}</b></span>
+        <label>Goes under <select id="role${ix}" data-ix="${ix}">${roles.map(r=>`<option value="${esc(r.key)}" ${r.key===q.role?"selected":""}>${esc(r.title.split(",")[0])} · ${esc(r.employer)}</option>`).join("")}</select></label></div>
+    </div>`).join("");
+  $("#finalBtn").disabled = !S.questions.length || S.phase==="finalizing";
+}
+function renderLearned(){
+  renderStats();
+  const freq={};
+  for(const r of S.runs) for(const [t,w] of Object.entries(r.requirements||{})) if((+w)>=1 && S.lib.tags[t]) freq[t]=(freq[t]||0)+1;
+  const libMax={}; for(const a of S.lib.achievements) for(const [t,w] of Object.entries(a.tags)) libMax[t]=Math.max(libMax[t]||0,w);
+  const top=Object.entries(freq).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  $("#lReq").innerHTML = top.length ? top.map(([t,n])=>{ const c=libMax[t]||0; const st=c>=0.8?"ok":(c>0?"warn":"gap"); return `<li>${esc(S.lib.tags[t].label)} <span class="w">×${n}</span> <span class="pill ${st}">${st==="ok"?"strong":st==="warn"?"thin":"none"}</span></li>`; }).join("") : `<li class="hint">Saved postings appear here after your first match.</li>`;
+  const pend=S.inbox.filter(b=>!b.synced);
+  $("#lInbox").innerHTML = pend.length ? pend.slice(0,8).map(b=>`<li>${esc(b.text)}</li>`).join("")+(pend.length>8?`<li class="hint">+${pend.length-8} more</li>`:"") : `<li class="hint">Answers you turn into bullets land here, and future matches can use them right away.</li>`;
+  const k=S.feedback.filter(f=>f.action==="keep").length, d=S.feedback.filter(f=>f.action==="drop"||f.action==="reject").length, e=S.feedback.filter(f=>f.action==="edit").length;
+  $("#lFb").innerHTML = S.feedback.length ? `<li><b>${k}</b> kept · <b>${d}</b> dropped · <b>${e}</b> edited</li><li class="hint">Dropped bullets rank lower next time. Kept ones rank higher.</li>` : `<li class="hint">Keep and Drop clicks raise or lower a bullet's future score.</li>`;
+}
+function renderAll(){ renderMatch(); renderSheet(); renderQuestions(); }
+
+/* ------------------------------ db helpers ------------------------------ */
+function queueWrite(path, fn){ const prev=S.writeChain[path]||Promise.resolve(); const next=prev.then(fn).catch(e=>{ if(e?.code==="quota_exceeded") toast("Storage is full. Download learnings, then ask Claude to sync and prune."); else console.warn("db write", path, e); }); S.writeChain[path]=next; return next; }
+function runDoc(){ return S.db && S.runId ? S.db.doc("jd_runs/"+S.runId) : null; }
+async function saveRun(patch, create=false){ const ref=runDoc(); if(!ref) return; await queueWrite(ref.path, ()=> create ? ref.set(patch) : ref.update(patch)); }
+async function logFeedback(action, aid, text){
+  const rec={run_id:S.runId||null, achievement_id:aid, bullet_id: (/^\d+$/.test(String(text?.tid))? +text.tid : null), action, text:text?.text||null, created:new Date().toISOString()};
+  if(action==="keep") S.adj[text?.tid]=(S.adj[text?.tid]||0)+0.3;
+  if(action==="drop") S.adj[text?.tid]=(S.adj[text?.tid]||0)-0.6;
+  if(S.db) queueWrite("feedback", ()=>S.db.collection("feedback").add(rec));
+  else { S.feedback.push(rec); renderLearned(); }
+}
+
+/* ------------------------------ flow ------------------------------ */
+function recompute(){ S.chosen=select(S.req); S.cov=coverage(S.req,S.chosen); S.score=Object.keys(S.req).length?matchScore(S.req,S.cov):null; renderMatch(); renderSheet(); }
+
+function templateQuestions(){
+  const tags=S.lib.tags;
+  const gaps=Object.entries(S.req).map(([t,r])=>({t,w:r.weight,c:S.cov[t]||0,ph:r.phrases})).sort((a,b)=>(b.w*(1-Math.min(b.c,1)))-(a.w*(1-Math.min(a.c,1)))).slice(0,5);
+  const roleFor=t=>{ let best=null,bs=-1; for(const a of S.lib.achievements){ const w=a.tags[t]||0; const r=S.lib.roles.find(x=>x.key===a.role); if(r&&!r.hidden&&w>bs){bs=w;best=a.role;} } return best||S.lib.roles[0].key; };
+  return gaps.map(g=>({tag:g.t, role:roleFor(g.t), question:`The posting leans on ${tags[g.t].label.toLowerCase()} (“${g.ph.slice(0,2).join("”, “")}”). What's your strongest concrete example? Say what you did, the scope, and the measurable result.`, why: g.c>0?"Your draft touches this only lightly.":"Nothing in your draft proves this yet.", hint:"e.g. who, how many, how much, what changed"}));
+}
+
+async function doMatch(){
+  const jd=$("#jd").value.trim();
+  if(jd.length<80){ $("#jdHint").textContent="Paste the full posting (at least a few lines) to match against."; return; }
+  $("#jdHint").textContent="";
+  S.ctl1?.abort(); S.ctl2?.abort();
+  Object.assign(S,{jd, req:extractRequirements(jd), uncatalogued:[], excluded:new Set(), pinned:new Set(), textChoice:{}, edits:{}, summary:null, headline:null, compOrder:null, questions:[], newAch:[], phase:"draft"});
+  $("#jdTag").hidden = jd!==SAMPLE_JD.trim();
+  recompute(); setStep(2);
+  S.runId="run-"+Date.now().toString(36);
+  const reqW=Object.fromEntries(Object.entries(S.req).map(([t,r])=>[t,r.weight]));
+  await saveRun({created:new Date().toISOString(), status:"draft", company:$("#company").value||null, title:$("#role").value||null, jd_text:jd.slice(0,20000), requirements:reqW, match_score:S.score, source:"artifact", synced:false}, true);
+  if(S.sample) claudeTailor(); else useQuickQuestions("Claude isn't available in this view, so these questions come from the gap analysis.");
+}
+
+function useQuickQuestions(note){
+  S.ctl1?.abort();
+  S.questions=templateQuestions(); $("#qStatus").textContent=note||""; $("#quickQBtn").hidden=true; $("#claude1Status").hidden=true;
+  renderQuestions(); setStep(3);
+}
+
+function libraryDigest(){
+  return S.lib.achievements.filter(a=>a.role!=="education").map(a=>`${a.id} | ${a.role} | ${(a.texts.find(t=>t.kind==="canonical")||a.texts[0]).text}`).join("\n");
+}
+function draftDigest(){
+  return Object.entries(S.chosen).map(([r,items])=>`[${r}]\n`+items.map(i=>`- (${i.a.id}) ${i.t.text}`).join("\n")).join("\n");
+}
+async function claudeTailor(){
+  const st=$("#claude1Status"); st.hidden=false;
+  st.innerHTML=`<span class="spin" aria-hidden="true"></span><span>Claude is weighing the posting, tailoring your summary, and drafting five questions…</span><button class="ghost" id="stop1">Stop</button>`;
+  $("#qStatus").innerHTML=`<span class="spin" aria-hidden="true"></span> Drafting questions…`; $("#quickQBtn").hidden=false;
+  $("#stop1").onclick=()=>S.ctl1?.abort();
+  const ctl=S.ctl1=new AbortController();
+  const L=S.lib, taxo=Object.entries(L.tags).map(([id,t])=>`${id}: ${t.label}`).join("\n");
+  const roleList=L.roles.map(r=>`${r.key}: ${r.title} | ${r.employer} | ${r.dates}`).join("\n");
+  const prompt=`You are tailoring Tim King's resume to one job description. Use ONLY facts present in the candidate library and draft below. Never invent employers, titles, numbers, or outcomes.
+
+JOB DESCRIPTION:
+<<<
+${S.jd.slice(0,12000)}
+>>>
+
+TAG TAXONOMY (id: label):
+${taxo}
+
+DETERMINISTIC REQUIREMENT MAP (tag id: weight 0-3):
+${Object.entries(S.req).map(([t,r])=>`${t}: ${r.weight}`).join("\n")||"(none)"}
+
+ROLES (key: title | employer | dates):
+${roleList}
+
+CURRENT DRAFT BULLETS:
+${draftDigest()}
+
+FULL LIBRARY (achievement id | role | canonical bullet):
+${libraryDigest()}
+
+COMPETENCY OPTIONS (choose only from these, exact text):
+${L.competencies.map(c=>c.text).join(" | ")}
+
+Reply with ONLY one JSON object:
+{"company": string|null, "title": string|null,
+ "requirements": [{"tag": "<tag id from taxonomy>", "weight": <0.5 to 3, 3 = must-have>, "why": "<short evidence from the posting>"}],
+ "uncatalogued": [{"phrase": "<requirement no tag covers>", "weight": <1-3>}],
+ "headline": "<three short phrases in capitals joined by ' · ', max 90 characters>",
+ "summary": "<3-4 sentences, max 85 words, no first person, only library facts, leading with what this posting values most>",
+ "competency_order": ["<up to 12 exact competency options, most relevant first>"],
+ "followups": [{"question": "...", "why": "<which requirement this proves and why it matters>", "tag": "<tag id>", "role": "<role key where the answer belongs>", "hint": "<what a strong answer includes>"}]}
+Requirements: return up to 20 tags with your corrected importance. Followups: exactly 5. Target the highest-weight requirements the draft proves weakly or not at all, or implied experience Tim likely has but hasn't stated (quota %, team size, deal size, cycle length, tools). One concrete question each, no compound questions. Don't ask about anything already well evidenced.`;
+  try{
+    const r = await S.sample.json(prompt, {signal:ctl.signal, modelTier:"default"});
+    if(ctl.signal.aborted) return;
+    if(r && typeof r==="object"){
+      if(r.company && !$("#company").value) $("#company").value=String(r.company).slice(0,80);
+      if(r.title && !$("#role").value) $("#role").value=String(r.title).slice(0,120);
+      for(const q of (Array.isArray(r.requirements)?r.requirements:[])){
+        const t=String(q.tag||""), w=Math.max(0.5,Math.min(3,+q.weight||0));
+        if(!L.tags[t]||!w) continue;
+        S.req[t] = S.req[t] ? {...S.req[t], weight:Math.round(Math.max(S.req[t].weight,w)*100)/100} : {weight:w, phrases:[String(q.why||"").slice(0,40)].filter(Boolean)};
+      }
+      S.uncatalogued=(Array.isArray(r.uncatalogued)?r.uncatalogued:[]).filter(u=>u&&u.phrase).slice(0,8).map(u=>({phrase:String(u.phrase).slice(0,80), weight:+u.weight||1}));
+      if(typeof r.summary==="string" && r.summary.length>80){ S.summary=r.summary.trim(); S.summarySource="claude"; }
+      if(typeof r.headline==="string" && r.headline.length>10) S.headline=r.headline.trim().slice(0,110);
+      const opts=new Set(L.competencies.map(c=>c.text)); const co=(r.competency_order||[]).filter(c=>opts.has(c));
+      if(co.length>=6) S.compOrder=co;
+      const qs=(Array.isArray(r.followups)?r.followups:[]).filter(q=>q&&q.question).slice(0,5).map(q=>({question:String(q.question), why:String(q.why||""), tag:L.tags[q.tag]?q.tag:null, role:L.roles.some(x=>x.key===q.role)?q.role:"psp", hint:String(q.hint||"")}));
+      recompute();
+      if(!S.questions.length || !S.questions.some(q=>q.answer)){ S.questions = qs.length>=3 ? qs : templateQuestions(); }
+      $("#qStatus").textContent = qs.length>=3 ? "" : "Claude returned fewer than three questions, so these come from the gap analysis.";
+      renderQuestions(); setStep(3);
+      st.innerHTML=`<span class="pill ok">tailored</span><span>Claude adjusted requirement weights, rewrote the summary, and drafted your questions.</span>`;
+      await saveRun({company:$("#company").value||null, title:$("#role").value||null, requirements:Object.fromEntries(Object.entries(S.req).map(([t,x])=>[t,x.weight])), uncatalogued:S.uncatalogued, match_score:S.score, summary:S.summary, followups:S.questions.map(q=>({question:q.question, tag:q.tag, role:q.role}))});
+    }
+  }catch(e){
+    if(e?.code==="cancelled"){ st.innerHTML=`<span>Stopped. The draft uses keyword matching only.</span>`; if(!S.questions.length) useQuickQuestions(); return; }
+    const msg={not_granted:"Claude isn't allowed on this page, so the draft uses keyword matching only.", rate_limited:"Claude is busy. The draft uses keyword matching; try Match again in a minute.", invalid_json:"Claude's answer came back malformed. The draft uses keyword matching only."}[e?.code] || "Claude couldn't finish, so the draft uses keyword matching only.";
+    st.innerHTML=`<span class="err">${esc(msg)}</span>`;
+    if(e?.code==="not_granted"||e?.code==="sampling_disabled") S.sample=null;
+    useQuickQuestions();
+  }finally{ $("#quickQBtn").hidden=true; }
+}
+
+async function doFinal(){
+  const band=S.lib.length_band;
+  S.questions.forEach((q,ix)=>{ q.answer=$("#ans"+ix)?.value.trim()||""; q.role=$("#role"+ix)?.value||q.role; });
+  const answered=S.questions.map((q,ix)=>({...q,ix})).filter(q=>q.answer && !/^(no|n\/a|none|skip|-)$/i.test(q.answer));
+  S.phase="finalizing"; renderQuestions();
+  const fs=$("#finalStatus");
+  let bullets=[];
+  if(answered.length && S.sample){
+    fs.innerHTML=`<span class="spin" aria-hidden="true"></span> Claude is turning your answers into bare-bone bullets… <button class="ghost" id="stop2">Stop</button>`;
+    $("#stop2").onclick=()=>S.ctl2?.abort();
+    const ctl=S.ctl2=new AbortController();
+    const prompt=`Turn Tim King's answers into resume bullets in his "Resume 1" bare-bone style: verb-first, outcome- and impact-driven, ${band.p10}–${band.hard_ceiling} characters (median ${band.median}), past tense for past roles and present tense only for the current role, no first person, no filler adjectives. Use ONLY facts stated in the answer. Never invent numbers, names, or results. If an answer adds nothing usable, return no bullet for it.
+
+POSTING: ${$("#role").value||"(title unknown)"} at ${$("#company").value||"(company unknown)"}
+
+QUESTIONS AND ANSWERS:
+${answered.map((q,n)=>`${n+1}. [proves: ${q.tag||"general"} · role: ${q.role}] Q: ${q.question}\nA: ${q.answer.slice(0,1500)}`).join("\n\n")}
+
+CURRENT BULLETS (achievement id | role | text) — avoid duplicates; if an answer strengthens one, return an improved version and name it in "achievement_id":
+${Object.entries(S.chosen).flatMap(([r,items])=>items.map(i=>`${i.a.id} | ${r} | ${S.edits[i.a.id]??i.t.text}`)).join("\n")}
+
+TAG IDS YOU MAY USE: ${Object.keys(S.lib.tags).join(", ")}
+
+Reply with ONLY one JSON object:
+{"bullets":[{"q": <question number>, "role": "<role key>", "text": "<the bullet>", "tags": ["<tag id>", "..."], "achievement_id": "<existing id this improves, or null for a new achievement>"}]}`;
+    try{
+      const r=await S.sample.json(prompt,{signal:ctl.signal, modelTier:"default", cache:false});
+      bullets=(Array.isArray(r?.bullets)?r.bullets:[]).filter(b=>b&&typeof b.text==="string"&&b.text.trim().length>20).map(b=>({...b, text:b.text.trim()}));
+      fs.innerHTML="";
+    }catch(e){
+      if(e?.code!=="cancelled") fs.innerHTML=`<span class="err">Claude couldn't write the bullets, so your answers are used as written. Edit them on the sheet.</span>`;
+      bullets=[];
+    }
+  }
+  if(!bullets.length) bullets=answered.map(q=>{ let t=q.answer.replace(/\s+/g," ").trim(); t=t.charAt(0).toUpperCase()+t.slice(1); if(!/[.!?]$/.test(t)) t+="."; return {role:q.role, text:t, tags:q.tag?[q.tag]:[], achievement_id:null}; });
+  // attach new bullets
+  S.newAch=[];
+  const known=new Set(S.lib.achievements.map(a=>a.id));
+  bullets.forEach((b,n)=>{
+    const role=S.lib.roles.some(r=>r.key===b.role)?b.role:"psp";
+    const tagList=(b.tags||[]).filter(t=>S.lib.tags[t]);
+    const tid="new:"+S.runId+":"+n;
+    if(b.achievement_id && known.has(b.achievement_id)){
+      S.newAch.push({attach:b.achievement_id, role, tags:tagList, text:{id:tid, kind:"learned", angle:"gate2", text:b.text, score_adj:0, fresh:true}});
+      S.pinned.add(b.achievement_id);
+    }else{
+      const id="gate2-"+S.runId+"-"+n;
+      S.newAch.push({ach:{id, role, confidence:"asserted", fresh:true, has_metrics:/\d/.test(b.text), tags:Object.fromEntries((tagList.length?tagList:[]).map(t=>[t,1])), metrics:[], texts:[{id:tid, kind:"learned", angle:"gate2", text:b.text, score_adj:0, fresh:true}]}, role, tags:tagList, text:{text:b.text}});
+      S.pinned.add(id);
+    }
+  });
+  S.phase="final"; recompute(); renderQuestions(); setStep(4);
+  toast(bullets.length?`Added ${bullets.length} new bullet${bullets.length>1?"s":""}. Final draft ready.`:"Final draft ready.");
+  // persist learning
+  const m=resumeModel();
+  await saveRun({status:"final", finalized:new Date().toISOString(), match_score:S.score,
+    followups:S.questions.map(q=>({question:q.question, answer:q.answer||"", tag:q.tag, role:q.role})),
+    new_bullets:S.newAch.map(x=>({role:x.role, achievement_id:x.attach||null, text:x.text.text, tags:x.tags})),
+    final_resume:{headline:m.headline, summary:m.summary, competencies:m.competencies, roles:m.roles.map(r=>({key:r.key, bullets:r.bullets.map(b=>({aid:b.aid, text:b.text}))}))}});
+  if(S.db) for(const x of S.newAch){ await queueWrite("bullet_inbox", ()=>S.db.collection("bullet_inbox").add({run_id:S.runId, role:x.role, achievement_id:x.attach||null, angle:"gate2", text:x.text.text, tags:x.tags, created:new Date().toISOString(), synced:false})); }
+}
+
+/* ------------------------------ sheet interactions ------------------------------ */
+function findChosen(aid){ for(const items of Object.values(S.chosen)) for(const i of items) if(i.a.id===aid) return i; return null; }
+$("#sheet").addEventListener("click", e=>{
+  const b=e.target.closest("button[data-act]"); if(!b) return;
+  const aid=b.dataset.aid, i=findChosen(aid); if(!i) return;
+  const act=b.dataset.act;
+  if(act==="keep"){ S.pinned.add(aid); logFeedback("keep", aid, {tid:i.t.id, text:i.t.text}); toast("Kept. It ranks higher in future matches."); }
+  if(act==="swap"){ S.excluded.add(aid); S.pinned.delete(aid); logFeedback("swap", aid, {tid:i.t.id, text:i.t.text}); }
+  if(act==="drop"){ S.excluded.add(aid); S.pinned.delete(aid); logFeedback("drop", aid, {tid:i.t.id, text:i.t.text}); toast("Dropped. It ranks lower in future matches."); }
+  recompute();
+});
+$("#sheet").addEventListener("focusout", e=>{
+  const el=e.target.closest(".bt[contenteditable]"); if(!el) return;
+  const aid=el.dataset.aid, i=findChosen(aid); if(!i) return;
+  const txt=el.textContent.replace(/\s+/g," ").trim(); const cur=S.edits[aid]??i.t.text;
+  if(!txt || txt===cur) return;
+  S.edits[aid]=txt; S.pinned.add(aid);
+  logFeedback("edit", aid, {tid:i.t.id, text:txt});
+  if(S.db && !String(aid).startsWith("gate2-")) queueWrite("bullet_inbox", ()=>S.db.collection("bullet_inbox").add({run_id:S.runId, role:i.a.role, achievement_id:String(aid).startsWith("inbox-")?null:aid, angle:"edit", text:txt, tags:Object.keys(i.a.tags), created:new Date().toISOString(), synced:false}));
+  renderSheet();
+});
+$("#sheet").addEventListener("keydown", e=>{ if(e.key==="Enter" && e.target.closest(".bt")){ e.preventDefault(); e.target.blur(); } });
+
+/* ------------------------------ PDF (jsPDF, selectable text) ------------------------------ */
+/* jsPDF's built-in Helvetica only draws Latin-1; map typographic punctuation to safe equivalents so nothing is silently dropped */
+function pdfSafe(s){ return String(s)
+  .replace(/[–—−]/g,"-").replace(/[‘’′]/g,"'").replace(/[“”″]/g,'"')
+  .replace(/…/g,"...").replace(/•/g,"-").replace(/≥/g,">=").replace(/≤/g,"<=").replace(/→/g,"->")
+  .replace(/[   ]/g," ").replace(/[^\x00-\xFF]/g,""); }
+function buildPdf(m){
+  const { jsPDF } = window.jspdf;
+  const doc=new jsPDF({unit:"pt", format:"letter"});
+  const W=612, H=792, MX=43, MT=36, MB=40, CW=W-2*MX;
+  const NAVY=[31,56,100], GREY=[89,89,89], INK=[17,17,17];
+  let y=MT;
+  const set=(style,size,color)=>{ doc.setFont("helvetica",style); doc.setFontSize(size); doc.setTextColor(...(color||INK)); };
+  const need=h=>{ if(y+h>H-MB){ doc.addPage(); y=MT; } };
+  const lh=size=>size*1.28;
+  function para(text,size,style="normal",color=INK,x=MX,w=CW,align="left"){
+    set(style,size,color); const lines=doc.splitTextToSize(pdfSafe(text), w);
+    for(const ln of lines){ need(lh(size)); y+=size; doc.text(ln, align==="center"?W/2:x, y, {align}); y+=lh(size)-size; }
+  }
+  function rich(parts,size,x=MX,w=CW){ // wrap mixed-style runs
+    const toks=[]; parts.forEach(p=>pdfSafe(p.text).split(/(\s+)/).forEach(t=>{ if(t) toks.push({t, style:p.style||"normal", color:p.color||INK}); }));
+    let line=[], lw=0; const lines=[];
+    const width=tk=>{ set(tk.style,size); return doc.getTextWidth(tk.t); };
+    for(const tk of toks){ const tw=width(tk); if(lw+tw>w && line.length && !/^\s+$/.test(tk.t)){ lines.push(line); line=[]; lw=0; } if(!line.length && /^\s+$/.test(tk.t)) continue; line.push({...tk,w:tw}); lw+=tw; }
+    if(line.length) lines.push(line);
+    for(const ln of lines){ need(lh(size)); y+=size; let cx=x; for(const tk of ln){ set(tk.style,size,tk.color); doc.text(tk.t,cx,y); cx+=tk.w; } y+=lh(size)-size; }
+  }
+  function section(title){ need(26); y+=9; set("bold",9.6,NAVY); doc.setCharSpace(0.7); doc.text(title.toUpperCase(),MX,y+9.6); doc.setCharSpace(0); y+=12.5; doc.setDrawColor(...NAVY); doc.setLineWidth(1.1); doc.line(MX,y,W-MX,y); y+=4; }
+  function bullet(text,size=10){ set("normal",size); const lines=doc.splitTextToSize(pdfSafe(text), CW-13); need(lh(size)*Math.min(lines.length,2)); lines.forEach((ln,k)=>{ need(lh(size)); y+=size; if(k===0){ doc.setFillColor(...NAVY); doc.circle(MX+4, y-size*0.33, 1.3, "F"); } set("normal",size,INK); doc.text(ln, MX+13, y); y+=lh(size)-size+ (k===lines.length-1?1.6:0); }); }
+  const i=m.identity;
+  set("bold",20,[0,0,0]); y+=20; doc.text(pdfSafe(i.name), W/2, y, {align:"center"}); y+=5;
+  para(m.headline, 8.6, "bold", NAVY, MX, CW, "center");
+  para(`${i.location} · ${i.phone} · ${i.email} · ${i.linkedin}`, 8.8, "normal", [34,34,34], MX, CW, "center");
+  section("Professional Summary"); para(m.summary, 10);
+  section("Core Competencies"); para(m.competencies.join(" · "), 10);
+  y+=1; rich([{text:"Systems: ",style:"bold",color:NAVY},{text:m.technologies.join(" · ")}], 9.4);
+  section("Professional Experience");
+  for(const r of m.roles){
+    need(40); y+=5;
+    set("normal",9,GREY); const dw=doc.getTextWidth(pdfSafe(r.dates));
+    const startY=y; rich([{text:r.title+" ",style:"bold"},{text:"| "+r.employer}], 10.5, MX, CW-dw-12);
+    set("normal",9,GREY); doc.text(pdfSafe(r.dates), W-MX, startY+10.5, {align:"right"});
+    para((r.location||"")+(r.context?" · "+r.context:""), 8.8, "italic", GREY);
+    y+=1; for(const b of r.bullets) bullet(b.text);
+  }
+  section("Certifications"); for(const c of m.certifications) bullet(c);
+  section("Education"); for(const e of m.education){ rich([{text:e.degree,style:"bold"},{text:` | ${e.school} | ${e.year}`}],10); for(const b of e.bullets) bullet(b); }
+  if(m.expertise.length){ section("Areas of Expertise"); for(const a of m.expertise){ rich([{text:a.label+": ",style:"bold",color:NAVY},{text:a.items.join(", ")}], 9.4); y+=1.5; } }
+  return doc;
+}
+function plainText(m){
+  const i=m.identity; const L=[i.name.toUpperCase(), m.headline, `${i.location} · ${i.phone} · ${i.email} · ${i.linkedin}`, "", "PROFESSIONAL SUMMARY", m.summary, "", "CORE COMPETENCIES", m.competencies.join(" · "), "Systems: "+m.technologies.join(" · "), "", "PROFESSIONAL EXPERIENCE"];
+  for(const r of m.roles){ L.push(`${r.title} | ${r.employer} | ${r.dates}`, (r.location||"")+(r.context?" · "+r.context:"")); r.bullets.forEach(b=>L.push("• "+b.text)); L.push(""); }
+  L.push("CERTIFICATIONS", ...m.certifications.map(c=>"• "+c), "", "EDUCATION"); m.education.forEach(e=>{ L.push(`${e.degree} | ${e.school} | ${e.year}`, ...e.bullets.map(b=>"• "+b)); });
+  if(m.expertise.length){ L.push("", "AREAS OF EXPERTISE", ...m.expertise.map(a=>`${a.label}: ${a.items.join(", ")}`)); }
+  return L.join("\n");
+}
+function fileSlug(){ const c=($("#company").value||"").replace(/[^A-Za-z0-9]+/g,"_").replace(/^_|_$/g,""); return "Tim_King_Resume"+(c?"_"+c:"")+(S.phase==="final"?"":"_draft"); }
+$("#pdfBtn").onclick=async()=>{
+  if(!window.jspdf){ toast("The PDF library didn't load. Reload the page and try again."); return; }
+  const doc=buildPdf(resumeModel());
+  if(!S.downloads){ toast("Downloads aren't available in this view. Use Copy text instead."); return; }
+  try{ await S.downloads.save({filename:fileSlug()+".pdf", data:doc.output("blob")}); toast("PDF saved."); }
+  catch(e){ if(e?.code!=="declined") toast(e?.code==="rate_limited"?"A save prompt is already open.":"The PDF couldn't be saved here. Use Copy text instead."); }
+};
+$("#copyBtn").onclick=async()=>{
+  const txt=plainText(resumeModel());
+  try{ await navigator.clipboard.writeText(txt); toast("Resume text copied."); }
+  catch{ const r=document.createRange(); r.selectNodeContents($("#sheet")); const s=getSelection(); s.removeAllRanges(); s.addRange(r); toast("Copy was blocked. The resume is selected, so press Ctrl+C."); }
+};
+$("#exportBtn").onclick=async()=>{
+  const runs=S.runs.map(r=>({id:r._id, company:r.company||null, title:r.title||null, jd_text:r.jd_text||"", requirements:r.requirements||{},
+    followups:(r.followups||[]).filter(f=>f.answer).map(f=>({gate:2, question:f.question, answer:f.answer, tag:f.tag})),
+    feedback:S.feedback.filter(f=>f.run_id===r._id && f.bullet_id).map(f=>({bullet_id:f.bullet_id, action:f.action==="drop"?"reject":f.action, edited_text:f.action==="edit"?f.text:null}))}));
+  const nb=S.inbox.filter(b=>!b.synced).map(b=> b.achievement_id ? {achievement_id:b.achievement_id, angle:b.angle||"learned", text:b.text, origin:"artifact"}
+    : {new_achievement:{id:"art-"+b._id, role:b.role, canonical:b.text, tags:Object.fromEntries((b.tags||[]).map(t=>[t,1.0])), confidence:"asserted", notes:"From Resume Match Desk run "+(b.run_id||""), metrics:[], patterns:[], variants:{}}, origin:"artifact"});
+  const data=JSON.stringify({exported:new Date().toISOString(), runs, new_bullets:nb}, null, 2);
+  if(!S.downloads){ try{ await navigator.clipboard.writeText(data); toast("Downloads aren't available here, so the learnings JSON was copied."); }catch{ toast("Downloads aren't available in this view."); } return; }
+  try{ await S.downloads.save({filename:"learnings.json", data}); toast("Learnings saved."); }catch(e){ if(e?.code!=="declined") toast("The file couldn't be saved here."); }
+};
+$("#matchBtn").onclick=doMatch;
+$("#clearBtn").onclick=()=>{ $("#jd").value=""; $("#company").value=""; $("#role").value=""; $("#jdTag").hidden=true; $("#jd").focus(); };
+$("#finalBtn").onclick=doFinal;
+$("#quickQBtn").onclick=()=>useQuickQuestions("Quick questions from the gap analysis. Claude's version was skipped.");
+$("#questions").addEventListener("input", e=>{ const ix=e.target.dataset.ix; if(ix!=null && S.questions[ix] && e.target.tagName==="TEXTAREA") S.questions[ix].answer=e.target.value; });
+$("#questions").addEventListener("change", e=>{ const ix=e.target.dataset.ix; if(ix!=null && S.questions[ix] && e.target.tagName==="SELECT") S.questions[ix].role=e.target.value; });
+
+/* ------------------------------ boot ------------------------------ */
+async function boot(){
+  $("#jd").value=SAMPLE_JD; $("#company").value=""; $("#role").value="";
+  try{ const r=await fetch("data/library.json"); S.lib=await r.json(); }
+  catch(e){ $("#stats").innerHTML=`<span class="stat err">The bullet bank couldn't load. Reload the page.</span>`; return; }
+  renderStats();
+  // realistic first view: the sample posting, matched with keyword scoring (no Claude call on load)
+  S.jd=SAMPLE_JD; S.req=extractRequirements(SAMPLE_JD); S.phase="draft"; recompute();
+  S.questions=templateQuestions(); renderQuestions(); setStep(2);
+  $("#qStatus").textContent="Sample questions for the sample posting. Press Match to have Claude draft yours.";
+  renderLearned();
+  // capabilities light up when available
+  const C=window.claude;
+  if(!C?.use) return;
+  C.use("downloads").then(d=>{ S.downloads=d; }).catch(()=>{});
+  C.use("sample").then(s=>{ S.sample=s; }).catch(()=>{});
+  C.use("db").then(db=>{
+    if(!db) return; S.db=db;
+    db.collection("feedback").onSnapshot(snap=>{ S.feedback=snap.docs.map(d=>({_id:d.id,...d.data()})); S.adj={}; for(const f of S.feedback){ const k=f.bullet_id; if(k==null) continue; S.adj[k]=(S.adj[k]||0)+(f.action==="keep"?0.3:(f.action==="drop"||f.action==="reject")?-0.6:0);} renderLearned(); }, e=>console.warn("feedback", e));
+    db.collection("bullet_inbox").onSnapshot(snap=>{ S.inbox=snap.docs.map(d=>({_id:d.id,...d.data()})); renderLearned(); }, e=>console.warn("inbox", e));
+    db.collection("jd_runs").orderBy("created","desc").limit(300).onSnapshot(snap=>{ S.runs=snap.docs.map(d=>({_id:d.id,...d.data()})); renderLearned(); }, e=>console.warn("runs", e));
+  }).catch(()=>{});
+}
+boot();
+</script>

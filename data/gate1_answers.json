@@ -1,0 +1,19 @@
+{
+  "runs": [
+    {
+      "id": "gate1_baseline_2026-09-25",
+      "title": "Baseline · Gate 1",
+      "company": null,
+      "jd_text": "(baseline — no job description; Gate 1 questions asked after the phase-1 draft)",
+      "followups": [
+        {"gate": 1, "tag": "closing", "question": "LinkedIn shows Professional Sports Publications ended Aug 2026 with 3 signed deals. Resume 1 says 'March 2026 – Present' with 5 deals. Which is true today?", "answer": "Ended Aug 2026 · 5 deals"},
+        {"gate": 1, "tag": "performance-management", "question": "At TEKsystems as Specialized Lead, how big was your leadership scope?", "answer": "Formal lead · 3–5 direct reports"},
+        {"gate": 1, "tag": "pipeline-management", "question": "Which PSP dollar figures can be stated explicitly?", "answer": "~$115K active pipeline; deal count only for closed business (no closed-revenue figure)"},
+        {"gate": 1, "tag": "board-advisory", "question": "Has the Liminal CEO or board adopted your recommendations?", "answer": "Adopted · completed verbs"},
+        {"gate": 1, "tag": "gtm-strategy", "question": "How should core competencies and areas of expertise be arranged on the baseline?", "answer": "Top competency line + Systems line, plus a categorized 'Areas of Expertise' block after Education"}
+      ],
+      "feedback": []
+    }
+  ],
+  "new_bullets": []
+}

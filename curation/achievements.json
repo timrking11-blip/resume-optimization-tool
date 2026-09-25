@@ -1,0 +1,634 @@
+{
+  "_about": "Hand-curated achievements. One entry per real accomplishment. 'canonical' is the bare-bone bullet held to the Resume 1 length band (p10–p90 of R1 = 97–167 chars, hard ceiling 170). 'variants' are angle-specific rewrites. 'patterns' are regexes (case-insensitive) that assign every raw bullet in sources/raw_extract.json to this achievement; ingest fails if any raw bullet matches nothing. 'confidence': verified (consistent across sources) | asserted (single source) | conflict (sources disagree — see notes).",
+  "achievements": [
+    {
+      "id": "psp-closed-deals",
+      "role": "psp",
+      "canonical": "Closed 5 signed NFL and MLB team-media partnerships, all paid in full at signing, including 2 accounts with no prior purchase history.",
+      "variants": {
+        "fundraising": "Closed 5 signed partnerships paid in full at signing across independent-school advancement, regional advocacy, automotive, and multifamily buyers.",
+        "conservative": "Closed 3 signed team-media deals paid in full at signing within the first four months on territory, including 2 net-new accounts."
+      },
+      "tags": {"closing": 1.0, "new-business": 1.0, "media-ad-sales": 0.9, "sponsorship": 0.8, "sports-media": 0.8, "quota-attainment": 0.6},
+      "metrics": [{"label": "signed deals", "value": 5, "unit": "deals"}, {"label": "net-new accounts", "value": 2, "unit": "accounts"}],
+      "confidence": "conflict",
+      "notes": "R1/R2/R3/R4/R5/R6/R7/R8/R15 say 5. R9–R14/R16 (Aug 26) and LinkedIn say 3. Gate-1 question.",
+      "patterns": ["^Closed (5|five|3|three) signed", "closing five signed partnerships", "Closed five signed partnerships", "Closed \\$14,035"]
+    },
+    {
+      "id": "psp-net-revenue",
+      "role": "psp",
+      "canonical": "Closed $14,035 in net revenue in the first four months on territory, with every signed deal paid in full at signature.",
+      "variants": {},
+      "tags": {"quota-attainment": 1.0, "closing": 0.8, "media-ad-sales": 0.6},
+      "metrics": [{"label": "net revenue, first 4 months", "value": 14035, "unit": "USD"}],
+      "confidence": "asserted",
+      "notes": "Only in R11/R12 (Aug 26). Confirm current figure at Gate 1.",
+      "patterns": ["^Closed \\$14,035"]
+    },
+    {
+      "id": "psp-funding-source-qualification",
+      "role": "psp",
+      "canonical": "Qualified every prospect against the budget that can fund it — co-op, MDF, sponsorship, and 501(c)(3) dollars — opening 2 net-new accounts.",
+      "variants": {
+        "fundraising": "Matched every ask to the funding source that could fund it — corporate co-op and MDF, sponsorship and community-relations budgets, tax-exempt dollars.",
+        "marketing": "Qualified on budget mechanics rather than expressed interest — co-op, MDF, and 501(c)(3) budgets show who can authorize spend."
+      },
+      "tags": {"qualification": 1.0, "funding-source-diagnostics": 1.0, "discovery": 0.7, "new-business": 0.6, "media-ad-sales": 0.5},
+      "metrics": [{"label": "verticals applied", "value": 7, "unit": "verticals"}],
+      "confidence": "verified",
+      "notes": "R1 spelling 'Co-up' corrected to 'co-op'.",
+      "patterns": ["funding mechanics", "funding-mechanics", "Qualified every prospect against the funding source", "Diagnoses which budget", "Qualifies (every opportunity )?against the budget", "Qualify on budget mechanics", "qualifying on budget mechanics", "rather than assuming a discretionary"]
+    },
+    {
+      "id": "psp-pipeline-discovery",
+      "role": "psp",
+      "canonical": "Built and maintained a ~$115K active proposal pipeline through a diagnostic, discovery-first approach rather than a pitch-led one.",
+      "variants": {
+        "change": "Runs a diagnostic, discovery-first approach — mapping stakeholders and how an organization operates before proposing anything that changes it."
+      },
+      "tags": {"pipeline-management": 1.0, "discovery": 1.0, "proposal-development": 0.7, "stakeholder-alignment": 0.4},
+      "metrics": [{"label": "active pipeline", "value": 115000, "unit": "USD"}],
+      "confidence": "verified",
+      "notes": "$115K pipeline figure from LinkedIn only.",
+      "patterns": ["pipeline of active proposals", "proposal pipeline", "Run a diagnostic, discovery-first approach"]
+    },
+    {
+      "id": "psp-125-leads",
+      "role": "psp",
+      "canonical": "Added ~125 net-new qualified prospects per week to Salesforce through targeted account research and stakeholder mapping.",
+      "variants": {
+        "ops": "Adds ~125 net-new qualified accounts weekly in Salesforce, ZoomInfo, and Sales Navigator while maintaining pipeline stage and forecast discipline."
+      },
+      "tags": {"prospecting": 1.0, "account-management": 0.7, "crm-discipline": 0.7, "pipeline-management": 0.5, "demand-generation": 0.5},
+      "metrics": [{"label": "qualified leads per week", "value": 125, "unit": "leads/week"}],
+      "confidence": "verified",
+      "notes": "",
+      "patterns": ["125"]
+    },
+    {
+      "id": "psp-decision-makers-ai",
+      "role": "psp",
+      "canonical": "Identified key decision-makers with ZoomInfo, LinkedIn Sales Navigator, and AI-assisted account mapping using OpenAI and Claude models.",
+      "variants": {},
+      "tags": {"account-management": 1.0, "prospecting": 0.8, "ai-in-workflow": 0.9, "executive-selling": 0.4},
+      "metrics": [],
+      "confidence": "verified",
+      "notes": "R1 'Sonnett' corrected.",
+      "patterns": ["decision-makers"]
+    },
+    {
+      "id": "psp-full-cycle-ownership",
+      "role": "psp",
+      "canonical": "Owns the full sales cycle in a pure new-business role — prospecting, discovery, pricing, proposal, negotiation, and close — with no SDR layer.",
+      "variants": {
+        "player-coach": "Carries an individual revenue target on a self-built book, running full-cycle discovery, proposal, negotiation, and close."
+      },
+      "tags": {"full-cycle-sales": 1.0, "new-business": 0.9, "closing": 0.6, "negotiation": 0.6, "media-ad-sales": 0.5},
+      "metrics": [],
+      "confidence": "verified",
+      "notes": "",
+      "patterns": ["Owns the full", "full-cycle discovery", "full sales cycle", "self-built book", "Sell advertising directly"]
+    },
+    {
+      "id": "psp-cpm-business-case",
+      "role": "psp",
+      "canonical": "Modeled a $10.98 blended CPM against 1.32M reach and a $2,849 cost-per-acquisition benchmark to price a $14,500 buy on outcome economics.",
+      "variants": {
+        "media": "Sells integrated print and digital as one buy — benchmarked 77–78% print recall vs. 44–46% digital and priced the placement against category CPA."
+      },
+      "tags": {"cpm-cpa-modeling": 1.0, "audience-measurement": 0.9, "proposal-development": 0.8, "cross-platform": 0.7, "media-ad-sales": 0.6},
+      "metrics": [{"label": "blended CPM", "value": 10.98, "unit": "USD"}, {"label": "combined reach", "value": 1320000, "unit": "people"}, {"label": "placement price", "value": 14500, "unit": "USD"}, {"label": "category CPA benchmark", "value": 2849, "unit": "USD"}],
+      "confidence": "verified",
+      "notes": "",
+      "patterns": ["10\\.98"]
+    },
+    {
+      "id": "psp-nine-stakeholder-deal",
+      "role": "psp",
+      "canonical": "Restructured nine property-level commitments into one shared-cost regional placement across competing budget owners with no single decision-maker.",
+      "variants": {},
+      "tags": {"multi-stakeholder-selling": 1.0, "negotiation": 1.0, "closing": 0.6, "unit-economics": 0.4, "sponsorship": 0.4},
+      "metrics": [{"label": "budget owners", "value": 9, "unit": "stakeholders"}],
+      "confidence": "verified",
+      "notes": "",
+      "patterns": ["nine"]
+    },
+    {
+      "id": "psp-board-memo",
+      "role": "psp",
+      "canonical": "Authored a board-ready memo framing a $3,500 ask against 419 member businesses and 130K+ readers, written as the champion's own document.",
+      "variants": {
+        "generic": "Builds the business case the champion defends without the seller present — authored a board memo written as the client's own document."
+      },
+      "tags": {"executive-communication": 1.0, "proposal-development": 0.9, "board-trustee-engagement": 0.9, "multi-stakeholder-selling": 0.6, "institutional-partnerships": 0.6},
+      "metrics": [{"label": "ask", "value": 3500, "unit": "USD"}, {"label": "member businesses", "value": 419, "unit": "count"}, {"label": "readership", "value": 130000, "unit": "readers"}],
+      "confidence": "verified",
+      "notes": "Springfield Regional Chamber of Commerce named only in R3.",
+      "patterns": ["board-ready recommendation memo", "board-ready memo", "champion"]
+    },
+    {
+      "id": "psp-school-proposal",
+      "role": "psp",
+      "canonical": "Built an official-partnership proposal for a school's alumni audience, benchmarking 72% brand recall, 7x readership per copy, and $6.50 CPM.",
+      "variants": {},
+      "tags": {"institutional-partnerships": 1.0, "donor-relations": 0.8, "proposal-development": 0.8, "cpm-cpa-modeling": 0.6},
+      "metrics": [{"label": "brand recall", "value": 72, "unit": "%"}, {"label": "CPM", "value": 6.5, "unit": "USD"}],
+      "confidence": "asserted",
+      "notes": "Catholic Memorial School named in R3 only.",
+      "patterns": ["Catholic Memorial"]
+    },
+    {
+      "id": "psp-nonprofit-reframe",
+      "role": "psp",
+      "canonical": "Reframed a 501(c)(3)'s ask from marketing budget to sponsorship and donor dollars, then repeated the funding diagnostic across seven verticals.",
+      "variants": {},
+      "tags": {"funding-source-diagnostics": 1.0, "donor-relations": 0.8, "discovery": 0.6, "vertical-gtm": 0.5},
+      "metrics": [{"label": "verticals", "value": 7, "unit": "verticals"}],
+      "confidence": "asserted",
+      "notes": "",
+      "patterns": ["rescue"]
+    },
+    {
+      "id": "psp-verticals",
+      "role": "psp",
+      "canonical": "Sells across automotive, retail, hospitality, building products, commercial fleet, and property management, qualifying each against the budget that funds it.",
+      "variants": {
+        "weather": "Sells into weather-exposed categories — automotive, building products, fleet, property management, regional retail — where purchase timing is condition-driven."
+      },
+      "tags": {"vertical-gtm": 1.0, "media-ad-sales": 0.7, "qualification": 0.6, "new-business": 0.4},
+      "metrics": [],
+      "confidence": "verified",
+      "notes": "",
+      "patterns": ["weather-exposed", "adMarketplace-adjacent"]
+    },
+
+    {
+      "id": "lim-thought-partner",
+      "role": "liminal",
+      "canonical": "Strategic thought partner to the CEO and board, translating business, technology, regulatory, and workforce tradeoffs into board-ready decisions.",
+      "variants": {},
+      "tags": {"board-advisory": 1.0, "executive-communication": 0.8, "scenario-planning": 0.5, "healthcare-regulatory": 0.4},
+      "metrics": [],
+      "confidence": "verified",
+      "notes": "",
+      "patterns": ["thought partner"]
+    },
+    {
+      "id": "lim-build-vs-buy",
+      "role": "liminal",
+      "canonical": "Authored the buy-vs-build strategy, redirecting a $600K–$1.5M, 12–24-month EHR build to a $150–400K, 3–6-month compliance layer.",
+      "variants": {
+        "short": "Authored the build-vs-buy technology strategy, recommending a sub-$500K MVP path over a multi-million-dollar build or acquisition."
+      },
+      "tags": {"buy-vs-build": 1.0, "feasibility-roadmap": 0.7, "unit-economics": 0.6, "cloud-infrastructure": 0.4, "healthcare-regulatory": 0.5},
+      "metrics": [{"label": "build avoided", "value": 1500000, "unit": "USD"}, {"label": "recommended path", "value": 400000, "unit": "USD"}],
+      "confidence": "verified",
+      "notes": "Board approval status unconfirmed — Gate-1 question decides 'Authored' vs 'Recommended' framing.",
+      "patterns": ["build-vs-buy", "buy-vs-build", "build-versus-buy", "sub-\\$500K"]
+    },
+    {
+      "id": "lim-staffing-restructure",
+      "role": "liminal",
+      "canonical": "Restructured a proposed $946K/year five-person build into a one-engineer-plus-fractional model at $200–260K/year, a 73% cut.",
+      "variants": {
+        "services": "Recommended cutting a proposed $950K/year, five-person engineering build to roughly a quarter of the cost without cutting the core deliverable."
+      },
+      "tags": {"capacity-planning": 1.0, "unit-economics": 0.9, "buy-vs-build": 0.6, "hiring-onboarding": 0.4, "board-advisory": 0.5},
+      "metrics": [{"label": "annual cost avoided", "value": 700000, "unit": "USD"}, {"label": "cost reduction", "value": 73, "unit": "%"}],
+      "confidence": "verified",
+      "notes": "$946K (Liminal summary) vs $950K (R8) — same figure rounded.",
+      "patterns": ["946K", "950K"]
+    },
+    {
+      "id": "lim-feasibility-roadmap",
+      "role": "liminal",
+      "canonical": "Reconciled the founder's four-pillar vision and three build memos into one staged roadmap: 12 recommendations, 4 stage gates, 8 board decisions.",
+      "variants": {
+        "linkedin": "Produced the business roadmap spanning architecture, security guardrails, IP, SOC 2 readiness, market analysis, finance, governance, and organization."
+      },
+      "tags": {"feasibility-roadmap": 1.0, "launch-sequencing": 0.9, "board-advisory": 0.7, "executive-communication": 0.5},
+      "metrics": [{"label": "recommendations", "value": 12, "unit": "count"}, {"label": "stage gates", "value": 4, "unit": "count"}],
+      "confidence": "verified",
+      "notes": "",
+      "patterns": ["Synthesized multiple internal", "Reconciled the founder", "Produced a business roadmap"]
+    },
+    {
+      "id": "lim-competitive-venture-odds",
+      "role": "liminal",
+      "canonical": "Analyzed 15+ direct, platform-bundling, and affiliation competitors against venture base rates to size the raise at $1.5–3M and set go/no-go milestones.",
+      "variants": {},
+      "tags": {"competitive-analysis": 1.0, "capital-strategy": 0.8, "scenario-planning": 0.6, "market-research": 0.6},
+      "metrics": [{"label": "competitors analyzed", "value": 15, "unit": "count"}, {"label": "recommended raise", "value": 3000000, "unit": "USD"}],
+      "confidence": "verified",
+      "notes": "",
+      "patterns": ["venture-odds", "Analyzed 15\\+"]
+    },
+    {
+      "id": "lim-unit-economics-benchmarks",
+      "role": "liminal",
+      "canonical": "Modeled multi-year revenue and unit-economics benchmarks against industry comparables to set fundraising targets and growth milestones.",
+      "variants": {},
+      "tags": {"revenue-modeling": 1.0, "unit-economics": 0.9, "capital-strategy": 0.7, "forecasting": 0.5},
+      "metrics": [],
+      "confidence": "verified",
+      "notes": "",
+      "patterns": ["Modeled multi-year"]
+    },
+    {
+      "id": "lim-data-rights",
+      "role": "liminal",
+      "canonical": "Blocked a proposed EHR data migration as an uncompensated asset transfer, defining the NDA-to-BAA sequence that protected the core data asset.",
+      "variants": {
+        "soft": "Identified data-rights exposure in a proposed partner integration and defined the negotiation terms that protect the company's core data asset."
+      },
+      "tags": {"data-rights": 1.0, "partner-negotiation": 1.0, "risk-governance": 0.7, "strategic-partnerships": 0.6, "healthcare-regulatory": 0.5},
+      "metrics": [],
+      "confidence": "verified",
+      "notes": "Counterparty is in a live negotiation — never name it in output.",
+      "patterns": ["data-rights exposure", "Blocked a proposed"]
+    },
+    {
+      "id": "lim-market-sizing-exit-paths",
+      "role": "liminal",
+      "canonical": "Mapped a $0.76B category growing to $5.9B by 2035, benchmarked five comparables, and modeled four exit paths with base-rate odds and P&L forecasts.",
+      "variants": {
+        "fda": "Modeled four exit paths with probability-weighted outcomes, recommending licensing and payer co-development over a $3–8M, 18–36-month FDA Class II build."
+      },
+      "tags": {"market-sizing": 1.0, "exit-path-modeling": 1.0, "scenario-planning": 0.9, "competitive-analysis": 0.6, "revenue-modeling": 0.6},
+      "metrics": [{"label": "category size 2025", "value": 760000000, "unit": "USD"}, {"label": "category size 2035", "value": 5900000000, "unit": "USD"}, {"label": "CAGR", "value": 22.8, "unit": "%"}],
+      "confidence": "verified",
+      "notes": "",
+      "patterns": ["0\\.76B", "Modeled four exit paths", "Translated market data"]
+    },
+    {
+      "id": "lim-gtm-ownership",
+      "role": "liminal",
+      "canonical": "Own go-to-market for an AI compliance product sold to independent clinical practices — segmentation, positioning, $99/$249 pricing tiers, and channel strategy.",
+      "variants": {
+        "from-zero": "Built the go-to-market engine for an AI product from zero — segmentation, positioning, pricing tiers, and channel strategy — where no GTM function existed."
+      },
+      "tags": {"gtm-strategy": 1.0, "market-segmentation": 0.9, "positioning-messaging": 0.9, "pricing-packaging": 0.9, "channel-strategy": 0.9, "healthcare-regulatory": 0.4},
+      "metrics": [{"label": "pricing tiers", "value": 249, "unit": "USD/mo"}],
+      "confidence": "verified",
+      "notes": "",
+      "patterns": ["go-to-market for an AI", "commercial strategy for an AI", "go-to-market engine", "^Own go-to-market"]
+    },
+    {
+      "id": "lim-unit-economic-gates",
+      "role": "liminal",
+      "canonical": "Set the unit-economic gates the business runs on — CAC under $900, payback under 12 months, churn under 5%, TTFV under 7 days — redirecting GTM to channel partners.",
+      "variants": {
+        "validation": "Designed a validation sprint that showed distribution, not product, decides the outcome, redirecting GTM to channel partnerships on CAC payback."
+      },
+      "tags": {"growth-efficiency": 1.0, "unit-economics": 0.9, "channel-strategy": 0.9, "channel-partnerships": 0.8, "forecasting": 0.5, "customer-discovery": 0.5},
+      "metrics": [{"label": "blended CAC cap", "value": 900, "unit": "USD"}, {"label": "payback cap", "value": 12, "unit": "months"}, {"label": "monthly churn cap", "value": 5, "unit": "%"}, {"label": "TTFV cap", "value": 7, "unit": "days"}],
+      "confidence": "verified",
+      "notes": "",
+      "patterns": ["CAC under", "validation sprint"]
+    },
+    {
+      "id": "lim-customer-discovery-sprint",
+      "role": "liminal",
+      "canonical": "Designed a 30–40 interview discovery sprint — screener, guide, scoring rubric, 150-account universe — with a pre-agreed go/no-go threshold.",
+      "variants": {
+        "segmentation": "Designed the segmentation the commercial strategy rests on, classifying a 150-account universe by dependence on incumbent platforms."
+      },
+      "tags": {"primary-research": 1.0, "customer-discovery": 1.0, "market-segmentation": 0.8},
+      "metrics": [{"label": "interviews", "value": 40, "unit": "count"}, {"label": "account universe", "value": 150, "unit": "accounts"}],
+      "confidence": "verified",
+      "notes": "",
+      "patterns": ["30–40 interview", "30-40 interview", "audience segmentation the commercial", "segmentation the commercial strategy rests on"]
+    },
+    {
+      "id": "lim-engagement-terms",
+      "role": "liminal",
+      "canonical": "Negotiated the engagement's terms directly, restructuring a 320-hour proposal into 166 hours at the same fee and pulling the key deliverable to Day 15.",
+      "variants": {
+        "coordination": "Coordinated outside counsel, CPA, engineering, founders, and a contractor — none reporting to me — while restructuring a 320-hour scope into 166 hours."
+      },
+      "tags": {"negotiation": 1.0, "influence-without-authority": 0.8, "capacity-planning": 0.5, "stakeholder-alignment": 0.5},
+      "metrics": [{"label": "scope reduction", "value": 48, "unit": "%"}],
+      "confidence": "verified",
+      "notes": "",
+      "patterns": ["320-hour"]
+    },
+    {
+      "id": "lim-collateral",
+      "role": "liminal",
+      "canonical": "Produced the collateral the company sells with: pitch deck, competitive battlecards, partner negotiation sheets, and an eight-document executive round table.",
+      "variants": {
+        "exec": "Developed executive-ready messaging leaders deliver themselves — board briefings and an eight-document round table with per-presentation talking points."
+      },
+      "tags": {"enablement-collateral": 1.0, "executive-communication": 0.9, "competitive-analysis": 0.5, "content-brand": 0.5, "proposal-development": 0.5},
+      "metrics": [{"label": "round-table documents", "value": 8, "unit": "count"}],
+      "confidence": "verified",
+      "notes": "",
+      "patterns": ["pitch deck", "executive-ready messaging"]
+    },
+    {
+      "id": "lim-operating-cadence",
+      "role": "liminal",
+      "canonical": "Built the operating cadence the company runs on: RACI and escalation thresholds, a weekly capacity forecast, and a one-page decision log with owner and date.",
+      "variants": {},
+      "tags": {"operating-cadence": 1.0, "process-improvement": 0.8, "risk-governance": 0.6, "performance-management": 0.4, "readiness-assessment": 0.5},
+      "metrics": [],
+      "confidence": "verified",
+      "notes": "",
+      "patterns": ["RACI"]
+    },
+    {
+      "id": "lim-readiness-assessment",
+      "role": "liminal",
+      "canonical": "Authored the launch-readiness assessment that reset the execution sequence, converting five organizational gaps into a dated plan with named owners.",
+      "variants": {},
+      "tags": {"readiness-assessment": 1.0, "launch-sequencing": 0.8, "stakeholder-alignment": 0.7, "risk-governance": 0.6},
+      "metrics": [{"label": "gaps closed into plan", "value": 5, "unit": "count"}],
+      "confidence": "asserted",
+      "notes": "",
+      "patterns": ["launch-readiness"]
+    },
+    {
+      "id": "lim-entity-ip-structure",
+      "role": "liminal",
+      "canonical": "Coordinated outside counsel, CPA, engineering, and founders to architect the entity, IP, and data-rights structure behind the company's data assets.",
+      "variants": {},
+      "tags": {"entity-ip-structure": 1.0, "data-rights": 0.8, "influence-without-authority": 0.7, "partner-negotiation": 0.4},
+      "metrics": [],
+      "confidence": "asserted",
+      "notes": "",
+      "patterns": ["to architect the entity"]
+    },
+    {
+      "id": "lim-claude-code-tracker",
+      "role": "liminal",
+      "canonical": "Built a multi-tenant, role-scoped client engagement tracker with Claude Code — 60 automated tests asserting cross-client data isolation — with no engineering background.",
+      "variants": {},
+      "tags": {"building-with-ai": 1.0, "ai-in-workflow": 0.9, "process-improvement": 0.5, "risk-governance": 0.4},
+      "metrics": [{"label": "automated tests", "value": 60, "unit": "tests"}],
+      "confidence": "verified",
+      "notes": "",
+      "patterns": ["multi-tenant"]
+    },
+    {
+      "id": "lim-non-dilutive-capital",
+      "role": "liminal",
+      "canonical": "Designed the non-dilutive capital stack — clinical revenue, NIH SBIR, state grants, payer pilots — recommending a ~$2.15M federal route ahead of equity.",
+      "variants": {},
+      "tags": {"capital-strategy": 1.0, "revenue-modeling": 0.7, "scenario-planning": 0.5, "healthcare-regulatory": 0.5},
+      "metrics": [{"label": "non-dilutive route", "value": 2150000, "unit": "USD"}],
+      "confidence": "verified",
+      "notes": "$2.15M figure from LinkedIn project only.",
+      "patterns": ["non-dilutive", "financial forecasting \\(P&L"]
+    },
+    {
+      "id": "lim-scenario-planning",
+      "role": "liminal",
+      "canonical": "Applied scenario planning and second- and third-order consequence analysis across business, technology, regulatory, and organizational exposure.",
+      "variants": {},
+      "tags": {"scenario-planning": 1.0, "risk-governance": 0.7, "board-advisory": 0.4},
+      "metrics": [],
+      "confidence": "asserted",
+      "notes": "LinkedIn only.",
+      "patterns": ["scenario planning"]
+    },
+
+    {
+      "id": "tekl-coaching",
+      "role": "tek_lead",
+      "canonical": "Coached and managed seller performance through daily process reviews and 1:1 metric sessions on activity, pipeline hygiene, and accountability to target.",
+      "variants": {
+        "recruiters": "Oversaw, coached, and managed recruiter performance through daily sales-process reviews and 1:1 metric-tracking sessions.",
+        "player-coach": "Led and coached a team of client-facing reps while carrying an individual book — daily process reviews, 1:1 metric tracking, and deal inspection.",
+        "leader": "Led, coached, and developed a direct-report team of quota-carrying sellers inside a 30-person practice, including hiring, onboarding, and ramp."
+      },
+      "tags": {"team-coaching": 1.0, "performance-management": 1.0, "player-coach": 0.8, "pipeline-management": 0.5, "hiring-onboarding": 0.4},
+      "metrics": [{"label": "practice size", "value": 30, "unit": "people"}],
+      "confidence": "conflict",
+      "notes": "Base fact (R1, LinkedIn): coached recruiters. Later versions escalate to 'direct-report team of quota-carrying sellers' + hiring. Gate-1 question on formal reports.",
+      "patterns": ["coach", "Oversaw"]
+    },
+    {
+      "id": "tekl-universal-poc",
+      "role": "tek_lead",
+      "canonical": "Won a proof-of-concept RFP that opened a multi-million-dollar managed services expansion with Universal Parks.",
+      "variants": {
+        "driver": "Won a proof-of-concept RFP with Universal Parks — scoping the proof of value, driving technical evaluation, and owning the relationship through award."
+      },
+      "tags": {"proof-of-value": 1.0, "rfp-response": 1.0, "managed-services-sales": 0.9, "account-expansion": 0.8, "closing": 0.6, "sports-media": 0.3},
+      "metrics": [{"label": "expansion value", "value": 2000000, "unit": "USD (multi-million)"}],
+      "confidence": "verified",
+      "notes": "LinkedIn says 'Key driver in the win'.",
+      "patterns": ["proof-of-concept"]
+    },
+    {
+      "id": "tekl-southern-gas-discovery",
+      "role": "tek_lead",
+      "canonical": "Led discovery directly with Southern Company Gas's Center of Excellence on data science, machine learning, and data governance.",
+      "variants": {},
+      "tags": {"discovery": 1.0, "data-solutions": 0.9, "ai-ml-solutions": 0.7, "executive-selling": 0.6, "new-business": 0.5},
+      "metrics": [],
+      "confidence": "verified",
+      "notes": "Company name: 'Southern Company Gas' (R3–R6) vs 'Southern Gas Company' (R1, R8+, LinkedIn). Correct legal name is Southern Company Gas.",
+      "patterns": ["Southern"]
+    },
+    {
+      "id": "tekl-solution-scoping",
+      "role": "tek_lead",
+      "canonical": "Scoped and positioned AI, data, and cloud solutions — graph, Adobe Enterprise Suite, Azure, computer vision — translating capability into commercial terms.",
+      "variants": {
+        "risk-averse": "Sold AI and data platform solutions into risk-averse enterprise buyers across graph, Adobe, Azure, computer vision, CDPs, and clean rooms."
+      },
+      "tags": {"data-solutions": 1.0, "ai-ml-solutions": 0.9, "cloud-infrastructure": 0.9, "discovery": 0.6, "managed-services-sales": 0.5},
+      "metrics": [],
+      "confidence": "verified",
+      "notes": "",
+      "patterns": ["graph", "Scoped technology engagements"]
+    },
+    {
+      "id": "tekl-me-vertical-gtm",
+      "role": "tek_lead",
+      "canonical": "Built the Media & Entertainment vertical GTM motion — discovery frameworks, opportunity taxonomy, CRM tagging — around CDPs, clean rooms, and ad measurement.",
+      "variants": {},
+      "tags": {"vertical-gtm": 1.0, "gtm-strategy": 0.9, "adtech-fluency": 0.9, "process-improvement": 0.6, "sports-media": 0.5, "audience-measurement": 0.5},
+      "metrics": [],
+      "confidence": "verified",
+      "notes": "",
+      "patterns": ["Media & Entertainment vertical"]
+    },
+    {
+      "id": "tekl-verticalization-lift",
+      "role": "tek_lead",
+      "canonical": "Lifted lead-to-opportunity conversion from 12% to 28% and CRM field completion from 55% to 89% with rebuilt discovery frameworks and CRM standards.",
+      "variants": {},
+      "tags": {"process-improvement": 1.0, "crm-discipline": 1.0, "pipeline-management": 0.7, "marketing-sales-alignment": 0.5, "forecasting": 0.4},
+      "metrics": [{"label": "lead-to-opp conversion", "value": 28, "unit": "% (from 12%)"}, {"label": "CRM field completion", "value": 89, "unit": "% (from 55%)"}],
+      "confidence": "verified",
+      "notes": "Documented three-week before/after sample.",
+      "patterns": ["12% to 28%"]
+    },
+    {
+      "id": "tekl-disney-enablement",
+      "role": "tek_lead",
+      "canonical": "Packaged the vertical model into an enablement proposal for Disney Advertising Sales, mapping pipeline stages to first-party data and measurement problems.",
+      "variants": {},
+      "tags": {"enablement-collateral": 1.0, "adtech-fluency": 0.8, "media-ad-sales": 0.7, "proposal-development": 0.6, "sports-media": 0.5},
+      "metrics": [],
+      "confidence": "verified",
+      "notes": "",
+      "patterns": ["Disney Advertising"]
+    },
+    {
+      "id": "tekl-fortune500-discovery",
+      "role": "tek_lead",
+      "canonical": "Led executive-level discovery with Fortune 500 media, parks, utilities, and life sciences organizations.",
+      "variants": {},
+      "tags": {"executive-selling": 1.0, "discovery": 0.9, "multi-stakeholder-selling": 0.6, "new-business": 0.5},
+      "metrics": [],
+      "confidence": "verified",
+      "notes": "",
+      "patterns": ["Fortune 500"]
+    },
+
+    {
+      "id": "tekr-750k",
+      "role": "tek_recruiter",
+      "canonical": "Generated $750K+ in annual revenue and won the company-wide sales contest in first full year against a national field.",
+      "variants": {},
+      "tags": {"quota-attainment": 1.0, "new-business": 0.6, "managed-services-sales": 0.5},
+      "metrics": [{"label": "annual revenue", "value": 750000, "unit": "USD"}],
+      "confidence": "verified",
+      "notes": "R1 wording 'Exceeded company-wide sales contest' corrected to 'won'.",
+      "patterns": ["750K"]
+    },
+    {
+      "id": "tekr-vertex",
+      "role": "tek_recruiter",
+      "canonical": "Produced more than half the revenue on Vertex Pharmaceuticals, the firm's largest regional growth account, and expanded into two new groups.",
+      "variants": {
+        "expansion": "Broke into two groups at Vertex Pharmaceuticals that had never bought from the firm, ultimately producing over half of total account revenue."
+      },
+      "tags": {"account-expansion": 1.0, "account-management": 0.9, "quota-attainment": 0.6, "multi-stakeholder-selling": 0.5},
+      "metrics": [{"label": "share of account revenue", "value": 50, "unit": "%+"}, {"label": "new groups opened", "value": 2, "unit": "groups"}],
+      "confidence": "verified",
+      "notes": "",
+      "patterns": ["Vertex", "largest regional growth account"]
+    },
+    {
+      "id": "tekr-wayfair-disney",
+      "role": "tek_recruiter",
+      "canonical": "Opened net-new managed services accounts at Wayfair and Disney's ESPN and Entertainment Technology organization from cold.",
+      "variants": {},
+      "tags": {"new-business": 1.0, "managed-services-sales": 0.9, "sports-media": 0.5, "executive-selling": 0.4},
+      "metrics": [{"label": "net-new enterprise logos", "value": 2, "unit": "accounts"}],
+      "confidence": "verified",
+      "notes": "",
+      "patterns": ["Wayfair"]
+    },
+    {
+      "id": "tekr-nike",
+      "role": "tek_recruiter",
+      "canonical": "Partnered with Nike's global supply chain team on in-season optimization, delivering an AI-powered document system.",
+      "variants": {},
+      "tags": {"ai-ml-solutions": 1.0, "strategic-partnerships": 0.7, "managed-services-sales": 0.5, "new-business": 0.4},
+      "metrics": [],
+      "confidence": "verified",
+      "notes": "",
+      "patterns": ["Nike"]
+    },
+    {
+      "id": "tekr-recruiting-talent",
+      "role": "tek_recruiter",
+      "canonical": "Sourced, screened, and onboarded enterprise technical talent at scale across four years of professional recruiting.",
+      "variants": {},
+      "tags": {"hiring-onboarding": 1.0, "team-coaching": 0.4},
+      "metrics": [{"label": "years recruiting", "value": 4, "unit": "years"}],
+      "confidence": "verified",
+      "notes": "",
+      "patterns": ["Sourced, screened"]
+    },
+
+    {
+      "id": "dd-territory-proposal",
+      "role": "demanddrive",
+      "canonical": "Authored a territory-realignment and post-close operations model adopted company-wide, credited with 150% growth in the Amazon Key for Business launch.",
+      "variants": {
+        "market-entry": "Authored a market-entry proposal adopted company-wide to break into multifamily residential properties, driving 150% growth for the Amazon Key launch."
+      },
+      "tags": {"territory-design": 1.0, "process-improvement": 0.8, "launch-sequencing": 0.6, "new-business": 0.6, "gtm-strategy": 0.5},
+      "metrics": [{"label": "launch growth", "value": 150, "unit": "%"}],
+      "confidence": "verified",
+      "notes": "",
+      "patterns": ["150%"]
+    },
+    {
+      "id": "dd-200-quota",
+      "role": "demanddrive",
+      "canonical": "Delivered 200% of first-month quota (12 meetings vs. 6) on a net-new client engagement; named MVP of the Month.",
+      "variants": {},
+      "tags": {"quota-attainment": 1.0, "prospecting": 0.8, "new-business": 0.5},
+      "metrics": [{"label": "first-month quota attainment", "value": 200, "unit": "%"}],
+      "confidence": "verified",
+      "notes": "",
+      "patterns": ["200%"]
+    },
+
+    {
+      "id": "nyl-referral-book",
+      "role": "nyl",
+      "canonical": "Developed a referral-based book of business through networking, community involvement, and constituent introductions.",
+      "variants": {},
+      "tags": {"referral-network": 1.0, "new-business": 0.6, "donor-relations": 0.4},
+      "metrics": [],
+      "confidence": "asserted",
+      "notes": "Fundraising resume only; not on LinkedIn experience (a Dec 2025 NYL post exists).",
+      "patterns": ["referral-based"]
+    },
+    {
+      "id": "nyl-needs-assessment",
+      "role": "nyl",
+      "canonical": "Conducted needs-based assessments on long-term financial, beneficiary, and legacy objectives in estate- and tax-planning terms.",
+      "variants": {},
+      "tags": {"discovery": 1.0, "donor-relations": 0.6, "referral-network": 0.3},
+      "metrics": [],
+      "confidence": "asserted",
+      "notes": "",
+      "patterns": ["need-based"]
+    },
+
+    {
+      "id": "yri-marketing",
+      "role": "yri",
+      "canonical": "Wrote product marketing copy, website content, and social posts, and helped launch a premium leather accessories collection.",
+      "variants": {},
+      "tags": {"content-brand": 1.0, "campaign-development": 0.5, "launch-sequencing": 0.4},
+      "metrics": [],
+      "confidence": "asserted",
+      "notes": "Internship; hidden by default.",
+      "patterns": ["marketing copy", "website content", "leather accessories"]
+    },
+    {
+      "id": "massdot-adoption",
+      "role": "massdot",
+      "canonical": "Promoted EZ Pass adoption to Massachusetts residents and visitors, processing sign-ups through the transition to a toll-booth-free I-95.",
+      "variants": {},
+      "tags": {"customer-success": 1.0, "content-brand": 0.4, "readiness-assessment": 0.3},
+      "metrics": [],
+      "confidence": "asserted",
+      "notes": "Internship; hidden by default.",
+      "patterns": ["EZ Pass", "customer concerns", "customer sign-ups", "toll-booth-free"]
+    },
+
+    {
+      "id": "edu-capstone",
+      "role": "education",
+      "canonical": "Senior Capstone — Northeast Intermodal Competitive & Market Analysis: market sizing, Porter's Five Forces, competitor profiling, and a positioning recommendation.",
+      "variants": {},
+      "tags": {"market-sizing": 0.8, "competitive-analysis": 0.8, "positioning-messaging": 0.5},
+      "metrics": [],
+      "confidence": "verified",
+      "notes": "",
+      "patterns": ["Capstone"]
+    }
+  ]
+}

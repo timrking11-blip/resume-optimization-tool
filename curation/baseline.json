@@ -1,0 +1,202 @@
+{
+  "_about": "Baseline resume configuration (no JD). Bullet caps and priority order per role; the professional summary written for the baseline; competency order. rot.py build uses this when no --jd is given, and as the tie-breaker when one is.",
+  "headline": "GO-TO-MARKET STRATEGY · ENTERPRISE & MEDIA SALES · AI-ENABLED REVENUE",
+  "summary": "Revenue and go-to-market operator with eight years of full-cycle B2B, media, and enterprise technology sales, now pairing an individual quota with board-level strategy work for an AI start-up. Wins net-new business from cold — Fortune 500 accounts at TEKsystems, NFL and MLB team partnerships today — by qualifying on the budget that can actually fund a buy and building the CPM, CPA, and unit-economics case a client's finance team can defend. Coaches sellers against daily process and 1:1 metrics, designs the operating cadence a team runs on, and uses Claude and OpenAI models daily to compress research, account mapping, and proposal cycles.",
+  "caps": {
+    "liminal": 5,
+    "psp": 5,
+    "tek_lead": 4,
+    "tek_recruiter": 4,
+    "demanddrive": 2,
+    "nyl": 2,
+    "yri": 1,
+    "massdot": 1
+  },
+  "min_per_role": 2,
+  "priority": {
+    "liminal": [
+      "lim-thought-partner",
+      "lim-build-vs-buy",
+      "lim-staffing-restructure",
+      "lim-gtm-ownership",
+      "lim-unit-economic-gates",
+      "lim-market-sizing-exit-paths",
+      "lim-data-rights",
+      "lim-competitive-venture-odds",
+      "lim-customer-discovery-sprint",
+      "lim-feasibility-roadmap",
+      "lim-non-dilutive-capital",
+      "lim-operating-cadence",
+      "lim-collateral",
+      "lim-engagement-terms",
+      "lim-claude-code-tracker",
+      "lim-unit-economics-benchmarks",
+      "lim-readiness-assessment",
+      "lim-entity-ip-structure",
+      "lim-scenario-planning"
+    ],
+    "psp": [
+      "psp-closed-deals",
+      "psp-pipeline-discovery",
+      "psp-funding-source-qualification",
+      "psp-cpm-business-case",
+      "psp-nine-stakeholder-deal",
+      "psp-125-leads",
+      "psp-board-memo",
+      "psp-full-cycle-ownership",
+      "psp-decision-makers-ai",
+      "psp-verticals",
+      "psp-nonprofit-reframe",
+      "psp-school-proposal",
+      "psp-net-revenue"
+    ],
+    "tek_lead": [
+      "tekl-universal-poc",
+      "tekl-coaching",
+      "tekl-verticalization-lift",
+      "tekl-southern-gas-discovery",
+      "tekl-solution-scoping",
+      "tekl-me-vertical-gtm",
+      "tekl-disney-enablement",
+      "tekl-fortune500-discovery"
+    ],
+    "tek_recruiter": [
+      "tekr-750k",
+      "tekr-vertex",
+      "tekr-wayfair-disney",
+      "tekr-nike",
+      "tekr-recruiting-talent"
+    ],
+    "demanddrive": [
+      "dd-territory-proposal",
+      "dd-200-quota"
+    ],
+    "nyl": [
+      "nyl-referral-book",
+      "nyl-needs-assessment"
+    ],
+    "yri": [
+      "yri-marketing"
+    ],
+    "massdot": [
+      "massdot-adoption"
+    ]
+  },
+  "competency_count": 12,
+  "competency_order": [
+    "Go-To-Market Strategy",
+    "New Business Development",
+    "Full-Cycle Enterprise Sales (Prospect to Close)",
+    "Consultative & Diagnostic Discovery",
+    "Contract & Proposal Development",
+    "Complex Multi-Stakeholder Negotiation",
+    "Revenue Forecasting & KPI Management",
+    "Funding-Source Diagnostics (Co-Op, MDF, Sponsorship, 501(c)(3))",
+    "CPM, CPA & ROI Business Cases",
+    "Buy-vs-Build & Competitive Analysis",
+    "Sales Team Coaching & Performance Management",
+    "Prompt Engineering & AI-Enabled Workflow"
+  ],
+  "angle_map": {
+    "fundraising": {
+      "family": "fundraising"
+    },
+    "media": {
+      "tags": [
+        "cross-platform",
+        "audience-measurement"
+      ]
+    },
+    "weather": {
+      "tag": "vertical-gtm"
+    },
+    "marketing": {
+      "family": "marketing"
+    },
+    "player-coach": {
+      "tags": [
+        "player-coach"
+      ]
+    },
+    "leader": {
+      "tags": [
+        "hiring-onboarding",
+        "performance-management"
+      ]
+    },
+    "recruiters": {
+      "tag": "__never__"
+    },
+    "ops": {
+      "tag": "crm-discipline"
+    },
+    "generic": {
+      "tags": [
+        "executive-communication"
+      ]
+    },
+    "services": {
+      "tag": "managed-services-sales"
+    },
+    "risk-averse": {
+      "tag": "ai-ml-solutions"
+    },
+    "expansion": {
+      "tag": "account-expansion"
+    },
+    "market-entry": {
+      "tag": "gtm-strategy"
+    },
+    "from-zero": {
+      "tag": "gtm-strategy"
+    },
+    "validation": {
+      "tag": "customer-discovery"
+    },
+    "segmentation": {
+      "tag": "market-segmentation"
+    },
+    "coordination": {
+      "tag": "influence-without-authority"
+    },
+    "exec": {
+      "tag": "executive-communication"
+    },
+    "linkedin": {
+      "tag": "healthcare-regulatory"
+    },
+    "fda": {
+      "tag": "healthcare-regulatory"
+    },
+    "soft": {
+      "tag": "strategic-partnerships"
+    },
+    "short": {
+      "tag": "buy-vs-build"
+    },
+    "driver": {
+      "tag": "proof-of-value"
+    },
+    "change": {
+      "tags": [
+        "readiness-assessment",
+        "influence-without-authority"
+      ]
+    },
+    "conservative": {
+      "tag": "__never__"
+    }
+  },
+  "layout": {
+    "expertise_block": "none"
+  },
+  "expertise_items_per_area": 7,
+  "scoring": {
+    "variant_min": 1.5,
+    "variant_margin": 1.25,
+    "priority_bonus": 1.5,
+    "metric_bonus": 0.5,
+    "family_rollup": 0.25,
+    "hidden_role_min": 4.0
+  }
+}
