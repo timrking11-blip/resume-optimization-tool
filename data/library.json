@@ -1,6 +1,6 @@
 {
  "schema": "rot-library/1",
- "exported_at": "2026-09-25T15:40:54",
+ "exported_at": "2026-09-25T15:43:12",
  "identity": {
   "name": "Tim King",
   "formal_name": "Timothy King",
@@ -2852,6 +2852,13 @@
      "angle": null,
      "text": "Coordinated outside counsel, CPA, engineering, and founders to architect the entity, IP, and data-rights structure behind the client's data assets.",
      "score_adj": 0
+    },
+    {
+     "id": 105,
+     "kind": "learned",
+     "angle": "gate2",
+     "text": "Coordinated the client's CEO, COO, CISO, Chief Clinical Officer, two developers, outside counsel, and CPA to architect the entity, IP, and data-rights structure.",
+     "score_adj": 0
     }
    ]
   },
@@ -2880,6 +2887,68 @@
      "kind": "canonical",
      "angle": null,
      "text": "Built the practice's multi-tenant client engagement tracker with Claude Code, with 60 automated tests enforcing cross-client data isolation.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-muhbu38f-0",
+   "role": "hc_ai_strategy",
+   "confidence": "asserted",
+   "tags": {
+    "crm-discipline": 1.0,
+    "building-with-ai": 1.0,
+    "ai-in-workflow": 1.0,
+    "prospecting": 1.0
+   },
+   "metrics": [],
+   "texts": [
+    {
+     "id": 102,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Built a custom CRM from scratch with GTM and prospecting connectors, automated weekly contact enrichment, and account-research agents two-way synced to GitHub.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-muhbu38f-1",
+   "role": "hc_ai_strategy",
+   "confidence": "asserted",
+   "tags": {
+    "risk-governance": 1.0,
+    "building-with-ai": 1.0,
+    "data-solutions": 1.0,
+    "process-improvement": 1.0
+   },
+   "metrics": [],
+   "texts": [
+    {
+     "id": 103,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Diagnosed data-sync failures caused by null values and missing governance rules, then enforced sync governance constraints through 60 automated tests.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-muhbu38f-2",
+   "role": "tek_lead",
+   "confidence": "asserted",
+   "tags": {
+    "pricing-packaging": 1.0,
+    "rfp-response": 1.0,
+    "managed-services-sales": 1.0
+   },
+   "metrics": [],
+   "texts": [
+    {
+     "id": 104,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Partnered with a Principal Business Development Manager to set bill rates and price resource plans for Global Services RFP responses.",
      "score_adj": 0
     }
    ]
@@ -3713,7 +3782,9 @@
     "lim-unit-economics-benchmarks",
     "lim-readiness-assessment",
     "lim-entity-ip-structure",
-    "lim-scenario-planning"
+    "lim-scenario-planning",
+    "art-run-muhbu38f-0",
+    "art-run-muhbu38f-1"
    ],
    "psp": [
     "psp-closed-deals",
@@ -3738,7 +3809,8 @@
     "tekl-solution-scoping",
     "tekl-me-vertical-gtm",
     "tekl-disney-enablement",
-    "tekl-fortune500-discovery"
+    "tekl-fortune500-discovery",
+    "art-run-muhbu38f-2"
    ],
    "tek_recruiter": [
     "tekr-750k",

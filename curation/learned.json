@@ -1,7 +1,66 @@
 {
   "_about": "Learned layer. Written by Gate answers and `rot.py learn` (artifact syncs). Overrides patch curated achievements; ingest turns every text change into an append-only supersession in resume.db. Never delete entries — retire them.",
-  "achievements": [],
-  "bullets": [],
+  "achievements": [
+    {
+      "id": "art-run-muhbu38f-0",
+      "role": "liminal",
+      "canonical": "Built a custom CRM from scratch with GTM and prospecting connectors, automated weekly contact enrichment, and account-research agents two-way synced to GitHub.",
+      "tags": {
+        "crm-discipline": 1.0,
+        "building-with-ai": 1.0,
+        "ai-in-workflow": 1.0,
+        "prospecting": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-muhbu38f",
+      "metrics": [],
+      "patterns": [],
+      "variants": {}
+    },
+    {
+      "id": "art-run-muhbu38f-1",
+      "role": "liminal",
+      "canonical": "Diagnosed data-sync failures caused by null values and missing governance rules, then enforced sync governance constraints through 60 automated tests.",
+      "tags": {
+        "risk-governance": 1.0,
+        "building-with-ai": 1.0,
+        "data-solutions": 1.0,
+        "process-improvement": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-muhbu38f",
+      "metrics": [],
+      "patterns": [],
+      "variants": {}
+    },
+    {
+      "id": "art-run-muhbu38f-2",
+      "role": "tek_lead",
+      "canonical": "Partnered with a Principal Business Development Manager to set bill rates and price resource plans for Global Services RFP responses.",
+      "tags": {
+        "pricing-packaging": 1.0,
+        "rfp-response": 1.0,
+        "managed-services-sales": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-muhbu38f",
+      "metrics": [],
+      "patterns": [],
+      "variants": {}
+    }
+  ],
+  "bullets": [
+    {
+      "achievement_id": "lim-entity-ip-structure",
+      "angle": "gate2",
+      "text": "Coordinated the client's CEO, COO, CISO, Chief Clinical Officer, two developers, outside counsel, and CPA to architect the entity, IP, and data-rights structure.",
+      "origin": "artifact",
+      "status": "accepted"
+    }
+  ],
   "overrides": {
     "psp-closed-deals": {
       "_gate": "gate1-q1 (2026-09-25): PSP ended Aug 2026; 5 signed deals confirmed.",

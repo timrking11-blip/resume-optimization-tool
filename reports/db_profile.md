@@ -7,20 +7,20 @@ Generated 2026-09-25 by `rot.py profile`.
 |---|---|---|
 | `sources` | 18 | one resume version / capture |
 | `raw_bullets` | 342 | one bullet as written in one source |
-| `achievements` | 52 | one real accomplishment |
-| `bullets` | 79 | one bare-bone rendering of an achievement (all versions) |
+| `achievements` | 55 | one real accomplishment |
+| `bullets` | 105 | one bare-bone rendering of an achievement (all versions) |
 | `tags` | 84 | one niche skill/keyword |
-| `achievement_tags` | 224 | achievement × tag (one-to-many) |
+| `achievement_tags` | 237 | achievement × tag (one-to-many) |
 | `achievement_evidence` | 364 | achievement × raw bullet |
 | `competencies` | 33 | one competency phrase |
 | `technologies` | 12 | one tool |
 | `certifications` | 5 | one credential |
 | `summaries` | 15 | one summary variant |
-| `job_descriptions` | 0 | one JD processed |
-| `followups` | 0 | one gate question |
-| `feedback` | 0 | one keep/reject/edit |
+| `job_descriptions` | 3 | one JD processed |
+| `followups` | 10 | one gate question |
+| `feedback` | 4 | one keep/reject/edit |
 
-Current (non-superseded, accepted) bullets: **79**.
+Current (non-superseded, accepted) bullets: **81**.
 
 ## Bullet length vs. the Resume 1 standard
 
@@ -29,17 +29,17 @@ Resume 1 band: p10 **97**, median **143**, p90 **167** characters (ceiling 170).
 | Layer | n | min | median | max | over ceiling |
 |---|---|---|---|---|---|
 | Raw bullets (all sources) | 342 | 79 | 159 | 482 | 132 |
-| Canonical bare-bone | 52 | 104 | 142 | 169 | 0 |
-| Angle variants | 27 | 121 | 144 | 159 | 0 |
+| Canonical bare-bone | 54 | 104 | 141 | 162 | 0 |
+| Angle variants | 26 | 121 | 144 | 158 | 0 |
 
 ## Achievements by role and confidence
 
 | Role | Achievements | verified | asserted | conflict | raw bullets evidencing |
 |---|---|---|---|---|---|
-| liminal | 19 | 16 | 3 | 0 | 66 |
-| psp | 13 | 9 | 3 | 1 | 91 |
+| liminal | 21 | 16 | 5 | 0 | 66 |
+| psp | 13 | 10 | 3 | 0 | 91 |
 | nyl | 2 | 0 | 2 | 0 | 2 |
-| tek_lead | 8 | 7 | 0 | 1 | 72 |
+| tek_lead | 9 | 8 | 1 | 0 | 72 |
 | tek_recruiter | 5 | 5 | 0 | 0 | 65 |
 | demanddrive | 2 | 2 | 0 | 0 | 34 |
 | yri | 1 | 0 | 1 | 0 | 3 |
@@ -52,18 +52,18 @@ Resume 1 band: p10 **97**, median **143**, p90 **167** characters (ceiling 170).
 |---|---|---|---|---|
 | Change & Enablement | 5 | 5 | 14 | — |
 | Customer & Account Growth | 4 | 4 | 8 | customer-success |
-| Data, AI & Technology | 6 | 6 | 15 | building-with-ai |
+| Data, AI & Technology | 6 | 6 | 19 | — |
 | Finance & Unit Economics | 4 | 4 | 13 | — |
 | Fundraising & Nonprofit | 4 | 3 | 7 | board-trustee-engagement, moves-management |
-| Go-To-Market | 8 | 8 | 18 | pricing-packaging, territory-design |
+| Go-To-Market | 8 | 8 | 20 | territory-design |
 | Leadership & Coaching | 4 | 4 | 8 | player-coach |
-| Legal, Risk & Governance | 3 | 3 | 8 | entity-ip-structure |
+| Legal, Risk & Governance | 3 | 3 | 9 | entity-ip-structure |
 | Marketing & Demand | 6 | 5 | 7 | demand-generation, campaign-development, marketing-sales-alignment, abm, growth-efficiency |
 | Media, Advertising & AdTech | 7 | 7 | 21 | cross-platform |
-| Operations & Process | 4 | 4 | 10 | operating-cadence |
+| Operations & Process | 4 | 4 | 13 | operating-cadence |
 | Partnerships & Channel | 3 | 3 | 5 | channel-partnerships |
 | Research & Insight | 3 | 3 | 4 | primary-research, market-research |
-| Sales & Revenue | 16 | 16 | 66 | full-cycle-sales, rfp-response, proof-of-value |
+| Sales & Revenue | 16 | 16 | 69 | full-cycle-sales, proof-of-value |
 | Strategy & Advisory | 7 | 7 | 20 | exit-path-modeling |
 
 ## Most-reused raw bullets (how often each achievement was rewritten)
@@ -85,10 +85,8 @@ Resume 1 band: p10 **97**, median **143**, p90 **167** characters (ceiling 170).
 
 ## Data quality flags
 
-- **Conflict · psp-closed-deals**: R1/R2/R3/R4/R5/R6/R7/R8/R15 say 5. R9–R14/R16 (Aug 26) and LinkedIn say 3. Gate-1 question.
-- **Conflict · tekl-coaching**: Base fact (R1, LinkedIn): coached recruiters. Later versions escalate to 'direct-report team of quota-carrying sellers' + hiring. Gate-1 question on formal reports.
-- **Dates · liminal**: R1/R6 say August 2026; BAS resumes and LinkedIn say July 2026. Using July.
-- **Dates · psp**: LinkedIn shows end Aug 2026. Gate-1 question.
+- **Dates · liminal**: Renamed 2026-09-25 from 'Chief Strategy Consultant | Confidential Healthcare AI Start-Up'. Dates kept at July 2026 – Present (the healthcare engagement start).
+- **Dates · psp**: Gate 1: ended August 2026 (matches LinkedIn).
 - **Dates · nyl**: Fundraising resume only; not in LinkedIn experience.
 - **Dates · tek_lead**: LinkedIn: Nov 2024 – Oct 2025 under a different title. Year-only display (2024 – 2025) matches both.
 - **Dates · tek_recruiter**: LinkedIn: Mar 2021 – Nov 2024.

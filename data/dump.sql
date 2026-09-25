@@ -600,6 +600,17 @@ INSERT INTO "achievement_tags" VALUES('massdot-adoption','readiness-assessment',
 INSERT INTO "achievement_tags" VALUES('edu-capstone','market-sizing',0.8);
 INSERT INTO "achievement_tags" VALUES('edu-capstone','competitive-analysis',0.8);
 INSERT INTO "achievement_tags" VALUES('edu-capstone','positioning-messaging',0.5);
+INSERT INTO "achievement_tags" VALUES('art-run-muhbu38f-0','crm-discipline',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-muhbu38f-0','building-with-ai',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-muhbu38f-0','ai-in-workflow',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-muhbu38f-0','prospecting',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-muhbu38f-1','risk-governance',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-muhbu38f-1','building-with-ai',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-muhbu38f-1','data-solutions',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-muhbu38f-1','process-improvement',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-muhbu38f-2','pricing-packaging',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-muhbu38f-2','rfp-response',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-muhbu38f-2','managed-services-sales',1.0);
 CREATE TABLE achievements (
   id         TEXT PRIMARY KEY,           -- psp-closed-deals …
   role_key   TEXT NOT NULL REFERENCES roles(key),
@@ -659,6 +670,9 @@ INSERT INTO "achievements" VALUES('nyl-needs-assessment','nyl','asserted','','[]
 INSERT INTO "achievements" VALUES('yri-marketing','yri','asserted','Internship; hidden by default.','[]');
 INSERT INTO "achievements" VALUES('massdot-adoption','massdot','asserted','Internship; hidden by default.','[]');
 INSERT INTO "achievements" VALUES('edu-capstone','education','verified','','[]');
+INSERT INTO "achievements" VALUES('art-run-muhbu38f-0','liminal','asserted','Learned from Match Desk run run-muhbu38f','[]');
+INSERT INTO "achievements" VALUES('art-run-muhbu38f-1','liminal','asserted','Learned from Match Desk run run-muhbu38f','[]');
+INSERT INTO "achievements" VALUES('art-run-muhbu38f-2','tek_lead','asserted','Learned from Match Desk run run-muhbu38f','[]');
 CREATE TABLE bullets (
   id             INTEGER PRIMARY KEY,
   achievement_id TEXT NOT NULL REFERENCES achievements(id),
@@ -774,6 +788,10 @@ INSERT INTO "bullets" VALUES(98,'lim-collateral','canonical',NULL,'Produced the 
 INSERT INTO "bullets" VALUES(99,'lim-operating-cadence','canonical',NULL,'Built the operating cadence the client runs on: RACI and escalation thresholds, a weekly capacity forecast, and a one-page decision log with owner and date.',156,'accepted','curated',0.0,'2026-09-25 19:37:28',NULL,NULL);
 INSERT INTO "bullets" VALUES(100,'lim-entity-ip-structure','canonical',NULL,'Coordinated outside counsel, CPA, engineering, and founders to architect the entity, IP, and data-rights structure behind the client''s data assets.',147,'accepted','curated',0.0,'2026-09-25 19:37:28',NULL,NULL);
 INSERT INTO "bullets" VALUES(101,'lim-claude-code-tracker','canonical',NULL,'Built the practice''s multi-tenant client engagement tracker with Claude Code, with 60 automated tests enforcing cross-client data isolation.',140,'accepted','curated',0.0,'2026-09-25 19:37:28',NULL,NULL);
+INSERT INTO "bullets" VALUES(102,'art-run-muhbu38f-0','canonical',NULL,'Built a custom CRM from scratch with GTM and prospecting connectors, automated weekly contact enrichment, and account-research agents two-way synced to GitHub.',159,'accepted','artifact',0.0,'2026-09-25 19:43:12',NULL,NULL);
+INSERT INTO "bullets" VALUES(103,'art-run-muhbu38f-1','canonical',NULL,'Diagnosed data-sync failures caused by null values and missing governance rules, then enforced sync governance constraints through 60 automated tests.',150,'accepted','artifact',0.0,'2026-09-25 19:43:12',NULL,NULL);
+INSERT INTO "bullets" VALUES(104,'art-run-muhbu38f-2','canonical',NULL,'Partnered with a Principal Business Development Manager to set bill rates and price resource plans for Global Services RFP responses.',133,'accepted','artifact',0.0,'2026-09-25 19:43:12',NULL,NULL);
+INSERT INTO "bullets" VALUES(105,'lim-entity-ip-structure','learned','gate2','Coordinated the client''s CEO, COO, CISO, Chief Clinical Officer, two developers, outside counsel, and CPA to architect the entity, IP, and data-rights structure.',161,'accepted','artifact',0.0,'2026-09-25 19:43:12',NULL,NULL);
 CREATE TABLE certifications (
   id INTEGER PRIMARY KEY, name TEXT NOT NULL, issuer TEXT, date TEXT, credential_id TEXT,
   status TEXT, source TEXT, tags TEXT
@@ -901,19 +919,28 @@ CREATE TABLE feedback (
   id INTEGER PRIMARY KEY, jd_id TEXT REFERENCES job_descriptions(id),
   bullet_id INTEGER REFERENCES bullets(id), action TEXT NOT NULL,   -- keep | reject | edit
   edited_text TEXT, created_at TEXT DEFAULT (datetime('now'))
-);
+, ext_id TEXT);
+INSERT INTO "feedback" VALUES(1,'run-muhbu38f',NULL,'swap',NULL,'2026-09-25 19:43:12','4avzu2ox7p86yjzx4oe1');
+INSERT INTO "feedback" VALUES(2,'run-muhbu38f',NULL,'edit','Created CRM from scratch with a comprehensive architecture that leverages various GTM and Prospecting connectors and automated weekly syncs to enrich contact data. Built out agents that integrated into the platform directly as part of an Account Research Agent workflow.','2026-09-25 19:43:12','5v6q63iazumm7hjrtxyl');
+INSERT INTO "feedback" VALUES(3,'run-muhbu38f',NULL,'keep',NULL,'2026-09-25 19:43:12','hc36k2w6ooxklh00vp5o');
+INSERT INTO "feedback" VALUES(4,'run-muhbu38f',NULL,'edit','Worked directly with CEO, COO, CSO, Chief Clinical Officer, and two developers cross-functionally.','2026-09-25 19:43:12','xsg56dobapy5z24fmm12');
 CREATE TABLE followups (
   id INTEGER PRIMARY KEY, jd_id TEXT REFERENCES job_descriptions(id),
   gate INTEGER NOT NULL,                 -- 1 = baseline gate, 2 = per-JD gate
   question TEXT NOT NULL, answer TEXT, tag_id TEXT REFERENCES tags(id),
   resulting_bullet_id INTEGER REFERENCES bullets(id),
   asked_at TEXT DEFAULT (datetime('now')), answered_at TEXT
-);
-INSERT INTO "followups" VALUES(1,'gate1_baseline_2026-09-25',1,'LinkedIn shows Professional Sports Publications ended Aug 2026 with 3 signed deals. Resume 1 says ''March 2026 – Present'' with 5 deals. Which is true today?','Ended Aug 2026 · 5 deals','closing',NULL,'2026-09-25 18:02:44','2026-09-25 18:02:44');
-INSERT INTO "followups" VALUES(2,'gate1_baseline_2026-09-25',1,'At TEKsystems as Specialized Lead, how big was your leadership scope?','Formal lead · 3–5 direct reports','performance-management',NULL,'2026-09-25 18:02:44','2026-09-25 18:02:44');
-INSERT INTO "followups" VALUES(3,'gate1_baseline_2026-09-25',1,'Which PSP dollar figures can be stated explicitly?','~$115K active pipeline; deal count only for closed business (no closed-revenue figure)','pipeline-management',NULL,'2026-09-25 18:02:44','2026-09-25 18:02:44');
-INSERT INTO "followups" VALUES(4,'gate1_baseline_2026-09-25',1,'Has the Liminal CEO or board adopted your recommendations?','Adopted · completed verbs','board-advisory',NULL,'2026-09-25 18:02:44','2026-09-25 18:02:44');
-INSERT INTO "followups" VALUES(5,'gate1_baseline_2026-09-25',1,'How should core competencies and areas of expertise be arranged on the baseline?','Top competency line + Systems line, plus a categorized ''Areas of Expertise'' block after Education','gtm-strategy',NULL,'2026-09-25 18:02:44','2026-09-25 18:02:44');
+, ext_key TEXT);
+INSERT INTO "followups" VALUES(1,'gate1_baseline_2026-09-25',1,'LinkedIn shows Professional Sports Publications ended Aug 2026 with 3 signed deals. Resume 1 says ''March 2026 – Present'' with 5 deals. Which is true today?','Ended Aug 2026 · 5 deals','closing',NULL,'2026-09-25 18:02:44','2026-09-25 18:02:44',NULL);
+INSERT INTO "followups" VALUES(2,'gate1_baseline_2026-09-25',1,'At TEKsystems as Specialized Lead, how big was your leadership scope?','Formal lead · 3–5 direct reports','performance-management',NULL,'2026-09-25 18:02:44','2026-09-25 18:02:44',NULL);
+INSERT INTO "followups" VALUES(3,'gate1_baseline_2026-09-25',1,'Which PSP dollar figures can be stated explicitly?','~$115K active pipeline; deal count only for closed business (no closed-revenue figure)','pipeline-management',NULL,'2026-09-25 18:02:44','2026-09-25 18:02:44',NULL);
+INSERT INTO "followups" VALUES(4,'gate1_baseline_2026-09-25',1,'Has the Liminal CEO or board adopted your recommendations?','Adopted · completed verbs','board-advisory',NULL,'2026-09-25 18:02:44','2026-09-25 18:02:44',NULL);
+INSERT INTO "followups" VALUES(5,'gate1_baseline_2026-09-25',1,'How should core competencies and areas of expertise be arranged on the baseline?','Top competency line + Systems line, plus a categorized ''Areas of Expertise'' block after Education','gtm-strategy',NULL,'2026-09-25 18:02:44','2026-09-25 18:02:44',NULL);
+INSERT INTO "followups" VALUES(6,'run-muhbu38f',2,'Beyond configuring and using CRM tools, has Tim built custom applications, automations, or integrations directly on the Salesforce platform (e.g., Apex, Flow, LWC)?','I have created my own CRM from scratch in my consulting work with a comprehensive architecture that leveraged connectors and automated weekly syncs to enrich contact data as well as built out agents that integrated into the platform directly and two-way synced to master github repo','crm-discipline',NULL,'2026-09-25 19:43:12','2026-09-25 19:43:12','b18c97f9c684981cc92489e05023477b');
+INSERT INTO "followups" VALUES(7,'run-muhbu38f',2,'In the Claude Code engagement tracker project, what integration or data-sync challenges (retries, duplicate handling, reconciliation) did the 60 automated tests address?','data-sync challenges included missing or null values and an absence of governance rules that left  the data messy and unable to render reliable results; often delivering error messages. The 60 automated tests helped create governance constraints around the data synchronization process','risk-governance',NULL,'2026-09-25 19:43:12','2026-09-25 19:43:12','3a08d386cac508f04798c3d0eebcb024');
+INSERT INTO "followups" VALUES(8,'run-muhbu38f',2,'What programming languages or technical tools (e.g., Python, SQL) has Tim used directly, beyond directing AI-assisted development?','None','ai-in-workflow',NULL,'2026-09-25 19:43:12','2026-09-25 19:43:12','60c8fd7288e1e466ac5e304927aa36b4');
+INSERT INTO "followups" VALUES(9,'run-muhbu38f',2,'Has Tim worked directly with contract lifecycle, subscription, or billing systems (e.g., CPQ platforms) beyond designing pricing tiers?','I worked with a Principal Business Development Manager for our Global Services team to provide customer pricing quotes on resource needs (establish bill rates) based on a proposed commercial opportunity in the form of an RFP response. I had inputs directly into the pricing but did not draft the SLA''s, SOW''s, or MSA''s','pricing-packaging',NULL,'2026-09-25 19:43:12','2026-09-25 19:43:12','a83553d80fd50430f0389d42bbe4e03b');
+INSERT INTO "followups" VALUES(10,'run-muhbu38f',2,'What was the scope of stakeholders (roles, teams, count) Tim coordinated with when architecting the entity, IP, and data-rights structure?','Worked cross-functionally with CEO, COO, CiSO, Chief Clinical Officer, and 2 developers cross-functionally while architecting entity, IP, and data-rights structure.','strategic-partnerships',NULL,'2026-09-25 19:43:12','2026-09-25 19:43:12','d38e1fbdb6d1e65d9fca203854fa15e4');
 CREATE TABLE generated_resumes (
   id INTEGER PRIMARY KEY, jd_id TEXT REFERENCES job_descriptions(id), version TEXT,
   json TEXT NOT NULL, html_path TEXT, pdf_path TEXT, created_at TEXT DEFAULT (datetime('now'))
@@ -959,6 +986,32 @@ INSERT INTO "jd_requirements" VALUES(29,'jd_30be34a590','stakeholder-alignment',
 INSERT INTO "jd_requirements" VALUES(30,'jd_30be34a590','ai-ml-solutions','ai, generative ai',2.84,NULL);
 INSERT INTO "jd_requirements" VALUES(31,'jd_30be34a590','ai-in-workflow','ai tools, ai-native, chatgpt, claude',3.0,NULL);
 INSERT INTO "jd_requirements" VALUES(32,'jd_30be34a590','strategic-partnerships','partner, partnerships',3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(33,'run-muhbu38f','account-expansion',NULL,1.0,NULL);
+INSERT INTO "jd_requirements" VALUES(34,'run-muhbu38f','ai-in-workflow',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(35,'run-muhbu38f','ai-ml-solutions',NULL,0.84,NULL);
+INSERT INTO "jd_requirements" VALUES(36,'run-muhbu38f','audience-measurement',NULL,1.0,NULL);
+INSERT INTO "jd_requirements" VALUES(37,'run-muhbu38f','closing',NULL,1.0,NULL);
+INSERT INTO "jd_requirements" VALUES(38,'run-muhbu38f','cloud-infrastructure',NULL,1.0,NULL);
+INSERT INTO "jd_requirements" VALUES(39,'run-muhbu38f','crm-discipline',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(40,'run-muhbu38f','cross-platform',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(41,'run-muhbu38f','customer-success',NULL,1.0,NULL);
+INSERT INTO "jd_requirements" VALUES(42,'run-muhbu38f','entity-ip-structure',NULL,1.0,NULL);
+INSERT INTO "jd_requirements" VALUES(43,'run-muhbu38f','executive-communication',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(44,'run-muhbu38f','gtm-strategy',NULL,1.44,NULL);
+INSERT INTO "jd_requirements" VALUES(45,'run-muhbu38f','hiring-onboarding',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(46,'run-muhbu38f','managed-services-sales',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(47,'run-muhbu38f','media-ad-sales',NULL,1.0,NULL);
+INSERT INTO "jd_requirements" VALUES(48,'run-muhbu38f','negotiation',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(49,'run-muhbu38f','operating-cadence',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(50,'run-muhbu38f','pipeline-management',NULL,1.0,NULL);
+INSERT INTO "jd_requirements" VALUES(51,'run-muhbu38f','pricing-packaging',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(52,'run-muhbu38f','process-improvement',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(53,'run-muhbu38f','qualification',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(54,'run-muhbu38f','referral-network',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(55,'run-muhbu38f','risk-governance',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(56,'run-muhbu38f','sponsorship',NULL,1.0,NULL);
+INSERT INTO "jd_requirements" VALUES(57,'run-muhbu38f','strategic-partnerships',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(58,'run-muhbu38f','team-coaching',NULL,3.0,NULL);
 CREATE TABLE job_descriptions (
   id         TEXT PRIMARY KEY,           -- jd_<timestamp> or artifact doc id
   company    TEXT, title TEXT,
@@ -991,9 +1044,109 @@ What you''ll bring
 - Hands-on use of generative AI tools (ChatGPT, Claude) in your daily workflow.
 - Bonus: experience at an early-stage startup or building a GTM function from zero.
 ','2026-09-25 18:04:21','cli');
+INSERT INTO "job_descriptions" VALUES('run-muhbu38f','Ramp','GTM Business Systems Engineer – Post Sales','About the job
+About Ramp
+
+Ramp is building the smart infrastructure for finance teams, embedded in the transaction flow of every dollar a business spends. We automate how over $200B in annualized spend flows in and out of 70,000+ companies: authorizing payments, flagging risk, categorizing spend, and closing books.
+
+The problems are high-stakes, data-dense, and unforgiving.
+
+We hire people with high agency and high urgency. We look for slope over intercept. We care less about where you trained and more about what you’ve built. At Ramp, everyone is a builder who owns problems end to end and makes consequential decisions that shape the outcome.
+
+The median Ramp customer saves 5% and grows revenue 16% in their first year – far in excess of businesses operating without Ramp. We believe every ambitious company deserves the same.
+
+If you want to build systems that directly shape how companies move and manage billions, Ramp is the place to do it.
+
+About The Role
+
+We’re looking for a Senior Business Systems Engineer to own and evolve Ramp’s Post Sales systems. You’ll build the products that fuel our onboarding and activation funnel, turn complex commercial agreements into accurate, supportable customer outcomes from original deal closure through expansions, and book of business management
+
+This role sits in Growth Engineering’s Business Systems Engineering team and partners closely with Deal Desk, Legal, Finance, Data, Product, and GTM teams. You’ll combine hands-on Salesforce engineering with systems design and strong commercial judgment to make high-stakes revenue workflows reliable, scalable, and easier for teams to use.
+
+What You’ll Do
+
+Design, develop, test, and deploy applications on the Salesforce Platform
+Design and operate reliable integrations between Salesforce, our internal revenue app, Data, and adjacent business systems. Own data contracts, idempotency, error handling, reconciliation, and safe lifecycle changes for quotes, contracts, and subscriptions.
+Design, develop, and maintain solutions on iPaaS (Homegrown, Workato, Clay, etc)
+Drive decisions on architecture patterns, tool usage, and designs required for the solution to scale both in terms of speed and scale.
+Write and communicate technical specifications, including architecture diagrams, data model diagrams, process flows, and sequence diagrams.
+Own the data integrity and data assumptions in your focused area and contribute continually.
+Work closely with the rest of the team on code reviews, on-call, build issues, and ideation.
+
+What You’ll Need
+
+7+ years working with the Salesforce platform
+5+ years of experience with Systems Architecture and Integrations
+Strong experience with Apex and triggers.
+Working knowledge and experience on other programming languages like Python.
+Strong knowledge of developing Lightning Web Components
+Strong experience of APIs and integrations with Salesforce
+Strong knowledge and working experience of synchronous/asynchronous methods, streaming API, and publish/subscribe design patterns and architectural patterns.
+Familiarity with broader GTM stack beyond Salesforce ( Gong, Leandata, CPQ, Billing Systems)
+Strong and working knowledge of data pipelines.
+Solid understanding or implementation knowledge of CI/CD processes.
+Understanding Salesforce governance limits and code coverage.
+Follow unit-testing best practices and be capable of coding for positive/negative scenarios.
+Excellent verbal and written communication skills
+Experience using AI-assisted development tools thoughtfully and evaluating their output.
+Deep experience building and maintaining Salesforce applications with Apex, Lightning Web Components, Flows, and asynchronous processing.
+Experience with CPQ, pricing, contract lifecycle management, billing, subscriptions, or another Quote-to-Cash domain.
+Strong API and integration-design skills, including reliable handling of retries, duplicate events, partial failures, and data reconciliation.
+Ability to translate complex commercial requirements into simple, durable system behavior in partnership with non-engineering teams.
+
+Nice to Haves
+
+Snowflake/DBT
+Kafka experience
+Experience with Agile methodologies
+
+Benefits Available To All Full-time Ramp Employees (Global)
+
+Flexible PTO
+Centralized home-office equipment ordering
+Health and wellness stipend
+Budget for intra-office travel
+Weekly coffee stipend
+
+United States
+
+100% medical, dental & vision insurance coverage for you, with partial coverage for dependents
+One Medical annual membership
+401(k), including employer match on contributions made while employed by Ramp
+Fertility HRA (up to $10,000 per year)
+Parental leave: up to 16 weeks (birthing + bonding) or 8 weeks (bonding only) at 100% pay
+Pet insurance
+In-office perks: lunch, snacks, drinks, and more
+Relocation expense coverage to NYC or SF (if needed)
+
+Canada
+
+Group medical, dental, and vision coverage through Sun Life
+Life, AD&D, and disability coverage
+Fertility drug coverage (up to $4,000 lifetime)
+Group Retirement Plan with employer match (RRSP + DPSP)
+Parental leave: up to 16 weeks (birthing + bonding) or 8 weeks (bonding only) at 100% pay, with additional time available at reduced pay
+Employee Assistance Program and virtual care through Lumino Health
+
+United Kingdom
+
+Private medical insurance through Freedom Elite
+Virtual GP and at-home care via eMed x Livi
+Workplace pension through Penfold, with salary sacrifice option
+Parental leave: up to 16 weeks (birthing + bonding) or 8 weeks (bonding only) at 100% pay with additional time available at reduced pay
+
+Referral Instructions
+
+If you are being referred for the role, please contact that person to apply on your behalf.
+
+Other Notices
+
+Pursuant to the San Francisco Fair Chance Ordinance, we will consider for employment qualified applicants with arrest and conviction records.
+
+Beware of recruiting scams: Ramp will only contact you through official @Ramp.com email addresses and will never ask for payment or sensitive personal information during the hiring process.','2026-09-25 19:43:12','artifact');
 CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT);
 INSERT INTO "meta" VALUES('length_band','{"source": "R1_base_2026", "n": 21, "min": 79, "p10": 97, "p25": 119, "median": 143, "p75": 158, "p90": 167, "max": 212, "hard_ceiling": 170}');
-INSERT INTO "meta" VALUES('ingested_at','2026-09-25T15:37:28');
+INSERT INTO "meta" VALUES('ingested_at','2026-09-25T15:43:12');
 CREATE TABLE raw_bullets (
   id        INTEGER PRIMARY KEY,
   source_id TEXT NOT NULL REFERENCES sources(id),
@@ -1378,24 +1531,24 @@ CREATE TABLE sources (
   headline    TEXT,
   ingested_at TEXT DEFAULT (datetime('now'))
 );
-INSERT INTO "sources" VALUES('R1_base_2026','Career Finder Folder\Tim King Resume 2026 .docx','a267263fe50a70e376169b3832eb1934','General baseline (Resume 1 — bullet standard)','docx',NULL,'2026-09-25 19:37:27');
-INSERT INTO "sources" VALUES('R2_base_2026_preliminal','Career Finder Folder\Resumes\Tim King Resume 2026 .docx','57a633a9264614df70d46f1ba1dce772','General baseline (pre-Liminal)','docx',NULL,'2026-09-25 19:37:27');
-INSERT INTO "sources" VALUES('R3_fundraising','Career Finder Folder\Resumes\Tim King Fundraising Resume 2026 .docx','f93265fe3f3db5149195dc969905576e','Educational & nonprofit fundraising / advancement','docx',NULL,'2026-09-25 19:37:27');
-INSERT INTO "sources" VALUES('R4_openai_client_partner_me','Career Finder Folder\Resumes\Tim_King_Resume_OpenAI_Client_Partner_Media & Entertainment-TK.docx','f3d6cbe1cfc0456de4f3ae90726069fd','OpenAI — Client Partner, Media & Entertainment','docx','MEDIA & ENTERTAINMENT ADVERTISING SALES · STRATEGIC PARTNERSHIPS · NEW BUSINESS','2026-09-25 19:37:27');
-INSERT INTO "sources" VALUES('R5_luminance_commercial_director','Career Finder Folder\Resumes\Tim_King_Resume_Luminance_Commercial_Director.docx','4e6d4a19501db3c9bc00933ea26f8875','Luminance — Commercial Director (enterprise AI sales leadership)','docx','ENTERPRISE SALES LEADERSHIP · AI & TECHNOLOGY SOLUTIONS · NEW BUSINESS','2026-09-25 19:37:27');
-INSERT INTO "sources" VALUES('R6_admarketplace_director','Career Finder Folder\Resumes\Tim_King_Resume_adMarketplace_Director_Advertiser_Sales.docx','80bba217fbcb61eadfbfa704b1e943ee','adMarketplace — Director, Advertiser Sales','docx','PERFORMANCE MEDIA & ADTECH SALES · SEARCH INTENT · NEW BUSINESS','2026-09-25 19:37:27');
-INSERT INTO "sources" VALUES('R7_fox_weather_director','Career Finder Folder\Resumes\Tim_King_Resume_FOX_Weather_Director_Ad_Sales.pdf','140a2751af99df1521ee993163294d94','FOX Weather — Director, Ad Sales','pdf_resume','MEDIA & SPONSORSHIP SALES · INTEGRATED CROSS-PLATFORM PARTNERSHIPS · REVENUE LEADERSHIP','2026-09-25 19:37:27');
-INSERT INTO "sources" VALUES('R8_bairesdev_vp_sales','Business Advisory Services\Timothy King Resume - BairesDev VP Sales.docx','40eff717426450d3445d6f4fc4839c14','BairesDev — VP Sales (IT services)','docx',NULL,'2026-09-25 19:37:27');
-INSERT INTO "sources" VALUES('R9_knit_growth_marketing','Business Advisory Services\Timothy King Resume - Knit Growth Marketing.docx','a8599a105de187fda7761efd71946be9','Knit — Growth Marketing','docx',NULL,'2026-09-25 19:37:27');
-INSERT INTO "sources" VALUES('R10_mri_simmons_audience','Business Advisory Services\Timothy King Resume - MRI-Simmons Audience Activation.docx','4ba9ce0a2a45f7b53a353edf9b2e1256','MRI-Simmons — Audience Activation (data sales)','docx',NULL,'2026-09-25 19:37:27');
-INSERT INTO "sources" VALUES('R11_magellan_measurement','Business Advisory Services\Timothy King Resume - Magellan AI Measurement Growth.docx','337829b3f94678053bf2620e40b29e76','Magellan AI — Measurement Growth','docx',NULL,'2026-09-25 19:37:27');
-INSERT INTO "sources" VALUES('R12_meridian_gtm','Business Advisory Services\Timothy King Resume - Meridian GTM.docx','f31ddebc9616247bfb9764cf70809315','Meridian — GTM','docx',NULL,'2026-09-25 19:37:27');
-INSERT INTO "sources" VALUES('R13_samba_platform_sales','Business Advisory Services\Timothy King Resume - Samba Platform Sales.docx','371007a551ebc3009079728d568e9094','Samba TV — Platform / Data Partnerships Sales','docx',NULL,'2026-09-25 19:37:27');
-INSERT INTO "sources" VALUES('R14_smartly_agency_partnerships','Business Advisory Services\Timothy King Resume - Smartly Agency Partnerships.docx','620209e57cb2768f4ba3e0526fdc2d25','Smartly — Agency Partnerships (player-coach)','docx',NULL,'2026-09-25 19:37:27');
-INSERT INTO "sources" VALUES('R15_versant_transformation','Business Advisory Services\Timothy King Resume - Versant Transformation Enablement.docx','f0f6a601dc046ad644a56114a6e9fc65','Versant — Transformation & Enablement','docx',NULL,'2026-09-25 19:37:27');
-INSERT INTO "sources" VALUES('R16_admarketplace_adv_success','Business Advisory Services\Timothy King Resume - adMarketplace Advertiser Success.docx','12c7eafb90c7f48982463722d7ec347d','adMarketplace — Advertiser Success','docx',NULL,'2026-09-25 19:37:27');
-INSERT INTO "sources" VALUES('S17_liminal_summary','Career Finder Folder\Liminal_Chief_of_Strategy_Summary.md.pdf','0d4892d96e98b3359cb8ed6c42c114e5','Liminal work summary (pre-written bullets)','pdf_liminal',NULL,'2026-09-25 19:37:27');
-INSERT INTO "sources" VALUES('S18_linkedin','Career Finder Folder\Resume Optimization Tool\sources\linkedin_2026-09-25.md','b594acde2a787aae7c79a2f4a4b77ffa','LinkedIn public profile (captured 2026-09-25)','linkedin_md','Sales Professional | Marketing, Advertising, Product, Services, & Sales GTM Strategist Providing Advisory Services | Systems Thinker | Process Engineer | AI Adoption Enthusiast','2026-09-25 19:37:27');
+INSERT INTO "sources" VALUES('R1_base_2026','Career Finder Folder\Tim King Resume 2026 .docx','a267263fe50a70e376169b3832eb1934','General baseline (Resume 1 — bullet standard)','docx',NULL,'2026-09-25 19:43:12');
+INSERT INTO "sources" VALUES('R2_base_2026_preliminal','Career Finder Folder\Resumes\Tim King Resume 2026 .docx','57a633a9264614df70d46f1ba1dce772','General baseline (pre-Liminal)','docx',NULL,'2026-09-25 19:43:12');
+INSERT INTO "sources" VALUES('R3_fundraising','Career Finder Folder\Resumes\Tim King Fundraising Resume 2026 .docx','f93265fe3f3db5149195dc969905576e','Educational & nonprofit fundraising / advancement','docx',NULL,'2026-09-25 19:43:12');
+INSERT INTO "sources" VALUES('R4_openai_client_partner_me','Career Finder Folder\Resumes\Tim_King_Resume_OpenAI_Client_Partner_Media & Entertainment-TK.docx','f3d6cbe1cfc0456de4f3ae90726069fd','OpenAI — Client Partner, Media & Entertainment','docx','MEDIA & ENTERTAINMENT ADVERTISING SALES · STRATEGIC PARTNERSHIPS · NEW BUSINESS','2026-09-25 19:43:12');
+INSERT INTO "sources" VALUES('R5_luminance_commercial_director','Career Finder Folder\Resumes\Tim_King_Resume_Luminance_Commercial_Director.docx','4e6d4a19501db3c9bc00933ea26f8875','Luminance — Commercial Director (enterprise AI sales leadership)','docx','ENTERPRISE SALES LEADERSHIP · AI & TECHNOLOGY SOLUTIONS · NEW BUSINESS','2026-09-25 19:43:12');
+INSERT INTO "sources" VALUES('R6_admarketplace_director','Career Finder Folder\Resumes\Tim_King_Resume_adMarketplace_Director_Advertiser_Sales.docx','80bba217fbcb61eadfbfa704b1e943ee','adMarketplace — Director, Advertiser Sales','docx','PERFORMANCE MEDIA & ADTECH SALES · SEARCH INTENT · NEW BUSINESS','2026-09-25 19:43:12');
+INSERT INTO "sources" VALUES('R7_fox_weather_director','Career Finder Folder\Resumes\Tim_King_Resume_FOX_Weather_Director_Ad_Sales.pdf','140a2751af99df1521ee993163294d94','FOX Weather — Director, Ad Sales','pdf_resume','MEDIA & SPONSORSHIP SALES · INTEGRATED CROSS-PLATFORM PARTNERSHIPS · REVENUE LEADERSHIP','2026-09-25 19:43:12');
+INSERT INTO "sources" VALUES('R8_bairesdev_vp_sales','Business Advisory Services\Timothy King Resume - BairesDev VP Sales.docx','40eff717426450d3445d6f4fc4839c14','BairesDev — VP Sales (IT services)','docx',NULL,'2026-09-25 19:43:12');
+INSERT INTO "sources" VALUES('R9_knit_growth_marketing','Business Advisory Services\Timothy King Resume - Knit Growth Marketing.docx','a8599a105de187fda7761efd71946be9','Knit — Growth Marketing','docx',NULL,'2026-09-25 19:43:12');
+INSERT INTO "sources" VALUES('R10_mri_simmons_audience','Business Advisory Services\Timothy King Resume - MRI-Simmons Audience Activation.docx','4ba9ce0a2a45f7b53a353edf9b2e1256','MRI-Simmons — Audience Activation (data sales)','docx',NULL,'2026-09-25 19:43:12');
+INSERT INTO "sources" VALUES('R11_magellan_measurement','Business Advisory Services\Timothy King Resume - Magellan AI Measurement Growth.docx','337829b3f94678053bf2620e40b29e76','Magellan AI — Measurement Growth','docx',NULL,'2026-09-25 19:43:12');
+INSERT INTO "sources" VALUES('R12_meridian_gtm','Business Advisory Services\Timothy King Resume - Meridian GTM.docx','f31ddebc9616247bfb9764cf70809315','Meridian — GTM','docx',NULL,'2026-09-25 19:43:12');
+INSERT INTO "sources" VALUES('R13_samba_platform_sales','Business Advisory Services\Timothy King Resume - Samba Platform Sales.docx','371007a551ebc3009079728d568e9094','Samba TV — Platform / Data Partnerships Sales','docx',NULL,'2026-09-25 19:43:12');
+INSERT INTO "sources" VALUES('R14_smartly_agency_partnerships','Business Advisory Services\Timothy King Resume - Smartly Agency Partnerships.docx','620209e57cb2768f4ba3e0526fdc2d25','Smartly — Agency Partnerships (player-coach)','docx',NULL,'2026-09-25 19:43:12');
+INSERT INTO "sources" VALUES('R15_versant_transformation','Business Advisory Services\Timothy King Resume - Versant Transformation Enablement.docx','f0f6a601dc046ad644a56114a6e9fc65','Versant — Transformation & Enablement','docx',NULL,'2026-09-25 19:43:12');
+INSERT INTO "sources" VALUES('R16_admarketplace_adv_success','Business Advisory Services\Timothy King Resume - adMarketplace Advertiser Success.docx','12c7eafb90c7f48982463722d7ec347d','adMarketplace — Advertiser Success','docx',NULL,'2026-09-25 19:43:12');
+INSERT INTO "sources" VALUES('S17_liminal_summary','Career Finder Folder\Liminal_Chief_of_Strategy_Summary.md.pdf','0d4892d96e98b3359cb8ed6c42c114e5','Liminal work summary (pre-written bullets)','pdf_liminal',NULL,'2026-09-25 19:43:12');
+INSERT INTO "sources" VALUES('S18_linkedin','Career Finder Folder\Resume Optimization Tool\sources\linkedin_2026-09-25.md','b594acde2a787aae7c79a2f4a4b77ffa','LinkedIn public profile (captured 2026-09-25)','linkedin_md','Sales Professional | Marketing, Advertising, Product, Services, & Sales GTM Strategist Providing Advisory Services | Systems Thinker | Process Engineer | AI Adoption Enthusiast','2026-09-25 19:43:12');
 CREATE TABLE summaries (
   id INTEGER PRIMARY KEY, source_id TEXT REFERENCES sources(id), tags TEXT, text TEXT NOT NULL,
   origin TEXT DEFAULT 'curated', status TEXT DEFAULT 'accepted'
@@ -1528,4 +1681,6 @@ CREATE VIEW bullet_tag_view AS
   SELECT b.id AS bullet_id, b.achievement_id, t.tag_id, t.weight
   FROM bullets b JOIN achievement_tags t ON t.achievement_id = b.achievement_id
   WHERE b.superseded_by IS NULL AND b.status = 'accepted';
+CREATE UNIQUE INDEX ux_followups_ext ON followups(ext_key);
+CREATE UNIQUE INDEX ux_feedback_ext ON feedback(ext_id);
 COMMIT;
