@@ -35,7 +35,7 @@ Client-side platforms (Azure, Adobe Enterprise Suite, graph databases, computer 
 | PSP revenue | $14,035 over 4 months (R11, R12 only) | — | not shown | **Gate-1 Q3** |
 | TEK leadership scope | "coached recruiters" (R1) → "direct-report team of quota-carrying sellers" (R5) | "coached… recruiters" | coached sellers | **Gate-1 Q2** |
 | Liminal verbs | "Restructured / Blocked" (S17) · "Recommended" (R8) | "recommended" | Restructured / Authored | **Gate-1 Q4** |
-| Liminal title | CSO (R1) · Chief Strategy Consultant (R8–R16) | "Principle Business Strategy Consultant" | Chief Strategy Consultant, Confidential Healthcare AI Start-Up | Decided |
+| Liminal title | CSO (R1) · Chief Strategy Consultant (R8–R16) | "Principle Business Strategy Consultant" | Founder, Business Consultant, and GTM Engineer, Strategic Market Insights (changed 2026-09-25) | Decided |
 | Liminal start | Aug 2026 (R1, R6) · Jul 2026 (R8–R16) | Jul 2026 | July 2026 | Default |
 | TEK Specialized Lead | "Data Analytics & Data Insights", 2024 – Nov 2025 | "Cloud Applications & Data Analytics", Nov 2024 – Oct 2025 | resume title, 2024 – 2025 | Default |
 | TEK Recruiter | "Enterprise Recruiter – Global Services", 2021 – 2024 | "National Recruiter – Data Analytics & Insights", Mar 2021 – Nov 2024 | resume title, 2021 – 2024 | Default |
@@ -47,7 +47,7 @@ Client-side platforms (Azure, Adobe Enterprise Suite, graph databases, computer 
 ## Recommended LinkedIn edits
 1. **Add an About section.** The profile has none. Paste the Professional Summary from the baseline.
 2. Fix the typos in the PSP entry: "Co-up" → "co-op"; "with new prior purchase history" → "with no prior purchase history"; "Sonnett" → "Sonnet".
-3. Fix the project title typo: "Principle Business Strategy Consultant" → "Principal Business Strategy Consultant". Better still, match the resume: "Chief Strategy Consultant".
+3. Rename the LinkedIn project "Healthcare Tech & Research Innovation Start-Up | Principle Business Strategy Consultant" to match the resume: **Founder, Business Consultant, and GTM Engineer | Strategic Market Insights**, with the healthcare start-up as its key engagement. This also fixes the "Principle" typo.
 4. Align the TEKsystems titles with the resumes, or the resumes with LinkedIn. Recruiters compare the two.
 5. The Skills section renders empty. Add the top 10 competencies from the baseline.
 6. Add Claude Code 101 to Licenses & Certifications. It appears on 9 resumes but not on LinkedIn.

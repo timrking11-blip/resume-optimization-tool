@@ -51,16 +51,25 @@ python rot.py build --jd path/to/jd.txt --version v1   # tailored resume
 python rot.py export                                   # data/library.json + data/dump.sql
 python rot.py learn learnings.json                     # merge the artifact's learnings
 python rot.py profile                                  # reports/db_profile.md
+python rot.py sync-prepare [--all]                     # from sync/dump (ArtifactData out_dir) -> sync/pending.json
+python rot.py sync-apply                               # + sync/polished.json -> learn/ingest/export/PDFs/commit/push
 ```
 
 ## The learning loop
 
 1. **Gate 1 (baseline):** five questions asked after the phase-1 draft. The answers are stored in `followups` (gate 1) and applied through `curation/learned.json`, which supersedes rows and never overwrites them.
 2. **Gate 2 (per JD, in the artifact):** Claude weighs the posting against the taxonomy, tailors the summary, and asks five questions aimed at weak coverage. The answers become new bare-bone bullets. The page stores every run, answer, new bullet and Keep/Drop/Edit click in its own database, and future matches use them right away.
-3. **Sync:** ask Claude to "sync the Resume Match Desk". It reads the artifact database, runs `rot.py learn`, re-ingests, re-exports `library.json`, republishes the page and pushes here. Offline, use "Download learnings JSON" in the page, then `python rot.py learn learnings.json`.
+3. **Sync, automatic:** downloading a PDF in the page marks that posting *pending*. The scheduled task **Resume Match Desk sync** runs at 5 past every hour, 8 AM to 11 PM, while the Claude app is open, and follows [SYNC_RUNBOOK.md](SYNC_RUNBOOK.md):
+   - it dumps the page database and runs `rot.py sync-prepare`;
+   - Claude polishes any answer that breaks the Resume 1 standard;
+   - `rot.py sync-apply` learns, re-ingests, exports, renders a PDF per downloaded posting under `out/runs/`, commits and pushes;
+   - the task republishes the page library and marks the documents synced.
+
+   Ask Claude to "sync the Resume Match Desk" to run it now. Offline fallback: "Download learnings JSON", then `python rot.py learn learnings.json`.
+4. **Answer polishing:** in the page, **Turn into bullets with Claude** (per answer) and **Polish all answers** convert bulleted or rambling answers into Resume 1 bullets you can preview and edit. Anything over 170 characters gets an automatic tighten pass. **Polish** on any resume bullet rewrites it with the same facts.
 
 Scoring: requirement weight × tag weight, plus a 25% roll-up of family matches, a learned Keep/Drop adjustment, a curated priority prior and a metric bonus. A variant replaces the canonical text only when its angle is a strong requirement and clearly beats the canonical's own relevance.
 
 ## Privacy
 
-This repo is private. The Liminal engagement renders as *Chief Strategy Consultant | Confidential Healthcare AI Start-Up*. The internal role key is aliased on export, and `rot.py` refuses to write any output containing the confidential name, the partner counterparty, or the old typos.
+This repo is private. The current role renders as *Founder, Business Consultant, and GTM Engineer | Strategic Market Insights*, with the healthcare AI start-up shown only as a confidential key engagement. The internal role key is aliased on export, and `rot.py` refuses to write any output containing the confidential name, the partner counterparty, or the old typos.
