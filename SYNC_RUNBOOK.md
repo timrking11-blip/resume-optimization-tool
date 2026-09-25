@@ -1,6 +1,6 @@
 # Match Desk sync runbook
 
-The Resume Match Desk (https://claude.ai/artifact/MjpDTLqwPWSc9ujB4A3uUh) marks a posting `sync_status: "pending"` when its PDF is downloaded. This runbook folds pending postings into `resume.db`, republishes the page's `data/library.json`, and pushes to GitHub (private repo `timrking11-blip/resume-optimization-tool`). The scheduled task `resume-desk-sync` runs it hourly. Asking Claude to "sync the Resume Match Desk" runs it on demand.
+The Resume Match Desk (https://claude.ai/artifact/MjpDTLqwPWSc9ujB4A3uUh) marks a posting `sync_status: "pending"` when its PDF is downloaded. This runbook folds pending postings into `resume.db`, updates the page's bullet bank in its database (never republishing the page), and pushes to GitHub (private repo `timrking11-blip/resume-optimization-tool`). The scheduled task `resume-desk-sync` runs it hourly. Asking Claude to "sync the Resume Match Desk" runs it on demand.
 
 Working folder: `C:\Users\timrk\OneDrive\Desktop\Career Finder Folder\Resume Optimization Tool`
 
@@ -22,15 +22,13 @@ Working folder: `C:\Users\timrk\OneDrive\Desktop\Career Finder Folder\Resume Opt
 
    **Confidentiality:** never name the healthcare client (Liminal), the partner counterparty (Therapy Companion) or its contact (Kamal).
 6. **Apply:** `python rot.py sync-apply`. This runs learn, ingest, export, the data profile, a full-typography PDF of each downloaded posting under `out/runs/`, then commit and push. Keep the printed JSON, which has `mark_synced`, `commit` and `synced_at`. If it prints `PUSH FAILED`, report that and continue. The commit is still local.
-7. **Republish the page library:**
-   - Artifact `list` with `scope: "files"` on the URL.
-   - Artifact `read` on the URL.
-   - Artifact `publish` with `url` set to the artifact URL, `file_path` set to `artifact\index.html`, and `files` set to `{"data/library.json": "data/library.json"}`.
-8. **Mark synced:** ArtifactData `batch`, 50 writes per call at most, using `op: "update"`:
-   - each `mark_synced.jd_runs` id gets `{"sync_status": "synced", "synced": true, "synced_at": <synced_at>, "sync_commit": <commit>}`;
-   - each `bullet_inbox` and `feedback` id gets `{"synced": true}`;
-   - then `set` the document `meta/sync` to `{"last_synced_at": <synced_at>, "commit": <commit>, "runs": n, "new_bullets": n, "feedback": n}`.
+7. **Update the page's bullet bank through the database. Never republish the page during a sync**, because a new page version would reload any copy Tim has open. Run ArtifactData `set` on the URL with collection `library`, doc_id `current`, and `file_path` set to the absolute path of `data\library.json`. The page loads this document on open and applies it only before Tim starts working. Otherwise it waits for his next posting.
+8. **Mark synced** with ArtifactData `batch`, 50 writes per call at most. Pin each entry's `if_version` to the version shown for that document in step 3's dump output.
+   - Each `mark_synced.jd_runs` id gets an `update` of `{"sync_status": "synced", "synced": true, "synced_at": <synced_at>, "sync_commit": <commit>, "synced_map": <synced_map[run id] or {}>}`. `synced_map` tells the page which bank bullet replaced each answer bullet, so saved sessions show the polished versions.
+   - Each `bullet_inbox` and `feedback` id gets an `update` of `{"synced": true}`.
+   - Then `set` the document `meta/sync` to `{"last_synced_at": <synced_at>, "commit": <commit>, "runs": n, "new_bullets": n, "feedback": n}`.
+   - If a pinned entry fails because the document changed since the dump, drop that entry and retry the rest. The changed document stays pending, and the next sync picks it up.
 9. **Report** in one line: postings synced, bullets learned, commit hash.
 
 ## Why the page stays consistent
-Once a document is marked synced, the page ignores it for scoring and the bullet inbox, because its content now lives in `library.json`. Nothing is counted twice. `rot.py learn` is idempotent: follow-ups and feedback carry dedupe keys, so a re-run after a crash does not double-apply.
+Once a document is marked synced, the page ignores it for scoring and the bullet inbox, because its content now lives in the bank (`library/current` in the page database, mirrored in `data/library.json`). Nothing is counted twice. `rot.py learn` is idempotent: follow-ups and feedback carry dedupe keys, so a re-run after a crash does not double-apply.

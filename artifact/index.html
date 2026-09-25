@@ -184,6 +184,8 @@ mark{background:var(--hl);color:var(--hl-ink);border-radius:2px;padding:0 1px}
     <div class="col">
       <section class="panel" aria-labelledby="jdh">
         <h2 id="jdh">Job description <span class="tag" id="jdTag">SAMPLE</span></h2>
+        <p class="syncnote" id="restoreNote" aria-live="polite" hidden></p>
+        <label class="f" for="recent" id="recentWrap" hidden>Saved postings<select id="recent"><option value="">Open a saved posting…</option></select></label>
         <div class="row2">
           <label class="f" for="company">Company<input type="text" id="company" placeholder="auto-detected"></label>
           <label class="f" for="role">Role title<input type="text" id="role" placeholder="auto-detected"></label>
@@ -191,7 +193,7 @@ mark{background:var(--hl);color:var(--hl-ink);border-radius:2px;padding:0 1px}
         <label class="f" for="jd">Posting text<textarea id="jd" spellcheck="false"></textarea></label>
         <div class="row">
           <button class="primary" id="matchBtn">Match against my bullet bank</button>
-          <button id="clearBtn">Clear</button>
+          <button id="newBtn" title="Start a blank posting. Everything so far stays under Saved postings.">New posting</button>
           <span class="hint" id="jdHint"></span>
         </div>
       </section>
@@ -297,11 +299,12 @@ const S = {
   excluded:new Set(), pinned:new Set(), textChoice:{}, edits:{},
   summary:null, headline:null, compOrder:null, summarySource:"baseline",
   questions:[], newAch:[], adj:{}, inbox:[], runs:[], feedback:[],
-  ctl1:null, ctl2:null, ctlQ:null, writeChain:{}, syncMeta:null
+  ctl1:null, ctl2:null, ctlQ:null, writeChain:{}, syncMeta:null,
+  step:1, locked:null, uid:null, idResolved:false, touched:false, pendingLib:null, localSavedAt:null, recent:[]
 };
 
 function toast(msg){ const t=$("#toast"); t.textContent=msg; t.hidden=false; clearTimeout(toast._t); toast._t=setTimeout(()=>t.hidden=true, 3200); }
-function setStep(n){ document.querySelectorAll("#steps li").forEach(li=>{ const s=+li.dataset.s; li.classList.toggle("done", s<n); li.classList.toggle("active", s===n); }); }
+function setStep(n){ S.step=n; document.querySelectorAll("#steps li").forEach(li=>{ const s=+li.dataset.s; li.classList.toggle("done", s<n); li.classList.toggle("active", s===n); }); }
 
 /* ------------------------------ matching engine (port of rot.py) ------------------------------ */
 function extractRequirements(text){
@@ -380,9 +383,19 @@ function select(req){
     items.sort((x,y)=>(y.s-x.s)||(x.rank-y.rank));
     const info=L.roles.find(r=>r.key===role); if(!info) continue;
     const pinnedHere=items.some(i=>S.pinned.has(i.a.id));
-    if(info.hidden && !pinnedHere && (!hasReq || items[0].s < (sc.hidden_role_min??4))) continue;
+    const lock=S.locked?.[role];
+    if(info.hidden && !pinnedHere && !(lock&&lock.length) && (!hasReq || items[0].s < (sc.hidden_role_min??4))) continue;
     const cap=(caps[role]??3) + items.filter(i=>i.a.fresh).length;
-    chosen[role]=items.slice(0,cap).map(i=>({...i, t:pickText(i.a,req)}));
+    let pick;
+    if(lock){
+      // a curated or restored draft stays exactly as it was; new pinned bullets go on top, open slots fill with the next best
+      const byId=new Map(items.map(i=>[i.a.id,i]));
+      const locked=lock.map(id=>byId.get(id)).filter(Boolean);
+      const newPins=items.filter(i=>S.pinned.has(i.a.id) && !locked.includes(i));
+      pick=[...newPins, ...locked];
+      for(const i of items){ if(pick.length>=cap) break; if(!pick.includes(i)) pick.push(i); }
+    } else pick=items.slice(0,cap);
+    chosen[role]=pick.map(i=>({...i, t:pickText(i.a,req)}));
   }
   return chosen;
 }
@@ -521,6 +534,7 @@ async function logFeedback(action, aid, text){
 }
 
 /* ------------------------------ flow ------------------------------ */
+function lockCurrent(){ S.locked=Object.fromEntries(Object.entries(S.chosen).map(([r,items])=>[r, items.map(i=>i.a.id)])); }
 function recompute(){ S.chosen=select(S.req); S.cov=coverage(S.req,S.chosen); S.score=Object.keys(S.req).length?matchScore(S.req,S.cov):null; renderMatch(); renderSheet(); }
 
 function templateQuestions(){
@@ -535,12 +549,14 @@ async function doMatch(){
   if(jd.length<80){ $("#jdHint").textContent="Paste the full posting (at least a few lines) to match against."; return; }
   $("#jdHint").textContent="";
   S.ctl1?.abort(); S.ctl2?.abort();
-  Object.assign(S,{jd, req:extractRequirements(jd), uncatalogued:[], excluded:new Set(), pinned:new Set(), textChoice:{}, edits:{}, summary:null, headline:null, compOrder:null, questions:[], newAch:[], phase:"draft"});
+  if(S.pendingLib){ S.lib=S.pendingLib; S.pendingLib=null; renderStats(); }
+  Object.assign(S,{locked:null, jd, req:extractRequirements(jd), uncatalogued:[], excluded:new Set(), pinned:new Set(), textChoice:{}, edits:{}, summary:null, headline:null, compOrder:null, questions:[], newAch:[], phase:"draft"});
   $("#jdTag").hidden = jd!==SAMPLE_JD.trim();
   recompute(); setStep(2);
   S.runId="run-"+Date.now().toString(36);
   const reqW=Object.fromEntries(Object.entries(S.req).map(([t,r])=>[t,r.weight]));
   await saveRun({created:new Date().toISOString(), status:"draft", company:$("#company").value||null, title:$("#role").value||null, jd_text:jd.slice(0,20000), requirements:reqW, match_score:S.score, source:"artifact", synced:false, sync_status:"draft"}, true);
+  persist(true);
   if(S.sample) claudeTailor(); else useQuickQuestions("Claude isn't available in this view, so these questions come from the gap analysis.");
 }
 
@@ -620,6 +636,7 @@ Requirements: return up to 20 tags with your corrected importance. Followups: ex
       $("#qStatus").textContent = qs.length>=3 ? "" : "Claude returned fewer than three questions, so these come from the gap analysis.";
       renderQuestions(); setStep(3);
       st.innerHTML=`<span class="pill ok">tailored</span><span>Claude adjusted requirement weights, rewrote the summary, and drafted your questions.</span>`;
+      persist(true);
       await saveRun({company:$("#company").value||null, title:$("#role").value||null, requirements:Object.fromEntries(Object.entries(S.req).map(([t,x])=>[t,x.weight])), uncatalogued:S.uncatalogued, match_score:S.score, summary:S.summary, followups:S.questions.map(q=>({question:q.question, tag:q.tag, role:q.role}))});
     }
   }catch(e){
@@ -701,7 +718,7 @@ async function convertQuestions(ixs, label){
   }catch(e){
     $("#finalStatus").innerHTML = e?.code==="cancelled" ? "" : `<span class="err">${sampleErr(e)}</span>`;
     if(e?.code==="not_granted"||e?.code==="sampling_disabled") S.sample=null;
-  }finally{ for(const q of items) S.questions[q.ix].busy=false; renderQuestions(); }
+  }finally{ for(const q of items) S.questions[q.ix].busy=false; renderQuestions(); persist(true); }
 }
 
 async function doFinal(){
@@ -737,7 +754,7 @@ async function doFinal(){
       S.pinned.add(id);
     }
   });
-  S.phase="final"; recompute(); renderQuestions(); setStep(4);
+  lockCurrent(); S.phase="final"; recompute(); renderQuestions(); setStep(4); persist(true);
   toast(bullets.length?`Added ${bullets.length} new bullet${bullets.length>1?"s":""}. Final draft ready.`:"Final draft ready.");
   // persist learning (deterministic doc ids, so building the final twice never duplicates bullets)
   const m=resumeModel();
@@ -748,7 +765,7 @@ async function doFinal(){
   if(S.db && S.runId) for(const [n,x] of S.newAch.entries()){ await queueWrite("bullet_inbox", ()=>S.db.doc(`bullet_inbox/${S.runId}-g${n}`).set({run_id:S.runId, role:x.role, achievement_id:x.attach||null, angle:"gate2", text:x.text.text, tags:x.tags, created:new Date().toISOString(), synced:false})); }
 }
 function saveEdit(aid, i, txt){
-  S.edits[aid]=txt; S.pinned.add(aid);
+  lockCurrent(); S.edits[aid]=txt; S.pinned.add(aid); persist(true);
   logFeedback("edit", aid, {tid:i.t.id, text:txt});
   if(!S.db || !S.runId) return;
   const g=String(aid).match(/^gate2-.+-(\d+)$/);
@@ -771,11 +788,12 @@ $("#sheet").addEventListener("click", e=>{
   const b=e.target.closest("button[data-act]"); if(!b) return;
   const aid=b.dataset.aid, i=findChosen(aid); if(!i) return;
   const act=b.dataset.act;
+  if(act!=="polish") lockCurrent();
   if(act==="keep"){ S.pinned.add(aid); logFeedback("keep", aid, {tid:i.t.id, text:i.t.text}); toast("Kept. It ranks higher in future matches."); }
   if(act==="swap"){ S.excluded.add(aid); S.pinned.delete(aid); logFeedback("swap", aid, {tid:i.t.id, text:i.t.text}); }
   if(act==="drop"){ S.excluded.add(aid); S.pinned.delete(aid); logFeedback("drop", aid, {tid:i.t.id, text:i.t.text}); toast("Dropped. It ranks lower in future matches."); }
   if(act==="polish"){ polishBullet(aid); return; }
-  recompute();
+  recompute(); persist(true);
 });
 $("#sheet").addEventListener("focusout", e=>{
   const el=e.target.closest(".bt[contenteditable]"); if(!el) return;
@@ -868,6 +886,7 @@ async function queueSync(model){
   await saveRun({downloaded_at:now, sync_status:"pending", synced:false, status:S.phase==="final"?"final":"draft",
     company:$("#company").value||null, title:$("#role").value||null, match_score:S.score, requirements:reqW, final_model:model});
   note.innerHTML=`<b>Queued for sync.</b> Your GitHub database picks this up at the next hourly sync.`;
+  persist(true);
 }
 $("#copyBtn").onclick=async()=>{
   const txt=plainText(resumeModel());
@@ -885,44 +904,229 @@ $("#exportBtn").onclick=async()=>{
   try{ await S.downloads.save({filename:"learnings.json", data}); toast("Learnings saved."); }catch(e){ if(e?.code!=="declined") toast("The file couldn't be saved here."); }
 };
 $("#matchBtn").onclick=doMatch;
-$("#clearBtn").onclick=()=>{ $("#jd").value=""; $("#company").value=""; $("#role").value=""; $("#jdTag").hidden=true; $("#jd").focus(); };
+$("#newBtn").onclick=()=>newPosting();
+$("#recent").addEventListener("change", e=>{ const id=e.target.value; e.target.value=""; if(id) openSaved(id); });
+$("#recent").addEventListener("focus", ()=>loadRecent());
+document.addEventListener("pointerdown", ()=>{ S.touched=true; }, {capture:true});
 $("#finalBtn").onclick=doFinal;
 $("#quickQBtn").onclick=()=>useQuickQuestions("Quick questions from the gap analysis. Claude's version was skipped.");
+["#jd","#company","#role"].forEach(sel=>$(sel).addEventListener("input", ()=>{ S.touched=true; persist(); }));
 $("#questions").addEventListener("input", e=>{
+  S.touched=true; persist();
   const ix=e.target.dataset.ix; if(ix!=null && S.questions[ix] && e.target.tagName==="TEXTAREA") S.questions[ix].answer=e.target.value;
   const bt=e.target.dataset.btxt; if(bt){ const [q,b]=bt.split(":").map(Number); const B=S.questions[q]?.bullets?.[b]; if(B){ B.text=e.target.value; const cc=$(`#bcc${q}-${b}`); if(cc){ cc.textContent=B.text.length; cc.classList.toggle("over", B.text.length>S.lib.length_band.hard_ceiling); } } }
 });
 $("#questions").addEventListener("change", e=>{
+  S.touched=true; persist();
   const ix=e.target.dataset.ix; if(ix!=null && S.questions[ix] && e.target.tagName==="SELECT") S.questions[ix].role=e.target.value;
   const bo=e.target.dataset.bon; if(bo){ const [q,b]=bo.split(":").map(Number); const B=S.questions[q]?.bullets?.[b]; if(B) B.on=e.target.checked; }
 });
 $("#questions").addEventListener("click", e=>{ const b=e.target.closest("button[data-conv]"); if(!b) return; const ix=+b.dataset.conv; convertQuestions([ix], "Claude is turning that answer into bullets…"); });
 $("#polishAllBtn").onclick=()=>{ readAnswers(); const ixs=S.questions.map((q,ix)=>ix).filter(ix=>!isSkip(S.questions[ix].answer)); convertQuestions(ixs, `Claude is polishing ${ixs.length} answer${ixs.length>1?"s":""}…`); };
 
+/* ------------------------------ saved work (sessions) ------------------------------ */
+/* Your working state is saved to this browser at once and to your private area of the page's
+   database (data/users/<you>/workspace), so opening the page picks up where you left off. */
+const LS_KEY="rmd.session.v1";
+const clone=o=>JSON.parse(JSON.stringify(o));
+const badSummary=t=>!t || /^(this|the)\s+(posting|role|job)/i.test(t) || /\bTim King\b/.test(t);
+function norm(t){ return String(t||"").toLowerCase().replace(/[^a-z0-9]/g,""); }
+function serializeState(){
+  if(!S.lib) return null;
+  return {v:1, runId:S.runId, saved_at:new Date().toISOString(),
+    jd:S.jd, jdDraft:$("#jd").value, company:$("#company").value, title:$("#role").value,
+    req:S.req, uncatalogued:S.uncatalogued, phase:S.phase, step:S.step,
+    excluded:[...S.excluded], pinned:[...S.pinned], locked:S.locked, textChoice:S.textChoice, edits:S.edits,
+    summary:S.summary, headline:S.headline, compOrder:S.compOrder, summarySource:S.summarySource,
+    questions:S.questions.map(q=>({question:q.question, why:q.why||"", tag:q.tag||null, role:q.role, hint:q.hint||"", answer:q.answer||"", bullets:q.bullets||null, note:q.note||""})),
+    newAch:S.newAch, qStatus:$("#qStatus").textContent, lib_exported_at:S.lib.exported_at||null};
+}
+function readLocal(){ try{ const t=localStorage.getItem(LS_KEY); return t?JSON.parse(t):null; }catch{ return null; } }
+function wsRef(){ return S.db ? (S.uid ? S.db.doc(`data/users/${S.uid}/workspace`) : S.db.doc("meta/workspace")) : null; }
+function sessRef(id){ if(!S.db||!id) return null; return S.uid ? wsRef().collection("sessions").doc(id) : S.db.doc("sessions/"+id); }
+let saveTimer=null;
+function persist(soon){ clearTimeout(saveTimer); saveTimer=setTimeout(saveNow, soon?150:1200); }
+function saveNow(){
+  const st=serializeState(); if(!st) return;
+  try{ localStorage.setItem(LS_KEY, JSON.stringify(st)); S.localSavedAt=st.saved_at; }catch{}
+  if(!S.db || !S.idResolved || !S.runId) return;
+  const ref=sessRef(S.runId), w=wsRef();
+  queueWrite(ref.path, ()=>ref.set(st));
+  queueWrite(w.path, ()=>w.set({current:S.runId, saved_at:st.saved_at}));
+}
+/* Bullets that a sync has since folded into the bank (gate2-X -> art-X) are shown from the bank instead. */
+function remapSynced(map){
+  map=map||{};
+  const ids=new Set(S.lib.achievements.map(a=>a.id));
+  const libTexts=new Set(S.lib.achievements.flatMap(a=>a.texts.map(t=>norm(t.text))));
+  const move=(from,to)=>{
+    if(S.pinned.delete(from) && to) S.pinned.add(to);
+    if(S.excluded.delete(from) && to) S.excluded.add(to);
+    delete S.edits[from];   // the bank's polished version supersedes the draft text
+    if(S.locked) for(const r of Object.keys(S.locked)){ const out=[]; for(const x of S.locked[r]){ const y=(x===from)?to:x; if(y && !out.includes(y)) out.push(y); } S.locked[r]=out; }
+  };
+  S.newAch=S.newAch.filter(x=>{
+    if(x.ach){
+      const gid=x.ach.id;
+      if(Object.prototype.hasOwnProperty.call(map,gid)){ const to=map[gid]; move(gid, to && ids.has(to) ? to : null); return false; }
+      const art=("art-"+gid.replace(/^gate2-/,"").toLowerCase().replace(/[^a-z0-9-]/g,"")).slice(0,44);
+      if(ids.has(art)){ move(gid, art); return false; }
+      return true;
+    }
+    return !libTexts.has(norm(x.text.text));
+  });
+}
+function restoreState(st){
+  if(!st || st.v!==1 || !S.lib) return false;
+  S.ctl1?.abort(); S.ctl2?.abort(); S.ctlQ?.abort();
+  S.runId=st.runId||null; S.jd=st.jd||"";
+  $("#jd").value=st.jdDraft ?? st.jd ?? ""; $("#company").value=st.company||""; $("#role").value=st.title||"";
+  S.req=st.req||{}; S.uncatalogued=st.uncatalogued||[]; S.phase=st.phase||(Object.keys(S.req).length?"draft":"idle");
+  S.excluded=new Set(st.excluded||[]); S.pinned=new Set(st.pinned||[]); S.locked=st.locked?clone(st.locked):null;
+  S.textChoice=st.textChoice||{}; S.edits=st.edits?{...st.edits}:{};
+  S.summary=badSummary(st.summary)?null:st.summary; S.headline=st.headline||null; S.compOrder=st.compOrder||null; S.summarySource=st.summarySource||"baseline";
+  S.questions=(st.questions||[]).map(q=>({...q, busy:false}));
+  S.newAch=st.newAch?clone(st.newAch):[];
+  remapSynced(st.synced_map);
+  $("#jdTag").hidden = ($("#jd").value.trim()!==SAMPLE_JD.trim());
+  $("#claude1Status").hidden=true; $("#quickQBtn").hidden=true; $("#finalStatus").textContent=""; $("#syncNote").textContent="";
+  recompute(); renderQuestions();
+  $("#qStatus").textContent=st.qStatus||"";
+  setStep(st.step || (S.phase==="final"?4:(S.questions.length?3:(Object.keys(S.req).length?2:1))));
+  S.localSavedAt=st.saved_at||S.localSavedAt;
+  return true;
+}
+function showRestoreNote(st, how){
+  if(!st.jd && !st.company && !st.title) return;   // a blank "new posting" needs no note
+  const when=st.saved_at?new Date(st.saved_at):null;
+  const w=when&&!isNaN(when)?when.toLocaleString([], {month:"short", day:"numeric", hour:"numeric", minute:"2-digit"}):"";
+  const what=[st.company, st.title].filter(Boolean).join(" · ") || (st.jd? "your last posting" : "your last draft");
+  const n=$("#restoreNote"); n.hidden=false;
+  n.innerHTML=`<b>${how||"Picked up where you left off"}:</b> ${esc(what)}${w?` (saved ${esc(w)})`:""}. <b>New posting</b> starts fresh; this one stays under Saved postings.`;
+}
+/* Older runs (before saved sessions existed) are rebuilt from what the run recorded. */
+function sessionFromRun(r){
+  const req=extractRequirements(r.jd_text||"");
+  for(const [t,w] of Object.entries(r.requirements||{})) if(S.lib.tags[t]) req[t]={phrases:(req[t]&&req[t].phrases)||[], weight:+(typeof w==="object"?w.weight:w)||1};
+  const nb=r.new_bullets||[];
+  const newAch=nb.map((b,n)=>{ const t={id:`new:${r._id}:${n}`, kind:"learned", angle:"gate2", text:b.text, score_adj:0, fresh:true};
+    return b.achievement_id ? {attach:b.achievement_id, role:b.role, tags:b.tags||[], text:t}
+      : {ach:{id:`gate2-${r._id}-${n}`, role:b.role, confidence:"asserted", fresh:true, has_metrics:/\d/.test(b.text), tags:Object.fromEntries((b.tags||[]).filter(x=>S.lib.tags[x]).map(x=>[x,1])), metrics:[], texts:[t]}, role:b.role, tags:b.tags||[], text:{text:b.text}}; });
+  let locked=null; const edits={};
+  const fr=r.final_resume;
+  // keep the final layout; only answer-derived bullets keep their draft text (bank bullets show the current bank wording)
+  if(fr&&fr.roles){ locked={}; for(const role of fr.roles){ locked[role.key]=(role.bullets||[]).map(b=>b.aid); for(const b of role.bullets||[]) if(b.aid&&/^gate2-/.test(b.aid)&&b.text) edits[b.aid]=b.text; } }
+  return {v:1, runId:r._id, saved_at:r.finalized||r.created||null, jd:r.jd_text||"", company:r.company||"", title:r.title||"",
+    req, uncatalogued:r.uncatalogued||[], phase:r.status==="final"?"final":"draft", step:r.status==="final"?4:((r.followups||[]).length?3:2),
+    excluded:[], pinned:newAch.map(x=>x.attach||x.ach.id), locked, textChoice:{}, edits,
+    summary:(fr&&fr.summary)||r.summary||null, headline:(fr&&fr.headline)||null, compOrder:(fr&&fr.competencies)||null, summarySource:"claude",
+    questions:(r.followups||[]).map(f=>({question:f.question, tag:f.tag||null, role:f.role||"psp", answer:f.answer||"", why:"", hint:""})),
+    newAch, qStatus:"", synced_map:r.synced_map||null};
+}
+async function loadSession(id){
+  if(!S.db||!id) return null;
+  try{ const s=await sessRef(id).get(); if(s.exists){ const st=clone(s.data());
+    try{ const r=await S.db.doc("jd_runs/"+id).get(); if(r.exists && r.data().synced_map) st.synced_map=clone(r.data().synced_map); }catch{}
+    return st; } }catch{}
+  try{ const r=await S.db.doc("jd_runs/"+id).get(); if(r.exists) return sessionFromRun({_id:id, ...clone(r.data())}); }catch{}
+  return null;
+}
+async function loadRecent(){
+  if(!S.db) return;
+  const byId=new Map();
+  try{ const q=S.uid ? await wsRef().collection("sessions").orderBy("saved_at","desc").limit(30).get() : await S.db.collection("sessions").orderBy("saved_at","desc").limit(30).get();
+       for(const d of q.docs){ const x=d.data(); byId.set(d.id,{id:d.id, company:x.company, title:x.title, at:x.saved_at}); } }catch{}
+  for(const r of S.runs) if(!byId.has(r._id)) byId.set(r._id,{id:r._id, company:r.company, title:r.title, at:r.finalized||r.created});
+  S.recent=[...byId.values()].sort((a,b)=>String(b.at||"").localeCompare(String(a.at||""))).slice(0,30);
+  const sel=$("#recent");
+  sel.innerHTML=`<option value="">Open a saved posting…</option>`+S.recent.map(x=>{ const d=x.at?new Date(x.at):null; const ds=d&&!isNaN(d)?d.toLocaleDateString([], {month:"short", day:"numeric"}):"";
+    return `<option value="${esc(x.id)}">${esc([x.company||"Untitled", x.title||"posting"].join(" — "))}${ds?` · ${esc(ds)}`:""}${x.id===S.runId?" (open now)":""}</option>`; }).join("");
+  $("#recentWrap").hidden=!S.recent.length;
+}
+async function openSaved(id){
+  if(id===S.runId) return;
+  saveNow();
+  const st=await loadSession(id);
+  if(!st){ toast("That posting couldn't be opened."); return; }
+  restoreState(st); showRestoreNote(st, "Opened"); saveNow(); loadRecent();
+}
+function newPosting(){
+  saveNow();
+  S.ctl1?.abort(); S.ctl2?.abort(); S.ctlQ?.abort();
+  Object.assign(S,{runId:null, jd:"", req:{}, uncatalogued:[], excluded:new Set(), pinned:new Set(), locked:null, textChoice:{}, edits:{}, summary:null, headline:null, compOrder:null, summarySource:"baseline", questions:[], newAch:[], phase:"idle"});
+  if(S.pendingLib){ S.lib=S.pendingLib; S.pendingLib=null; renderStats(); }
+  $("#jd").value=""; $("#company").value=""; $("#role").value=""; $("#jdTag").hidden=true;
+  $("#restoreNote").hidden=true; $("#claude1Status").hidden=true; $("#qStatus").textContent="Paste a posting and press Match. Your five questions appear here."; $("#finalStatus").textContent=""; $("#syncNote").textContent="";
+  recompute(); renderQuestions(); setStep(1); persist(true); loadRecent(); $("#jd").focus();
+}
+/* Bank updates from the hourly sync arrive through the database, so the page itself is never republished
+   underneath you. A newer bank is applied only before you start working; otherwise it waits for your next posting. */
+async function loadBankFromDb(){
+  try{
+    const d=await S.db.doc("library/current").get();
+    if(!d.exists) return false;
+    const lib=clone(d.data());
+    if(!lib.achievements || String(lib.exported_at||"") <= String(S.lib.exported_at||"")) return false;
+    if(!S.touched){ S.lib=lib; renderStats(); return true; }
+    S.pendingLib=lib; $("#syncNote").innerHTML=`<b>Bullet bank updated.</b> It applies to your next posting.`;
+  }catch(e){ console.warn("bank", e); }
+  return false;
+}
+/* After an hourly sync, answer bullets in an open or locally saved session are swapped for their polished bank versions. */
+async function refreshSyncedMap(){
+  if(!S.runId || !S.newAch.some(x=>x.ach)) return false;
+  try{ const r=await S.db.doc("jd_runs/"+S.runId).get(); const m=r.exists && r.data().synced_map;
+       if(m){ const st=serializeState(); st.synced_map=clone(m); restoreState(st); return true; } }catch{}
+  return false;
+}
+async function restoreFromDb(){
+  let st=null;
+  try{ const w=await wsRef().get(); if(w.exists && w.data().current) st=await loadSession(w.data().current); }catch{}
+  if(!st){ try{ const q=await S.db.collection("jd_runs").orderBy("created","desc").limit(1).get(); if(!q.empty){ const d=q.docs[0]; st=sessionFromRun({_id:d.id, ...clone(d.data())}); } }catch{} }
+  if(st && !S.touched && (!S.localSavedAt || String(st.saved_at||"") > String(S.localSavedAt))){ restoreState(st); showRestoreNote(st); return true; }
+  return false;
+}
+
 /* ------------------------------ boot ------------------------------ */
-async function boot(){
-  $("#jd").value=SAMPLE_JD; $("#company").value=""; $("#role").value="";
+async function start(hotData){
   try{ const r=await fetch("data/library.json"); S.lib=await r.json(); }
   catch(e){ $("#stats").innerHTML=`<span class="stat err">The bullet bank couldn't load. Reload the page.</span>`; return; }
   renderStats();
-  // realistic first view: the sample posting, matched with keyword scoring (no Claude call on load)
-  S.jd=SAMPLE_JD; S.req=extractRequirements(SAMPLE_JD); S.phase="draft"; recompute();
-  S.questions=templateQuestions(); renderQuestions(); setStep(2);
-  $("#qStatus").textContent="Sample questions for the sample posting. Press Match to have Claude draft yours.";
+  const local=(hotData&&hotData.state)||readLocal();
+  let restored=false;
+  if(local && restoreState(local)){ restored=true; showRestoreNote(local); }
+  else $("#sheet").innerHTML=`<p class="hint">Loading your saved work…</p>`;
   renderLearned();
-  // capabilities light up when available
   const C=window.claude;
-  if(!C?.use) return;
-  C.use("downloads").then(d=>{ S.downloads=d; }).catch(()=>{});
-  C.use("sample").then(s=>{ S.sample=s; if(S.questions.length) renderQuestions(); }).catch(()=>{});
-  C.use("db").then(db=>{
-    if(!db) return; S.db=db;
-    // synced docs are already inside library.json, so only unsynced ones adjust scores or add bullets here
-    db.collection("feedback").onSnapshot(snap=>{ S.feedback=snap.docs.map(d=>({_id:d.id,...d.data()})); S.adj={}; for(const f of S.feedback){ const k=f.bullet_id; if(k==null||f.synced) continue; S.adj[k]=(S.adj[k]||0)+(f.action==="keep"?0.3:(f.action==="drop"||f.action==="reject")?-0.6:0);} renderLearned(); }, e=>console.warn("feedback", e));
-    db.collection("bullet_inbox").onSnapshot(snap=>{ S.inbox=snap.docs.map(d=>({_id:d.id,...d.data()})); renderLearned(); }, e=>console.warn("inbox", e));
-    db.collection("jd_runs").orderBy("created","desc").limit(300).onSnapshot(snap=>{ S.runs=snap.docs.map(d=>({_id:d.id,...d.data()})); renderLearned(); }, e=>console.warn("runs", e));
-    db.doc("meta/sync").onSnapshot(snap=>{ S.syncMeta=snap.exists?snap.data():null; renderLearned(); }, e=>console.warn("sync meta", e));
-  }).catch(()=>{});
+  const useCap=n=>(C&&C.use) ? C.use(n).catch(()=>null) : Promise.resolve(null);
+  useCap("downloads").then(d=>{ S.downloads=d; });
+  useCap("sample").then(s=>{ S.sample=s; if(S.questions.length) renderQuestions(); });
+  const firstUse=()=>{ // first-ever visit only: show the sample posting, matched with keyword scoring
+    $("#jd").value=SAMPLE_JD; $("#jdTag").hidden=false; S.jd=SAMPLE_JD; S.req=extractRequirements(SAMPLE_JD); S.phase="draft"; recompute();
+    S.questions=templateQuestions(); renderQuestions(); setStep(2);
+    $("#qStatus").textContent="Sample questions for the sample posting. Press Match to have Claude draft yours."; };
+  const [db, user]=await Promise.all([useCap("db"), useCap("user")]);
+  if(user){ try{ S.uid=await user.id(); }catch{} }
+  S.idResolved=true;
+  if(!db){ if(!restored) firstUse(); return; }
+  S.db=db;
+  const newerBank=await loadBankFromDb();
+  const fromDb=await Promise.race([restoreFromDb(), new Promise(r=>setTimeout(()=>r(false),4000))]);
+  if(!restored && !fromDb) firstUse();
+  else if(restored && !fromDb){ const remapped=await refreshSyncedMap(); if(!remapped && newerBank){ restoreState(serializeState()); } }  // same session, newer bank
+  // synced docs are already inside the bank, so only unsynced ones adjust scores or add bullets here
+  db.collection("feedback").onSnapshot(snap=>{ S.feedback=snap.docs.map(d=>({_id:d.id,...d.data()})); S.adj={}; for(const f of S.feedback){ const k=f.bullet_id; if(k==null||f.synced) continue; S.adj[k]=(S.adj[k]||0)+(f.action==="keep"?0.3:(f.action==="drop"||f.action==="reject")?-0.6:0);} renderLearned(); }, e=>console.warn("feedback", e));
+  db.collection("bullet_inbox").onSnapshot(snap=>{ S.inbox=snap.docs.map(d=>({_id:d.id,...d.data()})); renderLearned(); }, e=>console.warn("inbox", e));
+  db.collection("jd_runs").orderBy("created","desc").limit(300).onSnapshot(snap=>{ S.runs=snap.docs.map(d=>({_id:d.id,...d.data()})); renderLearned(); loadRecent(); }, e=>console.warn("runs", e));
+  db.doc("meta/sync").onSnapshot(snap=>{ S.syncMeta=snap.exists?snap.data():null; renderLearned(); }, e=>console.warn("sync meta", e));
 }
-boot();
+/* If the platform delivers a new page version while you work, hand your state across the reload. */
+(function(){
+  let booted=false; const bootOnce=d=>{ if(booted) return; booted=true; start(d||{}); };
+  let hot=null; try{ hot=window.claude&&window.claude.hot; }catch{}
+  try{ if(hot && typeof hot.snapshot==="function") hot.snapshot(()=>({state:serializeState()})); }catch{}
+  if(hot && typeof hot.ready==="function"){ try{ hot.ready(bootOnce); }catch{ bootOnce({}); } setTimeout(()=>bootOnce({}),3000); }
+  else bootOnce((hot&&hot.data)||{});
+})();
+window.addEventListener("pagehide", ()=>{ try{ const st=serializeState(); if(st) localStorage.setItem(LS_KEY, JSON.stringify(st)); }catch{} });
 </script>

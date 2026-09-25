@@ -920,11 +920,16 @@ def cmd_sync_apply(args):
     feedback = {f["_id"]: f for f in _load_dump(args.dump, "feedback")}
     band = pend["band"]
     new_bullets, skipped = [], []
+    gate2_map = {}   # run_id -> {page gate-2 id -> bank achievement id (or None when skipped)}
     known = {r["id"] for r in connect().execute("SELECT id FROM achievements")}
     for it in pend["bullets"]:
         p = polished.get(it["key"], it["text"])
+        is_g2 = it.get("angle") == "gate2" and it.get("run_id") and it["key"].startswith(it["run_id"] + "-")
+        gid = "gate2-" + it["key"] if is_g2 else None
         if p is None:
-            skipped.append(it["key"]); continue
+            skipped.append(it["key"])
+            if gid: gate2_map.setdefault(it["run_id"], {})[gid] = None
+            continue
         if isinstance(p, dict):   # {"text", optional "achievement_id" to fold into an existing accomplishment, optional "tags"}
             if p.get("achievement_id") in known:
                 it["achievement_id"] = p["achievement_id"]
@@ -938,8 +943,10 @@ def cmd_sync_apply(args):
             skipped.append(it["key"]); continue   # never learn an unpolished first-person / overlong answer
         if it["achievement_id"]:
             new_bullets.append({"achievement_id": it["achievement_id"], "angle": it["angle"], "text": text, "origin": "artifact"})
+            if gid: gate2_map.setdefault(it["run_id"], {})[gid] = it["achievement_id"]
         else:
             aid = "art-" + re.sub(r"[^a-z0-9-]", "", it["key"].lower())[:40]
+            if gid: gate2_map.setdefault(it["run_id"], {})[gid] = aid
             new_bullets.append({"new_achievement": {"id": aid, "role": it["role"], "canonical": text,
                                                     "tags": {t: 1.0 for t in it["tags"]} or {"gtm-strategy": 0.3},
                                                     "confidence": "asserted", "origin": "artifact",
@@ -996,6 +1003,7 @@ def cmd_sync_apply(args):
             if p.returncode != 0:
                 print("PUSH FAILED:", p.stderr.strip()[-400:])
     out = {"mark_synced": {"jd_runs": pend["runs"], "bullet_inbox": pend["inbox"], "feedback": pend["feedback"]},
+           "synced_map": gate2_map,
            "learned": res, "skipped_unpolished": skipped, "pdfs": pdfs, "commit": commit,
            "synced_at": dt.datetime.now().astimezone().isoformat(timespec="seconds")}
     jdump(out, SYNC_DIR / "last_result.json")

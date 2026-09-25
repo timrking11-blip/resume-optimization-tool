@@ -55,6 +55,14 @@ python rot.py sync-prepare [--all]                     # from sync/dump (Artifac
 python rot.py sync-apply                               # + sync/polished.json -> learn/ingest/export/PDFs/commit/push
 ```
 
+## Saved work
+The Match Desk saves your working state as you go: the posting, company and title, Claude's tailoring, your answers and answer bullets, Keep/Swap/Drop choices, edits, and the final draft.
+- **Where it's saved:** instantly in the browser, and in your private area of the page database (`data/users/<you>/workspace`).
+- **On open:** the page reopens exactly where you left off. The sample posting only appears on a first-ever visit.
+- **Past postings:** **Saved postings** reopens any earlier posting. **New posting** starts a blank one, and nothing is lost.
+- **Syncs don't reload the page.** The hourly sync updates the bullet bank through the page database (`library/current`) and never republishes the page. A newer bank applies on open, before you start working. Otherwise it waits for your next posting.
+- **Synced answers show polished.** Once a posting's answers are synced, reopening it shows their polished bank versions, using the sync's `synced_map`.
+
 ## The learning loop
 
 1. **Gate 1 (baseline):** five questions asked after the phase-1 draft. The answers are stored in `followups` (gate 1) and applied through `curation/learned.json`, which supersedes rows and never overwrites them.
