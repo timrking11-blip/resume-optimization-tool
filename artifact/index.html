@@ -85,22 +85,35 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .spin{width:14px;height:14px;border-radius:50%;border:2px solid var(--line);border-top-color:var(--navy);animation:sp 0.9s linear infinite;flex:none}
 @keyframes sp{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion: reduce){.spin{animation:none}}
-.q{display:grid;gap:6px;padding:12px;border:1px solid var(--line);border-radius:8px;background:var(--surface-2)}
+/* Grid and flex children default to min-width:auto, which let a long dropdown widen each question card past its column and under the resume sheet. Pin every level to the column width. */
+.panel > *, .col > *, #questions > *{min-width:0}
+#questions{grid-template-columns:minmax(0,1fr)}
+.q{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;padding:12px;border:1px solid var(--line);border-radius:8px;background:var(--surface-2);min-width:0}
+.q > *{min-width:0}
 .q .qh{display:flex;gap:8px;align-items:baseline}
-.q .qn{font-family:var(--cond);font-weight:700;color:var(--navy);font-size:15px}
-.q p{margin:0}
-.q .why{font-size:12px;color:var(--muted)}
+.q .qh p{flex:1 1 auto;min-width:0}
+.q .qn{font-family:var(--cond);font-weight:700;color:var(--navy);font-size:15px;flex:none}
+.q p{margin:0;overflow-wrap:anywhere}
+.q .why{font-size:12px;color:var(--muted);overflow-wrap:anywhere}
 .q textarea{min-height:64px;background:var(--surface)}
-.q .meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12px;color:var(--muted)}
-.q select{width:auto;padding:4px 8px;font-size:12px;background:var(--surface)}
-.jdview{font-size:12.5px;line-height:1.55;max-height:220px;overflow:auto;white-space:pre-wrap;background:var(--surface-2);border-radius:6px;padding:10px;border:1px solid var(--line)}
+.q .meta{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;font-size:12px;color:var(--muted)}
+.q .meta > span{min-width:0;overflow-wrap:anywhere}
+.q .meta label{display:flex;align-items:center;gap:6px;flex:1 1 220px;min-width:0}
+.q .meta .lb{white-space:nowrap;flex:none}
+.q select{flex:1 1 auto;width:100%;max-width:100%;min-width:0;padding:4px 8px;font-size:12px;background:var(--surface);text-overflow:ellipsis}
+.jdview{font-size:12.5px;line-height:1.55;max-height:220px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;background:var(--surface-2);border-radius:6px;padding:10px;border:1px solid var(--line)}
 mark{background:var(--hl);color:var(--hl-ink);border-radius:2px;padding:0 1px}
 /* ---------- the paper sheet ---------- */
-.sheetwrap{position:sticky;top:12px;display:grid;gap:10px;min-width:0}
+.sheetwrap{position:static;display:grid;gap:10px;min-width:0}
 .sheetbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
 .badge{font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:4px;border:1px solid var(--line);color:var(--muted);background:var(--surface)}
 .badge.final{border-color:var(--ok);color:var(--ok);background:var(--ok-bg)}
-.sheet{background:var(--sheet);color:var(--sheet-ink);font-family:var(--doc);font-size:12.2px;line-height:1.3;padding:30px 34px;border-radius:4px;box-shadow:var(--shadow);max-height:calc(100vh - 110px);overflow:auto;border:1px solid var(--line)}
+.sheet{background:var(--sheet);color:var(--sheet-ink);font-family:var(--doc);font-size:12.2px;line-height:1.3;padding:30px 34px;border-radius:4px;box-shadow:var(--shadow);border:1px solid var(--line);overflow-wrap:anywhere}
+/* The preview follows you down the page only when there is room for two full columns */
+@media (min-width:1100px){
+  .sheetwrap{position:sticky;top:calc(12px + env(safe-area-inset-top, 0px))}
+  .sheet{max-height:calc(100vh - 110px);overflow:auto}
+}
 .sheet h3{font-size:24px;text-align:center;margin:0;color:#000;letter-spacing:.3px}
 .sheet .hl{text-align:center;font-size:10.2px;font-weight:700;color:var(--sheet-navy);letter-spacing:.4px;margin:2px 0 1px}
 .sheet .ct{text-align:center;font-size:10.6px;margin:0 0 6px}
@@ -133,9 +146,8 @@ mark{background:var(--hl);color:var(--hl-ink);border-radius:2px;padding:0 1px}
 .err{color:var(--gap)}
 .toast{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom, 0px));transform:translateX(-50%);background:var(--ink);color:var(--surface);padding:8px 14px;border-radius:6px;font-size:13px;box-shadow:var(--shadow);z-index:5}
 @media (max-width:900px){
-  .grid{grid-template-columns:1fr}
-  .sheetwrap{position:static}
-  .sheet{max-height:none;padding:20px 18px}
+  .grid{grid-template-columns:minmax(0,1fr)}
+  .sheet{padding:20px 18px}
   ol.steps{grid-template-columns:repeat(2,minmax(0,1fr))}
   .learn{grid-template-columns:1fr}
 }
@@ -446,6 +458,11 @@ function renderSheet(){
   $("#phaseBadge").textContent = final ? "FINAL" : (S.phase==="idle"?"BASELINE":"DRAFT");
   $("#phaseBadge").classList.toggle("final", final);
 }
+function shortRole(r){
+  const emp = r.employer.startsWith("Confidential") ? "Healthcare AI start-up" : r.employer.split(" / ").pop().replace(/ Insurance Company$/,"");
+  const title = r.title.split(/[,–\/]/)[0].trim();
+  return `${emp} · ${title}`;
+}
 function renderQuestions(){
   const roles=S.lib.roles.filter(r=>!r.hidden||S.chosen[r.key]);
   $("#questions").innerHTML = S.questions.map((q,ix)=>`
@@ -453,7 +470,7 @@ function renderQuestions(){
       ${q.why?`<div class="why">${esc(q.why)}</div>`:""}
       <textarea id="ans${ix}" data-ix="${ix}" placeholder="${esc(q.hint||"What you did, the scope, the measurable result. Leave blank to skip.")}">${esc(q.answer||"")}</textarea>
       <div class="meta"><span>Proves: <b>${esc(S.lib.tags[q.tag]?.label||q.tag||"—")}</b></span>
-        <label>Goes under <select id="role${ix}" data-ix="${ix}">${roles.map(r=>`<option value="${esc(r.key)}" ${r.key===q.role?"selected":""}>${esc(r.title.split(",")[0])} · ${esc(r.employer)}</option>`).join("")}</select></label></div>
+        <label for="role${ix}"><span class="lb">Goes under</span><select id="role${ix}" data-ix="${ix}" title="Which role this answer becomes a bullet for">${roles.map(r=>`<option value="${esc(r.key)}" ${r.key===q.role?"selected":""}>${esc(shortRole(r))}</option>`).join("")}</select></label></div>
     </div>`).join("");
   $("#finalBtn").disabled = !S.questions.length || S.phase==="finalizing";
 }
