@@ -130,12 +130,14 @@ CREATE TABLE IF NOT EXISTS followups (
   gate INTEGER NOT NULL,                 -- 1 = baseline gate, 2 = per-JD gate
   question TEXT NOT NULL, answer TEXT, tag_id TEXT REFERENCES tags(id),
   resulting_bullet_id INTEGER REFERENCES bullets(id),
-  asked_at TEXT DEFAULT (datetime('now')), answered_at TEXT
+  asked_at TEXT DEFAULT (datetime('now')), answered_at TEXT,
+  ext_key TEXT                           -- dedupe key for synced answers
 );
 CREATE TABLE IF NOT EXISTS feedback (
   id INTEGER PRIMARY KEY, jd_id TEXT REFERENCES job_descriptions(id),
   bullet_id INTEGER REFERENCES bullets(id), action TEXT NOT NULL,   -- keep | reject | edit
-  edited_text TEXT, created_at TEXT DEFAULT (datetime('now'))
+  edited_text TEXT, created_at TEXT DEFAULT (datetime('now')),
+  ext_id TEXT                            -- Match Desk feedback doc id (dedupe)
 );
 CREATE TABLE IF NOT EXISTS generated_resumes (
   id INTEGER PRIMARY KEY, jd_id TEXT REFERENCES job_descriptions(id), version TEXT,

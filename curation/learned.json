@@ -81,8 +81,51 @@
       "notes": "Confirmed at Gate 1: recommendations adopted, so completed verbs stand."
     },
     "lim-data-rights": {
-      "_gate": "gate1-q4: adopted.",
-      "notes": "Confirmed at Gate 1: adopted. Counterparty is never named in output."
+      "_gate": "user request 2026-09-25: role reframed as Founder, Business Consultant, and GTM Engineer | Strategic Market Insights (healthcare AI start-up = key client)",
+      "notes": "Confirmed at Gate 1: adopted. Counterparty is never named in output.",
+      "canonical": "Blocked a proposed EHR data migration as an uncompensated asset transfer, defining the NDA-to-BAA sequence that protected the client's data asset.",
+      "variants": {
+        "soft": "Identified data-rights exposure in a proposed partner integration and defined the negotiation terms that protect the client's core data asset."
+      }
+    },
+    "lim-thought-partner": {
+      "_gate": "user request 2026-09-25: role reframed as Founder, Business Consultant, and GTM Engineer | Strategic Market Insights (healthcare AI start-up = key client)",
+      "canonical": "Advise the CEO and board of a healthcare AI start-up client, translating business, technology, regulatory, and workforce tradeoffs into board-ready decisions."
+    },
+    "lim-feasibility-roadmap": {
+      "_gate": "user request 2026-09-25: role reframed as Founder, Business Consultant, and GTM Engineer | Strategic Market Insights (healthcare AI start-up = key client)",
+      "canonical": "Reconciled the client founder's four-pillar vision and three build memos into one staged roadmap: 12 recommendations, 4 stage gates, 8 board decisions."
+    },
+    "lim-unit-economic-gates": {
+      "_gate": "user request 2026-09-25: role reframed as Founder, Business Consultant, and GTM Engineer | Strategic Market Insights (healthcare AI start-up = key client)",
+      "canonical": "Set the unit-economic gates the client runs on — CAC under $900, payback under 12 months, churn under 5%, TTFV under 7 days — redirecting GTM to channel partners."
+    },
+    "lim-collateral": {
+      "_gate": "user request 2026-09-25: role reframed as Founder, Business Consultant, and GTM Engineer | Strategic Market Insights (healthcare AI start-up = key client)",
+      "canonical": "Produced the collateral the client sells with: pitch deck, competitive battlecards, partner negotiation sheets, and an eight-document executive round table."
+    },
+    "lim-operating-cadence": {
+      "_gate": "user request 2026-09-25: role reframed as Founder, Business Consultant, and GTM Engineer | Strategic Market Insights (healthcare AI start-up = key client)",
+      "canonical": "Built the operating cadence the client runs on: RACI and escalation thresholds, a weekly capacity forecast, and a one-page decision log with owner and date."
+    },
+    "lim-entity-ip-structure": {
+      "_gate": "user request 2026-09-25: role reframed as Founder, Business Consultant, and GTM Engineer | Strategic Market Insights (healthcare AI start-up = key client)",
+      "canonical": "Coordinated outside counsel, CPA, engineering, and founders to architect the entity, IP, and data-rights structure behind the client's data assets."
+    },
+    "lim-gtm-ownership": {
+      "_gate": "user request 2026-09-25: role reframed as Founder, Business Consultant, and GTM Engineer | Strategic Market Insights (healthcare AI start-up = key client)",
+      "canonical": "Own go-to-market for the client's AI compliance product sold to independent clinical practices — segmentation, positioning, $99/$249 tiers, and channel strategy."
+    },
+    "lim-claude-code-tracker": {
+      "_gate": "user request 2026-09-25: role reframed as Founder, Business Consultant, and GTM Engineer | Strategic Market Insights (healthcare AI start-up = key client)",
+      "canonical": "Built the practice's multi-tenant client engagement tracker with Claude Code, with 60 automated tests enforcing cross-client data isolation.",
+      "tags": {
+        "building-with-ai": 1.0,
+        "ai-in-workflow": 0.9,
+        "gtm-strategy": 0.4,
+        "process-improvement": 0.6,
+        "crm-discipline": 0.4
+      }
     }
   },
   "profile_overrides": {
@@ -92,15 +135,26 @@
         "date_note": "Gate 1: ended August 2026 (matches LinkedIn)."
       },
       "liminal": {
-        "engagement": "Part-time consulting engagement"
+        "title": "Founder, Business Consultant, and GTM Engineer",
+        "employer": "Strategic Market Insights",
+        "confidential": false,
+        "engagement": "Advisory & GTM engineering practice · Key engagement: healthcare AI start-up (confidential)",
+        "context_line": "Advisory & GTM engineering practice · Key engagement: healthcare AI start-up (confidential)",
+        "title_variants": [
+          "Chief Strategy Consultant",
+          "Chief Strategy Officer",
+          "Chief of Strategy",
+          "Principal Business Strategy Consultant"
+        ],
+        "date_note": "Renamed 2026-09-25 from 'Chief Strategy Consultant | Confidential Healthcare AI Start-Up'. Dates kept at July 2026 – Present (the healthcare engagement start)."
       }
     }
   },
   "baseline_overrides": {
-    "_gate": "gate1-q1/q2/q5",
-    "summary": "Revenue and go-to-market operator with eight years of full-cycle B2B, media, and enterprise technology sales, currently advising the CEO and board of an AI start-up on go-to-market, pricing, and buy-vs-build strategy. Wins net-new business from cold — Fortune 500 accounts at TEKsystems, NFL and MLB team partnerships at Professional Sports Publications — by qualifying on the budget that can actually fund a buy and building the CPM, CPA, and unit-economics case a client's finance team can defend. Has led a team of up to five, coaching performance against daily process and 1:1 metrics, and uses Claude and OpenAI models daily to compress research, account mapping, and proposal cycles.",
+    "_gate": "gate1-q1/q2/q5; user request 2026-09-25: role reframed as Founder, Business Consultant, and GTM Engineer | Strategic Market Insights (healthcare AI start-up = key client)",
+    "summary": "Revenue and go-to-market operator with eight years of full-cycle B2B, media, and enterprise technology sales. Founder of Strategic Market Insights, a consulting and GTM engineering practice whose key engagement advises a healthcare AI start-up's CEO and board on go-to-market, pricing, and buy-vs-build strategy. Wins net-new business from cold, from Fortune 500 accounts at TEKsystems to NFL and MLB team partnerships, by building the CPM, CPA, and unit-economics case a finance team can defend. Has led a team of up to five and builds AI-enabled GTM tooling with Claude Code.",
     "caps": {
-      "liminal": 5,
+      "liminal": 6,
       "psp": 6,
       "tek_lead": 4,
       "tek_recruiter": 4,
@@ -111,6 +165,29 @@
     },
     "layout": {
       "expertise_block": "after_education"
+    },
+    "priority_overrides": {
+      "liminal": [
+        "lim-thought-partner",
+        "lim-build-vs-buy",
+        "lim-gtm-ownership",
+        "lim-unit-economic-gates",
+        "lim-staffing-restructure",
+        "lim-claude-code-tracker",
+        "lim-market-sizing-exit-paths",
+        "lim-data-rights",
+        "lim-competitive-venture-odds",
+        "lim-customer-discovery-sprint",
+        "lim-feasibility-roadmap",
+        "lim-non-dilutive-capital",
+        "lim-operating-cadence",
+        "lim-collateral",
+        "lim-engagement-terms",
+        "lim-unit-economics-benchmarks",
+        "lim-readiness-assessment",
+        "lim-entity-ip-structure",
+        "lim-scenario-planning"
+      ]
     }
   }
 }

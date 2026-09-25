@@ -101,6 +101,13 @@ def load_curation():
     for k, v in learned.get("baseline_overrides", {}).items():
         if not k.startswith("_"):
             base[k] = v
+    for role, order in base.pop("priority_overrides", {}).items():
+        base["priority"][role] = order
+    # learned achievements join the priority list for their role (after curated ones)
+    for a in learned.get("achievements", []):
+        lst = base["priority"].setdefault(a["role"], [])
+        if a["id"] not in lst:
+            lst.append(a["id"])
     return tax, ach, prof, base, learned
 
 
@@ -701,25 +708,34 @@ def cmd_learn(args):
        {"runs":[{"id","company","title","jd_text","requirements":{tag:weight},"followups":[{"question","answer","tag","bullet":{...}}],
                  "feedback":[{"bullet_id","action","edited_text"}]}],
         "new_bullets":[{"achievement_id" | "new_achievement":{...}, "angle","text","tags":{},"origin"}]}"""
-    data = jload(args.file)
+    data = jload(args.file) if isinstance(args.file, (str, Path)) else args.file
     con = connect()
+    ensure_learning_keys(con)
     learned = jload(CUR / "learned.json", {"achievements": [], "bullets": [], "overrides": {}, "profile_overrides": {}, "baseline_overrides": {}})
     n_runs = n_fb = n_new = 0
     known = {r["id"] for r in con.execute("SELECT id FROM achievements")}
     for run in data.get("runs", []):
         jid = run.get("id") or "jd_" + hashlib.md5(run["jd_text"].encode()).hexdigest()[:10]
-        con.execute("INSERT OR IGNORE INTO job_descriptions (id,company,title,text,origin) VALUES (?,?,?,?, 'artifact')",
+        # idempotent: re-syncing a run refreshes it instead of duplicating it
+        con.execute("""INSERT INTO job_descriptions (id,company,title,text,origin) VALUES (?,?,?,?, 'artifact')
+                       ON CONFLICT(id) DO UPDATE SET company=excluded.company, title=excluded.title, text=excluded.text""",
                     (jid, run.get("company"), run.get("title"), run.get("jd_text", "")))
+        con.execute("DELETE FROM jd_requirements WHERE jd_id=?", (jid,))
         for tag, w in (run.get("requirements") or {}).items():
             con.execute("INSERT INTO jd_requirements (jd_id,tag_id,weight) SELECT ?,?,? WHERE EXISTS (SELECT 1 FROM tags WHERE id=?)",
                         (jid, tag, float(w if not isinstance(w, dict) else w.get("weight", 1)), tag))
         for f in run.get("followups", []):
-            con.execute("INSERT INTO followups (jd_id,gate,question,answer,tag_id,answered_at) VALUES (?,?,?,?,(SELECT id FROM tags WHERE id=?),datetime('now'))",
-                        (jid, f.get("gate", 2), f["question"], f.get("answer"), f.get("tag")))
+            key = hashlib.md5(f"{jid}|{f['question']}|{f.get('answer') or ''}".encode()).hexdigest()
+            con.execute("""INSERT OR IGNORE INTO followups (jd_id,gate,question,answer,tag_id,answered_at,ext_key)
+                           VALUES (?,?,?,?,(SELECT id FROM tags WHERE id=?),datetime('now'),?)""",
+                        (jid, f.get("gate", 2), f["question"], f.get("answer"), f.get("tag"), key))
         for fb in run.get("feedback", []):
-            con.execute("INSERT INTO feedback (jd_id,bullet_id,action,edited_text) VALUES (?,?,?,?)",
-                        (jid, fb.get("bullet_id"), fb["action"], fb.get("edited_text")))
-            delta = {"keep": 0.3, "reject": -0.6}.get(fb["action"], 0)
+            ext = fb.get("ext_id") or hashlib.md5(json.dumps(fb, sort_keys=True).encode()).hexdigest()
+            cur = con.execute("INSERT OR IGNORE INTO feedback (jd_id,bullet_id,action,edited_text,ext_id) VALUES (?,?,?,?,?)",
+                              (jid, fb.get("bullet_id"), fb["action"], fb.get("edited_text"), ext))
+            if cur.rowcount != 1:
+                continue  # already learned
+            delta = {"keep": 0.3, "reject": -0.6, "drop": -0.6}.get(fb["action"], 0)
             if delta and fb.get("bullet_id"):
                 con.execute("UPDATE bullets SET score_adj = COALESCE(score_adj,0) + ? WHERE id=?", (delta, fb["bullet_id"]))
             n_fb += 1
@@ -743,7 +759,253 @@ def cmd_learn(args):
     con.commit()
     jdump(learned, CUR / "learned.json")
     print(f"learned: {n_runs} runs, {n_fb} feedback events, {n_new} new bullets/achievements -> curation/learned.json")
-    print("next: python rot.py ingest && python rot.py export")
+    if not getattr(args, "quiet_next", False):
+        print("next: python rot.py ingest && python rot.py export")
+    return {"runs": n_runs, "feedback": n_fb, "new": n_new}
+
+
+def ensure_learning_keys(con):
+    """Add the dedupe keys learning needs (safe to run on any older resume.db)."""
+    cols = {r[1] for r in con.execute("PRAGMA table_info(followups)")}
+    if "ext_key" not in cols:
+        con.execute("ALTER TABLE followups ADD COLUMN ext_key TEXT")
+    cols = {r[1] for r in con.execute("PRAGMA table_info(feedback)")}
+    if "ext_id" not in cols:
+        con.execute("ALTER TABLE feedback ADD COLUMN ext_id TEXT")
+    con.execute("CREATE UNIQUE INDEX IF NOT EXISTS ux_followups_ext ON followups(ext_key)")
+    con.execute("CREATE UNIQUE INDEX IF NOT EXISTS ux_feedback_ext ON feedback(ext_id)")
+    con.commit()
+
+
+# ---------------------------------------------------------------- Match Desk sync
+FIRST_PERSON = re.compile(r"\b(I|I'm|I've|I'd|me|my|mine|we|our|us)\b")
+SYNC_DIR = ROOT / "sync"
+
+
+def _load_dump(dump, coll):
+    out = []
+    d = Path(dump) / coll
+    for f in sorted(d.glob("*.json")) if d.exists() else []:
+        doc = json.loads(f.read_text(encoding="utf-8"))
+        doc["_id"] = f.stem
+        out.append(doc)
+    return out
+
+
+def _is_synced(doc):
+    return doc.get("synced") is True or doc.get("sync_status") == "synced"
+
+
+def bullet_checks(text, band):
+    issues = []
+    if FIRST_PERSON.search(text):
+        issues.append("first person")
+    if len(text) > band["hard_ceiling"]:
+        issues.append(f"{len(text)} chars > {band['hard_ceiling']}")
+    if len(text) < band["p10"] - 20:
+        issues.append(f"{len(text)} chars, too short")
+    if not re.match(r"^[A-Z]", text.strip()):
+        issues.append("not capitalized")
+    return issues
+
+
+def cmd_sync_prepare(args):
+    """Read an ArtifactData dump (jd_runs / bullet_inbox / feedback), decide what to learn, and write
+    sync/pending.json. Bullets that break the Resume 1 standard are flagged needs_polish; the sync agent
+    (Claude) rewrites them into sync/polished.json before sync-apply."""
+    con = connect()
+    band = json.loads(con.execute("SELECT value FROM meta WHERE key='length_band'").fetchone()[0])
+    runs = [r for r in _load_dump(args.dump, "jd_runs") if not _is_synced(r)]
+    inbox = [b for b in _load_dump(args.dump, "bullet_inbox") if not _is_synced(b)]
+    feedback = [f for f in _load_dump(args.dump, "feedback") if not _is_synced(f)]
+    pending_runs = [r for r in runs if r.get("sync_status") == "pending"]
+    if not pending_runs and not args.all:
+        print(json.dumps({"status": "nothing_pending", "unsynced_runs": len(runs)}))
+        return
+    known = {r["id"] for r in con.execute("SELECT id FROM achievements")}
+    items, seen = {}, {}
+    run_by_id = {r["_id"]: r for r in runs}
+    # latest edit / drop per gate-2 achievement id
+    edits, drops = {}, set()
+    for f in sorted(feedback, key=lambda x: x.get("created", "")):
+        aid = f.get("achievement_id") or ""
+        if f.get("action") == "edit" and f.get("text"):
+            edits[aid] = f["text"]
+        if f.get("action") in ("drop", "reject"):
+            drops.add(aid)
+    def add_item(key, run_id, role, aid, text, tags, src, angle):
+        role = ROLE_UNALIAS.get(role, role)
+        n = norm(text)
+        if n in seen:
+            items[seen[n]]["source_ids"] += src
+            return
+        seen[n] = key
+        items[key] = {"key": key, "run_id": run_id, "role": role, "achievement_id": aid if aid in known else None,
+                      "text": text.strip(), "tags": [t for t in (tags or []) if t], "angle": angle,
+                      "source_ids": list(src), "issues": bullet_checks(text, band)}
+    # gate-2 bullets recorded on each run (index n -> page id gate2-<run>-<n>)
+    for r in runs:
+        # what the final resume actually showed wins; then the latest sheet edit; then the answer-derived text
+        shown = {b.get("aid"): b.get("text") for role in ((r.get("final_resume") or {}).get("roles") or [])
+                 for b in role.get("bullets", []) if isinstance(b, dict)}
+        for n, nb in enumerate(r.get("new_bullets") or []):
+            gid = f"gate2-{r['_id']}-{n}"
+            if gid in drops:
+                continue
+            text = shown.get(gid) or edits.get(gid) or nb.get("text") or ""
+            if len(text) < 15:
+                continue
+            src = [b["_id"] for b in inbox if b.get("run_id") == r["_id"] and norm(b.get("text", "")) == norm(nb.get("text", ""))]
+            add_item(f"{r['_id']}-{n}", r["_id"], nb.get("role"), nb.get("achievement_id"), text, nb.get("tags"), src, "gate2")
+    # anything else in the inbox (edits of library bullets, older runs)
+    for b in inbox:
+        if any(b["_id"] in it["source_ids"] for it in items.values()):
+            continue
+        if len(b.get("text", "")) < 15:
+            continue
+        add_item(f"inbox-{b['_id']}", b.get("run_id"), b.get("role"), b.get("achievement_id"), b["text"], b.get("tags"),
+                 [b["_id"]], b.get("angle") or "learned")
+    for it in items.values():
+        it["needs_polish"] = bool(it["issues"])
+    SYNC_DIR.mkdir(exist_ok=True)
+    pending = {"band": band, "runs": [r["_id"] for r in runs], "pending_runs": [r["_id"] for r in pending_runs],
+               "feedback": [f["_id"] for f in feedback], "inbox": [b["_id"] for b in inbox],
+               "bullets": list(items.values())}
+    jdump(pending, SYNC_DIR / "pending.json")
+    need = [it for it in items.values() if it["needs_polish"]]
+    print(json.dumps({"status": "ready", "runs": len(runs), "pending_runs": len(pending_runs), "bullets": len(items),
+                      "needs_polish": len(need), "feedback": len(feedback), "file": "sync/pending.json"}, indent=1))
+    for it in need:
+        print(f"  POLISH {it['key']}: {', '.join(it['issues'])} :: {it['text'][:110]}")
+
+
+def _model_from_run(con, r):
+    """Full resume model for a run's PDF: the page's final_model when present, else rebuilt from final_resume."""
+    m = r.get("final_model")
+    if m:
+        m = json.loads(json.dumps(m))
+        for role in m.get("roles", []):
+            role["bullets"] = [b["text"] if isinstance(b, dict) else b for b in role.get("bullets", [])]
+        return m
+    fr = r.get("final_resume")
+    if not fr:
+        return None
+    _, _, prof, base, _ = load_curation()
+    res = assemble(con, {}, base, prof["roles"], "run")
+    roles = {x["key"]: x for x in res["roles"]}
+    allroles = {row["key"]: dict(row) for row in con.execute("SELECT * FROM roles")}
+    out_roles = []
+    for rr in fr.get("roles", []):
+        key = ROLE_UNALIAS.get(rr["key"], rr["key"])
+        info = roles.get(key) or allroles.get(key)
+        if not info:
+            continue
+        out_roles.append({"title": info["title"], "employer": info["employer"], "location": info.get("location"),
+                          "dates": info.get("dates") or f"{fmt_date(info['start'])} – {fmt_date(info['end'])}",
+                          "context": info.get("context") or info.get("engagement") or "",
+                          "bullets": [b["text"] for b in rr.get("bullets", [])]})
+    res.update({"headline": fr.get("headline") or res["headline"], "summary": fr.get("summary") or res["summary"],
+                "competencies": fr.get("competencies") or res["competencies"], "roles": out_roles})
+    return res
+
+
+def cmd_sync_apply(args):
+    """Apply sync/pending.json (+ sync/polished.json) -> learn -> ingest -> export -> run PDFs -> commit/push.
+    Prints the artifact doc ids to mark synced."""
+    pend = jload(SYNC_DIR / "pending.json")
+    if not pend:
+        sys.exit("run sync-prepare first")
+    polished = jload(SYNC_DIR / "polished.json", {})
+    runs = {r["_id"]: r for r in _load_dump(args.dump, "jd_runs")}
+    feedback = {f["_id"]: f for f in _load_dump(args.dump, "feedback")}
+    band = pend["band"]
+    new_bullets, skipped = [], []
+    known = {r["id"] for r in connect().execute("SELECT id FROM achievements")}
+    for it in pend["bullets"]:
+        p = polished.get(it["key"], it["text"])
+        if p is None:
+            skipped.append(it["key"]); continue
+        if isinstance(p, dict):   # {"text", optional "achievement_id" to fold into an existing accomplishment, optional "tags"}
+            if p.get("achievement_id") in known:
+                it["achievement_id"] = p["achievement_id"]
+            if p.get("tags"):
+                it["tags"] = p["tags"]
+            p = p.get("text") or ""
+        text = p.strip()
+        if not text:
+            skipped.append(it["key"]); continue
+        if bullet_checks(text, band) and it["needs_polish"] and it["key"] not in polished:
+            skipped.append(it["key"]); continue   # never learn an unpolished first-person / overlong answer
+        if it["achievement_id"]:
+            new_bullets.append({"achievement_id": it["achievement_id"], "angle": it["angle"], "text": text, "origin": "artifact"})
+        else:
+            aid = "art-" + re.sub(r"[^a-z0-9-]", "", it["key"].lower())[:40]
+            new_bullets.append({"new_achievement": {"id": aid, "role": it["role"], "canonical": text,
+                                                    "tags": {t: 1.0 for t in it["tags"]} or {"gtm-strategy": 0.3},
+                                                    "confidence": "asserted", "origin": "artifact",
+                                                    "notes": f"Learned from Match Desk run {it['run_id']}", "metrics": [],
+                                                    "patterns": [], "variants": {}}, "origin": "artifact"})
+    learn_runs = []
+    for rid in pend["runs"]:
+        r = runs.get(rid)
+        if not r:
+            continue
+        learn_runs.append({"id": rid, "company": r.get("company"), "title": r.get("title"), "jd_text": r.get("jd_text", ""),
+                           "requirements": r.get("requirements") or {},
+                           "followups": [{"gate": 2, "question": f["question"], "answer": f.get("answer"), "tag": f.get("tag")}
+                                         for f in (r.get("followups") or []) if f.get("answer")],
+                           "feedback": [{"ext_id": fid, "bullet_id": f.get("bullet_id"), "action": f.get("action"),
+                                         "edited_text": f.get("text") if f.get("action") == "edit" else None}
+                                        for fid, f in feedback.items() if f.get("run_id") == rid and fid in pend["feedback"]]})
+    SYNC_DIR.mkdir(exist_ok=True)
+    learnings = {"runs": learn_runs, "new_bullets": new_bullets}
+    stamp = dt.datetime.now().strftime("%Y%m%d-%H%M%S")
+    jdump(learnings, SYNC_DIR / f"learnings-{stamp}.json")
+    res = cmd_learn(argparse.Namespace(file=learnings, quiet_next=True))
+    cmd_ingest(argparse.Namespace())
+    cmd_export(argparse.Namespace())
+    con = connect()
+    # a PDF of every downloaded run, rendered with full typography
+    pdfs = []
+    (ROOT / "out" / "runs").mkdir(parents=True, exist_ok=True)
+    for rid in pend["pending_runs"]:
+        r = runs.get(rid)
+        m = _model_from_run(con, r) if r else None
+        if not m:
+            continue
+        slug = re.sub(r"[^A-Za-z0-9]+", "_", (r.get("company") or "posting")).strip("_")
+        base = ROOT / "out" / "runs" / f"{(r.get('created') or stamp)[:10]}_{slug}_{rid}"
+        jdump(m, base.with_suffix(".json"))
+        hp = base.with_suffix(".html")
+        hp.write_text(render_html(m), encoding="utf-8")
+        to_pdf(hp, base.with_suffix(".pdf"))
+        pdfs.append(str(base.with_suffix(".pdf").relative_to(ROOT)))
+    cmd_profile_quiet()
+    commit = None
+    if not args.no_git:
+        subprocess.run(["git", "add", "-A"], cwd=ROOT, check=True)
+        msg = (f"Sync Match Desk: {len(learn_runs)} run(s), {res['new']} new bullet(s), {res['feedback']} feedback event(s)\n\n"
+               + "\n".join(f"- {b.get('text') or b['new_achievement']['canonical']}" for b in new_bullets)
+               + "\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\n")
+        c = subprocess.run(["git", "commit", "-q", "-F", "-"], cwd=ROOT, input=msg, text=True, capture_output=True)
+        if c.returncode == 0:
+            commit = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=ROOT, capture_output=True, text=True).stdout.strip()
+            gh = r"!'/c/Program Files/GitHub CLI/gh.exe' auth git-credential"
+            p = subprocess.run(["git", "-c", "credential.helper=", "-c", f"credential.helper={gh}", "push"], cwd=ROOT,
+                               capture_output=True, text=True)
+            if p.returncode != 0:
+                print("PUSH FAILED:", p.stderr.strip()[-400:])
+    out = {"mark_synced": {"jd_runs": pend["runs"], "bullet_inbox": pend["inbox"], "feedback": pend["feedback"]},
+           "learned": res, "skipped_unpolished": skipped, "pdfs": pdfs, "commit": commit,
+           "synced_at": dt.datetime.now().astimezone().isoformat(timespec="seconds")}
+    jdump(out, SYNC_DIR / "last_result.json")
+    print(json.dumps(out, indent=1))
+
+
+def cmd_profile_quiet():
+    import contextlib, io
+    with contextlib.redirect_stdout(io.StringIO()):
+        cmd_profile(argparse.Namespace())
 
 
 # ---------------------------------------------------------------- data profile
@@ -812,6 +1074,8 @@ def main():
     sp.add_parser("export").set_defaults(fn=cmd_export)
     l = sp.add_parser("learn"); l.add_argument("file"); l.set_defaults(fn=cmd_learn)
     sp.add_parser("profile").set_defaults(fn=cmd_profile)
+    s1 = sp.add_parser("sync-prepare"); s1.add_argument("--dump", default=str(ROOT / "sync" / "dump")); s1.add_argument("--all", action="store_true"); s1.set_defaults(fn=cmd_sync_prepare)
+    s2 = sp.add_parser("sync-apply"); s2.add_argument("--dump", default=str(ROOT / "sync" / "dump")); s2.add_argument("--no-git", action="store_true"); s2.set_defaults(fn=cmd_sync_apply)
     a = ap.parse_args()
     a.fn(a)
 

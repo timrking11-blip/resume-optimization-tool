@@ -101,6 +101,16 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .q .meta label{display:flex;align-items:center;gap:6px;flex:1 1 220px;min-width:0}
 .q .meta .lb{white-space:nowrap;flex:none}
 .q select{flex:1 1 auto;width:100%;max-width:100%;min-width:0;padding:4px 8px;font-size:12px;background:var(--surface);text-overflow:ellipsis}
+.qa-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;min-width:0}
+.qa-row .ghost{padding-inline:0;font-weight:600}
+.qb{list-style:none;margin:0;padding:0;display:grid;gap:6px;grid-template-columns:minmax(0,1fr)}
+.qb li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px;align-items:start;min-width:0}
+.qb input[type=checkbox]{margin-top:8px;accent-color:var(--navy)}
+.qb textarea{min-height:0;font-size:13px;background:var(--surface);border-color:var(--ok)}
+.qb .cc{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:8px}
+.qb .cc.over{color:var(--gap)}
+.syncnote{font-size:12px;color:var(--muted)}
+.syncnote b{color:var(--ok)}
 .jdview{font-size:12.5px;line-height:1.55;max-height:220px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;background:var(--surface-2);border-radius:6px;padding:10px;border:1px solid var(--line)}
 mark{background:var(--hl);color:var(--hl-ink);border-radius:2px;padding:0 1px}
 /* ---------- the paper sheet ---------- */
@@ -210,6 +220,7 @@ mark{background:var(--hl);color:var(--hl-ink);border-radius:2px;padding:0 1px}
         <div id="questions" style="display:grid;gap:10px"></div>
         <div class="row">
           <button class="primary" id="finalBtn" disabled>Build the final resume</button>
+          <button id="polishAllBtn" hidden>Polish all answers with Claude</button>
           <button class="ghost" id="quickQBtn" hidden>Use quick questions instead</button>
           <span class="status" id="finalStatus"></span>
         </div>
@@ -226,6 +237,7 @@ mark{background:var(--hl);color:var(--hl-ink);border-radius:2px;padding:0 1px}
           <button id="copyBtn">Copy text</button>
           <button class="primary" id="pdfBtn">Download PDF</button>
         </div>
+        <span class="syncnote" id="syncNote" aria-live="polite"></span>
       </div>
       <article class="sheet" id="sheet" aria-label="Resume preview"></article>
     </div>
@@ -238,9 +250,10 @@ mark{background:var(--hl);color:var(--hl-ink);border-radius:2px;padding:0 1px}
       <div><h3>New bullets waiting to sync</h3><ul id="lInbox"><li class="hint">Answers you turn into bullets land here, and future matches can use them right away.</li></ul></div>
       <div><h3>Your feedback so far</h3><ul id="lFb"><li class="hint">Keep and Drop clicks raise or lower a bullet's future score.</li></ul></div>
     </div>
+    <p class="syncnote" id="syncState">Downloading a PDF queues that posting for the hourly sync into your GitHub database.</p>
     <div class="row">
       <button id="exportBtn">Download learnings JSON</button>
-      <span class="hint">To fold these into the GitHub database, ask Claude to "sync the Resume Match Desk". Or run <code>python rot.py learn learnings.json</code>.</span>
+      <span class="hint">Offline fallback: <code>python rot.py learn learnings.json</code>. To sync right away, ask Claude to "sync the Resume Match Desk".</span>
     </div>
   </section>
 </div>
@@ -284,7 +297,7 @@ const S = {
   excluded:new Set(), pinned:new Set(), textChoice:{}, edits:{},
   summary:null, headline:null, compOrder:null, summarySource:"baseline",
   questions:[], newAch:[], adj:{}, inbox:[], runs:[], feedback:[],
-  ctl1:null, ctl2:null, writeChain:{}
+  ctl1:null, ctl2:null, ctlQ:null, writeChain:{}, syncMeta:null
 };
 
 function toast(msg){ const t=$("#toast"); t.textContent=msg; t.hidden=false; clearTimeout(toast._t); toast._t=setTimeout(()=>t.hidden=true, 3200); }
@@ -310,7 +323,7 @@ function textAdj(t){ return (t.score_adj||0) + (S.adj[t.id]||0); }
 function allAchievements(){
   const base = S.lib.achievements.map(a=>({...a, texts:[...a.texts], has_metrics:(a.metrics||[]).length>0}));
   const byId = Object.fromEntries(base.map(a=>[a.id,a]));
-  for (const b of S.inbox){
+  for (const b of S.inbox.filter(b=>!b.synced)){
     if (b.achievement_id && byId[b.achievement_id]) byId[b.achievement_id].texts.push({id:"inbox:"+b._id, kind:"learned", angle:b.angle||"learned", text:b.text, score_adj:0});
     else if (b.role) base.push({id:"inbox-"+b._id, role:b.role, confidence:"asserted", tags:Object.fromEntries((b.tags||[]).filter(t=>S.lib.tags[t]).map(t=>[t,1])), metrics:[], has_metrics:/\d/.test(b.text), texts:[{id:"inbox:"+b._id, kind:"learned", angle:"learned", text:b.text, score_adj:0}]});
   }
@@ -443,7 +456,7 @@ function renderSheet(){
   const m=resumeModel(), i=m.identity, band=S.lib.length_band;
   const final=S.phase==="final";
   const li = b => { const n=b.text.length, over=n>band.hard_ceiling;
-    return `<li class="${b.fresh?"new":""}" data-aid="${esc(b.aid)}"><span class="bt" contenteditable="true" spellcheck="true" data-aid="${esc(b.aid)}">${esc(b.text)}</span><span class="cc ${over?"over":""}" title="characters (Resume 1 ceiling ${band.hard_ceiling})">${n}</span><span class="ctl"><button data-act="keep" data-aid="${esc(b.aid)}" title="Keep: pin and raise its future score">Keep</button><button data-act="swap" data-aid="${esc(b.aid)}" title="Swap for the next-best bullet in this role">Swap</button><button data-act="drop" data-aid="${esc(b.aid)}" title="Drop: remove and lower its future score">Drop</button></span></li>`; };
+    return `<li class="${b.fresh?"new":""}" data-aid="${esc(b.aid)}"><span class="bt" contenteditable="true" spellcheck="true" data-aid="${esc(b.aid)}">${esc(b.text)}</span><span class="cc ${over?"over":""}" title="characters (Resume 1 ceiling ${band.hard_ceiling})">${n}</span><span class="ctl"><button data-act="keep" data-aid="${esc(b.aid)}" title="Keep: pin and raise its future score">Keep</button><button data-act="swap" data-aid="${esc(b.aid)}" title="Swap for the next-best bullet in this role">Swap</button><button data-act="drop" data-aid="${esc(b.aid)}" title="Drop: remove and lower its future score">Drop</button><button data-act="polish" data-aid="${esc(b.aid)}" title="Polish: Claude rewrites it to the Resume 1 standard with the same facts">Polish</button></span></li>`; };
   $("#sheet").innerHTML = `
     <h3>${esc(i.name)}</h3><div class="hl">${esc(m.headline)}</div>
     <div class="ct">${esc(i.location)} · ${esc(i.phone)} · ${esc(i.email)} · ${esc(i.linkedin)}</div>
@@ -468,11 +481,14 @@ function renderQuestions(){
   $("#questions").innerHTML = S.questions.map((q,ix)=>`
     <div class="q"><div class="qh"><span class="qn">${ix+1}</span><p>${esc(q.question)}</p></div>
       ${q.why?`<div class="why">${esc(q.why)}</div>`:""}
-      <textarea id="ans${ix}" data-ix="${ix}" placeholder="${esc(q.hint||"What you did, the scope, the measurable result. Leave blank to skip.")}">${esc(q.answer||"")}</textarea>
+      <textarea id="ans${ix}" data-ix="${ix}" placeholder="${esc(q.hint||"Bullet points are fine: what you did, the scope, the measurable result. Leave blank to skip.")}">${esc(q.answer||"")}</textarea>
       <div class="meta"><span>Proves: <b>${esc(S.lib.tags[q.tag]?.label||q.tag||"—")}</b></span>
         <label for="role${ix}"><span class="lb">Goes under</span><select id="role${ix}" data-ix="${ix}" title="Which role this answer becomes a bullet for">${roles.map(r=>`<option value="${esc(r.key)}" ${r.key===q.role?"selected":""}>${esc(shortRole(r))}</option>`).join("")}</select></label></div>
+      <div class="qa-row"><button class="ghost" data-conv="${ix}" ${q.busy?"disabled":""}>${S.sample?(q.bullets?.length?"Re-polish with Claude":"Turn into bullets with Claude"):"Split into bullets"}</button>${q.busy?`<span class="spin" aria-hidden="true"></span><span class="hint">Claude is writing…</span>`:""}${q.note?`<span class="hint">${esc(q.note)}</span>`:""}</div>
+      ${q.bullets?.length?`<ul class="qb">${q.bullets.map((b,bi)=>`<li><input type="checkbox" id="bon${ix}-${bi}" data-bon="${ix}:${bi}" ${b.on?"checked":""} aria-label="Use this bullet"><textarea id="btx${ix}-${bi}" data-btxt="${ix}:${bi}" rows="2" aria-label="Bullet text">${esc(b.text)}</textarea><span class="cc ${b.text.length>S.lib.length_band.hard_ceiling?"over":""}" id="bcc${ix}-${bi}">${b.text.length}</span></li>`).join("")}</ul>`:""}
     </div>`).join("");
   $("#finalBtn").disabled = !S.questions.length || S.phase==="finalizing";
+  $("#polishAllBtn").hidden = !S.questions.length;
 }
 function renderLearned(){
   renderStats();
@@ -484,7 +500,11 @@ function renderLearned(){
   const pend=S.inbox.filter(b=>!b.synced);
   $("#lInbox").innerHTML = pend.length ? pend.slice(0,8).map(b=>`<li>${esc(b.text)}</li>`).join("")+(pend.length>8?`<li class="hint">+${pend.length-8} more</li>`:"") : `<li class="hint">Answers you turn into bullets land here, and future matches can use them right away.</li>`;
   const k=S.feedback.filter(f=>f.action==="keep").length, d=S.feedback.filter(f=>f.action==="drop"||f.action==="reject").length, e=S.feedback.filter(f=>f.action==="edit").length;
-  $("#lFb").innerHTML = S.feedback.length ? `<li><b>${k}</b> kept · <b>${d}</b> dropped · <b>${e}</b> edited</li><li class="hint">Dropped bullets rank lower next time. Kept ones rank higher.</li>` : `<li class="hint">Keep and Drop clicks raise or lower a bullet's future score.</li>`;
+  const pendRuns=S.runs.filter(r=>r.sync_status==="pending").length;
+  const last=S.syncMeta?.last_synced_at ? new Date(S.syncMeta.last_synced_at) : null;
+  const lastTxt=last&&!isNaN(last) ? `Last synced ${last.toLocaleString([], {month:"short", day:"numeric", hour:"numeric", minute:"2-digit"})}${S.syncMeta.commit?` (commit ${esc(S.syncMeta.commit)})`:""}.` : "Not synced yet.";
+  $("#syncState").innerHTML = `${pendRuns?`<b>${pendRuns} downloaded posting${pendRuns>1?"s":""} waiting for the hourly sync.</b> `:""}${lastTxt} Downloading a PDF queues that posting for the hourly sync into your GitHub database.`;
+  $("#lFb").innerHTML = S.feedback.length ?`<li><b>${k}</b> kept · <b>${d}</b> dropped · <b>${e}</b> edited</li><li class="hint">Dropped bullets rank lower next time. Kept ones rank higher.</li>` : `<li class="hint">Keep and Drop clicks raise or lower a bullet's future score.</li>`;
 }
 function renderAll(){ renderMatch(); renderSheet(); renderQuestions(); }
 
@@ -520,7 +540,7 @@ async function doMatch(){
   recompute(); setStep(2);
   S.runId="run-"+Date.now().toString(36);
   const reqW=Object.fromEntries(Object.entries(S.req).map(([t,r])=>[t,r.weight]));
-  await saveRun({created:new Date().toISOString(), status:"draft", company:$("#company").value||null, title:$("#role").value||null, jd_text:jd.slice(0,20000), requirements:reqW, match_score:S.score, source:"artifact", synced:false}, true);
+  await saveRun({created:new Date().toISOString(), status:"draft", company:$("#company").value||null, title:$("#role").value||null, jd_text:jd.slice(0,20000), requirements:reqW, match_score:S.score, source:"artifact", synced:false, sync_status:"draft"}, true);
   if(S.sample) claudeTailor(); else useQuickQuestions("Claude isn't available in this view, so these questions come from the gap analysis.");
 }
 
@@ -574,10 +594,10 @@ Reply with ONLY one JSON object:
  "requirements": [{"tag": "<tag id from taxonomy>", "weight": <0.5 to 3, 3 = must-have>, "why": "<short evidence from the posting>"}],
  "uncatalogued": [{"phrase": "<requirement no tag covers>", "weight": <1-3>}],
  "headline": "<three short phrases in capitals joined by ' · ', max 90 characters>",
- "summary": "<3-4 sentences, max 85 words, no first person, only library facts, leading with what this posting values most>",
+ "summary": "<the Professional Summary exactly as it will print on the resume: 3-4 sentences, max 85 words, implied first person (never 'I', 'Tim', 'he', 'the candidate', or 'this posting'), open with a role noun such as 'Revenue and go-to-market operator', built only from library facts, emphasizing what this posting values most>",
  "competency_order": ["<up to 12 exact competency options, most relevant first>"],
  "followups": [{"question": "...", "why": "<which requirement this proves and why it matters>", "tag": "<tag id>", "role": "<role key where the answer belongs>", "hint": "<what a strong answer includes>"}]}
-Requirements: return up to 20 tags with your corrected importance. Followups: exactly 5. Target the highest-weight requirements the draft proves weakly or not at all, or implied experience Tim likely has but hasn't stated (quota %, team size, deal size, cycle length, tools). One concrete question each, no compound questions. Don't ask about anything already well evidenced.`;
+Requirements: return up to 20 tags with your corrected importance. Followups: exactly 5. Target the highest-weight requirements the draft proves weakly or not at all, or implied experience Tim likely has but hasn't stated (quota %, team size, deal size, cycle length, tools). One concrete question each, no compound questions. Address Tim directly in second person ("you", "your"), never "Tim" or "he". Don't ask about anything already well evidenced.`;
   try{
     const r = await S.sample.json(prompt, {signal:ctl.signal, modelTier:"default"});
     if(ctl.signal.aborted) return;
@@ -611,41 +631,96 @@ Requirements: return up to 20 tags with your corrected importance. Followups: ex
   }finally{ $("#quickQBtn").hidden=true; }
 }
 
-async function doFinal(){
+/* ------------------------------ answers -> bullets (Claude) ------------------------------ */
+const SAMPLE_ERR = {not_granted:"Claude isn't allowed on this page. Allow it when the page asks, or reload and try again.", sampling_disabled:"Claude isn't available for this account.", rate_limited:"Claude is busy right now. Wait a minute and try again.", invalid_json:"Claude's reply came back malformed. Try again.", prompt_too_large:"That answer is too long for one pass. Shorten it and try again.", refused:"Claude declined this one. Rephrase the answer and try again.", empty_completion:"Claude returned nothing. Add a specific and try again.", session_expired:"Your Claude session expired. Sign in again, then retry."};
+const sampleErr = e => SAMPLE_ERR[e?.code] || `Claude couldn't finish (${esc(e?.code||"error")}). Try again.`;
+function isSkip(a){ return !a || /^(no|n\/a|none|nothing|skip|-|—)\.?$/i.test(a.trim()); }
+function cleanBullet(t){ t=String(t).replace(/^[\s•·\-*–—\d.)]+/,"").replace(/\s+/g," ").trim(); if(!t) return ""; t=t.charAt(0).toUpperCase()+t.slice(1); if(!/[.!?]$/.test(t)) t+="."; return t; }
+function splitAnswer(a){ let parts=String(a).split(/\r?\n+/); if(parts.length===1) parts=String(a).split(/\s+[•·]\s+|;\s+/); return parts.map(cleanBullet).filter(s=>s.length>12); }
+function currentBulletDigest(){ return Object.entries(S.chosen).flatMap(([r,items])=>items.map(i=>`${i.a.id} | ${r} | ${S.edits[i.a.id]??i.t.text}`)).join("\n"); }
+function roleLine(key){ const r=S.lib.roles.find(x=>x.key===key); return r?`${key} (${r.title} | ${r.employer} | ${r.dates})`:key; }
+/* One call converts any number of answers; an automatic second pass tightens anything over the ceiling. */
+async function claudeBullets(items, ctl){
   const band=S.lib.length_band;
-  S.questions.forEach((q,ix)=>{ q.answer=$("#ans"+ix)?.value.trim()||""; q.role=$("#role"+ix)?.value||q.role; });
-  const answered=S.questions.map((q,ix)=>({...q,ix})).filter(q=>q.answer && !/^(no|n\/a|none|skip|-)$/i.test(q.answer));
-  S.phase="finalizing"; renderQuestions();
-  const fs=$("#finalStatus");
-  let bullets=[];
-  if(answered.length && S.sample){
-    fs.innerHTML=`<span class="spin" aria-hidden="true"></span> Claude is turning your answers into bare-bone bullets… <button class="ghost" id="stop2">Stop</button>`;
-    $("#stop2").onclick=()=>S.ctl2?.abort();
-    const ctl=S.ctl2=new AbortController();
-    const prompt=`Turn Tim King's answers into resume bullets in his "Resume 1" bare-bone style: verb-first, outcome- and impact-driven, ${band.p10}–${band.hard_ceiling} characters (median ${band.median}), past tense for past roles and present tense only for the current role, no first person, no filler adjectives. Use ONLY facts stated in the answer. Never invent numbers, names, or results. If an answer adds nothing usable, return no bullet for it.
+  const prompt=`Turn Tim King's interview answers into resume bullets written in his "Resume 1" bare-bone style.
+STYLE RULES
+- Verb-first, outcome- and impact-driven, ${band.p10}-${band.hard_ceiling} characters each (aim for about ${band.median}).
+- Implied first person: never "I", "my", "we", or "Tim". Past tense for past roles; present tense only for the current role.
+- Use ONLY facts stated in the answer (numbers, names, tools, scope). Never invent results or metrics.
+- An answer written as bullet points or several sentences may become 1 to 3 bullets, one per distinct accomplishment. Merge fragments that describe the same thing.
+- If an answer adds nothing usable (empty, "no", "none"), return no bullet for it.
+- If an answer strengthens an existing bullet listed below, rewrite that bullet and put its id in "achievement_id"; otherwise use null.
 
 POSTING: ${$("#role").value||"(title unknown)"} at ${$("#company").value||"(company unknown)"}
 
-QUESTIONS AND ANSWERS:
-${answered.map((q,n)=>`${n+1}. [proves: ${q.tag||"general"} · role: ${q.role}] Q: ${q.question}\nA: ${q.answer.slice(0,1500)}`).join("\n\n")}
+ANSWERS
+${items.map((q,n)=>`${n+1}. [proves: ${q.tag||"general"} | role: ${roleLine(q.role)}]\nQ: ${q.question}\nA: ${String(q.answer).slice(0,2000)}`).join("\n\n")}
 
-CURRENT BULLETS (achievement id | role | text) — avoid duplicates; if an answer strengthens one, return an improved version and name it in "achievement_id":
-${Object.entries(S.chosen).flatMap(([r,items])=>items.map(i=>`${i.a.id} | ${r} | ${S.edits[i.a.id]??i.t.text}`)).join("\n")}
+EXISTING BULLETS (achievement id | role | text)
+${currentBulletDigest()}
 
 TAG IDS YOU MAY USE: ${Object.keys(S.lib.tags).join(", ")}
 
-Reply with ONLY one JSON object:
-{"bullets":[{"q": <question number>, "role": "<role key>", "text": "<the bullet>", "tags": ["<tag id>", "..."], "achievement_id": "<existing id this improves, or null for a new achievement>"}]}`;
-    try{
-      const r=await S.sample.json(prompt,{signal:ctl.signal, modelTier:"default", cache:false});
-      bullets=(Array.isArray(r?.bullets)?r.bullets:[]).filter(b=>b&&typeof b.text==="string"&&b.text.trim().length>20).map(b=>({...b, text:b.text.trim()}));
-      fs.innerHTML="";
-    }catch(e){
-      if(e?.code!=="cancelled") fs.innerHTML=`<span class="err">Claude couldn't write the bullets, so your answers are used as written. Edit them on the sheet.</span>`;
-      bullets=[];
-    }
+Reply with ONLY one JSON object, for example:
+{"bullets":[{"q":1,"text":"Built a custom CRM with automated weekly enrichment syncs and research agents feeding a two-way GitHub-synced workflow.","tags":["crm-discipline","building-with-ai"],"achievement_id":null}]}`;
+  const r=await S.sample.json(prompt,{signal:ctl.signal, modelTier:"default", cache:false});
+  const out=(Array.isArray(r?.bullets)?r.bullets:[]).filter(b=>b&&typeof b.text==="string"&&b.text.trim().length>20)
+    .map(b=>{ const src=items[(+b.q||1)-1]||items[0]; return {q:(+b.q||1), ix:src.ix, role:src.role, text:cleanBullet(b.text), tags:(Array.isArray(b.tags)?b.tags:[]).filter(t=>S.lib.tags[t]).concat(src.tag&&!(b.tags||[]).includes(src.tag)?[src.tag]:[]), achievement_id:b.achievement_id||null}; });
+  const over=out.filter(b=>b.text.length>band.hard_ceiling);
+  if(over.length && !ctl.signal.aborted){
+    try{ const fixed=await claudeTighten(over.map(b=>b.text), ctl); over.forEach((b,i)=>{ if(fixed[i]) b.text=cleanBullet(fixed[i]); }); }catch(e){ /* keep the longer versions; they are flagged on the sheet */ }
   }
-  if(!bullets.length) bullets=answered.map(q=>{ let t=q.answer.replace(/\s+/g," ").trim(); t=t.charAt(0).toUpperCase()+t.slice(1); if(!/[.!?]$/.test(t)) t+="."; return {role:q.role, text:t, tags:q.tag?[q.tag]:[], achievement_id:null}; });
+  return out;
+}
+async function claudeTighten(texts, ctl){
+  const band=S.lib.length_band;
+  const prompt=`Tighten each resume bullet to Tim King's "Resume 1" standard: verb-first, outcome-driven, ${band.p10}-${band.hard_ceiling} characters, implied first person (no "I", "my", "we"), the same facts and numbers, nothing invented.
+BULLETS
+${texts.map((t,i)=>`${i+1}. ${t}`).join("\n")}
+Reply with ONLY a JSON array of ${texts.length} strings in the same order.`;
+  const r=await S.sample.json(prompt,{signal:ctl?.signal, modelTier:"default", cache:false});
+  return Array.isArray(r)? r.map(x=>typeof x==="string"?x.trim():"") : [];
+}
+function readAnswers(){ S.questions.forEach((q,ix)=>{ const a=$("#ans"+ix); if(a) q.answer=a.value.trim(); const s=$("#role"+ix); if(s) q.role=s.value||q.role; }); }
+async function convertQuestions(ixs, label){
+  readAnswers();
+  const items=ixs.map(ix=>({...S.questions[ix], ix})).filter(q=>!isSkip(q.answer));
+  if(!items.length){ toast("Write an answer first."); return; }
+  if(!S.sample){ for(const q of items){ S.questions[q.ix].bullets=splitAnswer(q.answer).map(t=>({text:t,on:true,tags:q.tag?[q.tag]:[]})); S.questions[q.ix].note="Claude isn't available here, so each line of your answer became a bullet. Edit below."; } renderQuestions(); return; }
+  const ctl=S.ctlQ=new AbortController();
+  for(const q of items){ S.questions[q.ix].busy=true; S.questions[q.ix].note=""; }
+  renderQuestions(); $("#finalStatus").innerHTML=`<span class="spin" aria-hidden="true"></span> ${esc(label)} <button class="ghost" id="stopQ">Stop</button>`; $("#stopQ").onclick=()=>ctl.abort();
+  try{
+    const out=await claudeBullets(items, ctl);
+    for(const q of items){
+      const mine=out.filter(b=>b.ix===q.ix);
+      S.questions[q.ix].bullets=mine.map(b=>({text:b.text,on:true,tags:b.tags,achievement_id:b.achievement_id}));
+      S.questions[q.ix].note=mine.length?"":"Claude found nothing resume-worthy in this answer. Add a specific (scope, number, outcome) and try again.";
+    }
+    $("#finalStatus").textContent="";
+  }catch(e){
+    $("#finalStatus").innerHTML = e?.code==="cancelled" ? "" : `<span class="err">${sampleErr(e)}</span>`;
+    if(e?.code==="not_granted"||e?.code==="sampling_disabled") S.sample=null;
+  }finally{ for(const q of items) S.questions[q.ix].busy=false; renderQuestions(); }
+}
+
+async function doFinal(){
+  const band=S.lib.length_band;
+  readAnswers();
+  const answered=S.questions.map((q,ix)=>({...q,ix})).filter(q=>!isSkip(q.answer));
+  const todo=answered.filter(q=>!(q.bullets&&q.bullets.length));
+  if(todo.length && S.sample){
+    await convertQuestions(todo.map(q=>q.ix), `Claude is turning ${todo.length} answer${todo.length>1?"s":""} into bullets…`);
+  }
+  S.phase="finalizing"; renderQuestions();
+  const fs=$("#finalStatus");
+  let bullets=[];
+  for(const q of S.questions.map((q,ix)=>({...q,ix}))){
+    if(isSkip(q.answer)) continue;
+    if(q.bullets&&q.bullets.length){ q.bullets.filter(b=>b.on&&b.text.trim()).forEach(b=>bullets.push({role:q.role, text:cleanBullet(b.text), tags:(b.tags&&b.tags.length?b.tags:(q.tag?[q.tag]:[])), achievement_id:b.achievement_id||null})); }
+    else if(!S.sample){ splitAnswer(q.answer).forEach(t=>bullets.push({role:q.role, text:t, tags:q.tag?[q.tag]:[], achievement_id:null})); }
+  }
+  if(!S.sample && bullets.length) fs.innerHTML=`<span class="hint">Claude isn't available here, so each line of your answers became a bullet. Use Polish on the sheet once Claude is allowed.</span>`;
   // attach new bullets
   S.newAch=[];
   const known=new Set(S.lib.achievements.map(a=>a.id));
@@ -664,13 +739,30 @@ Reply with ONLY one JSON object:
   });
   S.phase="final"; recompute(); renderQuestions(); setStep(4);
   toast(bullets.length?`Added ${bullets.length} new bullet${bullets.length>1?"s":""}. Final draft ready.`:"Final draft ready.");
-  // persist learning
+  // persist learning (deterministic doc ids, so building the final twice never duplicates bullets)
   const m=resumeModel();
   await saveRun({status:"final", finalized:new Date().toISOString(), match_score:S.score,
     followups:S.questions.map(q=>({question:q.question, answer:q.answer||"", tag:q.tag, role:q.role})),
     new_bullets:S.newAch.map(x=>({role:x.role, achievement_id:x.attach||null, text:x.text.text, tags:x.tags})),
     final_resume:{headline:m.headline, summary:m.summary, competencies:m.competencies, roles:m.roles.map(r=>({key:r.key, bullets:r.bullets.map(b=>({aid:b.aid, text:b.text}))}))}});
-  if(S.db) for(const x of S.newAch){ await queueWrite("bullet_inbox", ()=>S.db.collection("bullet_inbox").add({run_id:S.runId, role:x.role, achievement_id:x.attach||null, angle:"gate2", text:x.text.text, tags:x.tags, created:new Date().toISOString(), synced:false})); }
+  if(S.db && S.runId) for(const [n,x] of S.newAch.entries()){ await queueWrite("bullet_inbox", ()=>S.db.doc(`bullet_inbox/${S.runId}-g${n}`).set({run_id:S.runId, role:x.role, achievement_id:x.attach||null, angle:"gate2", text:x.text.text, tags:x.tags, created:new Date().toISOString(), synced:false})); }
+}
+function saveEdit(aid, i, txt){
+  S.edits[aid]=txt; S.pinned.add(aid);
+  logFeedback("edit", aid, {tid:i.t.id, text:txt});
+  if(!S.db || !S.runId) return;
+  const g=String(aid).match(/^gate2-.+-(\d+)$/);
+  const id = g ? `${S.runId}-g${g[1]}` : `${S.runId}-e-${String(aid).replace(/[^A-Za-z0-9_-]/g,"").slice(0,60)}`;
+  queueWrite("bullet_inbox", ()=>S.db.doc(`bullet_inbox/${id}`).set({run_id:S.runId, role:i.a.role, achievement_id:(g||String(aid).startsWith("inbox-"))?null:aid, angle:g?"gate2":"edit", text:txt, tags:Object.keys(i.a.tags), created:new Date().toISOString(), synced:false}));
+}
+async function polishBullet(aid){
+  const i=findChosen(aid); if(!i) return;
+  if(!S.sample){ toast("Claude isn't available in this view. Edit the text directly."); return; }
+  const cur=S.edits[aid]??i.t.text;
+  toast("Claude is polishing that bullet…");
+  try{ const [t]=await claudeTighten([cur], new AbortController()); const c=t?cleanBullet(t):"";
+    if(c && c!==cur){ saveEdit(aid,i,c); renderSheet(); toast(`Polished (${c.length} characters).`); } else toast("That bullet already meets the standard.");
+  }catch(e){ toast(e?.code==="not_granted"?"Allow Claude on this page to use Polish.":"Claude couldn't polish it. Try again or edit it directly."); }
 }
 
 /* ------------------------------ sheet interactions ------------------------------ */
@@ -682,6 +774,7 @@ $("#sheet").addEventListener("click", e=>{
   if(act==="keep"){ S.pinned.add(aid); logFeedback("keep", aid, {tid:i.t.id, text:i.t.text}); toast("Kept. It ranks higher in future matches."); }
   if(act==="swap"){ S.excluded.add(aid); S.pinned.delete(aid); logFeedback("swap", aid, {tid:i.t.id, text:i.t.text}); }
   if(act==="drop"){ S.excluded.add(aid); S.pinned.delete(aid); logFeedback("drop", aid, {tid:i.t.id, text:i.t.text}); toast("Dropped. It ranks lower in future matches."); }
+  if(act==="polish"){ polishBullet(aid); return; }
   recompute();
 });
 $("#sheet").addEventListener("focusout", e=>{
@@ -689,9 +782,7 @@ $("#sheet").addEventListener("focusout", e=>{
   const aid=el.dataset.aid, i=findChosen(aid); if(!i) return;
   const txt=el.textContent.replace(/\s+/g," ").trim(); const cur=S.edits[aid]??i.t.text;
   if(!txt || txt===cur) return;
-  S.edits[aid]=txt; S.pinned.add(aid);
-  logFeedback("edit", aid, {tid:i.t.id, text:txt});
-  if(S.db && !String(aid).startsWith("gate2-")) queueWrite("bullet_inbox", ()=>S.db.collection("bullet_inbox").add({run_id:S.runId, role:i.a.role, achievement_id:String(aid).startsWith("inbox-")?null:aid, angle:"edit", text:txt, tags:Object.keys(i.a.tags), created:new Date().toISOString(), synced:false}));
+  saveEdit(aid, i, txt);
   renderSheet();
 });
 $("#sheet").addEventListener("keydown", e=>{ if(e.key==="Enter" && e.target.closest(".bt")){ e.preventDefault(); e.target.blur(); } });
@@ -756,11 +847,28 @@ function plainText(m){
 function fileSlug(){ const c=($("#company").value||"").replace(/[^A-Za-z0-9]+/g,"_").replace(/^_|_$/g,""); return "Tim_King_Resume"+(c?"_"+c:"")+(S.phase==="final"?"":"_draft"); }
 $("#pdfBtn").onclick=async()=>{
   if(!window.jspdf){ toast("The PDF library didn't load. Reload the page and try again."); return; }
-  const doc=buildPdf(resumeModel());
+  const model=resumeModel();
+  const doc=buildPdf(model);
   if(!S.downloads){ toast("Downloads aren't available in this view. Use Copy text instead."); return; }
-  try{ await S.downloads.save({filename:fileSlug()+".pdf", data:doc.output("blob")}); toast("PDF saved."); }
+  let saved=false;
+  try{ await S.downloads.save({filename:fileSlug()+".pdf", data:doc.output("blob")}); saved=true; toast("PDF saved. Queued for sync."); }
   catch(e){ if(e?.code!=="declined") toast(e?.code==="rate_limited"?"A save prompt is already open.":"The PDF couldn't be saved here. Use Copy text instead."); }
+  if(saved) await queueSync(model);
 };
+/* A downloaded PDF marks the run "pending"; the hourly sync task folds it into the GitHub database. */
+async function queueSync(model){
+  const note=$("#syncNote");
+  if(!S.db){ note.textContent="Sync needs this page open in Claude. Use Download learnings JSON instead."; return; }
+  const now=new Date().toISOString();
+  const reqW=Object.fromEntries(Object.entries(S.req).map(([t,r])=>[t,r.weight]));
+  if(!S.runId){
+    S.runId="run-"+Date.now().toString(36);
+    await saveRun({created:now, status:"draft", company:$("#company").value||null, title:$("#role").value||null, jd_text:S.jd.slice(0,20000), requirements:reqW, match_score:S.score, source:"artifact", synced:false, sync_status:"draft"}, true);
+  }
+  await saveRun({downloaded_at:now, sync_status:"pending", synced:false, status:S.phase==="final"?"final":"draft",
+    company:$("#company").value||null, title:$("#role").value||null, match_score:S.score, requirements:reqW, final_model:model});
+  note.innerHTML=`<b>Queued for sync.</b> Your GitHub database picks this up at the next hourly sync.`;
+}
 $("#copyBtn").onclick=async()=>{
   const txt=plainText(resumeModel());
   try{ await navigator.clipboard.writeText(txt); toast("Resume text copied."); }
@@ -769,7 +877,7 @@ $("#copyBtn").onclick=async()=>{
 $("#exportBtn").onclick=async()=>{
   const runs=S.runs.map(r=>({id:r._id, company:r.company||null, title:r.title||null, jd_text:r.jd_text||"", requirements:r.requirements||{},
     followups:(r.followups||[]).filter(f=>f.answer).map(f=>({gate:2, question:f.question, answer:f.answer, tag:f.tag})),
-    feedback:S.feedback.filter(f=>f.run_id===r._id && f.bullet_id).map(f=>({bullet_id:f.bullet_id, action:f.action==="drop"?"reject":f.action, edited_text:f.action==="edit"?f.text:null}))}));
+    feedback:S.feedback.filter(f=>f.run_id===r._id && f.bullet_id && !f.synced).map(f=>({ext_id:f._id, bullet_id:f.bullet_id, action:f.action==="drop"?"reject":f.action, edited_text:f.action==="edit"?f.text:null}))}));
   const nb=S.inbox.filter(b=>!b.synced).map(b=> b.achievement_id ? {achievement_id:b.achievement_id, angle:b.angle||"learned", text:b.text, origin:"artifact"}
     : {new_achievement:{id:"art-"+b._id, role:b.role, canonical:b.text, tags:Object.fromEntries((b.tags||[]).map(t=>[t,1.0])), confidence:"asserted", notes:"From Resume Match Desk run "+(b.run_id||""), metrics:[], patterns:[], variants:{}}, origin:"artifact"});
   const data=JSON.stringify({exported:new Date().toISOString(), runs, new_bullets:nb}, null, 2);
@@ -780,8 +888,16 @@ $("#matchBtn").onclick=doMatch;
 $("#clearBtn").onclick=()=>{ $("#jd").value=""; $("#company").value=""; $("#role").value=""; $("#jdTag").hidden=true; $("#jd").focus(); };
 $("#finalBtn").onclick=doFinal;
 $("#quickQBtn").onclick=()=>useQuickQuestions("Quick questions from the gap analysis. Claude's version was skipped.");
-$("#questions").addEventListener("input", e=>{ const ix=e.target.dataset.ix; if(ix!=null && S.questions[ix] && e.target.tagName==="TEXTAREA") S.questions[ix].answer=e.target.value; });
-$("#questions").addEventListener("change", e=>{ const ix=e.target.dataset.ix; if(ix!=null && S.questions[ix] && e.target.tagName==="SELECT") S.questions[ix].role=e.target.value; });
+$("#questions").addEventListener("input", e=>{
+  const ix=e.target.dataset.ix; if(ix!=null && S.questions[ix] && e.target.tagName==="TEXTAREA") S.questions[ix].answer=e.target.value;
+  const bt=e.target.dataset.btxt; if(bt){ const [q,b]=bt.split(":").map(Number); const B=S.questions[q]?.bullets?.[b]; if(B){ B.text=e.target.value; const cc=$(`#bcc${q}-${b}`); if(cc){ cc.textContent=B.text.length; cc.classList.toggle("over", B.text.length>S.lib.length_band.hard_ceiling); } } }
+});
+$("#questions").addEventListener("change", e=>{
+  const ix=e.target.dataset.ix; if(ix!=null && S.questions[ix] && e.target.tagName==="SELECT") S.questions[ix].role=e.target.value;
+  const bo=e.target.dataset.bon; if(bo){ const [q,b]=bo.split(":").map(Number); const B=S.questions[q]?.bullets?.[b]; if(B) B.on=e.target.checked; }
+});
+$("#questions").addEventListener("click", e=>{ const b=e.target.closest("button[data-conv]"); if(!b) return; const ix=+b.dataset.conv; convertQuestions([ix], "Claude is turning that answer into bullets…"); });
+$("#polishAllBtn").onclick=()=>{ readAnswers(); const ixs=S.questions.map((q,ix)=>ix).filter(ix=>!isSkip(S.questions[ix].answer)); convertQuestions(ixs, `Claude is polishing ${ixs.length} answer${ixs.length>1?"s":""}…`); };
 
 /* ------------------------------ boot ------------------------------ */
 async function boot(){
@@ -798,12 +914,14 @@ async function boot(){
   const C=window.claude;
   if(!C?.use) return;
   C.use("downloads").then(d=>{ S.downloads=d; }).catch(()=>{});
-  C.use("sample").then(s=>{ S.sample=s; }).catch(()=>{});
+  C.use("sample").then(s=>{ S.sample=s; if(S.questions.length) renderQuestions(); }).catch(()=>{});
   C.use("db").then(db=>{
     if(!db) return; S.db=db;
-    db.collection("feedback").onSnapshot(snap=>{ S.feedback=snap.docs.map(d=>({_id:d.id,...d.data()})); S.adj={}; for(const f of S.feedback){ const k=f.bullet_id; if(k==null) continue; S.adj[k]=(S.adj[k]||0)+(f.action==="keep"?0.3:(f.action==="drop"||f.action==="reject")?-0.6:0);} renderLearned(); }, e=>console.warn("feedback", e));
+    // synced docs are already inside library.json, so only unsynced ones adjust scores or add bullets here
+    db.collection("feedback").onSnapshot(snap=>{ S.feedback=snap.docs.map(d=>({_id:d.id,...d.data()})); S.adj={}; for(const f of S.feedback){ const k=f.bullet_id; if(k==null||f.synced) continue; S.adj[k]=(S.adj[k]||0)+(f.action==="keep"?0.3:(f.action==="drop"||f.action==="reject")?-0.6:0);} renderLearned(); }, e=>console.warn("feedback", e));
     db.collection("bullet_inbox").onSnapshot(snap=>{ S.inbox=snap.docs.map(d=>({_id:d.id,...d.data()})); renderLearned(); }, e=>console.warn("inbox", e));
     db.collection("jd_runs").orderBy("created","desc").limit(300).onSnapshot(snap=>{ S.runs=snap.docs.map(d=>({_id:d.id,...d.data()})); renderLearned(); }, e=>console.warn("runs", e));
+    db.doc("meta/sync").onSnapshot(snap=>{ S.syncMeta=snap.exists?snap.data():null; renderLearned(); }, e=>console.warn("sync meta", e));
   }).catch(()=>{});
 }
 boot();
