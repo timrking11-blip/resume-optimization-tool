@@ -1,0 +1,199 @@
+{
+  "certifications": [
+    "Claude 101 — Anthropic (August 2026)",
+    "Claude Code 101 — Anthropic (2026)",
+    "Claude for CoWork — Anthropic (In progress)",
+    "Insurance Broker License — Accident, Health, Life, Variable Life & Variable Annuity — New York State Department of Financial Services (December 2025)",
+    "Data Analytics & Insights: Data Insights — TEKsystems (December 2023)"
+  ],
+  "competencies": [
+    "Go-To-Market Strategy",
+    "Full-Cycle Enterprise Sales (Prospect to Close)",
+    "Consultative & Diagnostic Discovery",
+    "Lead Generation & Prospecting",
+    "Complex Multi-Stakeholder Negotiation",
+    "Market Segmentation & Positioning",
+    "AI & Data Platform Solution Selling",
+    "Executive & Board-Level Communication",
+    "Contract & Proposal Development",
+    "Pipeline Development & CRM Discipline",
+    "Strategic Partnerships & Channel",
+    "Pricing & Channel Strategy"
+  ],
+  "education": [
+    {
+      "bullet_ids": [
+        "edu-capstone"
+      ],
+      "bullets": [
+        "Senior Capstone — Northeast Intermodal Competitive & Market Analysis: market sizing, Porter's Five Forces, competitor profiling, and a positioning recommendation."
+      ],
+      "degree": "B.S., Finance & Marketing (Double Major)",
+      "school": "University of Maine Business School",
+      "year": "2018"
+    }
+  ],
+  "expertise": [
+    {
+      "items": [
+        "full-cycle enterprise sales",
+        "pipeline & forecast discipline",
+        "GTM strategy",
+        "positioning & messaging",
+        "new-logo development",
+        "consultative & challenger discovery",
+        "proposal & RFP development"
+      ],
+      "label": "Go-To-Market & Revenue"
+    },
+    {
+      "items": [
+        "buy-vs-build analysis",
+        "unit economics (CAC, payback, churn, TTFV)",
+        "revenue & P&L modeling",
+        "market sizing",
+        "competitive intelligence",
+        "scenario & decision-tree planning",
+        "non-dilutive capital strategy (SBIR)"
+      ],
+      "label": "Strategy & Finance"
+    },
+    {
+      "items": [
+        "audience & recall benchmarking",
+        "media & sponsorship sales",
+        "integrated print & digital",
+        "CPM / CPA / ROI business cases",
+        "CDPs, clean rooms, identity graphs, ad measurement",
+        "sports & entertainment media"
+      ],
+      "label": "Media & AdTech"
+    },
+    {
+      "items": [
+        "cross-functional influence",
+        "sales process design",
+        "hiring & seller ramp",
+        "team leadership & 1:1 coaching",
+        "operating cadence (RACI, escalation, decision logs)",
+        "CRM hygiene & adoption",
+        "executive & board communication"
+      ],
+      "label": "Leadership & Operations"
+    },
+    {
+      "items": [
+        "Salesforce, ZoomInfo, LinkedIn Sales Navigator",
+        "Claude (Opus 5, Sonnet 5, Fable 5)",
+        "Claude Code",
+        "OpenAI",
+        "Microsoft Copilot",
+        "prompt engineering & workflow automation",
+        "Tableau, Excel"
+      ],
+      "label": "AI & Tools"
+    }
+  ],
+  "headline": "GO-TO-MARKET STRATEGY · FULL-CYCLE SALES · AI & DATA SOLUTION SELLING",
+  "identity": {
+    "email": "tim.r.king11@gmail.com",
+    "formal_name": "Timothy King",
+    "headline_default": "GO-TO-MARKET STRATEGY · ENTERPRISE & MEDIA SALES · AI-ENABLED REVENUE",
+    "linkedin": "linkedin.com/in/timothy-king1124",
+    "linkedin_headline": "Sales Professional | Marketing, Advertising, Product, Services, & Sales GTM Strategist Providing Advisory Services | Systems Thinker | Process Engineer | AI Adoption Enthusiast",
+    "location": "New York, NY",
+    "name": "Tim King",
+    "phone": "(617) 960-7176"
+  },
+  "roles": [
+    {
+      "bullets": [
+        "Evaluated a channel partnership with an incumbent firm's CEO during build-vs-buy analysis, rejecting it to protect data rights and equity.",
+        "Ran weekly forecasting cadence via a central dashboard tracking sequenced GTM gates and owners, resolving blockers with the team.",
+        "Own go-to-market for the client's AI compliance product sold to independent clinical practices — segmentation, positioning, $99/$249 tiers, and channel strategy.",
+        "Blocked a proposed EHR data migration as an uncompensated asset transfer, defining the NDA-to-BAA sequence that protected the client's data asset.",
+        "Set the unit-economic gates the client runs on — CAC under $900, payback under 12 months, churn under 5%, TTFV under 7 days — redirecting GTM to channel partners.",
+        "Negotiated the engagement's terms directly, restructuring a 320-hour proposal into 166 hours at the same fee and pulling the key deliverable to Day 15.",
+        "Built the practice's multi-tenant client engagement tracker with Claude Code, with 60 automated tests enforcing cross-client data isolation.",
+        "Built a custom CRM from scratch with GTM and prospecting connectors, automated weekly contact enrichment, and account-research agents two-way synced to GitHub."
+      ],
+      "context": "Advisory & GTM engineering practice · Key engagement: healthcare AI start-up (confidential)",
+      "dates": "July 2026 – Present",
+      "employer": "Strategic Market Insights",
+      "key": "hc_ai_strategy",
+      "location": "New York, NY",
+      "title": "Founder, Business Consultant, and GTM Engineer"
+    },
+    {
+      "bullets": [
+        "Built and maintained a ~$115K active proposal pipeline through a diagnostic, discovery-first approach rather than a pitch-led one.",
+        "Owned the full sales cycle in a pure new-business role — prospecting, discovery, pricing, proposal, negotiation, and close — with no SDR layer.",
+        "Restructured nine property-level commitments into one shared-cost regional placement across competing budget owners with no single decision-maker.",
+        "Closed 5 signed NFL and MLB team-media partnerships, all paid in full at signing, including 2 accounts with no prior purchase history.",
+        "Qualified every prospect against the budget that can fund it — co-op, MDF, sponsorship, and 501(c)(3) dollars — opening 2 net-new accounts.",
+        "Added ~125 net-new qualified prospects per week to Salesforce through targeted account research and stakeholder mapping."
+      ],
+      "context": "Official NFL & MLB team publication advertising and sponsorship",
+      "dates": "March 2026 – August 2026",
+      "employer": "Professional Sports Publications",
+      "key": "psp",
+      "location": "New York, NY",
+      "title": "Advertising Sales Director, Pro Division"
+    },
+    {
+      "bullets": [
+        "Helped stand up an Oil & Gas company's ML and AI Center of Excellence, applying sensor data to predict and detect gas outages.",
+        "Closed $700K in revenue across 5 resources with a Senior Business Architect by diagnosing the org's path from governance to ML/AI CoE.",
+        "Scoped and positioned AI, data, and cloud solutions — graph, Adobe Enterprise Suite, Azure, computer vision — translating capability into commercial terms.",
+        "Sourced and staffed 8 solution architects across 8 workstreams on a 12-18 month renewable managed services engagement worth $1M annually."
+      ],
+      "context": "Enterprise technology and data solution sales · Media & Entertainment, Parks, Utilities, Life Sciences",
+      "dates": "2024 – 2025",
+      "employer": "TEKsystems",
+      "key": "tek_lead",
+      "location": "New York, NY",
+      "title": "Specialized Lead – Data Analytics & Data Insights"
+    },
+    {
+      "bullets": [
+        "Partnered with Nike's global supply chain team on in-season optimization, delivering an AI-powered document system.",
+        "Opened net-new managed services accounts at Wayfair and Disney's ESPN and Entertainment Technology organization from cold.",
+        "Produced more than half the revenue on Vertex Pharmaceuticals, the firm's largest regional growth account, and expanded into two new groups.",
+        "Generated $750K+ in annual revenue and won the company-wide sales contest in first full year against a national field."
+      ],
+      "context": "",
+      "dates": "2021 – 2024",
+      "employer": "TEKsystems",
+      "key": "tek_recruiter",
+      "location": "Boston, MA",
+      "title": "Enterprise Recruiter – Global Services"
+    },
+    {
+      "bullets": [
+        "Authored a territory-realignment and post-close operations model adopted company-wide, credited with 150% growth in the Amazon Key for Business launch.",
+        "Delivered 200% of first-month quota (12 meetings vs. 6) on a net-new client engagement; named MVP of the Month."
+      ],
+      "context": "E-commerce and retail technology",
+      "dates": "2018 – 2020",
+      "employer": "Amazon Business / demandDrive",
+      "key": "demanddrive",
+      "location": "Waltham, MA",
+      "title": "Sales Development Representative / Inside Sales Representative"
+    }
+  ],
+  "summary": "Revenue and go-to-market operator who owns the full sales cycle from prospecting through close, building qualified pipeline through discovery-first, diagnostic selling. Scoped and positioned AI, data, and cloud solutions for Fortune 500 buyers, translating technical capability into commercial terms and navigating multi-stakeholder deals. Currently owns go-to-market — segmentation, positioning, pricing, and channel strategy — for an AI compliance product sold into technical, regulated buyers. Skilled at qualifying budget sources, structuring proposals, and negotiating complex, multi-decision-maker terms.",
+  "technologies": [
+    "Salesforce",
+    "LinkedIn Sales Navigator",
+    "ZoomInfo",
+    "Tableau (beginner)",
+    "Microsoft Excel & Office Suite",
+    "Microsoft Copilot",
+    "Claude (Opus 5, Sonnet 5, Fable 5)",
+    "Claude Code",
+    "OpenAI (GPT-5.6, Sol, Terra, Luna)",
+    "Trello",
+    "Canva",
+    "Miro"
+  ]
+}

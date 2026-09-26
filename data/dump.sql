@@ -611,6 +611,22 @@ INSERT INTO "achievement_tags" VALUES('art-run-muhbu38f-1','process-improvement'
 INSERT INTO "achievement_tags" VALUES('art-run-muhbu38f-2','pricing-packaging',1.0);
 INSERT INTO "achievement_tags" VALUES('art-run-muhbu38f-2','rfp-response',1.0);
 INSERT INTO "achievement_tags" VALUES('art-run-muhbu38f-2','managed-services-sales',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-muhfveal-0','market-research',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-muhfveal-0','feasibility-roadmap',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-muhfveal-0','competitive-analysis',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-muhfveal-0','scenario-planning',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-muhfveal-1','primary-research',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-muhfveal-1','customer-discovery',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-muhfveal-1','proposal-development',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-muhfveal-2','strategic-partnerships',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-muhfveal-2','channel-partnerships',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-muhghrt2-2','strategic-partnerships',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-muhghrt2-2','channel-partnerships',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-muhghrt2-2','buy-vs-build',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-muhghrt2-2','data-rights',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-muhghrt2-3','forecasting',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-muhghrt2-3','operating-cadence',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-muhghrt2-3','gtm-strategy',1.0);
 CREATE TABLE achievements (
   id         TEXT PRIMARY KEY,           -- psp-closed-deals …
   role_key   TEXT NOT NULL REFERENCES roles(key),
@@ -673,6 +689,11 @@ INSERT INTO "achievements" VALUES('edu-capstone','education','verified','','[]')
 INSERT INTO "achievements" VALUES('art-run-muhbu38f-0','liminal','asserted','Learned from Match Desk run run-muhbu38f','[]');
 INSERT INTO "achievements" VALUES('art-run-muhbu38f-1','liminal','asserted','Learned from Match Desk run run-muhbu38f','[]');
 INSERT INTO "achievements" VALUES('art-run-muhbu38f-2','tek_lead','asserted','Learned from Match Desk run run-muhbu38f','[]');
+INSERT INTO "achievements" VALUES('art-run-muhfveal-0','liminal','asserted','Learned from Match Desk run run-muhfveal','[]');
+INSERT INTO "achievements" VALUES('art-run-muhfveal-1','demanddrive','asserted','Learned from Match Desk run run-muhfveal','[]');
+INSERT INTO "achievements" VALUES('art-run-muhfveal-2','tek_lead','asserted','Learned from Match Desk run run-muhfveal','[]');
+INSERT INTO "achievements" VALUES('art-run-muhghrt2-2','liminal','asserted','Learned from Match Desk run run-muhghrt2','[]');
+INSERT INTO "achievements" VALUES('art-run-muhghrt2-3','liminal','asserted','Learned from Match Desk run run-muhghrt2','[]');
 CREATE TABLE bullets (
   id             INTEGER PRIMARY KEY,
   achievement_id TEXT NOT NULL REFERENCES achievements(id),
@@ -687,7 +708,7 @@ CREATE TABLE bullets (
   superseded_by  INTEGER REFERENCES bullets(id),
   supersede_why  TEXT
 );
-INSERT INTO "bullets" VALUES(1,'psp-closed-deals','canonical',NULL,'Closed 5 signed NFL and MLB team-media partnerships, all paid in full at signing, including 2 accounts with no prior purchase history.',134,'accepted','curated',0.0,'2026-09-25 17:57:41',NULL,NULL);
+INSERT INTO "bullets" VALUES(1,'psp-closed-deals','canonical',NULL,'Closed 5 signed NFL and MLB team-media partnerships, all paid in full at signing, including 2 accounts with no prior purchase history.',134,'accepted','curated',-0.6,'2026-09-25 17:57:41',NULL,NULL);
 INSERT INTO "bullets" VALUES(2,'psp-closed-deals','variant','fundraising','Closed 5 signed partnerships paid in full at signing across independent-school advancement, regional advocacy, automotive, and multifamily buyers.',146,'accepted','curated',0.0,'2026-09-25 17:57:41',NULL,NULL);
 INSERT INTO "bullets" VALUES(3,'psp-closed-deals','variant','conservative','Closed 3 signed team-media deals paid in full at signing within the first four months on territory, including 2 net-new accounts.',129,'rejected','curated',0.0,'2026-09-25 17:57:41',NULL,NULL);
 INSERT INTO "bullets" VALUES(4,'psp-net-revenue','canonical',NULL,'Closed $14,035 in net revenue in the first four months on territory, with every signed deal paid in full at signature.',118,'rejected','curated',0.0,'2026-09-25 17:57:41',NULL,NULL);
@@ -792,6 +813,15 @@ INSERT INTO "bullets" VALUES(102,'art-run-muhbu38f-0','canonical',NULL,'Built a 
 INSERT INTO "bullets" VALUES(103,'art-run-muhbu38f-1','canonical',NULL,'Diagnosed data-sync failures caused by null values and missing governance rules, then enforced sync governance constraints through 60 automated tests.',150,'accepted','artifact',0.0,'2026-09-25 19:43:12',NULL,NULL);
 INSERT INTO "bullets" VALUES(104,'art-run-muhbu38f-2','canonical',NULL,'Partnered with a Principal Business Development Manager to set bill rates and price resource plans for Global Services RFP responses.',133,'accepted','artifact',0.0,'2026-09-25 19:43:12',NULL,NULL);
 INSERT INTO "bullets" VALUES(105,'lim-entity-ip-structure','learned','gate2','Coordinated the client''s CEO, COO, CISO, Chief Clinical Officer, two developers, outside counsel, and CPA to architect the entity, IP, and data-rights structure.',161,'accepted','artifact',0.0,'2026-09-25 19:43:12',NULL,NULL);
+INSERT INTO "bullets" VALUES(106,'art-run-muhfveal-0','canonical',NULL,'Built a feasibility dashboard with kill/pivot triggers for an HVAC firm''s market-overlap expansion, using cost-ceilings to curb cannibalization and protect profit.',163,'accepted','artifact',0.0,'2026-09-26 23:33:34',NULL,NULL);
+INSERT INTO "bullets" VALUES(107,'art-run-muhfveal-1','canonical',NULL,'Interviewed 30+ property managers outside service range and proposed a batch-installation process, growing revenue 100% in one month.',133,'accepted','artifact',0.0,'2026-09-26 23:33:34',NULL,NULL);
+INSERT INTO "bullets" VALUES(108,'art-run-muhfveal-2','canonical',NULL,'Developed strategic partnerships with vendors and account stakeholders to source qualified talent and surface business development opportunities.',145,'accepted','artifact',0.0,'2026-09-26 23:33:34',NULL,NULL);
+INSERT INTO "bullets" VALUES(109,'art-run-muhghrt2-2','canonical',NULL,'Evaluated a channel partnership with an incumbent firm''s CEO during build-vs-buy analysis, rejecting it to protect data rights and equity.',138,'accepted','artifact',0.0,'2026-09-26 23:33:34',NULL,NULL);
+INSERT INTO "bullets" VALUES(110,'art-run-muhghrt2-3','canonical',NULL,'Ran weekly forecasting cadence via a central dashboard tracking sequenced GTM gates and owners, resolving blockers with the team.',129,'accepted','artifact',0.0,'2026-09-26 23:33:34',NULL,NULL);
+INSERT INTO "bullets" VALUES(111,'lim-operating-cadence','learned','gate2','Mapped stakeholder intervention and sign-off criteria for a startup client, defining who owned gates and approvals across the engagement.',137,'accepted','artifact',0.0,'2026-09-26 23:33:34',NULL,NULL);
+INSERT INTO "bullets" VALUES(112,'tekl-southern-gas-discovery','learned','gate2','Helped stand up an Oil & Gas company''s ML and AI Center of Excellence, applying sensor data to predict and detect gas outages.',126,'accepted','artifact',0.0,'2026-09-26 23:33:34',NULL,NULL);
+INSERT INTO "bullets" VALUES(113,'tekl-universal-poc','learned','gate2','Sourced and staffed 8 solution architects across 8 workstreams on a 12-18 month renewable managed services engagement worth $1M annually.',137,'accepted','artifact',0.0,'2026-09-26 23:33:34',NULL,NULL);
+INSERT INTO "bullets" VALUES(114,'tekl-fortune500-discovery','learned','gate2','Closed $700K in revenue across 5 resources with a Senior Business Architect by diagnosing the org''s path from governance to ML/AI CoE.',134,'accepted','artifact',0.0,'2026-09-26 23:33:34',NULL,NULL);
 CREATE TABLE certifications (
   id INTEGER PRIMARY KEY, name TEXT NOT NULL, issuer TEXT, date TEXT, credential_id TEXT,
   status TEXT, source TEXT, tags TEXT
@@ -924,6 +954,7 @@ INSERT INTO "feedback" VALUES(1,'run-muhbu38f',NULL,'swap',NULL,'2026-09-25 19:4
 INSERT INTO "feedback" VALUES(2,'run-muhbu38f',NULL,'edit','Created CRM from scratch with a comprehensive architecture that leverages various GTM and Prospecting connectors and automated weekly syncs to enrich contact data. Built out agents that integrated into the platform directly as part of an Account Research Agent workflow.','2026-09-25 19:43:12','5v6q63iazumm7hjrtxyl');
 INSERT INTO "feedback" VALUES(3,'run-muhbu38f',NULL,'keep',NULL,'2026-09-25 19:43:12','hc36k2w6ooxklh00vp5o');
 INSERT INTO "feedback" VALUES(4,'run-muhbu38f',NULL,'edit','Worked directly with CEO, COO, CSO, Chief Clinical Officer, and two developers cross-functionally.','2026-09-25 19:43:12','xsg56dobapy5z24fmm12');
+INSERT INTO "feedback" VALUES(5,'run-muhghrt2',1,'drop',NULL,'2026-09-26 23:33:33','qag1e5s30fz6knbr9i31');
 CREATE TABLE followups (
   id INTEGER PRIMARY KEY, jd_id TEXT REFERENCES job_descriptions(id),
   gate INTEGER NOT NULL,                 -- 1 = baseline gate, 2 = per-JD gate
@@ -941,6 +972,15 @@ INSERT INTO "followups" VALUES(7,'run-muhbu38f',2,'In the Claude Code engagement
 INSERT INTO "followups" VALUES(8,'run-muhbu38f',2,'What programming languages or technical tools (e.g., Python, SQL) has Tim used directly, beyond directing AI-assisted development?','None','ai-in-workflow',NULL,'2026-09-25 19:43:12','2026-09-25 19:43:12','60c8fd7288e1e466ac5e304927aa36b4');
 INSERT INTO "followups" VALUES(9,'run-muhbu38f',2,'Has Tim worked directly with contract lifecycle, subscription, or billing systems (e.g., CPQ platforms) beyond designing pricing tiers?','I worked with a Principal Business Development Manager for our Global Services team to provide customer pricing quotes on resource needs (establish bill rates) based on a proposed commercial opportunity in the form of an RFP response. I had inputs directly into the pricing but did not draft the SLA''s, SOW''s, or MSA''s','pricing-packaging',NULL,'2026-09-25 19:43:12','2026-09-25 19:43:12','a83553d80fd50430f0389d42bbe4e03b');
 INSERT INTO "followups" VALUES(10,'run-muhbu38f',2,'What was the scope of stakeholders (roles, teams, count) Tim coordinated with when architecting the entity, IP, and data-rights structure?','Worked cross-functionally with CEO, COO, CiSO, Chief Clinical Officer, and 2 developers cross-functionally while architecting entity, IP, and data-rights structure.','strategic-partnerships',NULL,'2026-09-25 19:43:12','2026-09-25 19:43:12','d38e1fbdb6d1e65d9fca203854fa15e4');
+INSERT INTO "followups" VALUES(11,'run-muhfveal',2,'The posting leans on market & competitive research (“insights”). What''s your strongest concrete example? Say what you did, the scope, and the measurable result.','I conducted market & competitive research for a HVAC firm that was looking to expand locations into an area that semi-overlapped with its current service area location. I developed a feasibility dashboard with kill / pivot triggers, and determined the best way to quantify success was with a cost-ceilings approach to mitigate cannibalism and ensure increased profits','market-research',NULL,'2026-09-26 23:33:33','2026-09-26 23:33:33','1333ea1a56a8de9411780d1b7af18eb7');
+INSERT INTO "followups" VALUES(12,'run-muhfveal',2,'The posting leans on primary research design (“interviews”). What''s your strongest concrete example? Say what you did, the scope, and the measurable result.','conducted interviews and documented of over 30 property managers outside of pre-existing service range and created a proposal to implement a process by which our salespeople would batch service installations in outer areas near to the service range. Revenue grew by 100% in one month','primary-research',NULL,'2026-09-26 23:33:33','2026-09-26 23:33:33','b9a3753d7c1ebec800d2206975480d2e');
+INSERT INTO "followups" VALUES(13,'run-muhfveal',2,'The posting leans on strategic partnerships (“ecosystem”, “partner”). What''s your strongest concrete example? Say what you did, the scope, and the measurable result.','I developed strategic partnerships with both vendors and stakeholders within accounts to source the most qualified talent and deliver business development opportunities within the scope of our global service offerings','strategic-partnerships',NULL,'2026-09-26 23:33:33','2026-09-26 23:33:33','04b192b8cbd7291e6311d9d147e9bb82');
+INSERT INTO "followups" VALUES(14,'run-muhfveal',2,'The posting leans on stakeholder alignment (“alignment”). What''s your strongest concrete example? Say what you did, the scope, and the measurable result.','I mapped out for a startup the stakeholder intervention and collaboration criteria to ensure stakeholders were aligned on who they would be signing off on work with for what. Owned gates','stakeholder-alignment',NULL,'2026-09-26 23:33:33','2026-09-26 23:33:33','bd89676a40555ef97ae1a8ff922d6652');
+INSERT INTO "followups" VALUES(15,'run-muhghrt2',2,'Do you have any direct experience, projects, or professional network contacts in robotics or physical AI (e.g., sensor data, robot fleets, simulation, or hardware-adjacent buyers)?','I worked with an Oil & Gas company tasked with using sensory data to predict and detect gas outages through my work in helping stand up their ML and AI CoE','ai-ml-solutions',NULL,'2026-09-26 23:33:33','2026-09-26 23:33:33','2c5d6679b83f01395b9b8ca3468adafe');
+INSERT INTO "followups" VALUES(16,'run-muhghrt2',2,'In your AI/data/cloud solution sales work at TEKsystems, what was a typical deal size and sales cycle length for the opportunities you scoped and positioned?','For a large scale Digital Transformation like in my work with Universal in a Managed Services Capacity the scope of work was 12-18 months renewable for 8 Solution Architect resources serving 8 different unique workstreams which netted $1 million per year alone. I didn''t scope the work but understood the workstreams and sourced the talent','pipeline-management',NULL,'2026-09-26 23:33:33','2026-09-26 23:33:33','33dcdf740f22f4e62a6ea60e42a7fb6d');
+INSERT INTO "followups" VALUES(17,'run-muhghrt2',2,'What specific channel or commercial partnerships (resellers, integrators, industry bodies) have you built or negotiated, beyond the funding-source diagnostics at PSP?','Explored a channel partnership with the CEO of an incumbent firm while evaluating build vs buy for certain aspects of the confidential healthcare product. Determined this was not the best channel partnership strategy as significant data rights and equity would be lost','strategic-partnerships',NULL,'2026-09-26 23:33:33','2026-09-26 23:33:33','6a4e9a3a3bfbb09b9ef9bec20e6e9f2c');
+INSERT INTO "followups" VALUES(18,'run-muhghrt2',2,'For the AI compliance product GTM you own, what forecasting or pipeline-review cadence do you run, and what were recent pipeline coverage or conversion numbers?','I run weekly automated checks on one central dashboard that shows the sequenced gates to attain the GTM timeline in a forecasted manner, who owns it, and then weekly would convene with team members to address issues in blocked gates which prevents further work and delay','forecasting',NULL,'2026-09-26 23:33:33','2026-09-26 23:33:33','ce47ab4465fb77950c021b7786b58a4a');
+INSERT INTO "followups" VALUES(19,'run-muhghrt2',2,'When you led executive-level discovery with Fortune 500 buyers, what titles/seniority did you engage (e.g., VP, C-suite), and did any of those discovery efforts convert into a specific closed deal or contract value?','Senior Business Architect resulted in closed revenue of $700,000 across 5 resources based on my ability to build rapport and diagnose the underlying goal of the org to progress from governance to ML and AI CoE','executive-selling',NULL,'2026-09-26 23:33:33','2026-09-26 23:33:33','257b8fea9e920ff31c6f07c430cd7eb4');
 CREATE TABLE generated_resumes (
   id INTEGER PRIMARY KEY, jd_id TEXT REFERENCES job_descriptions(id), version TEXT,
   json TEXT NOT NULL, html_path TEXT, pdf_path TEXT, created_at TEXT DEFAULT (datetime('now'))
@@ -1012,6 +1052,100 @@ INSERT INTO "jd_requirements" VALUES(55,'run-muhbu38f','risk-governance',NULL,3.
 INSERT INTO "jd_requirements" VALUES(56,'run-muhbu38f','sponsorship',NULL,1.0,NULL);
 INSERT INTO "jd_requirements" VALUES(57,'run-muhbu38f','strategic-partnerships',NULL,1.4,NULL);
 INSERT INTO "jd_requirements" VALUES(58,'run-muhbu38f','team-coaching',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(59,'run-muhe31zr','ai-in-workflow',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(60,'run-muhe31zr','ai-ml-solutions',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(61,'run-muhe31zr','audience-measurement',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(62,'run-muhe31zr','board-advisory',NULL,2.0,NULL);
+INSERT INTO "jd_requirements" VALUES(63,'run-muhe31zr','board-trustee-engagement',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(64,'run-muhe31zr','cross-platform',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(65,'run-muhe31zr','customer-success',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(66,'run-muhe31zr','discovery',NULL,1.0,NULL);
+INSERT INTO "jd_requirements" VALUES(67,'run-muhe31zr','enablement-collateral',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(68,'run-muhe31zr','feasibility-roadmap',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(69,'run-muhe31zr','hiring-onboarding',NULL,0.6,NULL);
+INSERT INTO "jd_requirements" VALUES(70,'run-muhe31zr','managed-services-sales',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(71,'run-muhe31zr','market-research',NULL,2.8,NULL);
+INSERT INTO "jd_requirements" VALUES(72,'run-muhe31zr','moves-management',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(73,'run-muhe31zr','positioning-messaging',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(74,'run-muhe31zr','primary-research',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(75,'run-muhe31zr','process-improvement',NULL,2.4,NULL);
+INSERT INTO "jd_requirements" VALUES(76,'run-muhe31zr','readiness-assessment',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(77,'run-muhe31zr','stakeholder-alignment',NULL,2.8,NULL);
+INSERT INTO "jd_requirements" VALUES(78,'run-muhe31zr','strategic-partnerships',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(79,'run-muhe31zr','team-coaching',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(80,'run-muhedu7c','ai-in-workflow',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(81,'run-muhedu7c','ai-ml-solutions',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(82,'run-muhedu7c','audience-measurement',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(83,'run-muhedu7c','board-advisory',NULL,2.0,NULL);
+INSERT INTO "jd_requirements" VALUES(84,'run-muhedu7c','board-trustee-engagement',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(85,'run-muhedu7c','cross-platform',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(86,'run-muhedu7c','customer-success',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(87,'run-muhedu7c','discovery',NULL,2.0,NULL);
+INSERT INTO "jd_requirements" VALUES(88,'run-muhedu7c','enablement-collateral',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(89,'run-muhedu7c','feasibility-roadmap',NULL,1.6,NULL);
+INSERT INTO "jd_requirements" VALUES(90,'run-muhedu7c','hiring-onboarding',NULL,0.6,NULL);
+INSERT INTO "jd_requirements" VALUES(91,'run-muhedu7c','managed-services-sales',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(92,'run-muhedu7c','market-research',NULL,2.8,NULL);
+INSERT INTO "jd_requirements" VALUES(93,'run-muhedu7c','moves-management',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(94,'run-muhedu7c','positioning-messaging',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(95,'run-muhedu7c','primary-research',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(96,'run-muhedu7c','process-improvement',NULL,2.4,NULL);
+INSERT INTO "jd_requirements" VALUES(97,'run-muhedu7c','readiness-assessment',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(98,'run-muhedu7c','stakeholder-alignment',NULL,2.8,NULL);
+INSERT INTO "jd_requirements" VALUES(99,'run-muhedu7c','strategic-partnerships',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(100,'run-muhedu7c','team-coaching',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(101,'run-muhfveal','ai-in-workflow',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(102,'run-muhfveal','ai-ml-solutions',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(103,'run-muhfveal','audience-measurement',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(104,'run-muhfveal','board-advisory',NULL,2.0,NULL);
+INSERT INTO "jd_requirements" VALUES(105,'run-muhfveal','board-trustee-engagement',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(106,'run-muhfveal','cross-platform',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(107,'run-muhfveal','customer-success',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(108,'run-muhfveal','discovery',NULL,1.0,NULL);
+INSERT INTO "jd_requirements" VALUES(109,'run-muhfveal','enablement-collateral',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(110,'run-muhfveal','feasibility-roadmap',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(111,'run-muhfveal','hiring-onboarding',NULL,0.6,NULL);
+INSERT INTO "jd_requirements" VALUES(112,'run-muhfveal','managed-services-sales',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(113,'run-muhfveal','market-research',NULL,2.8,NULL);
+INSERT INTO "jd_requirements" VALUES(114,'run-muhfveal','moves-management',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(115,'run-muhfveal','positioning-messaging',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(116,'run-muhfveal','primary-research',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(117,'run-muhfveal','process-improvement',NULL,2.4,NULL);
+INSERT INTO "jd_requirements" VALUES(118,'run-muhfveal','readiness-assessment',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(119,'run-muhfveal','stakeholder-alignment',NULL,2.8,NULL);
+INSERT INTO "jd_requirements" VALUES(120,'run-muhfveal','strategic-partnerships',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(121,'run-muhfveal','team-coaching',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(122,'run-muhghrt2','abm',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(123,'run-muhghrt2','account-expansion',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(124,'run-muhghrt2','ai-ml-solutions',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(125,'run-muhghrt2','audience-measurement',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(126,'run-muhghrt2','channel-partnerships',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(127,'run-muhghrt2','channel-strategy',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(128,'run-muhghrt2','closing',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(129,'run-muhghrt2','cloud-infrastructure',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(130,'run-muhghrt2','customer-success',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(131,'run-muhghrt2','data-rights',NULL,2.8,NULL);
+INSERT INTO "jd_requirements" VALUES(132,'run-muhghrt2','demand-generation',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(133,'run-muhghrt2','discovery',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(134,'run-muhghrt2','executive-selling',NULL,2.8,NULL);
+INSERT INTO "jd_requirements" VALUES(135,'run-muhghrt2','forecasting',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(136,'run-muhghrt2','full-cycle-sales',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(137,'run-muhghrt2','gtm-strategy',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(138,'run-muhghrt2','hiring-onboarding',NULL,0.6,NULL);
+INSERT INTO "jd_requirements" VALUES(139,'run-muhghrt2','market-research',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(140,'run-muhghrt2','market-segmentation',NULL,2.0,NULL);
+INSERT INTO "jd_requirements" VALUES(141,'run-muhghrt2','multi-stakeholder-selling',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(142,'run-muhghrt2','negotiation',NULL,2.8,NULL);
+INSERT INTO "jd_requirements" VALUES(143,'run-muhghrt2','new-business',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(144,'run-muhghrt2','pipeline-management',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(145,'run-muhghrt2','positioning-messaging',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(146,'run-muhghrt2','process-improvement',NULL,1.0,NULL);
+INSERT INTO "jd_requirements" VALUES(147,'run-muhghrt2','proposal-development',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(148,'run-muhghrt2','prospecting',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(149,'run-muhghrt2','qualification',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(150,'run-muhghrt2','readiness-assessment',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(151,'run-muhghrt2','stakeholder-alignment',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(152,'run-muhghrt2','strategic-partnerships',NULL,3.0,NULL);
 CREATE TABLE job_descriptions (
   id         TEXT PRIMARY KEY,           -- jd_<timestamp> or artifact doc id
   company    TEXT, title TEXT,
@@ -1144,9 +1278,161 @@ Other Notices
 Pursuant to the San Francisco Fair Chance Ordinance, we will consider for employment qualified applicants with arrest and conviction records.
 
 Beware of recruiting scams: Ramp will only contact you through official @Ramp.com email addresses and will never ask for payment or sensitive personal information during the hiring process.','2026-09-25 19:43:12','artifact');
+INSERT INTO "job_descriptions" VALUES('run-muhe31zr','Friedman Williams','Senior Advisor: AI Transformation','About the job
+This role can hire in New York or Chicago
+Position Summary: Accountable for supporting execution of the firm’s AI and digital transformation initiatives through hands‑on workflow analysis, solution enablement, and user adoption support. The Senior Advisor, AI Transformation is a hybrid advisory and delivery role within the IT Strategy & Transformation organization. This role partners closely with business services teams, practice groups, and enablement partners to identify workflow challenges, design practical AI‑enabled solutions, and guide users through adoption and change. The role blends use‑case discovery, process analysis, solution coordination, and emerging technology awareness to deliver meaningful productivity and client service improvements. Detailed responsibilities are outlined in the Essential Functions below.
+Responsibilities
+Use‑Case Identification & Workflow Analysis
+Partner with business teams to understand current workflows, challenges, bottlenecks, and unmet needs.
+Conduct interviews, process reviews, and journey mapping to identify AI and digital opportunities that enhance efficiency and productivity.
+Document user stories, requirements, and current‑state processes to inform solution direction and feasibility assessment.
+Maintain transparency and alignment with IT, Innovation, Data, and M365 partners across the broader transformation portfolio.
+Solution Definition & Enablement
+Translate business needs into clear functional requirements and solution concepts.
+Evaluate how tools across the firm’s technology ecosystem, including Microsoft 365 and AI‑enabled capabilities such as Copilot and Harvey, can support workflow improvements.
+Collaborate with Microsoft 365, Data & AI, application, and engineering teams to translate business requirements into scalable and supportable solutions.
+Configure AI‑enabled experiences, prototypes, and lightweight digital workflows to validate functionality and gather feedback.
+Coordinate with IT delivery teams to ensure cohesive implementation and effective hand‑offs
+Strategic Partnership & Use‑Case Prioritization
+Collaborate closely with Learning & Development, Organizational Change Management, Innovation, and IT teams to ensure aligned communication and coordinated execution.
+Support development of training materials, skill‑building resources, and readiness activities.
+Share insights, progress, and outcomes to promote visibility and integrated delivery across workstreams.
+Cross‑Team Collaboration & Integration
+Build and maintain strong alignment across program workstreams, including practice groups, business services, and technology teams.
+Proactively manage expectations, secure buy‑in at key decision points, and resolve cross‑workstream conflicts.
+Champion the firm’s GenAI transformation vision and ensure consistent messaging throughout the program lifecycle.
+Change Enablement & User Support
+Deliver demonstrations, facilitate workshops, and guide users through new tools, processes, and AI‑enabled capabilities.
+Support adoption efforts through training, communications, and ongoing user engagement.
+Capture and synthesize “voice of the user” insights to inform continuous improvement and broader rollout strategies
+Technology Awareness & Opportunity Scanning
+Maintain up-to-date awareness of Microsoft 365, Copilot, AI agents, workflow automation platforms, data technologies, and emerging AI capabilities and technology roadmaps.
+Partner with Innovation, Enterprise Collaboration, and vendors to identify emerging capabilities and potential new use cases.
+Recommend where evolving technologies can add practical value within business workflows.
+
+Qualifications
+Proven ability to analyze business processes, identify optimization opportunities, and support AI‑enabled solutions.
+Hands‑on experience leveraging AI‑powered capabilities such as Microsoft 365 Copilot to enhance productivity.
+Experience capturing requirements, facilitating discussions, and translating needs into solution recommendations.
+
+Experience, Education & Certifications:
+Bachelor’s degree in Information Technology, Computer Science, or a related field; equivalent experience considered.
+6+ years of experience in business analysis, workflow improvement, digital transformation, or adoption‑focused roles.
+Experience supporting AI‑driven or technology‑enabled transformation initiatives preferred.
+Relevant certifications such as Microsoft 365, BRMP, or process improvement credentials are beneficial but not required.','2026-09-26 23:33:33','artifact');
+INSERT INTO "job_descriptions" VALUES('run-muhedu7c','Friedman Williams','Senior Advisor: AI Transformation','About the job
+This role can hire in New York or Chicago
+Position Summary: Accountable for supporting execution of the firm’s AI and digital transformation initiatives through hands‑on workflow analysis, solution enablement, and user adoption support. The Senior Advisor, AI Transformation is a hybrid advisory and delivery role within the IT Strategy & Transformation organization. This role partners closely with business services teams, practice groups, and enablement partners to identify workflow challenges, design practical AI‑enabled solutions, and guide users through adoption and change. The role blends use‑case discovery, process analysis, solution coordination, and emerging technology awareness to deliver meaningful productivity and client service improvements. Detailed responsibilities are outlined in the Essential Functions below.
+Responsibilities
+Use‑Case Identification & Workflow Analysis
+Partner with business teams to understand current workflows, challenges, bottlenecks, and unmet needs.
+Conduct interviews, process reviews, and journey mapping to identify AI and digital opportunities that enhance efficiency and productivity.
+Document user stories, requirements, and current‑state processes to inform solution direction and feasibility assessment.
+Maintain transparency and alignment with IT, Innovation, Data, and M365 partners across the broader transformation portfolio.
+Solution Definition & Enablement
+Translate business needs into clear functional requirements and solution concepts.
+Evaluate how tools across the firm’s technology ecosystem, including Microsoft 365 and AI‑enabled capabilities such as Copilot and Harvey, can support workflow improvements.
+Collaborate with Microsoft 365, Data & AI, application, and engineering teams to translate business requirements into scalable and supportable solutions.
+Configure AI‑enabled experiences, prototypes, and lightweight digital workflows to validate functionality and gather feedback.
+Coordinate with IT delivery teams to ensure cohesive implementation and effective hand‑offs
+Strategic Partnership & Use‑Case Prioritization
+Collaborate closely with Learning & Development, Organizational Change Management, Innovation, and IT teams to ensure aligned communication and coordinated execution.
+Support development of training materials, skill‑building resources, and readiness activities.
+Share insights, progress, and outcomes to promote visibility and integrated delivery across workstreams.
+Cross‑Team Collaboration & Integration
+Build and maintain strong alignment across program workstreams, including practice groups, business services, and technology teams.
+Proactively manage expectations, secure buy‑in at key decision points, and resolve cross‑workstream conflicts.
+Champion the firm’s GenAI transformation vision and ensure consistent messaging throughout the program lifecycle.
+Change Enablement & User Support
+Deliver demonstrations, facilitate workshops, and guide users through new tools, processes, and AI‑enabled capabilities.
+Support adoption efforts through training, communications, and ongoing user engagement.
+Capture and synthesize “voice of the user” insights to inform continuous improvement and broader rollout strategies
+Technology Awareness & Opportunity Scanning
+Maintain up-to-date awareness of Microsoft 365, Copilot, AI agents, workflow automation platforms, data technologies, and emerging AI capabilities and technology roadmaps.
+Partner with Innovation, Enterprise Collaboration, and vendors to identify emerging capabilities and potential new use cases.
+Recommend where evolving technologies can add practical value within business workflows.
+
+Qualifications
+Proven ability to analyze business processes, identify optimization opportunities, and support AI‑enabled solutions.
+Hands‑on experience leveraging AI‑powered capabilities such as Microsoft 365 Copilot to enhance productivity.
+Experience capturing requirements, facilitating discussions, and translating needs into solution recommendations.
+
+Experience, Education & Certifications:
+Bachelor’s degree in Information Technology, Computer Science, or a related field; equivalent experience considered.
+6+ years of experience in business analysis, workflow improvement, digital transformation, or adoption‑focused roles.
+Experience supporting AI‑driven or technology‑enabled transformation initiatives preferred.
+Relevant certifications such as Microsoft 365, BRMP, or process improvement credentials are beneficial but not required.','2026-09-26 23:33:33','artifact');
+INSERT INTO "job_descriptions" VALUES('run-muhfveal','Friedman Williams','Senior Advisor: AI Transformation','About the job
+This role can hire in New York or Chicago
+Position Summary: Accountable for supporting execution of the firm’s AI and digital transformation initiatives through hands‑on workflow analysis, solution enablement, and user adoption support. The Senior Advisor, AI Transformation is a hybrid advisory and delivery role within the IT Strategy & Transformation organization. This role partners closely with business services teams, practice groups, and enablement partners to identify workflow challenges, design practical AI‑enabled solutions, and guide users through adoption and change. The role blends use‑case discovery, process analysis, solution coordination, and emerging technology awareness to deliver meaningful productivity and client service improvements. Detailed responsibilities are outlined in the Essential Functions below.
+Responsibilities
+Use‑Case Identification & Workflow Analysis
+Partner with business teams to understand current workflows, challenges, bottlenecks, and unmet needs.
+Conduct interviews, process reviews, and journey mapping to identify AI and digital opportunities that enhance efficiency and productivity.
+Document user stories, requirements, and current‑state processes to inform solution direction and feasibility assessment.
+Maintain transparency and alignment with IT, Innovation, Data, and M365 partners across the broader transformation portfolio.
+Solution Definition & Enablement
+Translate business needs into clear functional requirements and solution concepts.
+Evaluate how tools across the firm’s technology ecosystem, including Microsoft 365 and AI‑enabled capabilities such as Copilot and Harvey, can support workflow improvements.
+Collaborate with Microsoft 365, Data & AI, application, and engineering teams to translate business requirements into scalable and supportable solutions.
+Configure AI‑enabled experiences, prototypes, and lightweight digital workflows to validate functionality and gather feedback.
+Coordinate with IT delivery teams to ensure cohesive implementation and effective hand‑offs
+Strategic Partnership & Use‑Case Prioritization
+Collaborate closely with Learning & Development, Organizational Change Management, Innovation, and IT teams to ensure aligned communication and coordinated execution.
+Support development of training materials, skill‑building resources, and readiness activities.
+Share insights, progress, and outcomes to promote visibility and integrated delivery across workstreams.
+Cross‑Team Collaboration & Integration
+Build and maintain strong alignment across program workstreams, including practice groups, business services, and technology teams.
+Proactively manage expectations, secure buy‑in at key decision points, and resolve cross‑workstream conflicts.
+Champion the firm’s GenAI transformation vision and ensure consistent messaging throughout the program lifecycle.
+Change Enablement & User Support
+Deliver demonstrations, facilitate workshops, and guide users through new tools, processes, and AI‑enabled capabilities.
+Support adoption efforts through training, communications, and ongoing user engagement.
+Capture and synthesize “voice of the user” insights to inform continuous improvement and broader rollout strategies
+Technology Awareness & Opportunity Scanning
+Maintain up-to-date awareness of Microsoft 365, Copilot, AI agents, workflow automation platforms, data technologies, and emerging AI capabilities and technology roadmaps.
+Partner with Innovation, Enterprise Collaboration, and vendors to identify emerging capabilities and potential new use cases.
+Recommend where evolving technologies can add practical value within business workflows.
+
+Qualifications
+Proven ability to analyze business processes, identify optimization opportunities, and support AI‑enabled solutions.
+Hands‑on experience leveraging AI‑powered capabilities such as Microsoft 365 Copilot to enhance productivity.
+Experience capturing requirements, facilitating discussions, and translating needs into solution recommendations.
+
+Experience, Education & Certifications:
+Bachelor’s degree in Information Technology, Computer Science, or a related field; equivalent experience considered.
+6+ years of experience in business analysis, workflow improvement, digital transformation, or adoption‑focused roles.
+Experience supporting AI‑driven or technology‑enabled transformation initiatives preferred.
+Relevant certifications such as Microsoft 365, BRMP, or process improvement credentials are beneficial but not required.','2026-09-26 23:33:33','artifact');
+INSERT INTO "job_descriptions" VALUES('run-muhghrt2','USA Tech Recruit','Head of GTM – B2B Sales / Go-to-Market / AI / Robotics / Data Platforms','About the job
+Head of GTM – B2B Sales / Go-to-Market / AI / Robotics / Data Platforms
+We are currently partnered with an early-stage technology organisation developing data generation and evaluation systems for Physical AI, robotics, and real-world artificial intelligence applications. As part of their continued growth, they are looking to hire a GTM Manager / Head to build and execute the go-to-market strategy, win customers, and drive revenue growth.This is a hands-on commercial role working closely with the founders to identify the strongest market opportunities, refine positioning, develop customer relationships, and turn early traction into a repeatable sales motion.
+**A background and network in Physical AI and Robotics is a hard requirement, any CVs without a strong demonstration of this can not be considered for the position**
+Key responsibilities
+Define and refine the ideal customer profile, priority market segments, buyer personas, and target accounts across AI, robotics, and related technical markets
+Build and execute a go-to-market strategy covering positioning, customer acquisition, sales channels, and commercial partnerships
+Generate qualified pipeline through targeted outbound activity, professional networks, partnerships, industry events, and relevant inbound opportunities
+Own the full sales cycle from prospecting, discovery, and qualification through proposals, negotiation, and closing
+Build relationships with technical decision-makers, budget owners, and executive sponsors
+Understand customer data, evaluation, operational, and technology challenges, as well as buying criteria, budgets, and decision-making processes
+Translate technical capabilities into clear business value, differentiated messaging, and compelling sales materials
+Work with product, research, and engineering teams to shape commercially viable pilots with clear success criteria and a path to paid adoption
+
+Key requirements
+Experience in B2B go-to-market, business development, or full-cycle sales for technical products or services
+Demonstrated track record of generating qualified pipeline and closing revenue, with clear ownership of commercial outcomes
+Experience selling to AI & Robotics buyers and navigating complex, multi-stakeholder purchasing decisions
+Strong discovery skills and the ability to connect customer problems with a clear and compelling value proposition
+Confidence leading commercial discussions, preparing proposals, and negotiating terms
+Ability to communicate technical concepts clearly and credibly, working effectively with subject-matter experts
+Experience developing market positioning, identifying target markets, or testing new customer acquisition channels
+Strong commercial judgment and a disciplined approach to qualification, prioritisation, and forecasting
+
+KeywordsGTM Manager / GTM Lead / Head of GTM / Head of Go-to-Market / Go-to-Market Manager / Go-to-Market Strategy / Commercial Lead / Sales Lead / Business Development / Business Development Manager / B2B Sales / Enterprise Sales / Technical Sales / Full-Cycle Sales / SaaS Sales / Enterprise SaaS / AI / Artificial Intelligence / Physical AI / Robotics / Data Platforms / Data Infrastructure / Developer Tools / Technical Services / AI Infrastructure / Machine Learning / Machine Learning Platforms / Data Generation / Data Evaluation / AI Evaluation / Customer Acquisition / Sales Strategy / Sales Development / Outbound Sales / Pipeline Generation / Lead Generation / Account Development / Account Expansion / Strategic Partnerships / Channel Partnerships / Sales Partnerships / Technical Buyers / Enterprise Buyers / Executive Stakeholders / Discovery / Qualification / Proposals / Negotiation / Deal Closing / Revenue Growth
+By applying to this role, you understand that we may collect your personal data and process it in line with our privacy policy.Privacy Policy','2026-09-26 23:33:33','artifact');
 CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT);
 INSERT INTO "meta" VALUES('length_band','{"source": "R1_base_2026", "n": 21, "min": 79, "p10": 97, "p25": 119, "median": 143, "p75": 158, "p90": 167, "max": 212, "hard_ceiling": 170}');
-INSERT INTO "meta" VALUES('ingested_at','2026-09-25T15:43:12');
+INSERT INTO "meta" VALUES('ingested_at','2026-09-26T19:33:34');
 CREATE TABLE raw_bullets (
   id        INTEGER PRIMARY KEY,
   source_id TEXT NOT NULL REFERENCES sources(id),
@@ -1531,24 +1817,24 @@ CREATE TABLE sources (
   headline    TEXT,
   ingested_at TEXT DEFAULT (datetime('now'))
 );
-INSERT INTO "sources" VALUES('R1_base_2026','Career Finder Folder\Tim King Resume 2026 .docx','a267263fe50a70e376169b3832eb1934','General baseline (Resume 1 — bullet standard)','docx',NULL,'2026-09-25 19:43:12');
-INSERT INTO "sources" VALUES('R2_base_2026_preliminal','Career Finder Folder\Resumes\Tim King Resume 2026 .docx','57a633a9264614df70d46f1ba1dce772','General baseline (pre-Liminal)','docx',NULL,'2026-09-25 19:43:12');
-INSERT INTO "sources" VALUES('R3_fundraising','Career Finder Folder\Resumes\Tim King Fundraising Resume 2026 .docx','f93265fe3f3db5149195dc969905576e','Educational & nonprofit fundraising / advancement','docx',NULL,'2026-09-25 19:43:12');
-INSERT INTO "sources" VALUES('R4_openai_client_partner_me','Career Finder Folder\Resumes\Tim_King_Resume_OpenAI_Client_Partner_Media & Entertainment-TK.docx','f3d6cbe1cfc0456de4f3ae90726069fd','OpenAI — Client Partner, Media & Entertainment','docx','MEDIA & ENTERTAINMENT ADVERTISING SALES · STRATEGIC PARTNERSHIPS · NEW BUSINESS','2026-09-25 19:43:12');
-INSERT INTO "sources" VALUES('R5_luminance_commercial_director','Career Finder Folder\Resumes\Tim_King_Resume_Luminance_Commercial_Director.docx','4e6d4a19501db3c9bc00933ea26f8875','Luminance — Commercial Director (enterprise AI sales leadership)','docx','ENTERPRISE SALES LEADERSHIP · AI & TECHNOLOGY SOLUTIONS · NEW BUSINESS','2026-09-25 19:43:12');
-INSERT INTO "sources" VALUES('R6_admarketplace_director','Career Finder Folder\Resumes\Tim_King_Resume_adMarketplace_Director_Advertiser_Sales.docx','80bba217fbcb61eadfbfa704b1e943ee','adMarketplace — Director, Advertiser Sales','docx','PERFORMANCE MEDIA & ADTECH SALES · SEARCH INTENT · NEW BUSINESS','2026-09-25 19:43:12');
-INSERT INTO "sources" VALUES('R7_fox_weather_director','Career Finder Folder\Resumes\Tim_King_Resume_FOX_Weather_Director_Ad_Sales.pdf','140a2751af99df1521ee993163294d94','FOX Weather — Director, Ad Sales','pdf_resume','MEDIA & SPONSORSHIP SALES · INTEGRATED CROSS-PLATFORM PARTNERSHIPS · REVENUE LEADERSHIP','2026-09-25 19:43:12');
-INSERT INTO "sources" VALUES('R8_bairesdev_vp_sales','Business Advisory Services\Timothy King Resume - BairesDev VP Sales.docx','40eff717426450d3445d6f4fc4839c14','BairesDev — VP Sales (IT services)','docx',NULL,'2026-09-25 19:43:12');
-INSERT INTO "sources" VALUES('R9_knit_growth_marketing','Business Advisory Services\Timothy King Resume - Knit Growth Marketing.docx','a8599a105de187fda7761efd71946be9','Knit — Growth Marketing','docx',NULL,'2026-09-25 19:43:12');
-INSERT INTO "sources" VALUES('R10_mri_simmons_audience','Business Advisory Services\Timothy King Resume - MRI-Simmons Audience Activation.docx','4ba9ce0a2a45f7b53a353edf9b2e1256','MRI-Simmons — Audience Activation (data sales)','docx',NULL,'2026-09-25 19:43:12');
-INSERT INTO "sources" VALUES('R11_magellan_measurement','Business Advisory Services\Timothy King Resume - Magellan AI Measurement Growth.docx','337829b3f94678053bf2620e40b29e76','Magellan AI — Measurement Growth','docx',NULL,'2026-09-25 19:43:12');
-INSERT INTO "sources" VALUES('R12_meridian_gtm','Business Advisory Services\Timothy King Resume - Meridian GTM.docx','f31ddebc9616247bfb9764cf70809315','Meridian — GTM','docx',NULL,'2026-09-25 19:43:12');
-INSERT INTO "sources" VALUES('R13_samba_platform_sales','Business Advisory Services\Timothy King Resume - Samba Platform Sales.docx','371007a551ebc3009079728d568e9094','Samba TV — Platform / Data Partnerships Sales','docx',NULL,'2026-09-25 19:43:12');
-INSERT INTO "sources" VALUES('R14_smartly_agency_partnerships','Business Advisory Services\Timothy King Resume - Smartly Agency Partnerships.docx','620209e57cb2768f4ba3e0526fdc2d25','Smartly — Agency Partnerships (player-coach)','docx',NULL,'2026-09-25 19:43:12');
-INSERT INTO "sources" VALUES('R15_versant_transformation','Business Advisory Services\Timothy King Resume - Versant Transformation Enablement.docx','f0f6a601dc046ad644a56114a6e9fc65','Versant — Transformation & Enablement','docx',NULL,'2026-09-25 19:43:12');
-INSERT INTO "sources" VALUES('R16_admarketplace_adv_success','Business Advisory Services\Timothy King Resume - adMarketplace Advertiser Success.docx','12c7eafb90c7f48982463722d7ec347d','adMarketplace — Advertiser Success','docx',NULL,'2026-09-25 19:43:12');
-INSERT INTO "sources" VALUES('S17_liminal_summary','Career Finder Folder\Liminal_Chief_of_Strategy_Summary.md.pdf','0d4892d96e98b3359cb8ed6c42c114e5','Liminal work summary (pre-written bullets)','pdf_liminal',NULL,'2026-09-25 19:43:12');
-INSERT INTO "sources" VALUES('S18_linkedin','Career Finder Folder\Resume Optimization Tool\sources\linkedin_2026-09-25.md','b594acde2a787aae7c79a2f4a4b77ffa','LinkedIn public profile (captured 2026-09-25)','linkedin_md','Sales Professional | Marketing, Advertising, Product, Services, & Sales GTM Strategist Providing Advisory Services | Systems Thinker | Process Engineer | AI Adoption Enthusiast','2026-09-25 19:43:12');
+INSERT INTO "sources" VALUES('R1_base_2026','Career Finder Folder\Tim King Resume 2026 .docx','a267263fe50a70e376169b3832eb1934','General baseline (Resume 1 — bullet standard)','docx',NULL,'2026-09-26 23:33:34');
+INSERT INTO "sources" VALUES('R2_base_2026_preliminal','Career Finder Folder\Resumes\Tim King Resume 2026 .docx','57a633a9264614df70d46f1ba1dce772','General baseline (pre-Liminal)','docx',NULL,'2026-09-26 23:33:34');
+INSERT INTO "sources" VALUES('R3_fundraising','Career Finder Folder\Resumes\Tim King Fundraising Resume 2026 .docx','f93265fe3f3db5149195dc969905576e','Educational & nonprofit fundraising / advancement','docx',NULL,'2026-09-26 23:33:34');
+INSERT INTO "sources" VALUES('R4_openai_client_partner_me','Career Finder Folder\Resumes\Tim_King_Resume_OpenAI_Client_Partner_Media & Entertainment-TK.docx','f3d6cbe1cfc0456de4f3ae90726069fd','OpenAI — Client Partner, Media & Entertainment','docx','MEDIA & ENTERTAINMENT ADVERTISING SALES · STRATEGIC PARTNERSHIPS · NEW BUSINESS','2026-09-26 23:33:34');
+INSERT INTO "sources" VALUES('R5_luminance_commercial_director','Career Finder Folder\Resumes\Tim_King_Resume_Luminance_Commercial_Director.docx','4e6d4a19501db3c9bc00933ea26f8875','Luminance — Commercial Director (enterprise AI sales leadership)','docx','ENTERPRISE SALES LEADERSHIP · AI & TECHNOLOGY SOLUTIONS · NEW BUSINESS','2026-09-26 23:33:34');
+INSERT INTO "sources" VALUES('R6_admarketplace_director','Career Finder Folder\Resumes\Tim_King_Resume_adMarketplace_Director_Advertiser_Sales.docx','80bba217fbcb61eadfbfa704b1e943ee','adMarketplace — Director, Advertiser Sales','docx','PERFORMANCE MEDIA & ADTECH SALES · SEARCH INTENT · NEW BUSINESS','2026-09-26 23:33:34');
+INSERT INTO "sources" VALUES('R7_fox_weather_director','Career Finder Folder\Resumes\Tim_King_Resume_FOX_Weather_Director_Ad_Sales.pdf','140a2751af99df1521ee993163294d94','FOX Weather — Director, Ad Sales','pdf_resume','MEDIA & SPONSORSHIP SALES · INTEGRATED CROSS-PLATFORM PARTNERSHIPS · REVENUE LEADERSHIP','2026-09-26 23:33:34');
+INSERT INTO "sources" VALUES('R8_bairesdev_vp_sales','Business Advisory Services\Timothy King Resume - BairesDev VP Sales.docx','40eff717426450d3445d6f4fc4839c14','BairesDev — VP Sales (IT services)','docx',NULL,'2026-09-26 23:33:34');
+INSERT INTO "sources" VALUES('R9_knit_growth_marketing','Business Advisory Services\Timothy King Resume - Knit Growth Marketing.docx','a8599a105de187fda7761efd71946be9','Knit — Growth Marketing','docx',NULL,'2026-09-26 23:33:34');
+INSERT INTO "sources" VALUES('R10_mri_simmons_audience','Business Advisory Services\Timothy King Resume - MRI-Simmons Audience Activation.docx','4ba9ce0a2a45f7b53a353edf9b2e1256','MRI-Simmons — Audience Activation (data sales)','docx',NULL,'2026-09-26 23:33:34');
+INSERT INTO "sources" VALUES('R11_magellan_measurement','Business Advisory Services\Timothy King Resume - Magellan AI Measurement Growth.docx','337829b3f94678053bf2620e40b29e76','Magellan AI — Measurement Growth','docx',NULL,'2026-09-26 23:33:34');
+INSERT INTO "sources" VALUES('R12_meridian_gtm','Business Advisory Services\Timothy King Resume - Meridian GTM.docx','f31ddebc9616247bfb9764cf70809315','Meridian — GTM','docx',NULL,'2026-09-26 23:33:34');
+INSERT INTO "sources" VALUES('R13_samba_platform_sales','Business Advisory Services\Timothy King Resume - Samba Platform Sales.docx','371007a551ebc3009079728d568e9094','Samba TV — Platform / Data Partnerships Sales','docx',NULL,'2026-09-26 23:33:34');
+INSERT INTO "sources" VALUES('R14_smartly_agency_partnerships','Business Advisory Services\Timothy King Resume - Smartly Agency Partnerships.docx','620209e57cb2768f4ba3e0526fdc2d25','Smartly — Agency Partnerships (player-coach)','docx',NULL,'2026-09-26 23:33:34');
+INSERT INTO "sources" VALUES('R15_versant_transformation','Business Advisory Services\Timothy King Resume - Versant Transformation Enablement.docx','f0f6a601dc046ad644a56114a6e9fc65','Versant — Transformation & Enablement','docx',NULL,'2026-09-26 23:33:34');
+INSERT INTO "sources" VALUES('R16_admarketplace_adv_success','Business Advisory Services\Timothy King Resume - adMarketplace Advertiser Success.docx','12c7eafb90c7f48982463722d7ec347d','adMarketplace — Advertiser Success','docx',NULL,'2026-09-26 23:33:34');
+INSERT INTO "sources" VALUES('S17_liminal_summary','Career Finder Folder\Liminal_Chief_of_Strategy_Summary.md.pdf','0d4892d96e98b3359cb8ed6c42c114e5','Liminal work summary (pre-written bullets)','pdf_liminal',NULL,'2026-09-26 23:33:34');
+INSERT INTO "sources" VALUES('S18_linkedin','Career Finder Folder\Resume Optimization Tool\sources\linkedin_2026-09-25.md','b594acde2a787aae7c79a2f4a4b77ffa','LinkedIn public profile (captured 2026-09-25)','linkedin_md','Sales Professional | Marketing, Advertising, Product, Services, & Sales GTM Strategist Providing Advisory Services | Systems Thinker | Process Engineer | AI Adoption Enthusiast','2026-09-26 23:33:34');
 CREATE TABLE summaries (
   id INTEGER PRIMARY KEY, source_id TEXT REFERENCES sources(id), tags TEXT, text TEXT NOT NULL,
   origin TEXT DEFAULT 'curated', status TEXT DEFAULT 'accepted'

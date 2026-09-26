@@ -1,6 +1,6 @@
 {
  "schema": "rot-library/1",
- "exported_at": "2026-09-25T15:43:12",
+ "exported_at": "2026-09-26T19:33:34",
  "identity": {
   "name": "Tim King",
   "formal_name": "Timothy King",
@@ -1361,7 +1361,7 @@
      "kind": "canonical",
      "angle": null,
      "text": "Closed 5 signed NFL and MLB team-media partnerships, all paid in full at signing, including 2 accounts with no prior purchase history.",
-     "score_adj": 0
+     "score_adj": -0.6
     },
     {
      "id": 2,
@@ -2253,6 +2253,13 @@
      "angle": "driver",
      "text": "Won a proof-of-concept RFP with Universal Parks — scoping the proof of value, driving technical evaluation, and owning the relationship through award.",
      "score_adj": 0
+    },
+    {
+     "id": 113,
+     "kind": "learned",
+     "angle": "gate2",
+     "text": "Sourced and staffed 8 solution architects across 8 workstreams on a 12-18 month renewable managed services engagement worth $1M annually.",
+     "score_adj": 0
     }
    ]
   },
@@ -2274,6 +2281,13 @@
      "kind": "canonical",
      "angle": null,
      "text": "Led discovery directly with Southern Company Gas's Center of Excellence on data science, machine learning, and data governance.",
+     "score_adj": 0
+    },
+    {
+     "id": 112,
+     "kind": "learned",
+     "angle": "gate2",
+     "text": "Helped stand up an Oil & Gas company's ML and AI Center of Excellence, applying sensor data to predict and detect gas outages.",
      "score_adj": 0
     }
    ]
@@ -2402,6 +2416,13 @@
      "kind": "canonical",
      "angle": null,
      "text": "Led executive-level discovery with Fortune 500 media, parks, utilities, and life sciences organizations.",
+     "score_adj": 0
+    },
+    {
+     "id": 114,
+     "kind": "learned",
+     "angle": "gate2",
+     "text": "Closed $700K in revenue across 5 resources with a Senior Business Architect by diagnosing the org's path from governance to ML/AI CoE.",
      "score_adj": 0
     }
    ]
@@ -2831,6 +2852,13 @@
      "angle": null,
      "text": "Built the operating cadence the client runs on: RACI and escalation thresholds, a weekly capacity forecast, and a one-page decision log with owner and date.",
      "score_adj": 0
+    },
+    {
+     "id": 111,
+     "kind": "learned",
+     "angle": "gate2",
+     "text": "Mapped stakeholder intervention and sign-off criteria for a startup client, defining who owned gates and approvals across the engagement.",
+     "score_adj": 0
     }
    ]
   },
@@ -2949,6 +2977,107 @@
      "kind": "canonical",
      "angle": null,
      "text": "Partnered with a Principal Business Development Manager to set bill rates and price resource plans for Global Services RFP responses.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-muhfveal-0",
+   "role": "hc_ai_strategy",
+   "confidence": "asserted",
+   "tags": {
+    "market-research": 1.0,
+    "feasibility-roadmap": 1.0,
+    "competitive-analysis": 1.0,
+    "scenario-planning": 1.0
+   },
+   "metrics": [],
+   "texts": [
+    {
+     "id": 106,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Built a feasibility dashboard with kill/pivot triggers for an HVAC firm's market-overlap expansion, using cost-ceilings to curb cannibalization and protect profit.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-muhfveal-1",
+   "role": "demanddrive",
+   "confidence": "asserted",
+   "tags": {
+    "primary-research": 1.0,
+    "customer-discovery": 1.0,
+    "proposal-development": 1.0
+   },
+   "metrics": [],
+   "texts": [
+    {
+     "id": 107,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Interviewed 30+ property managers outside service range and proposed a batch-installation process, growing revenue 100% in one month.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-muhfveal-2",
+   "role": "tek_lead",
+   "confidence": "asserted",
+   "tags": {
+    "strategic-partnerships": 1.0,
+    "channel-partnerships": 1.0
+   },
+   "metrics": [],
+   "texts": [
+    {
+     "id": 108,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Developed strategic partnerships with vendors and account stakeholders to source qualified talent and surface business development opportunities.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-muhghrt2-2",
+   "role": "hc_ai_strategy",
+   "confidence": "asserted",
+   "tags": {
+    "strategic-partnerships": 1.0,
+    "channel-partnerships": 1.0,
+    "buy-vs-build": 1.0,
+    "data-rights": 1.0
+   },
+   "metrics": [],
+   "texts": [
+    {
+     "id": 109,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Evaluated a channel partnership with an incumbent firm's CEO during build-vs-buy analysis, rejecting it to protect data rights and equity.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-muhghrt2-3",
+   "role": "hc_ai_strategy",
+   "confidence": "asserted",
+   "tags": {
+    "forecasting": 1.0,
+    "operating-cadence": 1.0,
+    "gtm-strategy": 1.0
+   },
+   "metrics": [],
+   "texts": [
+    {
+     "id": 110,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Ran weekly forecasting cadence via a central dashboard tracking sequenced GTM gates and owners, resolving blockers with the team.",
      "score_adj": 0
     }
    ]
@@ -3784,7 +3913,10 @@
     "lim-entity-ip-structure",
     "lim-scenario-planning",
     "art-run-muhbu38f-0",
-    "art-run-muhbu38f-1"
+    "art-run-muhbu38f-1",
+    "art-run-muhfveal-0",
+    "art-run-muhghrt2-2",
+    "art-run-muhghrt2-3"
    ],
    "psp": [
     "psp-closed-deals",
@@ -3810,7 +3942,8 @@
     "tekl-me-vertical-gtm",
     "tekl-disney-enablement",
     "tekl-fortune500-discovery",
-    "art-run-muhbu38f-2"
+    "art-run-muhbu38f-2",
+    "art-run-muhfveal-2"
    ],
    "tek_recruiter": [
     "tekr-750k",
@@ -3821,7 +3954,8 @@
    ],
    "demanddrive": [
     "dd-territory-proposal",
-    "dd-200-quota"
+    "dd-200-quota",
+    "art-run-muhfveal-1"
    ],
    "nyl": [
     "nyl-referral-book",

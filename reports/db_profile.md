@@ -1,5 +1,5 @@
 # Data Profile: resume.db
-Generated 2026-09-25 by `rot.py profile`.
+Generated 2026-09-26 by `rot.py profile`.
 
 ## Overview
 
@@ -7,20 +7,20 @@ Generated 2026-09-25 by `rot.py profile`.
 |---|---|---|
 | `sources` | 18 | one resume version / capture |
 | `raw_bullets` | 342 | one bullet as written in one source |
-| `achievements` | 55 | one real accomplishment |
-| `bullets` | 105 | one bare-bone rendering of an achievement (all versions) |
+| `achievements` | 60 | one real accomplishment |
+| `bullets` | 114 | one bare-bone rendering of an achievement (all versions) |
 | `tags` | 84 | one niche skill/keyword |
-| `achievement_tags` | 237 | achievement × tag (one-to-many) |
+| `achievement_tags` | 253 | achievement × tag (one-to-many) |
 | `achievement_evidence` | 364 | achievement × raw bullet |
 | `competencies` | 33 | one competency phrase |
 | `technologies` | 12 | one tool |
 | `certifications` | 5 | one credential |
 | `summaries` | 15 | one summary variant |
-| `job_descriptions` | 3 | one JD processed |
-| `followups` | 10 | one gate question |
-| `feedback` | 4 | one keep/reject/edit |
+| `job_descriptions` | 7 | one JD processed |
+| `followups` | 19 | one gate question |
+| `feedback` | 5 | one keep/reject/edit |
 
-Current (non-superseded, accepted) bullets: **81**.
+Current (non-superseded, accepted) bullets: **90**.
 
 ## Bullet length vs. the Resume 1 standard
 
@@ -29,19 +29,19 @@ Resume 1 band: p10 **97**, median **143**, p90 **167** characters (ceiling 170).
 | Layer | n | min | median | max | over ceiling |
 |---|---|---|---|---|---|
 | Raw bullets (all sources) | 342 | 79 | 159 | 482 | 132 |
-| Canonical bare-bone | 54 | 104 | 141 | 162 | 0 |
+| Canonical bare-bone | 59 | 104 | 140 | 163 | 0 |
 | Angle variants | 26 | 121 | 144 | 158 | 0 |
 
 ## Achievements by role and confidence
 
 | Role | Achievements | verified | asserted | conflict | raw bullets evidencing |
 |---|---|---|---|---|---|
-| liminal | 21 | 16 | 5 | 0 | 66 |
+| liminal | 24 | 16 | 8 | 0 | 66 |
 | psp | 13 | 10 | 3 | 0 | 91 |
 | nyl | 2 | 0 | 2 | 0 | 2 |
-| tek_lead | 9 | 8 | 1 | 0 | 72 |
+| tek_lead | 10 | 8 | 2 | 0 | 72 |
 | tek_recruiter | 5 | 5 | 0 | 0 | 65 |
-| demanddrive | 2 | 2 | 0 | 0 | 34 |
+| demanddrive | 3 | 2 | 1 | 0 | 34 |
 | yri | 1 | 0 | 1 | 0 | 3 |
 | massdot | 1 | 0 | 1 | 0 | 4 |
 | education | 1 | 1 | 0 | 0 | 5 |
@@ -55,16 +55,16 @@ Resume 1 band: p10 **97**, median **143**, p90 **167** characters (ceiling 170).
 | Data, AI & Technology | 6 | 6 | 19 | — |
 | Finance & Unit Economics | 4 | 4 | 13 | — |
 | Fundraising & Nonprofit | 4 | 3 | 7 | board-trustee-engagement, moves-management |
-| Go-To-Market | 8 | 8 | 20 | territory-design |
+| Go-To-Market | 8 | 8 | 21 | territory-design |
 | Leadership & Coaching | 4 | 4 | 8 | player-coach |
-| Legal, Risk & Governance | 3 | 3 | 9 | entity-ip-structure |
+| Legal, Risk & Governance | 3 | 3 | 10 | entity-ip-structure |
 | Marketing & Demand | 6 | 5 | 7 | demand-generation, campaign-development, marketing-sales-alignment, abm, growth-efficiency |
 | Media, Advertising & AdTech | 7 | 7 | 21 | cross-platform |
-| Operations & Process | 4 | 4 | 13 | operating-cadence |
-| Partnerships & Channel | 3 | 3 | 5 | channel-partnerships |
-| Research & Insight | 3 | 3 | 4 | primary-research, market-research |
-| Sales & Revenue | 16 | 16 | 69 | full-cycle-sales, proof-of-value |
-| Strategy & Advisory | 7 | 7 | 20 | exit-path-modeling |
+| Operations & Process | 4 | 4 | 14 | — |
+| Partnerships & Channel | 3 | 3 | 9 | — |
+| Research & Insight | 3 | 3 | 7 | — |
+| Sales & Revenue | 16 | 16 | 71 | full-cycle-sales, proof-of-value |
+| Strategy & Advisory | 7 | 7 | 24 | exit-path-modeling |
 
 ## Most-reused raw bullets (how often each achievement was rewritten)
 

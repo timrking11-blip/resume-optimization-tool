@@ -50,6 +50,87 @@
       "metrics": [],
       "patterns": [],
       "variants": {}
+    },
+    {
+      "id": "art-run-muhfveal-0",
+      "role": "liminal",
+      "canonical": "Built a feasibility dashboard with kill/pivot triggers for an HVAC firm's market-overlap expansion, using cost-ceilings to curb cannibalization and protect profit.",
+      "tags": {
+        "market-research": 1.0,
+        "feasibility-roadmap": 1.0,
+        "competitive-analysis": 1.0,
+        "scenario-planning": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-muhfveal",
+      "metrics": [],
+      "patterns": [],
+      "variants": {}
+    },
+    {
+      "id": "art-run-muhfveal-1",
+      "role": "demanddrive",
+      "canonical": "Interviewed 30+ property managers outside service range and proposed a batch-installation process, growing revenue 100% in one month.",
+      "tags": {
+        "primary-research": 1.0,
+        "customer-discovery": 1.0,
+        "proposal-development": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-muhfveal",
+      "metrics": [],
+      "patterns": [],
+      "variants": {}
+    },
+    {
+      "id": "art-run-muhfveal-2",
+      "role": "tek_lead",
+      "canonical": "Developed strategic partnerships with vendors and account stakeholders to source qualified talent and surface business development opportunities.",
+      "tags": {
+        "strategic-partnerships": 1.0,
+        "channel-partnerships": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-muhfveal",
+      "metrics": [],
+      "patterns": [],
+      "variants": {}
+    },
+    {
+      "id": "art-run-muhghrt2-2",
+      "role": "liminal",
+      "canonical": "Evaluated a channel partnership with an incumbent firm's CEO during build-vs-buy analysis, rejecting it to protect data rights and equity.",
+      "tags": {
+        "strategic-partnerships": 1.0,
+        "channel-partnerships": 1.0,
+        "buy-vs-build": 1.0,
+        "data-rights": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-muhghrt2",
+      "metrics": [],
+      "patterns": [],
+      "variants": {}
+    },
+    {
+      "id": "art-run-muhghrt2-3",
+      "role": "liminal",
+      "canonical": "Ran weekly forecasting cadence via a central dashboard tracking sequenced GTM gates and owners, resolving blockers with the team.",
+      "tags": {
+        "forecasting": 1.0,
+        "operating-cadence": 1.0,
+        "gtm-strategy": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-muhghrt2",
+      "metrics": [],
+      "patterns": [],
+      "variants": {}
     }
   ],
   "bullets": [
@@ -57,6 +138,34 @@
       "achievement_id": "lim-entity-ip-structure",
       "angle": "gate2",
       "text": "Coordinated the client's CEO, COO, CISO, Chief Clinical Officer, two developers, outside counsel, and CPA to architect the entity, IP, and data-rights structure.",
+      "origin": "artifact",
+      "status": "accepted"
+    },
+    {
+      "achievement_id": "lim-operating-cadence",
+      "angle": "gate2",
+      "text": "Mapped stakeholder intervention and sign-off criteria for a startup client, defining who owned gates and approvals across the engagement.",
+      "origin": "artifact",
+      "status": "accepted"
+    },
+    {
+      "achievement_id": "tekl-southern-gas-discovery",
+      "angle": "gate2",
+      "text": "Helped stand up an Oil & Gas company's ML and AI Center of Excellence, applying sensor data to predict and detect gas outages.",
+      "origin": "artifact",
+      "status": "accepted"
+    },
+    {
+      "achievement_id": "tekl-universal-poc",
+      "angle": "gate2",
+      "text": "Sourced and staffed 8 solution architects across 8 workstreams on a 12-18 month renewable managed services engagement worth $1M annually.",
+      "origin": "artifact",
+      "status": "accepted"
+    },
+    {
+      "achievement_id": "tekl-fortune500-discovery",
+      "angle": "gate2",
+      "text": "Closed $700K in revenue across 5 resources with a Senior Business Architect by diagnosing the org's path from governance to ML/AI CoE.",
       "origin": "artifact",
       "status": "accepted"
     }
