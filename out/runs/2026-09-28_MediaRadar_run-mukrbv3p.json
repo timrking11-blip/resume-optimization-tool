@@ -1,0 +1,605 @@
+{
+  "certifications": [
+    {
+      "issuer": "TEKsystems",
+      "name": "Data Analytics & Insights: Data Insights",
+      "note": null
+    },
+    {
+      "issuer": "Anthropic",
+      "name": "Claude 101 Certification",
+      "note": null
+    },
+    {
+      "issuer": "Anthropic",
+      "name": "Claude Code 101 Certification",
+      "note": null
+    },
+    {
+      "issuer": "Anthropic",
+      "name": "Claude for CoWork",
+      "note": "In Progress"
+    }
+  ],
+  "core_competencies": [
+    {
+      "items": [
+        "revenue forecasting & KPI tracking",
+        "account mapping",
+        "client retention",
+        "GTM strategy",
+        "market segmentation",
+        "product positioning & messaging",
+        "value proposition development",
+        "customer discovery",
+        "pipeline management",
+        "contract negotiation",
+        "proposal development",
+        "solution selling"
+      ],
+      "label": "Go-To-Market & Revenue"
+    },
+    {
+      "items": [
+        "Market landscape analysis",
+        "barriers-to-entry assessment",
+        "competitive intelligence",
+        "financial forecasting (P&L)",
+        "decision-tree modeling",
+        "unit economics (CAC, payback, churn, TTFV)",
+        "scenario planning",
+        "business process improvement"
+      ],
+      "label": "Research & Analysis"
+    },
+    {
+      "items": [
+        "data analytics",
+        "Tableau",
+        "Claude (Opus 5, Sonnet 5, Fable 5)",
+        "Claude Code",
+        "OpenAI / ChatGPT",
+        "Microsoft Copilot",
+        "prompt engineering",
+        "GenAI & machine learning",
+        "AI governance & output verification"
+      ],
+      "label": "AI & Data"
+    },
+    {
+      "items": [
+        "Salesforce CRM",
+        "ZoomInfo",
+        "LinkedIn Sales Navigator",
+        "Microsoft Excel & Office Suite",
+        "Miro",
+        "Trello",
+        "Canva"
+      ],
+      "label": "Tools & Platforms"
+    },
+    {
+      "items": [
+        "managed services & RFP response",
+        "Restricted & tax-advantaged funding mechanisms (co-op, MDF, 501(c)(3))",
+        "non-dilutive federal grant strategy (SBIR)",
+        "board & trustee engagement"
+      ],
+      "label": "Funding & Commercial Mechanics"
+    }
+  ],
+  "education": [
+    {
+      "bullets": [],
+      "degree_line": "B.S., Double Major in Finance and Marketing | Spring 2018",
+      "school": "University of Maine Business School"
+    }
+  ],
+  "engagements": [
+    {
+      "bullets": [
+        "Produced the customer- and investor-facing collateral the company now sells with: pitch deck, competitive battlecards, partner negotiation sheets, and an eight-document executive round table with per-presentation talking points.",
+        "Mapped a $0.76B category projected to reach $5.9B by 2035 (22.8% CAGR), benchmarked five direct comparables across four structural models, and built a decision tree of four exit paths with base-rate odds attached — including the cautionary comparable that won regulatory clearance and still failed on commercialization.",
+        "Set the unit-economic gates the motion is now measured against: blended CAC under $900, payback under 12 months, monthly churn under 5%, time-to-first-value under 7 days.",
+        "Own go-to-market for an AI compliance product sold into independent clinical practices — segmentation, positioning, pricing tiers ($99/$249), channel strategy, and the sequencing that determines which motion gets funded first.",
+        "Concluded that distribution — not product — decides the outcome, redirecting GTM toward malpractice-carrier and professional-association channel partnerships after modeling that a direct human sales motion cannot carry a 12–18 month CAC payback at those price points.",
+        "Designed and launched a 30–40 interview customer discovery sprint to size real addressable demand — screener, interview guide, scoring rubric, and 150-practice candidate universe built from scratch — classifying prospects by platform dependence against a pre-agreed threshold that fires a documented kill/pivot decision instead of a debate.",
+        "Built the multi-tenant, role-scoped client engagement tracker that runs the advisory practice using Claude Code — including 60 automated tests asserting cross-client data isolation — with no prior engineering background.",
+        "Applied scenario planning and second- and third-order consequence analysis across business, technology, regulatory, and organizational exposure — surfacing downstream consequences before commitments locked in.",
+        "Ran financial forecasting (P&L, tool-stack cost model, Year-1 ARR band) and barriers-to-entry analysis to price strategic alternatives before capital committed; recommended a ~$2.15M non-dilutive federal funding route over an equity raise, tied to a dated decision gate."
+      ],
+      "client": "Healthcare Technology Start-Up (Confidential)",
+      "commitment": "Part Time",
+      "dates": "July 2026 – Present",
+      "key": "healthcare",
+      "location": "New York, NY",
+      "subtitle": "Principal Business Strategist – GTM Plan, Business Architectural Roadmap, Blueprint to Obtain Necessary Funding – Healthcare FinTech Start-Up"
+    },
+    {
+      "bullets": [
+        "Analyzed a proposed expansion site for a confidential HVAC services firm and delivered a feasibility roadmap and governance framework built on a cost-ceiling approach, giving leadership a structured basis for the expansion decision.",
+        "Built a feasibility dashboard with kill/pivot triggers for an HVAC firm's market-overlap expansion, using cost-ceilings to curb cannibalization and protect profit.",
+        "Analyzed a proposed expansion site for an HVAC services firm and delivered a feasibility roadmap and governance framework built on a cost-ceiling approach, giving leadership a structured basis for evaluating the expansion decision beyond the initial feasibility dashboard."
+      ],
+      "client": "HVAC Services Firm (Confidential)",
+      "commitment": "Part Time",
+      "dates": "August 2026 – September 2026",
+      "key": "hvac",
+      "location": "Santa Clarita, CA",
+      "subtitle": "Consultant - Principal Analyst GTM Expansion"
+    }
+  ],
+  "expertise": [
+    "Business Analysis & Advisory",
+    "Market Sizing & Scenario Planning",
+    "Buy-vs-Build & Competitive Analysis",
+    "Ad-Tech Fluency (CDP, Clean Rooms, Identity Graphs, Measurement)",
+    "Media & Sponsorship Sales",
+    "CPM, CPA & ROI Business Cases",
+    "Executive & Board-Level Communication",
+    "Change Readiness & Stakeholder Alignment",
+    "Strategic Account Planning & Expansion",
+    "Primary Research & Customer Discovery",
+    "Strategic Partnerships & Channel",
+    "Unit Economics & Revenue Modeling",
+    "Consultative & Diagnostic Discovery",
+    "AI & Data Platform Solution Selling",
+    "Operating Cadence Design (RACI, Decision Logs)",
+    "Go-To-Market Strategy"
+  ],
+  "identity": {
+    "email": "tim.r.king11@gmail.com",
+    "links": [
+      {
+        "label": "LinkedIn Profile",
+        "url": "https://www.linkedin.com/in/timothy-king1124/?skipRedirect=true"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/timrking11-blip"
+      },
+      {
+        "label": "Website",
+        "url": "https://www.strategicmarketinsights.services/"
+      }
+    ],
+    "location": "New York, NY",
+    "name": "Tim King",
+    "phone": "(617) 960-7176"
+  },
+  "roles": [
+    {
+      "bullets": [
+        "Reconciled the client founder's four-pillar vision and three build memos into one staged roadmap: 12 recommendations, 4 stage gates, 8 board decisions.",
+        "Produced the collateral the client sells with: pitch deck, competitive battlecards, partner negotiation sheets, and an eight-document executive round table.",
+        "Analyzed 15+ direct, platform-bundling, and affiliation competitors against venture base rates to size the raise at $1.5–3M and set go/no-go milestones.",
+        "Advise the CEO and board of a healthcare AI start-up client, translating business, technology, regulatory, and workforce tradeoffs into board-ready decisions.",
+        "Mapped a $0.76B category growing to $5.9B by 2035, benchmarked five comparables, and modeled four exit paths with base-rate odds and P&L forecasts.",
+        "Authored the launch-readiness assessment that reset the execution sequence, converting five organizational gaps into a dated plan with named owners.",
+        "Set the unit-economic gates the client runs on — CAC under $900, payback under 12 months, churn under 5%, TTFV under 7 days — redirecting GTM to channel partners."
+      ],
+      "context": "New York, NY · Advisory & GTM engineering practice · Key Engagement: healthcare AI start-up (confidential)",
+      "dates": "July 2026 – Present",
+      "employer": "Strategic Market Insights (self-employed)",
+      "key": "hc_ai_strategy",
+      "location": "New York, NY",
+      "title": "Business Consultant - GTM Engineer & Strategic Advisor"
+    },
+    {
+      "bullets": [
+        "Analyzed CRM opportunity keywords to track emerging-tech demand shifts and delivered a data analytics insights playbook to SVPs at a 12,000-employee firm.",
+        "Mined macroeconomic ad-pricing data via AI research agents to map proximity-driven print/radio buying patterns and refocus targeting on co-op-funded buyers.",
+        "Closed 5 signed NFL and MLB team-media partnerships, all paid in full at signing, including 2 accounts with no prior purchase history.",
+        "Authored a board-ready memo framing a $3,500 ask against 419 member businesses and 130K+ readers, written as the champion's own document.",
+        "Built and maintained a ~$115K active proposal pipeline through a diagnostic, discovery-first approach rather than a pitch-led one.",
+        "Identified key decision-makers with ZoomInfo, LinkedIn Sales Navigator, and AI-assisted account mapping using OpenAI and Claude models.",
+        "Analyzed competitor products and services against ROI benchmarks, building metrics frameworks (CPM, readership, audience reach) to strengthen positioning."
+      ],
+      "context": "New York, NY · Print-Media Advertising Agency supporting all major professional and university sports teams (yearbook and program ad placement)",
+      "dates": "March 2026 – August 2026",
+      "employer": "Professional Sports Publications",
+      "key": "psp",
+      "location": "New York, NY",
+      "title": "Advertising Sales Director - Pro-Division"
+    },
+    {
+      "bullets": [
+        "Briefed Universal's Senior Director of Architecture and VP of Data & AI on architect scarcity using LinkedIn Recruiter and Boolean search data, strengthening pricing negotiations and reinforcing a client-partner relationship.",
+        "Scoped and positioned AI, data, and cloud solutions — graph, Adobe Enterprise Suite, Azure, computer vision — translating capability into commercial terms.",
+        "Sourced and staffed 8 solution architects across 8 workstreams on a 12-18 month renewable managed services engagement worth $1M annually.",
+        "Led a team of up to 5 direct reports inside a 30-person practice, coaching performance through daily process reviews and 1:1 metric sessions.",
+        "Built the Media & Entertainment vertical GTM motion — discovery frameworks, opportunity taxonomy, CRM tagging — around CDPs, clean rooms, and ad measurement."
+      ],
+      "context": "New York, NY · Top firm for I.T. Staffing & Managed Services with flexible engagement types that work with 85% of Fortune 500 companies",
+      "dates": "2024 – November 2025",
+      "employer": "TEKsystems",
+      "key": "tek_lead",
+      "location": "New York, NY",
+      "title": "Specialized Lead - Data Analytics & Insights"
+    },
+    {
+      "bullets": [
+        "Opened net-new managed services accounts at Wayfair and Disney's ESPN and Entertainment Technology organization from cold.",
+        "Partnered with Nike's global supply chain team on in-season optimization, delivering an AI-powered document system.",
+        "Produced more than half the revenue on Vertex Pharmaceuticals, the firm's largest regional growth account, and expanded into two new groups.",
+        "Generated $750K+ in annual revenue and won the company-wide sales contest in first full year against a national field."
+      ],
+      "context": "Boston, MA · Top firm for I.T. Staffing & Managed Services with flexible engagement types that work with 85% of Fortune 500 companies",
+      "dates": "2021 – 2024",
+      "employer": "TEKsystems",
+      "key": "tek_recruiter",
+      "location": "Boston, MA",
+      "title": "Enterprise Recruiter – Global Services Division"
+    },
+    {
+      "bullets": [
+        "Authored a territory-realignment and post-close operations model adopted company-wide, credited with 150% growth in the Amazon Key for Business launch.",
+        "Delivered 200% of first-month quota (12 meetings vs. 6) on a net-new client engagement; named MVP of the Month."
+      ],
+      "context": "Waltham, MA · Outsourced SDR and Sales Representative firm. Key Engagements: SaaS product Propertyware for RealPage, Amazon Key for Business launch",
+      "dates": "2018 – 2021",
+      "employer": "demandDrive (Amazon Business & RealPage)",
+      "key": "demanddrive",
+      "location": "Waltham, MA",
+      "title": "Sales Development Representative / Inside Sales Rep"
+    }
+  ],
+  "schema": "rot-resume/2",
+  "summary": "Advisory analyst translating competitive data into board-ready strategy and go-to-market decisions. Benchmarked 15 competitors and modeled category growth from $760M to $5.9B by 2035 to size raises and exit paths. Built executive-facing collateral including battlecards and an eight-document round table, and set unit-economic gates guiding channel strategy.",
+  "tagline": [
+    "Marketing, Advertising, Product, Services, & Sales GTM Engineer",
+    "Business Strategy",
+    "Advertising Analytics & Market Intelligence Advisor",
+    "GTM and Sales/Marketing Execution Specialist",
+    "Systems Thinker",
+    "AI Adoption Enthusiast"
+  ],
+  "technologies": [
+    "Tableau (beginner)",
+    "Google Tag Manager",
+    "Miro",
+    "Microsoft Excel (VLOOKUPs, INDEX-MATCH-MATCH, XLOOKUP)",
+    "Office-Place Collaboration Tools (Slack, MS Teams, Webex, Google Meet, Zoom)",
+    "LinkedIn (Sales Navigator, Recruiter)",
+    "Marketo",
+    "Salesforce (Classic, Lightning)",
+    "ZoomInfo",
+    "Apollo.io",
+    "Squarespace",
+    "HubSpot",
+    "Canva",
+    "Trello",
+    "Microsoft Copilot",
+    "Claude & Claude Code (Sonnet 5.x / Opus 5 / Fable 5)",
+    "OpenAI (GPT-5.6, Sol, Terra, Luna)",
+    "GitHub",
+    "Model Context Protocol (MCP) Servers",
+    "GCP",
+    "Visual Studio & VS Code",
+    "Microsoft Stack",
+    "Notion"
+  ],
+  "template": "source-2026-09",
+  "trace": {
+    "cert:0": [
+      "cred:data-analytics-insights-data-insights:name",
+      "cred:data-analytics-insights-data-insights:issuer"
+    ],
+    "cert:1": [
+      "cred:claude-101:name",
+      "cred:claude-101:issuer"
+    ],
+    "cert:2": [
+      "cred:claude-code-101:name",
+      "cred:claude-code-101:issuer"
+    ],
+    "cert:3": [
+      "cred:claude-for-cowork:name",
+      "cred:claude-for-cowork:issuer",
+      "cred:claude-for-cowork:status"
+    ],
+    "core:AI & Data": [
+      "core:ai-data:data-analytics:text",
+      "core:ai-data:tableau:text",
+      "core:ai-data:claude-opus-5-sonnet-5-fable-5:text",
+      "core:ai-data:claude-code:text",
+      "core:ai-data:openai-chatgpt:text",
+      "core:ai-data:microsoft-copilot:text",
+      "core:ai-data:prompt-engineering:text",
+      "core:ai-data:genai-machine-learning:text",
+      "core:ai-data:ai-governance-output-verification:text"
+    ],
+    "core:Funding & Commercial Mechanics": [
+      "core:funding-commercial-mechanics:managed-services-rfp-response:text",
+      "core:funding-commercial-mechanics:restricted-tax-advantaged-funding-mechanisms-co-:text",
+      "core:funding-commercial-mechanics:non-dilutive-federal-grant-strategy-sbir:text",
+      "core:funding-commercial-mechanics:board-trustee-engagement:text"
+    ],
+    "core:Go-To-Market & Revenue": [
+      "core:go-to-market-revenue:revenue-forecasting-kpi-tracking:text",
+      "core:go-to-market-revenue:account-mapping:text",
+      "core:go-to-market-revenue:client-retention:text",
+      "core:go-to-market-revenue:gtm-strategy:text",
+      "core:go-to-market-revenue:market-segmentation:text",
+      "core:go-to-market-revenue:product-positioning-messaging:text",
+      "core:go-to-market-revenue:value-proposition-development:text",
+      "core:go-to-market-revenue:customer-discovery:text",
+      "core:go-to-market-revenue:pipeline-management:text",
+      "core:go-to-market-revenue:contract-negotiation:text",
+      "core:go-to-market-revenue:proposal-development:text",
+      "core:go-to-market-revenue:solution-selling:text"
+    ],
+    "core:Research & Analysis": [
+      "core:research-analysis:market-landscape-analysis:text",
+      "core:research-analysis:barriers-to-entry-assessment:text",
+      "core:research-analysis:competitive-intelligence:text",
+      "core:research-analysis:financial-forecasting-p-l:text",
+      "core:research-analysis:decision-tree-modeling:text",
+      "core:research-analysis:unit-economics-cac-payback-churn-ttfv:text",
+      "core:research-analysis:scenario-planning:text",
+      "core:research-analysis:business-process-improvement:text"
+    ],
+    "core:Tools & Platforms": [
+      "core:tools-platforms:salesforce-crm:text",
+      "core:tools-platforms:zoominfo:text",
+      "core:tools-platforms:linkedin-sales-navigator:text",
+      "core:tools-platforms:microsoft-excel-office-suite:text",
+      "core:tools-platforms:miro:text",
+      "core:tools-platforms:trello:text",
+      "core:tools-platforms:canva:text"
+    ],
+    "education:0": [
+      "edu:umaine:school",
+      "edu:umaine:degree",
+      "edu:umaine:date"
+    ],
+    "eng:healthcare": [
+      "eng:healthcare:client",
+      "eng:healthcare:location",
+      "eng:healthcare:start",
+      "eng:healthcare:end",
+      "eng:healthcare:commitment",
+      "eng:healthcare:subtitle"
+    ],
+    "eng:healthcare:0": [
+      "ach:lim-collateral",
+      "metric:lim-collateral:round-table-documents"
+    ],
+    "eng:healthcare:1": [
+      "ach:lim-market-sizing-exit-paths",
+      "metric:lim-market-sizing-exit-paths:cagr",
+      "metric:lim-market-sizing-exit-paths:category-size-2025",
+      "metric:lim-market-sizing-exit-paths:category-size-2035"
+    ],
+    "eng:healthcare:2": [
+      "ach:lim-unit-economic-gates",
+      "metric:lim-unit-economic-gates:blended-cac-cap",
+      "metric:lim-unit-economic-gates:monthly-churn-cap",
+      "metric:lim-unit-economic-gates:payback-cap",
+      "metric:lim-unit-economic-gates:ttfv-cap"
+    ],
+    "eng:healthcare:3": [
+      "ach:lim-gtm-ownership",
+      "metric:lim-gtm-ownership:pricing-tiers"
+    ],
+    "eng:healthcare:4": [
+      "ach:lim-distribution-pivot",
+      "metric:lim-distribution-pivot:cac-payback-modeled"
+    ],
+    "eng:healthcare:5": [
+      "ach:lim-customer-discovery-sprint",
+      "metric:lim-customer-discovery-sprint:account-universe",
+      "metric:lim-customer-discovery-sprint:interviews"
+    ],
+    "eng:healthcare:6": [
+      "ach:lim-claude-code-tracker",
+      "metric:lim-claude-code-tracker:automated-tests"
+    ],
+    "eng:healthcare:7": [
+      "ach:lim-scenario-planning"
+    ],
+    "eng:healthcare:8": [
+      "ach:lim-non-dilutive-capital",
+      "metric:lim-non-dilutive-capital:non-dilutive-route"
+    ],
+    "eng:hvac": [
+      "eng:hvac:client",
+      "eng:hvac:location",
+      "eng:hvac:start",
+      "eng:hvac:end",
+      "eng:hvac:commitment",
+      "eng:hvac:subtitle"
+    ],
+    "eng:hvac:0": [],
+    "eng:hvac:1": [
+      "ach:art-run-muhfveal-0"
+    ],
+    "eng:hvac:2": [],
+    "expertise": [
+      "expertise:business-analysis-advisory:text",
+      "expertise:market-sizing-scenario-planning:text",
+      "expertise:buy-vs-build-competitive-analysis:text",
+      "expertise:ad-tech-fluency-cdp-clean-rooms-identity-graphs-:text",
+      "expertise:media-sponsorship-sales:text",
+      "expertise:cpm-cpa-roi-business-cases:text",
+      "expertise:executive-board-level-communication:text",
+      "expertise:change-readiness-stakeholder-alignment:text",
+      "expertise:strategic-account-planning-expansion:text",
+      "expertise:primary-research-customer-discovery:text",
+      "expertise:strategic-partnerships-channel:text",
+      "expertise:unit-economics-revenue-modeling:text",
+      "expertise:consultative-diagnostic-discovery:text",
+      "expertise:ai-data-platform-solution-selling:text",
+      "expertise:operating-cadence-design-raci-decision-logs:text",
+      "expertise:go-to-market-strategy:text"
+    ],
+    "role:demanddrive": [
+      "role:demanddrive:title",
+      "role:demanddrive:employer",
+      "role:demanddrive:start",
+      "role:demanddrive:end",
+      "role:demanddrive:context"
+    ],
+    "role:demanddrive:0": [
+      "ach:dd-territory-proposal",
+      "metric:dd-territory-proposal:launch-growth"
+    ],
+    "role:demanddrive:1": [
+      "ach:dd-200-quota",
+      "metric:dd-200-quota:first-month-quota-attainment"
+    ],
+    "role:hc_ai_strategy": [
+      "role:hc_ai_strategy:title",
+      "role:hc_ai_strategy:employer",
+      "role:hc_ai_strategy:start",
+      "role:hc_ai_strategy:end",
+      "role:hc_ai_strategy:context"
+    ],
+    "role:hc_ai_strategy:0": [
+      "ach:lim-feasibility-roadmap",
+      "metric:lim-feasibility-roadmap:recommendations",
+      "metric:lim-feasibility-roadmap:stage-gates"
+    ],
+    "role:hc_ai_strategy:1": [
+      "ach:lim-collateral",
+      "metric:lim-collateral:round-table-documents"
+    ],
+    "role:hc_ai_strategy:2": [
+      "ach:lim-competitive-venture-odds",
+      "metric:lim-competitive-venture-odds:competitors-analyzed",
+      "metric:lim-competitive-venture-odds:recommended-raise"
+    ],
+    "role:hc_ai_strategy:3": [
+      "ach:lim-thought-partner"
+    ],
+    "role:hc_ai_strategy:4": [
+      "ach:lim-market-sizing-exit-paths",
+      "metric:lim-market-sizing-exit-paths:cagr",
+      "metric:lim-market-sizing-exit-paths:category-size-2025",
+      "metric:lim-market-sizing-exit-paths:category-size-2035"
+    ],
+    "role:hc_ai_strategy:5": [
+      "ach:lim-readiness-assessment",
+      "metric:lim-readiness-assessment:gaps-closed-into-plan"
+    ],
+    "role:hc_ai_strategy:6": [
+      "ach:lim-unit-economic-gates",
+      "metric:lim-unit-economic-gates:blended-cac-cap",
+      "metric:lim-unit-economic-gates:monthly-churn-cap",
+      "metric:lim-unit-economic-gates:payback-cap",
+      "metric:lim-unit-economic-gates:ttfv-cap"
+    ],
+    "role:psp": [
+      "role:psp:title",
+      "role:psp:employer",
+      "role:psp:start",
+      "role:psp:end",
+      "role:psp:context"
+    ],
+    "role:psp:0": [],
+    "role:psp:1": [],
+    "role:psp:2": [
+      "ach:psp-closed-deals",
+      "metric:psp-closed-deals:net-new-accounts",
+      "metric:psp-closed-deals:signed-deals"
+    ],
+    "role:psp:3": [
+      "ach:psp-board-memo",
+      "metric:psp-board-memo:ask",
+      "metric:psp-board-memo:member-businesses",
+      "metric:psp-board-memo:readership"
+    ],
+    "role:psp:4": [
+      "ach:psp-pipeline-discovery",
+      "metric:psp-pipeline-discovery:active-pipeline"
+    ],
+    "role:psp:5": [
+      "ach:psp-decision-makers-ai"
+    ],
+    "role:psp:6": [],
+    "role:tek_lead": [
+      "role:tek_lead:title",
+      "role:tek_lead:employer",
+      "role:tek_lead:start",
+      "role:tek_lead:end",
+      "role:tek_lead:context"
+    ],
+    "role:tek_lead:0": [],
+    "role:tek_lead:1": [
+      "ach:tekl-solution-scoping"
+    ],
+    "role:tek_lead:2": [
+      "ach:tekl-universal-poc",
+      "metric:tekl-universal-poc:expansion-value"
+    ],
+    "role:tek_lead:3": [
+      "ach:tekl-coaching",
+      "metric:tekl-coaching:direct-reports",
+      "metric:tekl-coaching:practice-size"
+    ],
+    "role:tek_lead:4": [
+      "ach:tekl-me-vertical-gtm"
+    ],
+    "role:tek_recruiter": [
+      "role:tek_recruiter:title",
+      "role:tek_recruiter:employer",
+      "role:tek_recruiter:start",
+      "role:tek_recruiter:end",
+      "role:tek_recruiter:context"
+    ],
+    "role:tek_recruiter:0": [
+      "ach:tekr-wayfair-disney",
+      "metric:tekr-wayfair-disney:net-new-enterprise-logos"
+    ],
+    "role:tek_recruiter:1": [
+      "ach:tekr-nike"
+    ],
+    "role:tek_recruiter:2": [
+      "ach:tekr-vertex",
+      "metric:tekr-vertex:new-groups-opened",
+      "metric:tekr-vertex:share-of-account-revenue"
+    ],
+    "role:tek_recruiter:3": [
+      "ach:tekr-750k",
+      "metric:tekr-750k:annual-revenue"
+    ],
+    "summary": [
+      "ach:lim-competitive-venture-odds",
+      "ach:lim-market-sizing-exit-paths",
+      "ach:lim-collateral",
+      "ach:lim-unit-economic-gates",
+      "ach:lim-thought-partner"
+    ],
+    "tagline": [
+      "tagline:marketing-advertising-product-services-sales-gtm:text",
+      "tagline:business-strategy:text",
+      "tagline:gtm-and-sales-marketing-execution-specialist:text",
+      "tagline:systems-thinker:text",
+      "tagline:ai-adoption-enthusiast:text"
+    ],
+    "technologies": [
+      "tool:tableau:name",
+      "tool:google-tag-manager:name",
+      "tool:miro:name",
+      "tool:microsoft-excel:name",
+      "tool:office-place-collaboration-tools:name",
+      "tool:linkedin:name",
+      "tool:marketo:name",
+      "tool:salesforce:name",
+      "tool:zoominfo:name",
+      "tool:apollo-io:name",
+      "tool:squarespace:name",
+      "tool:hubspot:name",
+      "tool:canva:name",
+      "tool:trello:name",
+      "tool:microsoft-copilot:name",
+      "tool:claude:name",
+      "tool:openai:name",
+      "tool:github:name",
+      "tool:model-context-protocol:name",
+      "tool:gcp:name",
+      "tool:visual-studio:name",
+      "tool:microsoft-stack:name"
+    ]
+  }
+}

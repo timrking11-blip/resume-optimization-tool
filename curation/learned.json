@@ -158,6 +158,218 @@
       "evidence": [
         "ev:ans:run-muhghrt2:3"
       ]
+    },
+    {
+      "id": "art-run-mukn8dul-0",
+      "role": "liminal",
+      "canonical": "Delivered a feasibility roadmap and governance framework with a cost-ceiling approach after analyzing a proposed expansion site.",
+      "tags": {
+        "feasibility-roadmap": 1.0,
+        "risk-governance": 1.0,
+        "scenario-planning": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-mukn8dul",
+      "metrics": [],
+      "patterns": [],
+      "variants": {
+        "longform": "Analyzed a proposed expansion site for an HVAC services firm and delivered a feasibility roadmap and governance framework built on a cost-ceiling approach, giving leadership a structured basis for evaluating the expansion decision beyond the initial feasibility dashboard."
+      },
+      "evidence": [
+        "ev:ans:run-mukn8dul:1"
+      ],
+      "engagement": "hvac"
+    },
+    {
+      "id": "art-run-mukn8dul-1",
+      "role": "liminal",
+      "canonical": "Built the firm's website in Squarespace, integrating Apollo, Google Tag Manager, and Claude connectors to optimize branded SEO.",
+      "tags": {
+        "cross-platform": 1.0,
+        "building-with-ai": 1.0,
+        "content-brand": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-mukn8dul",
+      "metrics": [],
+      "patterns": [],
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-mukn8dul:2"
+      ]
+    },
+    {
+      "id": "art-run-mukn8dul-2",
+      "role": "liminal",
+      "canonical": "Inserted alt-text code, FAQ tags, and AI-visibility prompts behind the scenes to improve the site's SEO score.",
+      "tags": {
+        "cross-platform": 1.0,
+        "building-with-ai": 1.0,
+        "content-brand": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-mukn8dul",
+      "metrics": [],
+      "patterns": [],
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-mukn8dul:2"
+      ]
+    },
+    {
+      "id": "art-run-mukn8dul-4",
+      "role": "liminal",
+      "canonical": "Established governance parameters routing AI-generated outputs to designated SMEs for regulatory sign-off at each risk and governance gate.",
+      "tags": {
+        "risk-governance": 1.0,
+        "healthcare-regulatory": 1.0,
+        "board-advisory": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-mukn8dul",
+      "metrics": [],
+      "patterns": [],
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-mukn8dul:4"
+      ]
+    },
+    {
+      "id": "art-run-mukn8dul-5",
+      "role": "liminal",
+      "canonical": "Reviewed architectural roadmap commits to ensure governance and risk controls were embedded throughout the build, preventing assumptive outputs.",
+      "tags": {
+        "risk-governance": 1.0,
+        "board-advisory": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-mukn8dul",
+      "metrics": [],
+      "patterns": [],
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-mukn8dul:4"
+      ]
+    },
+    {
+      "id": "art-run-mukrbv3p-1",
+      "role": "psp",
+      "canonical": "Analyzed competitor products and services against ROI benchmarks, building metrics frameworks (CPM, readership, audience reach) to strengthen positioning.",
+      "tags": {
+        "competitive-analysis": 1.0,
+        "market-research": 1.0,
+        "cpm-cpa-modeling": 1.0,
+        "audience-measurement": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-mukrbv3p",
+      "metrics": [],
+      "patterns": [],
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-mukrbv3p:1"
+      ]
+    },
+    {
+      "id": "art-run-mukrbv3p-2",
+      "role": "psp",
+      "canonical": "Reverse-engineered the competitive research process to define and characterize the ideal customer profile (ICP).",
+      "tags": {
+        "market-research": 1.0,
+        "market-segmentation": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-mukrbv3p",
+      "metrics": [],
+      "patterns": [],
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-mukrbv3p:1"
+      ]
+    },
+    {
+      "id": "art-run-mukrbv3p-3",
+      "role": "tek_lead",
+      "canonical": "Briefed Universal's Senior Director of Architecture and VP of Data & AI on architect scarcity with LinkedIn Recruiter and Boolean data to push back on pricing.",
+      "tags": {
+        "executive-communication": 1.0,
+        "executive-selling": 1.0,
+        "market-research": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-mukrbv3p",
+      "metrics": [],
+      "patterns": [],
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-mukrbv3p:2"
+      ]
+    },
+    {
+      "id": "art-run-mukrbv3p-4",
+      "role": "psp",
+      "canonical": "Mined macroeconomic ad-pricing data via AI research agents to map proximity-driven print/radio buying patterns and refocus targeting on co-op-funded buyers.",
+      "tags": {
+        "audience-measurement": 1.0,
+        "market-research": 1.0,
+        "adtech-fluency": 1.0,
+        "gtm-strategy": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-mukrbv3p",
+      "metrics": [],
+      "patterns": [],
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-mukrbv3p:3"
+      ]
+    },
+    {
+      "id": "art-run-mukrbv3p-5",
+      "role": "tek_lead",
+      "canonical": "Analyzed CRM opportunity keywords to track emerging-tech demand shifts and delivered a data analytics insights playbook to SVPs at a 12,000-employee firm.",
+      "tags": {
+        "market-research": 1.0,
+        "data-solutions": 1.0,
+        "executive-communication": 1.0,
+        "audience-measurement": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-mukrbv3p",
+      "metrics": [],
+      "patterns": [],
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-mukrbv3p:3"
+      ]
+    },
+    {
+      "id": "art-run-mukrbv3p-6",
+      "role": "tek_recruiter",
+      "canonical": "Tracked hiring-trend shifts in remote-work requirements through COVID, identifying incremental employer adaptation in the post-pandemic workplace.",
+      "tags": {
+        "market-research": 1.0,
+        "audience-measurement": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-mukrbv3p",
+      "metrics": [],
+      "patterns": [],
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-mukrbv3p:3"
+      ]
     }
   ],
   "bullets": [
@@ -210,6 +422,16 @@
       "status": "accepted",
       "evidence": [
         "ev:ans:run-muhghrt2:4"
+      ]
+    },
+    {
+      "achievement_id": "lim-operating-cadence",
+      "angle": "gate2",
+      "text": "Onboarded a healthcare tech startup's team to a gated tracking system, giving the CEO approval oversight on dev expenses and fractional work hours.",
+      "origin": "artifact",
+      "status": "accepted",
+      "evidence": [
+        "ev:ans:run-mukn8dul:3"
       ]
     }
   ],
@@ -418,5 +640,58 @@
         "why": "The source template is the baseline now: caps, priorities and layout live in baseline.json; the summary paragraph is off."
       }
     ]
+  },
+  "tagline_phrases": [
+    {
+      "text": "AI Strategy & Workflow Automation Leader",
+      "tags": [],
+      "origin": "claude-proposed",
+      "created": "2026-09-28T03:12:00",
+      "status": "accepted",
+      "evidence": [
+        "ev:phrase:run-mukn8dul:ai-strategy-workflow-automation-leader"
+      ]
+    },
+    {
+      "text": "Advertising Analytics & Market Intelligence Advisor",
+      "tags": [],
+      "origin": "claude-proposed",
+      "created": "2026-09-28T03:12:00",
+      "status": "accepted",
+      "evidence": [
+        "ev:phrase:run-mukrbv3p:advertising-analytics-market-intelligence-adviso"
+      ]
+    }
+  ],
+  "technologies": [
+    {
+      "name": "Notion",
+      "tags": [
+        "process-improvement"
+      ],
+      "origin": "artifact",
+      "created": "2026-09-28T03:12:00",
+      "category": "Learned",
+      "status": "accepted",
+      "evidence": [
+        "ev:phrase:run-mukn8dul:notion"
+      ]
+    }
+  ],
+  "competencies": [],
+  "core_competencies": [],
+  "engagement_updates": {
+    "hvac": {
+      "client": "HVAC Services Firm (Confidential)",
+      "commitment": "Part Time",
+      "end": "2026-09",
+      "location": "Santa Clarita, CA",
+      "start": "2026-08",
+      "subtitle": "Consultant - Principal Analyst GTM Expansion",
+      "needs_details": false,
+      "evidence": [
+        "ev:eng:run-mukn8dul:hvac"
+      ]
+    }
   }
 }

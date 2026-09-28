@@ -1,6 +1,6 @@
 {
  "schema": "rot-library/3",
- "exported_at": "2026-09-27T22:18:15",
+ "exported_at": "2026-09-28T03:12:00",
  "tiers": {
   "1": "Evidence: what actually happened",
   "2": "Derived knowledge: what the system infers",
@@ -209,6 +209,254 @@
    },
    "numbers": [
     "1"
+   ]
+  },
+  {
+   "id": "ach:art-run-mukn8dul-0",
+   "kind": "achievement",
+   "subject": "role:hc_ai_strategy",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Delivered a feasibility roadmap and governance framework with a cost-ceiling approach after analyzing a proposed expansion site.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2026-07",
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-28T02:59:11.781Z"
+   },
+   "numbers": []
+  },
+  {
+   "id": "ach:art-run-mukn8dul-1",
+   "kind": "achievement",
+   "subject": "role:hc_ai_strategy",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Built the firm's website in Squarespace, integrating Apollo, Google Tag Manager, and Claude connectors to optimize branded SEO.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2026-07",
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-28T02:59:11.781Z"
+   },
+   "numbers": []
+  },
+  {
+   "id": "ach:art-run-mukn8dul-2",
+   "kind": "achievement",
+   "subject": "role:hc_ai_strategy",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Inserted alt-text code, FAQ tags, and AI-visibility prompts behind the scenes to improve the site's SEO score.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2026-07",
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-28T02:59:11.781Z"
+   },
+   "numbers": []
+  },
+  {
+   "id": "ach:art-run-mukn8dul-4",
+   "kind": "achievement",
+   "subject": "role:hc_ai_strategy",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Established governance parameters routing AI-generated outputs to designated SMEs for regulatory sign-off at each risk and governance gate.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2026-07",
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-28T02:59:11.781Z"
+   },
+   "numbers": []
+  },
+  {
+   "id": "ach:art-run-mukn8dul-5",
+   "kind": "achievement",
+   "subject": "role:hc_ai_strategy",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Reviewed architectural roadmap commits to ensure governance and risk controls were embedded throughout the build, preventing assumptive outputs.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2026-07",
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-28T02:59:11.781Z"
+   },
+   "numbers": []
+  },
+  {
+   "id": "ach:art-run-mukrbv3p-1",
+   "kind": "achievement",
+   "subject": "role:psp",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Analyzed competitor products and services against ROI benchmarks, building metrics frameworks (CPM, readership, audience reach) to strengthen positioning.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2026-03",
+   "valid_to": "2026-08",
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-28T05:02:57.168Z"
+   },
+   "numbers": []
+  },
+  {
+   "id": "ach:art-run-mukrbv3p-2",
+   "kind": "achievement",
+   "subject": "role:psp",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Reverse-engineered the competitive research process to define and characterize the ideal customer profile (ICP).",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2026-03",
+   "valid_to": "2026-08",
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-28T05:02:57.168Z"
+   },
+   "numbers": []
+  },
+  {
+   "id": "ach:art-run-mukrbv3p-3",
+   "kind": "achievement",
+   "subject": "role:tek_lead",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Briefed Universal's Senior Director of Architecture and VP of Data & AI on architect scarcity with LinkedIn Recruiter and Boolean data to push back on pricing.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2024",
+   "valid_to": "2025-11",
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-28T05:02:57.168Z"
+   },
+   "numbers": []
+  },
+  {
+   "id": "ach:art-run-mukrbv3p-4",
+   "kind": "achievement",
+   "subject": "role:psp",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Mined macroeconomic ad-pricing data via AI research agents to map proximity-driven print/radio buying patterns and refocus targeting on co-op-funded buyers.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2026-03",
+   "valid_to": "2026-08",
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-28T05:02:57.168Z"
+   },
+   "numbers": [
+    "12000"
+   ]
+  },
+  {
+   "id": "ach:art-run-mukrbv3p-5",
+   "kind": "achievement",
+   "subject": "role:tek_lead",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Analyzed CRM opportunity keywords to track emerging-tech demand shifts and delivered a data analytics insights playbook to SVPs at a 12,000-employee firm.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2024",
+   "valid_to": "2025-11",
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-28T05:02:57.168Z"
+   },
+   "numbers": [
+    "12000"
+   ]
+  },
+  {
+   "id": "ach:art-run-mukrbv3p-6",
+   "kind": "achievement",
+   "subject": "role:tek_recruiter",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Tracked hiring-trend shifts in remote-work requirements through COVID, identifying incremental employer adaptation in the post-pandemic workplace.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2021",
+   "valid_to": "2024",
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-28T05:02:57.168Z"
+   },
+   "numbers": [
+    "12000"
    ]
   },
   {
@@ -669,13 +917,13 @@
    "valid_to": null,
    "as_of": null,
    "evidence": {
-    "n": 5,
+    "n": 6,
     "source_types": [
      "HISTORICAL_RESUME",
      "MASTER_RESUME",
      "USER_ENTERED"
     ],
-    "latest": "2026-09-26T20:40:00"
+    "latest": "2026-09-28T02:59:11.781Z"
    },
    "numbers": [
     "1"
@@ -3205,13 +3453,147 @@
    "valid_to": null,
    "as_of": null,
    "evidence": {
-    "n": 2,
+    "n": 3,
     "source_types": [
      "USER_ENTERED"
     ],
-    "latest": "2026-09-27T20:35:00-04:00"
+    "latest": "2026-09-28T02:59:11.781Z"
    },
-   "numbers": []
+   "numbers": [
+    "8",
+    "9",
+    "2026"
+   ]
+  },
+  {
+   "id": "eng:hvac:commitment",
+   "kind": "engagement_fact",
+   "subject": "eng:hvac",
+   "predicate": "commitment",
+   "value": "Part Time",
+   "unit": null,
+   "text": "HVAC Services Firm (Confidential): commitment = Part Time",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": null,
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-28T02:59:11.781Z"
+   },
+   "numbers": [
+    "8",
+    "9",
+    "2026"
+   ]
+  },
+  {
+   "id": "eng:hvac:end",
+   "kind": "engagement_fact",
+   "subject": "eng:hvac",
+   "predicate": "end",
+   "value": "2026-09",
+   "unit": null,
+   "text": "HVAC Services Firm (Confidential): end = 2026-09",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": null,
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-28T02:59:11.781Z"
+   },
+   "numbers": [
+    "8",
+    "9",
+    "2026"
+   ]
+  },
+  {
+   "id": "eng:hvac:location",
+   "kind": "engagement_fact",
+   "subject": "eng:hvac",
+   "predicate": "location",
+   "value": "Santa Clarita, CA",
+   "unit": null,
+   "text": "HVAC Services Firm (Confidential): location = Santa Clarita, CA",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": null,
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-28T02:59:11.781Z"
+   },
+   "numbers": [
+    "8",
+    "9",
+    "2026"
+   ]
+  },
+  {
+   "id": "eng:hvac:start",
+   "kind": "engagement_fact",
+   "subject": "eng:hvac",
+   "predicate": "start",
+   "value": "2026-08",
+   "unit": null,
+   "text": "HVAC Services Firm (Confidential): start = 2026-08",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": null,
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-28T02:59:11.781Z"
+   },
+   "numbers": [
+    "8",
+    "9",
+    "2026"
+   ]
+  },
+  {
+   "id": "eng:hvac:subtitle",
+   "kind": "engagement_fact",
+   "subject": "eng:hvac",
+   "predicate": "subtitle",
+   "value": "Consultant - Principal Analyst GTM Expansion",
+   "unit": null,
+   "text": "HVAC Services Firm (Confidential): subtitle = Consultant - Principal Analyst GTM Expansion",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": null,
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-28T02:59:11.781Z"
+   },
+   "numbers": [
+    "8",
+    "9",
+    "2026"
+   ]
   },
   {
    "id": "expertise:ad-tech-fluency-cdp-clean-rooms-identity-graphs-:text",
@@ -6553,6 +6935,28 @@
    "numbers": []
   },
   {
+   "id": "tagline:advertising-analytics-market-intelligence-adviso:text",
+   "kind": "tagline",
+   "subject": "tagline:advertising-analytics-market-intelligence-adviso",
+   "predicate": "text",
+   "value": "Advertising Analytics & Market Intelligence Advisor",
+   "unit": null,
+   "text": "Advertising Analytics & Market Intelligence Advisor",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": null,
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-28T03:12:00"
+   },
+   "numbers": []
+  },
+  {
    "id": "tagline:ai-adoption-enthusiast:text",
    "kind": "tagline",
    "subject": "tagline:ai-adoption-enthusiast",
@@ -6572,6 +6976,28 @@
      "PUBLIC_PROFILE"
     ],
     "latest": "2026-09-26T20:40:00"
+   },
+   "numbers": []
+  },
+  {
+   "id": "tagline:ai-strategy-workflow-automation-leader:text",
+   "kind": "tagline",
+   "subject": "tagline:ai-strategy-workflow-automation-leader",
+   "predicate": "text",
+   "value": "AI Strategy & Workflow Automation Leader",
+   "unit": null,
+   "text": "AI Strategy & Workflow Automation Leader",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": null,
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-28T03:12:00"
    },
    "numbers": []
   },
@@ -7069,6 +7495,28 @@
     "5",
     "5.6"
    ]
+  },
+  {
+   "id": "tool:notion:name",
+   "kind": "tool",
+   "subject": "tool:notion",
+   "predicate": "name",
+   "value": "Notion",
+   "unit": null,
+   "text": "Notion",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": null,
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-28T03:12:00"
+   },
+   "numbers": []
   },
   {
    "id": "tool:office-place-collaboration-tools:name",
@@ -9806,7 +10254,7 @@
      "kind": "learned",
      "angle": "gate2",
      "text": "Helped stand up an Oil & Gas company's ML and AI Center of Excellence, applying sensor data to predict and detect gas outages.",
-     "score_adj": 0
+     "score_adj": -0.6
     }
    ]
   },
@@ -10507,10 +10955,10 @@
      "score_adj": 0
     },
     {
-     "id": 111,
+     "id": 138,
      "kind": "learned",
      "angle": "gate2",
-     "text": "Mapped stakeholder intervention and sign-off criteria for a startup client, defining who owned gates and approvals across the engagement.",
+     "text": "Onboarded a healthcare tech startup's team to a gated tracking system, giving the CEO approval oversight on dev expenses and fractional work hours.",
      "score_adj": 0
     }
    ]
@@ -10819,6 +11267,266 @@
      "score_adj": 0
     }
    ]
+  },
+  {
+   "id": "art-run-mukn8dul-0",
+   "role": "hc_ai_strategy",
+   "confidence": "asserted",
+   "tags": {
+    "feasibility-roadmap": 1.0,
+    "risk-governance": 1.0,
+    "scenario-planning": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mukn8dul-0"
+   ],
+   "texts": [
+    {
+     "id": 126,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Delivered a feasibility roadmap and governance framework with a cost-ceiling approach after analyzing a proposed expansion site.",
+     "score_adj": 0
+    },
+    {
+     "id": 127,
+     "kind": "variant",
+     "angle": "longform",
+     "text": "Analyzed a proposed expansion site for an HVAC services firm and delivered a feasibility roadmap and governance framework built on a cost-ceiling approach, giving leadership a structured basis for evaluating the expansion decision beyond the initial feasibility dashboard.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-mukn8dul-1",
+   "role": "hc_ai_strategy",
+   "confidence": "asserted",
+   "tags": {
+    "cross-platform": 1.0,
+    "building-with-ai": 1.0,
+    "content-brand": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mukn8dul-1"
+   ],
+   "texts": [
+    {
+     "id": 128,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Built the firm's website in Squarespace, integrating Apollo, Google Tag Manager, and Claude connectors to optimize branded SEO.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-mukn8dul-2",
+   "role": "hc_ai_strategy",
+   "confidence": "asserted",
+   "tags": {
+    "cross-platform": 1.0,
+    "building-with-ai": 1.0,
+    "content-brand": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mukn8dul-2"
+   ],
+   "texts": [
+    {
+     "id": 129,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Inserted alt-text code, FAQ tags, and AI-visibility prompts behind the scenes to improve the site's SEO score.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-mukn8dul-4",
+   "role": "hc_ai_strategy",
+   "confidence": "asserted",
+   "tags": {
+    "risk-governance": 1.0,
+    "healthcare-regulatory": 1.0,
+    "board-advisory": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mukn8dul-4"
+   ],
+   "texts": [
+    {
+     "id": 130,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Established governance parameters routing AI-generated outputs to designated SMEs for regulatory sign-off at each risk and governance gate.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-mukn8dul-5",
+   "role": "hc_ai_strategy",
+   "confidence": "asserted",
+   "tags": {
+    "risk-governance": 1.0,
+    "board-advisory": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mukn8dul-5"
+   ],
+   "texts": [
+    {
+     "id": 131,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Reviewed architectural roadmap commits to ensure governance and risk controls were embedded throughout the build, preventing assumptive outputs.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-mukrbv3p-1",
+   "role": "psp",
+   "confidence": "asserted",
+   "tags": {
+    "competitive-analysis": 1.0,
+    "market-research": 1.0,
+    "cpm-cpa-modeling": 1.0,
+    "audience-measurement": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mukrbv3p-1"
+   ],
+   "texts": [
+    {
+     "id": 132,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Analyzed competitor products and services against ROI benchmarks, building metrics frameworks (CPM, readership, audience reach) to strengthen positioning.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-mukrbv3p-2",
+   "role": "psp",
+   "confidence": "asserted",
+   "tags": {
+    "market-research": 1.0,
+    "market-segmentation": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mukrbv3p-2"
+   ],
+   "texts": [
+    {
+     "id": 133,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Reverse-engineered the competitive research process to define and characterize the ideal customer profile (ICP).",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-mukrbv3p-3",
+   "role": "tek_lead",
+   "confidence": "asserted",
+   "tags": {
+    "executive-communication": 1.0,
+    "executive-selling": 1.0,
+    "market-research": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mukrbv3p-3"
+   ],
+   "texts": [
+    {
+     "id": 134,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Briefed Universal's Senior Director of Architecture and VP of Data & AI on architect scarcity with LinkedIn Recruiter and Boolean data to push back on pricing.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-mukrbv3p-4",
+   "role": "psp",
+   "confidence": "asserted",
+   "tags": {
+    "audience-measurement": 1.0,
+    "market-research": 1.0,
+    "adtech-fluency": 1.0,
+    "gtm-strategy": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mukrbv3p-4"
+   ],
+   "texts": [
+    {
+     "id": 135,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Mined macroeconomic ad-pricing data via AI research agents to map proximity-driven print/radio buying patterns and refocus targeting on co-op-funded buyers.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-mukrbv3p-5",
+   "role": "tek_lead",
+   "confidence": "asserted",
+   "tags": {
+    "market-research": 1.0,
+    "data-solutions": 1.0,
+    "executive-communication": 1.0,
+    "audience-measurement": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mukrbv3p-5"
+   ],
+   "texts": [
+    {
+     "id": 136,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Analyzed CRM opportunity keywords to track emerging-tech demand shifts and delivered a data analytics insights playbook to SVPs at a 12,000-employee firm.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-mukrbv3p-6",
+   "role": "tek_recruiter",
+   "confidence": "asserted",
+   "tags": {
+    "market-research": 1.0,
+    "audience-measurement": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mukrbv3p-6"
+   ],
+   "texts": [
+    {
+     "id": 137,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Tracked hiring-trend shifts in remote-work requirements through COVID, identifying incremental employer adaptation in the post-pandemic workplace.",
+     "score_adj": 0
+    }
+   ]
   }
  ],
  "tagline_phrases": [
@@ -10905,6 +11613,20 @@
    "sort": 7,
    "origin": "template",
    "claim_id": "tagline:ai-adoption-enthusiast:text"
+  },
+  {
+   "text": "AI Strategy & Workflow Automation Leader",
+   "tags": [],
+   "sort": 100,
+   "origin": "claude-proposed",
+   "claim_id": null
+  },
+  {
+   "text": "Advertising Analytics & Market Intelligence Advisor",
+   "tags": [],
+   "sort": 101,
+   "origin": "claude-proposed",
+   "claim_id": null
   }
  ],
  "competencies": [
@@ -11611,16 +12333,17 @@
     "eng:hvac:commitment",
     "eng:hvac:subtitle"
    ],
-   "location": null,
-   "start": null,
-   "end": null,
-   "dates": null,
-   "commitment": null,
-   "subtitle": null,
-   "needs_details": true,
+   "location": "Santa Clarita, CA",
+   "start": "2026-08",
+   "end": "2026-09",
+   "dates": "August 2026 – September 2026",
+   "commitment": "Part Time",
+   "subtitle": "Consultant - Principal Analyst GTM Expansion",
+   "needs_details": false,
    "ask": "Client name as it should print, location, start and end dates, commitment (part time / project), a one-line description of the engagement, and 1–2 more accomplishments.",
    "achievements": [
-    "art-run-muhfveal-0"
+    "art-run-muhfveal-0",
+    "art-run-mukn8dul-0"
    ]
   }
  ],
@@ -12117,6 +12840,15 @@
    ],
    "sort": 22,
    "claim_id": "tool:office-place-collaboration-tools:name"
+  },
+  {
+   "name": "Notion",
+   "category": "Learned",
+   "tags": [
+    "process-improvement"
+   ],
+   "sort": 100,
+   "claim_id": null
   }
  ],
  "domain_fluency": [
@@ -12243,7 +12975,12 @@
     "art-run-muhbu38f-0",
     "art-run-muhbu38f-1",
     "art-run-muhghrt2-2",
-    "art-run-muhghrt2-3"
+    "art-run-muhghrt2-3",
+    "art-run-mukn8dul-0",
+    "art-run-mukn8dul-1",
+    "art-run-mukn8dul-2",
+    "art-run-mukn8dul-4",
+    "art-run-mukn8dul-5"
    ],
    "psp": [
     "psp-closed-deals",
@@ -12258,7 +12995,10 @@
     "psp-verticals",
     "psp-nonprofit-reframe",
     "psp-school-proposal",
-    "psp-net-revenue"
+    "psp-net-revenue",
+    "art-run-mukrbv3p-1",
+    "art-run-mukrbv3p-2",
+    "art-run-mukrbv3p-4"
    ],
    "tek_lead": [
     "tekl-coaching",
@@ -12270,14 +13010,17 @@
     "tekl-disney-enablement",
     "tekl-fortune500-discovery",
     "art-run-muhbu38f-2",
-    "art-run-muhfveal-2"
+    "art-run-muhfveal-2",
+    "art-run-mukrbv3p-3",
+    "art-run-mukrbv3p-5"
    ],
    "tek_recruiter": [
     "tekr-750k",
     "tekr-vertex",
     "tekr-wayfair-disney",
     "tekr-nike",
-    "tekr-recruiting-talent"
+    "tekr-recruiting-talent",
+    "art-run-mukrbv3p-6"
    ],
    "demanddrive": [
     "dd-territory-proposal",
