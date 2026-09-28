@@ -85,7 +85,11 @@ fonts/                Carlito (OFL) for the Match Desk's PDFs
 resume.db             the database (committed)
 data/library.json     export consumed by the web artifact (confidential names scrubbed)
 data/dump.sql         text dump for readable diffs
-artifact/index.html   Resume Match Desk source
+artifact/index.html   Resume Match Desk source: a shell over the shared engine
+core/rot_core.js      the shared engine (RotCore 1.0.0): helpers, number check, scoring, document builders, createEngine, prompts;
+                      no person in it (tests/core/no_person.test.js); published with the page as core/rot_core.js
+core/layouts/         section order and headings per template (rot-layout/1), embedded in the template JSON
+tests/                python tests/run.py: node unit tests, page goldens (tests/parity/legacy_oracle.js) and the rot.py twin check
 reports/              LinkedIn cross-reference, data profile
 out/                  generated resumes (DOCX, PDF, HTML, MD, JSON); out/runs/ = synced postings
 ```
