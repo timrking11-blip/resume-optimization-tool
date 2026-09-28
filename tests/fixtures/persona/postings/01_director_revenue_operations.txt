@@ -1,0 +1,20 @@
+Director, Revenue Operations
+Northgate Software · Denver, CO (hybrid) · Full-time
+
+About Northgate
+Northgate makes planning software for mid-market manufacturers. We are a Series C company with 400 employees and a 90-person go-to-market team.
+
+What you'll do
+- Own the revenue forecast: stage definitions, weekly cadence, and the accuracy the executive team and board rely on.
+- Run our Salesforce instance and the systems around it (HubSpot, Outreach, Gong, Looker), including the roadmap for consolidating tools acquired through two acquisitions.
+- Design territories, lead routing and SLAs for SDR and AE teams; measure speed-to-lead and conversion at every stage.
+- Partner with product marketing and finance on pricing and packaging changes, including the launch of a mid-market tier.
+- Build the dashboards and pipeline reviews the CRO uses every week; report on pipeline coverage and win rates.
+- Lead and grow a team of analysts and administrators.
+
+What you bring
+- 6+ years in revenue operations, sales operations or a related role at a B2B SaaS company.
+- Proven forecasting accuracy improvements and CRM consolidation experience.
+- Salesforce administration depth; Looker or Tableau fluency; comfortable with SQL basics.
+- Experience presenting to C-suite stakeholders and aligning sales, customer success and marketing.
+- Bonus: pricing and packaging work, or a quota-carrying background.

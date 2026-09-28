@@ -1,0 +1,28 @@
+Riley Mahoney
+Revenue Operations Leader
+Denver, CO | (555) 010-0199 | riley.mahoney@example.com | linkedin.com/in/rileymahoney-example
+EXPERIENCE
+Director of Revenue Operations, Halcyon Metrics	January 2024 – Present
+Denver, CO
+- Redesigned forecasting cadence and stage definitions; forecast accuracy rose from 71% to 93% in two quarters.
+- Led the consolidation of 3 CRMs into one Salesforce instance across sales, customer success and marketing, retiring two legacy tools.
+- Introduced routing and SLA rules that took speed-to-lead from 26 hours to under 2 hours; SQL-to-opportunity conversion improved 18 points.
+- Owned pricing and packaging for the mid-market tier, which reached $1,200,000 in ARR in year one.
+- Manage a team of 4 (two analysts and two Salesforce administrators) supporting a 60-person revenue organization.
+- Grew qualified pipeline to $6.8M through territory redesign and a new SDR-to-AE handoff.
+Fractional GTM Advisor (part-time), Larkspur Health	February 2023 – August 2023
+Remote
+- Defined the ideal customer profile and three pricing tiers for a digital health startup; the first 5 pilot clinics signed within 4 months.
+- Built the sales narrative and a 30-interview customer discovery plan the founders ran before raising their seed round.
+Senior Account Executive, Kestrel Adtech	March 2021 – November 2023
+Remote
+Marketing Manager, Pinecrest Sports Media	June 2018 – February 2021
+Boulder, CO
+- Ran audience growth, sponsored content and a $1.1M media budget for three regional sports properties.
+SKILLS
+Systems: Salesforce (admin), HubSpot, Outreach, Gong, Looker, Tableau, ZoomInfo
+Revenue operations: Forecasting, territory design, lead routing, pricing and packaging, CRM consolidation
+Go-to-market: ICP definition, discovery interviews, pricing tiers, sales narrative, pilot programs
+EDUCATION & CERTIFICATIONS
+Lakeside State University — B.A., Communication (2016)
+HubSpot Revenue Operations Certification (2023)

@@ -1,0 +1,31 @@
+Riley Mahoney
+Denver, CO | (555) 010-0199 | riley.mahoney@example.com | linkedin.com/in/rileymahoney-example
+PROFESSIONAL SUMMARY
+Revenue operations and sales professional with eight years across B2B SaaS, retail media and sports publishing. Builds forecasting, pipeline and pricing systems that revenue teams actually use, and has carried a quota.
+EXPERIENCE
+Director of Revenue Operations | Halcyon Metrics | Denver, CO
+January 2024 – Present
+• Rebuilt the weekly forecast process across three regions, lifting forecast accuracy from 71% to 93% within two quarters.
+• Consolidated three CRMs into a single Salesforce instance shared by sales, customer success and marketing.
+• Designed lead routing rules and an SLA that cut speed-to-lead from 26 hours to under 2 hours and lifted SQL-to-opportunity conversion by 18 points.
+• Built the pricing and packaging model for a new mid-market tier that reached $1.2M ARR in its first year.
+• Grew qualified pipeline to $6.1M through territory redesign and a rebuilt SDR-to-AE handoff.
+Senior Account Executive | Kestrel Adtech | Remote
+2021 – 2024
+• Closed $2.4M in new business in FY2023 at 128% of quota, the top result on a team of nine.
+• Built ROAS and CPM business cases for CMO and CFO buyers, raising average deal size 35%.
+• I partnered with agency holding companies to expand the network into 12 new brands over 18 months.
+Marketing Manager | Pinecrest Sports Media | Boulder, CO
+June 2018 – February 2021
+• Grew newsletter subscribers from 40K to 110K in 18 months while holding a 38% open rate.
+• Launched a sponsored-content product that produced $850K in first-year revenue.
+• Led the rebrand of three regional sports properties, coordinating design, editorial, sales collateral and a 14-market launch calendar, while keeping the combined program within 4% of budget.
+Sales Development Representative | Quillstone Software | Denver, CO
+August 2016 – May 2018
+• Booked 140 qualified meetings in a year and finished #1 of 12 SDRs.
+• Wrote outbound sequences adopted team-wide, lifting reply rates from 9% to 14%.
+EDUCATION
+Lakeside State University — B.A., Communication, 2016
+CERTIFICATIONS & TOOLS
+HubSpot Revenue Operations Certification (2023)
+Tools: Salesforce, HubSpot, Outreach, Gong, Clari, Looker, ZoomInfo, Excel, Notion

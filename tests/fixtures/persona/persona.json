@@ -1,0 +1,507 @@
+{
+  "fixture": "riley-mahoney/1",
+  "fictional": true,
+  "note": "Every person, company, date and number is invented. Built by build_persona.py; edit that file, not these outputs.",
+  "identity": {
+    "name": "Riley Mahoney",
+    "location": "Denver, CO",
+    "phone": "(555) 010-0199",
+    "email": "riley.mahoney@example.com",
+    "linkedin": "linkedin.com/in/rileymahoney-example"
+  },
+  "documents": {
+    "resume_v1_classic.docx": {
+      "kind": "resume",
+      "authored_at": "2026-03-02",
+      "layout": "classic: date line under the header, bullets as • characters",
+      "roles": [
+        "hal",
+        "kes",
+        "pin",
+        "qui"
+      ]
+    },
+    "resume_v2_media_partnerships.docx": {
+      "kind": "resume",
+      "authored_at": "2025-11-14",
+      "layout": "one-line role headers, real Word bullets, skills line",
+      "roles": [
+        "hal",
+        "kes",
+        "pin"
+      ]
+    },
+    "resume_v3_revops.docx": {
+      "kind": "resume",
+      "authored_at": "2026-08-20",
+      "layout": "right-tab dates, dash bullets, a two-column skills table, the advisory engagement",
+      "roles": [
+        "hal",
+        "lark",
+        "kes",
+        "pin"
+      ]
+    },
+    "linkedin_profile.docx": {
+      "kind": "linkedin",
+      "authored_at": "2026-09-20",
+      "layout": "LinkedIn Save-to-PDF order: headline, contact, skills, certifications, summary, experience with durations",
+      "roles": [
+        "hal",
+        "lark",
+        "kes",
+        "pin",
+        "qui"
+      ]
+    }
+  },
+  "roles": {
+    "hal": {
+      "title": "Director of Revenue Operations",
+      "employer": "Halcyon Metrics",
+      "loc": "Denver, CO",
+      "start": "2024-01",
+      "end": null,
+      "titles_by_source": {
+        "v1": "Director of Revenue Operations",
+        "v2": "Director of Revenue Operations",
+        "v3": "Director of Revenue Operations",
+        "li": "Director of Revenue Operations"
+      }
+    },
+    "kes": {
+      "title": "Senior Account Executive",
+      "employer": "Kestrel Adtech",
+      "loc": "Remote",
+      "start": "2021-03",
+      "end": "2023-11",
+      "titles_by_source": {
+        "v1": "Senior Account Executive",
+        "v2": "Senior Account Executive",
+        "v3": "Senior Account Executive",
+        "li": "Senior Account Executive"
+      }
+    },
+    "pin": {
+      "title": "Marketing Manager",
+      "employer": "Pinecrest Sports Media",
+      "loc": "Boulder, CO",
+      "start": "2018-06",
+      "end": "2021-02",
+      "titles_by_source": {
+        "v1": "Marketing Manager",
+        "v2": "Senior Marketing Manager",
+        "v3": "Marketing Manager",
+        "li": "Senior Marketing Manager"
+      }
+    },
+    "qui": {
+      "title": "Sales Development Representative",
+      "employer": "Quillstone Software",
+      "loc": "Denver, CO",
+      "start": "2016-08",
+      "end": "2018-05",
+      "titles_by_source": {
+        "v1": "Sales Development Representative",
+        "li": "Sales Development Representative"
+      }
+    },
+    "lark": {
+      "title": "Fractional GTM Advisor",
+      "employer": "Larkspur Health",
+      "loc": "Remote",
+      "start": "2023-02",
+      "end": "2023-08",
+      "titles_by_source": {
+        "v3": "Fractional GTM Advisor",
+        "li": "Fractional GTM Advisor"
+      }
+    }
+  },
+  "education": [
+    {
+      "school": "Lakeside State University",
+      "degree": "B.A., Communication",
+      "year": 2016
+    }
+  ],
+  "certifications": [
+    {
+      "name": "HubSpot Revenue Operations Certification",
+      "year": 2023,
+      "sources": [
+        "v1",
+        "v2",
+        "v3",
+        "li"
+      ]
+    },
+    {
+      "name": "Google Analytics Individual Qualification",
+      "year": 2020,
+      "sources": [
+        "v2"
+      ]
+    },
+    {
+      "name": "Salesforce Trailhead: Sales Cloud Basics",
+      "year": null,
+      "sources": [
+        "li"
+      ]
+    }
+  ],
+  "tools_by_source": {
+    "v1": [
+      "Salesforce",
+      "HubSpot",
+      "Outreach",
+      "Gong",
+      "Clari",
+      "Looker",
+      "ZoomInfo",
+      "Excel",
+      "Notion"
+    ],
+    "v2": [
+      "Salesforce",
+      "HubSpot",
+      "The Trade Desk",
+      "Google Analytics"
+    ],
+    "v3": [
+      "Salesforce",
+      "HubSpot",
+      "Outreach",
+      "Gong",
+      "Looker",
+      "Tableau",
+      "ZoomInfo"
+    ],
+    "li": [
+      "Salesforce"
+    ]
+  },
+  "accomplishments": {
+    "hal-forecast": {
+      "role": "hal",
+      "sources": [
+        "li",
+        "v1",
+        "v3"
+      ],
+      "texts": {
+        "v1": "Rebuilt the weekly forecast process across three regions, lifting forecast accuracy from 71% to 93% within two quarters.",
+        "v3": "Redesigned forecasting cadence and stage definitions; forecast accuracy rose from 71% to 93% in two quarters.",
+        "li": "Improved forecast accuracy to 93% by rebuilding the weekly forecast process."
+      }
+    },
+    "hal-crm": {
+      "role": "hal",
+      "sources": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "texts": {
+        "v1": "Consolidated three CRMs into a single Salesforce instance shared by sales, customer success and marketing.",
+        "v2": "Merged 3 CRMs into one Salesforce org, giving sales, CS and marketing one customer record.",
+        "v3": "Led the consolidation of 3 CRMs into one Salesforce instance across sales, customer success and marketing, retiring two legacy tools."
+      }
+    },
+    "hal-routing": {
+      "role": "hal",
+      "sources": [
+        "v1",
+        "v3"
+      ],
+      "texts": {
+        "v1": "Designed lead routing rules and an SLA that cut speed-to-lead from 26 hours to under 2 hours and lifted SQL-to-opportunity conversion by 18 points.",
+        "v3": "Introduced routing and SLA rules that took speed-to-lead from 26 hours to under 2 hours; SQL-to-opportunity conversion improved 18 points."
+      }
+    },
+    "hal-pricing": {
+      "role": "hal",
+      "sources": [
+        "li",
+        "v1",
+        "v3"
+      ],
+      "texts": {
+        "v1": "Built the pricing and packaging model for a new mid-market tier that reached $1.2M ARR in its first year.",
+        "v3": "Owned pricing and packaging for the mid-market tier, which reached $1,200,000 in ARR in year one.",
+        "li": "Launched a mid-market pricing tier that passed $1M ARR in its first year."
+      }
+    },
+    "hal-team": {
+      "role": "hal",
+      "sources": [
+        "v3"
+      ],
+      "texts": {
+        "v3": "Manage a team of 4 (two analysts and two Salesforce administrators) supporting a 60-person revenue organization."
+      }
+    },
+    "hal-pipeline": {
+      "role": "hal",
+      "sources": [
+        "v1",
+        "v3"
+      ],
+      "texts": {
+        "v1": "Grew qualified pipeline to $6.1M through territory redesign and a rebuilt SDR-to-AE handoff.",
+        "v3": "Grew qualified pipeline to $6.8M through territory redesign and a new SDR-to-AE handoff."
+      }
+    },
+    "kes-quota": {
+      "role": "kes",
+      "sources": [
+        "li",
+        "v1",
+        "v2"
+      ],
+      "texts": {
+        "v1": "Closed $2.4M in new business in FY2023 at 128% of quota, the top result on a team of nine.",
+        "v2": "Delivered $2.4M in new business in FY2023 (128% of quota), first of nine on the team.",
+        "li": "128% of quota in FY2023 with $2.4M in new business."
+      }
+    },
+    "kes-grocery": {
+      "role": "kes",
+      "sources": [
+        "v2"
+      ],
+      "texts": {
+        "v2": "Won the retail media network's first three grocery accounts, including a $600K annual commitment from a regional chain."
+      }
+    },
+    "kes-cases": {
+      "role": "kes",
+      "sources": [
+        "v1",
+        "v2"
+      ],
+      "texts": {
+        "v1": "Built ROAS and CPM business cases for CMO and CFO buyers, raising average deal size 35%.",
+        "v2": "Wrote the ROAS/CPM business case template used with CMO and CFO buyers; average deal size grew 35%."
+      }
+    },
+    "kes-committee": {
+      "role": "kes",
+      "sources": [
+        "v2"
+      ],
+      "texts": {
+        "v2": "Ran discovery-led cycles with buying committees of 6 to 8 stakeholders across brand, agency and finance teams."
+      }
+    },
+    "kes-agencies": {
+      "role": "kes",
+      "sources": [
+        "v1",
+        "v2"
+      ],
+      "texts": {
+        "v1": "I partnered with agency holding companies to expand the network into 12 new brands over 18 months.",
+        "v2": "Expanded the network into 12 new brands in 18 months through agency holding-company partnerships."
+      }
+    },
+    "pin-newsletter": {
+      "role": "pin",
+      "sources": [
+        "v1",
+        "v2"
+      ],
+      "texts": {
+        "v1": "Grew newsletter subscribers from 40K to 110K in 18 months while holding a 38% open rate.",
+        "v2": "Grew the newsletter from 40,000 to 110,000 subscribers in 18 months at a 38% open rate."
+      }
+    },
+    "pin-sponsored": {
+      "role": "pin",
+      "sources": [
+        "v1",
+        "v2"
+      ],
+      "texts": {
+        "v1": "Launched a sponsored-content product that produced $850K in first-year revenue.",
+        "v2": "Created and sold a sponsored-content product: $850,000 in revenue in its first year."
+      }
+    },
+    "pin-budget": {
+      "role": "pin",
+      "sources": [
+        "li",
+        "v2"
+      ],
+      "texts": {
+        "v2": "Managed a $1.1M annual media budget; paid social returned 3.2x ROAS.",
+        "li": "Owned a $1.1M media budget and delivered 3.2x ROAS on paid social."
+      }
+    },
+    "pin-rebrand": {
+      "role": "pin",
+      "sources": [
+        "v1"
+      ],
+      "texts": {
+        "v1": "Led the rebrand of three regional sports properties, coordinating design, editorial, sales collateral and a 14-market launch calendar, while keeping the combined program within 4% of budget."
+      }
+    },
+    "qui-meetings": {
+      "role": "qui",
+      "sources": [
+        "li",
+        "v1"
+      ],
+      "texts": {
+        "v1": "Booked 140 qualified meetings in a year and finished #1 of 12 SDRs.",
+        "li": "Top SDR of 12 with 140 qualified meetings booked in one year."
+      }
+    },
+    "qui-sequences": {
+      "role": "qui",
+      "sources": [
+        "v1"
+      ],
+      "texts": {
+        "v1": "Wrote outbound sequences adopted team-wide, lifting reply rates from 9% to 14%."
+      }
+    },
+    "lark-icp": {
+      "role": "lark",
+      "sources": [
+        "li",
+        "v3"
+      ],
+      "texts": {
+        "v3": "Defined the ideal customer profile and three pricing tiers for a digital health startup; the first 5 pilot clinics signed within 4 months.",
+        "li": "Defined ICP and pricing tiers; first 5 pilot clinics signed within 4 months."
+      }
+    },
+    "lark-discovery": {
+      "role": "lark",
+      "sources": [
+        "v3"
+      ],
+      "texts": {
+        "v3": "Built the sales narrative and a 30-interview customer discovery plan the founders ran before raising their seed round."
+      }
+    }
+  },
+  "deliberate": {
+    "same_fact_different_wording": [
+      "hal-forecast",
+      "hal-crm",
+      "hal-routing",
+      "kes-quota",
+      "kes-cases",
+      "pin-newsletter",
+      "pin-sponsored",
+      "qui-meetings"
+    ],
+    "number_formats_same_fact": {
+      "hal-pricing": [
+        "$1.2M (v1)",
+        "$1,200,000 (v3)",
+        "over $1M (li, a lower bound, not a contradiction)"
+      ],
+      "pin-sponsored": [
+        "$850K (v1)",
+        "$850,000 (v2)"
+      ],
+      "hal-crm": [
+        "three (v1)",
+        "3 (v2, v3)"
+      ]
+    },
+    "metric_conflict_must_not_print": {
+      "hal-pipeline": {
+        "v1": 6100000,
+        "v3": 6800000
+      }
+    },
+    "date_conflict": {
+      "kes.end": {
+        "v1": "2024",
+        "v2": "2023-11",
+        "v3": "2023-11",
+        "li": "2023-11",
+        "expected_resolution": "2023-11 (three sources, newer documents)"
+      }
+    },
+    "title_conflict": {
+      "pin.title": {
+        "v1": "Marketing Manager",
+        "v3": "Marketing Manager",
+        "v2": "Senior Marketing Manager",
+        "li": "Senior Marketing Manager"
+      }
+    },
+    "first_person_line": "kes-agencies (v1) starts with \"I partnered\"",
+    "over_ceiling_line": "pin-rebrand (v1) is longer than 170 characters",
+    "early_role_two_sources_only": "qui (v1 and LinkedIn): a hidden-by-default candidate",
+    "engagement_newest_sources_only": "lark (v3 and LinkedIn): consulting engagement, part-time, 7 months",
+    "number_words": [
+      "three CRMs (v1)",
+      "first three grocery accounts (v2)",
+      "team of nine (v1)"
+    ]
+  },
+  "postings": {
+    "01_director_revenue_operations": {
+      "expect_strong": [
+        "forecasting",
+        "crm-discipline",
+        "pipeline-management",
+        "pricing-packaging"
+      ],
+      "expect_role_focus": [
+        "hal"
+      ]
+    },
+    "02_senior_account_executive_retail_media": {
+      "expect_strong": [
+        "executive-selling",
+        "discovery",
+        "media-sales",
+        "qualification"
+      ],
+      "expect_role_focus": [
+        "kes"
+      ]
+    },
+    "03_head_of_growth_marketing": {
+      "expect_strong": [
+        "marketing",
+        "audience-growth",
+        "budget"
+      ],
+      "expect_role_focus": [
+        "pin"
+      ]
+    },
+    "04_partnerships_manager_agency_channel": {
+      "expect_strong": [
+        "channel-strategy",
+        "partnerships"
+      ],
+      "expect_role_focus": [
+        "kes"
+      ]
+    },
+    "05_gtm_strategy_lead_ai_startup": {
+      "expect_strong": [
+        "gtm-strategy",
+        "customer-discovery",
+        "pricing-packaging",
+        "stakeholder-alignment"
+      ],
+      "expect_role_focus": [
+        "lark",
+        "hal"
+      ]
+    },
+    "_note": "expect_strong names taxonomy families or tags loosely; the Phase 1 tests pin exact ids once the GTM taxonomy v1 is fixed."
+  }
+}

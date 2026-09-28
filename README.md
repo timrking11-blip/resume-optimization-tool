@@ -80,6 +80,7 @@ curation/
   learned.json        Gate answers and Match Desk syncs (overrides, new bullets, template-section entries)
 templates/            docx_template.json (Word) and resume.html (HTML/Chrome fallback)
 tools/docx2pdf.ps1    Word -> PDF export (read-only open; never touches documents Tim has open)
+tests/fixtures/persona/  a fictional test person (Riley Mahoney) for the shared core and Career Companion Hub; build_persona.py regenerates it
 fonts/                Carlito (OFL) for the Match Desk's PDFs
 resume.db             the database (committed)
 data/library.json     export consumed by the web artifact (confidential names scrubbed)
