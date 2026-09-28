@@ -7,6 +7,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script src="core/rot_core.js"></script>
 <script src="store.js"></script>
+<script src="scorecard.js"></script>
 <style>
 :root{
   --paper:#F3F5F7; --surface:#FFFFFF; --surface-2:#F7F9FA; --ink:#0F1720; --ink-soft:#3B4754; --slate:#66727F; --rule:#E1E6EB; --rule-soft:#EDF0F3; --rule-strong:#C9D2DA;
@@ -133,7 +134,23 @@ input[type=file]::file-selector-button{font:inherit;font-weight:600;font-size:13
 .req{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;padding:7px 10px;border-radius:8px;background:var(--surface-2);font-size:13px}
 .pill{font-family:var(--f-ui);font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:999px;white-space:nowrap}
 .pill.ok{background:var(--ok-dim);color:var(--ok)} .pill.warn{background:var(--signal-dim);color:var(--signal)} .pill.gap{background:var(--bad-dim);color:var(--bad)}
+.req.flipped{background:var(--ok-dim);box-shadow:inset 3px 0 0 var(--ok)}
 .req .lbl{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500}
+.grow{display:grid;gap:6px}
+.grow h3{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin:0}
+.grow ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.grow li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;padding:7px 10px;border-radius:8px;background:var(--surface-2);font-size:13px}
+.grow li .g{font-family:var(--f-mono);font-size:11px;color:var(--accent);font-variant-numeric:tabular-nums;white-space:nowrap}
+.grow li .words{grid-column:1 / 3;font-size:12px;color:var(--slate)}
+.badge.delta{border-color:transparent;background:var(--accent-dim);color:var(--accent);font-variant-numeric:tabular-nums}
+.q .crit{font-size:12px;color:var(--slate)}
+.q .crit b{color:var(--accent);font-weight:600}
+.q .outcome{font-size:12px;font-weight:500;color:var(--ink-soft);background:var(--surface-2);border-radius:6px;padding:4px 8px}
+.toolask{font-size:11.5px;color:var(--slate);display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}
+.toolask:empty{display:none}
+.toolask label{display:inline-flex;align-items:center;gap:4px;color:var(--ink-soft)}
+.toolask input[type=checkbox]{accent-color:var(--accent);width:13px;height:13px;margin:0}
+.sheet .fresh-item{background:#E4F3EE;border-radius:2px;padding:0 2px}
 .req .lbl em{font-style:normal;color:var(--slate);font-size:12px;font-weight:400}
 .w{font-family:var(--f-mono);font-size:11px;color:var(--slate);font-variant-numeric:tabular-nums}
 .status{font-size:13px;color:var(--slate);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
@@ -338,7 +355,9 @@ mark{background:var(--hl);color:var(--hl-ink);border-radius:2px;padding:0 1px}
               <div style="flex:1;display:grid;gap:6px;min-width:160px"><div class="meter"><i id="meter" style="width:0"></i></div><div class="hint">Weighted share of the posting's requirements your draft already proves.</div></div>
             </div>
             <div class="status" id="claude1Status" hidden></div>
+            <details class="how"><summary class="hint">How this match is scored</summary><p class="hint" id="howScored"></p></details>
             <p class="note" id="heldNote" hidden></p>
+            <div class="grow" id="grow" hidden><h3>Where the match can grow <span class="hint" id="growHead"></span></h3><ul id="growList"></ul><p class="hint">Criteria, not claims: each line says what an entry would have to demonstrate, in the posting's own words. Only what you actually did belongs in an answer.</p></div>
             <div class="reqs" id="reqs" role="list"></div>
             <details><summary class="hint">Show matched phrases in the posting</summary><div class="jdview" id="jdview"></div></details>
           </div>
@@ -352,7 +371,7 @@ mark{background:var(--hl);color:var(--hl-ink);border-radius:2px;padding:0 1px}
         </div>
         <div class="sheetwrap">
           <div class="sheetbar">
-            <div class="row"><span class="badge" id="phaseBadge">DRAFT</span><span class="hint">Hover a line to keep, swap, drop or polish it. Click any text to edit it.</span></div>
+            <div class="row"><span class="badge" id="phaseBadge">DRAFT</span><span class="badge delta" id="deltaNote" hidden></span><span class="hint">Hover a line to keep, swap, drop or polish it. Click any text to edit it.</span></div>
             <div class="row">
               <label class="hint" for="sumToggle" title="Off by default. When on, Claude writes up to 55 words from the claims on this draft and the words are checked against their evidence."><input type="checkbox" id="sumToggle"> Summary paragraph</label>
               <button id="copyBtn">Copy text</button><button id="docxBtn">Download Word</button><button class="primary" id="pdfBtn">Download PDF</button>
@@ -399,6 +418,7 @@ mark{background:var(--hl);color:var(--hl-ink);border-radius:2px;padding:0 1px}
           <h2>How it works</h2>
           <p>Most resume tools generate. This one <b>retrieves and asks</b>. Your record is a small evidence base: what you did, in your words, with the numbers you stated. A posting is turned into weighted requirements. The draft is the subset of your record that proves them best, printed in a plain template a recruiter's software reads without trouble.</p>
           <p>Where the draft proves a requirement weakly, you get a question, not a made-up line. Your answer becomes an entry only after the page checks that every number in it appears in what you wrote, and after you approve it. That is the whole design: the model drafts, you own the facts and the signature.</p>
+          <p><b>How the match is scored.</b> The posting is read for the skills it asks for, each weighted by how strongly the posting stresses it. The match is the share of that weight already proven by entries printed under your roles. A skill counts once; a second entry for the same skill changes nothing, and the Skills and Tools lines don't count. So an answer moves the match only when it becomes a printed entry that proves a skill nothing proved yet, which is what the questions aim at.</p>
           <ul>
             <li><b>Start with:</b> one current resume's worth of roles and bullets, and one posting. Ten minutes.</li>
             <li><b>Better with:</b> the accomplishments from two or three older resumes and your LinkedIn summary. In testing, that reached roughly ninety per cent of what a full record finds; past four documents the gain is small.</li>

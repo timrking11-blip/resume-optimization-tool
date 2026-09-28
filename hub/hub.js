@@ -6,7 +6,7 @@ const $ = s => document.querySelector(s);
 const {esc, escRe, uniq, norm, splitList, PHRASE_SECTIONS, isSkip, cleanBullet, cleanPhrase, splitAnswer, splitPhrases, shortRole, sectionOf, placeKey} = RotCore.util;
 const {numberTokens, blocking, answerQuotes} = RotCore.qa;
 const {plainText, abToB64} = RotCore.doc;
-const {Hub, BrowserStore, clone} = CCH;
+const {Hub, BrowserStore, Scorecard, clone} = CCH;
 const LOCAL = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) || location.protocol==="file:";
 const GUIDE_URL = "https://claude.ai/artifact/786dD7KPL85z3Fp9v4xTz8";   // hub/guide.html as published
 /* Fallback until the template loads. Must equal core/layouts/neutral-1.json (tests/hub/hub.test.js checks). */
@@ -46,7 +46,7 @@ const D = {
   excluded:new Set(), pinned:new Set(), textChoice:{}, edits:{}, tagline:null, compOrder:null,
   summaryOn:false, summary:null, summaryClaims:[], outcome:null,
   sectionEdits:{}, engDetails:{}, editsC:{}, excludedC:new Set(), extra:{tagline:[],expertise:[],technology:[],competency:[]},
-  questions:[], newAch:[], adj:{}, inbox:[], locked:null, finalModel:null,
+  questions:[], newAch:[], adj:{}, inbox:[], locked:null, finalModel:null, scoreBefore:null, covBefore:null, extraSrc:{},
   sample:null, downloads:null, tpl:null, fontData:undefined, ctl1:null, ctlQ:null
 };
 let store=null, taxonomy=null, T=null, E=null, bankCache=null;
@@ -295,11 +295,16 @@ function renderMatch(){
   const req=D.req, cov=D.cov, tags=bank().tags, pct=D.score==null?"–":Math.round(D.score*100);
   $("#score").innerHTML=`${pct}<small>%</small>`; $("#meter").style.width=(D.score==null?0:Math.round(D.score*100))+"%";
   const rows=Object.entries(req).sort((a,b)=>b[1].weight-a[1].weight).map(([t,r])=>{ const c=cov[t]||0, st=c>=0.8?["ok","proven"]:(c>0?["warn","partial"]:["gap","gap"]);
-    return `<div class="req" role="listitem"><span class="pill ${st[0]}">${st[1]}</span><span class="lbl" title="${esc(r.phrases.join(", "))}">${esc((tags[t]||{label:t}).label)} <em>· ${esc(r.phrases.slice(0,3).join(", "))}</em></span><span class="w">${r.weight.toFixed(1)}</span></div>`; });
+    const flipped=D.covBefore && Math.min(D.covBefore[t]||0,1)<1 && c>=1;   // proven by an answer on this posting
+    return `<div class="req ${flipped?"flipped":""}" role="listitem" ${flipped?'title="Proven by your answer on this posting"':""}><span class="pill ${st[0]}">${st[1]}</span><span class="lbl" title="${esc(r.phrases.join(", "))}">${esc((tags[t]||{label:t}).label)} <em>· ${esc(r.phrases.slice(0,3).join(", "))}</em></span><span class="w">${r.weight.toFixed(1)}</span></div>`; });
   for(const u of D.uncatalogued) rows.push(`<div class="req" role="listitem"><span class="pill gap">new</span><span class="lbl" title="Not in the skill taxonomy yet">${esc(u.phrase)} <em>· not in taxonomy</em></span><span class="w">${(+u.weight||1).toFixed(1)}</span></div>`);
   $("#reqs").innerHTML=rows.join("") || `<p class="hint">No requirements detected yet.</p>`;
   const held=E.disputedAchievements().size, hn=$("#heldNote"); hn.hidden=!held;
   if(held) hn.innerHTML=`<b>${held} entr${held===1?"y is":"ies are"} held back</b> until you settle the disagreement under Your evidence. A statement two documents make differently never prints on its own. <button class="ghost" data-goto="evidence">Go and decide</button>`;
+  $("#howScored").textContent=Scorecard.EXPLAIN;
+  const g=Scorecard.growth(req, cov, tags, 6), gw=$("#grow"); gw.hidden=!g.length;
+  if(g.length){ $("#growHead").textContent=`${Scorecard.pct(Scorecard.headroom(req, cov))}% of the match is still open`;
+    $("#growList").innerHTML=g.map(x=>`<li><span>${esc(x.label)}${x.coverage>0?` <em class="hint">(partly proven)</em>`:""}</span><span class="g">up to +${Scorecard.pct(x.gain)}%</span><span class="words">the posting says: ${esc(x.words.map(w=>`“${w}”`).join(", "))}</span></li>`).join(""); }
   const phrases=[...new Set(Object.values(req).flatMap(r=>r.phrases))].sort((a,b)=>b.length-a.length); let h=esc(D.jd);
   if(phrases.length){ const re=new RegExp("(?<![A-Za-z0-9-])("+phrases.map(p=>escRe(esc(p))).join("|")+")(?![A-Za-z0-9])","gi"); h=h.replace(re,"<mark>$1</mark>"); }
   $("#jdview").innerHTML=h;
@@ -330,7 +335,9 @@ function renderSheet(){
         if(b==="summary"&&has.summary) H.push(`<p class="k-summary">${ln("summary", m.summary, "Summary paragraph, written from the claims on this draft")}${evidenceChip(D.summaryClaims,false)}</p>`);
         else if(b==="tagline"&&has.tagline) H.push(`<p class="k-tagline">${ln("tagline", m.tagline.join(J.tagline), "Edit freely; separate phrases with |")}</p>`);
         else if(b==="expertise"&&has.expertise) H.push(`<p class="k-expertise">${ln("expertise", m.expertise.join(J.expertise), "Your skills line. Edit freely; separate items with •")}</p>`);
-        else if(b==="technologies"&&has.technologies) H.push(`<p class="k-tech_line"><span class="k-tech_label">${esc(LB.technologies)}:</span> ${ln("technologies", m.technologies.join(J.technologies), "Separate tools with commas")}</p>`);
+        else if(b==="technologies"&&has.technologies){ const fresh=new Set(D.extra.technology.map(norm));   // tools that came from answers on this posting are marked, at their usual zero weight
+          const items=m.technologies.map(t=>fresh.has(norm(t))?`<span class="fresh-item" title="Added from your answer on this posting">${esc(t)}</span>`:esc(t)).join(esc(J.technologies));
+          H.push(`<p class="k-tech_line"><span class="k-tech_label">${esc(LB.technologies)}:</span> <span class="ln" contenteditable="true" spellcheck="true" data-line="technologies" title="Separate tools with commas">${items}</span></p>`); }
       }
     } else if(sec.kind==="experience"){
       H.push(`<p class="k-heading">${esc(sec.heading)}</p>`);
@@ -363,6 +370,35 @@ function renderSheet(){
   }
   $("#sheet").innerHTML=H.join("");
   badge.textContent = final ? "FINAL" : (D.phase==="idle"?"BASELINE":"DRAFT"); badge.classList.toggle("final", final);
+  const dn=$("#deltaNote");   // before → after, read from the match, once the final draft exists
+  if(final && D.scoreBefore!=null && D.score!=null){ const diff=D.score-D.scoreBefore; dn.hidden=false; dn.textContent=`${Scorecard.pct(D.scoreBefore)}% → ${Scorecard.pct(D.score)}%${Math.abs(diff)>=0.0005?` · ${diff>0?"+":"−"}${Scorecard.pct(Math.abs(diff))} from your answers`:" · no change from your answers"}`; }
+  else dn.hidden=true;
+}
+/* the criterion a question is aimed at: what would count, in the posting's words, and what it is worth; never a suggested answer */
+function critLine(q){
+  const sec=sectionOf(q), L=bank();
+  if(sec==="technology") return "Improves the Tools line. No change to the match: a tool counts only when an entry under a role shows it in use.";
+  if(sec==="expertise"||sec==="tagline") return "Improves the Skills line. No change to the match.";
+  if(sec==="engagement") return "Counts when it becomes a printed entry under the consulting client.";
+  if(!q.tag||!L.tags[q.tag]) return "Counts when your answer becomes a printed entry that proves a skill the posting asks for.";
+  const p=q.potential??Scorecard.potential(D.req, D.cov, q.tag), words=((D.req[q.tag]&&D.req[q.tag].phrases)||[]).slice(0,4);
+  return `<b>Worth up to +${Scorecard.pct(p)}%</b>${p<0.0005?" (already proven; a stronger entry can still replace a weaker one)":""} · counts when your answer becomes an entry that demonstrates ${esc(L.tags[q.tag].label.toLowerCase())}${words.length?`; the posting's words: ${esc(words.map(w=>`“${w}”`).join(", "))}`:""}. Only what you actually did.`;
+}
+/* tools an answer names that the Tools line lacks: offered, never assumed */
+function toolAskHtml(ix, answer){
+  const named=Scorecard.toolsNamed(answer, bank().technologies.map(t=>t.name)), mine=D.extra.technology.filter(t=>D.extraSrc[t]===ix), list=uniq([...named, ...mine]);
+  if(!list.length) return "";
+  return `<span>Not listed in tools &amp; technologies:</span>${list.map(t=>`<label><input type="checkbox" data-addtool="${ix}|${esc(t)}" ${D.extra.technology.some(x=>norm(x)===norm(t))?"checked":""}> ${esc(t)}</label>`).join("")}<span>Add?</span>`;
+}
+function outcomeText(q, ix, c){
+  const sec=sectionOf(q); if(isSkip(q.answer)) return "Skipped.";
+  const blockedN=(q.bullets||[]).filter(b=>blocking(b.qa).length).length, r=c.byQuestion[ix];
+  if(sec==="technology"||sec==="expertise"||sec==="tagline"){ const n=(q.bullets||[]).filter(b=>b.on).length||1; return `Added ${n} item${n===1?"":"s"} to the ${sec==="technology"?"Tools":"Skills"} line. No change to the match.`; }
+  const parts=[];
+  if(r&&r.entries) parts.push(r.delta>=0.0005 ? `+${Scorecard.pct(r.delta)}%: ${r.entries} new entr${r.entries===1?"y proves":"ies prove"} a skill nothing proved yet` : `${r.entries} new entr${r.entries===1?"y":"ies"}, no change to the match: that skill was already proven, so this strengthens the draft, not the score`);
+  if(r&&r.enriched) parts.push(`${r.enriched} enriched an existing entry (better wording, same match)`);
+  if(blockedN) parts.push(`${blockedN} held back: a number not in your answer`);
+  return (parts.length?parts.join(" · "):"Nothing printable came of it yet")+".";
 }
 function placeOptions(cur, lead){
   const groups=E.placeGroups(D);
@@ -387,11 +423,13 @@ function renderQuestions(){
     return `
     <div class="q"><div class="qh"><span class="qn">${ix+1}</span><p>${esc(q.question)}</p></div>
       <div class="meta"><span class="sec">${esc(sectionLabel(q))}</span>${q.why?`<span class="why">${esc(q.why)}</span>`:""}</div>
+      <div class="crit">${critLine(q)}</div>
       ${form}
       <textarea id="ans${ix}" data-ix="${ix}" placeholder="${esc(q.hint||(ph?ph.hint:(sec==="engagement"?"What you did for this client: bullet points are fine (scope, method, measurable result). Leave blank to skip.":"Bullet points are fine: what you did, the scope, the measurable result. Leave blank to skip.")))}">${esc(q.answer||"")}</textarea>
+      <div class="toolask" data-toolask="${ix}">${toolAskHtml(ix, q.answer||"")}</div>
       <div class="meta">${L.tags[q.tag]?`<span>Proves: <b>${esc(L.tags[q.tag].label)}</b></span>`:""}
         ${sec==="experience"?`<label for="role${ix}"><span class="lb">${q.bullets?.length?"Default role":"Goes under"}</span><select id="role${ix}" data-ix="${ix}" title="The role this answer is mostly about. Each entry it becomes can go under its own role.">${roles.map(r=>`<option value="${esc(r.key)}" ${r.key===q.role?"selected":""}>${esc(shortRole(r))}</option>`).join("")}</select></label>`:`<span>Limit: ${lim} characters per entry</span>`}</div>
-      <div class="qa-row"><button class="ghost" data-conv="${ix}" ${q.busy?"disabled":""}>${convLabel}</button>${q.busy?`<span class="spin" aria-hidden="true"></span><span class="hint">Claude is writing…</span>`:""}${q.note?`<span class="hint">${esc(q.note)}</span>`:""}</div>
+      <div class="qa-row"><button class="ghost" data-conv="${ix}" ${q.busy?"disabled":""}>${convLabel}</button>${q.busy?`<span class="spin" aria-hidden="true"></span><span class="hint">Claude is writing…</span>`:""}${q.note?`<span class="hint">${esc(q.note)}</span>`:""}${q.outcome?`<span class="outcome">${esc(q.outcome)}</span>`:""}</div>
       ${items}
     </div>`; }).join("");
   $("#finalBtn").disabled = !D.questions.length || D.phase==="finalizing";
@@ -403,7 +441,10 @@ function renderAll(){ renderMatch(); renderSheet(); renderQuestions(); renderSta
 function lockCurrent(){ D.locked=Object.fromEntries(Object.entries(D.chosen).map(([r,items])=>[r, items.map(i=>i.a.id)])); }
 function recompute(){ Object.assign(D, E.compute(D, D.req)); renderMatch(); renderSheet(); }
 function resetPosting(){ Object.assign(D,{excluded:new Set(), pinned:new Set(), textChoice:{}, edits:{}, tagline:null, compOrder:null, summaryOn:false, summary:null, summaryClaims:[], outcome:null, finalModel:null,
-  sectionEdits:{}, engDetails:{}, editsC:{}, excludedC:new Set(), extra:{tagline:[],expertise:[],technology:[],competency:[]}, questions:[], newAch:[]}); $("#sumToggle").checked=false; }
+  scoreBefore:null, covBefore:null, extraSrc:{}, sectionEdits:{}, engDetails:{}, editsC:{}, excludedC:new Set(), extra:{tagline:[],expertise:[],technology:[],competency:[]}, questions:[], newAch:[]}); $("#sumToggle").checked=false; }
+/* the questions carry what proving their requirement is worth at the moment they are asked (read from the match, never fed back into it) */
+const withPotential = qs => qs.map(q=>({...q, potential:Scorecard.potential(D.req, D.cov, q.tag)}));
+function markBefore(){ D.scoreBefore=D.score; D.covBefore={...D.cov}; }
 function logFeedback(action, aid, t){
   const rec={run_id:D.runId||null, achievement_id:aid, bullet_id:t?.tid??null, action, text:t?.text||null, created:new Date().toISOString()};
   if(t?.tid!=null){ if(action==="keep") D.adj[t.tid]=(D.adj[t.tid]||0)+0.3; if(action==="drop") D.adj[t.tid]=(D.adj[t.tid]||0)-0.6; }
@@ -417,11 +458,11 @@ async function doMatch(){
   resetPosting();
   Object.assign(D,{locked:null, jd, req:E.extractRequirements(jd), uncatalogued:[], phase:"draft", runId:"run-"+Date.now().toString(36)});
   $("#restoreNote").hidden=true; $("#syncNote").textContent="";
-  recompute(); persist(true);
+  recompute(); markBefore(); persist(true);
   if(D.sample) claudeTailor(); else useQuickQuestions("Claude isn't available in this view, so these questions come from the gap analysis.");
 }
 function useQuickQuestions(note){
-  D.ctl1?.abort(); D.questions=E.templateQuestions(D); $("#qStatus").textContent=note||""; $("#quickQBtn").hidden=true; $("#claude1Status").hidden=true; renderQuestions(); persist(true);
+  D.ctl1?.abort(); D.questions=withPotential(E.templateQuestions(D)); $("#qStatus").textContent=note||""; $("#quickQBtn").hidden=true; $("#claude1Status").hidden=true; renderQuestions(); persist(true);
 }
 /* the layout has no tagline or core-competency line, so questions for those sections give way to gap questions */
 function printableQuestions(qs){ const keep=qs.filter(q=>!["tagline","competency"].includes(sectionOf(q))); if(keep.length>=3) return keep.slice(0,5);
@@ -440,9 +481,9 @@ async function claudeTailor(){
       if(t.company && !$("#company").value) $("#company").value=t.company;
       if(t.title && !$("#role").value) $("#role").value=t.title;
       D.req=t.req; D.uncatalogued=t.uncatalogued; if(t.compOrder) D.compOrder=t.compOrder;
-      const qs=printableQuestions(t.questions);
-      recompute();
-      if(!D.questions.length || !D.questions.some(q=>q.answer)) D.questions = qs.length>=3 ? qs : E.templateQuestions(D);
+      recompute(); markBefore();
+      const qs=withPotential(printableQuestions(t.questions));
+      if(!D.questions.length || !D.questions.some(q=>q.answer)) D.questions = qs.length>=3 ? qs : withPotential(E.templateQuestions(D));
       $("#qStatus").textContent = qs.length>=3 ? "" : "Claude returned fewer than three questions, so these come from the gap analysis.";
       renderQuestions();
       st.innerHTML=`<span class="pill ok">tailored</span><span>Claude adjusted requirement weights, ordered your skills line and drafted your questions.</span>`;
@@ -519,7 +560,8 @@ async function doFinal(){
   }
   if(!D.sample && (bullets.length||phrases.length)) fs.innerHTML=`<span class="hint">Claude isn't available here, so each line of your answers became an entry. Use Polish on the sheet once Claude is allowed.</span>`;
   for(const d of details) D.engDetails[d.key]={...(D.engDetails[d.key]||{}), ...d.fields};
-  D.extra={tagline:[],expertise:[],technology:[],competency:[]};
+  const ticked=D.extra.technology.filter(t=>D.extraSrc[t]!=null);   // tools ticked under an answer stay
+  D.extra={tagline:[],expertise:[],technology:[...ticked],competency:[]};
   for(const p of phrases) if(!D.extra[p.section].some(x=>norm(typeof x==="string"?x:x.text)===norm(p.text))) D.extra[p.section].push(p.section==="competency"?{text:p.text,tags:p.tags}:p.text);
   D.newAch=[];
   const known=new Set(L.achievements.map(a=>a.id));
@@ -536,9 +578,11 @@ async function doFinal(){
       if(!b.engagement) D.pinned.add(id);
     }
   });
-  lockCurrent(); D.phase="final"; recompute(); renderQuestions(); D.finalModel=E.resumeModel(D); persist(true);
-  const nAdded=bullets.length+phrases.length+details.length;
-  toast((nAdded?`Added ${nAdded} new entr${nAdded>1?"ies":"y"}. `:"")+(skippedQa?`${skippedQa} left out: numbers not in your answers. `:"")+"Final draft ready. Download Word or PDF to add your answers to your record.");
+  lockCurrent(); D.phase="final"; recompute();
+  const contrib=Scorecard.contributions(E, D); D.questions.forEach((q,ix)=>{ q.outcome=outcomeText(q, ix, contrib); });   // what each answer did, read from the match
+  renderQuestions(); D.finalModel=E.resumeModel(D); persist(true);
+  const nAdded=bullets.length+phrases.length+details.length, diff=(D.scoreBefore!=null&&D.score!=null)?D.score-D.scoreBefore:0;
+  toast((nAdded?`Added ${nAdded} new entr${nAdded>1?"ies":"y"}. `:"")+(skippedQa?`${skippedQa} left out: numbers not in your answers. `:"")+(Math.abs(diff)>=0.0005?`Match ${Scorecard.pct(D.scoreBefore)}% → ${Scorecard.pct(D.score)}%. `:"")+"Final draft ready. Download Word or PDF to add your answers to your record.");
 }
 const freshN = x => x.n ?? +(x.ach ? String(x.ach.id).split("-").pop() : String(x.text.id).split(":").pop());
 function saveEdit(aid, i, txt){
@@ -660,7 +704,7 @@ function foldAnswers(){
   }
   const addPhrase=(kind, pred, text, sec)=>{
     if(subs.some(s=>s.kind===kind && norm(val(s.facts&&s.facts[pred]))===norm(text))) return;
-    let qi=D.questions.findIndex(q=>sectionOf(q)===sec && norm(q.answer||"").includes(norm(text).slice(0,10))); if(qi<0) qi=D.questions.findIndex(q=>sectionOf(q)===sec);
+    let qi=D.extraSrc[text]!=null ? D.extraSrc[text] : D.questions.findIndex(q=>sectionOf(q)===sec && norm(q.answer||"").includes(norm(text).slice(0,10))); if(qi<0) qi=D.questions.findIndex(q=>sectionOf(q)===sec);
     const evId=answerEv(qi>=0?qi:-1, text); let id=`${kind}:${slug(text)}`; while(subs.some(s=>s.id===id)) id+="-2";
     subs.push({id, kind, sort:subs.filter(s=>s.kind===kind).length, tags:Object.keys(T.extractRequirements(text)), facts:{[pred]:{value:text, evidence:[evId], contradicting:[]}}}); };
   for(const t of D.extra.technology) addPhrase("tool","name",t,"technology");
@@ -736,8 +780,9 @@ function serializeState(){
     excluded:[...D.excluded], pinned:[...D.pinned], locked:D.locked, textChoice:D.textChoice, edits:D.edits,
     tagline:D.tagline, compOrder:D.compOrder, sectionEdits:D.sectionEdits, engDetails:D.engDetails, editsC:D.editsC, excludedC:[...D.excludedC], extra:D.extra,
     summaryOn:D.summaryOn, summary:D.summary, summaryClaims:D.summaryClaims, outcome:D.outcome,
-    questions:D.questions.map(q=>({question:q.question, why:q.why||"", tag:q.tag||null, role:q.role, hint:q.hint||"", section:sectionOf(q), engagement:q.engagement||null, fields:q.fields||null, answer:q.answer||"", bullets:q.bullets||null, note:q.note||""})),
-    newAch:D.newAch, qStatus:$("#qStatus").textContent, final_model:D.phase==="final"?(D.finalModel||E.resumeModel(D)):null};
+    questions:D.questions.map(q=>({question:q.question, why:q.why||"", tag:q.tag||null, role:q.role, hint:q.hint||"", section:sectionOf(q), engagement:q.engagement||null, fields:q.fields||null, answer:q.answer||"", bullets:q.bullets||null, note:q.note||"", potential:q.potential??null, outcome:q.outcome||""})),
+    newAch:D.newAch, qStatus:$("#qStatus").textContent, final_model:D.phase==="final"?(D.finalModel||E.resumeModel(D)):null,
+    scoreBefore:D.scoreBefore, covBefore:D.covBefore, extraSrc:D.extraSrc};
 }
 let saveTimer=null;
 function persist(soon){ clearTimeout(saveTimer); saveTimer=setTimeout(saveNow, soon?150:1200); }
@@ -759,6 +804,7 @@ function restoreState(st){
   D.excludedC=new Set(st.excludedC||[]); D.extra={tagline:[],expertise:[],technology:[],competency:[], ...(st.extra?clone(st.extra):{})};
   D.questions=(st.questions||[]).map(q=>({...q, section:q.section||"experience", busy:false}));
   D.newAch=st.newAch?clone(st.newAch):[]; D.finalModel=st.final_model||null;
+  D.scoreBefore=st.scoreBefore??null; D.covBefore=st.covBefore?{...st.covBefore}:null; D.extraSrc=st.extraSrc?{...st.extraSrc}:{};
   D.summaryOn=!!st.summaryOn && !!st.summary; D.summary=st.summary||null; D.summaryClaims=st.summaryClaims||[]; D.outcome=st.outcome||null;
   $("#sumToggle").checked=D.summaryOn;
   $("#claude1Status").hidden=true; $("#quickQBtn").hidden=true; $("#finalStatus").textContent=""; $("#syncNote").textContent="";
@@ -846,9 +892,11 @@ Hub.register({id:"match", label:"Match a posting", order:2,
     $("#polishAllBtn").onclick=()=>{ readAnswers(); const ixs=D.questions.map((q,ix)=>ix).filter(ix=>!isSkip(D.questions[ix].answer)); convertQuestions(ixs, `Claude is polishing ${ixs.length} answer${ixs.length>1?"s":""}…`); };
     $("#recent").addEventListener("change", e=>{ const id=e.target.value; e.target.value=""; if(id) openSaved(id); });
     ["#jd","#company","#role"].forEach(sel=>$(sel).addEventListener("input", ()=>persist()));
+    const toolTimers={};
     $("#questions").addEventListener("input", e=>{
       persist(); const L=bank();
-      const ix=e.target.dataset.ix; if(ix!=null && D.questions[ix] && e.target.tagName==="TEXTAREA") D.questions[ix].answer=e.target.value;
+      const ix=e.target.dataset.ix; if(ix!=null && D.questions[ix] && e.target.tagName==="TEXTAREA"){ D.questions[ix].answer=e.target.value;
+        clearTimeout(toolTimers[ix]); toolTimers[ix]=setTimeout(()=>{ const box=$(`[data-toolask="${ix}"]`); if(box) box.innerHTML=toolAskHtml(+ix, D.questions[ix].answer||""); }, 400); }
       const ef=e.target.dataset.ef; if(ef){ const [q,k]=ef.split(":"); const Q=D.questions[+q]; if(Q){ Q.fields=Q.fields||{}; Q.fields[k]=e.target.value; } }
       const bt=e.target.dataset.btxt; if(bt){ const [q,b]=bt.split(":").map(Number); const Q=D.questions[q], B=Q?.bullets?.[b]; if(B){ B.text=e.target.value; const ph=PHRASE_SECTIONS[sectionOf(Q)]; const lim=ph?ph.max:L.length_band.hard_ceiling; const cc=$(`#bcc${q}-${b}`); if(cc){ cc.textContent=B.text.length; cc.classList.toggle("over", B.text.length>lim); }
         if(!ph){ B.qa=E.bulletQa(Q,B); const blk=blocking(B.qa); const cb=$(`#bon${q}-${b}`), msg=$(`#bqa${q}-${b}`); if(cb){ cb.disabled=!!blk.length; if(!blk.length && !cb.checked){ cb.checked=true; B.on=true; } } e.target.classList.toggle("blocked", !!blk.length); if(msg) msg.textContent = blk.length ? `Not printable yet: ${blk.join("; ")}. Edit the text, or add that fact to your answer and re-polish.` : "Passes: every number is in your answer."; } } }
@@ -863,6 +911,8 @@ Hub.register({id:"match", label:"Match a posting", order:2,
       const bp=e.target.dataset.bplace;
       if(bp){ const [q,b]=bp.split(":").map(Number); const B=D.questions[q]?.bullets?.[b], p=E.parsePlace(e.target.value); if(B && p){ B.role=p.role; B.engagement=p.engagement; placeChanged(q, [b], e.target.id); } }
       const bo=e.target.dataset.bon; if(bo){ const [q,b]=bo.split(":").map(Number); const B=D.questions[q]?.bullets?.[b]; if(B) B.on=e.target.checked; }
+      const at=e.target.dataset.addtool;   // a tool named in an answer joins the Tools line, at its usual zero weight, and is marked on the sheet
+      if(at){ const [q,tool]=at.split("|"); if(e.target.checked){ if(!D.extra.technology.some(t=>norm(t)===norm(tool))) D.extra.technology.push(tool); D.extraSrc[tool]=+q; } else { D.extra.technology=D.extra.technology.filter(t=>norm(t)!==norm(tool)); delete D.extraSrc[tool]; } recompute(); persist(true); }
     });
     $("#questions").addEventListener("click", e=>{ const b=e.target.closest("button[data-conv]"); if(!b) return; convertQuestions([+b.dataset.conv], "Claude is turning that answer into resume entries…"); });
     $("#sheet").addEventListener("click", e=>{

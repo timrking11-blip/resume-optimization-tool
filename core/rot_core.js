@@ -507,8 +507,22 @@ function findChosen(d, aid){ for(const items of Object.values(d.chosen)) for(con
 /* ------------------------------ prompts: pure builders and parsers (the shell talks to Claude) ------------------------------
    Wording comes from ctx.settings.prompts: persona {name, first, subject, possessive, possessive_cap, standard_label},
    bullet_example {place, text, tags}, entry_example {text, tags}. Bump VERSIONS whenever a prompt's text changes. */
+/* Hub edition only (the Desk's prompt bytes are pinned by goldens): the requirements not yet proven, ranked by what proving each
+   would add to the match, so the questions aim where the match can grow and their "why" names the criterion, never an answer. */
+function growthSection(d){
+  if(ctx.settings.edition!=="hub" || !d.cov) return "";
+  const tot=Object.values(d.req).reduce((a,r)=>a+r.weight,0)||1;
+  const gaps=Object.entries(d.req).map(([t,r])=>({t, w:r.weight, c:Math.min(d.cov[t]||0,1), ph:r.phrases||[]})).map(g=>({...g, gain:g.w*(1-g.c)/tot})).filter(g=>g.gain>0.0005).sort((a,b)=>b.gain-a.gain).slice(0,8);
+  if(!gaps.length) return "";
+  return `\nWHERE THE MATCH CAN GROW (requirement id: label | up to +N points of the match if an entry proves it | the posting's words):\n${gaps.map(g=>`${g.t}: ${ctx.bank.tags[g.t].label} | +${(g.gain*100).toFixed(1)} | ${g.ph.slice(0,4).join(", ")}`).join("\n")}\n`;
+}
+function growthRules(d){
+  if(ctx.settings.edition!=="hub" || !d.cov) return "";
+  return `\n- At least four of the five followups target WHERE THE MATCH CAN GROW, highest potential first, one requirement each. Write each "why" as the criterion that would count (what an entry would have to demonstrate, in the posting's words) and never as a suggested answer or an assumption about what ${P_first(d)} did.`;
+}
+const P_first = () => prompts.persona().first;
 const prompts = {
-  VERSIONS: {tailor:"tailor@6", bullets:"bullets@6", tighten:"tighten@2", summary:"summary@1"},
+  VERSIONS: {tailor:"tailor@6", bullets:"bullets@6", tighten:"tighten@2", summary:"summary@1"},   // the Hub edition appends the growth section to tailor@6 (see growthSection)
   persona(){ const p=(ctx.settings.prompts||{}).persona||{};
     return {name:p.name||"the candidate", first:p.first||"the candidate", subject:p.subject||"they", possessive:p.possessive||"their", possessive_cap:p.possessive_cap||"Their", standard_label:p.standard_label||"Resume 1"}; },
   /* one call weighs the posting, orders Sections A and B, and drafts the five questions */
@@ -550,7 +564,7 @@ ${L.competencies.map(c=>c.text).join(" | ")}
 
 TECHNOLOGIES ALREADY LISTED: ${L.technologies.map(t=>t.name).join(", ")}
 TOOLS THE POSTING NAMES THAT ARE NOT LISTED: ${tools.join(", ")||"(none detected)"}
-
+${growthSection(d)}
 Reply with ONLY one JSON object:
 {"company": string|null, "title": string|null,
  "requirements": [{"tag": "<tag id from taxonomy>", "weight": <0.5 to 3, 3 = must-have>, "why": "<short evidence from the posting>"}],
@@ -562,7 +576,7 @@ Requirements: return up to 20 tags with your corrected importance. Followups: ex
 - Most should be "experience": target the highest-weight requirements the draft proves weakly or not at all, or implied experience ${P.first} likely has but hasn't stated (quota %, team size, deal size, cycle length).
 - If the posting values consulting or advisory work and an engagement NEEDS DETAILS, make one "engagement" question for it (it asks for dates, how to name the client, a one-line description, and what else ${P.subject} delivered).
 - If the posting names tools that are not listed, make one "technology" question naming them.
-- Use "tagline" or "expertise" only when the posting stresses an identity or a strength no option covers.
+- Use "tagline" or "expertise" only when the posting stresses an identity or a strength no option covers.${growthRules(d)}
 Address ${P.first} directly in second person ("you", "your"), never "${P.first}" or "${P.subject}". Don't ask about anything already well evidenced.`;
   },
   /* the tailor reply as plain data: merged requirement weights, uncatalogued phrases, tagline/expertise orders (null = keep), questions */
