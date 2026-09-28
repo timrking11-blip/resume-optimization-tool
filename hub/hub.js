@@ -117,9 +117,31 @@ function tagChips(a){
   const tags=Object.keys(a.tags||{}).map(t=>`<span class="t">${esc((L.tags[t]||{label:t}).label)}</span>`).join("");
   return (nums.length?`<span class="t n" title="Numbers this entry states">${nums.map(esc).join(" · ")}</span>`:`<span class="t" title="A number makes an entry provable and stronger in a match">no number yet</span>`)+(tags||`<span class="t">no skill tag yet</span>`);
 }
+/* a fact two documents disagree on: both values with their sources, and the person's pick settles it */
+function sourceLabel(evIds){ const ev=store.get("evidence"), srcs=store.get("sources"); const labels=new Set(); for(const id of evIds||[]){ const row=ev.find(e=>e.id===id); const s=row&&srcs.find(x=>x.id===row.source); labels.add(s?s.label:(row?row.source:"?")); } return [...labels].join(", "); }
+function conflictHtml(kind, id, pred, f){
+  if(!f || !(f.contradicting||[]).length || f.resolution) return "";
+  const cur=f.value, show=v=>v==null||v===""?"Present":String(v);
+  return `<div class="conflict" role="group"><span>Two sources disagree${pred?` on <b>${esc(pred)}</b>`:""}. Which is right?</span>
+    <div class="cv"><b>${esc(show(cur))}</b><span class="src">${esc(sourceLabel(f.evidence))}</span><button data-resolve="${kind}|${esc(id)}|${esc(pred||"")}|0">Use this</button></div>
+    ${f.contradicting.map((c,i)=>`<div class="cv"><b>${esc(show(c.value))}</b><span class="src">${esc(sourceLabel(c.evidence))}</span><button data-resolve="${kind}|${esc(id)}|${esc(pred||"")}|${i+1}">Use this</button>${kind==="ach"?`<button class="ghost" data-split="${esc(id)}|${i}" title="Keep both as separate entries">They are different things</button>`:""}</div>`).join("")}</div>`;
+}
+function resolveFact(kind, id, pred, pick){
+  const subs=store.get("subjects"), ach=store.get("achievements"), at=today();
+  if(kind==="role"||kind==="sub"){ const s=subs.find(x=>x.id===id); const f=s&&s.facts&&s.facts[pred]; if(!f) return; const v=pick===0?f.value:f.contradicting[pick-1].value; f.resolution={value:v, why:"picked in review", at}; writeAll({subjects:subs}); }
+  else { const a=ach.find(x=>x.id===id); if(!a) return; const v=pick===0?a.canonical:a.contradicting[pick-1].value; a.resolution={value:v, why:"picked in review", at}; a.canonical=v; a.tags=tagsFor(v); writeAll({achievements:ach}); }
+  renderRoles(); toast("Settled. The fact prints again.");
+}
+function splitAch(id, i){
+  const ach=store.get("achievements"), a=ach.find(x=>x.id===id); if(!a||!a.contradicting||!a.contradicting[i]) return;
+  const c=a.contradicting.splice(i,1)[0]; let n=ach.filter(x=>x.role===a.role).length, nid; do{ nid=`${a.role}-${++n}`; }while(ach.some(x=>x.id===nid));
+  ach.push({id:nid, role:a.role, engagement:a.engagement||null, canonical:c.value, evidence:[...c.evidence], contradicting:[], tags:tagsFor(c.value), metrics:[], origin:"intake"});
+  writeAll({achievements:ach}); renderRoles(); toast("Kept as two entries.");
+}
 function renderRoles(){
   const subs=store.get("subjects"), ach=store.get("achievements"), roles=roleSubjects(subs);
   $("#roles").innerHTML = roles.length ? roles.map(s=>{ const g=p=>val(s.facts&&s.facts[p])||""; const lines=ach.filter(a=>a.role===s.key&&!a.engagement).sort((a,b)=>a.id.localeCompare(b.id, undefined, {numeric:true}));
+    const conflicts=["title","employer","location","start","end"].map(p=>conflictHtml("role", s.id, p, s.facts&&s.facts[p])).join("");
     return `<div class="role" data-role="${esc(s.key)}">
       <div class="head">
         <label class="f">Title<input type="text" data-fact="title" value="${esc(g("title"))}" placeholder="Director of Revenue Operations"></label>
@@ -128,7 +150,8 @@ function renderRoles(){
         <label class="f">Start<input type="month" data-fact="start" value="${esc(g("start"))}"></label>
         <label class="f">End (blank = Present)<input type="month" data-fact="end" value="${esc(g("end"))}"></label>
       </div>
-      <ul class="lines">${lines.map(a=>`<li data-line-id="${esc(a.id)}"><input type="text" data-line value="${esc(a.canonical)}" aria-label="Accomplishment"><button class="ghost" data-del-line="${esc(a.id)}" title="Remove this entry">Remove</button><div class="tags">${tagChips(a)}</div></li>`).join("")}</ul>
+      ${conflicts}
+      <ul class="lines">${lines.map(a=>`<li data-line-id="${esc(a.id)}"><input type="text" data-line value="${esc(a.canonical)}" aria-label="Accomplishment"><button class="ghost" data-del-line="${esc(a.id)}" title="Remove this entry">Remove</button><div class="tags">${tagChips(a)}</div>${a.contradicting&&a.contradicting.length&&!a.resolution?`<div style="grid-column:1 / 3">${conflictHtml("ach", a.id, "", {value:a.canonical, evidence:a.evidence, contradicting:a.contradicting, resolution:a.resolution})}</div>`:""}</li>`).join("")}</ul>
       <label class="f">Paste accomplishments, one per line<textarea data-paste rows="3" placeholder="Cut speed-to-lead from 26 hours to under 2 with new routing rules.&#10;Grew partner-sourced pipeline 40% year over year."></textarea></label>
       <div class="row"><button data-addlines>Add these lines</button><label class="hint"><input type="checkbox" data-hidden ${s.hidden?"checked":""}> Earlier role: print only when a posting calls for it</label><button class="ghost danger" data-del-role>Remove role</button></div>
     </div>`; }).join("") : `<p class="hint">No roles yet. Add your current or most recent job first.</p>`;
@@ -747,6 +770,8 @@ Hub.register({id:"evidence", label:"Your evidence", order:1,
     $("#roles").addEventListener("click", e=>{ const b=e.target.closest("button"); if(!b) return; const card=b.closest("[data-role]"); if(!card) return; const key=card.dataset.role;
       if(b.dataset.addlines!==undefined){ const ta=card.querySelector("[data-paste]"); addLines(key, ta.value); return; }
       if(b.dataset.delLine) { delLine(b.dataset.delLine); return; }
+      if(b.dataset.resolve){ const [kind, id, pred, pick]=b.dataset.resolve.split("|"); resolveFact(kind, id, pred, +pick); return; }   // ids carry colons, so the fields are pipe-separated
+      if(b.dataset.split){ const [id, i]=b.dataset.split.split("|"); splitAch(id, +i); return; }
       if(b.dataset.delRole!==undefined){ if(b.dataset.armed){ delRole(key); return; } b.dataset.armed="1"; b.textContent="Click again to remove this role and its entries"; setTimeout(()=>{ delete b.dataset.armed; b.textContent="Remove role"; }, 4000); } });
     $("#addEdu").onclick=addEdu; $("#addCert").onclick=addCert; $("#saveLists").onclick=saveLists;
     ["#eduList","#certList"].forEach(s=>$(s).addEventListener("click", e=>{ const b=e.target.closest("[data-del-subject]"); if(b) delSubject(b.dataset.delSubject); }));
@@ -861,6 +886,8 @@ async function boot(hot){
   const C=window.claude, useCap=n=>(C&&C.use) ? C.use(n).catch(()=>null) : Promise.resolve(null);
   useCap("downloads").then(d=>{ D.downloads=d; });
   useCap("sample").then(s=>{ D.sample=s; renderStats(); if(D.questions.length) renderQuestions(); });
+  /* other page modules (intake.js) get the page's record helpers once everything is mounted */
+  Hub.emit("ready", {store, D, get E(){ return E; }, get T(){ return T; }, bank, writeAll, toast, tagsFor, val, today, slug, refreshEvidence(){ renderIdentity(); renderRoles(); renderLists(); renderReady(); $("#tiers").innerHTML=tiersHtml(); renderStats(); }});
 }
 (function(){
   let booted=false; const once=d=>{ if(booted) return; booted=true; boot(d||{}); };

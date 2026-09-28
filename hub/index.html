@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=Carlito:ital,wght@0,400;0,700;1,400;1,700&display=swap">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script src="core/rot_core.js"></script>
 <script src="store.js"></script>
 <style>
@@ -94,6 +95,27 @@ details[open] summary::before{transform:rotate(45deg)}
 .t{font-family:var(--f-ui);font-size:11px;font-weight:500;padding:2px 8px;border-radius:999px;background:var(--surface);border:1px solid var(--rule);color:var(--ink-soft)}
 .t.n{color:var(--signal);background:var(--signal-dim);border-color:transparent;font-family:var(--f-mono);font-size:10.5px}
 .t.first{color:var(--bad);background:var(--bad-dim);border-color:transparent}
+/* intake review and conflicts */
+input[type=file]{font:inherit;font-size:13px;color:var(--ink-soft);text-transform:none;letter-spacing:0}
+input[type=file]::file-selector-button{font:inherit;font-weight:600;font-size:13px;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:7px 12px;margin-right:10px;cursor:pointer;box-shadow:var(--shadow-sm)}
+.rv{display:grid;gap:12px;padding:14px;border:1px solid var(--rule);border-radius:10px;background:var(--surface-2)}
+.rvhead{font-size:13.5px;color:var(--ink-soft)}
+.rvsec{display:grid;gap:8px}
+.rvsec h3{margin:0}
+.rvrole{display:grid;gap:10px;padding:12px 14px;border:1px solid var(--rule);border-radius:10px;background:var(--surface);box-shadow:inset 3px 0 0 var(--accent)}
+.rvrole .head{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.rvtop{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.rvinc{display:inline-flex;align-items:center;gap:8px;font-size:14px}
+.rvline{display:inline-flex;align-items:center;gap:6px;margin-top:8px}
+.rv input[type=checkbox]{accent-color:var(--accent);width:15px;height:15px}
+.rv .lines li{grid-template-columns:auto minmax(0,1fr)}
+.rv .rvflat li{grid-template-columns:auto minmax(0,1fr) auto;align-items:center;padding:8px 12px}
+.rv .rvflat li .rvline{margin-top:0}
+.ln-no{font-family:var(--f-mono);font-size:10.5px;color:var(--slate)}
+.conflict{display:grid;gap:6px;padding:10px 12px;border:1px solid var(--signal);border-radius:8px;background:var(--signal-dim);font-size:13px;color:var(--ink)}
+.conflict .cv{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.conflict .cv b{font-weight:600}
+.conflict .src{font-size:11.5px;color:var(--slate)}
 .ready{display:grid;gap:8px;list-style:none;margin:0;padding:0}
 .ready li{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:center;font-size:14px}
 .ready li .k{width:22px;height:22px;border-radius:50%;display:inline-grid;place-items:center;font-size:11px;font-weight:700;font-family:var(--f-ui)}
@@ -224,6 +246,19 @@ mark{background:var(--hl);color:var(--hl-ink);border-radius:2px;padding:0 1px}
     <section data-view="evidence" hidden>
       <div class="grid">
         <div class="col">
+          <div class="panel" id="pIntake">
+            <h2>Start from your resume <span class="tag">upload · scan · review</span></h2>
+            <p class="lede">Upload your current resume (Word, PDF or text) or paste its text. Every line is kept word for word as evidence; the page maps lines to roles, entries, education, skills and tools, and you review the result before anything is added. Older resumes and a LinkedIn export add the numbers you have since dropped.</p>
+            <div class="row">
+              <label class="f" style="flex:1 1 240px">File<input type="file" id="intakeFile" accept=".docx,.pdf,.txt,.md,application/pdf,text/plain,application/vnd.openxmlformats-officedocument.wordprocessingml.document"></label>
+              <label class="f" style="flex:0 1 200px">This document is<select id="intakeKind"><option value="resume">a resume</option><option value="linkedin">a LinkedIn export</option><option value="other">another document</option></select></label>
+            </div>
+            <span class="hint" id="intakeFileName"></span>
+            <label class="f" for="intakeText">Or paste the text<textarea id="intakeText" rows="4" placeholder="Paste the whole resume here if you would rather not upload the file."></textarea></label>
+            <div class="row"><button class="primary" id="intakeScan">Scan and review</button><span class="hint">With Claude on, Claude maps the lines; otherwise the layout is read heuristically. Either way you approve every item.</span></div>
+            <div class="status" id="intakeStatus" hidden></div>
+            <div id="intakeReview" class="rv" hidden></div>
+          </div>
           <div class="panel" id="pIdentity">
             <h2>You <span class="tag">tier 1 · your words</span></h2>
             <p class="lede">What you type here is first-hand evidence. It never leaves this browser except through a backup you download or a question you ask Claude.</p>
@@ -379,3 +414,4 @@ mark{background:var(--hl);color:var(--hl-ink);border-radius:2px;padding:0 1px}
 </div>
 <div class="toast" id="toast" hidden></div>
 <script src="hub.js"></script>
+<script src="intake.js"></script>
