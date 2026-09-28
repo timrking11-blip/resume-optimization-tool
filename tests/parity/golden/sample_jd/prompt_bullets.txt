@@ -1,0 +1,72 @@
+Turn Tim King's interview answers into content for his resume template.
+BULLET answers (kind "bullet"): resume bullets in his "Resume 1" bare-bone style.
+- Verb-first, outcome- and impact-driven, 97-170 characters each (aim for about 143).
+- Implied first person: never "I", "my", "we", or "Tim". Past tense for past roles; present tense only for the current role.
+- An answer written as bullet points or several sentences may become 1 to 3 bullets, one per distinct accomplishment. Merge fragments that describe the same thing.
+- If an answer strengthens an existing bullet listed below, rewrite that bullet and put its id in "achievement_id"; otherwise use null.
+ENGAGEMENT answers (kind "engagement"): bullets for a consulting engagement in the Business Consulting Engagements section. For each distinct accomplishment return "text" (the short version, 97-170 characters) and "longform" (170-340 characters: the same facts with scope, method, and result, in the style of the examples below).
+PLACEMENT (bullet and engagement answers): each bullet goes under the job or consulting client where that work happened. Return "place": one id from PLACES. An answer that draws on several jobs becomes separate bullets, each with its own place. When the answer doesn't say where the work happened, use the place shown with the answer. A bullet placed at a consulting client (an "e:" id) also gets "longform" as described above. Use "achievement_id" only for an existing bullet from the same place.
+ENTRY answers (kind "tagline", "expertise", "technology", or "competency"): return "entries", never bullets.
+- tagline: identity phrases of 60 characters or fewer, e.g. "Process Engineer", "GTM and Sales/Marketing Execution Specialist".
+- expertise: Title Case skills of 70 characters or fewer, e.g. "Lead Generation & Prospecting".
+- technology: tool names exactly as a resume lists them, with the level in parentheses only if the answer states it, e.g. "Salesforce Apex (basic)". Only tools the answer says were used.
+- competency: short lowercase phrases, e.g. "partner enablement".
+Every kind: use ONLY facts stated in the answer. Never invent results, metrics, or tools. If an answer adds nothing usable (empty, "no", "none"), return nothing for it.
+
+POSTING: (title unknown) at (company unknown)
+
+PLACES (id: where the bullet prints)
+r:hc_ai_strategy: Business Consultant - GTM Engineer & Strategic Advisor | Strategic Market Insights (self-employed) | July 2026 – Present
+r:psp: Advertising Sales Director - Pro-Division | Professional Sports Publications | March 2026 – August 2026
+r:tek_lead: Specialized Lead - Data Analytics & Insights | TEKsystems | 2024 – November 2025
+r:tek_recruiter: Enterprise Recruiter – Global Services Division | TEKsystems | 2021 – 2024
+r:demanddrive: Sales Development Representative / Inside Sales Rep | demandDrive (Amazon Business & RealPage) | 2018 – 2021
+e:healthcare: consulting client "Healthcare Technology Start-Up (Confidential)" (Business Consulting Engagements section)
+e:hvac: consulting client "HVAC Services Firm (Confidential)" (Business Consulting Engagements section)
+r:nyl: Financial Services Professional | New York Life Insurance Company | December 2025 – March 2026 (earlier role, not on this resume: only when the answer clearly describes work there)
+r:yri: Marketing and Product Development Intern | YRI Custom Designs | August 2016 – May 2017 (earlier role, not on this resume: only when the answer clearly describes work there)
+r:massdot: Marketing and Communications Intern | Massachusetts Department of Transportation, EZ Pass Services | May 2016 – September 2016 (earlier role, not on this resume: only when the answer clearly describes work there)
+
+ANSWERS
+1. [kind: bullet | proves: multi-stakeholder-selling | place: r:psp]
+Q: The posting leans on multi-stakeholder & matrixed selling (“multi-stakeholder”). What's your strongest concrete example? Say what you did, the scope, and the measurable result.
+A: Rebuilt the renewal pipeline for the division and closed four new partnerships in one season.
+
+2. [kind: bullet | proves: executive-selling | place: r:tek_lead]
+Q: The posting leans on executive & c-suite selling (“c-suite”, “cfo”). What's your strongest concrete example? Say what you did, the scope, and the measurable result.
+A: Rebuilt the renewal pipeline for the division and closed four new partnerships in one season.
+
+EXISTING BULLETS (achievement id | role | text)
+psp-cpm-business-case | psp | Modeled a $10.98 blended CPM against 1.32M reach and a $2,849 cost-per-acquisition benchmark to price a $14,500 buy on outcome economics.
+psp-closed-deals | psp | Closed 5 signed NFL and MLB team-media partnerships, all paid in full at signing, including 2 accounts with no prior purchase history.
+art-run-mukrbv3p-4 | psp | Mined macroeconomic ad-pricing data via AI research agents to map proximity-driven print/radio buying patterns and refocus targeting on co-op-funded buyers.
+psp-full-cycle-ownership | psp | Owned the full sales cycle in a pure new-business role — prospecting, discovery, pricing, proposal, negotiation, and close — with no SDR layer.
+psp-pipeline-discovery | psp | Built and maintained a ~$115K active proposal pipeline through a diagnostic, discovery-first approach rather than a pitch-led one.
+lim-gtm-ownership | hc_ai_strategy | Own go-to-market for the client's AI compliance product sold to independent clinical practices — segmentation, positioning, $99/$249 tiers, and channel strategy.
+lim-claude-code-tracker | hc_ai_strategy | Built the practice's multi-tenant client engagement tracker with Claude Code, with 60 automated tests enforcing cross-client data isolation.
+art-run-muhbu38f-0 | hc_ai_strategy | Built a custom CRM from scratch with GTM and prospecting connectors, automated weekly contact enrichment, and account-research agents two-way synced to GitHub.
+lim-distribution-pivot | hc_ai_strategy | Concluded distribution, not product, decides the outcome, redirecting GTM to malpractice-carrier and professional-association channel partners.
+lim-feasibility-roadmap | hc_ai_strategy | Reconciled the client founder's four-pillar vision and three build memos into one staged roadmap: 12 recommendations, 4 stage gates, 8 board decisions.
+art-run-muhghrt2-3 | hc_ai_strategy | Ran weekly forecasting cadence via a central dashboard tracking sequenced GTM gates and owners, resolving blockers with the team.
+lim-engagement-terms | hc_ai_strategy | Negotiated the engagement's terms directly, restructuring a 320-hour proposal into 166 hours at the same fee and pulling the key deliverable to Day 15.
+tekl-me-vertical-gtm | tek_lead | Built the Media & Entertainment vertical GTM motion — discovery frameworks, opportunity taxonomy, CRM tagging — around CDPs, clean rooms, and ad measurement.
+tekl-coaching | tek_lead | Led a team of up to 5 direct reports inside a 30-person practice, coaching performance through daily process reviews and 1:1 metric sessions.
+tekl-southern-gas-discovery | tek_lead | Led discovery directly with Southern Company Gas's Center of Excellence on data science, machine learning, and data governance.
+tekl-disney-enablement | tek_lead | Packaged the vertical model into an enablement proposal for Disney Advertising Sales, mapping pipeline stages to first-party data and measurement problems.
+tekr-nike | tek_recruiter | Partnered with Nike's global supply chain team on in-season optimization, delivering an AI-powered document system.
+tekr-wayfair-disney | tek_recruiter | Opened net-new managed services accounts at Wayfair and Disney's ESPN and Entertainment Technology organization from cold.
+tekr-750k | tek_recruiter | Generated $750K+ in annual revenue and won the company-wide sales contest in first full year against a national field.
+tekr-recruiting-talent | tek_recruiter | Sourced, screened, and onboarded enterprise technical talent at scale across four years of professional recruiting.
+dd-territory-proposal | demanddrive | Authored a territory-realignment and post-close operations model adopted company-wide, credited with 150% growth in the Amazon Key for Business launch.
+dd-200-quota | demanddrive | Delivered 200% of first-month quota (12 meetings vs. 6) on a net-new client engagement; named MVP of the Month.
+
+SECTION C STYLE EXAMPLES
+- Mapped a $0.76B category projected to reach $5.9B by 2035 (22.8% CAGR), benchmarked five direct comparables across four structural models, and built a decision tree of four exit paths with base-rate odds attached — including the cautionary comparable that won regulatory clearance and still failed on commercialization.
+- Own go-to-market for an AI compliance product sold into independent clinical practices — segmentation, positioning, pricing tiers ($99/$249), channel strategy, and the sequencing that determines which motion gets funded first.
+- Designed and launched a 30–40 interview customer discovery sprint to size real addressable demand — screener, interview guide, scoring rubric, and 150-practice candidate universe built from scratch — classifying prospects by platform dependence against a pre-agreed threshold that fires a documented kill/pivot decision instead of a debate.
+
+TAG IDS YOU MAY USE: gtm-strategy, market-segmentation, positioning-messaging, pricing-packaging, channel-strategy, launch-sequencing, vertical-gtm, territory-design, new-business, full-cycle-sales, prospecting, qualification, discovery, proposal-development, negotiation, closing, quota-attainment, pipeline-management, forecasting, multi-stakeholder-selling, executive-selling, rfp-response, proof-of-value, managed-services-sales, demand-generation, campaign-development, content-brand, marketing-sales-alignment, abm, growth-efficiency, media-ad-sales, sponsorship, cpm-cpa-modeling, audience-measurement, adtech-fluency, cross-platform, sports-media, buy-vs-build, competitive-analysis, market-sizing, scenario-planning, feasibility-roadmap, board-advisory, exit-path-modeling, unit-economics, revenue-modeling, capital-strategy, funding-source-diagnostics, team-coaching, performance-management, hiring-onboarding, player-coach, operating-cadence, process-improvement, crm-discipline, capacity-planning, readiness-assessment, stakeholder-alignment, executive-communication, influence-without-authority, enablement-collateral, primary-research, customer-discovery, market-research, data-solutions, ai-ml-solutions, cloud-infrastructure, ai-in-workflow, building-with-ai, healthcare-regulatory, strategic-partnerships, partner-negotiation, channel-partnerships, institutional-partnerships, board-trustee-engagement, moves-management, donor-relations, account-expansion, account-management, customer-success, referral-network, data-rights, entity-ip-structure, risk-governance
+
+Reply with ONLY one JSON object, for example:
+{"bullets":[{"q":1,"place":"r:hc_ai_strategy","text":"Built a custom CRM with automated weekly enrichment syncs and research agents feeding a two-way GitHub-synced workflow.","longform":null,"tags":["crm-discipline","building-with-ai"],"achievement_id":null}],
+ "entries":[{"q":2,"text":"Salesforce Apex (basic)","tags":["crm-discipline"]}]}

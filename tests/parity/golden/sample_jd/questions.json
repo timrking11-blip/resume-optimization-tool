@@ -1,0 +1,42 @@
+[
+ {
+  "section": "experience",
+  "tag": "multi-stakeholder-selling",
+  "role": "psp",
+  "question": "The posting leans on multi-stakeholder & matrixed selling (“multi-stakeholder”). What's your strongest concrete example? Say what you did, the scope, and the measurable result.",
+  "why": "Nothing in your draft proves this yet.",
+  "hint": "e.g. who, how many, how much, what changed"
+ },
+ {
+  "section": "experience",
+  "tag": "executive-selling",
+  "role": "tek_lead",
+  "question": "The posting leans on executive & c-suite selling (“c-suite”, “cfo”). What's your strongest concrete example? Say what you did, the scope, and the measurable result.",
+  "why": "Your draft touches this only lightly.",
+  "hint": "e.g. who, how many, how much, what changed"
+ },
+ {
+  "section": "experience",
+  "tag": "strategic-partnerships",
+  "role": "tek_lead",
+  "question": "The posting leans on strategic partnerships (“partner”, “partnerships”). What's your strongest concrete example? Say what you did, the scope, and the measurable result.",
+  "why": "Your draft touches this only lightly.",
+  "hint": "e.g. who, how many, how much, what changed"
+ },
+ {
+  "section": "experience",
+  "tag": "board-advisory",
+  "role": "hc_ai_strategy",
+  "question": "The posting leans on board & executive advisory (“board”, “executive team”). What's your strongest concrete example? Say what you did, the scope, and the measurable result.",
+  "why": "Your draft touches this only lightly.",
+  "hint": "e.g. who, how many, how much, what changed"
+ },
+ {
+  "section": "experience",
+  "tag": "stakeholder-alignment",
+  "role": "hc_ai_strategy",
+  "question": "The posting leans on stakeholder alignment (“stakeholders”). What's your strongest concrete example? Say what you did, the scope, and the measurable result.",
+  "why": "Your draft touches this only lightly.",
+  "hint": "e.g. who, how many, how much, what changed"
+ }
+]

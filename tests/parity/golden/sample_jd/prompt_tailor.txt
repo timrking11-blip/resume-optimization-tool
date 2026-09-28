@@ -1,0 +1,284 @@
+You are tailoring Tim King's resume to one job description. His template has no summary paragraph: a tagline line (Section A) and an areas-of-expertise line (Section B) carry the positioning. Use ONLY facts present in the candidate library and draft below. Never invent employers, titles, numbers, tools, or outcomes.
+
+JOB DESCRIPTION:
+<<<
+Director, Go-To-Market — Advertiser Partnerships
+New York, NY (Hybrid)
+
+About the role
+We are an AI-native ad-tech company helping brands reach high-intent audiences across conversational surfaces. We're hiring a Director of Go-To-Market to own our advertiser partnerships motion from first conversation to signed contract, and to build the playbook the next five sellers will run.
+
+What you'll do
+- Own full-cycle new business with brands and agencies: prospecting, discovery, business case, negotiation, and close.
+- Build ROI and cost-per-acquisition business cases that a CMO and CFO can both defend; fluency in CPM, CPA, ROAS, and measurement is essential.
+- Define segmentation, positioning, and pricing for new verticals; partner with product on packaging.
+- Stand up channel and agency partnerships that scale beyond direct sales.
+- Build forecasting and pipeline discipline in Salesforce; report weekly to the executive team.
+- Hire, coach, and develop a small team of account executives as a player-coach.
+
+What you'll bring
+- 7+ years in advertising sales, media sales, or ad tech with a track record of exceeding quota.
+- Experience selling into complex, multi-stakeholder buying committees at enterprise brands.
+- Working knowledge of clean rooms, CDPs, identity resolution, and first-party data.
+- Comfort presenting to C-suite and board-level stakeholders.
+- Hands-on use of generative AI tools (ChatGPT, Claude) in your daily workflow.
+- Bonus: experience at an early-stage startup or building a GTM function from zero.
+>>>
+
+TAG TAXONOMY (id: label):
+gtm-strategy: GTM Strategy
+market-segmentation: Market Segmentation
+positioning-messaging: Positioning & Messaging
+pricing-packaging: Pricing & Packaging
+channel-strategy: Channel Strategy
+launch-sequencing: Launch & Sequencing
+vertical-gtm: Vertical GTM
+territory-design: Territory Design
+new-business: New Business Development
+full-cycle-sales: Full-Cycle Sales Ownership
+prospecting: Prospecting & Outbound
+qualification: Qualification
+discovery: Discovery & Consultative Selling
+proposal-development: Proposal Development
+negotiation: Negotiation & Deal Structuring
+closing: Closing
+quota-attainment: Quota Attainment
+pipeline-management: Pipeline Management
+forecasting: Forecasting
+multi-stakeholder-selling: Multi-Stakeholder & Matrixed Selling
+executive-selling: Executive & C-Suite Selling
+rfp-response: RFP Response
+proof-of-value: POC / Proof of Value
+managed-services-sales: Managed Services & Solution Sales
+demand-generation: Demand Generation
+campaign-development: Campaign Development
+content-brand: Content & Brand Messaging
+marketing-sales-alignment: Marketing–Sales Alignment
+abm: Account-Based Programs
+growth-efficiency: Growth Efficiency (CAC, Payback, Churn)
+media-ad-sales: Media & Advertising Sales
+sponsorship: Sponsorship & Integrated Partnerships
+cpm-cpa-modeling: CPM / CPA / ROI Modeling
+audience-measurement: Audience Insights & Measurement
+adtech-fluency: AdTech Fluency (CDP, Clean Rooms, Identity)
+cross-platform: Integrated Cross-Platform Selling
+sports-media: Sports & Entertainment Media
+buy-vs-build: Buy-vs-Build Analysis
+competitive-analysis: Competitive Analysis
+market-sizing: Market Sizing & Category Analysis
+scenario-planning: Scenario & Decision-Tree Planning
+feasibility-roadmap: Feasibility & Strategic Roadmap
+board-advisory: Board & Executive Advisory
+exit-path-modeling: Exit & Investment Path Modeling
+unit-economics: Unit Economics
+revenue-modeling: Revenue & Financial Modeling
+capital-strategy: Capital & Fundraising Strategy
+funding-source-diagnostics: Funding-Source Diagnostics (Co-op, MDF, 501(c)(3))
+team-coaching: Team Coaching & Development
+performance-management: Performance Management
+hiring-onboarding: Hiring & Onboarding
+player-coach: Player-Coach Leadership
+operating-cadence: Operating Cadence & Governance
+process-improvement: Sales Process Design & Improvement
+crm-discipline: CRM Discipline
+capacity-planning: Capacity & Resource Planning
+readiness-assessment: Readiness & Adoption Assessment
+stakeholder-alignment: Stakeholder Alignment
+executive-communication: Executive Communication
+influence-without-authority: Influence Without Authority
+enablement-collateral: Enablement & Collateral
+primary-research: Primary Research Design
+customer-discovery: Customer Discovery & Validation
+market-research: Market & Competitive Research
+data-solutions: Data & Analytics Solution Selling
+ai-ml-solutions: AI / ML Solution Selling
+cloud-infrastructure: Cloud & Enterprise Platforms
+ai-in-workflow: AI in Daily Workflow
+building-with-ai: Building Software with AI (Claude Code)
+healthcare-regulatory: Healthcare & Regulated Data
+strategic-partnerships: Strategic Partnerships
+partner-negotiation: Partner & Data Deal Negotiation
+channel-partnerships: Channel Partnerships
+institutional-partnerships: Institutional & Corporate Partnerships
+board-trustee-engagement: Board & Trustee Engagement
+moves-management: Portfolio & Moves Management
+donor-relations: Donor & Alumni Relations
+account-expansion: Account Expansion & Upsell
+account-management: Strategic Account Management
+customer-success: Customer Success & Onboarding
+referral-network: Referral & Network Selling
+data-rights: Data Rights & Partner Terms
+entity-ip-structure: Entity, IP & Governance Structure
+risk-governance: Risk & Governance
+
+DETERMINISTIC REQUIREMENT MAP (tag id: weight 0-3):
+gtm-strategy: 2.84
+market-segmentation: 1.4
+positioning-messaging: 1.4
+pricing-packaging: 2.8
+channel-strategy: 1.4
+new-business: 1.4
+full-cycle-sales: 1.4
+prospecting: 1.4
+discovery: 1.4
+proposal-development: 1.4
+negotiation: 2.4
+closing: 1
+quota-attainment: 1.4
+pipeline-management: 1.4
+forecasting: 1.4
+multi-stakeholder-selling: 1.4
+executive-selling: 3
+media-ad-sales: 3
+cpm-cpa-modeling: 3
+audience-measurement: 1.4
+adtech-fluency: 3
+board-advisory: 2.8
+team-coaching: 1.4
+performance-management: 1.4
+hiring-onboarding: 1.84
+player-coach: 1.4
+process-improvement: 1
+crm-discipline: 1.4
+stakeholder-alignment: 1.4
+ai-ml-solutions: 2.84
+ai-in-workflow: 3
+strategic-partnerships: 3
+
+ROLES (key: title | employer | dates):
+hc_ai_strategy: Business Consultant - GTM Engineer & Strategic Advisor | Strategic Market Insights (self-employed) | July 2026 – Present
+psp: Advertising Sales Director - Pro-Division | Professional Sports Publications | March 2026 – August 2026
+nyl: Financial Services Professional | New York Life Insurance Company | December 2025 – March 2026
+tek_lead: Specialized Lead - Data Analytics & Insights | TEKsystems | 2024 – November 2025
+tek_recruiter: Enterprise Recruiter – Global Services Division | TEKsystems | 2021 – 2024
+demanddrive: Sales Development Representative / Inside Sales Rep | demandDrive (Amazon Business & RealPage) | 2018 – 2021
+yri: Marketing and Product Development Intern | YRI Custom Designs | August 2016 – May 2017
+massdot: Marketing and Communications Intern | Massachusetts Department of Transportation, EZ Pass Services | May 2016 – September 2016
+
+CONSULTING ENGAGEMENTS (Section C; key: client | status):
+healthcare: Healthcare Technology Start-Up (Confidential) | July 2026 – Present | Principal Business Strategist – GTM Plan, Business Architectural Roadmap, Blueprint to Obtain Necessary Funding – Healthcare FinTech Start-Up
+hvac: HVAC Services Firm (Confidential) | August 2026 – September 2026 | Consultant - Principal Analyst GTM Expansion
+
+CURRENT DRAFT BULLETS:
+[psp]
+- (psp-cpm-business-case) Modeled a $10.98 blended CPM against 1.32M reach and a $2,849 cost-per-acquisition benchmark to price a $14,500 buy on outcome economics.
+- (psp-closed-deals) Closed 5 signed NFL and MLB team-media partnerships, all paid in full at signing, including 2 accounts with no prior purchase history.
+- (art-run-mukrbv3p-4) Mined macroeconomic ad-pricing data via AI research agents to map proximity-driven print/radio buying patterns and refocus targeting on co-op-funded buyers.
+- (psp-full-cycle-ownership) Owned the full sales cycle in a pure new-business role — prospecting, discovery, pricing, proposal, negotiation, and close — with no SDR layer.
+- (psp-pipeline-discovery) Built and maintained a ~$115K active proposal pipeline through a diagnostic, discovery-first approach rather than a pitch-led one.
+[hc_ai_strategy]
+- (lim-gtm-ownership) Own go-to-market for the client's AI compliance product sold to independent clinical practices — segmentation, positioning, $99/$249 tiers, and channel strategy.
+- (lim-claude-code-tracker) Built the practice's multi-tenant client engagement tracker with Claude Code, with 60 automated tests enforcing cross-client data isolation.
+- (art-run-muhbu38f-0) Built a custom CRM from scratch with GTM and prospecting connectors, automated weekly contact enrichment, and account-research agents two-way synced to GitHub.
+- (lim-distribution-pivot) Concluded distribution, not product, decides the outcome, redirecting GTM to malpractice-carrier and professional-association channel partners.
+- (lim-feasibility-roadmap) Reconciled the client founder's four-pillar vision and three build memos into one staged roadmap: 12 recommendations, 4 stage gates, 8 board decisions.
+- (art-run-muhghrt2-3) Ran weekly forecasting cadence via a central dashboard tracking sequenced GTM gates and owners, resolving blockers with the team.
+- (lim-engagement-terms) Negotiated the engagement's terms directly, restructuring a 320-hour proposal into 166 hours at the same fee and pulling the key deliverable to Day 15.
+[tek_lead]
+- (tekl-me-vertical-gtm) Built the Media & Entertainment vertical GTM motion — discovery frameworks, opportunity taxonomy, CRM tagging — around CDPs, clean rooms, and ad measurement.
+- (tekl-coaching) Led a team of up to 5 direct reports inside a 30-person practice, coaching performance through daily process reviews and 1:1 metric sessions.
+- (tekl-southern-gas-discovery) Led discovery directly with Southern Company Gas's Center of Excellence on data science, machine learning, and data governance.
+- (tekl-disney-enablement) Packaged the vertical model into an enablement proposal for Disney Advertising Sales, mapping pipeline stages to first-party data and measurement problems.
+[tek_recruiter]
+- (tekr-nike) Partnered with Nike's global supply chain team on in-season optimization, delivering an AI-powered document system.
+- (tekr-wayfair-disney) Opened net-new managed services accounts at Wayfair and Disney's ESPN and Entertainment Technology organization from cold.
+- (tekr-750k) Generated $750K+ in annual revenue and won the company-wide sales contest in first full year against a national field.
+- (tekr-recruiting-talent) Sourced, screened, and onboarded enterprise technical talent at scale across four years of professional recruiting.
+[demanddrive]
+- (dd-territory-proposal) Authored a territory-realignment and post-close operations model adopted company-wide, credited with 150% growth in the Amazon Key for Business launch.
+- (dd-200-quota) Delivered 200% of first-month quota (12 meetings vs. 6) on a net-new client engagement; named MVP of the Month.
+
+FULL LIBRARY (achievement id | role | canonical bullet):
+psp-closed-deals | psp | Closed 5 signed NFL and MLB team-media partnerships, all paid in full at signing, including 2 accounts with no prior purchase history.
+psp-funding-source-qualification | psp | Qualified every prospect against the budget that can fund it — co-op, MDF, sponsorship, and 501(c)(3) dollars — opening 2 net-new accounts.
+psp-pipeline-discovery | psp | Built and maintained a ~$115K active proposal pipeline through a diagnostic, discovery-first approach rather than a pitch-led one.
+psp-125-leads | psp | Added ~125 net-new qualified prospects per week to Salesforce through targeted account research and stakeholder mapping.
+psp-decision-makers-ai | psp | Identified key decision-makers with ZoomInfo, LinkedIn Sales Navigator, and AI-assisted account mapping using OpenAI and Claude models.
+psp-cpm-business-case | psp | Modeled a $10.98 blended CPM against 1.32M reach and a $2,849 cost-per-acquisition benchmark to price a $14,500 buy on outcome economics.
+psp-nine-stakeholder-deal | psp | Restructured nine property-level commitments into one shared-cost regional placement across competing budget owners with no single decision-maker.
+psp-board-memo | psp | Authored a board-ready memo framing a $3,500 ask against 419 member businesses and 130K+ readers, written as the champion's own document.
+psp-school-proposal | psp | Built an official-partnership proposal for a school's alumni audience, benchmarking 72% brand recall, 7x readership per copy, and $6.50 CPM.
+psp-nonprofit-reframe | psp | Reframed a 501(c)(3)'s ask from marketing budget to sponsorship and donor dollars, then repeated the funding diagnostic across seven verticals.
+lim-build-vs-buy | hc_ai_strategy | Authored the buy-vs-build strategy, redirecting a $600K–$1.5M, 12–24-month EHR build to a $150–400K, 3–6-month compliance layer.
+lim-staffing-restructure | hc_ai_strategy | Restructured a proposed $946K/year five-person build into a one-engineer-plus-fractional model at $200–260K/year, a 73% cut.
+lim-feasibility-roadmap | hc_ai_strategy | Reconciled the client founder's four-pillar vision and three build memos into one staged roadmap: 12 recommendations, 4 stage gates, 8 board decisions.
+lim-competitive-venture-odds | hc_ai_strategy | Analyzed 15+ direct, platform-bundling, and affiliation competitors against venture base rates to size the raise at $1.5–3M and set go/no-go milestones.
+lim-unit-economics-benchmarks | hc_ai_strategy | Modeled multi-year revenue and unit-economics benchmarks against industry comparables to set fundraising targets and growth milestones.
+lim-market-sizing-exit-paths | hc_ai_strategy | Mapped a $0.76B category growing to $5.9B by 2035, benchmarked five comparables, and modeled four exit paths with base-rate odds and P&L forecasts.
+lim-gtm-ownership | hc_ai_strategy | Own go-to-market for the client's AI compliance product sold to independent clinical practices — segmentation, positioning, $99/$249 tiers, and channel strategy.
+lim-customer-discovery-sprint | hc_ai_strategy | Designed a 30–40 interview discovery sprint — screener, guide, scoring rubric, 150-account universe — with a pre-agreed go/no-go threshold.
+lim-engagement-terms | hc_ai_strategy | Negotiated the engagement's terms directly, restructuring a 320-hour proposal into 166 hours at the same fee and pulling the key deliverable to Day 15.
+lim-collateral | hc_ai_strategy | Produced the collateral the client sells with: pitch deck, competitive battlecards, partner negotiation sheets, and an eight-document executive round table.
+lim-readiness-assessment | hc_ai_strategy | Authored the launch-readiness assessment that reset the execution sequence, converting five organizational gaps into a dated plan with named owners.
+lim-non-dilutive-capital | hc_ai_strategy | Designed the non-dilutive capital stack — clinical revenue, NIH SBIR, state grants, payer pilots — recommending a ~$2.15M federal route ahead of equity.
+lim-scenario-planning | hc_ai_strategy | Applied scenario planning and second- and third-order consequence analysis across business, technology, regulatory, and organizational exposure.
+tekl-coaching | tek_lead | Led a team of up to 5 direct reports inside a 30-person practice, coaching performance through daily process reviews and 1:1 metric sessions.
+tekl-universal-poc | tek_lead | Won a proof-of-concept RFP that opened a multi-million-dollar managed services expansion with Universal Parks.
+tekl-southern-gas-discovery | tek_lead | Led discovery directly with Southern Company Gas's Center of Excellence on data science, machine learning, and data governance.
+tekl-solution-scoping | tek_lead | Scoped and positioned AI, data, and cloud solutions — graph, Adobe Enterprise Suite, Azure, computer vision — translating capability into commercial terms.
+tekl-me-vertical-gtm | tek_lead | Built the Media & Entertainment vertical GTM motion — discovery frameworks, opportunity taxonomy, CRM tagging — around CDPs, clean rooms, and ad measurement.
+tekl-verticalization-lift | tek_lead | Lifted lead-to-opportunity conversion from 12% to 28% and CRM field completion from 55% to 89% with rebuilt discovery frameworks and CRM standards.
+tekl-disney-enablement | tek_lead | Packaged the vertical model into an enablement proposal for Disney Advertising Sales, mapping pipeline stages to first-party data and measurement problems.
+tekl-fortune500-discovery | tek_lead | Led executive-level discovery with Fortune 500 media, parks, utilities, and life sciences organizations.
+tekr-750k | tek_recruiter | Generated $750K+ in annual revenue and won the company-wide sales contest in first full year against a national field.
+tekr-vertex | tek_recruiter | Produced more than half the revenue on Vertex Pharmaceuticals, the firm's largest regional growth account, and expanded into two new groups.
+tekr-wayfair-disney | tek_recruiter | Opened net-new managed services accounts at Wayfair and Disney's ESPN and Entertainment Technology organization from cold.
+tekr-nike | tek_recruiter | Partnered with Nike's global supply chain team on in-season optimization, delivering an AI-powered document system.
+tekr-recruiting-talent | tek_recruiter | Sourced, screened, and onboarded enterprise technical talent at scale across four years of professional recruiting.
+dd-territory-proposal | demanddrive | Authored a territory-realignment and post-close operations model adopted company-wide, credited with 150% growth in the Amazon Key for Business launch.
+dd-200-quota | demanddrive | Delivered 200% of first-month quota (12 meetings vs. 6) on a net-new client engagement; named MVP of the Month.
+nyl-referral-book | nyl | Developed a referral-based book of business through networking, community involvement, and constituent introductions.
+nyl-needs-assessment | nyl | Conducted needs-based assessments on long-term financial, beneficiary, and legacy objectives in estate- and tax-planning terms.
+yri-marketing | yri | Wrote product marketing copy, website content, and social posts, and helped launch a premium leather accessories collection.
+massdot-adoption | massdot | Promoted EZ Pass adoption to Massachusetts residents and visitors, processing sign-ups through the transition to a toll-booth-free I-95.
+psp-full-cycle-ownership | psp | Owned the full sales cycle in a pure new-business role — prospecting, discovery, pricing, proposal, negotiation, and close — with no SDR layer.
+psp-verticals | psp | Sold across automotive, retail, hospitality, building products, commercial fleet, and property management, qualifying each against the budget that funds it.
+lim-thought-partner | hc_ai_strategy | Advise the CEO and board of a healthcare AI start-up client, translating business, technology, regulatory, and workforce tradeoffs into board-ready decisions.
+lim-data-rights | hc_ai_strategy | Blocked a proposed EHR data migration as an uncompensated asset transfer, defining the NDA-to-BAA sequence that protected the client's data asset.
+lim-unit-economic-gates | hc_ai_strategy | Set the unit-economic gates the client runs on — CAC under $900, payback under 12 months, churn under 5%, TTFV under 7 days — redirecting GTM to channel partners.
+lim-operating-cadence | hc_ai_strategy | Built the operating cadence the client runs on: RACI and escalation thresholds, a weekly capacity forecast, and a one-page decision log with owner and date.
+lim-entity-ip-structure | hc_ai_strategy | Coordinated outside counsel, CPA, engineering, and founders to architect the entity, IP, and data-rights structure behind the client's data assets.
+lim-claude-code-tracker | hc_ai_strategy | Built the practice's multi-tenant client engagement tracker with Claude Code, with 60 automated tests enforcing cross-client data isolation.
+art-run-muhbu38f-0 | hc_ai_strategy | Built a custom CRM from scratch with GTM and prospecting connectors, automated weekly contact enrichment, and account-research agents two-way synced to GitHub.
+art-run-muhbu38f-1 | hc_ai_strategy | Diagnosed data-sync failures caused by null values and missing governance rules, then enforced sync governance constraints through 60 automated tests.
+art-run-muhbu38f-2 | tek_lead | Partnered with a Principal Business Development Manager to set bill rates and price resource plans for Global Services RFP responses.
+art-run-muhfveal-0 | hc_ai_strategy | Built a feasibility dashboard with kill/pivot triggers for an HVAC firm's market-overlap expansion, using cost-ceilings to curb cannibalization and protect profit.
+art-run-muhfveal-1 | demanddrive | Interviewed 30+ property managers outside service range and proposed a batch-installation process, growing revenue 100% in one month.
+art-run-muhfveal-2 | tek_lead | Developed strategic partnerships with vendors and account stakeholders to source qualified talent and surface business development opportunities.
+art-run-muhghrt2-2 | hc_ai_strategy | Evaluated a channel partnership with an incumbent firm's CEO during build-vs-buy analysis, rejecting it to protect data rights and equity.
+art-run-muhghrt2-3 | hc_ai_strategy | Ran weekly forecasting cadence via a central dashboard tracking sequenced GTM gates and owners, resolving blockers with the team.
+lim-distribution-pivot | hc_ai_strategy | Concluded distribution, not product, decides the outcome, redirecting GTM to malpractice-carrier and professional-association channel partners.
+art-run-mukn8dul-0 | hc_ai_strategy | Delivered a feasibility roadmap and governance framework with a cost-ceiling approach after analyzing a proposed expansion site.
+art-run-mukn8dul-1 | hc_ai_strategy | Built the firm's website in Squarespace, integrating Apollo, Google Tag Manager, and Claude connectors to optimize branded SEO.
+art-run-mukn8dul-2 | hc_ai_strategy | Inserted alt-text code, FAQ tags, and AI-visibility prompts behind the scenes to improve the site's SEO score.
+art-run-mukn8dul-4 | hc_ai_strategy | Established governance parameters routing AI-generated outputs to designated SMEs for regulatory sign-off at each risk and governance gate.
+art-run-mukn8dul-5 | hc_ai_strategy | Reviewed architectural roadmap commits to ensure governance and risk controls were embedded throughout the build, preventing assumptive outputs.
+art-run-mukrbv3p-1 | psp | Analyzed competitor products and services against ROI benchmarks, building metrics frameworks (CPM, readership, audience reach) to strengthen positioning.
+art-run-mukrbv3p-2 | psp | Reverse-engineered the competitive research process to define and characterize the ideal customer profile (ICP).
+art-run-mukrbv3p-3 | tek_lead | Briefed Universal's Senior Director of Architecture and VP of Data & AI on architect scarcity with LinkedIn Recruiter and Boolean data to push back on pricing.
+art-run-mukrbv3p-4 | psp | Mined macroeconomic ad-pricing data via AI research agents to map proximity-driven print/radio buying patterns and refocus targeting on co-op-funded buyers.
+art-run-mukrbv3p-5 | tek_lead | Analyzed CRM opportunity keywords to track emerging-tech demand shifts and delivered a data analytics insights playbook to SVPs at a 12,000-employee firm.
+art-run-mukrbv3p-6 | tek_recruiter | Tracked hiring-trend shifts in remote-work requirements through COVID, identifying incremental employer adaptation in the post-pandemic workplace.
+
+TAGLINE OPTIONS (Section A, exact text):
+Sales Professional (End to End Sales) | Marketing, Advertising, Product, Services, & Sales GTM Engineer | Business Strategy | GTM and Sales/Marketing Execution Specialist | Systems Thinker | Process Engineer | AI Adoption Enthusiast | AI Strategy & Workflow Automation Leader | Advertising Analytics & Market Intelligence Advisor
+
+EXPERTISE OPTIONS (Section B, choose only from these, exact text):
+Go-To-Market Strategy | Market Segmentation & Positioning | Pricing & Channel Strategy | New Business Development | Full-Cycle Enterprise Sales (Prospect to Close) | Lead Generation & Prospecting | Consultative & Diagnostic Discovery | Contract & Proposal Development | Complex Multi-Stakeholder Negotiation | Executive & Board-Level Communication | Revenue Forecasting & KPI Management | Pipeline Development & CRM Discipline | Strategic Account Planning & Expansion | Media & Sponsorship Sales | CPM, CPA & ROI Business Cases | Ad-Tech Fluency (CDP, Clean Rooms, Identity Graphs, Measurement) | Funding-Source Diagnostics (Co-Op, MDF, Sponsorship, 501(c)(3)) | Buy-vs-Build & Competitive Analysis | Unit Economics & Revenue Modeling | Market Sizing & Scenario Planning | Sales Team Coaching & Performance Management | Hiring, Onboarding & Seller Ramp | Business Process Improvement | Operating Cadence Design (RACI, Decision Logs) | Change Readiness & Stakeholder Alignment | Primary Research & Customer Discovery | AI & Data Platform Solution Selling | Prompt Engineering & AI-Enabled Workflow | Strategic Partnerships & Channel | Data Rights & Partner Terms | Board & Trustee Engagement | Prospect Identification & Moves Management | Business Analysis & Advisory | AI Adoption Strategies for Sales Enablement and Business Growth
+
+TECHNOLOGIES ALREADY LISTED: Salesforce (Classic, Lightning), LinkedIn (Sales Navigator, Recruiter), ZoomInfo, Google Tag Manager, Apollo.io, Squarespace, Marketo, HubSpot, Canva, Trello, Miro, Microsoft Copilot, Claude & Claude Code (Sonnet 5.x / Opus 5 / Fable 5), OpenAI (GPT-5.6, Sol, Terra, Luna), GitHub, Model Context Protocol (MCP) Servers, GCP, Visual Studio & VS Code, Tableau (beginner), Microsoft Excel (VLOOKUPs, INDEX-MATCH-MATCH, XLOOKUP), Microsoft Stack, Office-Place Collaboration Tools (Slack, MS Teams, Webex, Google Meet, Zoom), Notion
+TOOLS THE POSTING NAMES THAT ARE NOT LISTED: (none detected)
+
+Reply with ONLY one JSON object:
+{"company": string|null, "title": string|null,
+ "requirements": [{"tag": "<tag id from taxonomy>", "weight": <0.5 to 3, 3 = must-have>, "why": "<short evidence from the posting>"}],
+ "uncatalogued": [{"phrase": "<requirement no tag covers>", "weight": <1-3>}],
+ "tagline": ["<4 to 7 phrases in print order, most relevant to this posting first: exact TAGLINE OPTIONS, plus at most 2 new phrases of 60 characters or fewer that the library clearly supports>"],
+ "expertise_order": ["<up to 16 exact EXPERTISE OPTIONS, most relevant first>"],
+ "followups": [{"question": "...", "why": "<which requirement this proves and why it matters>", "tag": "<tag id>", "section": "experience"|"engagement"|"technology"|"tagline"|"expertise", "role": "<role key, for experience>", "engagement": "<engagement key, for engagement>", "hint": "<what a strong answer includes>"}]}
+Requirements: return up to 20 tags with your corrected importance. Followups: exactly 5, one concrete question each, no compound questions.
+- Most should be "experience": target the highest-weight requirements the draft proves weakly or not at all, or implied experience Tim likely has but hasn't stated (quota %, team size, deal size, cycle length).
+- If the posting values consulting or advisory work and an engagement NEEDS DETAILS, make one "engagement" question for it (it asks for dates, how to name the client, a one-line description, and what else he delivered).
+- If the posting names tools that are not listed, make one "technology" question naming them.
+- Use "tagline" or "expertise" only when the posting stresses an identity or a strength no option covers.
+Address Tim directly in second person ("you", "your"), never "Tim" or "he". Don't ask about anything already well evidenced.
