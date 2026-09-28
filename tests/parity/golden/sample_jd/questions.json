@@ -1,9 +1,18 @@
 [
  {
+  "section": "engagement",
+  "engagement": "hvac",
+  "tag": "board-advisory",
+  "role": "hc_ai_strategy",
+  "question": "This posting values consulting work. Your HVAC Services Firm engagement has a bullet but no details yet. When did it run, how should the client read on a resume, and what else did you deliver?",
+  "why": "Section C can only show an engagement once it has dates and a one-line description.",
+  "fields": {}
+ },
+ {
   "section": "experience",
-  "tag": "multi-stakeholder-selling",
-  "role": "psp",
-  "question": "The posting leans on multi-stakeholder & matrixed selling (“multi-stakeholder”). What's your strongest concrete example? Say what you did, the scope, and the measurable result.",
+  "tag": "forecasting",
+  "role": "hc_ai_strategy",
+  "question": "The posting leans on forecasting (“forecasting”). What's your strongest concrete example? Say what you did, the scope, and the measurable result.",
   "why": "Nothing in your draft proves this yet.",
   "hint": "e.g. who, how many, how much, what changed"
  },
@@ -25,17 +34,9 @@
  },
  {
   "section": "experience",
-  "tag": "board-advisory",
-  "role": "hc_ai_strategy",
-  "question": "The posting leans on board & executive advisory (“board”, “executive team”). What's your strongest concrete example? Say what you did, the scope, and the measurable result.",
-  "why": "Your draft touches this only lightly.",
-  "hint": "e.g. who, how many, how much, what changed"
- },
- {
-  "section": "experience",
-  "tag": "stakeholder-alignment",
-  "role": "hc_ai_strategy",
-  "question": "The posting leans on stakeholder alignment (“stakeholders”). What's your strongest concrete example? Say what you did, the scope, and the measurable result.",
+  "tag": "hiring-onboarding",
+  "role": "tek_recruiter",
+  "question": "The posting leans on hiring & onboarding (“hire”, “hiring”). What's your strongest concrete example? Say what you did, the scope, and the measurable result.",
   "why": "Your draft touches this only lightly.",
   "hint": "e.g. who, how many, how much, what changed"
  }

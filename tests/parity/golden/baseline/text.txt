@@ -6,7 +6,7 @@ Sales Professional (End to End Sales) | Marketing, Advertising, Product, Service
 
 Go-To-Market Strategy • Business Process Improvement • Lead Generation & Prospecting • Contract & Proposal Development • Revenue Forecasting & KPI Management • Business Analysis & Advisory • AI Adoption Strategies for Sales Enablement and Business Growth • Change Readiness & Stakeholder Alignment • Sales Team Coaching & Performance Management • AI & Data Platform Solution Selling • Prompt Engineering & AI-Enabled Workflow • Strategic Partnerships & Channel • Executive & Board-Level Communication • Market Segmentation & Positioning • CPM, CPA & ROI Business Cases • Primary Research & Customer Discovery
 
-Technologies: Salesforce (Classic, Lightning), LinkedIn (Sales Navigator, Recruiter), ZoomInfo, Google Tag Manager, Apollo.io, Squarespace, Marketo, HubSpot, Canva, Trello, Miro, Microsoft Copilot, Claude & Claude Code (Sonnet 5.x / Opus 5 / Fable 5), OpenAI (GPT-5.6, Sol, Terra, Luna), GitHub, Model Context Protocol (MCP) Servers, GCP, Visual Studio & VS Code, Tableau (beginner), Microsoft Excel (VLOOKUPs, INDEX-MATCH-MATCH, XLOOKUP), Microsoft Stack, Office-Place Collaboration Tools (Slack, MS Teams, Webex, Google Meet, Zoom), Notion
+Technologies: Salesforce (Classic, Lightning), LinkedIn (Sales Navigator, Recruiter), ZoomInfo, Google Tag Manager, Apollo.io, Squarespace, Marketo, HubSpot, Canva, Trello, Miro, Microsoft Copilot, Claude & Claude Code (Sonnet 5.x / Opus 5 / Fable 5), OpenAI (GPT-5.6, Sol, Terra, Luna), GitHub, Model Context Protocol (MCP) Servers, GCP, Visual Studio & VS Code, Tableau (beginner), Microsoft Excel (VLOOKUPs, INDEX-MATCH-MATCH, XLOOKUP), Microsoft Stack, Office-Place Collaboration Tools (Slack, MS Teams, Webex, Google Meet, Zoom)
 
 EDUCATION
 University of Maine Business School
@@ -16,12 +16,12 @@ PROFESSIONAL EXPERIENCE
 Business Consultant - GTM Engineer & Strategic Advisor | Strategic Market Insights (self-employed) | July 2026 – Present
 New York, NY · Advisory & GTM engineering practice · Key Engagement: healthcare AI start-up (confidential)
 • Built the practice's multi-tenant client engagement tracker with Claude Code, with 60 automated tests enforcing cross-client data isolation.
+• Built a feasibility dashboard with kill/pivot triggers for an HVAC firm's market-overlap expansion, using cost-ceilings to curb cannibalization and protect profit.
 • Authored the launch-readiness assessment that reset the execution sequence, converting five organizational gaps into a dated plan with named owners.
 • Produced the collateral the client sells with: pitch deck, competitive battlecards, partner negotiation sheets, and an eight-document executive round table.
-• Onboarded a healthcare tech startup's team to a gated tracking system, giving the CEO approval oversight on dev expenses and fractional work hours.
+• Mapped stakeholder intervention and sign-off criteria for a startup client, defining who owned gates and approvals across the engagement.
 • Reconciled the client founder's four-pillar vision and three build memos into one staged roadmap: 12 recommendations, 4 stage gates, 8 board decisions.
 • Own go-to-market for the client's AI compliance product sold to independent clinical practices — segmentation, positioning, $99/$249 tiers, and channel strategy.
-• Advise the CEO and board of a healthcare AI start-up client, translating business, technology, regulatory, and workforce tradeoffs into board-ready decisions.
 
 Advertising Sales Director - Pro-Division | Professional Sports Publications | March 2026 – August 2026
 New York, NY · Print-Media Advertising Agency supporting all major professional and university sports teams (yearbook and program ad placement)
@@ -36,7 +36,7 @@ New York, NY · Top firm for I.T. Staffing & Managed Services with flexible enga
 • Led a team of up to 5 direct reports inside a 30-person practice, coaching performance through daily process reviews and 1:1 metric sessions.
 • Scoped and positioned AI, data, and cloud solutions — graph, Adobe Enterprise Suite, Azure, computer vision — translating capability into commercial terms.
 • Sourced and staffed 8 solution architects across 8 workstreams on a 12-18 month renewable managed services engagement worth $1M annually.
-• Led discovery directly with Southern Company Gas's Center of Excellence on data science, machine learning, and data governance.
+• Helped stand up an Oil & Gas company's ML and AI Center of Excellence, applying sensor data to predict and detect gas outages.
 
 Enterprise Recruiter – Global Services Division | TEKsystems | 2021 – 2024
 Boston, MA · Top firm for I.T. Staffing & Managed Services with flexible engagement types that work with 85% of Fortune 500 companies
@@ -68,11 +68,6 @@ Principal Business Strategist – GTM Plan, Business Architectural Roadmap, Blue
 • Ran financial forecasting (P&L, tool-stack cost model, Year-1 ARR band) and barriers-to-entry analysis to price strategic alternatives before capital committed; recommended a ~$2.15M non-dilutive federal funding route over an equity raise, tied to a dated decision gate.
 • Applied scenario planning and second- and third-order consequence analysis across business, technology, regulatory, and organizational exposure — surfacing downstream consequences before commitments locked in.
 • Built the multi-tenant, role-scoped client engagement tracker that runs the advisory practice using Claude Code — including 60 automated tests asserting cross-client data isolation — with no prior engineering background.
-
-HVAC Services Firm (Confidential) | Santa Clarita, CA | August 2026 – September 2026 (Part Time)
-Consultant - Principal Analyst GTM Expansion
-• Built a feasibility dashboard with kill/pivot triggers for an HVAC firm's market-overlap expansion, using cost-ceilings to curb cannibalization and protect profit.
-• Analyzed a proposed expansion site for an HVAC services firm and delivered a feasibility roadmap and governance framework built on a cost-ceiling approach, giving leadership a structured basis for evaluating the expansion decision beyond the initial feasibility dashboard.
 
 CORE COMPETENCIES
 • Go-To-Market & Revenue: GTM strategy, market segmentation, product positioning & messaging, value proposition development, customer discovery, pipeline management, revenue forecasting & KPI tracking, contract negotiation, proposal development, solution selling, account mapping, client retention

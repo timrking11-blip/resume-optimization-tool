@@ -157,33 +157,33 @@ massdot: Marketing and Communications Intern | Massachusetts Department of Trans
 
 CONSULTING ENGAGEMENTS (Section C; key: client | status):
 healthcare: Healthcare Technology Start-Up (Confidential) | July 2026 – Present | Principal Business Strategist – GTM Plan, Business Architectural Roadmap, Blueprint to Obtain Necessary Funding – Healthcare FinTech Start-Up
-hvac: HVAC Services Firm (Confidential) | August 2026 – September 2026 | Consultant - Principal Analyst GTM Expansion
+hvac: HVAC Services Firm (Confidential) | NEEDS DETAILS (not shown until dates and a description are given)
 
 CURRENT DRAFT BULLETS:
 [psp]
 - (psp-cpm-business-case) Modeled a $10.98 blended CPM against 1.32M reach and a $2,849 cost-per-acquisition benchmark to price a $14,500 buy on outcome economics.
 - (psp-closed-deals) Closed 5 signed NFL and MLB team-media partnerships, all paid in full at signing, including 2 accounts with no prior purchase history.
-- (art-run-mukrbv3p-4) Mined macroeconomic ad-pricing data via AI research agents to map proximity-driven print/radio buying patterns and refocus targeting on co-op-funded buyers.
 - (psp-full-cycle-ownership) Owned the full sales cycle in a pure new-business role — prospecting, discovery, pricing, proposal, negotiation, and close — with no SDR layer.
 - (psp-pipeline-discovery) Built and maintained a ~$115K active proposal pipeline through a diagnostic, discovery-first approach rather than a pitch-led one.
+- (psp-decision-makers-ai) Identified key decision-makers with ZoomInfo, LinkedIn Sales Navigator, and AI-assisted account mapping using OpenAI and Claude models.
 [hc_ai_strategy]
 - (lim-gtm-ownership) Own go-to-market for the client's AI compliance product sold to independent clinical practices — segmentation, positioning, $99/$249 tiers, and channel strategy.
 - (lim-claude-code-tracker) Built the practice's multi-tenant client engagement tracker with Claude Code, with 60 automated tests enforcing cross-client data isolation.
 - (art-run-muhbu38f-0) Built a custom CRM from scratch with GTM and prospecting connectors, automated weekly contact enrichment, and account-research agents two-way synced to GitHub.
 - (lim-distribution-pivot) Concluded distribution, not product, decides the outcome, redirecting GTM to malpractice-carrier and professional-association channel partners.
 - (lim-feasibility-roadmap) Reconciled the client founder's four-pillar vision and three build memos into one staged roadmap: 12 recommendations, 4 stage gates, 8 board decisions.
-- (art-run-muhghrt2-3) Ran weekly forecasting cadence via a central dashboard tracking sequenced GTM gates and owners, resolving blockers with the team.
+- (lim-thought-partner) Advise the CEO and board of a healthcare AI start-up client, translating business, technology, regulatory, and workforce tradeoffs into board-ready decisions.
 - (lim-engagement-terms) Negotiated the engagement's terms directly, restructuring a 320-hour proposal into 166 hours at the same fee and pulling the key deliverable to Day 15.
 [tek_lead]
 - (tekl-me-vertical-gtm) Built the Media & Entertainment vertical GTM motion — discovery frameworks, opportunity taxonomy, CRM tagging — around CDPs, clean rooms, and ad measurement.
 - (tekl-coaching) Led a team of up to 5 direct reports inside a 30-person practice, coaching performance through daily process reviews and 1:1 metric sessions.
-- (tekl-southern-gas-discovery) Led discovery directly with Southern Company Gas's Center of Excellence on data science, machine learning, and data governance.
+- (tekl-southern-gas-discovery) Helped stand up an Oil & Gas company's ML and AI Center of Excellence, applying sensor data to predict and detect gas outages.
 - (tekl-disney-enablement) Packaged the vertical model into an enablement proposal for Disney Advertising Sales, mapping pipeline stages to first-party data and measurement problems.
 [tek_recruiter]
 - (tekr-nike) Partnered with Nike's global supply chain team on in-season optimization, delivering an AI-powered document system.
 - (tekr-wayfair-disney) Opened net-new managed services accounts at Wayfair and Disney's ESPN and Entertainment Technology organization from cold.
 - (tekr-750k) Generated $750K+ in annual revenue and won the company-wide sales contest in first full year against a national field.
-- (tekr-recruiting-talent) Sourced, screened, and onboarded enterprise technical talent at scale across four years of professional recruiting.
+- (tekr-vertex) Produced more than half the revenue on Vertex Pharmaceuticals, the firm's largest regional growth account, and expanded into two new groups.
 [demanddrive]
 - (dd-territory-proposal) Authored a territory-realignment and post-close operations model adopted company-wide, credited with 150% growth in the Amazon Key for Business launch.
 - (dd-200-quota) Delivered 200% of first-month quota (12 meetings vs. 6) on a net-new client engagement; named MVP of the Month.
@@ -248,25 +248,14 @@ art-run-muhfveal-2 | tek_lead | Developed strategic partnerships with vendors an
 art-run-muhghrt2-2 | hc_ai_strategy | Evaluated a channel partnership with an incumbent firm's CEO during build-vs-buy analysis, rejecting it to protect data rights and equity.
 art-run-muhghrt2-3 | hc_ai_strategy | Ran weekly forecasting cadence via a central dashboard tracking sequenced GTM gates and owners, resolving blockers with the team.
 lim-distribution-pivot | hc_ai_strategy | Concluded distribution, not product, decides the outcome, redirecting GTM to malpractice-carrier and professional-association channel partners.
-art-run-mukn8dul-0 | hc_ai_strategy | Delivered a feasibility roadmap and governance framework with a cost-ceiling approach after analyzing a proposed expansion site.
-art-run-mukn8dul-1 | hc_ai_strategy | Built the firm's website in Squarespace, integrating Apollo, Google Tag Manager, and Claude connectors to optimize branded SEO.
-art-run-mukn8dul-2 | hc_ai_strategy | Inserted alt-text code, FAQ tags, and AI-visibility prompts behind the scenes to improve the site's SEO score.
-art-run-mukn8dul-4 | hc_ai_strategy | Established governance parameters routing AI-generated outputs to designated SMEs for regulatory sign-off at each risk and governance gate.
-art-run-mukn8dul-5 | hc_ai_strategy | Reviewed architectural roadmap commits to ensure governance and risk controls were embedded throughout the build, preventing assumptive outputs.
-art-run-mukrbv3p-1 | psp | Analyzed competitor products and services against ROI benchmarks, building metrics frameworks (CPM, readership, audience reach) to strengthen positioning.
-art-run-mukrbv3p-2 | psp | Reverse-engineered the competitive research process to define and characterize the ideal customer profile (ICP).
-art-run-mukrbv3p-3 | tek_lead | Briefed Universal's Senior Director of Architecture and VP of Data & AI on architect scarcity with LinkedIn Recruiter and Boolean data to push back on pricing.
-art-run-mukrbv3p-4 | psp | Mined macroeconomic ad-pricing data via AI research agents to map proximity-driven print/radio buying patterns and refocus targeting on co-op-funded buyers.
-art-run-mukrbv3p-5 | tek_lead | Analyzed CRM opportunity keywords to track emerging-tech demand shifts and delivered a data analytics insights playbook to SVPs at a 12,000-employee firm.
-art-run-mukrbv3p-6 | tek_recruiter | Tracked hiring-trend shifts in remote-work requirements through COVID, identifying incremental employer adaptation in the post-pandemic workplace.
 
 TAGLINE OPTIONS (Section A, exact text):
-Sales Professional (End to End Sales) | Marketing, Advertising, Product, Services, & Sales GTM Engineer | Business Strategy | GTM and Sales/Marketing Execution Specialist | Systems Thinker | Process Engineer | AI Adoption Enthusiast | AI Strategy & Workflow Automation Leader | Advertising Analytics & Market Intelligence Advisor
+Sales Professional (End to End Sales) | Marketing, Advertising, Product, Services, & Sales GTM Engineer | Business Strategy | GTM and Sales/Marketing Execution Specialist | Systems Thinker | Process Engineer | AI Adoption Enthusiast
 
 EXPERTISE OPTIONS (Section B, choose only from these, exact text):
 Go-To-Market Strategy | Market Segmentation & Positioning | Pricing & Channel Strategy | New Business Development | Full-Cycle Enterprise Sales (Prospect to Close) | Lead Generation & Prospecting | Consultative & Diagnostic Discovery | Contract & Proposal Development | Complex Multi-Stakeholder Negotiation | Executive & Board-Level Communication | Revenue Forecasting & KPI Management | Pipeline Development & CRM Discipline | Strategic Account Planning & Expansion | Media & Sponsorship Sales | CPM, CPA & ROI Business Cases | Ad-Tech Fluency (CDP, Clean Rooms, Identity Graphs, Measurement) | Funding-Source Diagnostics (Co-Op, MDF, Sponsorship, 501(c)(3)) | Buy-vs-Build & Competitive Analysis | Unit Economics & Revenue Modeling | Market Sizing & Scenario Planning | Sales Team Coaching & Performance Management | Hiring, Onboarding & Seller Ramp | Business Process Improvement | Operating Cadence Design (RACI, Decision Logs) | Change Readiness & Stakeholder Alignment | Primary Research & Customer Discovery | AI & Data Platform Solution Selling | Prompt Engineering & AI-Enabled Workflow | Strategic Partnerships & Channel | Data Rights & Partner Terms | Board & Trustee Engagement | Prospect Identification & Moves Management | Business Analysis & Advisory | AI Adoption Strategies for Sales Enablement and Business Growth
 
-TECHNOLOGIES ALREADY LISTED: Salesforce (Classic, Lightning), LinkedIn (Sales Navigator, Recruiter), ZoomInfo, Google Tag Manager, Apollo.io, Squarespace, Marketo, HubSpot, Canva, Trello, Miro, Microsoft Copilot, Claude & Claude Code (Sonnet 5.x / Opus 5 / Fable 5), OpenAI (GPT-5.6, Sol, Terra, Luna), GitHub, Model Context Protocol (MCP) Servers, GCP, Visual Studio & VS Code, Tableau (beginner), Microsoft Excel (VLOOKUPs, INDEX-MATCH-MATCH, XLOOKUP), Microsoft Stack, Office-Place Collaboration Tools (Slack, MS Teams, Webex, Google Meet, Zoom), Notion
+TECHNOLOGIES ALREADY LISTED: Salesforce (Classic, Lightning), LinkedIn (Sales Navigator, Recruiter), ZoomInfo, Google Tag Manager, Apollo.io, Squarespace, Marketo, HubSpot, Canva, Trello, Miro, Microsoft Copilot, Claude & Claude Code (Sonnet 5.x / Opus 5 / Fable 5), OpenAI (GPT-5.6, Sol, Terra, Luna), GitHub, Model Context Protocol (MCP) Servers, GCP, Visual Studio & VS Code, Tableau (beginner), Microsoft Excel (VLOOKUPs, INDEX-MATCH-MATCH, XLOOKUP), Microsoft Stack, Office-Place Collaboration Tools (Slack, MS Teams, Webex, Google Meet, Zoom)
 TOOLS THE POSTING NAMES THAT ARE NOT LISTED: (none detected)
 
 Reply with ONLY one JSON object:

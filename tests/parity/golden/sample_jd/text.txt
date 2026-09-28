@@ -6,7 +6,7 @@ Marketing, Advertising, Product, Services, & Sales GTM Engineer | AI Adoption En
 
 Executive & Board-Level Communication • CPM, CPA & ROI Business Cases • Pricing & Channel Strategy • Contract & Proposal Development • Complex Multi-Stakeholder Negotiation • AI Adoption Strategies for Sales Enablement and Business Growth • Prompt Engineering & AI-Enabled Workflow • Strategic Partnerships & Channel • Media & Sponsorship Sales • Ad-Tech Fluency (CDP, Clean Rooms, Identity Graphs, Measurement) • Go-To-Market Strategy • AI & Data Platform Solution Selling • Revenue Forecasting & KPI Management • Business Analysis & Advisory • Sales Team Coaching & Performance Management • Market Segmentation & Positioning
 
-Technologies: LinkedIn (Sales Navigator, Recruiter), Microsoft Copilot, Claude & Claude Code (Sonnet 5.x / Opus 5 / Fable 5), OpenAI (GPT-5.6, Sol, Terra, Luna), Model Context Protocol (MCP) Servers, Salesforce (Classic, Lightning), ZoomInfo, Google Tag Manager, Apollo.io, HubSpot, Miro, Tableau (beginner), Microsoft Excel (VLOOKUPs, INDEX-MATCH-MATCH, XLOOKUP), Office-Place Collaboration Tools (Slack, MS Teams, Webex, Google Meet, Zoom), Notion, Squarespace, Marketo, Canva, Trello, GitHub, GCP, Visual Studio & VS Code, Microsoft Stack
+Technologies: LinkedIn (Sales Navigator, Recruiter), Microsoft Copilot, Claude & Claude Code (Sonnet 5.x / Opus 5 / Fable 5), OpenAI (GPT-5.6, Sol, Terra, Luna), Model Context Protocol (MCP) Servers, Salesforce (Classic, Lightning), ZoomInfo, Google Tag Manager, Apollo.io, HubSpot, Miro, Tableau (beginner), Microsoft Excel (VLOOKUPs, INDEX-MATCH-MATCH, XLOOKUP), Office-Place Collaboration Tools (Slack, MS Teams, Webex, Google Meet, Zoom), Squarespace, Marketo, Canva, Trello, GitHub, GCP, Visual Studio & VS Code, Microsoft Stack
 
 EDUCATION
 University of Maine Business School
@@ -20,22 +20,22 @@ New York, NY · Advisory & GTM engineering practice · Key Engagement: healthcar
 • Built a custom CRM from scratch with GTM and prospecting connectors, automated weekly contact enrichment, and account-research agents two-way synced to GitHub.
 • Concluded distribution, not product, decides the outcome, redirecting GTM to malpractice-carrier and professional-association channel partners.
 • Reconciled the client founder's four-pillar vision and three build memos into one staged roadmap: 12 recommendations, 4 stage gates, 8 board decisions.
-• Ran weekly forecasting cadence via a central dashboard tracking sequenced GTM gates and owners, resolving blockers with the team.
+• Advise the CEO and board of a healthcare AI start-up client, translating business, technology, regulatory, and workforce tradeoffs into board-ready decisions.
 • Negotiated the engagement's terms directly, restructuring a 320-hour proposal into 166 hours at the same fee and pulling the key deliverable to Day 15.
 
 Advertising Sales Director - Pro-Division | Professional Sports Publications | March 2026 – August 2026
 New York, NY · Print-Media Advertising Agency supporting all major professional and university sports teams (yearbook and program ad placement)
 • Modeled a $10.98 blended CPM against 1.32M reach and a $2,849 cost-per-acquisition benchmark to price a $14,500 buy on outcome economics.
 • Closed 5 signed NFL and MLB team-media partnerships, all paid in full at signing, including 2 accounts with no prior purchase history.
-• Mined macroeconomic ad-pricing data via AI research agents to map proximity-driven print/radio buying patterns and refocus targeting on co-op-funded buyers.
 • Owned the full sales cycle in a pure new-business role — prospecting, discovery, pricing, proposal, negotiation, and close — with no SDR layer.
 • Built and maintained a ~$115K active proposal pipeline through a diagnostic, discovery-first approach rather than a pitch-led one.
+• Identified key decision-makers with ZoomInfo, LinkedIn Sales Navigator, and AI-assisted account mapping using OpenAI and Claude models.
 
 Specialized Lead - Data Analytics & Insights | TEKsystems | 2024 – November 2025
 New York, NY · Top firm for I.T. Staffing & Managed Services with flexible engagement types that work with 85% of Fortune 500 companies
 • Built the Media & Entertainment vertical GTM motion — discovery frameworks, opportunity taxonomy, CRM tagging — around CDPs, clean rooms, and ad measurement.
 • Led a team of up to 5 direct reports inside a 30-person practice, coaching performance through daily process reviews and 1:1 metric sessions.
-• Led discovery directly with Southern Company Gas's Center of Excellence on data science, machine learning, and data governance.
+• Helped stand up an Oil & Gas company's ML and AI Center of Excellence, applying sensor data to predict and detect gas outages.
 • Packaged the vertical model into an enablement proposal for Disney Advertising Sales, mapping pipeline stages to first-party data and measurement problems.
 
 Enterprise Recruiter – Global Services Division | TEKsystems | 2021 – 2024
@@ -43,7 +43,7 @@ Boston, MA · Top firm for I.T. Staffing & Managed Services with flexible engage
 • Partnered with Nike's global supply chain team on in-season optimization, delivering an AI-powered document system.
 • Opened net-new managed services accounts at Wayfair and Disney's ESPN and Entertainment Technology organization from cold.
 • Generated $750K+ in annual revenue and won the company-wide sales contest in first full year against a national field.
-• Sourced, screened, and onboarded enterprise technical talent at scale across four years of professional recruiting.
+• Produced more than half the revenue on Vertex Pharmaceuticals, the firm's largest regional growth account, and expanded into two new groups.
 
 Sales Development Representative / Inside Sales Rep | demandDrive (Amazon Business & RealPage) | 2018 – 2021
 Waltham, MA · Outsourced SDR and Sales Representative firm. Key Engagements: SaaS product Propertyware for RealPage, Amazon Key for Business launch
@@ -68,11 +68,6 @@ Principal Business Strategist – GTM Plan, Business Architectural Roadmap, Blue
 • Produced the customer- and investor-facing collateral the company now sells with: pitch deck, competitive battlecards, partner negotiation sheets, and an eight-document executive round table with per-presentation talking points.
 • Applied scenario planning and second- and third-order consequence analysis across business, technology, regulatory, and organizational exposure — surfacing downstream consequences before commitments locked in.
 • Ran financial forecasting (P&L, tool-stack cost model, Year-1 ARR band) and barriers-to-entry analysis to price strategic alternatives before capital committed; recommended a ~$2.15M non-dilutive federal funding route over an equity raise, tied to a dated decision gate.
-
-HVAC Services Firm (Confidential) | Santa Clarita, CA | August 2026 – September 2026 (Part Time)
-Consultant - Principal Analyst GTM Expansion
-• Built a feasibility dashboard with kill/pivot triggers for an HVAC firm's market-overlap expansion, using cost-ceilings to curb cannibalization and protect profit.
-• Analyzed a proposed expansion site for an HVAC services firm and delivered a feasibility roadmap and governance framework built on a cost-ceiling approach, giving leadership a structured basis for evaluating the expansion decision beyond the initial feasibility dashboard.
 
 CORE COMPETENCIES
 • Go-To-Market & Revenue: GTM strategy, value proposition development, revenue forecasting & KPI tracking, solution selling, contract negotiation, market segmentation, product positioning & messaging, customer discovery, pipeline management, proposal development, account mapping, client retention

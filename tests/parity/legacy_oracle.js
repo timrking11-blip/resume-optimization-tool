@@ -5,6 +5,9 @@
    node tests/parity/legacy_oracle.js --write [--source <git ref>]   record goldens from that ref's page (default: HEAD)
    node tests/parity/legacy_oracle.js --check [--source <git ref>]   run the page (working tree by default) and compare
    node tests/parity/legacy_oracle.js --list                          show the cases
+   node tests/parity/legacy_oracle.js --emit <case> <file> [--lib p]  print one output to stdout (used by parity.py)
+   Options: --lib <path> the bank to load (default tests/parity/fixtures/library.json, pinned so hourly syncs cannot move
+   the goldens); --tpl <path> the template JSON (default templates/docx_template.json from the working tree).
 
    The page runs inside Node's vm with tests/lib/dom_stub.js: no fetch and no window.claude, so start() returns early;
    the oracle then sets the bank and template and drives the page's own functions. Every case records the resume model,
@@ -22,6 +25,9 @@ const args = process.argv.slice(2);
 const flag = k => args.includes(k);
 const opt = (k, d) => { const i = args.indexOf(k); return i >= 0 && args[i + 1] && !args[i + 1].startsWith("--") ? args[i + 1] : d; };
 const REF = opt("--source", null), ONLY = opt("--only", null);
+const LIB = path.resolve(ROOT, opt("--lib", "tests/parity/fixtures/library.json"));
+const TPL = path.resolve(ROOT, opt("--tpl", "templates/docx_template.json"));
+const EMIT = flag("--emit") ? { name: args[args.indexOf("--emit") + 1], file: args[args.indexOf("--emit") + 2] } : null;
 const ANSWER = "Rebuilt the renewal pipeline for the division and closed four new partnerships in one season.";
 
 function gitShow(ref, file) { return cp.execFileSync("git", ["show", `${ref}:${file}`], { cwd: ROOT, encoding: "utf8", maxBuffer: 64 << 20 }); }
@@ -116,8 +122,15 @@ async function main() {
   if (flag("--list")) { console.log(Object.keys(all).join("\n")); return; }
   const mode = flag("--write") ? "write" : "check";
   const scripts = pageScripts(REF);
-  const libText = fs.readFileSync(path.join(ROOT, "data", "library.json"), "utf8");
-  const tplText = fs.readFileSync(path.join(ROOT, "templates", "docx_template.json"), "utf8");
+  const libText = fs.readFileSync(LIB, "utf8");
+  const tplText = fs.readFileSync(TPL, "utf8");
+  if (EMIT) {
+    if (!all[EMIT.name]) throw new Error(`unknown case ${EMIT.name}`);
+    const out = await all[EMIT.name](boot(scripts, libText, tplText));
+    if (!(EMIT.file in out)) throw new Error(`case ${EMIT.name} has no ${EMIT.file}`);
+    process.stdout.write(out[EMIT.file]);
+    return;
+  }
   let failures = 0, files = 0;
   for (const [name, fn] of Object.entries(all)) {
     if (ONLY && name !== ONLY) continue;

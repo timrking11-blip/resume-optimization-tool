@@ -1,14 +1,15 @@
-"""Python twin parity for the baseline resume.
+"""Twin parity: rot.py and the page must build the same Word body from the same data, today.
 
-    python tests/parity/parity.py --write    record rot.py's own golden (golden/baseline/python_document.xml)
-    python tests/parity/parity.py            check rot.py against that golden (exit 1 on a difference) and report,
-                                             for information only, whether it also equals the page's document.xml
+    python tests/parity/parity.py
 
-rot.py's assemble() + docx_bytes() must keep producing the same Word body while the layout abstraction lands
-(Phase 1 step 4). The database is opened read-only; nothing is written to resume.db or to out/.
+rot.py's assemble() + docx_bytes() run against resume.db and curation/ (opened read-only, nothing written), and the
+page's resumeModel() + documentXml() run inside Node against data/library.json, the bank rot.py exported from that
+same database. The two word/document.xml strings must be identical. This is a live equality rather than a golden
+because the hourly sync moves both sides together; the page's own goldens (legacy_oracle.js) pin the bank instead.
 """
 import io
 import sqlite3
+import subprocess
 import sys
 import zipfile
 from pathlib import Path
@@ -17,18 +18,22 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 import rot  # noqa: E402
 
-GOLD = Path(__file__).parent / "golden" / "baseline"
-PY_GOLD = GOLD / "python_document.xml"
 
-
-def build_xml():
+def python_xml():
     con = sqlite3.connect(f"file:{rot.DB}?mode=ro", uri=True)
     con.row_factory = sqlite3.Row
     _, _, prof, base, _ = rot.load_curation()
     model = rot.assemble(con, {}, base, prof, "parity")
-    data = rot.docx_bytes(model)
-    with zipfile.ZipFile(io.BytesIO(data)) as z:
+    with zipfile.ZipFile(io.BytesIO(rot.docx_bytes(model))) as z:
         return z.read("word/document.xml").decode("utf-8")
+
+
+def page_xml():
+    r = subprocess.run(["node", str(ROOT / "tests" / "parity" / "legacy_oracle.js"), "--emit", "baseline", "document.xml", "--lib", "data/library.json"],
+                       cwd=ROOT, capture_output=True, encoding="utf-8")
+    if r.returncode:
+        raise SystemExit(f"page render failed:\n{r.stderr}")
+    return r.stdout
 
 
 def first_diff(a, b):
@@ -42,25 +47,12 @@ def first_diff(a, b):
 
 
 def main():
-    xml = build_xml()
-    if "--write" in sys.argv:
-        PY_GOLD.parent.mkdir(parents=True, exist_ok=True)
-        PY_GOLD.write_text(xml, encoding="utf-8")
-        print(f"wrote {PY_GOLD.relative_to(ROOT)} ({len(xml)} chars)")
-    else:
-        if not PY_GOLD.exists():
-            print("MISSING python golden (run --write first)")
-            sys.exit(1)
-        want = PY_GOLD.read_text(encoding="utf-8")
-        if want != xml:
-            line, x, y = first_diff(want, xml)
-            print(f"FAIL rot.py document.xml differs from its golden at line {line}\n  expected: {x}\n  actual:   {y}")
-            sys.exit(1)
-        print("python parity OK: rot.py document.xml identical to its golden")
-    page = GOLD / "document.xml"
-    if page.exists():
-        d = first_diff(page.read_text(encoding="utf-8"), xml)
-        print("page == python: identical" if not d else f"page != python (pre-existing, informational): first difference at line {d[0]}\n  page:   {d[1]}\n  python: {d[2]}")
+    py, page = python_xml(), page_xml()
+    d = first_diff(page, py)
+    if d:
+        print(f"FAIL rot.py and the page disagree on the baseline document.xml at line {d[0]}\n  page:   {d[1]}\n  python: {d[2]}")
+        sys.exit(1)
+    print(f"twin parity OK: rot.py and the page build the same baseline document.xml ({len(py)} chars)")
 
 
 if __name__ == "__main__":

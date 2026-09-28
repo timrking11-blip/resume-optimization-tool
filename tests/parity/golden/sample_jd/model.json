@@ -64,7 +64,6 @@
   "Tableau (beginner)",
   "Microsoft Excel (VLOOKUPs, INDEX-MATCH-MATCH, XLOOKUP)",
   "Office-Place Collaboration Tools (Slack, MS Teams, Webex, Google Meet, Zoom)",
-  "Notion",
   "Squarespace",
   "Marketo",
   "Canva",
@@ -141,12 +140,12 @@
      ]
     },
     {
-     "aid": "art-run-muhghrt2-3",
-     "tid": 110,
-     "text": "Ran weekly forecasting cadence via a central dashboard tracking sequenced GTM gates and owners, resolving blockers with the team.",
+     "aid": "lim-thought-partner",
+     "tid": 92,
+     "text": "Advise the CEO and board of a healthcare AI start-up client, translating business, technology, regulatory, and workforce tradeoffs into board-ready decisions.",
      "fresh": false,
      "claim_ids": [
-      "ach:art-run-muhghrt2-3"
+      "ach:lim-thought-partner"
      ]
     },
     {
@@ -194,15 +193,6 @@
      ]
     },
     {
-     "aid": "art-run-mukrbv3p-4",
-     "tid": 135,
-     "text": "Mined macroeconomic ad-pricing data via AI research agents to map proximity-driven print/radio buying patterns and refocus targeting on co-op-funded buyers.",
-     "fresh": false,
-     "claim_ids": [
-      "ach:art-run-mukrbv3p-4"
-     ]
-    },
-    {
      "aid": "psp-full-cycle-ownership",
      "tid": 82,
      "text": "Owned the full sales cycle in a pure new-business role — prospecting, discovery, pricing, proposal, negotiation, and close — with no SDR layer.",
@@ -219,6 +209,15 @@
      "claim_ids": [
       "ach:psp-pipeline-discovery",
       "metric:psp-pipeline-discovery:active-pipeline"
+     ]
+    },
+    {
+     "aid": "psp-decision-makers-ai",
+     "tid": 12,
+     "text": "Identified key decision-makers with ZoomInfo, LinkedIn Sales Navigator, and AI-assisted account mapping using OpenAI and Claude models.",
+     "fresh": false,
+     "claim_ids": [
+      "ach:psp-decision-makers-ai"
      ]
     }
    ]
@@ -253,8 +252,8 @@
     },
     {
      "aid": "tekl-southern-gas-discovery",
-     "tid": 59,
-     "text": "Led discovery directly with Southern Company Gas's Center of Excellence on data science, machine learning, and data governance.",
+     "tid": 112,
+     "text": "Helped stand up an Oil & Gas company's ML and AI Center of Excellence, applying sensor data to predict and detect gas outages.",
      "fresh": false,
      "claim_ids": [
       "ach:tekl-southern-gas-discovery"
@@ -309,13 +308,14 @@
      ]
     },
     {
-     "aid": "tekr-recruiting-talent",
-     "tid": 71,
-     "text": "Sourced, screened, and onboarded enterprise technical talent at scale across four years of professional recruiting.",
+     "aid": "tekr-vertex",
+     "tid": 67,
+     "text": "Produced more than half the revenue on Vertex Pharmaceuticals, the firm's largest regional growth account, and expanded into two new groups.",
      "fresh": false,
      "claim_ids": [
-      "ach:tekr-recruiting-talent",
-      "metric:tekr-recruiting-talent:years-recruiting"
+      "ach:tekr-vertex",
+      "metric:tekr-vertex:new-groups-opened",
+      "metric:tekr-vertex:share-of-account-revenue"
      ]
     }
    ]
@@ -478,34 +478,6 @@
      ]
     }
    ]
-  },
-  {
-   "key": "hvac",
-   "client": "HVAC Services Firm (Confidential)",
-   "location": "Santa Clarita, CA",
-   "dates": "August 2026 – September 2026",
-   "commitment": "Part Time",
-   "subtitle": "Consultant - Principal Analyst GTM Expansion",
-   "bullets": [
-    {
-     "aid": "art-run-muhfveal-0",
-     "tid": 106,
-     "text": "Built a feasibility dashboard with kill/pivot triggers for an HVAC firm's market-overlap expansion, using cost-ceilings to curb cannibalization and protect profit.",
-     "fresh": false,
-     "claim_ids": [
-      "ach:art-run-muhfveal-0"
-     ]
-    },
-    {
-     "aid": "art-run-mukn8dul-0",
-     "tid": 127,
-     "text": "Analyzed a proposed expansion site for an HVAC services firm and delivered a feasibility roadmap and governance framework built on a cost-ceiling approach, giving leadership a structured basis for evaluating the expansion decision beyond the initial feasibility dashboard.",
-     "fresh": false,
-     "claim_ids": [
-      "ach:art-run-mukn8dul-0"
-     ]
-    }
-   ]
   }
  ],
  "core_competencies": [
@@ -660,7 +632,7 @@
    "metric:lim-feasibility-roadmap:stage-gates"
   ],
   "role:hc_ai_strategy:5": [
-   "ach:art-run-muhghrt2-3"
+   "ach:lim-thought-partner"
   ],
   "role:hc_ai_strategy:6": [
    "ach:lim-engagement-terms",
@@ -686,14 +658,14 @@
    "metric:psp-closed-deals:signed-deals"
   ],
   "role:psp:2": [
-   "ach:art-run-mukrbv3p-4"
-  ],
-  "role:psp:3": [
    "ach:psp-full-cycle-ownership"
   ],
-  "role:psp:4": [
+  "role:psp:3": [
    "ach:psp-pipeline-discovery",
    "metric:psp-pipeline-discovery:active-pipeline"
+  ],
+  "role:psp:4": [
+   "ach:psp-decision-makers-ai"
   ],
   "role:tek_lead": [
    "role:tek_lead:title",
@@ -735,8 +707,9 @@
    "metric:tekr-750k:annual-revenue"
   ],
   "role:tek_recruiter:3": [
-   "ach:tekr-recruiting-talent",
-   "metric:tekr-recruiting-talent:years-recruiting"
+   "ach:tekr-vertex",
+   "metric:tekr-vertex:new-groups-opened",
+   "metric:tekr-vertex:share-of-account-revenue"
   ],
   "role:demanddrive": [
    "role:demanddrive:title",
@@ -818,20 +791,6 @@
   "eng:healthcare:8": [
    "ach:lim-non-dilutive-capital",
    "metric:lim-non-dilutive-capital:non-dilutive-route"
-  ],
-  "eng:hvac": [
-   "eng:hvac:client",
-   "eng:hvac:location",
-   "eng:hvac:start",
-   "eng:hvac:end",
-   "eng:hvac:commitment",
-   "eng:hvac:subtitle"
-  ],
-  "eng:hvac:0": [
-   "ach:art-run-muhfveal-0"
-  ],
-  "eng:hvac:1": [
-   "ach:art-run-mukn8dul-0"
   ],
   "core:Go-To-Market & Revenue": [
    "core:go-to-market-revenue:gtm-strategy:text",

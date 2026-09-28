@@ -71,8 +71,7 @@
   "Tableau (beginner)",
   "Microsoft Excel (VLOOKUPs, INDEX-MATCH-MATCH, XLOOKUP)",
   "Microsoft Stack",
-  "Office-Place Collaboration Tools (Slack, MS Teams, Webex, Google Meet, Zoom)",
-  "Notion"
+  "Office-Place Collaboration Tools (Slack, MS Teams, Webex, Google Meet, Zoom)"
  ],
  "education": [
   {
@@ -101,6 +100,15 @@
      ]
     },
     {
+     "aid": "art-run-muhfveal-0",
+     "tid": 106,
+     "text": "Built a feasibility dashboard with kill/pivot triggers for an HVAC firm's market-overlap expansion, using cost-ceilings to curb cannibalization and protect profit.",
+     "fresh": false,
+     "claim_ids": [
+      "ach:art-run-muhfveal-0"
+     ]
+    },
+    {
      "aid": "lim-readiness-assessment",
      "tid": 48,
      "text": "Authored the launch-readiness assessment that reset the execution sequence, converting five organizational gaps into a dated plan with named owners.",
@@ -122,8 +130,8 @@
     },
     {
      "aid": "lim-operating-cadence",
-     "tid": 138,
-     "text": "Onboarded a healthcare tech startup's team to a gated tracking system, giving the CEO approval oversight on dev expenses and fractional work hours.",
+     "tid": 111,
+     "text": "Mapped stakeholder intervention and sign-off criteria for a startup client, defining who owned gates and approvals across the engagement.",
      "fresh": false,
      "claim_ids": [
       "ach:lim-operating-cadence"
@@ -148,15 +156,6 @@
      "claim_ids": [
       "ach:lim-gtm-ownership",
       "metric:lim-gtm-ownership:pricing-tiers"
-     ]
-    },
-    {
-     "aid": "lim-thought-partner",
-     "tid": 92,
-     "text": "Advise the CEO and board of a healthcare AI start-up client, translating business, technology, regulatory, and workforce tradeoffs into board-ready decisions.",
-     "fresh": false,
-     "claim_ids": [
-      "ach:lim-thought-partner"
      ]
     }
    ]
@@ -261,8 +260,8 @@
     },
     {
      "aid": "tekl-southern-gas-discovery",
-     "tid": 59,
-     "text": "Led discovery directly with Southern Company Gas's Center of Excellence on data science, machine learning, and data governance.",
+     "tid": 112,
+     "text": "Helped stand up an Oil & Gas company's ML and AI Center of Excellence, applying sensor data to predict and detect gas outages.",
      "fresh": false,
      "claim_ids": [
       "ach:tekl-southern-gas-discovery"
@@ -478,34 +477,6 @@
      ]
     }
    ]
-  },
-  {
-   "key": "hvac",
-   "client": "HVAC Services Firm (Confidential)",
-   "location": "Santa Clarita, CA",
-   "dates": "August 2026 – September 2026",
-   "commitment": "Part Time",
-   "subtitle": "Consultant - Principal Analyst GTM Expansion",
-   "bullets": [
-    {
-     "aid": "art-run-muhfveal-0",
-     "tid": 106,
-     "text": "Built a feasibility dashboard with kill/pivot triggers for an HVAC firm's market-overlap expansion, using cost-ceilings to curb cannibalization and protect profit.",
-     "fresh": false,
-     "claim_ids": [
-      "ach:art-run-muhfveal-0"
-     ]
-    },
-    {
-     "aid": "art-run-mukn8dul-0",
-     "tid": 127,
-     "text": "Analyzed a proposed expansion site for an HVAC services firm and delivered a feasibility roadmap and governance framework built on a cost-ceiling approach, giving leadership a structured basis for evaluating the expansion decision beyond the initial feasibility dashboard.",
-     "fresh": false,
-     "claim_ids": [
-      "ach:art-run-mukn8dul-0"
-     ]
-    }
-   ]
   }
  ],
  "core_competencies": [
@@ -644,27 +615,27 @@
    "metric:lim-claude-code-tracker:automated-tests"
   ],
   "role:hc_ai_strategy:1": [
+   "ach:art-run-muhfveal-0"
+  ],
+  "role:hc_ai_strategy:2": [
    "ach:lim-readiness-assessment",
    "metric:lim-readiness-assessment:gaps-closed-into-plan"
   ],
-  "role:hc_ai_strategy:2": [
+  "role:hc_ai_strategy:3": [
    "ach:lim-collateral",
    "metric:lim-collateral:round-table-documents"
   ],
-  "role:hc_ai_strategy:3": [
+  "role:hc_ai_strategy:4": [
    "ach:lim-operating-cadence"
   ],
-  "role:hc_ai_strategy:4": [
+  "role:hc_ai_strategy:5": [
    "ach:lim-feasibility-roadmap",
    "metric:lim-feasibility-roadmap:recommendations",
    "metric:lim-feasibility-roadmap:stage-gates"
   ],
-  "role:hc_ai_strategy:5": [
+  "role:hc_ai_strategy:6": [
    "ach:lim-gtm-ownership",
    "metric:lim-gtm-ownership:pricing-tiers"
-  ],
-  "role:hc_ai_strategy:6": [
-   "ach:lim-thought-partner"
   ],
   "role:psp": [
    "role:psp:title",
@@ -818,20 +789,6 @@
   "eng:healthcare:8": [
    "ach:lim-claude-code-tracker",
    "metric:lim-claude-code-tracker:automated-tests"
-  ],
-  "eng:hvac": [
-   "eng:hvac:client",
-   "eng:hvac:location",
-   "eng:hvac:start",
-   "eng:hvac:end",
-   "eng:hvac:commitment",
-   "eng:hvac:subtitle"
-  ],
-  "eng:hvac:0": [
-   "ach:art-run-muhfveal-0"
-  ],
-  "eng:hvac:1": [
-   "ach:art-run-mukn8dul-0"
   ],
   "core:Go-To-Market & Revenue": [
    "core:go-to-market-revenue:gtm-strategy:text",
