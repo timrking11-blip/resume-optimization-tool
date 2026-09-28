@@ -3,6 +3,7 @@
     "id": "R1_base_2026",
     "file": "Career Finder Folder\\Tim King Resume 2026 .docx",
     "md5": "a267263fe50a70e376169b3832eb1934",
+    "authored_at": "2026-08-13T18:24:00",
     "target_role": "General baseline (Resume 1 — bullet standard)",
     "kind": "docx",
     "headline": null,
@@ -173,12 +174,14 @@
         "text": "Sales Development Representative/ Inside Sales Representative"
       }
     ],
-    "tagline_lines": []
+    "tagline_lines": [],
+    "contact_lines": []
   },
   {
     "id": "R2_base_2026_preliminal",
     "file": "Career Finder Folder\\Resumes\\Tim King Resume 2026 .docx",
     "md5": "57a633a9264614df70d46f1ba1dce772",
+    "authored_at": "2026-08-09T08:09:00",
     "target_role": "General baseline (pre-Liminal)",
     "kind": "docx",
     "headline": null,
@@ -311,12 +314,14 @@
         "text": "Sales Development Representative/ Inside Sales Representative"
       }
     ],
-    "tagline_lines": []
+    "tagline_lines": [],
+    "contact_lines": []
   },
   {
     "id": "R3_fundraising",
     "file": "Career Finder Folder\\Resumes\\Tim King Fundraising Resume 2026 .docx",
     "md5": "f93265fe3f3db5149195dc969905576e",
+    "authored_at": "2026-08-09T06:19:00",
     "target_role": "Educational & nonprofit fundraising / advancement",
     "kind": "docx",
     "headline": null,
@@ -470,12 +475,14 @@
         "text": "B.S., Finance & Marketing (Double Major) | University of Maine Business School | 2018"
       }
     ],
-    "tagline_lines": []
+    "tagline_lines": [],
+    "contact_lines": []
   },
   {
     "id": "R4_openai_client_partner_me",
     "file": "Career Finder Folder\\Resumes\\Tim_King_Resume_OpenAI_Client_Partner_Media & Entertainment-TK.docx",
     "md5": "f3d6cbe1cfc0456de4f3ae90726069fd",
+    "authored_at": "2026-08-11T20:25:00",
     "target_role": "OpenAI — Client Partner, Media & Entertainment",
     "kind": "docx",
     "headline": "MEDIA & ENTERTAINMENT ADVERTISING SALES · STRATEGIC PARTNERSHIPS · NEW BUSINESS",
@@ -633,12 +640,14 @@
         "text": "B.S., Finance & Marketing (Double Major) | University of Maine Business School | 2018"
       }
     ],
-    "tagline_lines": []
+    "tagline_lines": [],
+    "contact_lines": []
   },
   {
     "id": "R5_luminance_commercial_director",
     "file": "Career Finder Folder\\Resumes\\Tim_King_Resume_Luminance_Commercial_Director.docx",
     "md5": "4e6d4a19501db3c9bc00933ea26f8875",
+    "authored_at": "2026-08-11T18:26",
     "target_role": "Luminance — Commercial Director (enterprise AI sales leadership)",
     "kind": "docx",
     "headline": "ENTERPRISE SALES LEADERSHIP · AI & TECHNOLOGY SOLUTIONS · NEW BUSINESS",
@@ -779,12 +788,14 @@
         "text": "B.S., Finance & Marketing (Double Major) | University of Maine Business School | 2018"
       }
     ],
-    "tagline_lines": []
+    "tagline_lines": [],
+    "contact_lines": []
   },
   {
     "id": "R6_admarketplace_director",
     "file": "Career Finder Folder\\Resumes\\Tim_King_Resume_adMarketplace_Director_Advertiser_Sales.docx",
     "md5": "80bba217fbcb61eadfbfa704b1e943ee",
+    "authored_at": "2026-08-14T00:13:44",
     "target_role": "adMarketplace — Director, Advertiser Sales",
     "kind": "docx",
     "headline": "PERFORMANCE MEDIA & ADTECH SALES · SEARCH INTENT · NEW BUSINESS",
@@ -958,12 +969,14 @@
         "text": "B.S., Finance & Marketing (Double Major) | University of Maine Business School | 2018"
       }
     ],
-    "tagline_lines": []
+    "tagline_lines": [],
+    "contact_lines": []
   },
   {
     "id": "R7_fox_weather_director",
     "file": "Career Finder Folder\\Resumes\\Tim_King_Resume_FOX_Weather_Director_Ad_Sales.pdf",
     "md5": "140a2751af99df1521ee993163294d94",
+    "authored_at": "2026-08-11T17:34",
     "target_role": "FOX Weather — Director, Ad Sales",
     "kind": "pdf_resume",
     "headline": "MEDIA & SPONSORSHIP SALES · INTEGRATED CROSS-PLATFORM PARTNERSHIPS · REVENUE LEADERSHIP",
@@ -1111,12 +1124,14 @@
         "text": "B.S., Finance & Marketing (Double Major) | University of Maine Business School | 2018"
       }
     ],
-    "tagline_lines": []
+    "tagline_lines": [],
+    "contact_lines": []
   },
   {
     "id": "R8_bairesdev_vp_sales",
     "file": "Business Advisory Services\\Timothy King Resume - BairesDev VP Sales.docx",
     "md5": "40eff717426450d3445d6f4fc4839c14",
+    "authored_at": "2026-09-03T06:26:47",
     "target_role": "BairesDev — VP Sales (IT services)",
     "kind": "docx",
     "headline": null,
@@ -1290,12 +1305,14 @@
         "text": "September 2014 – December 2018"
       }
     ],
-    "tagline_lines": []
+    "tagline_lines": [],
+    "contact_lines": []
   },
   {
     "id": "R9_knit_growth_marketing",
     "file": "Business Advisory Services\\Timothy King Resume - Knit Growth Marketing.docx",
     "md5": "a8599a105de187fda7761efd71946be9",
+    "authored_at": "2026-08-26T20:27:44",
     "target_role": "Knit — Growth Marketing",
     "kind": "docx",
     "headline": null,
@@ -1469,12 +1486,14 @@
         "text": "September 2014 – December 2018"
       }
     ],
-    "tagline_lines": []
+    "tagline_lines": [],
+    "contact_lines": []
   },
   {
     "id": "R10_mri_simmons_audience",
     "file": "Business Advisory Services\\Timothy King Resume - MRI-Simmons Audience Activation.docx",
     "md5": "4ba9ce0a2a45f7b53a353edf9b2e1256",
+    "authored_at": "2026-08-26T20:34:27",
     "target_role": "MRI-Simmons — Audience Activation (data sales)",
     "kind": "docx",
     "headline": null,
@@ -1648,12 +1667,14 @@
         "text": "September 2014 – December 2018"
       }
     ],
-    "tagline_lines": []
+    "tagline_lines": [],
+    "contact_lines": []
   },
   {
     "id": "R11_magellan_measurement",
     "file": "Business Advisory Services\\Timothy King Resume - Magellan AI Measurement Growth.docx",
     "md5": "337829b3f94678053bf2620e40b29e76",
+    "authored_at": "2026-08-26T06:20:34",
     "target_role": "Magellan AI — Measurement Growth",
     "kind": "docx",
     "headline": null,
@@ -1832,12 +1853,14 @@
         "text": "September 2014 – December 2018"
       }
     ],
-    "tagline_lines": []
+    "tagline_lines": [],
+    "contact_lines": []
   },
   {
     "id": "R12_meridian_gtm",
     "file": "Business Advisory Services\\Timothy King Resume - Meridian GTM.docx",
     "md5": "f31ddebc9616247bfb9764cf70809315",
+    "authored_at": "2026-08-26T06:00:08",
     "target_role": "Meridian — GTM",
     "kind": "docx",
     "headline": null,
@@ -2021,12 +2044,14 @@
         "text": "September 2014 – December 2018"
       }
     ],
-    "tagline_lines": []
+    "tagline_lines": [],
+    "contact_lines": []
   },
   {
     "id": "R13_samba_platform_sales",
     "file": "Business Advisory Services\\Timothy King Resume - Samba Platform Sales.docx",
     "md5": "371007a551ebc3009079728d568e9094",
+    "authored_at": "2026-08-26T20:46:38",
     "target_role": "Samba TV — Platform / Data Partnerships Sales",
     "kind": "docx",
     "headline": null,
@@ -2200,12 +2225,14 @@
         "text": "September 2014 – December 2018"
       }
     ],
-    "tagline_lines": []
+    "tagline_lines": [],
+    "contact_lines": []
   },
   {
     "id": "R14_smartly_agency_partnerships",
     "file": "Business Advisory Services\\Timothy King Resume - Smartly Agency Partnerships.docx",
     "md5": "620209e57cb2768f4ba3e0526fdc2d25",
+    "authored_at": "2026-08-26T20:38:36",
     "target_role": "Smartly — Agency Partnerships (player-coach)",
     "kind": "docx",
     "headline": null,
@@ -2379,12 +2406,14 @@
         "text": "September 2014 – December 2018"
       }
     ],
-    "tagline_lines": []
+    "tagline_lines": [],
+    "contact_lines": []
   },
   {
     "id": "R15_versant_transformation",
     "file": "Business Advisory Services\\Timothy King Resume - Versant Transformation Enablement.docx",
     "md5": "f0f6a601dc046ad644a56114a6e9fc65",
+    "authored_at": "2026-09-03T06:39:53",
     "target_role": "Versant — Transformation & Enablement",
     "kind": "docx",
     "headline": null,
@@ -2553,12 +2582,14 @@
         "text": "September 2014 – December 2018"
       }
     ],
-    "tagline_lines": []
+    "tagline_lines": [],
+    "contact_lines": []
   },
   {
     "id": "R16_admarketplace_adv_success",
     "file": "Business Advisory Services\\Timothy King Resume - adMarketplace Advertiser Success.docx",
     "md5": "12c7eafb90c7f48982463722d7ec347d",
+    "authored_at": "2026-08-26T06:27:00",
     "target_role": "adMarketplace — Advertiser Success",
     "kind": "docx",
     "headline": null,
@@ -2732,12 +2763,14 @@
         "text": "September 2014 – December 2018"
       }
     ],
-    "tagline_lines": []
+    "tagline_lines": [],
+    "contact_lines": []
   },
   {
     "id": "S17_liminal_summary",
     "file": "Career Finder Folder\\Liminal_Chief_of_Strategy_Summary.md.pdf",
     "md5": "0d4892d96e98b3359cb8ed6c42c114e5",
+    "authored_at": "2026-08-13T20:15",
     "target_role": "Liminal work summary (pre-written bullets)",
     "kind": "pdf_liminal",
     "headline": null,
@@ -2795,12 +2828,14 @@
         "text": "Chief of Strategy — Liminal (behavioral-health AI) · 2026–Present"
       }
     ],
-    "tagline_lines": []
+    "tagline_lines": [],
+    "contact_lines": []
   },
   {
     "id": "S18_linkedin",
     "file": "Career Finder Folder\\Resume Optimization Tool\\sources\\linkedin_2026-09-25.md",
     "md5": "b594acde2a787aae7c79a2f4a4b77ffa",
+    "authored_at": "2026-09-25",
     "target_role": "LinkedIn public profile (captured 2026-09-25)",
     "kind": "linkedin_md",
     "headline": "Sales Professional | Marketing, Advertising, Product, Services, & Sales GTM Strategist Providing Advisory Services | Systems Thinker | Process Engineer | AI Adoption Enthusiast",
@@ -2977,6 +3012,10 @@
       },
       {
         "role": "psp",
+        "text": "Mar 2026 - Aug 2026 · 6 mos · New York, New York, United States · On-site"
+      },
+      {
+        "role": "psp",
         "text": "TEKsystems · Full-time · 4 yrs 8 mos · Hybrid"
       },
       {
@@ -2984,8 +3023,16 @@
         "text": "Specialized Lead - Cloud Applications & Data Analytics"
       },
       {
+        "role": "tek_lead",
+        "text": "Nov 2024 - Oct 2025 · 1 yr"
+      },
+      {
         "role": "tek_recruiter",
         "text": "National Recruiter - Data Analytics & Insights"
+      },
+      {
+        "role": "tek_recruiter",
+        "text": "Mar 2021 - Nov 2024 · 3 yrs 9 mos"
       },
       {
         "role": "demanddrive",
@@ -2997,19 +3044,39 @@
       },
       {
         "role": "demanddrive",
+        "text": "Jul 2019 - Sep 2020 · Waltham, Massachusetts, United States"
+      },
+      {
+        "role": "demanddrive",
         "text": "Sales Development Representative"
+      },
+      {
+        "role": "demanddrive",
+        "text": "Aug 2018 - Jul 2019"
       },
       {
         "role": "yri",
         "text": "Marketing and Product Development Intern — YRI Custom Designs"
       },
       {
+        "role": "yri",
+        "text": "Aug 2016 - May 2017 · Portsmouth, NH"
+      },
+      {
         "role": "massdot",
         "text": "Marketing and Communications Intern — Massachusetts Department of Transportation EZ Pass Services Division"
       },
       {
+        "role": "massdot",
+        "text": "May 2016 - Sep 2016 · Weston, MA"
+      },
+      {
         "role": "liminal",
         "text": "Healthcare Tech & Research Innovation Start-Up | Principle Business Strategy Consultant"
+      },
+      {
+        "role": "liminal",
+        "text": "Jul 2026 – Present"
       },
       {
         "role": "education",
@@ -3020,12 +3087,14 @@
         "text": "University of Maine — Bachelor of Business Administration - BBA, Marketing — 2013 – 2018"
       }
     ],
-    "tagline_lines": []
+    "tagline_lines": [],
+    "contact_lines": []
   },
   {
     "id": "S19_source_template",
     "file": "Career Finder Folder\\Resume Optimization Tool\\sources\\TIM KING SOURCE RESUME.docx",
     "md5": "f8f7d2b8b639644701b6d5fdc9656a9a",
+    "authored_at": "2026-09-26T20:40:00",
     "target_role": "Source template (default layout since 2026-09-27; Sections A–D)",
     "kind": "docx_template",
     "headline": null,
@@ -3258,6 +3327,9 @@
     ],
     "tagline_lines": [
       "Sales Professional (End to End Sales) | Marketing, Advertising, Product, Services, & Sales GTM Engineer | Business Strategy | GTM and Sales/ Marketing Execution Specialist | Systems Thinker | Process Engineer | AI Adoption Enthusiast"
+    ],
+    "contact_lines": [
+      "New York, NY | (617) 960-7176 | tim.r.king11@gmail.com | LinkedIn Profile | GitHub | Website"
     ]
   }
 ]

@@ -119,6 +119,7 @@ def build(src):
         "name": '<w:pPr><w:spacing w:after="40"/><w:jc w:val="center"/></w:pPr>',
         "contact": '<w:pPr><w:spacing w:after="200"/><w:jc w:val="center"/></w:pPr>',
         "heading": f'<w:pPr><w:pStyle w:val="Heading1"/><w:keepNext/>{rule}<w:spacing w:before="240" w:after="100"/></w:pPr>',
+        "summary": '<w:pPr><w:spacing w:after="100"/><w:jc w:val="both"/></w:pPr>',
         "tagline": '<w:pPr><w:spacing w:after="100"/><w:jc w:val="center"/></w:pPr>',
         "expertise": '<w:pPr><w:spacing w:after="100"/><w:jc w:val="center"/></w:pPr>',
         "tech_label": '<w:pPr><w:keepNext/><w:jc w:val="center"/></w:pPr>',

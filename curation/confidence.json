@@ -1,0 +1,32 @@
+{
+  "_about": "How claim confidence is computed (tier 2, derived knowledge). Deterministic and versioned: bump formula_version whenever a weight changes so claim_confidence_history stays comparable. Nothing here is edited by the model.",
+  "formula_version": "1.0",
+  "strengths": {
+    "USER_ENTERED": 1.0,
+    "INTERVIEW_RESPONSE": 0.95,
+    "MASTER_RESUME": 0.9,
+    "HISTORICAL_RESUME": 0.8,
+    "PUBLIC_PROFILE": 0.7,
+    "EXTERNAL_RESEARCH": 0.6,
+    "MODEL_INFERENCE": 0.5
+  },
+  "_strengths_note": "USER_ENTERED = Gate answers, sheet edits, engagement details, chat statements. MASTER_RESUME = the source template (S19). HISTORICAL_RESUME = R1–R16 and the consulting summary (S17); the newer authored_at wins ties. PUBLIC_PROFILE = the LinkedIn capture (S18). EXTERNAL_RESEARCH is about companies, never about Tim until he confirms. MODEL_INFERENCE never prints without corroboration. A job description is tier-2 input, not evidence.",
+  "corroboration_bonus": 0.05,
+  "cap": 0.98,
+  "verified_confidence": 1.0,
+  "contradiction_penalty": 0.3,
+  "date_tie_break": "newest_authored_at",
+  "print": {
+    "fact_min": 0.6,
+    "number_min": 0.7,
+    "disputed": "never",
+    "on_conflict": "print_stronger_and_warn"
+  },
+  "bands": {
+    "summary_max_words": 55,
+    "tagline_phrase_max_chars": 60,
+    "expertise_item_max_chars": 70,
+    "technology_max_chars": 90,
+    "core_item_max_chars": 80
+  }
+}

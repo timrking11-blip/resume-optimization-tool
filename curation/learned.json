@@ -16,7 +16,11 @@
       "notes": "Learned from Match Desk run run-muhbu38f",
       "metrics": [],
       "patterns": [],
-      "variants": {}
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-muhbu38f:0",
+        "ev:edit:run-muhbu38f:gate2-run-muhbu38f-0"
+      ]
     },
     {
       "id": "art-run-muhbu38f-1",
@@ -33,7 +37,10 @@
       "notes": "Learned from Match Desk run run-muhbu38f",
       "metrics": [],
       "patterns": [],
-      "variants": {}
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-muhbu38f:1"
+      ]
     },
     {
       "id": "art-run-muhbu38f-2",
@@ -49,7 +56,10 @@
       "notes": "Learned from Match Desk run run-muhbu38f",
       "metrics": [],
       "patterns": [],
-      "variants": {}
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-muhbu38f:3"
+      ]
     },
     {
       "id": "art-run-muhfveal-0",
@@ -68,7 +78,10 @@
       "patterns": [
         "HVAC"
       ],
-      "variants": {}
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-muhfveal:0"
+      ]
     },
     {
       "id": "art-run-muhfveal-1",
@@ -84,7 +97,10 @@
       "notes": "Learned from Match Desk run run-muhfveal",
       "metrics": [],
       "patterns": [],
-      "variants": {}
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-muhfveal:1"
+      ]
     },
     {
       "id": "art-run-muhfveal-2",
@@ -99,7 +115,10 @@
       "notes": "Learned from Match Desk run run-muhfveal",
       "metrics": [],
       "patterns": [],
-      "variants": {}
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-muhfveal:3"
+      ]
     },
     {
       "id": "art-run-muhghrt2-2",
@@ -116,7 +135,10 @@
       "notes": "Learned from Match Desk run run-muhghrt2",
       "metrics": [],
       "patterns": [],
-      "variants": {}
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-muhghrt2:2"
+      ]
     },
     {
       "id": "art-run-muhghrt2-3",
@@ -132,7 +154,10 @@
       "notes": "Learned from Match Desk run run-muhghrt2",
       "metrics": [],
       "patterns": [],
-      "variants": {}
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-muhghrt2:3"
+      ]
     }
   ],
   "bullets": [
@@ -141,35 +166,51 @@
       "angle": "gate2",
       "text": "Coordinated the client's CEO, COO, CISO, Chief Clinical Officer, two developers, outside counsel, and CPA to architect the entity, IP, and data-rights structure.",
       "origin": "artifact",
-      "status": "accepted"
+      "status": "accepted",
+      "evidence": [
+        "ev:ans:run-muhbu38f:4",
+        "ev:edit:run-muhbu38f:gate2-run-muhbu38f-3"
+      ]
     },
     {
       "achievement_id": "lim-operating-cadence",
       "angle": "gate2",
       "text": "Mapped stakeholder intervention and sign-off criteria for a startup client, defining who owned gates and approvals across the engagement.",
       "origin": "artifact",
-      "status": "accepted"
+      "status": "accepted",
+      "evidence": [
+        "ev:ans:run-muhfveal:4"
+      ]
     },
     {
       "achievement_id": "tekl-southern-gas-discovery",
       "angle": "gate2",
       "text": "Helped stand up an Oil & Gas company's ML and AI Center of Excellence, applying sensor data to predict and detect gas outages.",
       "origin": "artifact",
-      "status": "accepted"
+      "status": "accepted",
+      "evidence": [
+        "ev:ans:run-muhghrt2:0"
+      ]
     },
     {
       "achievement_id": "tekl-universal-poc",
       "angle": "gate2",
       "text": "Sourced and staffed 8 solution architects across 8 workstreams on a 12-18 month renewable managed services engagement worth $1M annually.",
       "origin": "artifact",
-      "status": "accepted"
+      "status": "accepted",
+      "evidence": [
+        "ev:ans:run-muhghrt2:1"
+      ]
     },
     {
       "achievement_id": "tekl-fortune500-discovery",
       "angle": "gate2",
       "text": "Closed $700K in revenue across 5 resources with a Senior Business Architect by diagnosing the org's path from governance to ML/AI CoE.",
       "origin": "artifact",
-      "status": "accepted"
+      "status": "accepted",
+      "evidence": [
+        "ev:ans:run-muhghrt2:4"
+      ]
     }
   ],
   "overrides": {
@@ -299,20 +340,6 @@
     }
   },
   "profile_overrides": {
-    "roles": {
-      "psp": {
-        "end": "2026-08"
-      },
-      "liminal": {
-        "title_variants": [
-          "Chief Strategy Consultant",
-          "Chief Strategy Officer",
-          "Chief of Strategy",
-          "Principal Business Strategy Consultant",
-          "Founder, Business Consultant, and GTM Engineer"
-        ]
-      }
-    },
     "_history": [
       {
         "superseded": "source template 2026-09-27",
@@ -323,6 +350,24 @@
           "engagement": "Advisory & GTM engineering practice · Key engagement: healthcare AI start-up (confidential)",
           "context_line": "Advisory & GTM engineering practice · Key engagement: healthcare AI start-up (confidential)"
         }
+      },
+      {
+        "superseded": "2026-09-27",
+        "roles": {
+          "psp": {
+            "end": "2026-08"
+          },
+          "liminal": {
+            "title_variants": [
+              "Chief Strategy Consultant",
+              "Chief Strategy Officer",
+              "Chief of Strategy",
+              "Principal Business Strategy Consultant",
+              "Founder, Business Consultant, and GTM Engineer"
+            ]
+          }
+        },
+        "why": "role facts now live in curation/claims.json with their evidence"
       }
     ]
   },

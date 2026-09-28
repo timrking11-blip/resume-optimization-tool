@@ -13,7 +13,9 @@
       "metrics": [{"label": "signed deals", "value": 5, "unit": "deals"}, {"label": "net-new accounts", "value": 2, "unit": "accounts"}],
       "confidence": "conflict",
       "notes": "R1/R2/R3/R4/R5/R6/R7/R8/R15 say 5. R9–R14/R16 (Aug 26) and LinkedIn say 3. Gate-1 question.",
-      "patterns": ["^Closed (5|five|3|three) signed", "closing five signed partnerships", "Closed five signed partnerships", "Closed \\$14,035"]
+      "patterns": ["^Closed (5|five|3|three) signed", "closing five signed partnerships", "Closed five signed partnerships", "Closed \\$14,035"],
+      "resolutions": {"signed-deals": {"value": 5, "why": "Gate 1 answer 2026-09-25: ended Aug 2026 with 5 signed deals", "at": "2026-09-25", "evidence": ["ev:ans:gate1:0"]}},
+      "contradict_patterns": {"signed-deals": ["^Closed (3|three) signed"]}
     },
     {
       "id": "psp-net-revenue",
@@ -48,7 +50,7 @@
         "change": "Runs a diagnostic, discovery-first approach — mapping stakeholders and how an organization operates before proposing anything that changes it."
       },
       "tags": {"pipeline-management": 1.0, "discovery": 1.0, "proposal-development": 0.7, "stakeholder-alignment": 0.4},
-      "metrics": [{"label": "active pipeline", "value": 115000, "unit": "USD"}],
+      "metrics": [{"label": "active pipeline", "value": 115000, "unit": "USD", "evidence": ["ev:ans:gate1:2"], "as_of": "2026-08"}],
       "confidence": "verified",
       "notes": "$115K pipeline figure from LinkedIn only.",
       "patterns": ["pipeline of active proposals", "proposal pipeline", "Run a diagnostic, discovery-first approach"]
@@ -184,7 +186,8 @@
       "metrics": [{"label": "build avoided", "value": 1500000, "unit": "USD"}, {"label": "recommended path", "value": 400000, "unit": "USD"}],
       "confidence": "verified",
       "notes": "Board approval status unconfirmed — Gate-1 question decides 'Authored' vs 'Recommended' framing.",
-      "patterns": ["build-vs-buy", "buy-vs-build", "build-versus-buy", "sub-\\$500K"]
+      "patterns": ["build-vs-buy", "buy-vs-build", "build-versus-buy", "sub-\\$500K"],
+      "evidence": ["ev:ans:gate1:3"]
     },
     {
       "id": "lim-staffing-restructure",
@@ -194,10 +197,11 @@
         "services": "Recommended cutting a proposed $950K/year, five-person engineering build to roughly a quarter of the cost without cutting the core deliverable."
       },
       "tags": {"capacity-planning": 1.0, "unit-economics": 0.9, "buy-vs-build": 0.6, "hiring-onboarding": 0.4, "board-advisory": 0.5},
-      "metrics": [{"label": "annual cost avoided", "value": 700000, "unit": "USD"}, {"label": "cost reduction", "value": 73, "unit": "%"}],
+      "metrics": [{"label": "annual cost avoided", "value": 700000, "unit": "USD", "derived": true, "derived_from": "$946K/year proposed minus the $200–260K/year model"}, {"label": "cost reduction", "value": 73, "unit": "%"}],
       "confidence": "verified",
       "notes": "$946K (Liminal summary) vs $950K (R8) — same figure rounded.",
-      "patterns": ["946K", "950K"]
+      "patterns": ["946K", "950K"],
+      "evidence": ["ev:ans:gate1:3"]
     },
     {
       "id": "lim-feasibility-roadmap",
@@ -245,7 +249,8 @@
       "metrics": [],
       "confidence": "verified",
       "notes": "Counterparty is in a live negotiation — never name it in output.",
-      "patterns": ["data-rights exposure", "Blocked a proposed"]
+      "patterns": ["data-rights exposure", "Blocked a proposed"],
+      "evidence": ["ev:ans:gate1:3"]
     },
     {
       "id": "lim-market-sizing-exit-paths",
@@ -324,7 +329,7 @@
         "coordination": "Coordinated outside counsel, CPA, engineering, founders, and a contractor — none reporting to me — while restructuring a 320-hour scope into 166 hours."
       },
       "tags": {"negotiation": 1.0, "influence-without-authority": 0.8, "capacity-planning": 0.5, "stakeholder-alignment": 0.5},
-      "metrics": [{"label": "scope reduction", "value": 48, "unit": "%"}],
+      "metrics": [{"label": "scope reduction", "value": 48, "unit": "%", "derived": true, "derived_from": "320 hours cut to 166 hours"}],
       "confidence": "verified",
       "notes": "",
       "patterns": ["320-hour"]
@@ -425,10 +430,11 @@
         "leader": "Led, coached, and developed a direct-report team of quota-carrying sellers inside a 30-person practice, including hiring, onboarding, and ramp."
       },
       "tags": {"team-coaching": 1.0, "performance-management": 1.0, "player-coach": 0.8, "pipeline-management": 0.5, "hiring-onboarding": 0.4},
-      "metrics": [{"label": "practice size", "value": 30, "unit": "people"}],
+      "metrics": [{"label": "practice size", "value": 30, "unit": "people"}, {"label": "direct reports", "value": 5, "unit": "reports (3–5)", "evidence": ["ev:ans:gate1:1"]}],
       "confidence": "conflict",
       "notes": "Base fact (R1, LinkedIn): coached recruiters. Later versions escalate to 'direct-report team of quota-carrying sellers' + hiring. Gate-1 question on formal reports.",
-      "patterns": ["coach", "Oversaw"]
+      "patterns": ["coach", "Oversaw"],
+      "evidence": ["ev:ans:gate1:1"]
     },
     {
       "id": "tekl-universal-poc",
@@ -438,7 +444,7 @@
         "driver": "Won a proof-of-concept RFP with Universal Parks — scoping the proof of value, driving technical evaluation, and owning the relationship through award."
       },
       "tags": {"proof-of-value": 1.0, "rfp-response": 1.0, "managed-services-sales": 0.9, "account-expansion": 0.8, "closing": 0.6, "sports-media": 0.3},
-      "metrics": [{"label": "expansion value", "value": 2000000, "unit": "USD (multi-million)"}],
+      "metrics": [{"label": "expansion value", "value": 2000000, "unit": "USD (multi-million)", "derived": true, "derived_from": "stated as multi-million-dollar; 2,000,000 is the floor used for scoring only"}],
       "confidence": "verified",
       "notes": "LinkedIn says 'Key driver in the win'.",
       "patterns": ["proof-of-concept"]
@@ -541,7 +547,7 @@
       "canonical": "Opened net-new managed services accounts at Wayfair and Disney's ESPN and Entertainment Technology organization from cold.",
       "variants": {},
       "tags": {"new-business": 1.0, "managed-services-sales": 0.9, "sports-media": 0.5, "executive-selling": 0.4},
-      "metrics": [{"label": "net-new enterprise logos", "value": 2, "unit": "accounts"}],
+      "metrics": [{"label": "net-new enterprise logos", "value": 2, "unit": "accounts", "derived": true, "derived_from": "Wayfair and Disney counted"}],
       "confidence": "verified",
       "notes": "",
       "patterns": ["Wayfair"]

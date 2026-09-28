@@ -1,6 +1,40 @@
 # Data Profile: resume.db
 Generated 2026-09-27 by `rot.py profile`.
 
+## The four tiers
+
+| Tier | Tables | Rows |
+|---|---|---|
+| 1. Evidence: what actually happened | `evidence`, `sources`, `raw_bullets`, `followups` | 1188 |
+| 2. Derived knowledge: what the system infers | `claims`, `claim_evidence`, `claim_relations`, `claim_confidence_history`, `achievements`, `achievement_tags`, `achievement_evidence`, `bullets`, `tags`, `competencies`, `technologies`, `certifications`, `education`, `tagline_phrases`, `core_competencies`, `engagements`, `engagement_achievements`, `roles`, `summaries`, `job_descriptions`, `jd_requirements` | 4278 |
+| 3. Generation: what was written | `generation_events`, `prompt_versions`, `generated_resumes` | 9 |
+| 4. Feedback: what happened afterwards | `feedback`, `outcomes` | 5 |
+
+## Claims
+
+| Kind | Active | Disputed | Retired | Mean confidence |
+|---|---|---|---|---|
+| achievement | 60 | 0 | 1 | 0.92 |
+| contact | 3 | 0 | 0 | 0.9 |
+| core_item | 40 | 0 | 0 | 0.95 |
+| credential | 14 | 0 | 0 | 0.869 |
+| education | 3 | 0 | 0 | 0.97 |
+| engagement_fact | 6 | 0 | 0 | 0.917 |
+| expertise | 34 | 0 | 0 | 0.884 |
+| metric | 53 | 0 | 0 | 0.888 |
+| role_fact | 44 | 0 | 2 | 0.867 |
+| tagline | 7 | 0 | 0 | 0.929 |
+| tool | 22 | 0 | 0 | 0.925 |
+
+| Evidence source type | Rows |
+|---|---|
+| HISTORICAL_RESUME | 632 |
+| MASTER_RESUME | 56 |
+| PUBLIC_PROFILE | 55 |
+| USER_ENTERED | 35 |
+
+Disputed claims: **0**
+
 ## Overview
 
 | Table | Rows | Grain |

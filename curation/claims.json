@@ -1,0 +1,6027 @@
+{
+  "_about": "Tier 2 truth for every fact that is not an achievement: subjects (roles, education, credentials, tools, Section A tagline phrases, Section B expertise items, Section D core items, Section C engagements, contact links) with facts. Each fact has a value, evidence ids (tier 1), contradicting values with their evidence, and a resolution when Tim settled a conflict. Achievements and metrics are implied by achievements.json. Ingest flattens this into resume.db claims and computes confidence with curation/confidence.json. Edit values here; never edit evidence quotes.",
+  "schema": "rot-claims/1",
+  "migrated": "2026-09-27",
+  "subjects": [
+    {
+      "id": "role:liminal",
+      "kind": "role",
+      "key": "liminal",
+      "label": "Business Consultant - GTM Engineer & Strategic Advisor | Strategic Market Insights (self-employed)",
+      "order": 1,
+      "confidential": false,
+      "employer_private": "Liminal Psychiatry (behavioral-health AI, pre-seed)",
+      "title_variants": [
+        "Chief Strategy Officer",
+        "Chief of Strategy",
+        "Principal Business Strategy Consultant",
+        "Chief Strategy Consultant",
+        "Founder, Business Consultant, and GTM Engineer"
+      ],
+      "hidden_by_default": false,
+      "engagement": "Self-employed advisory & GTM engineering practice; key engagement part-time (healthcare AI start-up)",
+      "section": "experience",
+      "date_note": "source template 2026-09-27: title and employer from the source template (was 'Founder, Business Consultant, and GTM Engineer | Strategic Market Insights'). Dates July 2026 – Present.",
+      "facts": {
+        "title": {
+          "value": "Business Consultant - GTM Engineer & Strategic Advisor",
+          "evidence": [
+            "ev:S19_source_template:h2",
+            "ev:stmt:2026-09-27:1"
+          ],
+          "text": "Title: Business Consultant - GTM Engineer & Strategic Advisor",
+          "refining": [
+            "ev:R1_base_2026:h3",
+            "ev:R6_admarketplace_director:h0",
+            "ev:R8_bairesdev_vp_sales:h8",
+            "ev:R9_knit_growth_marketing:h8",
+            "ev:R10_mri_simmons_audience:h8",
+            "ev:R11_magellan_measurement:h8",
+            "ev:R12_meridian_gtm:h8",
+            "ev:R13_samba_platform_sales:h8",
+            "ev:R14_smartly_agency_partnerships:h8",
+            "ev:R15_versant_transformation:h8",
+            "ev:R16_admarketplace_adv_success:h8",
+            "ev:S18_linkedin:h17",
+            "ev:S19_source_template:h12"
+          ]
+        },
+        "employer": {
+          "value": "Strategic Market Insights (self-employed)",
+          "evidence": [
+            "ev:S19_source_template:h2",
+            "ev:stmt:2026-09-27:1"
+          ],
+          "text": "Employer: Strategic Market Insights (self-employed)",
+          "refining": [
+            "ev:R1_base_2026:h2",
+            "ev:R6_admarketplace_director:h0",
+            "ev:R8_bairesdev_vp_sales:h8",
+            "ev:R9_knit_growth_marketing:h8",
+            "ev:R10_mri_simmons_audience:h8",
+            "ev:R11_magellan_measurement:h8",
+            "ev:R12_meridian_gtm:h8",
+            "ev:R13_samba_platform_sales:h8",
+            "ev:R14_smartly_agency_partnerships:h8",
+            "ev:R15_versant_transformation:h8",
+            "ev:R16_admarketplace_adv_success:h8",
+            "ev:S17_liminal_summary:h0",
+            "ev:S18_linkedin:h17",
+            "ev:S19_source_template:h11"
+          ]
+        },
+        "location": {
+          "value": "New York, NY",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:h8",
+            "ev:R11_magellan_measurement:h8",
+            "ev:R12_meridian_gtm:h8",
+            "ev:R13_samba_platform_sales:h8",
+            "ev:R14_smartly_agency_partnerships:h8",
+            "ev:R15_versant_transformation:h8",
+            "ev:R16_admarketplace_adv_success:h8",
+            "ev:R1_base_2026:h2",
+            "ev:R6_admarketplace_director:h1",
+            "ev:R8_bairesdev_vp_sales:h8",
+            "ev:R9_knit_growth_marketing:h8",
+            "ev:S19_source_template:h11",
+            "ev:S19_source_template:h2"
+          ],
+          "text": "Location: New York, NY"
+        },
+        "start": {
+          "value": "2026-07",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:h9",
+            "ev:R11_magellan_measurement:h9",
+            "ev:R12_meridian_gtm:h9",
+            "ev:R13_samba_platform_sales:h9",
+            "ev:R14_smartly_agency_partnerships:h9",
+            "ev:R15_versant_transformation:h9",
+            "ev:R16_admarketplace_adv_success:h9",
+            "ev:R8_bairesdev_vp_sales:h9",
+            "ev:R9_knit_growth_marketing:h9",
+            "ev:S17_liminal_summary:h0",
+            "ev:S18_linkedin:h18",
+            "ev:S19_source_template:h2"
+          ],
+          "text": "Started 2026-07",
+          "contradicting": [
+            {
+              "value": "2026-08",
+              "evidence": [
+                "ev:R1_base_2026:h2",
+                "ev:R6_admarketplace_director:h1"
+              ]
+            }
+          ],
+          "resolution": {
+            "why": "source template 2026-09-27: title and employer from the source template (was 'Founder, Business Consultant, and GTM Engineer | Strategic Market Insights'). Dates July 2026 – Present.",
+            "at": "2026-09-27",
+            "by": "template + notes"
+          }
+        },
+        "end": {
+          "value": null,
+          "evidence": [],
+          "text": "Ended (current)"
+        },
+        "context": {
+          "value": "Advisory & GTM engineering practice · Key Engagement: healthcare AI start-up (confidential)",
+          "evidence": [
+            "ev:S19_source_template:h2"
+          ],
+          "text": "Context: Advisory & GTM engineering practice · Key Engagement: healthcare AI start-up (confidential)"
+        }
+      }
+    },
+    {
+      "id": "role:psp",
+      "kind": "role",
+      "key": "psp",
+      "label": "Advertising Sales Director - Pro-Division | Professional Sports Publications",
+      "order": 2,
+      "confidential": false,
+      "employer_private": null,
+      "title_variants": [
+        "Ad Sales Director",
+        "Advertising Sales Director",
+        "Advertising Sales Director, Pro Division"
+      ],
+      "hidden_by_default": false,
+      "engagement": "Full-time",
+      "section": "experience",
+      "date_note": "Gate 1: ended August 2026 (matches LinkedIn and the source template).",
+      "facts": {
+        "title": {
+          "value": "Advertising Sales Director - Pro-Division",
+          "evidence": [
+            "ev:R1_base_2026:h5",
+            "ev:R2_base_2026_preliminal:h3",
+            "ev:R3_fundraising:h0",
+            "ev:R4_openai_client_partner_me:h0",
+            "ev:R5_luminance_commercial_director:h0",
+            "ev:R6_admarketplace_director:h2",
+            "ev:R7_fox_weather_director:h0",
+            "ev:S19_source_template:h3"
+          ],
+          "text": "Title: Advertising Sales Director - Pro-Division",
+          "refining": [
+            "ev:R8_bairesdev_vp_sales:h0",
+            "ev:R9_knit_growth_marketing:h0",
+            "ev:R10_mri_simmons_audience:h0",
+            "ev:R11_magellan_measurement:h0",
+            "ev:R12_meridian_gtm:h0",
+            "ev:R13_samba_platform_sales:h0",
+            "ev:R14_smartly_agency_partnerships:h0",
+            "ev:R15_versant_transformation:h0",
+            "ev:R16_admarketplace_adv_success:h0",
+            "ev:S18_linkedin:h1"
+          ]
+        },
+        "employer": {
+          "value": "Professional Sports Publications",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:h0",
+            "ev:R11_magellan_measurement:h0",
+            "ev:R12_meridian_gtm:h0",
+            "ev:R13_samba_platform_sales:h0",
+            "ev:R14_smartly_agency_partnerships:h0",
+            "ev:R15_versant_transformation:h0",
+            "ev:R16_admarketplace_adv_success:h0",
+            "ev:R1_base_2026:h4",
+            "ev:R2_base_2026_preliminal:h2",
+            "ev:R3_fundraising:h0",
+            "ev:R4_openai_client_partner_me:h0",
+            "ev:R5_luminance_commercial_director:h0",
+            "ev:R6_admarketplace_director:h2",
+            "ev:R7_fox_weather_director:h0",
+            "ev:R8_bairesdev_vp_sales:h0",
+            "ev:R9_knit_growth_marketing:h0",
+            "ev:S18_linkedin:h1",
+            "ev:S19_source_template:h3"
+          ],
+          "text": "Employer: Professional Sports Publications"
+        },
+        "location": {
+          "value": "New York, NY",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:h0",
+            "ev:R11_magellan_measurement:h0",
+            "ev:R12_meridian_gtm:h0",
+            "ev:R13_samba_platform_sales:h0",
+            "ev:R14_smartly_agency_partnerships:h0",
+            "ev:R15_versant_transformation:h0",
+            "ev:R16_admarketplace_adv_success:h0",
+            "ev:R1_base_2026:h4",
+            "ev:R2_base_2026_preliminal:h2",
+            "ev:R3_fundraising:h1",
+            "ev:R4_openai_client_partner_me:h1",
+            "ev:R5_luminance_commercial_director:h1",
+            "ev:R6_admarketplace_director:h3",
+            "ev:R7_fox_weather_director:h1",
+            "ev:R8_bairesdev_vp_sales:h0",
+            "ev:R9_knit_growth_marketing:h0",
+            "ev:S18_linkedin:h2"
+          ],
+          "text": "Location: New York, NY"
+        },
+        "start": {
+          "value": "2026-03",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:h1",
+            "ev:R11_magellan_measurement:h1",
+            "ev:R12_meridian_gtm:h1",
+            "ev:R13_samba_platform_sales:h1",
+            "ev:R14_smartly_agency_partnerships:h1",
+            "ev:R15_versant_transformation:h1",
+            "ev:R16_admarketplace_adv_success:h1",
+            "ev:R1_base_2026:h4",
+            "ev:R2_base_2026_preliminal:h2",
+            "ev:R3_fundraising:h1",
+            "ev:R4_openai_client_partner_me:h1",
+            "ev:R5_luminance_commercial_director:h1",
+            "ev:R6_admarketplace_director:h3",
+            "ev:R7_fox_weather_director:h1",
+            "ev:R8_bairesdev_vp_sales:h1",
+            "ev:R9_knit_growth_marketing:h1",
+            "ev:S18_linkedin:h2",
+            "ev:S19_source_template:h3"
+          ],
+          "text": "Started 2026-03"
+        },
+        "end": {
+          "value": "2026-08",
+          "evidence": [
+            "ev:S18_linkedin:h2",
+            "ev:S19_source_template:h3",
+            "ev:ans:gate1:0"
+          ],
+          "text": "Ended 2026-08",
+          "contradicting": [
+            {
+              "value": "Present",
+              "evidence": [
+                "ev:R15_versant_transformation:h1",
+                "ev:R8_bairesdev_vp_sales:h1"
+              ]
+            }
+          ],
+          "resolution": {
+            "why": "Gate 1: ended August 2026 (matches LinkedIn and the source template).",
+            "at": "2026-09-27",
+            "by": "template + notes"
+          }
+        },
+        "context": {
+          "value": "Print-Media Advertising Agency supporting all major professional and university sports teams (yearbook and program ad placement)",
+          "evidence": [
+            "ev:S19_source_template:h4"
+          ],
+          "text": "Context: Print-Media Advertising Agency supporting all major professional and university sports teams (yearbook and program ad placement)"
+        }
+      }
+    },
+    {
+      "id": "role:nyl",
+      "kind": "role",
+      "key": "nyl",
+      "label": "Financial Services Professional | New York Life Insurance Company",
+      "order": 3,
+      "confidential": false,
+      "employer_private": null,
+      "title_variants": [
+        "Financial Professional"
+      ],
+      "hidden_by_default": true,
+      "engagement": "Full-time",
+      "section": "experience",
+      "date_note": "Fundraising resume only; not in LinkedIn experience.",
+      "facts": {
+        "title": {
+          "value": "Financial Services Professional",
+          "evidence": [
+            "ev:R3_fundraising:h2"
+          ],
+          "text": "Title: Financial Services Professional"
+        },
+        "employer": {
+          "value": "New York Life Insurance Company",
+          "evidence": [
+            "ev:R3_fundraising:h2"
+          ],
+          "text": "Employer: New York Life Insurance Company"
+        },
+        "location": {
+          "value": "New York, NY",
+          "evidence": [
+            "ev:R3_fundraising:h3"
+          ],
+          "text": "Location: New York, NY"
+        },
+        "start": {
+          "value": "2025-12",
+          "evidence": [
+            "ev:R3_fundraising:h3"
+          ],
+          "text": "Started 2025-12"
+        },
+        "end": {
+          "value": "2026-03",
+          "evidence": [
+            "ev:R3_fundraising:h3"
+          ],
+          "text": "Ended 2026-03"
+        },
+        "context": {
+          "value": null,
+          "evidence": [],
+          "text": "Context: "
+        }
+      }
+    },
+    {
+      "id": "role:tek_lead",
+      "kind": "role",
+      "key": "tek_lead",
+      "label": "Specialized Lead - Data Analytics & Insights | TEKsystems",
+      "order": 4,
+      "confidential": false,
+      "employer_private": null,
+      "title_variants": [
+        "Specialized Lead – Cloud Applications & Data Analytics",
+        "Specialized Lead – Data Analytics & Data Insights"
+      ],
+      "hidden_by_default": false,
+      "engagement": "Full-time",
+      "section": "experience",
+      "date_note": "source template 2026-09-27: 2024 – November 2025 (LinkedIn: Nov 2024 – Oct 2025).",
+      "facts": {
+        "title": {
+          "value": "Specialized Lead - Data Analytics & Insights",
+          "evidence": [
+            "ev:R3_fundraising:h4",
+            "ev:S19_source_template:h5"
+          ],
+          "text": "Title: Specialized Lead - Data Analytics & Insights",
+          "refining": [
+            "ev:R4_openai_client_partner_me:h2",
+            "ev:R5_luminance_commercial_director:h2",
+            "ev:R6_admarketplace_director:h4",
+            "ev:R7_fox_weather_director:h2",
+            "ev:R8_bairesdev_vp_sales:h2",
+            "ev:R9_knit_growth_marketing:h2",
+            "ev:R10_mri_simmons_audience:h2",
+            "ev:R11_magellan_measurement:h2",
+            "ev:R12_meridian_gtm:h2",
+            "ev:R13_samba_platform_sales:h2",
+            "ev:R14_smartly_agency_partnerships:h2",
+            "ev:R15_versant_transformation:h2",
+            "ev:R16_admarketplace_adv_success:h2",
+            "ev:S18_linkedin:h4"
+          ]
+        },
+        "employer": {
+          "value": "TEKsystems",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:h2",
+            "ev:R11_magellan_measurement:h2",
+            "ev:R12_meridian_gtm:h2",
+            "ev:R13_samba_platform_sales:h2",
+            "ev:R14_smartly_agency_partnerships:h2",
+            "ev:R15_versant_transformation:h2",
+            "ev:R16_admarketplace_adv_success:h2",
+            "ev:R1_base_2026:h6",
+            "ev:R2_base_2026_preliminal:h4",
+            "ev:R3_fundraising:h4",
+            "ev:R4_openai_client_partner_me:h2",
+            "ev:R5_luminance_commercial_director:h2",
+            "ev:R6_admarketplace_director:h4",
+            "ev:R7_fox_weather_director:h2",
+            "ev:R8_bairesdev_vp_sales:h2",
+            "ev:R9_knit_growth_marketing:h2",
+            "ev:S19_source_template:h5"
+          ],
+          "text": "Employer: TEKsystems"
+        },
+        "location": {
+          "value": "New York, NY",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:h2",
+            "ev:R11_magellan_measurement:h2",
+            "ev:R12_meridian_gtm:h2",
+            "ev:R13_samba_platform_sales:h2",
+            "ev:R14_smartly_agency_partnerships:h2",
+            "ev:R15_versant_transformation:h2",
+            "ev:R16_admarketplace_adv_success:h2",
+            "ev:R1_base_2026:h6",
+            "ev:R2_base_2026_preliminal:h4",
+            "ev:R3_fundraising:h5",
+            "ev:R4_openai_client_partner_me:h3",
+            "ev:R5_luminance_commercial_director:h3",
+            "ev:R6_admarketplace_director:h5",
+            "ev:R7_fox_weather_director:h3",
+            "ev:R8_bairesdev_vp_sales:h2",
+            "ev:R9_knit_growth_marketing:h2"
+          ],
+          "text": "Location: New York, NY"
+        },
+        "start": {
+          "value": "2024",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:h3",
+            "ev:R11_magellan_measurement:h3",
+            "ev:R12_meridian_gtm:h3",
+            "ev:R13_samba_platform_sales:h3",
+            "ev:R14_smartly_agency_partnerships:h3",
+            "ev:R15_versant_transformation:h3",
+            "ev:R16_admarketplace_adv_success:h3",
+            "ev:R1_base_2026:h6",
+            "ev:R2_base_2026_preliminal:h4",
+            "ev:R3_fundraising:h5",
+            "ev:R4_openai_client_partner_me:h3",
+            "ev:R5_luminance_commercial_director:h3",
+            "ev:R6_admarketplace_director:h5",
+            "ev:R7_fox_weather_director:h3",
+            "ev:R8_bairesdev_vp_sales:h3",
+            "ev:R9_knit_growth_marketing:h3",
+            "ev:S18_linkedin:h5",
+            "ev:S19_source_template:h5"
+          ],
+          "text": "Started 2024"
+        },
+        "end": {
+          "value": "2025-11",
+          "evidence": [
+            "ev:R1_base_2026:h6",
+            "ev:R2_base_2026_preliminal:h4",
+            "ev:R3_fundraising:h5",
+            "ev:R4_openai_client_partner_me:h3",
+            "ev:R5_luminance_commercial_director:h3",
+            "ev:R6_admarketplace_director:h5",
+            "ev:R7_fox_weather_director:h3",
+            "ev:S19_source_template:h5"
+          ],
+          "text": "Ended 2025-11",
+          "contradicting": [
+            {
+              "value": "2025-12",
+              "evidence": [
+                "ev:R10_mri_simmons_audience:h3",
+                "ev:R11_magellan_measurement:h3",
+                "ev:R12_meridian_gtm:h3",
+                "ev:R13_samba_platform_sales:h3",
+                "ev:R14_smartly_agency_partnerships:h3",
+                "ev:R15_versant_transformation:h3",
+                "ev:R16_admarketplace_adv_success:h3",
+                "ev:R8_bairesdev_vp_sales:h3",
+                "ev:R9_knit_growth_marketing:h3"
+              ]
+            },
+            {
+              "value": "2025-10",
+              "evidence": [
+                "ev:S18_linkedin:h5"
+              ]
+            }
+          ],
+          "resolution": {
+            "why": "source template 2026-09-27: 2024 – November 2025 (LinkedIn: Nov 2024 – Oct 2025).",
+            "at": "2026-09-27",
+            "by": "template + notes"
+          }
+        },
+        "context": {
+          "value": "Top firm for I.T. Staffing & Managed Services with flexible engagement types that work with 85% of Fortune 500 companies",
+          "evidence": [
+            "ev:S19_source_template:h6",
+            "ev:S19_source_template:h8"
+          ],
+          "text": "Context: Top firm for I.T. Staffing & Managed Services with flexible engagement types that work with 85% of Fortune 500 companies"
+        }
+      }
+    },
+    {
+      "id": "role:tek_recruiter",
+      "kind": "role",
+      "key": "tek_recruiter",
+      "label": "Enterprise Recruiter – Global Services Division | TEKsystems",
+      "order": 5,
+      "confidential": false,
+      "employer_private": null,
+      "title_variants": [
+        "National Recruiter – Data Analytics & Insights",
+        "Enterprise Recruiter – Global Services"
+      ],
+      "hidden_by_default": false,
+      "engagement": "Full-time",
+      "section": "experience",
+      "date_note": "LinkedIn: Mar 2021 – Nov 2024.",
+      "facts": {
+        "title": {
+          "value": "Enterprise Recruiter – Global Services Division",
+          "evidence": [
+            "ev:S19_source_template:h7"
+          ],
+          "text": "Title: Enterprise Recruiter – Global Services Division",
+          "refining": [
+            "ev:R3_fundraising:h6",
+            "ev:R4_openai_client_partner_me:h4",
+            "ev:R5_luminance_commercial_director:h4",
+            "ev:R6_admarketplace_director:h6",
+            "ev:R7_fox_weather_director:h4",
+            "ev:R8_bairesdev_vp_sales:h4",
+            "ev:R9_knit_growth_marketing:h4",
+            "ev:R10_mri_simmons_audience:h4",
+            "ev:R11_magellan_measurement:h4",
+            "ev:R12_meridian_gtm:h4",
+            "ev:R13_samba_platform_sales:h4",
+            "ev:R14_smartly_agency_partnerships:h4",
+            "ev:R15_versant_transformation:h4",
+            "ev:R16_admarketplace_adv_success:h4",
+            "ev:S18_linkedin:h6"
+          ]
+        },
+        "employer": {
+          "value": "TEKsystems",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:h4",
+            "ev:R11_magellan_measurement:h4",
+            "ev:R12_meridian_gtm:h4",
+            "ev:R13_samba_platform_sales:h4",
+            "ev:R14_smartly_agency_partnerships:h4",
+            "ev:R15_versant_transformation:h4",
+            "ev:R16_admarketplace_adv_success:h4",
+            "ev:R1_base_2026:h8",
+            "ev:R2_base_2026_preliminal:h6",
+            "ev:R3_fundraising:h6",
+            "ev:R4_openai_client_partner_me:h4",
+            "ev:R5_luminance_commercial_director:h4",
+            "ev:R6_admarketplace_director:h6",
+            "ev:R7_fox_weather_director:h4",
+            "ev:R8_bairesdev_vp_sales:h4",
+            "ev:R9_knit_growth_marketing:h4",
+            "ev:S19_source_template:h7"
+          ],
+          "text": "Employer: TEKsystems"
+        },
+        "location": {
+          "value": "Boston, MA",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:h4",
+            "ev:R11_magellan_measurement:h4",
+            "ev:R12_meridian_gtm:h4",
+            "ev:R13_samba_platform_sales:h4",
+            "ev:R14_smartly_agency_partnerships:h4",
+            "ev:R15_versant_transformation:h4",
+            "ev:R16_admarketplace_adv_success:h4",
+            "ev:R1_base_2026:h8",
+            "ev:R2_base_2026_preliminal:h6",
+            "ev:R3_fundraising:h7",
+            "ev:R4_openai_client_partner_me:h5",
+            "ev:R5_luminance_commercial_director:h5",
+            "ev:R6_admarketplace_director:h7",
+            "ev:R7_fox_weather_director:h5",
+            "ev:R8_bairesdev_vp_sales:h4",
+            "ev:R9_knit_growth_marketing:h4"
+          ],
+          "text": "Location: Boston, MA"
+        },
+        "start": {
+          "value": "2021",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:h5",
+            "ev:R11_magellan_measurement:h5",
+            "ev:R12_meridian_gtm:h5",
+            "ev:R13_samba_platform_sales:h5",
+            "ev:R14_smartly_agency_partnerships:h5",
+            "ev:R15_versant_transformation:h5",
+            "ev:R16_admarketplace_adv_success:h5",
+            "ev:R1_base_2026:h8",
+            "ev:R2_base_2026_preliminal:h6",
+            "ev:R3_fundraising:h7",
+            "ev:R4_openai_client_partner_me:h5",
+            "ev:R5_luminance_commercial_director:h5",
+            "ev:R6_admarketplace_director:h7",
+            "ev:R7_fox_weather_director:h5",
+            "ev:R8_bairesdev_vp_sales:h5",
+            "ev:R9_knit_growth_marketing:h5",
+            "ev:S18_linkedin:h7",
+            "ev:S19_source_template:h7"
+          ],
+          "text": "Started 2021"
+        },
+        "end": {
+          "value": "2024",
+          "evidence": [
+            "ev:R1_base_2026:h8",
+            "ev:R2_base_2026_preliminal:h6",
+            "ev:R3_fundraising:h7",
+            "ev:R4_openai_client_partner_me:h5",
+            "ev:R5_luminance_commercial_director:h5",
+            "ev:R6_admarketplace_director:h7",
+            "ev:R7_fox_weather_director:h5",
+            "ev:S18_linkedin:h7",
+            "ev:S19_source_template:h7"
+          ],
+          "text": "Ended 2024",
+          "contradicting": [
+            {
+              "value": "2023-12",
+              "evidence": [
+                "ev:R10_mri_simmons_audience:h5",
+                "ev:R11_magellan_measurement:h5",
+                "ev:R12_meridian_gtm:h5",
+                "ev:R13_samba_platform_sales:h5",
+                "ev:R14_smartly_agency_partnerships:h5",
+                "ev:R15_versant_transformation:h5",
+                "ev:R16_admarketplace_adv_success:h5",
+                "ev:R8_bairesdev_vp_sales:h5",
+                "ev:R9_knit_growth_marketing:h5"
+              ]
+            }
+          ],
+          "resolution": {
+            "why": "LinkedIn: Mar 2021 – Nov 2024.",
+            "at": "2026-09-27",
+            "by": "template + notes"
+          }
+        },
+        "context": {
+          "value": "Top firm for I.T. Staffing & Managed Services with flexible engagement types that work with 85% of Fortune 500 companies",
+          "evidence": [
+            "ev:S19_source_template:h6",
+            "ev:S19_source_template:h8"
+          ],
+          "text": "Context: Top firm for I.T. Staffing & Managed Services with flexible engagement types that work with 85% of Fortune 500 companies"
+        }
+      }
+    },
+    {
+      "id": "role:demanddrive",
+      "kind": "role",
+      "key": "demanddrive",
+      "label": "Sales Development Representative / Inside Sales Rep | demandDrive (Amazon Business & RealPage)",
+      "order": 6,
+      "confidential": false,
+      "employer_private": null,
+      "title_variants": [
+        "Inside Sales Representative",
+        "Sales Development Representative / Inside Sales Representative"
+      ],
+      "hidden_by_default": false,
+      "engagement": "Full-time",
+      "section": "experience",
+      "date_note": "source template 2026-09-27: 2018 – 2021 (resumes and the template); LinkedIn says Aug 2018 – Sep 2020.",
+      "facts": {
+        "title": {
+          "value": "Sales Development Representative / Inside Sales Rep",
+          "evidence": [
+            "ev:R1_base_2026:h11",
+            "ev:R2_base_2026_preliminal:h9",
+            "ev:R4_openai_client_partner_me:h6",
+            "ev:R5_luminance_commercial_director:h6",
+            "ev:R6_admarketplace_director:h8",
+            "ev:R7_fox_weather_director:h6",
+            "ev:S19_source_template:h9"
+          ],
+          "text": "Title: Sales Development Representative / Inside Sales Rep",
+          "refining": [
+            "ev:R3_fundraising:h8",
+            "ev:R8_bairesdev_vp_sales:h6",
+            "ev:R9_knit_growth_marketing:h6",
+            "ev:R10_mri_simmons_audience:h6",
+            "ev:R11_magellan_measurement:h6",
+            "ev:R12_meridian_gtm:h6",
+            "ev:R13_samba_platform_sales:h6",
+            "ev:R14_smartly_agency_partnerships:h6",
+            "ev:R15_versant_transformation:h6",
+            "ev:R16_admarketplace_adv_success:h6",
+            "ev:S18_linkedin:h8",
+            "ev:S18_linkedin:h9",
+            "ev:S18_linkedin:h11"
+          ]
+        },
+        "employer": {
+          "value": "demandDrive (Amazon Business & RealPage)",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:h6",
+            "ev:R11_magellan_measurement:h6",
+            "ev:R12_meridian_gtm:h6",
+            "ev:R13_samba_platform_sales:h6",
+            "ev:R14_smartly_agency_partnerships:h6",
+            "ev:R15_versant_transformation:h6",
+            "ev:R16_admarketplace_adv_success:h6",
+            "ev:R1_base_2026:h10",
+            "ev:R2_base_2026_preliminal:h8",
+            "ev:R3_fundraising:h8",
+            "ev:R4_openai_client_partner_me:h6",
+            "ev:R5_luminance_commercial_director:h6",
+            "ev:R6_admarketplace_director:h8",
+            "ev:R7_fox_weather_director:h6",
+            "ev:R8_bairesdev_vp_sales:h6",
+            "ev:R9_knit_growth_marketing:h6",
+            "ev:S18_linkedin:h8",
+            "ev:S19_source_template:h9"
+          ],
+          "text": "Employer: demandDrive (Amazon Business & RealPage)"
+        },
+        "location": {
+          "value": "Waltham, MA",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:h6",
+            "ev:R11_magellan_measurement:h6",
+            "ev:R12_meridian_gtm:h6",
+            "ev:R13_samba_platform_sales:h6",
+            "ev:R14_smartly_agency_partnerships:h6",
+            "ev:R15_versant_transformation:h6",
+            "ev:R16_admarketplace_adv_success:h6",
+            "ev:R1_base_2026:h10",
+            "ev:R2_base_2026_preliminal:h8",
+            "ev:R3_fundraising:h9",
+            "ev:R4_openai_client_partner_me:h7",
+            "ev:R5_luminance_commercial_director:h7",
+            "ev:R6_admarketplace_director:h9",
+            "ev:R7_fox_weather_director:h7",
+            "ev:R8_bairesdev_vp_sales:h6",
+            "ev:R9_knit_growth_marketing:h6",
+            "ev:S18_linkedin:h10"
+          ],
+          "text": "Location: Waltham, MA"
+        },
+        "start": {
+          "value": "2018",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:h7",
+            "ev:R11_magellan_measurement:h7",
+            "ev:R12_meridian_gtm:h7",
+            "ev:R13_samba_platform_sales:h7",
+            "ev:R14_smartly_agency_partnerships:h7",
+            "ev:R15_versant_transformation:h7",
+            "ev:R16_admarketplace_adv_success:h7",
+            "ev:R1_base_2026:h10",
+            "ev:R2_base_2026_preliminal:h8",
+            "ev:R3_fundraising:h9",
+            "ev:R4_openai_client_partner_me:h7",
+            "ev:R5_luminance_commercial_director:h7",
+            "ev:R6_admarketplace_director:h9",
+            "ev:R7_fox_weather_director:h7",
+            "ev:R8_bairesdev_vp_sales:h7",
+            "ev:R9_knit_growth_marketing:h7",
+            "ev:S18_linkedin:h12",
+            "ev:S19_source_template:h9"
+          ],
+          "text": "Started 2018"
+        },
+        "end": {
+          "value": "2021",
+          "evidence": [
+            "ev:R1_base_2026:h10",
+            "ev:R2_base_2026_preliminal:h8",
+            "ev:R3_fundraising:h9",
+            "ev:R4_openai_client_partner_me:h7",
+            "ev:R5_luminance_commercial_director:h7",
+            "ev:R6_admarketplace_director:h9",
+            "ev:R7_fox_weather_director:h7",
+            "ev:S19_source_template:h9"
+          ],
+          "text": "Ended 2021",
+          "contradicting": [
+            {
+              "value": "2020-12",
+              "evidence": [
+                "ev:R10_mri_simmons_audience:h7",
+                "ev:R11_magellan_measurement:h7",
+                "ev:R12_meridian_gtm:h7",
+                "ev:R13_samba_platform_sales:h7",
+                "ev:R14_smartly_agency_partnerships:h7",
+                "ev:R15_versant_transformation:h7",
+                "ev:R16_admarketplace_adv_success:h7",
+                "ev:R8_bairesdev_vp_sales:h7",
+                "ev:R9_knit_growth_marketing:h7"
+              ]
+            },
+            {
+              "value": "2020-09",
+              "evidence": [
+                "ev:S18_linkedin:h10"
+              ]
+            }
+          ],
+          "resolution": {
+            "why": "source template 2026-09-27: 2018 – 2021 (resumes and the template); LinkedIn says Aug 2018 – Sep 2020.",
+            "at": "2026-09-27",
+            "by": "template + notes"
+          }
+        },
+        "context": {
+          "value": "Outsourced SDR and Sales Representative firm. Key Engagements: SaaS product Propertyware for RealPage, Amazon Key for Business launch",
+          "evidence": [
+            "ev:S19_source_template:h10"
+          ],
+          "text": "Context: Outsourced SDR and Sales Representative firm. Key Engagements: SaaS product Propertyware for RealPage, Amazon Key for Business launch"
+        }
+      }
+    },
+    {
+      "id": "role:yri",
+      "kind": "role",
+      "key": "yri",
+      "label": "Marketing and Product Development Intern | YRI Custom Designs",
+      "order": 7,
+      "confidential": false,
+      "employer_private": null,
+      "title_variants": [],
+      "hidden_by_default": true,
+      "engagement": "Internship",
+      "section": "experience",
+      "date_note": "LinkedIn only.",
+      "facts": {
+        "title": {
+          "value": "Marketing and Product Development Intern",
+          "evidence": [
+            "ev:S18_linkedin:h13"
+          ],
+          "text": "Title: Marketing and Product Development Intern"
+        },
+        "employer": {
+          "value": "YRI Custom Designs",
+          "evidence": [
+            "ev:S18_linkedin:h13"
+          ],
+          "text": "Employer: YRI Custom Designs"
+        },
+        "location": {
+          "value": "Portsmouth, NH",
+          "evidence": [
+            "ev:S18_linkedin:h14"
+          ],
+          "text": "Location: Portsmouth, NH"
+        },
+        "start": {
+          "value": "2016-08",
+          "evidence": [
+            "ev:S18_linkedin:h14"
+          ],
+          "text": "Started 2016-08"
+        },
+        "end": {
+          "value": "2017-05",
+          "evidence": [
+            "ev:S18_linkedin:h14"
+          ],
+          "text": "Ended 2017-05"
+        },
+        "context": {
+          "value": null,
+          "evidence": [],
+          "text": "Context: "
+        }
+      }
+    },
+    {
+      "id": "role:massdot",
+      "kind": "role",
+      "key": "massdot",
+      "label": "Marketing and Communications Intern | Massachusetts Department of Transportation, EZ Pass Services",
+      "order": 8,
+      "confidential": false,
+      "employer_private": null,
+      "title_variants": [],
+      "hidden_by_default": true,
+      "engagement": "Internship",
+      "section": "experience",
+      "date_note": "LinkedIn only.",
+      "facts": {
+        "title": {
+          "value": "Marketing and Communications Intern",
+          "evidence": [
+            "ev:S18_linkedin:h15"
+          ],
+          "text": "Title: Marketing and Communications Intern"
+        },
+        "employer": {
+          "value": "Massachusetts Department of Transportation, EZ Pass Services",
+          "evidence": [
+            "ev:S18_linkedin:h15"
+          ],
+          "text": "Employer: Massachusetts Department of Transportation, EZ Pass Services"
+        },
+        "location": {
+          "value": "Weston, MA",
+          "evidence": [
+            "ev:S18_linkedin:h16"
+          ],
+          "text": "Location: Weston, MA"
+        },
+        "start": {
+          "value": "2016-05",
+          "evidence": [
+            "ev:S18_linkedin:h16"
+          ],
+          "text": "Started 2016-05"
+        },
+        "end": {
+          "value": "2016-09",
+          "evidence": [
+            "ev:S18_linkedin:h16"
+          ],
+          "text": "Ended 2016-09"
+        },
+        "context": {
+          "value": null,
+          "evidence": [],
+          "text": "Context: "
+        }
+      }
+    },
+    {
+      "id": "role:liminal@2026-09-25",
+      "kind": "role",
+      "key": "liminal",
+      "label": "Founder title (superseded)",
+      "order": 1,
+      "history_only": true,
+      "hidden_by_default": true,
+      "section": "experience",
+      "facts": {
+        "title": {
+          "value": "Founder, Business Consultant, and GTM Engineer",
+          "evidence": [
+            "ev:stmt:2026-09-25:1"
+          ],
+          "status": "retired",
+          "valid_from": "2026-09-25",
+          "valid_to": "2026-09-27",
+          "relations": [
+            {
+              "rel": "supersedes",
+              "to": "role:liminal:title",
+              "note": "replaced by the source template title on 2026-09-27",
+              "reverse": true
+            }
+          ]
+        },
+        "employer": {
+          "value": "Strategic Market Insights",
+          "evidence": [
+            "ev:stmt:2026-09-25:1"
+          ],
+          "status": "retired",
+          "valid_from": "2026-09-25",
+          "valid_to": "2026-09-27"
+        }
+      }
+    },
+    {
+      "id": "edu:umaine",
+      "kind": "education",
+      "label": "University of Maine Business School",
+      "location": "Orono, ME",
+      "year": "2018",
+      "degree_variants": [
+        "B.S., Finance & Marketing (Double Major)",
+        "Bachelor of Science, Business Administration – Finance & Marketing",
+        "BS Finance + BBA Marketing (LinkedIn lists two degrees)"
+      ],
+      "bullet_ids": [],
+      "hidden_bullet_ids": [
+        "edu-capstone"
+      ],
+      "date_note": "Resumes: Spring 2018 / Sept 2014 – Dec 2018. LinkedIn: 2013 – 2018.",
+      "facts": {
+        "school": {
+          "value": "University of Maine Business School",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:h10",
+            "ev:R11_magellan_measurement:h10",
+            "ev:R12_meridian_gtm:h10",
+            "ev:R13_samba_platform_sales:h10",
+            "ev:R14_smartly_agency_partnerships:h10",
+            "ev:R15_versant_transformation:h10",
+            "ev:R16_admarketplace_adv_success:h10",
+            "ev:R1_base_2026:h0",
+            "ev:R2_base_2026_preliminal:h0",
+            "ev:R3_fundraising:h10",
+            "ev:R4_openai_client_partner_me:h8",
+            "ev:R5_luminance_commercial_director:h8",
+            "ev:R6_admarketplace_director:h10",
+            "ev:R7_fox_weather_director:h8",
+            "ev:R8_bairesdev_vp_sales:h10",
+            "ev:R9_knit_growth_marketing:h10",
+            "ev:S18_linkedin:h19",
+            "ev:S18_linkedin:h20",
+            "ev:S19_source_template:h0"
+          ],
+          "text": "University of Maine Business School"
+        },
+        "degree": {
+          "value": "B.S., Double Major in Finance and Marketing",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:h10",
+            "ev:R11_magellan_measurement:h10",
+            "ev:R12_meridian_gtm:h10",
+            "ev:R13_samba_platform_sales:h10",
+            "ev:R14_smartly_agency_partnerships:h10",
+            "ev:R15_versant_transformation:h10",
+            "ev:R16_admarketplace_adv_success:h10",
+            "ev:R1_base_2026:h1",
+            "ev:R2_base_2026_preliminal:h1",
+            "ev:R3_fundraising:h10",
+            "ev:R4_openai_client_partner_me:h8",
+            "ev:R5_luminance_commercial_director:h8",
+            "ev:R6_admarketplace_director:h10",
+            "ev:R7_fox_weather_director:h8",
+            "ev:R8_bairesdev_vp_sales:h10",
+            "ev:R9_knit_growth_marketing:h10",
+            "ev:S19_source_template:h1"
+          ],
+          "text": "B.S., Double Major in Finance and Marketing",
+          "refining": [
+            "ev:R8_bairesdev_vp_sales:h10",
+            "ev:R9_knit_growth_marketing:h10",
+            "ev:R10_mri_simmons_audience:h10",
+            "ev:R11_magellan_measurement:h10",
+            "ev:R12_meridian_gtm:h10",
+            "ev:R13_samba_platform_sales:h10",
+            "ev:R14_smartly_agency_partnerships:h10",
+            "ev:R15_versant_transformation:h10",
+            "ev:R16_admarketplace_adv_success:h10",
+            "ev:S18_linkedin:h19",
+            "ev:S18_linkedin:h20"
+          ]
+        },
+        "date": {
+          "value": "Spring 2018",
+          "evidence": [
+            "ev:R1_base_2026:h1",
+            "ev:R2_base_2026_preliminal:h1",
+            "ev:R3_fundraising:h10",
+            "ev:R4_openai_client_partner_me:h8",
+            "ev:R5_luminance_commercial_director:h8",
+            "ev:R6_admarketplace_director:h10",
+            "ev:R7_fox_weather_director:h8",
+            "ev:S18_linkedin:h19",
+            "ev:S18_linkedin:h20",
+            "ev:S19_source_template:h1"
+          ],
+          "text": "Graduated Spring 2018"
+        }
+      }
+    },
+    {
+      "id": "cred:data-analytics-insights-data-insights",
+      "kind": "credential",
+      "label": "Data Analytics & Insights: Data Insights",
+      "credential_id": null,
+      "source": "LinkedIn + BAS resumes",
+      "tags": [
+        "data-solutions"
+      ],
+      "sort": 1,
+      "hidden_by_default": false,
+      "hidden_note": null,
+      "facts": {
+        "name": {
+          "value": "Data Analytics & Insights: Data Insights",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:r0",
+            "ev:R11_magellan_measurement:r0",
+            "ev:R12_meridian_gtm:r0",
+            "ev:R13_samba_platform_sales:r0",
+            "ev:R14_smartly_agency_partnerships:r0",
+            "ev:R15_versant_transformation:r0",
+            "ev:R16_admarketplace_adv_success:r0",
+            "ev:R8_bairesdev_vp_sales:r0",
+            "ev:R9_knit_growth_marketing:r0",
+            "ev:S18_linkedin:r2",
+            "ev:S19_source_template:r0"
+          ],
+          "text": "Data Analytics & Insights: Data Insights"
+        },
+        "issuer": {
+          "value": "TEKsystems",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:r0",
+            "ev:R11_magellan_measurement:r0",
+            "ev:R12_meridian_gtm:r0",
+            "ev:R13_samba_platform_sales:r0",
+            "ev:R14_smartly_agency_partnerships:r0",
+            "ev:R15_versant_transformation:r0",
+            "ev:R16_admarketplace_adv_success:r0",
+            "ev:R8_bairesdev_vp_sales:r0",
+            "ev:R9_knit_growth_marketing:r0",
+            "ev:S18_linkedin:r2",
+            "ev:S19_source_template:r0"
+          ]
+        },
+        "date": {
+          "value": "2023-12",
+          "evidence": [
+            "ev:S18_linkedin:r2"
+          ]
+        },
+        "status": {
+          "value": null,
+          "evidence": []
+        }
+      }
+    },
+    {
+      "id": "cred:claude-101",
+      "kind": "credential",
+      "label": "Claude 101 Certification",
+      "credential_id": "xid9zxhxo3mw",
+      "source": "LinkedIn + BAS resumes",
+      "tags": [
+        "ai-in-workflow"
+      ],
+      "sort": 2,
+      "hidden_by_default": false,
+      "hidden_note": null,
+      "facts": {
+        "name": {
+          "value": "Claude 101 Certification",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:r1",
+            "ev:R11_magellan_measurement:r1",
+            "ev:R12_meridian_gtm:r1",
+            "ev:R13_samba_platform_sales:r1",
+            "ev:R14_smartly_agency_partnerships:r1",
+            "ev:R15_versant_transformation:r1",
+            "ev:R16_admarketplace_adv_success:r1",
+            "ev:R8_bairesdev_vp_sales:r1",
+            "ev:R9_knit_growth_marketing:r1",
+            "ev:S18_linkedin:r0",
+            "ev:S19_source_template:r1"
+          ],
+          "text": "Claude 101 Certification"
+        },
+        "issuer": {
+          "value": "Anthropic",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:r1",
+            "ev:R11_magellan_measurement:r1",
+            "ev:R12_meridian_gtm:r1",
+            "ev:R13_samba_platform_sales:r1",
+            "ev:R14_smartly_agency_partnerships:r1",
+            "ev:R15_versant_transformation:r1",
+            "ev:R16_admarketplace_adv_success:r1",
+            "ev:R8_bairesdev_vp_sales:r1",
+            "ev:R9_knit_growth_marketing:r1",
+            "ev:S18_linkedin:r0",
+            "ev:S19_source_template:r1"
+          ]
+        },
+        "date": {
+          "value": "2026-08",
+          "evidence": [
+            "ev:S18_linkedin:r0"
+          ]
+        },
+        "status": {
+          "value": null,
+          "evidence": []
+        }
+      }
+    },
+    {
+      "id": "cred:claude-code-101",
+      "kind": "credential",
+      "label": "Claude Code 101 Certification",
+      "credential_id": null,
+      "source": "BAS resumes",
+      "tags": [
+        "building-with-ai",
+        "ai-in-workflow"
+      ],
+      "sort": 3,
+      "hidden_by_default": false,
+      "hidden_note": null,
+      "facts": {
+        "name": {
+          "value": "Claude Code 101 Certification",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:r2",
+            "ev:R11_magellan_measurement:r2",
+            "ev:R12_meridian_gtm:r2",
+            "ev:R13_samba_platform_sales:r2",
+            "ev:R14_smartly_agency_partnerships:r2",
+            "ev:R15_versant_transformation:r2",
+            "ev:R16_admarketplace_adv_success:r2",
+            "ev:R8_bairesdev_vp_sales:r2",
+            "ev:R9_knit_growth_marketing:r2",
+            "ev:S19_source_template:r2"
+          ],
+          "text": "Claude Code 101 Certification"
+        },
+        "issuer": {
+          "value": "Anthropic",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:r2",
+            "ev:R11_magellan_measurement:r2",
+            "ev:R12_meridian_gtm:r2",
+            "ev:R13_samba_platform_sales:r2",
+            "ev:R14_smartly_agency_partnerships:r2",
+            "ev:R15_versant_transformation:r2",
+            "ev:R16_admarketplace_adv_success:r2",
+            "ev:R8_bairesdev_vp_sales:r2",
+            "ev:R9_knit_growth_marketing:r2",
+            "ev:S19_source_template:r2"
+          ]
+        },
+        "date": {
+          "value": null,
+          "evidence": []
+        },
+        "status": {
+          "value": null,
+          "evidence": []
+        }
+      }
+    },
+    {
+      "id": "cred:claude-for-cowork",
+      "kind": "credential",
+      "label": "Claude for CoWork",
+      "credential_id": null,
+      "source": "BAS resumes",
+      "tags": [
+        "ai-in-workflow"
+      ],
+      "sort": 4,
+      "hidden_by_default": false,
+      "hidden_note": null,
+      "facts": {
+        "name": {
+          "value": "Claude for CoWork",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:r3",
+            "ev:R11_magellan_measurement:r3",
+            "ev:R12_meridian_gtm:r3",
+            "ev:R13_samba_platform_sales:r3",
+            "ev:R14_smartly_agency_partnerships:r3",
+            "ev:R15_versant_transformation:r3",
+            "ev:R16_admarketplace_adv_success:r3",
+            "ev:R8_bairesdev_vp_sales:r3",
+            "ev:R9_knit_growth_marketing:r3",
+            "ev:S19_source_template:r3"
+          ],
+          "text": "Claude for CoWork"
+        },
+        "issuer": {
+          "value": "Anthropic",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:r3",
+            "ev:R11_magellan_measurement:r3",
+            "ev:R12_meridian_gtm:r3",
+            "ev:R13_samba_platform_sales:r3",
+            "ev:R14_smartly_agency_partnerships:r3",
+            "ev:R15_versant_transformation:r3",
+            "ev:R16_admarketplace_adv_success:r3",
+            "ev:R8_bairesdev_vp_sales:r3",
+            "ev:R9_knit_growth_marketing:r3",
+            "ev:S19_source_template:r3"
+          ]
+        },
+        "date": {
+          "value": null,
+          "evidence": []
+        },
+        "status": {
+          "value": "In progress",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:r3",
+            "ev:R11_magellan_measurement:r3",
+            "ev:R12_meridian_gtm:r3",
+            "ev:R13_samba_platform_sales:r3",
+            "ev:R14_smartly_agency_partnerships:r3",
+            "ev:R15_versant_transformation:r3",
+            "ev:R16_admarketplace_adv_success:r3",
+            "ev:R8_bairesdev_vp_sales:r3",
+            "ev:R9_knit_growth_marketing:r3",
+            "ev:S19_source_template:r3"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cred:insurance-broker-license-accident-health-life-va",
+      "kind": "credential",
+      "label": "Insurance Broker License — Accident, Health, Life, Variable Life & Variable Annuity",
+      "credential_id": null,
+      "source": "LinkedIn",
+      "tags": [
+        "referral-network"
+      ],
+      "sort": 5,
+      "hidden_by_default": true,
+      "hidden_note": "source template 2026-09-27: not on the source template; kept in the database, hidden by default.",
+      "facts": {
+        "name": {
+          "value": "Insurance Broker License — Accident, Health, Life, Variable Life & Variable Annuity",
+          "evidence": [
+            "ev:S18_linkedin:r1"
+          ],
+          "text": "Insurance Broker License — Accident, Health, Life, Variable Life & Variable Annuity"
+        },
+        "issuer": {
+          "value": "New York State Department of Financial Services",
+          "evidence": [
+            "ev:S18_linkedin:r1"
+          ]
+        },
+        "date": {
+          "value": "2025-12",
+          "evidence": [
+            "ev:S18_linkedin:r1"
+          ]
+        },
+        "status": {
+          "value": null,
+          "evidence": []
+        }
+      }
+    },
+    {
+      "id": "tool:salesforce",
+      "kind": "tool",
+      "label": "Salesforce (Classic, Lightning)",
+      "category": "CRM & Sales Tools",
+      "tags": [
+        "crm-discipline",
+        "pipeline-management"
+      ],
+      "sort": 1,
+      "origin": "template",
+      "facts": {
+        "name": {
+          "value": "Salesforce (Classic, Lightning)",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k4",
+            "ev:R11_magellan_measurement:k3",
+            "ev:R12_meridian_gtm:k3",
+            "ev:R13_samba_platform_sales:k2",
+            "ev:R14_smartly_agency_partnerships:k4",
+            "ev:R15_versant_transformation:k4",
+            "ev:R16_admarketplace_adv_success:k3",
+            "ev:R1_base_2026:s0",
+            "ev:R2_base_2026_preliminal:s0",
+            "ev:R3_fundraising:s0",
+            "ev:R4_openai_client_partner_me:s0",
+            "ev:R5_luminance_commercial_director:s0",
+            "ev:R6_admarketplace_director:s0",
+            "ev:R7_fox_weather_director:s0",
+            "ev:R8_bairesdev_vp_sales:k4",
+            "ev:R9_knit_growth_marketing:k3",
+            "ev:S19_source_template:k3",
+            "ev:S19_source_template:s0"
+          ],
+          "text": "Uses Salesforce (Classic, Lightning)"
+        }
+      }
+    },
+    {
+      "id": "tool:linkedin",
+      "kind": "tool",
+      "label": "LinkedIn (Sales Navigator, Recruiter)",
+      "category": "CRM & Sales Tools",
+      "tags": [
+        "prospecting",
+        "hiring-onboarding"
+      ],
+      "sort": 2,
+      "origin": "template",
+      "facts": {
+        "name": {
+          "value": "LinkedIn (Sales Navigator, Recruiter)",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k4",
+            "ev:R11_magellan_measurement:k3",
+            "ev:R12_meridian_gtm:k3",
+            "ev:R13_samba_platform_sales:k4",
+            "ev:R14_smartly_agency_partnerships:k4",
+            "ev:R16_admarketplace_adv_success:k3",
+            "ev:R1_base_2026:s0",
+            "ev:R2_base_2026_preliminal:s0",
+            "ev:R3_fundraising:s0",
+            "ev:R4_openai_client_partner_me:s0",
+            "ev:R5_luminance_commercial_director:s0",
+            "ev:R6_admarketplace_director:s0",
+            "ev:R7_fox_weather_director:s0",
+            "ev:R8_bairesdev_vp_sales:k4",
+            "ev:R9_knit_growth_marketing:k3",
+            "ev:S19_source_template:k3",
+            "ev:S19_source_template:s0"
+          ],
+          "text": "Uses LinkedIn (Sales Navigator, Recruiter)"
+        }
+      }
+    },
+    {
+      "id": "tool:zoominfo",
+      "kind": "tool",
+      "label": "ZoomInfo",
+      "category": "CRM & Sales Tools",
+      "tags": [
+        "prospecting"
+      ],
+      "sort": 3,
+      "origin": "template",
+      "facts": {
+        "name": {
+          "value": "ZoomInfo",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k4",
+            "ev:R11_magellan_measurement:k3",
+            "ev:R12_meridian_gtm:k3",
+            "ev:R13_samba_platform_sales:k4",
+            "ev:R14_smartly_agency_partnerships:k4",
+            "ev:R16_admarketplace_adv_success:k3",
+            "ev:R1_base_2026:s0",
+            "ev:R2_base_2026_preliminal:s0",
+            "ev:R3_fundraising:s0",
+            "ev:R4_openai_client_partner_me:s0",
+            "ev:R5_luminance_commercial_director:s0",
+            "ev:R6_admarketplace_director:s0",
+            "ev:R7_fox_weather_director:s0",
+            "ev:R8_bairesdev_vp_sales:k4",
+            "ev:R9_knit_growth_marketing:k3",
+            "ev:S19_source_template:k3",
+            "ev:S19_source_template:s0"
+          ],
+          "text": "Uses ZoomInfo"
+        }
+      }
+    },
+    {
+      "id": "tool:google-tag-manager",
+      "kind": "tool",
+      "label": "Google Tag Manager",
+      "category": "Marketing & Analytics",
+      "tags": [
+        "audience-measurement",
+        "demand-generation"
+      ],
+      "sort": 4,
+      "origin": "template",
+      "facts": {
+        "name": {
+          "value": "Google Tag Manager",
+          "evidence": [
+            "ev:S19_source_template:s0"
+          ],
+          "text": "Uses Google Tag Manager"
+        }
+      }
+    },
+    {
+      "id": "tool:apollo-io",
+      "kind": "tool",
+      "label": "Apollo.io",
+      "category": "CRM & Sales Tools",
+      "tags": [
+        "prospecting",
+        "demand-generation"
+      ],
+      "sort": 5,
+      "origin": "template",
+      "facts": {
+        "name": {
+          "value": "Apollo.io",
+          "evidence": [
+            "ev:S19_source_template:s0"
+          ],
+          "text": "Uses Apollo.io"
+        }
+      }
+    },
+    {
+      "id": "tool:squarespace",
+      "kind": "tool",
+      "label": "Squarespace",
+      "category": "Marketing & Analytics",
+      "tags": [
+        "content-brand"
+      ],
+      "sort": 6,
+      "origin": "template",
+      "facts": {
+        "name": {
+          "value": "Squarespace",
+          "evidence": [
+            "ev:S19_source_template:s0"
+          ],
+          "text": "Uses Squarespace"
+        }
+      }
+    },
+    {
+      "id": "tool:marketo",
+      "kind": "tool",
+      "label": "Marketo",
+      "category": "Marketing & Analytics",
+      "tags": [
+        "demand-generation",
+        "campaign-development",
+        "marketing-sales-alignment"
+      ],
+      "sort": 7,
+      "origin": "template",
+      "facts": {
+        "name": {
+          "value": "Marketo",
+          "evidence": [
+            "ev:S19_source_template:s0"
+          ],
+          "text": "Uses Marketo"
+        }
+      }
+    },
+    {
+      "id": "tool:hubspot",
+      "kind": "tool",
+      "label": "HubSpot",
+      "category": "CRM & Sales Tools",
+      "tags": [
+        "crm-discipline",
+        "demand-generation"
+      ],
+      "sort": 8,
+      "origin": "template",
+      "facts": {
+        "name": {
+          "value": "HubSpot",
+          "evidence": [
+            "ev:S19_source_template:s0"
+          ],
+          "text": "Uses HubSpot"
+        }
+      }
+    },
+    {
+      "id": "tool:canva",
+      "kind": "tool",
+      "label": "Canva",
+      "category": "Design",
+      "tags": [
+        "enablement-collateral",
+        "content-brand"
+      ],
+      "sort": 9,
+      "origin": "template",
+      "facts": {
+        "name": {
+          "value": "Canva",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k4",
+            "ev:R11_magellan_measurement:k3",
+            "ev:R12_meridian_gtm:k3",
+            "ev:R16_admarketplace_adv_success:k3",
+            "ev:R1_base_2026:s0",
+            "ev:R2_base_2026_preliminal:s0",
+            "ev:R3_fundraising:s0",
+            "ev:R4_openai_client_partner_me:s0",
+            "ev:R5_luminance_commercial_director:s0",
+            "ev:R6_admarketplace_director:s0",
+            "ev:R7_fox_weather_director:s0",
+            "ev:R9_knit_growth_marketing:k3",
+            "ev:S19_source_template:k3",
+            "ev:S19_source_template:s0"
+          ],
+          "text": "Uses Canva"
+        }
+      }
+    },
+    {
+      "id": "tool:trello",
+      "kind": "tool",
+      "label": "Trello",
+      "category": "Productivity",
+      "tags": [
+        "operating-cadence"
+      ],
+      "sort": 10,
+      "origin": "template",
+      "facts": {
+        "name": {
+          "value": "Trello",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k4",
+            "ev:R11_magellan_measurement:k3",
+            "ev:R12_meridian_gtm:k3",
+            "ev:R16_admarketplace_adv_success:k3",
+            "ev:R1_base_2026:s0",
+            "ev:R2_base_2026_preliminal:s0",
+            "ev:R6_admarketplace_director:s0",
+            "ev:R9_knit_growth_marketing:k3",
+            "ev:S19_source_template:k3",
+            "ev:S19_source_template:s0"
+          ],
+          "text": "Uses Trello"
+        }
+      }
+    },
+    {
+      "id": "tool:miro",
+      "kind": "tool",
+      "label": "Miro",
+      "category": "Design",
+      "tags": [
+        "enablement-collateral",
+        "stakeholder-alignment"
+      ],
+      "sort": 11,
+      "origin": "template",
+      "facts": {
+        "name": {
+          "value": "Miro",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k4",
+            "ev:R11_magellan_measurement:k3",
+            "ev:R12_meridian_gtm:k3",
+            "ev:R13_samba_platform_sales:k4",
+            "ev:R14_smartly_agency_partnerships:k4",
+            "ev:R15_versant_transformation:k4",
+            "ev:R16_admarketplace_adv_success:k3",
+            "ev:R1_base_2026:s0",
+            "ev:R2_base_2026_preliminal:s0",
+            "ev:R3_fundraising:s0",
+            "ev:R8_bairesdev_vp_sales:k4",
+            "ev:R9_knit_growth_marketing:k3",
+            "ev:S19_source_template:k3",
+            "ev:S19_source_template:s0"
+          ],
+          "text": "Uses Miro"
+        }
+      }
+    },
+    {
+      "id": "tool:microsoft-copilot",
+      "kind": "tool",
+      "label": "Microsoft Copilot",
+      "category": "AI",
+      "tags": [
+        "ai-in-workflow"
+      ],
+      "sort": 12,
+      "origin": "template",
+      "facts": {
+        "name": {
+          "value": "Microsoft Copilot",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k3",
+            "ev:R11_magellan_measurement:k2",
+            "ev:R12_meridian_gtm:k2",
+            "ev:R13_samba_platform_sales:k4",
+            "ev:R14_smartly_agency_partnerships:k4",
+            "ev:R15_versant_transformation:k4",
+            "ev:R16_admarketplace_adv_success:k2",
+            "ev:R4_openai_client_partner_me:s0",
+            "ev:R5_luminance_commercial_director:s0",
+            "ev:R6_admarketplace_director:s0",
+            "ev:R7_fox_weather_director:s0",
+            "ev:R8_bairesdev_vp_sales:k4",
+            "ev:R9_knit_growth_marketing:k2",
+            "ev:S19_source_template:k2",
+            "ev:S19_source_template:s0"
+          ],
+          "text": "Uses Microsoft Copilot"
+        }
+      }
+    },
+    {
+      "id": "tool:claude",
+      "kind": "tool",
+      "label": "Claude & Claude Code (Sonnet 5.x / Opus 5 / Fable 5)",
+      "category": "AI",
+      "tags": [
+        "ai-in-workflow",
+        "building-with-ai"
+      ],
+      "sort": 13,
+      "origin": "template",
+      "facts": {
+        "name": {
+          "value": "Claude & Claude Code (Sonnet 5.x / Opus 5 / Fable 5)",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k3",
+            "ev:R11_magellan_measurement:k2",
+            "ev:R12_meridian_gtm:k2",
+            "ev:R13_samba_platform_sales:k4",
+            "ev:R14_smartly_agency_partnerships:k4",
+            "ev:R15_versant_transformation:k4",
+            "ev:R16_admarketplace_adv_success:k2",
+            "ev:R1_base_2026:s0",
+            "ev:R2_base_2026_preliminal:s0",
+            "ev:R3_fundraising:s0",
+            "ev:R4_openai_client_partner_me:s0",
+            "ev:R5_luminance_commercial_director:s0",
+            "ev:R6_admarketplace_director:s0",
+            "ev:R7_fox_weather_director:s0",
+            "ev:R8_bairesdev_vp_sales:k4",
+            "ev:R9_knit_growth_marketing:k2",
+            "ev:S19_source_template:k2",
+            "ev:S19_source_template:s0"
+          ],
+          "text": "Uses Claude & Claude Code (Sonnet 5.x / Opus 5 / Fable 5)"
+        }
+      }
+    },
+    {
+      "id": "tool:openai",
+      "kind": "tool",
+      "label": "OpenAI (GPT-5.6, Sol, Terra, Luna)",
+      "category": "AI",
+      "tags": [
+        "ai-in-workflow"
+      ],
+      "sort": 14,
+      "origin": "template",
+      "facts": {
+        "name": {
+          "value": "OpenAI (GPT-5.6, Sol, Terra, Luna)",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k3",
+            "ev:R11_magellan_measurement:k2",
+            "ev:R12_meridian_gtm:k2",
+            "ev:R13_samba_platform_sales:k4",
+            "ev:R14_smartly_agency_partnerships:k4",
+            "ev:R15_versant_transformation:k4",
+            "ev:R16_admarketplace_adv_success:k2",
+            "ev:R1_base_2026:s0",
+            "ev:R3_fundraising:s0",
+            "ev:R4_openai_client_partner_me:s0",
+            "ev:R5_luminance_commercial_director:s0",
+            "ev:R6_admarketplace_director:s0",
+            "ev:R7_fox_weather_director:s0",
+            "ev:R8_bairesdev_vp_sales:k4",
+            "ev:R9_knit_growth_marketing:k2",
+            "ev:S19_source_template:k2",
+            "ev:S19_source_template:s0"
+          ],
+          "text": "Uses OpenAI (GPT-5.6, Sol, Terra, Luna)"
+        }
+      }
+    },
+    {
+      "id": "tool:github",
+      "kind": "tool",
+      "label": "GitHub",
+      "category": "Engineering",
+      "tags": [
+        "building-with-ai"
+      ],
+      "sort": 15,
+      "origin": "template",
+      "facts": {
+        "name": {
+          "value": "GitHub",
+          "evidence": [
+            "ev:S19_source_template:s0"
+          ],
+          "text": "Uses GitHub"
+        }
+      }
+    },
+    {
+      "id": "tool:model-context-protocol",
+      "kind": "tool",
+      "label": "Model Context Protocol (MCP) Servers",
+      "category": "Engineering",
+      "tags": [
+        "building-with-ai",
+        "ai-in-workflow"
+      ],
+      "sort": 16,
+      "origin": "template",
+      "facts": {
+        "name": {
+          "value": "Model Context Protocol (MCP) Servers",
+          "evidence": [
+            "ev:S19_source_template:s0"
+          ],
+          "text": "Uses Model Context Protocol (MCP) Servers"
+        }
+      }
+    },
+    {
+      "id": "tool:gcp",
+      "kind": "tool",
+      "label": "GCP",
+      "category": "Cloud",
+      "tags": [
+        "cloud-infrastructure"
+      ],
+      "sort": 17,
+      "origin": "template",
+      "facts": {
+        "name": {
+          "value": "GCP",
+          "evidence": [
+            "ev:S19_source_template:s0"
+          ],
+          "text": "Uses GCP"
+        }
+      }
+    },
+    {
+      "id": "tool:visual-studio",
+      "kind": "tool",
+      "label": "Visual Studio & VS Code",
+      "category": "Engineering",
+      "tags": [
+        "building-with-ai"
+      ],
+      "sort": 18,
+      "origin": "template",
+      "facts": {
+        "name": {
+          "value": "Visual Studio & VS Code",
+          "evidence": [
+            "ev:S19_source_template:s0"
+          ],
+          "text": "Uses Visual Studio & VS Code"
+        }
+      }
+    },
+    {
+      "id": "tool:tableau",
+      "kind": "tool",
+      "label": "Tableau (beginner)",
+      "category": "Analytics",
+      "tags": [
+        "data-solutions",
+        "forecasting"
+      ],
+      "sort": 19,
+      "origin": "template",
+      "facts": {
+        "name": {
+          "value": "Tableau (beginner)",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k3",
+            "ev:R11_magellan_measurement:k2",
+            "ev:R12_meridian_gtm:k2",
+            "ev:R13_samba_platform_sales:k4",
+            "ev:R14_smartly_agency_partnerships:k4",
+            "ev:R15_versant_transformation:k4",
+            "ev:R16_admarketplace_adv_success:k2",
+            "ev:R1_base_2026:s0",
+            "ev:R2_base_2026_preliminal:s0",
+            "ev:R3_fundraising:s0",
+            "ev:R4_openai_client_partner_me:s0",
+            "ev:R5_luminance_commercial_director:s0",
+            "ev:R6_admarketplace_director:s0",
+            "ev:R7_fox_weather_director:s0",
+            "ev:R8_bairesdev_vp_sales:k4",
+            "ev:R9_knit_growth_marketing:k2",
+            "ev:S19_source_template:k2",
+            "ev:S19_source_template:s0"
+          ],
+          "text": "Uses Tableau (beginner)"
+        }
+      }
+    },
+    {
+      "id": "tool:microsoft-excel",
+      "kind": "tool",
+      "label": "Microsoft Excel (VLOOKUPs, INDEX-MATCH-MATCH, XLOOKUP)",
+      "category": "Analytics",
+      "tags": [
+        "revenue-modeling",
+        "forecasting"
+      ],
+      "sort": 20,
+      "origin": "template",
+      "facts": {
+        "name": {
+          "value": "Microsoft Excel (VLOOKUPs, INDEX-MATCH-MATCH, XLOOKUP)",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k4",
+            "ev:R11_magellan_measurement:k3",
+            "ev:R12_meridian_gtm:k3",
+            "ev:R16_admarketplace_adv_success:k3",
+            "ev:R9_knit_growth_marketing:k3",
+            "ev:S19_source_template:k3",
+            "ev:S19_source_template:s0"
+          ],
+          "text": "Uses Microsoft Excel (VLOOKUPs, INDEX-MATCH-MATCH, XLOOKUP)"
+        }
+      }
+    },
+    {
+      "id": "tool:microsoft-stack",
+      "kind": "tool",
+      "label": "Microsoft Stack",
+      "category": "Productivity",
+      "tags": [
+        "cloud-infrastructure"
+      ],
+      "sort": 21,
+      "origin": "template",
+      "facts": {
+        "name": {
+          "value": "Microsoft Stack",
+          "evidence": [
+            "ev:S19_source_template:s0"
+          ],
+          "text": "Uses Microsoft Stack"
+        }
+      }
+    },
+    {
+      "id": "tool:office-place-collaboration-tools",
+      "kind": "tool",
+      "label": "Office-Place Collaboration Tools (Slack, MS Teams, Webex, Google Meet, Zoom)",
+      "category": "Productivity",
+      "tags": [
+        "stakeholder-alignment",
+        "operating-cadence"
+      ],
+      "sort": 22,
+      "origin": "template",
+      "facts": {
+        "name": {
+          "value": "Office-Place Collaboration Tools (Slack, MS Teams, Webex, Google Meet, Zoom)",
+          "evidence": [
+            "ev:S19_source_template:s0"
+          ],
+          "text": "Uses Office-Place Collaboration Tools (Slack, MS Teams, Webex, Google Meet, Zoom)"
+        }
+      }
+    },
+    {
+      "id": "tagline:sales-professional-end-to-end-sales",
+      "kind": "tagline",
+      "label": "Sales Professional (End to End Sales)",
+      "tags": [
+        "full-cycle-sales",
+        "new-business",
+        "closing",
+        "prospecting"
+      ],
+      "sort": 1,
+      "origin": "template",
+      "facts": {
+        "text": {
+          "value": "Sales Professional (End to End Sales)",
+          "evidence": [
+            "ev:S19_source_template:t0"
+          ],
+          "text": "Sales Professional (End to End Sales)"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-full-cycle-ownership",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-closed-deals",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:dd-200-quota",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekr-wayfair-disney",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-125-leads",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "tagline:marketing-advertising-product-services-sales-gtm",
+      "kind": "tagline",
+      "label": "Marketing, Advertising, Product, Services, & Sales GTM Engineer",
+      "tags": [
+        "building-with-ai",
+        "gtm-strategy",
+        "media-ad-sales",
+        "demand-generation",
+        "managed-services-sales"
+      ],
+      "sort": 2,
+      "origin": "template",
+      "facts": {
+        "text": {
+          "value": "Marketing, Advertising, Product, Services, & Sales GTM Engineer",
+          "evidence": [
+            "ev:S18_linkedin:d0",
+            "ev:S19_source_template:t0"
+          ],
+          "text": "Marketing, Advertising, Product, Services, & Sales GTM Engineer"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-gtm-ownership",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-claude-code-tracker",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhghrt2-3",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-2",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-1",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "tagline:business-strategy",
+      "kind": "tagline",
+      "label": "Business Strategy",
+      "tags": [
+        "board-advisory",
+        "feasibility-roadmap",
+        "competitive-analysis",
+        "market-sizing"
+      ],
+      "sort": 3,
+      "origin": "template",
+      "facts": {
+        "text": {
+          "value": "Business Strategy",
+          "evidence": [
+            "ev:S19_source_template:t0"
+          ],
+          "text": "Business Strategy"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhfveal-0",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-feasibility-roadmap",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-market-sizing-exit-paths",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-thought-partner",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-competitive-venture-odds",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "tagline:gtm-and-sales-marketing-execution-specialist",
+      "kind": "tagline",
+      "label": "GTM and Sales/Marketing Execution Specialist",
+      "tags": [
+        "gtm-strategy",
+        "launch-sequencing",
+        "demand-generation",
+        "marketing-sales-alignment",
+        "channel-strategy"
+      ],
+      "sort": 4,
+      "origin": "template",
+      "facts": {
+        "text": {
+          "value": "GTM and Sales/Marketing Execution Specialist",
+          "evidence": [
+            "ev:S19_source_template:t0"
+          ],
+          "text": "GTM and Sales/Marketing Execution Specialist"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-gtm-ownership",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-distribution-pivot",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:dd-territory-proposal",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhghrt2-3",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-me-vertical-gtm",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "tagline:systems-thinker",
+      "kind": "tagline",
+      "label": "Systems Thinker",
+      "tags": [
+        "scenario-planning",
+        "operating-cadence",
+        "process-improvement"
+      ],
+      "sort": 5,
+      "origin": "template",
+      "facts": {
+        "text": {
+          "value": "Systems Thinker",
+          "evidence": [
+            "ev:S18_linkedin:d0",
+            "ev:S19_source_template:t0"
+          ],
+          "text": "Systems Thinker"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-operating-cadence",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-verticalization-lift",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-scenario-planning",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhghrt2-3",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhfveal-0",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "tagline:process-engineer",
+      "kind": "tagline",
+      "label": "Process Engineer",
+      "tags": [
+        "process-improvement",
+        "crm-discipline",
+        "operating-cadence"
+      ],
+      "sort": 6,
+      "origin": "template",
+      "facts": {
+        "text": {
+          "value": "Process Engineer",
+          "evidence": [
+            "ev:S18_linkedin:d0",
+            "ev:S19_source_template:t0"
+          ],
+          "text": "Process Engineer"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-verticalization-lift",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-operating-cadence",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhghrt2-3",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-1",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-0",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "tagline:ai-adoption-enthusiast",
+      "kind": "tagline",
+      "label": "AI Adoption Enthusiast",
+      "tags": [
+        "ai-in-workflow",
+        "ai-ml-solutions",
+        "readiness-assessment",
+        "building-with-ai"
+      ],
+      "sort": 7,
+      "origin": "template",
+      "facts": {
+        "text": {
+          "value": "AI Adoption Enthusiast",
+          "evidence": [
+            "ev:S18_linkedin:d0",
+            "ev:S19_source_template:t0"
+          ],
+          "text": "AI Adoption Enthusiast"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-0",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-claude-code-tracker",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekr-nike",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-readiness-assessment",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-1",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:go-to-market-strategy",
+      "kind": "expertise",
+      "label": "Go-To-Market Strategy",
+      "tags": [
+        "gtm-strategy"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Go-To-Market Strategy",
+          "evidence": [
+            "ev:R12_meridian_gtm:c0",
+            "ev:R1_base_2026:c0",
+            "ev:R2_base_2026_preliminal:c0",
+            "ev:S19_source_template:c0"
+          ],
+          "text": "Go-To-Market Strategy"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-gtm-ownership",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhghrt2-3",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-me-vertical-gtm",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-distribution-pivot",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:dd-territory-proposal",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:market-segmentation-positioning",
+      "kind": "expertise",
+      "label": "Market Segmentation & Positioning",
+      "tags": [
+        "market-segmentation",
+        "positioning-messaging"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Market Segmentation & Positioning",
+          "evidence": [
+            "ev:R9_knit_growth_marketing:k0",
+            "ev:S19_source_template:c0"
+          ],
+          "text": "Market Segmentation & Positioning"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-gtm-ownership",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-customer-discovery-sprint",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:pricing-channel-strategy",
+      "kind": "expertise",
+      "label": "Pricing & Channel Strategy",
+      "tags": [
+        "pricing-packaging",
+        "channel-strategy"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Pricing & Channel Strategy",
+          "evidence": [],
+          "text": "Pricing & Channel Strategy"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-gtm-ownership",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-distribution-pivot",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-2",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-unit-economic-gates",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:new-business-development",
+      "kind": "expertise",
+      "label": "New Business Development",
+      "tags": [
+        "new-business"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "New Business Development",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:c0",
+            "ev:R14_smartly_agency_partnerships:k1",
+            "ev:R4_openai_client_partner_me:c0",
+            "ev:R7_fox_weather_director:c0"
+          ],
+          "text": "New Business Development"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekr-wayfair-disney",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-closed-deals",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-full-cycle-ownership",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekr-750k",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-funding-source-qualification",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:full-cycle-enterprise-sales-prospect-to-close",
+      "kind": "expertise",
+      "label": "Full-Cycle Enterprise Sales (Prospect to Close)",
+      "tags": [
+        "full-cycle-sales",
+        "closing"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Full-Cycle Enterprise Sales (Prospect to Close)",
+          "evidence": [],
+          "text": "Full-Cycle Enterprise Sales (Prospect to Close)"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-full-cycle-ownership",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-closed-deals",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-net-revenue",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-universal-poc",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-nine-stakeholder-deal",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:lead-generation-prospecting",
+      "kind": "expertise",
+      "label": "Lead Generation & Prospecting",
+      "tags": [
+        "prospecting",
+        "demand-generation"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Lead Generation & Prospecting",
+          "evidence": [
+            "ev:R1_base_2026:c0",
+            "ev:R2_base_2026_preliminal:c0",
+            "ev:S19_source_template:c0"
+          ],
+          "text": "Lead Generation & Prospecting"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-125-leads",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-0",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-decision-makers-ai",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:dd-200-quota",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:consultative-diagnostic-discovery",
+      "kind": "expertise",
+      "label": "Consultative & Diagnostic Discovery",
+      "tags": [
+        "discovery"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Consultative & Diagnostic Discovery",
+          "evidence": [],
+          "text": "Consultative & Diagnostic Discovery"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-southern-gas-discovery",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-pipeline-discovery",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:nyl-needs-assessment",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-fortune500-discovery",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-funding-source-qualification",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:contract-proposal-development",
+      "kind": "expertise",
+      "label": "Contract & Proposal Development",
+      "tags": [
+        "proposal-development",
+        "negotiation"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Contract & Proposal Development",
+          "evidence": [
+            "ev:R13_samba_platform_sales:k1",
+            "ev:R1_base_2026:c0",
+            "ev:R2_base_2026_preliminal:c0",
+            "ev:S19_source_template:c0"
+          ],
+          "text": "Contract & Proposal Development"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-nine-stakeholder-deal",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-engagement-terms",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhfveal-1",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-board-memo",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-school-proposal",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:complex-multi-stakeholder-negotiation",
+      "kind": "expertise",
+      "label": "Complex Multi-Stakeholder Negotiation",
+      "tags": [
+        "multi-stakeholder-selling",
+        "negotiation"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Complex Multi-Stakeholder Negotiation",
+          "evidence": [
+            "ev:R5_luminance_commercial_director:c0"
+          ],
+          "text": "Complex Multi-Stakeholder Negotiation"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-nine-stakeholder-deal",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-engagement-terms",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-fortune500-discovery",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-full-cycle-ownership",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-board-memo",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:executive-board-level-communication",
+      "kind": "expertise",
+      "label": "Executive & Board-Level Communication",
+      "tags": [
+        "executive-communication",
+        "board-advisory",
+        "executive-selling"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Executive & Board-Level Communication",
+          "evidence": [
+            "ev:S19_source_template:c0"
+          ],
+          "text": "Executive & Board-Level Communication"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-thought-partner",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-feasibility-roadmap",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-fortune500-discovery",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-board-memo",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-collateral",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:revenue-forecasting-kpi-management",
+      "kind": "expertise",
+      "label": "Revenue Forecasting & KPI Management",
+      "tags": [
+        "forecasting",
+        "quota-attainment"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Revenue Forecasting & KPI Management",
+          "evidence": [
+            "ev:R1_base_2026:c0",
+            "ev:R2_base_2026_preliminal:c0",
+            "ev:S19_source_template:c0"
+          ],
+          "text": "Revenue Forecasting & KPI Management"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekr-750k",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-net-revenue",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:dd-200-quota",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhghrt2-3",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekr-vertex",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:pipeline-development-crm-discipline",
+      "kind": "expertise",
+      "label": "Pipeline Development & CRM Discipline",
+      "tags": [
+        "pipeline-management",
+        "crm-discipline"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Pipeline Development & CRM Discipline",
+          "evidence": [],
+          "text": "Pipeline Development & CRM Discipline"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-verticalization-lift",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-125-leads",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-pipeline-discovery",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-0",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-coaching",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:strategic-account-planning-expansion",
+      "kind": "expertise",
+      "label": "Strategic Account Planning & Expansion",
+      "tags": [
+        "account-management",
+        "account-expansion"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Strategic Account Planning & Expansion",
+          "evidence": [],
+          "text": "Strategic Account Planning & Expansion"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekr-vertex",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-decision-makers-ai",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-universal-poc",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-125-leads",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:media-sponsorship-sales",
+      "kind": "expertise",
+      "label": "Media & Sponsorship Sales",
+      "tags": [
+        "media-ad-sales",
+        "sponsorship"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Media & Sponsorship Sales",
+          "evidence": [
+            "ev:R7_fox_weather_director:c0"
+          ],
+          "text": "Media & Sponsorship Sales"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-closed-deals",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-disney-enablement",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-verticals",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-net-revenue",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-cpm-business-case",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:cpm-cpa-roi-business-cases",
+      "kind": "expertise",
+      "label": "CPM, CPA & ROI Business Cases",
+      "tags": [
+        "cpm-cpa-modeling",
+        "audience-measurement"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "CPM, CPA & ROI Business Cases",
+          "evidence": [
+            "ev:S19_source_template:c0"
+          ],
+          "text": "CPM, CPA & ROI Business Cases"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-cpm-business-case",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-school-proposal",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-me-vertical-gtm",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:ad-tech-fluency-cdp-clean-rooms-identity-graphs-",
+      "kind": "expertise",
+      "label": "Ad-Tech Fluency (CDP, Clean Rooms, Identity Graphs, Measurement)",
+      "tags": [
+        "adtech-fluency"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Ad-Tech Fluency (CDP, Clean Rooms, Identity Graphs, Measurement)",
+          "evidence": [],
+          "text": "Ad-Tech Fluency (CDP, Clean Rooms, Identity Graphs, Measurement)"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-me-vertical-gtm",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-disney-enablement",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:funding-source-diagnostics-co-op-mdf-sponsorship",
+      "kind": "expertise",
+      "label": "Funding-Source Diagnostics (Co-Op, MDF, Sponsorship, 501(c)(3))",
+      "tags": [
+        "funding-source-diagnostics"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Funding-Source Diagnostics (Co-Op, MDF, Sponsorship, 501(c)(3))",
+          "evidence": [
+            "ev:R4_openai_client_partner_me:c0"
+          ],
+          "text": "Funding-Source Diagnostics (Co-Op, MDF, Sponsorship, 501(c)(3))"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-nonprofit-reframe",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-funding-source-qualification",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:buy-vs-build-competitive-analysis",
+      "kind": "expertise",
+      "label": "Buy-vs-Build & Competitive Analysis",
+      "tags": [
+        "buy-vs-build",
+        "competitive-analysis"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Buy-vs-Build & Competitive Analysis",
+          "evidence": [],
+          "text": "Buy-vs-Build & Competitive Analysis"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-competitive-venture-odds",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-build-vs-buy",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhghrt2-2",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhfveal-0",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-staffing-restructure",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:unit-economics-revenue-modeling",
+      "kind": "expertise",
+      "label": "Unit Economics & Revenue Modeling",
+      "tags": [
+        "unit-economics",
+        "revenue-modeling",
+        "growth-efficiency"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Unit Economics & Revenue Modeling",
+          "evidence": [
+            "ev:R15_versant_transformation:k4",
+            "ev:R6_admarketplace_director:c0",
+            "ev:R8_bairesdev_vp_sales:k2"
+          ],
+          "text": "Unit Economics & Revenue Modeling"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-unit-economics-benchmarks",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-unit-economic-gates",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-distribution-pivot",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-staffing-restructure",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-non-dilutive-capital",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:market-sizing-scenario-planning",
+      "kind": "expertise",
+      "label": "Market Sizing & Scenario Planning",
+      "tags": [
+        "market-sizing",
+        "scenario-planning"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Market Sizing & Scenario Planning",
+          "evidence": [],
+          "text": "Market Sizing & Scenario Planning"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-market-sizing-exit-paths",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-scenario-planning",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhfveal-0",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-competitive-venture-odds",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-thought-partner",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:sales-team-coaching-performance-management",
+      "kind": "expertise",
+      "label": "Sales Team Coaching & Performance Management",
+      "tags": [
+        "team-coaching",
+        "performance-management"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Sales Team Coaching & Performance Management",
+          "evidence": [
+            "ev:S19_source_template:c0"
+          ],
+          "text": "Sales Team Coaching & Performance Management"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-coaching",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:hiring-onboarding-seller-ramp",
+      "kind": "expertise",
+      "label": "Hiring, Onboarding & Seller Ramp",
+      "tags": [
+        "hiring-onboarding"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Hiring, Onboarding & Seller Ramp",
+          "evidence": [
+            "ev:R5_luminance_commercial_director:c0"
+          ],
+          "text": "Hiring, Onboarding & Seller Ramp"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekr-recruiting-talent",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:business-process-improvement",
+      "kind": "expertise",
+      "label": "Business Process Improvement",
+      "tags": [
+        "process-improvement"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Business Process Improvement",
+          "evidence": [
+            "ev:R11_magellan_measurement:k1",
+            "ev:R12_meridian_gtm:k1",
+            "ev:R16_admarketplace_adv_success:k1",
+            "ev:R1_base_2026:c0",
+            "ev:R2_base_2026_preliminal:c0",
+            "ev:S19_source_template:c0",
+            "ev:S19_source_template:k1"
+          ],
+          "text": "Business Process Improvement"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-verticalization-lift",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-1",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-operating-cadence",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:dd-territory-proposal",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-me-vertical-gtm",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:operating-cadence-design-raci-decision-logs",
+      "kind": "expertise",
+      "label": "Operating Cadence Design (RACI, Decision Logs)",
+      "tags": [
+        "operating-cadence"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Operating Cadence Design (RACI, Decision Logs)",
+          "evidence": [],
+          "text": "Operating Cadence Design (RACI, Decision Logs)"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-operating-cadence",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhghrt2-3",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:change-readiness-stakeholder-alignment",
+      "kind": "expertise",
+      "label": "Change Readiness & Stakeholder Alignment",
+      "tags": [
+        "readiness-assessment",
+        "stakeholder-alignment"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Change Readiness & Stakeholder Alignment",
+          "evidence": [
+            "ev:S19_source_template:c0"
+          ],
+          "text": "Change Readiness & Stakeholder Alignment"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-readiness-assessment",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-operating-cadence",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-engagement-terms",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:primary-research-customer-discovery",
+      "kind": "expertise",
+      "label": "Primary Research & Customer Discovery",
+      "tags": [
+        "primary-research",
+        "customer-discovery"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Primary Research & Customer Discovery",
+          "evidence": [
+            "ev:S19_source_template:c0"
+          ],
+          "text": "Primary Research & Customer Discovery"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-customer-discovery-sprint",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhfveal-1",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-distribution-pivot",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-unit-economic-gates",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:ai-data-platform-solution-selling",
+      "kind": "expertise",
+      "label": "AI & Data Platform Solution Selling",
+      "tags": [
+        "data-solutions",
+        "ai-ml-solutions"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "AI & Data Platform Solution Selling",
+          "evidence": [
+            "ev:S19_source_template:c0"
+          ],
+          "text": "AI & Data Platform Solution Selling"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-solution-scoping",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-southern-gas-discovery",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekr-nike",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-1",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:prompt-engineering-ai-enabled-workflow",
+      "kind": "expertise",
+      "label": "Prompt Engineering & AI-Enabled Workflow",
+      "tags": [
+        "ai-in-workflow",
+        "building-with-ai"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Prompt Engineering & AI-Enabled Workflow",
+          "evidence": [
+            "ev:S19_source_template:c0"
+          ],
+          "text": "Prompt Engineering & AI-Enabled Workflow"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-0",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-claude-code-tracker",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-1",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-decision-makers-ai",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:strategic-partnerships-channel",
+      "kind": "expertise",
+      "label": "Strategic Partnerships & Channel",
+      "tags": [
+        "strategic-partnerships",
+        "channel-partnerships"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Strategic Partnerships & Channel",
+          "evidence": [
+            "ev:S19_source_template:c0"
+          ],
+          "text": "Strategic Partnerships & Channel"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhghrt2-2",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhfveal-2",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-distribution-pivot",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-unit-economic-gates",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekr-nike",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:data-rights-partner-terms",
+      "kind": "expertise",
+      "label": "Data Rights & Partner Terms",
+      "tags": [
+        "data-rights",
+        "partner-negotiation"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Data Rights & Partner Terms",
+          "evidence": [],
+          "text": "Data Rights & Partner Terms"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-data-rights",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhghrt2-2",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-entity-ip-structure",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:board-trustee-engagement",
+      "kind": "expertise",
+      "label": "Board & Trustee Engagement",
+      "tags": [
+        "board-trustee-engagement"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Board & Trustee Engagement",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k2",
+            "ev:R11_magellan_measurement:k4",
+            "ev:R12_meridian_gtm:k4",
+            "ev:R16_admarketplace_adv_success:k4",
+            "ev:R3_fundraising:c0",
+            "ev:S19_source_template:k4"
+          ],
+          "text": "Board & Trustee Engagement"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-board-memo",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:prospect-identification-moves-management",
+      "kind": "expertise",
+      "label": "Prospect Identification & Moves Management",
+      "tags": [
+        "moves-management",
+        "donor-relations"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Prospect Identification & Moves Management",
+          "evidence": [],
+          "text": "Prospect Identification & Moves Management"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-school-proposal",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-nonprofit-reframe",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:nyl-needs-assessment",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:business-analysis-advisory",
+      "kind": "expertise",
+      "label": "Business Analysis & Advisory",
+      "tags": [
+        "board-advisory",
+        "feasibility-roadmap"
+      ],
+      "sort": null,
+      "origin": "curated",
+      "facts": {
+        "text": {
+          "value": "Business Analysis & Advisory",
+          "evidence": [
+            "ev:R1_base_2026:c0",
+            "ev:R2_base_2026_preliminal:c0",
+            "ev:S19_source_template:c0"
+          ],
+          "text": "Business Analysis & Advisory"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-feasibility-roadmap",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-thought-partner",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhfveal-0",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-build-vs-buy",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-staffing-restructure",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "expertise:ai-adoption-strategies-for-sales-enablement-and-",
+      "kind": "expertise",
+      "label": "AI Adoption Strategies for Sales Enablement and Business Growth",
+      "tags": [
+        "ai-in-workflow",
+        "readiness-assessment",
+        "enablement-collateral",
+        "building-with-ai"
+      ],
+      "sort": null,
+      "origin": "template",
+      "facts": {
+        "text": {
+          "value": "AI Adoption Strategies for Sales Enablement and Business Growth",
+          "evidence": [
+            "ev:S19_source_template:c0"
+          ],
+          "text": "AI Adoption Strategies for Sales Enablement and Business Growth"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-0",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-claude-code-tracker",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-disney-enablement",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-readiness-assessment",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-collateral",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:go-to-market-revenue:gtm-strategy",
+      "kind": "core_item",
+      "label": "GTM strategy",
+      "area": "Go-To-Market & Revenue",
+      "area_sort": 0,
+      "sort": 0,
+      "tags": [
+        "gtm-strategy"
+      ],
+      "facts": {
+        "text": {
+          "value": "GTM strategy",
+          "evidence": [
+            "ev:R11_magellan_measurement:k0",
+            "ev:R12_meridian_gtm:k0",
+            "ev:R16_admarketplace_adv_success:k0",
+            "ev:R9_knit_growth_marketing:k0",
+            "ev:S19_source_template:k0"
+          ],
+          "text": "GTM strategy"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-gtm-ownership",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhghrt2-3",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-me-vertical-gtm",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-distribution-pivot",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:dd-territory-proposal",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:go-to-market-revenue:market-segmentation",
+      "kind": "core_item",
+      "label": "market segmentation",
+      "area": "Go-To-Market & Revenue",
+      "area_sort": 0,
+      "sort": 1,
+      "tags": [
+        "market-segmentation"
+      ],
+      "facts": {
+        "text": {
+          "value": "market segmentation",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k1",
+            "ev:R11_magellan_measurement:k0",
+            "ev:R12_meridian_gtm:k0",
+            "ev:R16_admarketplace_adv_success:k0",
+            "ev:R8_bairesdev_vp_sales:k2",
+            "ev:R9_knit_growth_marketing:k0",
+            "ev:S19_source_template:k0"
+          ],
+          "text": "market segmentation"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-gtm-ownership",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-customer-discovery-sprint",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:go-to-market-revenue:product-positioning-messaging",
+      "kind": "core_item",
+      "label": "product positioning & messaging",
+      "area": "Go-To-Market & Revenue",
+      "area_sort": 0,
+      "sort": 2,
+      "tags": [
+        "positioning-messaging"
+      ],
+      "facts": {
+        "text": {
+          "value": "product positioning & messaging",
+          "evidence": [
+            "ev:R11_magellan_measurement:k0",
+            "ev:R12_meridian_gtm:k0",
+            "ev:R16_admarketplace_adv_success:k0",
+            "ev:S19_source_template:k0"
+          ],
+          "text": "product positioning & messaging"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-gtm-ownership",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:go-to-market-revenue:value-proposition-development",
+      "kind": "core_item",
+      "label": "value proposition development",
+      "area": "Go-To-Market & Revenue",
+      "area_sort": 0,
+      "sort": 3,
+      "tags": [
+        "positioning-messaging",
+        "proposal-development"
+      ],
+      "facts": {
+        "text": {
+          "value": "value proposition development",
+          "evidence": [
+            "ev:R11_magellan_measurement:k0",
+            "ev:R12_meridian_gtm:k0",
+            "ev:R16_admarketplace_adv_success:k0",
+            "ev:S19_source_template:k0"
+          ],
+          "text": "value proposition development"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhfveal-1",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-board-memo",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-gtm-ownership",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-school-proposal",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-cpm-business-case",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:go-to-market-revenue:customer-discovery",
+      "kind": "core_item",
+      "label": "customer discovery",
+      "area": "Go-To-Market & Revenue",
+      "area_sort": 0,
+      "sort": 4,
+      "tags": [
+        "customer-discovery",
+        "discovery"
+      ],
+      "facts": {
+        "text": {
+          "value": "customer discovery",
+          "evidence": [
+            "ev:R11_magellan_measurement:k0",
+            "ev:R12_meridian_gtm:k0",
+            "ev:R16_admarketplace_adv_success:k0",
+            "ev:R9_knit_growth_marketing:k0",
+            "ev:S19_source_template:k0"
+          ],
+          "text": "customer discovery"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-southern-gas-discovery",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-pipeline-discovery",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:nyl-needs-assessment",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-customer-discovery-sprint",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhfveal-1",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:go-to-market-revenue:pipeline-management",
+      "kind": "core_item",
+      "label": "pipeline management",
+      "area": "Go-To-Market & Revenue",
+      "area_sort": 0,
+      "sort": 5,
+      "tags": [
+        "pipeline-management"
+      ],
+      "facts": {
+        "text": {
+          "value": "pipeline management",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k0",
+            "ev:R11_magellan_measurement:k0",
+            "ev:R12_meridian_gtm:k0",
+            "ev:R16_admarketplace_adv_success:k0",
+            "ev:S19_source_template:k0"
+          ],
+          "text": "pipeline management"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-pipeline-discovery",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-verticalization-lift",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-coaching",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-125-leads",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:go-to-market-revenue:revenue-forecasting-kpi-tracking",
+      "kind": "core_item",
+      "label": "revenue forecasting & KPI tracking",
+      "area": "Go-To-Market & Revenue",
+      "area_sort": 0,
+      "sort": 6,
+      "tags": [
+        "forecasting",
+        "quota-attainment"
+      ],
+      "facts": {
+        "text": {
+          "value": "revenue forecasting & KPI tracking",
+          "evidence": [
+            "ev:R11_magellan_measurement:k0",
+            "ev:R12_meridian_gtm:k0",
+            "ev:R13_samba_platform_sales:k2",
+            "ev:R16_admarketplace_adv_success:k0",
+            "ev:R9_knit_growth_marketing:k1",
+            "ev:S19_source_template:k0"
+          ],
+          "text": "revenue forecasting & KPI tracking"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekr-750k",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-net-revenue",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:dd-200-quota",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhghrt2-3",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekr-vertex",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:go-to-market-revenue:contract-negotiation",
+      "kind": "core_item",
+      "label": "contract negotiation",
+      "area": "Go-To-Market & Revenue",
+      "area_sort": 0,
+      "sort": 7,
+      "tags": [
+        "negotiation"
+      ],
+      "facts": {
+        "text": {
+          "value": "contract negotiation",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k0",
+            "ev:R11_magellan_measurement:k0",
+            "ev:R12_meridian_gtm:k0",
+            "ev:R14_smartly_agency_partnerships:k0",
+            "ev:R16_admarketplace_adv_success:k0",
+            "ev:R8_bairesdev_vp_sales:k1",
+            "ev:S19_source_template:k0"
+          ],
+          "text": "contract negotiation"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-nine-stakeholder-deal",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-engagement-terms",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-full-cycle-ownership",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:go-to-market-revenue:proposal-development",
+      "kind": "core_item",
+      "label": "proposal development",
+      "area": "Go-To-Market & Revenue",
+      "area_sort": 0,
+      "sort": 8,
+      "tags": [
+        "proposal-development"
+      ],
+      "facts": {
+        "text": {
+          "value": "proposal development",
+          "evidence": [
+            "ev:R11_magellan_measurement:k0",
+            "ev:R12_meridian_gtm:k0",
+            "ev:R13_samba_platform_sales:k1",
+            "ev:R14_smartly_agency_partnerships:k0",
+            "ev:R16_admarketplace_adv_success:k0",
+            "ev:R8_bairesdev_vp_sales:k1",
+            "ev:S19_source_template:k0"
+          ],
+          "text": "proposal development"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhfveal-1",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-board-memo",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-school-proposal",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-cpm-business-case",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-pipeline-discovery",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:go-to-market-revenue:solution-selling",
+      "kind": "core_item",
+      "label": "solution selling",
+      "area": "Go-To-Market & Revenue",
+      "area_sort": 0,
+      "sort": 9,
+      "tags": [
+        "discovery",
+        "full-cycle-sales"
+      ],
+      "facts": {
+        "text": {
+          "value": "solution selling",
+          "evidence": [
+            "ev:R11_magellan_measurement:k0",
+            "ev:R12_meridian_gtm:k0",
+            "ev:R16_admarketplace_adv_success:k0",
+            "ev:S19_source_template:k0"
+          ],
+          "text": "solution selling"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-southern-gas-discovery",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-pipeline-discovery",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-full-cycle-ownership",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:nyl-needs-assessment",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-fortune500-discovery",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:go-to-market-revenue:account-mapping",
+      "kind": "core_item",
+      "label": "account mapping",
+      "area": "Go-To-Market & Revenue",
+      "area_sort": 0,
+      "sort": 10,
+      "tags": [
+        "account-management",
+        "multi-stakeholder-selling"
+      ],
+      "facts": {
+        "text": {
+          "value": "account mapping",
+          "evidence": [
+            "ev:R11_magellan_measurement:k0",
+            "ev:R12_meridian_gtm:k0",
+            "ev:R16_admarketplace_adv_success:k0",
+            "ev:S19_source_template:k0"
+          ],
+          "text": "account mapping"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekr-vertex",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-nine-stakeholder-deal",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-decision-makers-ai",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-125-leads",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-fortune500-discovery",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:go-to-market-revenue:client-retention",
+      "kind": "core_item",
+      "label": "client retention",
+      "area": "Go-To-Market & Revenue",
+      "area_sort": 0,
+      "sort": 11,
+      "tags": [
+        "account-management",
+        "customer-success",
+        "account-expansion"
+      ],
+      "facts": {
+        "text": {
+          "value": "client retention",
+          "evidence": [
+            "ev:R11_magellan_measurement:k0",
+            "ev:R12_meridian_gtm:k0",
+            "ev:R16_admarketplace_adv_success:k0",
+            "ev:S19_source_template:k0"
+          ],
+          "text": "client retention"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekr-vertex",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-decision-makers-ai",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:massdot-adoption",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-universal-poc",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-125-leads",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:research-analysis:market-landscape-analysis",
+      "kind": "core_item",
+      "label": "Market landscape analysis",
+      "area": "Research & Analysis",
+      "area_sort": 1,
+      "sort": 0,
+      "tags": [
+        "market-research",
+        "market-sizing"
+      ],
+      "facts": {
+        "text": {
+          "value": "Market landscape analysis",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k1",
+            "ev:R11_magellan_measurement:k1",
+            "ev:R12_meridian_gtm:k1",
+            "ev:R16_admarketplace_adv_success:k1",
+            "ev:R9_knit_growth_marketing:k1",
+            "ev:S19_source_template:k1"
+          ],
+          "text": "Market landscape analysis"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-market-sizing-exit-paths",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhfveal-0",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-competitive-venture-odds",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:research-analysis:competitive-intelligence",
+      "kind": "core_item",
+      "label": "competitive intelligence",
+      "area": "Research & Analysis",
+      "area_sort": 1,
+      "sort": 1,
+      "tags": [
+        "competitive-analysis"
+      ],
+      "facts": {
+        "text": {
+          "value": "competitive intelligence",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k1",
+            "ev:R11_magellan_measurement:k1",
+            "ev:R12_meridian_gtm:k1",
+            "ev:R13_samba_platform_sales:k0",
+            "ev:R14_smartly_agency_partnerships:k3",
+            "ev:R15_versant_transformation:k4",
+            "ev:R16_admarketplace_adv_success:k1",
+            "ev:R8_bairesdev_vp_sales:k2",
+            "ev:R9_knit_growth_marketing:k1",
+            "ev:S19_source_template:k1"
+          ],
+          "text": "competitive intelligence"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-competitive-venture-odds",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhfveal-0",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-market-sizing-exit-paths",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-collateral",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:research-analysis:barriers-to-entry-assessment",
+      "kind": "core_item",
+      "label": "barriers-to-entry assessment",
+      "area": "Research & Analysis",
+      "area_sort": 1,
+      "sort": 2,
+      "tags": [
+        "competitive-analysis",
+        "feasibility-roadmap"
+      ],
+      "facts": {
+        "text": {
+          "value": "barriers-to-entry assessment",
+          "evidence": [
+            "ev:R11_magellan_measurement:k1",
+            "ev:R12_meridian_gtm:k1",
+            "ev:R16_admarketplace_adv_success:k1",
+            "ev:S19_source_template:k1"
+          ],
+          "text": "barriers-to-entry assessment"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhfveal-0",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-feasibility-roadmap",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-competitive-venture-odds",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-build-vs-buy",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-market-sizing-exit-paths",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:research-analysis:decision-tree-modeling",
+      "kind": "core_item",
+      "label": "decision-tree modeling",
+      "area": "Research & Analysis",
+      "area_sort": 1,
+      "sort": 3,
+      "tags": [
+        "scenario-planning",
+        "exit-path-modeling"
+      ],
+      "facts": {
+        "text": {
+          "value": "decision-tree modeling",
+          "evidence": [
+            "ev:R11_magellan_measurement:k1",
+            "ev:R12_meridian_gtm:k1",
+            "ev:R16_admarketplace_adv_success:k1",
+            "ev:S19_source_template:k1"
+          ],
+          "text": "decision-tree modeling"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-market-sizing-exit-paths",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-scenario-planning",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhfveal-0",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-competitive-venture-odds",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-thought-partner",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:research-analysis:financial-forecasting-p-l",
+      "kind": "core_item",
+      "label": "financial forecasting (P&L)",
+      "area": "Research & Analysis",
+      "area_sort": 1,
+      "sort": 4,
+      "tags": [
+        "revenue-modeling",
+        "forecasting"
+      ],
+      "facts": {
+        "text": {
+          "value": "financial forecasting (P&L)",
+          "evidence": [
+            "ev:R11_magellan_measurement:k1",
+            "ev:R12_meridian_gtm:k1",
+            "ev:R16_admarketplace_adv_success:k1",
+            "ev:S19_source_template:k1"
+          ],
+          "text": "financial forecasting (P&L)"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-unit-economics-benchmarks",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhghrt2-3",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-non-dilutive-capital",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-market-sizing-exit-paths",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-unit-economic-gates",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:research-analysis:unit-economics-cac-payback-churn-ttfv",
+      "kind": "core_item",
+      "label": "unit economics (CAC, payback, churn, TTFV)",
+      "area": "Research & Analysis",
+      "area_sort": 1,
+      "sort": 5,
+      "tags": [
+        "unit-economics",
+        "growth-efficiency"
+      ],
+      "facts": {
+        "text": {
+          "value": "unit economics (CAC, payback, churn, TTFV)",
+          "evidence": [
+            "ev:R11_magellan_measurement:k1",
+            "ev:R12_meridian_gtm:k1",
+            "ev:R16_admarketplace_adv_success:k1",
+            "ev:S19_source_template:k1"
+          ],
+          "text": "unit economics (CAC, payback, churn, TTFV)"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-unit-economic-gates",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-distribution-pivot",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-unit-economics-benchmarks",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-staffing-restructure",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-build-vs-buy",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:research-analysis:scenario-planning",
+      "kind": "core_item",
+      "label": "scenario planning",
+      "area": "Research & Analysis",
+      "area_sort": 1,
+      "sort": 6,
+      "tags": [
+        "scenario-planning"
+      ],
+      "facts": {
+        "text": {
+          "value": "scenario planning",
+          "evidence": [
+            "ev:R11_magellan_measurement:k1",
+            "ev:R12_meridian_gtm:k1",
+            "ev:R16_admarketplace_adv_success:k1",
+            "ev:S19_source_template:k1"
+          ],
+          "text": "scenario planning"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-scenario-planning",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhfveal-0",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-market-sizing-exit-paths",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-competitive-venture-odds",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-thought-partner",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:research-analysis:business-process-improvement",
+      "kind": "core_item",
+      "label": "business process improvement",
+      "area": "Research & Analysis",
+      "area_sort": 1,
+      "sort": 7,
+      "tags": [
+        "process-improvement"
+      ],
+      "facts": {
+        "text": {
+          "value": "business process improvement",
+          "evidence": [
+            "ev:R11_magellan_measurement:k1",
+            "ev:R12_meridian_gtm:k1",
+            "ev:R16_admarketplace_adv_success:k1",
+            "ev:S19_source_template:k1"
+          ],
+          "text": "business process improvement"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-verticalization-lift",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-1",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-operating-cadence",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:dd-territory-proposal",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-me-vertical-gtm",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:ai-data:claude-opus-5-sonnet-5-fable-5",
+      "kind": "core_item",
+      "label": "Claude (Opus 5, Sonnet 5, Fable 5)",
+      "area": "AI & Data",
+      "area_sort": 2,
+      "sort": 0,
+      "tags": [
+        "ai-in-workflow"
+      ],
+      "facts": {
+        "text": {
+          "value": "Claude (Opus 5, Sonnet 5, Fable 5)",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k3",
+            "ev:R11_magellan_measurement:k2",
+            "ev:R12_meridian_gtm:k2",
+            "ev:R13_samba_platform_sales:k4",
+            "ev:R14_smartly_agency_partnerships:k4",
+            "ev:R15_versant_transformation:k4",
+            "ev:R16_admarketplace_adv_success:k2",
+            "ev:R8_bairesdev_vp_sales:k4",
+            "ev:R9_knit_growth_marketing:k2",
+            "ev:S19_source_template:k2"
+          ],
+          "text": "Claude (Opus 5, Sonnet 5, Fable 5)"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-0",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-decision-makers-ai",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-claude-code-tracker",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:ai-data:claude-code",
+      "kind": "core_item",
+      "label": "Claude Code",
+      "area": "AI & Data",
+      "area_sort": 2,
+      "sort": 1,
+      "tags": [
+        "building-with-ai"
+      ],
+      "facts": {
+        "text": {
+          "value": "Claude Code",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k3",
+            "ev:R11_magellan_measurement:k2",
+            "ev:R12_meridian_gtm:k2",
+            "ev:R13_samba_platform_sales:k4",
+            "ev:R14_smartly_agency_partnerships:k4",
+            "ev:R15_versant_transformation:k4",
+            "ev:R16_admarketplace_adv_success:k2",
+            "ev:R8_bairesdev_vp_sales:k4",
+            "ev:R9_knit_growth_marketing:k2",
+            "ev:S19_source_template:k2"
+          ],
+          "text": "Claude Code"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-claude-code-tracker",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-1",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-0",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:ai-data:openai-chatgpt",
+      "kind": "core_item",
+      "label": "OpenAI / ChatGPT",
+      "area": "AI & Data",
+      "area_sort": 2,
+      "sort": 2,
+      "tags": [
+        "ai-in-workflow"
+      ],
+      "facts": {
+        "text": {
+          "value": "OpenAI / ChatGPT",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k3",
+            "ev:R11_magellan_measurement:k2",
+            "ev:R12_meridian_gtm:k2",
+            "ev:R13_samba_platform_sales:k4",
+            "ev:R14_smartly_agency_partnerships:k4",
+            "ev:R15_versant_transformation:k4",
+            "ev:R16_admarketplace_adv_success:k2",
+            "ev:R8_bairesdev_vp_sales:k4",
+            "ev:R9_knit_growth_marketing:k2",
+            "ev:S19_source_template:k2"
+          ],
+          "text": "OpenAI / ChatGPT"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-0",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-decision-makers-ai",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-claude-code-tracker",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:ai-data:microsoft-copilot",
+      "kind": "core_item",
+      "label": "Microsoft Copilot",
+      "area": "AI & Data",
+      "area_sort": 2,
+      "sort": 3,
+      "tags": [
+        "ai-in-workflow"
+      ],
+      "facts": {
+        "text": {
+          "value": "Microsoft Copilot",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k3",
+            "ev:R11_magellan_measurement:k2",
+            "ev:R12_meridian_gtm:k2",
+            "ev:R13_samba_platform_sales:k4",
+            "ev:R14_smartly_agency_partnerships:k4",
+            "ev:R15_versant_transformation:k4",
+            "ev:R16_admarketplace_adv_success:k2",
+            "ev:R8_bairesdev_vp_sales:k4",
+            "ev:R9_knit_growth_marketing:k2",
+            "ev:S19_source_template:k2"
+          ],
+          "text": "Microsoft Copilot"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-0",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-decision-makers-ai",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-claude-code-tracker",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:ai-data:prompt-engineering",
+      "kind": "core_item",
+      "label": "prompt engineering",
+      "area": "AI & Data",
+      "area_sort": 2,
+      "sort": 4,
+      "tags": [
+        "ai-in-workflow"
+      ],
+      "facts": {
+        "text": {
+          "value": "prompt engineering",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k3",
+            "ev:R11_magellan_measurement:k2",
+            "ev:R12_meridian_gtm:k2",
+            "ev:R13_samba_platform_sales:k4",
+            "ev:R14_smartly_agency_partnerships:k4",
+            "ev:R16_admarketplace_adv_success:k2",
+            "ev:R8_bairesdev_vp_sales:k4",
+            "ev:R9_knit_growth_marketing:k2",
+            "ev:S19_source_template:k2"
+          ],
+          "text": "prompt engineering"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-0",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-decision-makers-ai",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-claude-code-tracker",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:ai-data:genai-machine-learning",
+      "kind": "core_item",
+      "label": "GenAI & machine learning",
+      "area": "AI & Data",
+      "area_sort": 2,
+      "sort": 5,
+      "tags": [
+        "ai-ml-solutions"
+      ],
+      "facts": {
+        "text": {
+          "value": "GenAI & machine learning",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k3",
+            "ev:R11_magellan_measurement:k2",
+            "ev:R12_meridian_gtm:k2",
+            "ev:R16_admarketplace_adv_success:k2",
+            "ev:R9_knit_growth_marketing:k2",
+            "ev:S19_source_template:k2"
+          ],
+          "text": "GenAI & machine learning"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekr-nike",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-solution-scoping",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-southern-gas-discovery",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:ai-data:ai-governance-output-verification",
+      "kind": "core_item",
+      "label": "AI governance & output verification",
+      "area": "AI & Data",
+      "area_sort": 2,
+      "sort": 6,
+      "tags": [
+        "risk-governance",
+        "ai-in-workflow"
+      ],
+      "facts": {
+        "text": {
+          "value": "AI governance & output verification",
+          "evidence": [
+            "ev:R11_magellan_measurement:k2",
+            "ev:R12_meridian_gtm:k2",
+            "ev:R16_admarketplace_adv_success:k2",
+            "ev:S19_source_template:k2"
+          ],
+          "text": "AI governance & output verification"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-1",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-0",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-decision-makers-ai",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-claude-code-tracker",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-scenario-planning",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:ai-data:data-analytics",
+      "kind": "core_item",
+      "label": "data analytics",
+      "area": "AI & Data",
+      "area_sort": 2,
+      "sort": 7,
+      "tags": [
+        "data-solutions"
+      ],
+      "facts": {
+        "text": {
+          "value": "data analytics",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k1",
+            "ev:R11_magellan_measurement:k2",
+            "ev:R12_meridian_gtm:k2",
+            "ev:R13_samba_platform_sales:k0",
+            "ev:R16_admarketplace_adv_success:k2",
+            "ev:R8_bairesdev_vp_sales:k3",
+            "ev:R9_knit_growth_marketing:k2",
+            "ev:S19_source_template:k2"
+          ],
+          "text": "data analytics"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-solution-scoping",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-1",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-southern-gas-discovery",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:ai-data:tableau",
+      "kind": "core_item",
+      "label": "Tableau",
+      "area": "AI & Data",
+      "area_sort": 2,
+      "sort": 8,
+      "tags": [
+        "data-solutions"
+      ],
+      "facts": {
+        "text": {
+          "value": "Tableau",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k3",
+            "ev:R11_magellan_measurement:k2",
+            "ev:R12_meridian_gtm:k2",
+            "ev:R13_samba_platform_sales:k4",
+            "ev:R14_smartly_agency_partnerships:k4",
+            "ev:R15_versant_transformation:k4",
+            "ev:R16_admarketplace_adv_success:k2",
+            "ev:R8_bairesdev_vp_sales:k4",
+            "ev:R9_knit_growth_marketing:k2",
+            "ev:S19_source_template:k2"
+          ],
+          "text": "Tableau"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-solution-scoping",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-1",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-southern-gas-discovery",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:tools-platforms:salesforce-crm",
+      "kind": "core_item",
+      "label": "Salesforce CRM",
+      "area": "Tools & Platforms",
+      "area_sort": 3,
+      "sort": 0,
+      "tags": [
+        "crm-discipline"
+      ],
+      "facts": {
+        "text": {
+          "value": "Salesforce CRM",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k4",
+            "ev:R11_magellan_measurement:k3",
+            "ev:R12_meridian_gtm:k3",
+            "ev:R13_samba_platform_sales:k2",
+            "ev:R14_smartly_agency_partnerships:k4",
+            "ev:R16_admarketplace_adv_success:k3",
+            "ev:R8_bairesdev_vp_sales:k4",
+            "ev:R9_knit_growth_marketing:k3",
+            "ev:S19_source_template:k3"
+          ],
+          "text": "Salesforce CRM"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-verticalization-lift",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-0",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-125-leads",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:tools-platforms:zoominfo",
+      "kind": "core_item",
+      "label": "ZoomInfo",
+      "area": "Tools & Platforms",
+      "area_sort": 3,
+      "sort": 1,
+      "tags": [
+        "prospecting"
+      ],
+      "facts": {
+        "text": {
+          "value": "ZoomInfo",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k4",
+            "ev:R11_magellan_measurement:k3",
+            "ev:R12_meridian_gtm:k3",
+            "ev:R13_samba_platform_sales:k4",
+            "ev:R14_smartly_agency_partnerships:k4",
+            "ev:R16_admarketplace_adv_success:k3",
+            "ev:R8_bairesdev_vp_sales:k4",
+            "ev:R9_knit_growth_marketing:k3",
+            "ev:S19_source_template:k3"
+          ],
+          "text": "ZoomInfo"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-125-leads",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-0",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-decision-makers-ai",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:dd-200-quota",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:tools-platforms:linkedin-sales-navigator",
+      "kind": "core_item",
+      "label": "LinkedIn Sales Navigator",
+      "area": "Tools & Platforms",
+      "area_sort": 3,
+      "sort": 2,
+      "tags": [
+        "prospecting"
+      ],
+      "facts": {
+        "text": {
+          "value": "LinkedIn Sales Navigator",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k4",
+            "ev:R11_magellan_measurement:k3",
+            "ev:R12_meridian_gtm:k3",
+            "ev:R13_samba_platform_sales:k4",
+            "ev:R14_smartly_agency_partnerships:k4",
+            "ev:R16_admarketplace_adv_success:k3",
+            "ev:R8_bairesdev_vp_sales:k4",
+            "ev:R9_knit_growth_marketing:k3",
+            "ev:S19_source_template:k3"
+          ],
+          "text": "LinkedIn Sales Navigator"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-125-leads",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-0",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-decision-makers-ai",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:dd-200-quota",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:tools-platforms:microsoft-excel-office-suite",
+      "kind": "core_item",
+      "label": "Microsoft Excel & Office Suite",
+      "area": "Tools & Platforms",
+      "area_sort": 3,
+      "sort": 3,
+      "tags": [
+        "revenue-modeling"
+      ],
+      "facts": {
+        "text": {
+          "value": "Microsoft Excel & Office Suite",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k4",
+            "ev:R11_magellan_measurement:k3",
+            "ev:R12_meridian_gtm:k3",
+            "ev:R16_admarketplace_adv_success:k3",
+            "ev:R9_knit_growth_marketing:k3",
+            "ev:S19_source_template:k3"
+          ],
+          "text": "Microsoft Excel & Office Suite"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-unit-economics-benchmarks",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-non-dilutive-capital",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-market-sizing-exit-paths",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:tools-platforms:miro",
+      "kind": "core_item",
+      "label": "Miro",
+      "area": "Tools & Platforms",
+      "area_sort": 3,
+      "sort": 4,
+      "tags": [
+        "enablement-collateral"
+      ],
+      "facts": {
+        "text": {
+          "value": "Miro",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k4",
+            "ev:R11_magellan_measurement:k3",
+            "ev:R12_meridian_gtm:k3",
+            "ev:R13_samba_platform_sales:k4",
+            "ev:R14_smartly_agency_partnerships:k4",
+            "ev:R15_versant_transformation:k4",
+            "ev:R16_admarketplace_adv_success:k3",
+            "ev:R8_bairesdev_vp_sales:k4",
+            "ev:R9_knit_growth_marketing:k3",
+            "ev:S19_source_template:k3"
+          ],
+          "text": "Miro"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-disney-enablement",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-collateral",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:tools-platforms:trello",
+      "kind": "core_item",
+      "label": "Trello",
+      "area": "Tools & Platforms",
+      "area_sort": 3,
+      "sort": 5,
+      "tags": [
+        "operating-cadence"
+      ],
+      "facts": {
+        "text": {
+          "value": "Trello",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k4",
+            "ev:R11_magellan_measurement:k3",
+            "ev:R12_meridian_gtm:k3",
+            "ev:R16_admarketplace_adv_success:k3",
+            "ev:R9_knit_growth_marketing:k3",
+            "ev:S19_source_template:k3"
+          ],
+          "text": "Trello"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-operating-cadence",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhghrt2-3",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:tools-platforms:canva",
+      "kind": "core_item",
+      "label": "Canva",
+      "area": "Tools & Platforms",
+      "area_sort": 3,
+      "sort": 6,
+      "tags": [
+        "enablement-collateral",
+        "content-brand"
+      ],
+      "facts": {
+        "text": {
+          "value": "Canva",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k4",
+            "ev:R11_magellan_measurement:k3",
+            "ev:R12_meridian_gtm:k3",
+            "ev:R16_admarketplace_adv_success:k3",
+            "ev:R9_knit_growth_marketing:k3",
+            "ev:S19_source_template:k3"
+          ],
+          "text": "Canva"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-collateral",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:yri-marketing",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-disney-enablement",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:funding-commercial-mechanics:restricted-tax-advantaged-funding-mechanisms-co-",
+      "kind": "core_item",
+      "label": "Restricted & tax-advantaged funding mechanisms (co-op, MDF, 501(c)(3))",
+      "area": "Funding & Commercial Mechanics",
+      "area_sort": 4,
+      "sort": 0,
+      "tags": [
+        "funding-source-diagnostics"
+      ],
+      "facts": {
+        "text": {
+          "value": "Restricted & tax-advantaged funding mechanisms (co-op, MDF, 501(c)(3))",
+          "evidence": [
+            "ev:R11_magellan_measurement:k4",
+            "ev:R12_meridian_gtm:k4",
+            "ev:R16_admarketplace_adv_success:k4",
+            "ev:S19_source_template:k4"
+          ],
+          "text": "Restricted & tax-advantaged funding mechanisms (co-op, MDF, 501(c)(3))"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-nonprofit-reframe",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-funding-source-qualification",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:funding-commercial-mechanics:non-dilutive-federal-grant-strategy-sbir",
+      "kind": "core_item",
+      "label": "non-dilutive federal grant strategy (SBIR)",
+      "area": "Funding & Commercial Mechanics",
+      "area_sort": 4,
+      "sort": 1,
+      "tags": [
+        "capital-strategy"
+      ],
+      "facts": {
+        "text": {
+          "value": "non-dilutive federal grant strategy (SBIR)",
+          "evidence": [
+            "ev:R11_magellan_measurement:k4",
+            "ev:R12_meridian_gtm:k4",
+            "ev:R16_admarketplace_adv_success:k4",
+            "ev:S19_source_template:k4"
+          ],
+          "text": "non-dilutive federal grant strategy (SBIR)"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-non-dilutive-capital",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-competitive-venture-odds",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:lim-unit-economics-benchmarks",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:funding-commercial-mechanics:managed-services-rfp-response",
+      "kind": "core_item",
+      "label": "managed services & RFP response",
+      "area": "Funding & Commercial Mechanics",
+      "area_sort": 4,
+      "sort": 2,
+      "tags": [
+        "managed-services-sales",
+        "rfp-response"
+      ],
+      "facts": {
+        "text": {
+          "value": "managed services & RFP response",
+          "evidence": [
+            "ev:R11_magellan_measurement:k4",
+            "ev:R12_meridian_gtm:k4",
+            "ev:R14_smartly_agency_partnerships:k1",
+            "ev:R16_admarketplace_adv_success:k4",
+            "ev:R9_knit_growth_marketing:k4",
+            "ev:S19_source_template:k4"
+          ],
+          "text": "managed services & RFP response"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:art-run-muhbu38f-2",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekl-universal-poc",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekr-wayfair-disney",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekr-nike",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        },
+        {
+          "rel": "grounded_in",
+          "to": "ach:tekr-750k",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "core:funding-commercial-mechanics:board-trustee-engagement",
+      "kind": "core_item",
+      "label": "board & trustee engagement",
+      "area": "Funding & Commercial Mechanics",
+      "area_sort": 4,
+      "sort": 3,
+      "tags": [
+        "board-trustee-engagement"
+      ],
+      "facts": {
+        "text": {
+          "value": "board & trustee engagement",
+          "evidence": [
+            "ev:R10_mri_simmons_audience:k2",
+            "ev:R11_magellan_measurement:k4",
+            "ev:R12_meridian_gtm:k4",
+            "ev:R16_admarketplace_adv_success:k4",
+            "ev:S19_source_template:k4"
+          ],
+          "text": "board & trustee engagement"
+        }
+      },
+      "relations": [
+        {
+          "rel": "grounded_in",
+          "to": "ach:psp-board-memo",
+          "confidence": 0.6,
+          "note": "tag overlap"
+        }
+      ]
+    },
+    {
+      "id": "eng:healthcare",
+      "kind": "engagement",
+      "key": "healthcare",
+      "label": "Healthcare Technology Start-Up (Confidential)",
+      "role": "liminal",
+      "sort": 0,
+      "confidential": true,
+      "needs_details": false,
+      "ask": null,
+      "notes": "source template 2026-09-27: header, subtitle and the nine long-form bullets from Section C of the source template.",
+      "achievements": [
+        "lim-gtm-ownership",
+        "lim-customer-discovery-sprint",
+        "lim-distribution-pivot",
+        "lim-unit-economic-gates",
+        "lim-market-sizing-exit-paths",
+        "lim-collateral",
+        "lim-non-dilutive-capital",
+        "lim-scenario-planning",
+        "lim-claude-code-tracker"
+      ],
+      "facts": {
+        "client": {
+          "value": "Healthcare Technology Start-Up (Confidential)",
+          "evidence": [
+            "ev:S19_source_template:h11"
+          ],
+          "text": "Healthcare Technology Start-Up (Confidential)"
+        },
+        "location": {
+          "value": "New York, NY",
+          "evidence": [
+            "ev:S19_source_template:h11"
+          ]
+        },
+        "start": {
+          "value": "2026-07",
+          "evidence": [
+            "ev:S19_source_template:h11"
+          ]
+        },
+        "end": {
+          "value": null,
+          "evidence": [
+            "ev:S19_source_template:h11"
+          ]
+        },
+        "commitment": {
+          "value": "Part Time",
+          "evidence": [
+            "ev:S19_source_template:h11"
+          ]
+        },
+        "subtitle": {
+          "value": "Principal Business Strategist – GTM Plan, Business Architectural Roadmap, Blueprint to Obtain Necessary Funding – Healthcare FinTech Start-Up",
+          "evidence": [
+            "ev:S19_source_template:h12"
+          ]
+        }
+      }
+    },
+    {
+      "id": "eng:hvac",
+      "kind": "engagement",
+      "key": "hvac",
+      "label": "HVAC Services Firm (Confidential)",
+      "role": "liminal",
+      "sort": 1,
+      "confidential": true,
+      "needs_details": true,
+      "ask": "Client name as it should print, location, start and end dates, commitment (part time / project), a one-line description of the engagement, and 1–2 more accomplishments.",
+      "notes": "source template 2026-09-27: created from the learned HVAC feasibility-dashboard bullet. Hidden until the Match Desk collects its details.",
+      "achievements": [
+        "art-run-muhfveal-0"
+      ],
+      "facts": {
+        "client": {
+          "value": "HVAC Services Firm (Confidential)",
+          "evidence": [
+            "ev:ans:run-muhfveal:0",
+            "ev:stmt:2026-09-27:6"
+          ],
+          "text": "HVAC Services Firm (Confidential)"
+        },
+        "location": {
+          "value": null,
+          "evidence": []
+        },
+        "start": {
+          "value": null,
+          "evidence": []
+        },
+        "end": {
+          "value": null,
+          "evidence": []
+        },
+        "commitment": {
+          "value": null,
+          "evidence": []
+        },
+        "subtitle": {
+          "value": null,
+          "evidence": []
+        }
+      }
+    },
+    {
+      "id": "contact:linkedin-profile",
+      "kind": "contact",
+      "label": "LinkedIn Profile",
+      "sort": 111,
+      "facts": {
+        "url": {
+          "value": "https://www.linkedin.com/in/timothy-king1124/?skipRedirect=true",
+          "evidence": [
+            "ev:S19_source_template:x0"
+          ],
+          "text": "LinkedIn Profile: https://www.linkedin.com/in/timothy-king1124/?skipRedirect=true"
+        }
+      }
+    },
+    {
+      "id": "contact:github",
+      "kind": "contact",
+      "label": "GitHub",
+      "sort": 112,
+      "facts": {
+        "url": {
+          "value": "https://github.com/timrking11-blip",
+          "evidence": [
+            "ev:S19_source_template:x0"
+          ],
+          "text": "GitHub: https://github.com/timrking11-blip"
+        }
+      }
+    },
+    {
+      "id": "contact:website",
+      "kind": "contact",
+      "label": "Website",
+      "sort": 113,
+      "facts": {
+        "url": {
+          "value": "https://www.strategicmarketinsights.services/",
+          "evidence": [
+            "ev:S19_source_template:x0"
+          ],
+          "text": "Website: https://www.strategicmarketinsights.services/"
+        }
+      }
+    }
+  ]
+}

@@ -9,7 +9,7 @@ curation/achievements.json, and rot.py refuses to build if any raw bullet is una
 
 usage: python extract.py
 """
-import hashlib, json, re, sys, zipfile
+import datetime as dt, hashlib, json, re, sys, zipfile
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
@@ -67,6 +67,22 @@ def md5(p):
     return hashlib.md5(p.read_bytes()).hexdigest()
 
 
+def authored_at(path, kind):
+    """When the source was written: the docx's own modified stamp, else the file date; the LinkedIn capture's date."""
+    if kind == "linkedin_md":
+        m = re.search(r"(\d{4}-\d{2}-\d{2})", path.name)
+        return m.group(1) if m else dt.date.fromtimestamp(path.stat().st_mtime).isoformat()
+    if path.suffix.lower() == ".docx":
+        try:
+            core = zipfile.ZipFile(path).read("docProps/core.xml").decode("utf-8", "ignore")
+            m = re.search(r"<dcterms:modified[^>]*>([^<]+)<", core)
+            if m:
+                return m.group(1)[:19]
+        except KeyError:
+            pass
+    return dt.datetime.fromtimestamp(path.stat().st_mtime).isoformat(timespec="minutes")
+
+
 def clean(t):
     t = t.replace(" ", " ").replace("\t", " ")
     return re.sub(r"\s+", " ", t).strip()
@@ -104,10 +120,10 @@ def docx_paragraphs(path):
 
 
 def new_record(sid, path, target, kind):
-    return {"id": sid, "file": str(path.relative_to(CAREER.parent)), "md5": md5(path),
+    return {"id": sid, "file": str(path.relative_to(CAREER.parent)), "md5": md5(path), "authored_at": authored_at(path, kind),
             "target_role": target, "kind": kind, "headline": None, "bullets": [],
             "summary": [], "competency_lines": [], "systems_lines": [], "skills_lines": [],
-            "cert_lines": [], "portfolio": [], "role_headers": [], "tagline_lines": []}
+            "cert_lines": [], "portfolio": [], "role_headers": [], "tagline_lines": [], "contact_lines": []}
 
 
 def parse_docx(rec, path):
@@ -178,7 +194,9 @@ def parse_template(rec, path):
             section, role = head, ("liminal" if head == "consulting" else None)
             continue
         if section == "header":
-            continue                                   # name and contact line
+            if "@" in txt or "|" in txt:
+                rec["contact_lines"].append(txt)       # the contact line is evidence for the identity links
+            continue
         if section == "summary":
             if re.match(r"^Technologies\s*:?$", txt):
                 tech_next = True
@@ -296,6 +314,9 @@ def parse_linkedin(rec, path):
             if r:
                 role = r
             rec["role_headers"].append({"role": role, "text": s.lstrip("# ")})
+            continue
+        if section == "experience" and re.match(r"^[A-Z][a-z]{2} \d{4} [-–] ([A-Z][a-z]{2} \d{4}|Present)", s):
+            rec["role_headers"].append({"role": role, "text": s})   # the tenure line under each position
             continue
         if section == "header" and s and not s.startswith("Location"):
             rec["headline"] = s

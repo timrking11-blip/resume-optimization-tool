@@ -163,7 +163,22 @@ mark{background:var(--hl);color:var(--hl-ink);border-radius:2px;padding:0 1px}
 .sheet .cc.over{color:#B3261E}
 .sheet .await{font-family:var(--ui);font-size:11px;color:#8A6D1E;background:#FBF3DC;border:1px dashed #D9B75A;border-radius:4px;padding:4px 8px;margin:.3em 0 .6em}
 @media (hover:none){.sheet .ctl{opacity:1}}
-.learn{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.learn{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.tier{display:grid;gap:6px;align-content:start;padding:12px;border:1px solid var(--line);border-radius:8px;background:var(--surface-2);min-width:0}
+.tier h3{display:flex;align-items:baseline;gap:8px}
+.tier h3 .tn{font-family:var(--mono);font-size:11px;color:var(--muted);font-weight:400}
+.tier .big{font-family:var(--cond);font-weight:700;font-size:22px;line-height:1.1;font-variant-numeric:tabular-nums}
+.tier .big small{font-size:12px;color:var(--muted);font-weight:500;font-family:var(--ui)}
+.tier ul{padding-left:16px}
+.ocform{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:4px}
+.ocform label.f{font-size:11px;letter-spacing:.4px}
+.ocform input,.ocform select{padding:5px 8px;font-size:13px;background:var(--surface)}
+.ocform .full{grid-column:1 / 3}
+.sheet .ev{font-family:var(--ui);font-size:9.5px;color:#5B6B85;margin-left:4px;background:#EEF2F8;border-radius:3px;padding:0 5px;white-space:nowrap}
+.sheet .ev.you{background:#EEF6D0;color:#3E5A1E}
+.sheet .k-summary{text-align:justify;margin-bottom:.5em}
+.qb .lf.err{color:var(--gap)}
+.qb textarea.blocked{border-color:var(--gap)}
 .learn h3{font-family:var(--cond);font-size:14px;margin:0 0 6px;font-weight:600}
 .learn ul{margin:0;padding-left:18px;font-size:13px}
 .learn li{margin-bottom:2px}
@@ -171,6 +186,7 @@ mark{background:var(--hl);color:var(--hl-ink);border-radius:2px;padding:0 1px}
 .note{font-size:12.5px;color:var(--muted);background:var(--surface-2);border-left:3px solid var(--navy);padding:8px 10px;border-radius:0 6px 6px 0}
 .err{color:var(--gap)}
 .toast{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom, 0px));transform:translateX(-50%);background:var(--ink);color:var(--surface);padding:8px 14px;border-radius:6px;font-size:13px;box-shadow:var(--shadow);z-index:5}
+@media (max-width:1100px){ .learn{grid-template-columns:repeat(2,minmax(0,1fr))} }
 @media (max-width:900px){
   .grid{grid-template-columns:minmax(0,1fr)}
   .sheet{padding:20px 18px}
@@ -252,6 +268,7 @@ mark{background:var(--hl);color:var(--hl-ink);border-radius:2px;padding:0 1px}
           <span class="hint" id="sheetHint">Hover a bullet to keep, swap, drop, or polish it. Click any text to edit it, including the tagline and expertise lines.</span>
         </div>
         <div class="row">
+          <label class="hint" for="sumToggle" title="Off by default. When on, Claude writes up to 55 words from the claims on this draft, checked against their evidence."><input type="checkbox" id="sumToggle"> Summary paragraph</label>
           <button id="copyBtn">Copy text</button>
           <button id="docxBtn">Download Word</button>
           <button class="primary" id="pdfBtn">Download PDF</button>
@@ -263,11 +280,22 @@ mark{background:var(--hl);color:var(--hl-ink);border-radius:2px;padding:0 1px}
   </div>
 
   <section class="panel" aria-labelledby="lh">
-    <h2 id="lh">What the bank has learned</h2>
+    <h2 id="lh">The four tiers</h2>
+    <p class="hint">Evidence is what actually happened. Derived knowledge is what the bank infers from it. Generation is what gets written from that knowledge. Feedback is what happens afterwards. Nothing flows backward without a step you can see.</p>
     <div class="learn">
-      <div><h3>Most requested across saved postings</h3><ul id="lReq"><li class="hint">Saved postings appear here after your first match.</li></ul></div>
-      <div><h3>New entries waiting to sync</h3><ul id="lInbox"><li class="hint">Answers you turn into bullets, tagline phrases, tools, or engagement details land here, and future matches can use them right away.</li></ul></div>
-      <div><h3>Your feedback so far</h3><ul id="lFb"><li class="hint">Keep and Drop clicks raise or lower a bullet's future score.</li></ul></div>
+      <div class="tier"><h3><span class="tn">1</span>Evidence</h3><div class="big" id="tEv">–</div><ul id="lEv"><li class="hint">Your documents and your own words, kept verbatim.</li></ul>
+        <h3 style="margin-top:6px">Waiting to sync</h3><ul id="lInbox"><li class="hint">Answers you turn into bullets, tagline phrases, tools, or engagement details land here, and future matches can use them right away.</li></ul></div>
+      <div class="tier"><h3><span class="tn">2</span>Derived knowledge</h3><div class="big" id="tCl">–</div><ul id="lCl"></ul>
+        <h3 style="margin-top:6px">Most requested across saved postings</h3><ul id="lReq"><li class="hint">Saved postings appear here after your first match.</li></ul></div>
+      <div class="tier"><h3><span class="tn">3</span>Generation</h3><div class="big" id="tGen">–</div><ul id="lGen"><li class="hint">Every printed line names the claims it comes from, and every Claude-written line is checked against their evidence before it reaches the sheet.</li></ul></div>
+      <div class="tier"><h3><span class="tn">4</span>Feedback</h3><div class="big" id="tFb">–</div><ul id="lFb"><li class="hint">Keep and Drop clicks raise or lower a bullet's future score.</li></ul>
+        <h3 style="margin-top:6px">Application</h3>
+        <div class="ocform">
+          <label class="f" for="ocDate">Applied on<input type="date" id="ocDate"></label>
+          <label class="f" for="ocResp">Response<select id="ocResp"><option value="pending">pending</option><option value="no_response">no response</option><option value="screen">screen</option><option value="interview">interview</option><option value="offer">offer</option><option value="rejected">rejected</option></select></label>
+          <label class="f full" for="ocNote">Note<input type="text" id="ocNote" placeholder="who, what stage, anything worth remembering"></label>
+          <div class="row full"><button id="ocSave">Save outcome</button><span class="hint" id="ocState"></span></div>
+        </div></div>
     </div>
     <p class="syncnote" id="syncState">Downloading a PDF or Word file queues that posting for the hourly sync into your GitHub database.</p>
     <div class="row">
@@ -330,6 +358,7 @@ const S = {
   runId:null, phase:"idle",
   excluded:new Set(), pinned:new Set(), textChoice:{}, edits:{},
   tagline:null, compOrder:null,
+  summaryOn:false, summary:null, summaryClaims:[], outcome:null, outcomeEvents:[], promptVersions:{},
   sectionEdits:{}, engDetails:{}, editsC:{}, excludedC:new Set(), extra:{tagline:[],expertise:[],technology:[],competency:[]},
   questions:[], newAch:[], adj:{}, inbox:[], runs:[], feedback:[],
   ctl1:null, ctl2:null, ctlQ:null, writeChain:{}, syncMeta:null,
@@ -366,8 +395,42 @@ function extractRequirements(text){
 }
 function textAdj(t){ return (t.score_adj||0) + (S.adj[t.id]||0); }
 const unsyncedInbox = () => S.inbox.filter(b=>!b.synced);
+/* ------------------------------ tier 2 lookups and tier-3 QA (mirrors claims.py) ------------------------------ */
+function claimById(id){ if(!S.lib._claims){ S.lib._claims=Object.fromEntries((S.lib.claims||[]).map(c=>[c.id,c])); } return S.lib._claims[id]; }
+function disputedAchievements(){ const out=new Set(); for(const c of S.lib.claims||[]) if(c.status==="disputed" && (c.kind==="metric"||c.kind==="achievement")) out.add((c.kind==="metric"?c.subject:c.id).split(":").slice(1).join(":")); return out; }
+const NUMBER_WORDS={one:1,two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10,eleven:11,twelve:12,fifteen:15,twenty:20,thirty:30,forty:40,fifty:50,hundred:100,half:50,dozen:12};
+function numberTokens(text){
+  const out=new Set(), t=String(text||"");
+  for(const m of t.matchAll(/\b(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen|twenty|thirty|forty|fifty|hundred|half|dozen)\b/gi)) out.add(String(NUMBER_WORDS[m[1].toLowerCase()]));
+  for(const m of t.matchAll(/(?<![A-Za-z])~?\$?(\d[\d,]*(?:\.\d+)?)\s*(K\b|M\b|MM\b|B\b|thousand|million|billion)?(?![A-Za-z])/gi)){
+    let v=parseFloat(m[1].replace(/,/g,"")); if(isNaN(v)) continue;
+    v*=({K:1e3,M:1e6,MM:1e6,B:1e9,THOUSAND:1e3,MILLION:1e6,BILLION:1e9})[(m[2]||"").toUpperCase()]||1;
+    out.add(Math.abs(v-Math.round(v))<1e-9?String(Math.round(v)):Number(v.toPrecision(4)).toString());
+  }
+  return out;
+}
+const FIRST_PERSON=/\b(I(?!\.[A-Z])|I'm|I've|I'd|me|my|mine|we|our|us)\b/;
+/* A line may only state numbers that its claims' evidence or your own answer states. */
+function qaLine(text, claimIds, quotes, band){
+  const issues=[], allowed=new Set(); let anyBasis=false;
+  for(const id of claimIds||[]){ const c=claimById(id); if(!c) continue; anyBasis=true; if(c.status==="disputed") issues.push(`disputed claim ${id}`); for(const n of c.numbers||[]) allowed.add(n); }
+  for(const q of quotes||[]){ if(q){ anyBasis=true; for(const n of numberTokens(q)) allowed.add(n); } }
+  const missing=[...numberTokens(text)].filter(n=>!allowed.has(n)).sort((a,b)=>+a-+b);
+  if(missing.length && anyBasis) issues.push("numbers not in your answer or the evidence: "+missing.join(", "));
+  if(FIRST_PERSON.test(text||"")) issues.push("first person");
+  if(band && (text||"").length>band.hard_ceiling) issues.push(`${text.length} chars > ${band.hard_ceiling}`);
+  return issues;
+}
+const blocking = qa => (qa||[]).filter(x=>!/chars >/.test(x));
+function evidenceChip(claimIds, fresh){
+  if(fresh) return `<span class="ev you" title="From your answer on this posting. It becomes bank evidence at the next sync.">your answer</span>`;
+  const c=(claimIds||[]).map(claimById).find(Boolean); if(!c||!c.evidence) return "";
+  const kinds=(c.evidence.source_types||[]).map(t=>({USER_ENTERED:"you",MASTER_RESUME:"template",HISTORICAL_RESUME:"resumes",PUBLIC_PROFILE:"LinkedIn"})[t]||t.toLowerCase()).join(", ");
+  return `<span class="ev" title="${esc(`${c.evidence.n} evidence line${c.evidence.n===1?"":"s"} (${kinds}) · confidence ${c.confidence} · ${c.status}`)}">${c.evidence.n} src · ${c.confidence}</span>`;
+}
 function allAchievements(){
-  const base = S.lib.achievements.map(a=>({...a, texts:[...a.texts], has_metrics:(a.metrics||[]).length>0}));
+  const held=disputedAchievements();   // a disputed number never prints
+  const base = S.lib.achievements.filter(a=>!held.has(a.id)).map(a=>({...a, texts:[...a.texts], has_metrics:(a.metrics||[]).length>0}));
   const byId = Object.fromEntries(base.map(a=>[a.id,a]));
   for (const b of unsyncedInbox()){
     const sec=b.section||"experience";
@@ -548,19 +611,29 @@ function rankCore(req){
 
 /* ------------------------------ resume model (schema rot-resume/2, same as rot.py assemble) ------------------------------ */
 function resumeModel(){
-  const L=S.lib, req=S.req, id=L.identity;
+  const L=S.lib, req=S.req, id=L.identity, trace={};
   const roles=[...Object.keys(S.chosen)].map(k=>L.roles.find(r=>r.key===k)).filter(Boolean).sort((a,b)=>a.sort-b.sort);
+  const byText=(list,key)=>Object.fromEntries((list||[]).map(x=>[x[key], x.claim_id]).filter(x=>x[1]));
+  const tagline=rankTagline(req), expertise=rankCompetencies(req), technologies=rankTech(req);
+  const tl=byText(L.tagline_phrases,"text"), ex=byText(L.competencies,"text"), tc=byText(L.technologies,"name");
+  trace.tagline=tagline.map(t=>tl[t]).filter(Boolean); trace.expertise=expertise.map(t=>ex[t]).filter(Boolean); trace.technologies=technologies.map(t=>tc[t]).filter(Boolean);
+  const education=L.education.map((e,n)=>{ const sid=(e.claim_id||"edu:umaine:degree").split(":").slice(0,-1).join(":"); trace[`education:${n}`]=[`${sid}:school`,`${sid}:degree`,`${sid}:date`];
+    return {school:e.school, degree_line:e.degree_line||`${e.degree} | ${e.date_display||e.year}`, bullets:[]}; });
+  const achClaims=a=>a.claim_ids||[];
+  const outRoles=roles.map(r=>{ trace[`role:${r.key}`]=r.claim_ids||[`role:${r.key}:title`,`role:${r.key}:employer`,`role:${r.key}:start`,`role:${r.key}:end`,`role:${r.key}:context`];
+    return {key:r.key, title:r.title, employer:r.employer, location:r.location, dates:r.dates, context:[r.location, r.context].filter(Boolean).join(" · "),
+      bullets:S.chosen[r.key].map((i,n)=>{ const ids=achClaims(i.a); trace[`role:${r.key}:${n}`]=ids; return {aid:i.a.id, tid:i.t.id, text:S.edits[i.a.id]??i.t.text, fresh:!!i.a.fresh||!!i.t.fresh, claim_ids:ids}; })}; });
+  const certs=L.certifications.filter(c=>!c.hidden).map((c,n)=>{ if(c.claim_id){ const sid=c.claim_id.split(":").slice(0,-1).join(":"); trace[`cert:${n}`]=[`${sid}:name`,`${sid}:issuer`].concat(c.status?[`${sid}:status`]:[]); }
+    return {name:c.name, issuer:c.issuer, note:c.note||(c.status?"In Progress":null)}; });
+  const engagements=engagementsModel(req).map(e=>{ const lib=(L.engagements||[]).find(x=>x.key===e.key); trace[`eng:${e.key}`]=(lib&&lib.claim_ids)||[];
+    e.bullets=e.bullets.map((b,n)=>{ const a=allAchievements().find(x=>x.id===b.aid); const ids=a?achClaims(a):[]; trace[`eng:${e.key}:${n}`]=ids; return {...b, claim_ids:ids}; }); return e; });
+  const core=rankCore(req).map(a=>{ const items=(L.core_competencies||[]).find(x=>x.label===a.label)?.items||[]; const m=Object.fromEntries(items.map(i=>[i.text,i.claim_id])); trace[`core:${a.label}`]=a.items.map(t=>m[t]).filter(Boolean); return a; });
+  if(S.summaryOn && S.summary) trace.summary=S.summaryClaims||[];
   return {
     schema:"rot-resume/2", template:(L.template&&L.template.id)||"source-2026-09",
     identity:{name:id.name, location:id.location, phone:id.phone, email:id.email, links:id.links||[{label:"LinkedIn Profile", url:"https://"+id.linkedin}]},
-    tagline:rankTagline(req), expertise:rankCompetencies(req), technologies:rankTech(req),
-    education:L.education.map(e=>({school:e.school, degree_line:e.degree_line||`${e.degree} | ${e.date_display||e.year}`, bullets:[]})),
-    roles:roles.map(r=>({key:r.key, title:r.title, employer:r.employer, location:r.location, dates:r.dates,
-      context:[r.location, r.context].filter(Boolean).join(" · "),
-      bullets:S.chosen[r.key].map(i=>({aid:i.a.id, tid:i.t.id, text:S.edits[i.a.id]??i.t.text, fresh:!!i.a.fresh||!!i.t.fresh}))})),
-    certifications:L.certifications.filter(c=>!c.hidden).map(c=>({name:c.name, issuer:c.issuer, note:c.note||(c.status?"In Progress":null)})),
-    engagements:engagementsModel(req),
-    core_competencies:rankCore(req)
+    summary:(S.summaryOn && S.summary)||null,
+    tagline, expertise, technologies, education, roles:outRoles, certifications:certs, engagements, core_competencies:core, trace
   };
 }
 const btext = b => typeof b==="string" ? b : b.text;
@@ -573,6 +646,7 @@ function docParagraphs(m){
   (i.links||[]).forEach((ln,k)=>{ if(k) contact.push(["contact"," | "]); contact.push(["link",ln.label,ln.url]); });
   P.push(["contact",contact]);
   P.push(["heading",[["heading","Professional Summary & Areas of Expertise"]]]);
+  if(m.summary) P.push(["summary",[["plain",m.summary]]]);
   if(m.tagline.length) P.push(["tagline",[["plain",m.tagline.join(" | ")]]]);
   if(m.expertise.length) P.push(["expertise",[["plain",m.expertise.join(" • ")]]]);
   if(m.technologies.length){ P.push(["tech_label",[["bold_u","Technologies"],["bold",":"]]]); P.push(["tech_line",[["plain",m.technologies.join(", ")]]]); }
@@ -607,6 +681,7 @@ function renderStats(){
     `<span class="stat"><b>${L.achievements.length}</b> achievements</span>`,
     `<span class="stat"><b>${nb}</b> bullets</span>`,
     `<span class="stat"><b>${Object.keys(L.tags).length}</b> tags</span>`,
+    `<span class="stat"><b>${(L.claims||[]).length}</b> claims</span>`,
     `<span class="stat">R1 band <b>${L.length_band.p10}–${L.length_band.hard_ceiling}</b> chars</span>`,
     `<span class="stat"><b>${S.runs.length}</b> saved postings</span>`
   ].join("");
@@ -635,11 +710,12 @@ function renderSheet(){
   const ROLE_ACTS=[["keep","Keep","Keep: pin and raise its future score"],["swap","Swap","Swap for the next-best bullet in this role"],["drop","Drop","Drop: remove and lower its future score"],["polish","Polish","Polish: Claude rewrites it to the Resume 1 standard with the same facts"]];
   const C_ACTS=[["dropc","Drop","Leave it out of Section C for this posting"],["polishc","Polish","Polish: Claude tightens it to the Section C standard with the same facts"]];
   const bullet=(b,kind,sec)=>{ const n=b.text.length, ceil=sec==="c"?lband.hard_ceiling:band.hard_ceiling;
-    return `<p class="k-${kind} ${b.fresh?"new":""}"><span class="bt" contenteditable="true" spellcheck="true" data-sec="${sec}" data-aid="${esc(b.aid)}">${esc(b.text)}</span><span class="cc ${n>ceil?"over":""}" title="characters (ceiling ${ceil})">${n}</span>${ctl(sec==="c"?C_ACTS:ROLE_ACTS,b.aid)}</p>`; };
+    return `<p class="k-${kind} ${b.fresh?"new":""}"><span class="bt" contenteditable="true" spellcheck="true" data-sec="${sec}" data-aid="${esc(b.aid)}">${esc(b.text)}</span><span class="cc ${n>ceil?"over":""}" title="characters (ceiling ${ceil})">${n}</span>${evidenceChip(b.claim_ids,b.fresh)}${ctl(sec==="c"?C_ACTS:ROLE_ACTS,b.aid)}</p>`; };
   const i=m.identity, H=[];
   H.push(`<p class="k-name">${esc(i.name)}</p>`);
   H.push(`<p class="k-contact">${esc(`${i.location} | ${i.phone} | ${i.email}`)}${(i.links||[]).map(l=>` | <a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("")}</p>`);
   H.push(`<p class="k-heading">Professional Summary &amp; Areas of Expertise</p>`);
+  if(m.summary) H.push(`<p class="k-summary"><span class="ln" contenteditable="true" spellcheck="true" data-line="summary" title="Summary paragraph, built from the claims on this draft">${esc(m.summary)}</span>${evidenceChip(S.summaryClaims,false)}</p>`);
   H.push(`<p class="k-tagline"><span class="ln" contenteditable="true" spellcheck="true" data-line="tagline" title="Section A. Edit freely; separate phrases with |">${esc(m.tagline.join(" | "))}</span></p>`);
   H.push(`<p class="k-expertise"><span class="ln" contenteditable="true" spellcheck="true" data-line="expertise" title="Section B. Edit freely; separate items with •">${esc(m.expertise.join(" • "))}</span></p>`);
   H.push(`<p class="k-tech_label"><u>Technologies</u>:</p><p class="k-tech_line"><span class="ln" contenteditable="true" spellcheck="true" data-line="technologies" title="Separate tools with commas">${esc(m.technologies.join(", "))}</span></p>`);
@@ -690,7 +766,7 @@ function renderQuestions(){
     if(sec==="engagement"){ const e=engState(engByKey(q.engagement)||{}), f={...e, ...(q.fields||{})};
       form=`<div class="engform">${ENG_INPUTS.map(([k,label,phd])=>`<label class="f" for="ef${ix}-${k}">${label}<input type="text" id="ef${ix}-${k}" data-ef="${ix}:${k}" value="${esc(f[k]||"")}" placeholder="${esc(phd)}"></label>`).join("")}</div>`; }
     const lim = ph ? ph.max : (sec==="engagement" ? (S.lib.longform_band?.hard_ceiling||340) : S.lib.length_band.hard_ceiling);
-    const items = q.bullets?.length ? `<ul class="qb">${q.bullets.map((b,bi)=>`<li><input type="checkbox" id="bon${ix}-${bi}" data-bon="${ix}:${bi}" ${b.on?"checked":""} aria-label="Use this entry"><textarea id="btx${ix}-${bi}" data-btxt="${ix}:${bi}" rows="${ph?1:2}" aria-label="Entry text">${esc(b.text)}</textarea><span class="cc ${b.text.length>(ph?ph.max:S.lib.length_band.hard_ceiling)?"over":""}" id="bcc${ix}-${bi}">${b.text.length}</span>${b.longform?`<span class="lf">Section C wording (${b.longform.length} chars): ${esc(b.longform)}</span>`:""}</li>`).join("")}</ul>` : "";
+    const items = q.bullets?.length ? `<ul class="qb">${q.bullets.map((b,bi)=>{ const blk=blocking(b.qa); return `<li><input type="checkbox" id="bon${ix}-${bi}" data-bon="${ix}:${bi}" ${b.on&&!blk.length?"checked":""} ${blk.length?"disabled":""} aria-label="Use this entry"><textarea id="btx${ix}-${bi}" data-btxt="${ix}:${bi}" rows="${ph?1:2}" class="${blk.length?"blocked":""}" aria-label="Entry text">${esc(b.text)}</textarea><span class="cc ${b.text.length>(ph?ph.max:S.lib.length_band.hard_ceiling)?"over":""}" id="bcc${ix}-${bi}">${b.text.length}</span>${b.longform?`<span class="lf">Section C wording (${b.longform.length} chars): ${esc(b.longform)}</span>`:""}${blk.length?`<span class="lf err" id="bqa${ix}-${bi}">Not printable yet: ${esc(blk.join("; "))}. Edit the text, or add that fact to your answer and re-polish.</span>`:""}</li>`; }).join("")}</ul>` : "";
     return `
     <div class="q"><div class="qh"><span class="qn">${ix+1}</span><p>${esc(q.question)}</p></div>
       <div class="meta"><span class="sec ${sec!=="experience"?"alt":""}">${esc(sectionLabel(q))}</span>${q.why?`<span class="why">${esc(q.why)}</span>`:""}</div>
@@ -720,6 +796,32 @@ function renderLearned(){
   const lastTxt=last&&!isNaN(last) ? `Last synced ${last.toLocaleString([], {month:"short", day:"numeric", hour:"numeric", minute:"2-digit"})}${S.syncMeta.commit?` (commit ${esc(S.syncMeta.commit)})`:""}.` : "Not synced yet.";
   $("#syncState").innerHTML = `${pendRuns?`<b>${pendRuns} downloaded posting${pendRuns>1?"s":""} waiting for the hourly sync.</b> `:""}${lastTxt} Downloading a PDF or Word file queues that posting for the hourly sync into your GitHub database.`;
   $("#lFb").innerHTML = S.feedback.length ?`<li><b>${k}</b> kept · <b>${d}</b> dropped · <b>${e}</b> edited</li><li class="hint">Dropped bullets rank lower next time. Kept ones rank higher.</li>` : `<li class="hint">Keep and Drop clicks raise or lower a bullet's future score.</li>`;
+  // the four tiers at a glance
+  const cl=S.lib.claims||[], disputed=cl.filter(c=>c.status==="disputed").length, avg=cl.length?(cl.reduce((a,c)=>a+(c.confidence||0),0)/cl.length):0;
+  const answered=S.runs.reduce((a,r)=>a+((r.followups||[]).filter(f=>f.answer).length),0);
+  const nDocs=new Set(cl.flatMap(c=>c.evidence?.source_types||[])).size;
+  const evLines=cl.reduce((a,c)=>a+(c.evidence?.n||0),0);
+  $("#tEv").innerHTML=`${answered} <small>answers logged</small>`;
+  $("#lEv").innerHTML=`<li>${evLines} evidence links across ${nDocs} source type${nDocs===1?"":"s"}: your resumes, the template, LinkedIn, and your answers.</li><li class="hint">Your words are first-hand evidence at once. Claude's words never are.</li>`;
+  $("#tCl").innerHTML=`${cl.length} <small>claims · ${disputed} disputed</small>`;
+  $("#lCl").innerHTML=`<li>Average confidence ${avg.toFixed(2)}. ${disputed?`${disputed} disputed claim${disputed>1?"s":""} held back from printing until resolved.`:"No unresolved conflicts."}</li>`;
+  const m=S.lib?resumeModel():null; const traced=m?Object.values(m.trace).filter(v=>v.length).length:0, total=m?Object.keys(m.trace).length:0;
+  $("#tGen").innerHTML=`${traced}/${total} <small>lines traced on this draft</small>`;
+  $("#lGen").innerHTML=`<li>Prompts in use: ${Object.values(PROMPT_VERSIONS).join(", ")}.</li><li class="hint">Untraced lines are answers from this posting; they gain claims at the next sync.</li>`;
+  const oc=S.runs.filter(r=>r.outcome&&r.outcome.response&&r.outcome.response!=="pending"); const byResp={}; for(const r of oc) byResp[r.outcome.response]=(byResp[r.outcome.response]||0)+1;
+  const applied=S.runs.filter(r=>r.outcome&&r.outcome.applied_at).length;
+  $("#tFb").innerHTML=`${applied} <small>applied · ${Object.entries(byResp).map(([k,v])=>`${v} ${k.replace("_"," ")}`).join(", ")||"no responses yet"}</small>`;
+}
+function renderOutcome(){
+  const o=S.outcome||{}; $("#ocDate").value=o.applied_at||""; $("#ocResp").value=o.response||"pending"; $("#ocNote").value=o.note||"";
+  $("#ocState").textContent = S.runId ? (o.recorded_at?`Saved ${new Date(o.recorded_at).toLocaleDateString([], {month:"short", day:"numeric"})}.`:"") : "Match a posting first.";
+}
+async function saveOutcome(){
+  if(!S.runId){ toast("Match a posting first, then record its outcome."); return; }
+  const o={applied_at:$("#ocDate").value||null, response:$("#ocResp").value||"pending", note:$("#ocNote").value.trim()||null, recorded_at:new Date().toISOString()};
+  S.outcome=o; S.outcomeEvents=[...(S.outcomeEvents||[]), o].slice(-20);
+  await saveRun({outcome:o, outcome_events:S.outcomeEvents});
+  renderOutcome(); persist(true); toast("Outcome saved. It syncs with this posting.");
 }
 function renderAll(){ renderMatch(); renderSheet(); renderQuestions(); }
 
@@ -740,7 +842,10 @@ async function logFeedback(action, aid, text){
 function lockCurrent(){ S.locked=Object.fromEntries(Object.entries(S.chosen).map(([r,items])=>[r, items.map(i=>i.a.id)])); }
 function recompute(){ S.chosen=select(S.req); S.cov=coverage(S.req,S.chosen); S.score=Object.keys(S.req).length?matchScore(S.req,S.cov):null; renderMatch(); renderSheet(); }
 function resetPosting(){ Object.assign(S,{excluded:new Set(), pinned:new Set(), textChoice:{}, edits:{}, tagline:null, compOrder:null,
-  sectionEdits:{}, engDetails:{}, editsC:{}, excludedC:new Set(), extra:{tagline:[],expertise:[],technology:[],competency:[]}, questions:[], newAch:[]}); }
+  summaryOn:false, summary:null, summaryClaims:[], outcome:null, outcomeEvents:[],
+  sectionEdits:{}, engDetails:{}, editsC:{}, excludedC:new Set(), extra:{tagline:[],expertise:[],technology:[],competency:[]}, questions:[], newAch:[]}); $("#sumToggle").checked=false; renderOutcome(); }
+/* Prompt versions travel with every run (tier 3), so a later review can tell which wording produced which line. Bump when a prompt changes. */
+const PROMPT_VERSIONS={tailor:"tailor@6", bullets:"bullets@5", tighten:"tighten@2", summary:"summary@1"};
 
 /* tools the posting names that neither the Technologies list nor Section D mentions yet */
 function unknownTools(jd){
@@ -782,8 +887,8 @@ async function doMatch(){
   recompute(); setStep(2);
   S.runId="run-"+Date.now().toString(36);
   const reqW=Object.fromEntries(Object.entries(S.req).map(([t,r])=>[t,r.weight]));
-  await saveRun({created:new Date().toISOString(), status:"draft", company:$("#company").value||null, title:$("#role").value||null, jd_text:jd.slice(0,20000), requirements:reqW, match_score:S.score, source:"artifact", synced:false, sync_status:"draft", template:S.lib.template?.id||null}, true);
-  persist(true);
+  await saveRun({created:new Date().toISOString(), status:"draft", company:$("#company").value||null, title:$("#role").value||null, jd_text:jd.slice(0,20000), requirements:reqW, match_score:S.score, source:"artifact", synced:false, sync_status:"draft", template:S.lib.template?.id||null, prompt_versions:PROMPT_VERSIONS}, true);
+  renderOutcome(); persist(true);
   if(S.sample) claudeTailor(); else useQuickQuestions("Claude isn't available in this view, so these questions come from the gap analysis.");
 }
 
@@ -945,6 +1050,8 @@ Reply with ONLY one JSON object, for example:
  "entries":[{"q":2,"text":"Salesforce Apex (basic)","tags":["crm-discipline"]}]}`;
   const r=await S.sample.json(prompt,{signal:ctl.signal, modelTier:"default", cache:false});
   const src=b=>items[(+b.q||1)-1]||items[0];
+  const quotesOf=q=>[String(q.answer||"")].concat(q.fields?[Object.values(q.fields).filter(Boolean).join("; ")]:[]);
+  const claimsOf=aid=>aid?((S.lib.achievements.find(a=>a.id===aid)||{}).claim_ids||[]):[];
   const out=(Array.isArray(r?.bullets)?r.bullets:[]).filter(b=>b&&typeof b.text==="string"&&b.text.trim().length>20&&!PHRASE_SECTIONS[sectionOf(src(b))])
     .map(b=>{ const s=src(b); return {q:(+b.q||1), ix:s.ix, role:s.role, text:cleanBullet(b.text), longform:(sectionOf(s)==="engagement"&&typeof b.longform==="string"&&b.longform.trim().length>40)?cleanBullet(b.longform):null,
       tags:(Array.isArray(b.tags)?b.tags:[]).filter(t=>S.lib.tags[t]).concat(s.tag&&!(b.tags||[]).includes(s.tag)?[s.tag]:[]), achievement_id:b.achievement_id||null}; });
@@ -958,6 +1065,9 @@ Reply with ONLY one JSON object, for example:
   if(lover.length && !ctl.signal.aborted){
     try{ const fixed=await claudeTighten(lover.map(b=>b.longform), ctl, "longform"); lover.forEach((b,i)=>{ if(fixed[i]) b.longform=cleanBullet(fixed[i]); }); }catch(e){}
   }
+  // tier-3 QA: a converted bullet may only state what the answer (or the bank bullet it enriches) states
+  for(const b of out){ const q=items.find(x=>x.ix===b.ix)||{}; const ids=claimsOf(b.achievement_id), quotes=quotesOf(q);
+    b.qa=qaLine(b.text, ids, quotes, band); if(b.longform) b.qa=b.qa.concat(qaLine(b.longform, ids, quotes, lband).map(x=>"long form: "+x)); }
   return {bullets:out, entries};
 }
 async function claudeTighten(texts, ctl, mode){
@@ -987,7 +1097,7 @@ async function convertQuestions(ixs, label){
     const {bullets, entries}=await claudeBullets(items, ctl);
     for(const q of items){
       const mine = PHRASE_SECTIONS[sectionOf(q)] ? entries.filter(e=>e.ix===q.ix).map(e=>({text:e.text,on:true,tags:e.tags}))
-                                                 : bullets.filter(b=>b.ix===q.ix).map(b=>({text:b.text,longform:b.longform,on:true,tags:b.tags,achievement_id:b.achievement_id}));
+                                                 : bullets.filter(b=>b.ix===q.ix).map(b=>({text:b.text,longform:b.longform,on:!blocking(b.qa).length,qa:b.qa||[],tags:b.tags,achievement_id:b.achievement_id}));
       S.questions[q.ix].bullets=mine;
       S.questions[q.ix].note=mine.length?"":"Claude found nothing usable in this answer. Add a specific (scope, number, outcome, tool) and try again.";
     }
@@ -1007,7 +1117,7 @@ async function doFinal(){
   }
   S.phase="finalizing"; renderQuestions();
   const fs=$("#finalStatus");
-  const bullets=[], phrases=[], details=[];
+  const bullets=[], phrases=[], details=[]; let skippedQa=0;
   for(const q of S.questions.map((q,ix)=>({...q,ix}))){
     const sec=sectionOf(q);
     if(sec==="engagement" && q.engagement){ const f=Object.fromEntries(Object.entries(q.fields||{}).filter(([,v])=>v)); if(f.start||f.subtitle||f.client) details.push({key:q.engagement, fields:f}); }
@@ -1015,7 +1125,8 @@ async function doFinal(){
     const list = q.bullets&&q.bullets.length ? q.bullets.filter(b=>b.on&&b.text.trim())
                : (!S.sample ? (PHRASE_SECTIONS[sec] ? splitPhrases(q.answer,sec).map(t=>({text:t,tags:[]})) : splitAnswer(q.answer).map(t=>({text:t,tags:[]}))) : []);
     if(PHRASE_SECTIONS[sec]){ for(const b of list) phrases.push({section:sec, text:cleanPhrase(b.text,sec), tags:(b.tags&&b.tags.length?b.tags:(q.tag?[q.tag]:[]))}); continue; }
-    for(const b of list) bullets.push({role:q.role, text:cleanBullet(b.text), longform:b.longform?cleanBullet(b.longform):null, tags:(b.tags&&b.tags.length?b.tags:(q.tag?[q.tag]:[])), achievement_id:b.achievement_id||null, engagement:sec==="engagement"?q.engagement:null});
+    for(const b of list){ if(blocking(b.qa).length){ skippedQa++; continue; }   // a number you never stated cannot print
+      bullets.push({role:q.role, q_ix:q.ix, text:cleanBullet(b.text), longform:b.longform?cleanBullet(b.longform):null, tags:(b.tags&&b.tags.length?b.tags:(q.tag?[q.tag]:[])), achievement_id:b.achievement_id||null, engagement:sec==="engagement"?q.engagement:null}); }
   }
   if(!S.sample && (bullets.length||phrases.length)) fs.innerHTML=`<span class="hint">Claude isn't available here, so each line of your answers became an entry. Use Polish on the sheet once Claude is allowed.</span>`;
   // engagement details, phrases, and new bullets join this posting's draft at once
@@ -1030,27 +1141,28 @@ async function doFinal(){
     const tid="new:"+S.runId+":"+n;
     const lt=b.longform?{id:tid+":lf", kind:"learned", angle:"longform", text:b.longform, score_adj:0, fresh:true}:null;
     if(b.achievement_id && known.has(b.achievement_id)){
-      S.newAch.push({attach:b.achievement_id, role, tags:tagList, engagement:b.engagement, longform:b.longform, text:{id:tid, kind:"learned", angle:"gate2", text:b.text, score_adj:0, fresh:true}, longText:lt});
+      S.newAch.push({attach:b.achievement_id, role, tags:tagList, engagement:b.engagement, longform:b.longform, q_ix:b.q_ix, text:{id:tid, kind:"learned", angle:"gate2", text:b.text, score_adj:0, fresh:true}, longText:lt});
       if(!b.engagement) S.pinned.add(b.achievement_id);
     }else{
       const id="gate2-"+S.runId+"-"+n;
       const texts=[{id:tid, kind:"learned", angle:"gate2", text:b.text, score_adj:0, fresh:true}]; if(lt) texts.push(lt);
-      S.newAch.push({ach:{id, role, engagement:b.engagement, confidence:"asserted", fresh:true, has_metrics:/\d/.test(b.text), tags:Object.fromEntries(tagList.map(t=>[t,1])), metrics:[], texts}, role, tags:tagList, engagement:b.engagement, longform:b.longform, text:{text:b.text}});
+      S.newAch.push({ach:{id, role, engagement:b.engagement, confidence:"asserted", fresh:true, has_metrics:/\d/.test(b.text), tags:Object.fromEntries(tagList.map(t=>[t,1])), metrics:[], texts}, role, tags:tagList, engagement:b.engagement, longform:b.longform, q_ix:b.q_ix, text:{text:b.text}});
       if(!b.engagement) S.pinned.add(id);
     }
   });
   lockCurrent(); S.phase="final"; recompute(); renderQuestions(); setStep(4); persist(true);
   const nAdded=bullets.length+phrases.length+details.length;
-  toast(nAdded?`Added ${nAdded} new entr${nAdded>1?"ies":"y"}. Final draft ready.`:"Final draft ready.");
+  toast((nAdded?`Added ${nAdded} new entr${nAdded>1?"ies":"y"}. `:"")+(skippedQa?`${skippedQa} left out: numbers not in your answers. `:"")+"Final draft ready.");
   // persist learning (deterministic doc ids, so building the final twice never duplicates entries)
   const m=resumeModel();
   await saveRun({status:"final", finalized:new Date().toISOString(), match_score:S.score, tagline:m.tagline, expertise_order:m.expertise,
+    summary:m.summary||null, summary_on:!!S.summaryOn, prompt_versions:PROMPT_VERSIONS, outcome:S.outcome||null,
     followups:S.questions.map(q=>({question:q.question, answer:q.answer||"", tag:q.tag, role:q.role, section:sectionOf(q), engagement_key:q.engagement||null, fields:q.fields||null})),
-    new_bullets:S.newAch.map(x=>({role:x.role, achievement_id:x.attach||null, text:x.text.text, tags:x.tags, section:x.engagement?"engagement":"experience", engagement_key:x.engagement||null, longform:x.longform||null})),
+    new_bullets:S.newAch.map(x=>({role:x.role, achievement_id:x.attach||null, text:x.text.text, tags:x.tags, section:x.engagement?"engagement":"experience", engagement_key:x.engagement||null, longform:x.longform||null, q_ix:x.q_ix??null})),
     final_resume:{tagline:m.tagline, expertise:m.expertise, technologies:m.technologies, roles:m.roles.map(r=>({key:r.key, bullets:r.bullets.map(b=>({aid:b.aid, text:b.text}))})),
       engagements:m.engagements.map(e=>({key:e.key, bullets:e.bullets.map(b=>({aid:b.aid, text:b.text}))}))}});
   if(S.db && S.runId){
-    for(const [n,x] of S.newAch.entries()) inboxWrite(`${S.runId}-g${n}`, {role:x.role, achievement_id:x.attach||null, angle:"gate2", text:x.text.text, tags:x.tags, section:x.engagement?"engagement":"experience", engagement_key:x.engagement||null, longform:x.longform||null});
+    for(const [n,x] of S.newAch.entries()) inboxWrite(`${S.runId}-g${n}`, {role:x.role, achievement_id:x.attach||null, angle:"gate2", text:x.text.text, tags:x.tags, section:x.engagement?"engagement":"experience", engagement_key:x.engagement||null, longform:x.longform||null, q_ix:x.q_ix??null});
     for(const d of details){ const e=engByKey(d.key); inboxWrite(`${S.runId}-eng-${d.key}`, {section:"engagement_details", engagement_key:d.key, details:d.fields, text:`${(d.fields.client||e?.client||d.key)} · ${[d.fields.start, d.fields.end||"Present"].filter(Boolean).join(" – ")}`}); }
     phrases.forEach((p,n)=>inboxWrite(`${S.runId}-p${n}`, {section:p.section, text:p.text, tags:p.tags}));
   }
@@ -1090,9 +1202,47 @@ async function polishBullet(aid, sec){
     if(c && c!==cur){ saveEdit(aid,i,c); renderSheet(); toast(`Polished (${c.length} characters).`); } else toast("That bullet already meets the standard.");
   }catch(e){ toast(e?.code==="not_granted"?"Allow Claude on this page to use Polish.":"Claude couldn't polish it. Try again or edit it directly."); }
 }
+/* The optional summary: Claude writes it only from the claims on this draft, and it is checked against their evidence. */
+async function claudeSummary(){
+  const m=resumeModel(); const band=S.lib.length_band;
+  const ids=[...new Set([...(m.roles.flatMap(r=>r.bullets.flatMap(b=>b.claim_ids||[]))), ...(m.trace.tagline||[])])].slice(0,24);
+  const facts=ids.map(claimById).filter(Boolean).map(c=>`- [${c.id}] ${c.text}${c.numbers&&c.numbers.length?` (numbers you may use: ${c.numbers.join(", ")})`:""}`).join("\n");
+  const words=(S.lib.confidence&&S.lib.confidence.bands&&S.lib.confidence.bands.summary_max_words)||55;
+  const prompt=`Write the Professional Summary paragraph for Tim King's resume for this posting, using ONLY the facts below.
+RULES: at most ${words} words, one paragraph, implied first person (never "I", "my", "we", or "Tim"), open with a role noun such as "Revenue and go-to-market operator", no adjectives without a fact behind them, and use a number only if it appears in the facts' allowed numbers. Never invent employers, clients, tools or outcomes.
+POSTING: ${$("#role").value||"(title unknown)"} at ${$("#company").value||"(company unknown)"}
+${S.jd.slice(0,3000)}
+
+FACTS (claim id, statement):
+${facts}
+
+Reply with ONLY one JSON object: {"summary": "<the paragraph>", "claims_used": ["<claim ids the paragraph relies on>"]}`;
+  const r=await S.sample.json(prompt,{modelTier:"default", cache:false});
+  let text=String(r?.summary||"").replace(/\s+/g," ").trim(); if(!text) throw Object.assign(new Error("empty"),{code:"empty_completion"});
+  const used=(Array.isArray(r?.claims_used)?r.claims_used:[]).filter(id=>claimById(id)); const basis=used.length?used:ids;
+  let qa=qaLine(text, basis, [], null);
+  if(blocking(qa).length){   // one retry without the unsupported numbers
+    const r2=await S.sample.json(`Rewrite this resume summary so it contains none of these numbers: ${blocking(qa).join("; ")}. Keep it under ${words} words, implied first person, same facts otherwise. Reply with ONLY {"summary": "..."}\n\n${text}`,{modelTier:"default", cache:false});
+    text=String(r2?.summary||"").replace(/\s+/g," ").trim(); qa=qaLine(text, basis, [], null);
+  }
+  if(blocking(qa).length) throw Object.assign(new Error(qa.join("; ")),{code:"qa"});
+  if(text.split(/\s+/).length>words+10) throw Object.assign(new Error("too long"),{code:"qa"});
+  return {text, claims:basis};
+}
+$("#sumToggle").onchange=async e=>{
+  S.touched=true;
+  if(!e.target.checked){ S.summaryOn=false; renderSheet(); persist(true); saveRun({summary_on:false}); return; }
+  if(!S.sample){ e.target.checked=false; toast("Claude isn't available in this view, so the summary can't be written here."); return; }
+  if(S.phase==="idle"||!Object.keys(S.req).length){ e.target.checked=false; toast("Match a posting first; the summary is written for that posting."); return; }
+  toast("Claude is writing the summary from this draft's claims…");
+  try{ const {text, claims}=await claudeSummary(); S.summary=text; S.summaryClaims=claims; S.summaryOn=true; renderSheet(); persist(true); saveRun({summary:text, summary_on:true}); toast(`Summary added (${text.split(/\s+/).length} words).`); }
+  catch(err){ e.target.checked=false; S.summaryOn=false; toast(err?.code==="qa"?`The summary didn't pass the evidence check (${err.message}). Try again.`:(err?.code==="not_granted"?"Allow Claude on this page to write the summary.":"Claude couldn't write the summary. Try again.")); }
+};
+$("#ocSave").onclick=saveOutcome;
 /* An edited tagline, expertise, technologies, or core-competency line keeps its order; items the bank doesn't have yet sync as new entries */
 function saveLineEdit(line, area, text){
   const m=resumeModel();
+  if(line==="summary"){ const qa=blocking(qaLine(text, S.summaryClaims||[], [], null)); if(qa.length){ toast(`That edit doesn't pass the evidence check: ${qa.join("; ")}`); renderSheet(); return; } S.summary=text; persist(true); saveRun({summary:text}); return; }
   if(line==="core"){
     const items=splitList(text, [","]).map(x=>x.replace(/[.;]+$/,"").trim()).filter(Boolean);
     const cur=m.core_competencies.map(a=>({label:a.label, items:a.label===area?items:a.items}));
@@ -1127,7 +1277,7 @@ $("#sheet").addEventListener("click", e=>{
 $("#sheet").addEventListener("focusout", e=>{
   const ln=e.target.closest(".ln[contenteditable]");
   if(ln){ const txt=ln.textContent.replace(/\s+/g," ").trim(); if(!txt) { renderSheet(); return; }
-    const m=resumeModel(); const cur = ln.dataset.line==="core" ? (m.core_competencies.find(a=>a.label===ln.dataset.area)||{items:[]}).items.join(", ") : m[ln.dataset.line].join(LINE_EDIT[ln.dataset.line].join);
+    const m=resumeModel(); const cur = ln.dataset.line==="core" ? (m.core_competencies.find(a=>a.label===ln.dataset.area)||{items:[]}).items.join(", ") : (ln.dataset.line==="summary" ? (m.summary||"") : m[ln.dataset.line].join(LINE_EDIT[ln.dataset.line].join));
     if(txt!==cur){ S.touched=true; saveLineEdit(ln.dataset.line, ln.dataset.area, txt); renderSheet(); } return; }
   const el=e.target.closest(".bt[contenteditable]"); if(!el) return;
   const aid=el.dataset.aid, txt=el.textContent.replace(/\s+/g," ").trim();
@@ -1213,7 +1363,7 @@ async function buildPdf(m){
   // Word's paragraph rules from the template: alignment, spacing (the larger of after/before wins), line multiple,
   // list indent, keep-with-next, and "contextual" spacing (no space between two list paragraphs of the same style)
   const K={name:{align:"center",after:SP.name}, contact:{align:"center",after:SP.contact},
-    heading:{before:SP.heading_before,after:SP.heading_after,rule:true,keep:true}, tagline:{align:"center",after:SP.tagline}, expertise:{align:"center",after:SP.tagline},
+    heading:{before:SP.heading_before,after:SP.heading_after,rule:true,keep:true}, summary:{after:SP.tagline}, tagline:{align:"center",after:SP.tagline}, expertise:{align:"center",after:SP.tagline},
     tech_label:{align:"center",keep:true}, tech_line:{align:"center"}, school:{after:SP.school,keep:true}, degree:{after:SP.degree},
     role_header:{keep:true,tab:true}, role_context:{after:SP.context,line:M.line.context,keep:true},
     bullet:{list:"experience",after:4,group:"list"}, bullet_last:{list:"experience",after:SP.bullet_last,group:"list"},
@@ -1269,7 +1419,7 @@ async function buildPdf(m){
 }
 function plainText(m){
   const i=m.identity; const L=[i.name, `${i.location} | ${i.phone} | ${i.email}`+((i.links||[]).length?" | "+(i.links||[]).map(l=>`${l.label}: ${l.url}`).join(" | "):""), "",
-    "PROFESSIONAL SUMMARY & AREAS OF EXPERTISE", m.tagline.join(" | "), "", m.expertise.join(" • "), "", "Technologies: "+m.technologies.join(", "), "", "EDUCATION"];
+    "PROFESSIONAL SUMMARY & AREAS OF EXPERTISE"].concat(m.summary?[m.summary,""]:[]).concat([m.tagline.join(" | "), "", m.expertise.join(" • "), "", "Technologies: "+m.technologies.join(", "), "", "EDUCATION"]);
   m.education.forEach(e=>L.push(e.school, e.degree_line));
   L.push("", "PROFESSIONAL EXPERIENCE");
   for(const r of m.roles){ L.push(`${r.title} | ${r.employer} | ${r.dates}`, r.context||""); r.bullets.forEach(b=>L.push("• "+btext(b))); L.push(""); }
@@ -1341,7 +1491,8 @@ $("#questions").addEventListener("input", e=>{
   S.touched=true; persist();
   const ix=e.target.dataset.ix; if(ix!=null && S.questions[ix] && e.target.tagName==="TEXTAREA") S.questions[ix].answer=e.target.value;
   const ef=e.target.dataset.ef; if(ef){ const [q,k]=ef.split(":"); const Q=S.questions[+q]; if(Q){ Q.fields=Q.fields||{}; Q.fields[k]=e.target.value; } }
-  const bt=e.target.dataset.btxt; if(bt){ const [q,b]=bt.split(":").map(Number); const B=S.questions[q]?.bullets?.[b]; if(B){ B.text=e.target.value; const ph=PHRASE_SECTIONS[sectionOf(S.questions[q])]; const lim=ph?ph.max:S.lib.length_band.hard_ceiling; const cc=$(`#bcc${q}-${b}`); if(cc){ cc.textContent=B.text.length; cc.classList.toggle("over", B.text.length>lim); } } }
+  const bt=e.target.dataset.btxt; if(bt){ const [q,b]=bt.split(":").map(Number); const Q=S.questions[q], B=Q?.bullets?.[b]; if(B){ B.text=e.target.value; const ph=PHRASE_SECTIONS[sectionOf(Q)]; const lim=ph?ph.max:S.lib.length_band.hard_ceiling; const cc=$(`#bcc${q}-${b}`); if(cc){ cc.textContent=B.text.length; cc.classList.toggle("over", B.text.length>lim); }
+      if(!ph){ const ids=B.achievement_id?((S.lib.achievements.find(a=>a.id===B.achievement_id)||{}).claim_ids||[]):[]; B.qa=qaLine(B.text, ids, [Q.answer||""].concat(Q.fields?[Object.values(Q.fields).filter(Boolean).join("; ")]:[]), S.lib.length_band); const blk=blocking(B.qa); const cb=$(`#bon${q}-${b}`), msg=$(`#bqa${q}-${b}`); if(cb){ cb.disabled=!!blk.length; if(!blk.length && !cb.checked){ cb.checked=true; B.on=true; } } e.target.classList.toggle("blocked", !!blk.length); if(msg) msg.textContent = blk.length ? `Not printable yet: ${blk.join("; ")}. Edit the text, or add that fact to your answer and re-polish.` : "Passes: every number is in your answer."; } } }
 });
 $("#questions").addEventListener("change", e=>{
   S.touched=true; persist();
@@ -1363,6 +1514,7 @@ function serializeState(){
     req:S.req, uncatalogued:S.uncatalogued, phase:S.phase, step:S.step,
     excluded:[...S.excluded], pinned:[...S.pinned], locked:S.locked, textChoice:S.textChoice, edits:S.edits,
     tagline:S.tagline, compOrder:S.compOrder, sectionEdits:S.sectionEdits, engDetails:S.engDetails, editsC:S.editsC, excludedC:[...S.excludedC], extra:S.extra,
+    summaryOn:S.summaryOn, summary:S.summary, summaryClaims:S.summaryClaims, outcome:S.outcome, outcomeEvents:S.outcomeEvents,
     questions:S.questions.map(q=>({question:q.question, why:q.why||"", tag:q.tag||null, role:q.role, hint:q.hint||"", section:sectionOf(q), engagement:q.engagement||null, fields:q.fields||null, answer:q.answer||"", bullets:q.bullets||null, note:q.note||""})),
     newAch:S.newAch, qStatus:$("#qStatus").textContent, lib_exported_at:S.lib.exported_at||null};
 }
@@ -1418,6 +1570,8 @@ function restoreState(st){
   S.excludedC=new Set(st.excludedC||[]); S.extra={tagline:[],expertise:[],technology:[],competency:[], ...(st.extra?clone(st.extra):{})};
   S.questions=(st.questions||[]).map(q=>({...q, section:q.section||"experience", busy:false}));
   S.newAch=st.newAch?clone(st.newAch):[];
+  S.summaryOn=!!st.summaryOn && !!st.summary; S.summary=st.summary||null; S.summaryClaims=st.summaryClaims||[]; S.outcome=st.outcome||null; S.outcomeEvents=st.outcomeEvents||[];
+  $("#sumToggle").checked=S.summaryOn; renderOutcome();
   remapSynced(st.synced_map);
   $("#jdTag").hidden = ($("#jd").value.trim()!==SAMPLE_JD.trim());
   $("#claude1Status").hidden=true; $("#quickQBtn").hidden=true; $("#finalStatus").textContent=""; $("#syncNote").textContent="";
@@ -1453,6 +1607,7 @@ function sessionFromRun(r){
     req, uncatalogued:r.uncatalogued||[], phase:r.status==="final"?"final":"draft", step:r.status==="final"?4:((r.followups||[]).length?3:2),
     excluded:[], pinned:newAch.filter(x=>!x.engagement).map(x=>x.attach||x.ach.id), locked, textChoice:{}, edits,
     tagline:(fr&&fr.tagline)||r.tagline||null, compOrder:(fr&&(fr.expertise||fr.competencies))||r.expertise_order||null, engDetails,
+    summaryOn:!!r.summary_on, summary:r.summary_on?(r.summary||null):null, summaryClaims:(r.final_model&&r.final_model.trace&&r.final_model.trace.summary)||[], outcome:r.outcome||null, outcomeEvents:r.outcome_events||[],
     questions:(r.followups||[]).map(f=>({question:f.question, tag:f.tag||null, role:f.role||"psp", section:f.section||"experience", engagement:f.engagement_key||null, fields:f.fields||null, answer:f.answer||"", why:"", hint:""})),
     newAch, qStatus:"", synced_map:r.synced_map||null};
 }
@@ -1501,7 +1656,7 @@ async function loadBankFromDb(){
     if(!d.exists) return false;
     const lib=clone(d.data());
     if(!lib.achievements || String(lib.exported_at||"") <= String(S.lib.exported_at||"")) return false;
-    if(!lib.tagline_phrases) return false;           // a bank from before the source template can't drive this page
+    if(!lib.tagline_phrases || !lib.claims) return false;   // a bank from before the evidence layer can't drive this page
     if(!S.touched){ S.lib=lib; renderStats(); return true; }
     S.pendingLib=lib; $("#syncNote").innerHTML=`<b>Bullet bank updated.</b> It applies to your next posting.`;
   }catch(e){ console.warn("bank", e); }

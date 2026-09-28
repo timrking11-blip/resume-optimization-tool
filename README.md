@@ -1,6 +1,22 @@
 # Resume Optimization Tool
 
-A tagged database of every resume bullet Tim King has written. It matches the bullets against any job description, produces a bare-boned tailored resume in Tim's source template, and learns from each posting and each answer.
+A career evidence base for Tim King. What actually happened (his resumes, LinkedIn, the source template, and his own answers) is stored as evidence with provenance and dates. The facts drawn from it are claims with confidence and relationships. Every resume, including the master, is a projection of those claims in his source template, and every printed line names the claims it comes from.
+
+## The four tiers
+
+| Tier | What it holds | Where |
+|---|---|---|
+| 1 · Evidence | What actually happened: every line of every source document, verbatim, plus Tim's own words (Gate answers, sheet edits, engagement details, dated decisions). Immutable and append-only. | derived from `sources/raw_extract.json`; `curation/evidence/answers.jsonl`, `statements.jsonl`; table `evidence` |
+| 2 · Derived knowledge | Claims (one fact each) with evidence, confidence, validity dates and relations; achievements, bullets, tags. | `curation/claims.json`, `achievements.json`, `learned.json`; tables `claims`, `claim_evidence`, `claim_relations`, `claim_history`, `claim_confidence_history` |
+| 3 · Generation | What the renderer or Claude wrote, each line traced to claim ids, with the prompt version that produced it. | `out/*.trace.json`; tables `generation_events`, `prompt_versions`, `generated_resumes` |
+| 4 · Feedback | What happened afterwards: Keep/Drop/Edit clicks and application outcomes. | tables `feedback`, `outcomes`; `data/feedback/outcomes.jsonl` |
+
+Nothing flows backward without an explicit step. Claude's output is never evidence. Tim's typed answers are first-hand evidence as soon as they are saved.
+
+**Source strengths** (`curation/confidence.json`): your own words 1.0 · interview 0.95 · the source template 0.9 · older resumes 0.8 (the newer one wins ties) · LinkedIn 0.7 · research about companies 0.6 · model inference 0.5 at most, never printed alone.
+**Confidence** is deterministic: the strongest source, +0.05 per additional independent kind of source, capped at 0.98; 1.0 when Tim confirmed it; an unresolved contradiction marks the claim *disputed* and costs 0.3. A disputed fact prints its stronger value with a warning; a disputed number never prints until it is resolved.
+**Relations:** `supports`, `contradicts`, `refines`, `part_of`, `same_as`, `supersedes`, `grounded_in`, `used_in`, `tagged`, `derived_from`, `about`, `maps_to`.
+**Learning** means a fixed event list, each with one reviewable update: accepted / rejected / swapped (a presentation score only), edited (a new evidence row), evidence added, phrase added, terminology corrected. Outcomes (pending, no response, screen, interview, offer, rejected) are stored against the resume that was sent and reported; nothing re-weights itself from them.
 
 **Live front end:** [Resume Match Desk](https://claude.ai/artifact/MjpDTLqwPWSc9ujB4A3uUh) (private). It runs in four steps: paste a JD, review the draft, answer five questions, then download the final PDF or Word file.
 
@@ -26,7 +42,10 @@ The short and long versions of the same work can both print: short under the rol
 
 | Layer | Rows | What it is |
 |---|---|---|
-| `sources` | 19 | 16 resume versions, the Liminal work summary, a LinkedIn capture and the source template |
+| `evidence` | 778+ | Tier 1: every source line and every answer, verbatim, with source type, dates and a hash (append-only) |
+| `claims` | 289+ | Tier 2: one fact each (role titles and dates, credentials, tools, A/B/D items, engagements, achievements, metrics) with confidence and status |
+| `claim_evidence`, `claim_relations` | ~1,300 | Which evidence supports, contradicts or refines each claim; typed relations between claims and tags |
+| `sources` | 19 | 16 resume versions, the Liminal work summary, a LinkedIn capture and the source template, with authored dates |
 | `raw_bullets` | 372 | Every bullet exactly as written, never edited |
 | `achievements` | 61 | One per real accomplishment. Every raw bullet maps to at least one; ingest fails otherwise |
 | `bullets` | 100+ | Bare-bone renderings: one canonical per achievement plus angle variants, including the Section C `longform`. Append-only, so edits supersede old rows |
@@ -46,13 +65,17 @@ The short and long versions of the same work can both print: short under the rol
 ```
 extract.py            sources -> sources/raw_extract.json (docx, pdf, LinkedIn capture, source template)
 make_template.py      source template -> templates/docx_template.json (Word parts + paragraph definitions)
-rot.py                CLI: ingest | query | match | build | export | learn | profile | sync-prepare | sync-apply
+rot.py                CLI: ingest | query | match | build | check | claims | export | learn | profile | sync-prepare | sync-apply
+claims.py             the evidence layer: vocabularies, confidence, conflicts, number check, claims -> profile projection
+tools/migrate_claims.py  one-time migration (2026-09-27) of the repo's facts into claims with evidence
 schema.sql            SQLite schema (SWAT Engine conventions: enums, append-only, source pointers)
 curation/
   taxonomy.json       tag families, tags, JD synonyms
   achievements.json   canonical bullets, variants (incl. longform), tags, metrics, evidence patterns
-  profile.json        identity + links, roles, education, certifications, technologies,
-                      tagline phrases (A), competencies (B), engagements (C), core competencies (D)
+  claims.json         tier-2 truth for every non-achievement fact: subjects with facts, evidence ids, contradictions, resolutions
+  confidence.json     source strengths, confidence formula, print thresholds, bands
+  evidence/           answers.jsonl and statements.jsonl: Tim's own words, verbatim, append-only
+  profile.json        identity; the other profile sections are now projected from claims.json
   baseline.json       template id, section order, caps, priorities, Section C caps, B order, scoring knobs
   learned.json        Gate answers and Match Desk syncs (overrides, new bullets, template-section entries)
 templates/            docx_template.json (Word) and resume.html (HTML/Chrome fallback)
@@ -75,7 +98,9 @@ python extract.py                                      # re-read all source resu
 python rot.py ingest                                   # rebuild curated tables, verify coverage + lengths
 python rot.py query --tags "Channel Strategy"          # bullets for a tag (label or id)
 python rot.py match samples/jd_sample_director_gtm_adtech.txt   # requirements, coverage, tagline, expertise, bullets, Section C
-python rot.py build --version v4                       # baseline -> out/baseline_v4.{docx,pdf,html,md,json}
+python rot.py build --version v5                       # baseline -> out/baseline_v5.{docx,pdf,html,md,json,trace.json}; fails on QA errors
+python rot.py check out/baseline_v5.json               # QA: every line traced, numbers only from evidence, nothing disputed
+python rot.py claims role:psp                          # a subject's claims with their evidence and relations
 python rot.py build --jd path/to/jd.txt --version v1   # tailored resume
 python rot.py export                                   # data/library.json + data/dump.sql
 python rot.py learn learnings.json                     # merge the artifact's learnings
@@ -112,6 +137,9 @@ The Match Desk saves your working state as you go: the posting, company and titl
 4. **Answer polishing:** in the page, **Turn into bullets with Claude** (per answer) and **Polish all answers** convert bulleted or rambling answers into Resume 1 bullets, Section C bullets, or short entries you can preview and edit. Anything over its ceiling gets an automatic tighten pass. **Polish** on any resume bullet rewrites it with the same facts, to the Resume 1 standard for roles or the Section C standard for engagements.
 
 Scoring: requirement weight × tag weight, plus a 25% roll-up of family matches, a learned Keep/Drop adjustment, a curated priority prior (the template's picks first) and a metric bonus. A variant replaces the canonical text only when its angle is a strong requirement and clearly beats the canonical's own relevance. Tagline phrases, expertise items, technologies and Section D items are ranked by the same requirement weights, with the template's order breaking ties.
+
+## Changing a fact
+Edit the fact's `value` in `curation/claims.json` (or the achievement in `achievements.json`) and add the evidence id that supports it; for a conflict, add a `resolution` with the reason. Never edit an evidence quote: add a new row to `curation/evidence/statements.jsonl` instead (ingest refuses a changed quote). `python rot.py ingest` recomputes confidence and keeps the old value in `claim_history`.
 
 ## Privacy
 
