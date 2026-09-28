@@ -1,4 +1,4 @@
--- Resume Optimization Tool · schema v0.1 (SQLite)
+-- Resume Optimization Tool · schema v0.2 (SQLite) · v0.2 adds the source-template sections A–D
 -- Conventions borrowed from SWAT Engine: one enums table; every row points at a source;
 -- append-only supersession on bullets/answers (never UPDATE facts in place); AI/artifact
 -- output is a draft until accepted.
@@ -97,20 +97,46 @@ CREATE TABLE IF NOT EXISTS achievement_tags (
 );
 
 -- ============ PROFILE FACTS ============
-CREATE TABLE IF NOT EXISTS competencies (id INTEGER PRIMARY KEY, text TEXT NOT NULL UNIQUE, tags TEXT);
-CREATE TABLE IF NOT EXISTS technologies (id INTEGER PRIMARY KEY, name TEXT NOT NULL UNIQUE, category TEXT, tags TEXT);
+-- competencies = the Section B areas-of-expertise line (JD-ranked; baseline order in baseline.json)
+CREATE TABLE IF NOT EXISTS competencies (id INTEGER PRIMARY KEY, text TEXT NOT NULL UNIQUE, tags TEXT, sort INTEGER, origin TEXT);
+CREATE TABLE IF NOT EXISTS technologies (id INTEGER PRIMARY KEY, name TEXT NOT NULL UNIQUE, category TEXT, tags TEXT, sort INTEGER, origin TEXT);
 CREATE TABLE IF NOT EXISTS domain_fluency (id INTEGER PRIMARY KEY, name TEXT NOT NULL UNIQUE, tags TEXT);
 CREATE TABLE IF NOT EXISTS certifications (
   id INTEGER PRIMARY KEY, name TEXT NOT NULL, issuer TEXT, date TEXT, credential_id TEXT,
-  status TEXT, source TEXT, tags TEXT
+  status TEXT, source TEXT, tags TEXT, sort INTEGER, hidden_by_default INTEGER DEFAULT 0
 );
 CREATE TABLE IF NOT EXISTS education (
   id INTEGER PRIMARY KEY, school TEXT, degree TEXT, degree_variants TEXT, location TEXT, year TEXT,
-  date_note TEXT, bullet_ids TEXT
+  date_note TEXT, bullet_ids TEXT, date_display TEXT
 );
 CREATE TABLE IF NOT EXISTS summaries (
   id INTEGER PRIMARY KEY, source_id TEXT REFERENCES sources(id), tags TEXT, text TEXT NOT NULL,
   origin TEXT DEFAULT 'curated', status TEXT DEFAULT 'accepted'
+);
+
+-- ============ TEMPLATE SECTIONS (source template, 2026-09-27) ============
+-- Section A: tagline phrases, JD-ranked; answers and Claude proposals from the Match Desk add more.
+CREATE TABLE IF NOT EXISTS tagline_phrases (
+  id INTEGER PRIMARY KEY, text TEXT NOT NULL UNIQUE, tags TEXT, sort INTEGER,
+  status TEXT DEFAULT 'accepted', origin TEXT DEFAULT 'template'
+);
+-- Section C: consulting engagements; their bullets print the achievement's 'longform' variant.
+CREATE TABLE IF NOT EXISTS engagements (
+  key TEXT PRIMARY KEY, role_key TEXT REFERENCES roles(key), client TEXT NOT NULL, location TEXT,
+  start TEXT, end TEXT, commitment TEXT, subtitle TEXT, sort INTEGER,
+  confidential INTEGER DEFAULT 1,
+  needs_details INTEGER DEFAULT 0,       -- 1 = hidden until the Match Desk collects dates and a description
+  notes TEXT
+);
+CREATE TABLE IF NOT EXISTS engagement_achievements (
+  engagement_key TEXT NOT NULL REFERENCES engagements(key),
+  achievement_id TEXT NOT NULL REFERENCES achievements(id),
+  sort INTEGER,
+  PRIMARY KEY (engagement_key, achievement_id)
+);
+-- Section D: categorized core competencies (area order fixed; items JD-ranked within an area).
+CREATE TABLE IF NOT EXISTS core_competencies (
+  id INTEGER PRIMARY KEY, area TEXT NOT NULL, area_sort INTEGER, text TEXT NOT NULL, tags TEXT, sort INTEGER
 );
 
 -- ============ LEARNING LOOP ============
@@ -131,7 +157,9 @@ CREATE TABLE IF NOT EXISTS followups (
   question TEXT NOT NULL, answer TEXT, tag_id TEXT REFERENCES tags(id),
   resulting_bullet_id INTEGER REFERENCES bullets(id),
   asked_at TEXT DEFAULT (datetime('now')), answered_at TEXT,
-  ext_key TEXT                           -- dedupe key for synced answers
+  ext_key TEXT,                          -- dedupe key for synced answers
+  section TEXT,                          -- experience | tagline | expertise | technology | engagement | competency
+  engagement_key TEXT                    -- Section C engagement an answer belongs to
 );
 CREATE TABLE IF NOT EXISTS feedback (
   id INTEGER PRIMARY KEY, jd_id TEXT REFERENCES job_descriptions(id),

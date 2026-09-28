@@ -1,9 +1,9 @@
 {
-  "_about": "Baseline resume configuration (no JD). Bullet caps and priority order per role; the professional summary written for the baseline; competency order. rot.py build uses this when no --jd is given, and as the tie-breaker when one is.",
+  "_about": "Baseline configuration: the source template (TIM KING SOURCE RESUME.docx, 2026-09-27). Section order, bullet caps and priority per role (template picks first), Section C caps per engagement, the Section B expertise order, and scoring knobs. No summary paragraph: the Section A tagline and Section B line carry the positioning. rot.py build uses this with no --jd, and as the tie-breaker when one is given.",
   "headline": "GO-TO-MARKET STRATEGY · ENTERPRISE & MEDIA SALES · AI-ENABLED REVENUE",
   "summary": "Revenue and go-to-market operator with eight years of full-cycle B2B, media, and enterprise technology sales, now pairing an individual quota with board-level strategy work for an AI start-up. Wins net-new business from cold — Fortune 500 accounts at TEKsystems, NFL and MLB team partnerships today — by qualifying on the budget that can actually fund a buy and building the CPM, CPA, and unit-economics case a client's finance team can defend. Coaches sellers against daily process and 1:1 metrics, designs the operating cadence a team runs on, and uses Claude and OpenAI models daily to compress research, account mapping, and proposal cycles.",
   "caps": {
-    "liminal": 5,
+    "liminal": 7,
     "psp": 5,
     "tek_lead": 4,
     "tek_recruiter": 4,
@@ -15,47 +15,49 @@
   "min_per_role": 2,
   "priority": {
     "liminal": [
+      "lim-claude-code-tracker",
+      "art-run-muhfveal-0",
+      "lim-readiness-assessment",
+      "lim-collateral",
+      "lim-operating-cadence",
+      "lim-feasibility-roadmap",
+      "lim-gtm-ownership",
       "lim-thought-partner",
       "lim-build-vs-buy",
-      "lim-staffing-restructure",
-      "lim-gtm-ownership",
       "lim-unit-economic-gates",
+      "lim-distribution-pivot",
+      "lim-staffing-restructure",
       "lim-market-sizing-exit-paths",
       "lim-data-rights",
       "lim-competitive-venture-odds",
       "lim-customer-discovery-sprint",
-      "lim-feasibility-roadmap",
       "lim-non-dilutive-capital",
-      "lim-operating-cadence",
-      "lim-collateral",
       "lim-engagement-terms",
-      "lim-claude-code-tracker",
       "lim-unit-economics-benchmarks",
-      "lim-readiness-assessment",
       "lim-entity-ip-structure",
       "lim-scenario-planning"
     ],
     "psp": [
       "psp-closed-deals",
-      "psp-pipeline-discovery",
       "psp-funding-source-qualification",
+      "psp-pipeline-discovery",
+      "psp-125-leads",
+      "psp-decision-makers-ai",
       "psp-cpm-business-case",
       "psp-nine-stakeholder-deal",
-      "psp-125-leads",
       "psp-board-memo",
       "psp-full-cycle-ownership",
-      "psp-decision-makers-ai",
       "psp-verticals",
       "psp-nonprofit-reframe",
       "psp-school-proposal",
       "psp-net-revenue"
     ],
     "tek_lead": [
-      "tekl-universal-poc",
       "tekl-coaching",
-      "tekl-verticalization-lift",
-      "tekl-southern-gas-discovery",
       "tekl-solution-scoping",
+      "tekl-universal-poc",
+      "tekl-southern-gas-discovery",
+      "tekl-verticalization-lift",
       "tekl-me-vertical-gtm",
       "tekl-disney-enablement",
       "tekl-fortune500-discovery"
@@ -82,20 +84,24 @@
       "massdot-adoption"
     ]
   },
-  "competency_count": 12,
+  "competency_count": 16,
   "competency_order": [
     "Go-To-Market Strategy",
-    "New Business Development",
-    "Full-Cycle Enterprise Sales (Prospect to Close)",
-    "Consultative & Diagnostic Discovery",
+    "Business Process Improvement",
+    "Lead Generation & Prospecting",
     "Contract & Proposal Development",
-    "Complex Multi-Stakeholder Negotiation",
     "Revenue Forecasting & KPI Management",
-    "Funding-Source Diagnostics (Co-Op, MDF, Sponsorship, 501(c)(3))",
-    "CPM, CPA & ROI Business Cases",
-    "Buy-vs-Build & Competitive Analysis",
+    "Business Analysis & Advisory",
+    "AI Adoption Strategies for Sales Enablement and Business Growth",
+    "Change Readiness & Stakeholder Alignment",
     "Sales Team Coaching & Performance Management",
-    "Prompt Engineering & AI-Enabled Workflow"
+    "AI & Data Platform Solution Selling",
+    "Prompt Engineering & AI-Enabled Workflow",
+    "Strategic Partnerships & Channel",
+    "Executive & Board-Level Communication",
+    "Market Segmentation & Positioning",
+    "CPM, CPA & ROI Business Cases",
+    "Primary Research & Customer Discovery"
   ],
   "angle_map": {
     "fundraising": {
@@ -185,6 +191,9 @@
     },
     "conservative": {
       "tag": "__never__"
+    },
+    "longform": {
+      "tag": "__never__"
     }
   },
   "layout": {
@@ -198,5 +207,20 @@
     "metric_bonus": 0.5,
     "family_rollup": 0.25,
     "hidden_role_min": 4.0
-  }
+  },
+  "template": "source-2026-09",
+  "summary_enabled": false,
+  "section_order": [
+    "summary_expertise",
+    "education",
+    "experience",
+    "certifications",
+    "engagements",
+    "core_competencies"
+  ],
+  "engagement_caps": {
+    "healthcare": 9,
+    "hvac": 3
+  },
+  "tagline_count": 7
 }

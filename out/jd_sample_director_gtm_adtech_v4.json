@@ -1,0 +1,645 @@
+{
+  "schema": "rot-resume/2",
+  "template": "source-2026-09",
+  "version": "v4",
+  "generated_at": "2026-09-27T19:33:15",
+  "jd": {
+    "id": "jd_30be34a590",
+    "file": "samples/jd_sample_director_gtm_adtech.txt"
+  },
+  "identity": {
+    "name": "Tim King",
+    "location": "New York, NY",
+    "phone": "(617) 960-7176",
+    "email": "tim.r.king11@gmail.com",
+    "links": [
+      {
+        "label": "LinkedIn Profile",
+        "url": "https://www.linkedin.com/in/timothy-king1124/?skipRedirect=true"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/timrking11-blip"
+      },
+      {
+        "label": "Website",
+        "url": "https://www.strategicmarketinsights.services/"
+      }
+    ]
+  },
+  "tagline": [
+    "Marketing, Advertising, Product, Services, & Sales GTM Engineer",
+    "AI Adoption Enthusiast",
+    "Sales Professional (End to End Sales)",
+    "GTM and Sales/Marketing Execution Specialist",
+    "Business Strategy",
+    "Process Engineer",
+    "Systems Thinker"
+  ],
+  "expertise": [
+    "Executive & Board-Level Communication",
+    "CPM, CPA & ROI Business Cases",
+    "Pricing & Channel Strategy",
+    "Contract & Proposal Development",
+    "Complex Multi-Stakeholder Negotiation",
+    "AI Adoption Strategies for Sales Enablement and Business Growth",
+    "Prompt Engineering & AI-Enabled Workflow",
+    "Strategic Partnerships & Channel",
+    "Media & Sponsorship Sales",
+    "Ad-Tech Fluency (CDP, Clean Rooms, Identity Graphs, Measurement)",
+    "Go-To-Market Strategy",
+    "AI & Data Platform Solution Selling",
+    "Revenue Forecasting & KPI Management",
+    "Business Analysis & Advisory",
+    "Sales Team Coaching & Performance Management",
+    "Market Segmentation & Positioning"
+  ],
+  "technologies": [
+    "LinkedIn (Sales Navigator, Recruiter)",
+    "Microsoft Copilot",
+    "Claude & Claude Code (Sonnet 5.x / Opus 5 / Fable 5)",
+    "OpenAI (GPT-5.6, Sol, Terra, Luna)",
+    "Model Context Protocol (MCP) Servers",
+    "Salesforce (Classic, Lightning)",
+    "ZoomInfo",
+    "Google Tag Manager",
+    "Apollo.io",
+    "HubSpot",
+    "Miro",
+    "Tableau (beginner)",
+    "Microsoft Excel (VLOOKUPs, INDEX-MATCH-MATCH, XLOOKUP)",
+    "Office-Place Collaboration Tools (Slack, MS Teams, Webex, Google Meet, Zoom)",
+    "Squarespace",
+    "Marketo",
+    "Canva",
+    "Trello",
+    "GitHub",
+    "GCP",
+    "Visual Studio & VS Code",
+    "Microsoft Stack"
+  ],
+  "education": [
+    {
+      "school": "University of Maine Business School",
+      "degree_line": "B.S., Double Major in Finance and Marketing | Spring 2018",
+      "bullets": []
+    }
+  ],
+  "roles": [
+    {
+      "key": "hc_ai_strategy",
+      "title": "Business Consultant - GTM Engineer & Strategic Advisor",
+      "employer": "Strategic Market Insights (self-employed)",
+      "location": "New York, NY",
+      "dates": "July 2026 – Present",
+      "context": "New York, NY · Advisory & GTM engineering practice · Key Engagement: healthcare AI start-up (confidential)",
+      "bullets": [
+        "Own go-to-market for the client's AI compliance product sold to independent clinical practices — segmentation, positioning, $99/$249 tiers, and channel strategy.",
+        "Built the practice's multi-tenant client engagement tracker with Claude Code, with 60 automated tests enforcing cross-client data isolation.",
+        "Built a custom CRM from scratch with GTM and prospecting connectors, automated weekly contact enrichment, and account-research agents two-way synced to GitHub.",
+        "Concluded distribution, not product, decides the outcome, redirecting GTM to malpractice-carrier and professional-association channel partners.",
+        "Reconciled the client founder's four-pillar vision and three build memos into one staged roadmap: 12 recommendations, 4 stage gates, 8 board decisions.",
+        "Advise the CEO and board of a healthcare AI start-up client, translating business, technology, regulatory, and workforce tradeoffs into board-ready decisions.",
+        "Negotiated the engagement's terms directly, restructuring a 320-hour proposal into 166 hours at the same fee and pulling the key deliverable to Day 15."
+      ],
+      "bullet_ids": [
+        96,
+        101,
+        102,
+        118,
+        93,
+        92,
+        43
+      ],
+      "achievement_ids": [
+        "lim-gtm-ownership",
+        "lim-claude-code-tracker",
+        "art-run-muhbu38f-0",
+        "lim-distribution-pivot",
+        "lim-feasibility-roadmap",
+        "lim-thought-partner",
+        "lim-engagement-terms"
+      ]
+    },
+    {
+      "key": "psp",
+      "title": "Advertising Sales Director - Pro-Division",
+      "employer": "Professional Sports Publications",
+      "location": "New York, NY",
+      "dates": "March 2026 – August 2026",
+      "context": "New York, NY · Print-Media Advertising Agency supporting all major professional and university sports teams (yearbook and program ad placement)",
+      "bullets": [
+        "Modeled a $10.98 blended CPM against 1.32M reach and a $2,849 cost-per-acquisition benchmark to price a $14,500 buy on outcome economics.",
+        "Closed 5 signed NFL and MLB team-media partnerships, all paid in full at signing, including 2 accounts with no prior purchase history.",
+        "Owned the full sales cycle in a pure new-business role — prospecting, discovery, pricing, proposal, negotiation, and close — with no SDR layer.",
+        "Built and maintained a ~$115K active proposal pipeline through a diagnostic, discovery-first approach rather than a pitch-led one.",
+        "Identified key decision-makers with ZoomInfo, LinkedIn Sales Navigator, and AI-assisted account mapping using OpenAI and Claude models."
+      ],
+      "bullet_ids": [
+        15,
+        1,
+        82,
+        8,
+        12
+      ],
+      "achievement_ids": [
+        "psp-cpm-business-case",
+        "psp-closed-deals",
+        "psp-full-cycle-ownership",
+        "psp-pipeline-discovery",
+        "psp-decision-makers-ai"
+      ]
+    },
+    {
+      "key": "tek_lead",
+      "title": "Specialized Lead - Data Analytics & Insights",
+      "employer": "TEKsystems",
+      "location": "New York, NY",
+      "dates": "2024 – November 2025",
+      "context": "New York, NY · Top firm for I.T. Staffing & Managed Services with flexible engagement types that work with 85% of Fortune 500 companies",
+      "bullets": [
+        "Built the Media & Entertainment vertical GTM motion — discovery frameworks, opportunity taxonomy, CRM tagging — around CDPs, clean rooms, and ad measurement.",
+        "Led a team of up to 5 direct reports inside a 30-person practice, coaching performance through daily process reviews and 1:1 metric sessions.",
+        "Helped stand up an Oil & Gas company's ML and AI Center of Excellence, applying sensor data to predict and detect gas outages.",
+        "Packaged the vertical model into an enablement proposal for Disney Advertising Sales, mapping pipeline stages to first-party data and measurement problems."
+      ],
+      "bullet_ids": [
+        62,
+        89,
+        112,
+        64
+      ],
+      "achievement_ids": [
+        "tekl-me-vertical-gtm",
+        "tekl-coaching",
+        "tekl-southern-gas-discovery",
+        "tekl-disney-enablement"
+      ]
+    },
+    {
+      "key": "tek_recruiter",
+      "title": "Enterprise Recruiter – Global Services Division",
+      "employer": "TEKsystems",
+      "location": "Boston, MA",
+      "dates": "2021 – 2024",
+      "context": "Boston, MA · Top firm for I.T. Staffing & Managed Services with flexible engagement types that work with 85% of Fortune 500 companies",
+      "bullets": [
+        "Partnered with Nike's global supply chain team on in-season optimization, delivering an AI-powered document system.",
+        "Opened net-new managed services accounts at Wayfair and Disney's ESPN and Entertainment Technology organization from cold.",
+        "Generated $750K+ in annual revenue and won the company-wide sales contest in first full year against a national field.",
+        "Produced more than half the revenue on Vertex Pharmaceuticals, the firm's largest regional growth account, and expanded into two new groups."
+      ],
+      "bullet_ids": [
+        70,
+        69,
+        66,
+        67
+      ],
+      "achievement_ids": [
+        "tekr-nike",
+        "tekr-wayfair-disney",
+        "tekr-750k",
+        "tekr-vertex"
+      ]
+    },
+    {
+      "key": "demanddrive",
+      "title": "Sales Development Representative / Inside Sales Rep",
+      "employer": "demandDrive (Amazon Business & RealPage)",
+      "location": "Waltham, MA",
+      "dates": "2018 – 2021",
+      "context": "Waltham, MA · Outsourced SDR and Sales Representative firm. Key Engagements: SaaS product Propertyware for RealPage, Amazon Key for Business launch",
+      "bullets": [
+        "Authored a territory-realignment and post-close operations model adopted company-wide, credited with 150% growth in the Amazon Key for Business launch.",
+        "Delivered 200% of first-month quota (12 meetings vs. 6) on a net-new client engagement; named MVP of the Month."
+      ],
+      "bullet_ids": [
+        72,
+        74
+      ],
+      "achievement_ids": [
+        "dd-territory-proposal",
+        "dd-200-quota"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Data Analytics & Insights: Data Insights",
+      "issuer": "TEKsystems",
+      "note": null
+    },
+    {
+      "name": "Claude 101 Certification",
+      "issuer": "Anthropic",
+      "note": null
+    },
+    {
+      "name": "Claude Code 101 Certification",
+      "issuer": "Anthropic",
+      "note": null
+    },
+    {
+      "name": "Claude for CoWork",
+      "issuer": "Anthropic",
+      "note": "In Progress"
+    }
+  ],
+  "engagements": [
+    {
+      "key": "healthcare",
+      "client": "Healthcare Technology Start-Up (Confidential)",
+      "location": "New York, NY",
+      "dates": "July 2026 – Present",
+      "commitment": "Part Time",
+      "subtitle": "Principal Business Strategist – GTM Plan, Business Architectural Roadmap, Blueprint to Obtain Necessary Funding – Healthcare FinTech Start-Up",
+      "bullets": [
+        "Own go-to-market for an AI compliance product sold into independent clinical practices — segmentation, positioning, pricing tiers ($99/$249), channel strategy, and the sequencing that determines which motion gets funded first.",
+        "Built the multi-tenant, role-scoped client engagement tracker that runs the advisory practice using Claude Code — including 60 automated tests asserting cross-client data isolation — with no prior engineering background.",
+        "Concluded that distribution — not product — decides the outcome, redirecting GTM toward malpractice-carrier and professional-association channel partnerships after modeling that a direct human sales motion cannot carry a 12–18 month CAC payback at those price points.",
+        "Set the unit-economic gates the motion is now measured against: blended CAC under $900, payback under 12 months, monthly churn under 5%, time-to-first-value under 7 days.",
+        "Mapped a $0.76B category projected to reach $5.9B by 2035 (22.8% CAGR), benchmarked five direct comparables across four structural models, and built a decision tree of four exit paths with base-rate odds attached — including the cautionary comparable that won regulatory clearance and still failed on commercialization.",
+        "Designed and launched a 30–40 interview customer discovery sprint to size real addressable demand — screener, interview guide, scoring rubric, and 150-practice candidate universe built from scratch — classifying prospects by platform dependence against a pre-agreed threshold that fires a documented kill/pivot decision instead of a debate.",
+        "Produced the customer- and investor-facing collateral the company now sells with: pitch deck, competitive battlecards, partner negotiation sheets, and an eight-document executive round table with per-presentation talking points.",
+        "Applied scenario planning and second- and third-order consequence analysis across business, technology, regulatory, and organizational exposure — surfacing downstream consequences before commitments locked in.",
+        "Ran financial forecasting (P&L, tool-stack cost model, Year-1 ARR band) and barriers-to-entry analysis to price strategic alternatives before capital committed; recommended a ~$2.15M non-dilutive federal funding route over an equity raise, tied to a dated decision gate."
+      ],
+      "bullet_ids": [
+        116,
+        123,
+        120,
+        117,
+        115,
+        121,
+        122,
+        125,
+        124
+      ],
+      "achievement_ids": [
+        "lim-gtm-ownership",
+        "lim-claude-code-tracker",
+        "lim-distribution-pivot",
+        "lim-unit-economic-gates",
+        "lim-market-sizing-exit-paths",
+        "lim-customer-discovery-sprint",
+        "lim-collateral",
+        "lim-scenario-planning",
+        "lim-non-dilutive-capital"
+      ]
+    }
+  ],
+  "core_competencies": [
+    {
+      "label": "Go-To-Market & Revenue",
+      "items": [
+        "GTM strategy",
+        "value proposition development",
+        "revenue forecasting & KPI tracking",
+        "solution selling",
+        "contract negotiation",
+        "market segmentation",
+        "product positioning & messaging",
+        "customer discovery",
+        "pipeline management",
+        "proposal development",
+        "account mapping",
+        "client retention"
+      ]
+    },
+    {
+      "label": "Research & Analysis",
+      "items": [
+        "financial forecasting (P&L)",
+        "business process improvement",
+        "Market landscape analysis",
+        "competitive intelligence",
+        "barriers-to-entry assessment",
+        "decision-tree modeling",
+        "unit economics (CAC, payback, churn, TTFV)",
+        "scenario planning"
+      ]
+    },
+    {
+      "label": "AI & Data",
+      "items": [
+        "Claude (Opus 5, Sonnet 5, Fable 5)",
+        "OpenAI / ChatGPT",
+        "Microsoft Copilot",
+        "prompt engineering",
+        "AI governance & output verification",
+        "GenAI & machine learning",
+        "Claude Code",
+        "data analytics",
+        "Tableau"
+      ]
+    },
+    {
+      "label": "Tools & Platforms",
+      "items": [
+        "Salesforce CRM",
+        "ZoomInfo",
+        "LinkedIn Sales Navigator",
+        "Microsoft Excel & Office Suite",
+        "Miro",
+        "Trello",
+        "Canva"
+      ]
+    },
+    {
+      "label": "Funding & Commercial Mechanics",
+      "items": [
+        "Restricted & tax-advantaged funding mechanisms (co-op, MDF, 501(c)(3))",
+        "non-dilutive federal grant strategy (SBIR)",
+        "managed services & RFP response",
+        "board & trustee engagement"
+      ]
+    }
+  ],
+  "match": {
+    "score": 0.873,
+    "requirements": {
+      "gtm-strategy": {
+        "label": "GTM Strategy",
+        "weight": 2.84,
+        "phrases": [
+          "go-to-market",
+          "gtm"
+        ],
+        "coverage": 1.0
+      },
+      "market-segmentation": {
+        "label": "Market Segmentation",
+        "weight": 1.4,
+        "phrases": [
+          "segmentation"
+        ],
+        "coverage": 0.9
+      },
+      "positioning-messaging": {
+        "label": "Positioning & Messaging",
+        "weight": 1.4,
+        "phrases": [
+          "positioning"
+        ],
+        "coverage": 0.9
+      },
+      "pricing-packaging": {
+        "label": "Pricing & Packaging",
+        "weight": 2.8,
+        "phrases": [
+          "packaging",
+          "pricing"
+        ],
+        "coverage": 0.9
+      },
+      "channel-strategy": {
+        "label": "Channel Strategy",
+        "weight": 1.4,
+        "phrases": [
+          "channel"
+        ],
+        "coverage": 1.0
+      },
+      "new-business": {
+        "label": "New Business Development",
+        "weight": 1.4,
+        "phrases": [
+          "new business"
+        ],
+        "coverage": 1.0
+      },
+      "full-cycle-sales": {
+        "label": "Full-Cycle Sales Ownership",
+        "weight": 1.4,
+        "phrases": [
+          "full-cycle"
+        ],
+        "coverage": 1.0
+      },
+      "prospecting": {
+        "label": "Prospecting & Outbound",
+        "weight": 1.4,
+        "phrases": [
+          "prospecting"
+        ],
+        "coverage": 1.0
+      },
+      "discovery": {
+        "label": "Discovery & Consultative Selling",
+        "weight": 1.4,
+        "phrases": [
+          "discovery"
+        ],
+        "coverage": 1.0
+      },
+      "proposal-development": {
+        "label": "Proposal Development",
+        "weight": 1.4,
+        "phrases": [
+          "business case"
+        ],
+        "coverage": 0.8
+      },
+      "negotiation": {
+        "label": "Negotiation & Deal Structuring",
+        "weight": 2.4,
+        "phrases": [
+          "contract",
+          "negotiation"
+        ],
+        "coverage": 1.0
+      },
+      "closing": {
+        "label": "Closing",
+        "weight": 1.0,
+        "phrases": [
+          "signed"
+        ],
+        "coverage": 1.0
+      },
+      "quota-attainment": {
+        "label": "Quota Attainment",
+        "weight": 1.4,
+        "phrases": [
+          "quota"
+        ],
+        "coverage": 1.0
+      },
+      "pipeline-management": {
+        "label": "Pipeline Management",
+        "weight": 1.4,
+        "phrases": [
+          "pipeline"
+        ],
+        "coverage": 1.0
+      },
+      "forecasting": {
+        "label": "Forecasting",
+        "weight": 1.4,
+        "phrases": [
+          "forecasting"
+        ],
+        "coverage": 0.0
+      },
+      "multi-stakeholder-selling": {
+        "label": "Multi-Stakeholder & Matrixed Selling",
+        "weight": 1.4,
+        "phrases": [
+          "multi-stakeholder"
+        ],
+        "coverage": 0.5
+      },
+      "executive-selling": {
+        "label": "Executive & C-Suite Selling",
+        "weight": 3.0,
+        "phrases": [
+          "c-suite",
+          "cfo",
+          "cmo",
+          "executive"
+        ],
+        "coverage": 0.6
+      },
+      "media-ad-sales": {
+        "label": "Media & Advertising Sales",
+        "weight": 3.0,
+        "phrases": [
+          "advertising sales",
+          "agencies",
+          "agency",
+          "brands",
+          "media sales"
+        ],
+        "coverage": 0.9
+      },
+      "cpm-cpa-modeling": {
+        "label": "CPM / CPA / ROI Modeling",
+        "weight": 3.0,
+        "phrases": [
+          "cost-per-acquisition",
+          "cpa",
+          "cpm",
+          "reach",
+          "roas",
+          "roi"
+        ],
+        "coverage": 1.0
+      },
+      "audience-measurement": {
+        "label": "Audience Insights & Measurement",
+        "weight": 1.4,
+        "phrases": [
+          "measurement"
+        ],
+        "coverage": 0.9
+      },
+      "adtech-fluency": {
+        "label": "AdTech Fluency (CDP, Clean Rooms, Identity)",
+        "weight": 3.0,
+        "phrases": [
+          "ad tech",
+          "ad-tech",
+          "clean rooms",
+          "first-party data",
+          "identity resolution"
+        ],
+        "coverage": 0.9
+      },
+      "board-advisory": {
+        "label": "Board & Executive Advisory",
+        "weight": 2.8,
+        "phrases": [
+          "board",
+          "executive team"
+        ],
+        "coverage": 1.0
+      },
+      "team-coaching": {
+        "label": "Team Coaching & Development",
+        "weight": 1.4,
+        "phrases": [
+          "coach"
+        ],
+        "coverage": 1.0
+      },
+      "performance-management": {
+        "label": "Performance Management",
+        "weight": 1.4,
+        "phrases": [
+          "team of"
+        ],
+        "coverage": 1.0
+      },
+      "hiring-onboarding": {
+        "label": "Hiring & Onboarding",
+        "weight": 1.84,
+        "phrases": [
+          "hire",
+          "hiring"
+        ],
+        "coverage": 0.6
+      },
+      "player-coach": {
+        "label": "Player-Coach Leadership",
+        "weight": 1.4,
+        "phrases": [
+          "player-coach"
+        ],
+        "coverage": 0.8
+      },
+      "process-improvement": {
+        "label": "Sales Process Design & Improvement",
+        "weight": 1.0,
+        "phrases": [
+          "playbook"
+        ],
+        "coverage": 0.8
+      },
+      "crm-discipline": {
+        "label": "CRM Discipline",
+        "weight": 1.4,
+        "phrases": [
+          "salesforce"
+        ],
+        "coverage": 1.0
+      },
+      "stakeholder-alignment": {
+        "label": "Stakeholder Alignment",
+        "weight": 1.4,
+        "phrases": [
+          "stakeholders"
+        ],
+        "coverage": 0.5
+      },
+      "ai-ml-solutions": {
+        "label": "AI / ML Solution Selling",
+        "weight": 2.84,
+        "phrases": [
+          "ai",
+          "generative ai"
+        ],
+        "coverage": 1.0
+      },
+      "ai-in-workflow": {
+        "label": "AI in Daily Workflow",
+        "weight": 3.0,
+        "phrases": [
+          "ai tools",
+          "ai-native",
+          "chatgpt",
+          "claude"
+        ],
+        "coverage": 1.0
+      },
+      "strategic-partnerships": {
+        "label": "Strategic Partnerships",
+        "weight": 3.0,
+        "phrases": [
+          "partner",
+          "partnerships"
+        ],
+        "coverage": 0.7
+      }
+    }
+  }
+}

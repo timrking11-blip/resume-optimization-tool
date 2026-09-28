@@ -150,7 +150,11 @@
         "top of funnel",
         "sourcing",
         "sdr",
-        "bdr"
+        "bdr",
+        "zoominfo",
+        "sales navigator",
+        "apollo",
+        "apollo.io"
       ]
     },
     "qualification": {
@@ -335,7 +339,9 @@
         "mql",
         "inbound",
         "growth marketing",
-        "acquisition marketing"
+        "acquisition marketing",
+        "marketo",
+        "marketing automation"
       ]
     },
     "campaign-development": {
@@ -359,7 +365,9 @@
         "brand identity",
         "social media",
         "website content",
-        "collateral"
+        "collateral",
+        "squarespace",
+        "canva"
       ]
     },
     "marketing-sales-alignment": {
@@ -458,7 +466,10 @@
         "readership",
         "analytics",
         "campaign performance",
-        "outcomes"
+        "outcomes",
+        "google tag manager",
+        "google analytics",
+        "ga4"
       ]
     },
     "adtech-fluency": {
@@ -635,7 +646,9 @@
         "forecast model",
         "benchmarks",
         "comparables",
-        "arr forecast"
+        "arr forecast",
+        "excel",
+        "xlookup"
       ]
     },
     "capital-strategy": {
@@ -742,7 +755,8 @@
         "governance",
         "weekly review",
         "gate review",
-        "operating model"
+        "operating model",
+        "trello"
       ]
     },
     "process-improvement": {
@@ -941,7 +955,8 @@
         "infrastructure",
         "adobe",
         "enterprise software",
-        "saas"
+        "saas",
+        "google cloud"
       ]
     },
     "ai-in-workflow": {
@@ -959,7 +974,9 @@
         "automation",
         "workflow automation",
         "ai-native",
-        "ai fluency"
+        "ai fluency",
+        "gpt",
+        "gemini"
       ]
     },
     "building-with-ai": {
@@ -978,7 +995,12 @@
         "revenue engineering",
         "go-to-market engineer",
         "clay",
-        "workflow builder"
+        "workflow builder",
+        "github",
+        "mcp",
+        "model context protocol",
+        "vs code",
+        "visual studio"
       ]
     },
     "healthcare-regulatory": {

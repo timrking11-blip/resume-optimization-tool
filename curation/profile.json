@@ -1,5 +1,5 @@
 {
-  "_about": "Profile facts that are not bullets: identity, roles, competencies, technologies, certifications, education, summaries. Merged from Resume 1 + Resume 2 + all role-specific resumes + LinkedIn (2026-09-25). Confidential names live only here and are never rendered.",
+  "_about": "Profile facts that are not bullets: identity and links, roles, education, certifications, technologies, tagline phrases (Section A), competencies (Section B expertise line), core competency areas (Section D), consulting engagements (Section C), summaries. Source of truth since 2026-09-27: TIM KING SOURCE RESUME.docx (the default template). Confidential names live only here and are never rendered.",
   "identity": {
     "name": "Tim King",
     "formal_name": "Timothy King",
@@ -8,46 +8,66 @@
     "email": "tim.r.king11@gmail.com",
     "linkedin": "linkedin.com/in/timothy-king1124",
     "headline_default": "GO-TO-MARKET STRATEGY · ENTERPRISE & MEDIA SALES · AI-ENABLED REVENUE",
-    "linkedin_headline": "Sales Professional | Marketing, Advertising, Product, Services, & Sales GTM Strategist Providing Advisory Services | Systems Thinker | Process Engineer | AI Adoption Enthusiast"
+    "linkedin_headline": "Sales Professional | Marketing, Advertising, Product, Services, & Sales GTM Strategist Providing Advisory Services | Systems Thinker | Process Engineer | AI Adoption Enthusiast",
+    "linkedin_url": "https://www.linkedin.com/in/timothy-king1124/?skipRedirect=true",
+    "github_url": "https://github.com/timrking11-blip",
+    "website_url": "https://www.strategicmarketinsights.services/",
+    "links": [
+      {
+        "label": "LinkedIn Profile",
+        "url": "https://www.linkedin.com/in/timothy-king1124/?skipRedirect=true"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/timrking11-blip"
+      },
+      {
+        "label": "Website",
+        "url": "https://www.strategicmarketinsights.services/"
+      }
+    ]
   },
   "roles": [
     {
       "key": "liminal",
       "order": 1,
-      "employer": "Confidential Healthcare AI Start-Up",
+      "employer": "Strategic Market Insights (self-employed)",
       "employer_private": "Liminal Psychiatry (behavioral-health AI, pre-seed)",
-      "confidential": true,
-      "title": "Chief Strategy Consultant",
+      "confidential": false,
+      "title": "Business Consultant - GTM Engineer & Strategic Advisor",
       "title_variants": [
         "Chief Strategy Officer",
         "Chief of Strategy",
-        "Principal Business Strategy Consultant"
+        "Principal Business Strategy Consultant",
+        "Chief Strategy Consultant",
+        "Founder, Business Consultant, and GTM Engineer"
       ],
       "location": "New York, NY",
       "start": "2026-07",
       "end": null,
-      "engagement": "Consulting engagement, part-time (5–10 hrs/week), concurrent with role below",
+      "engagement": "Self-employed advisory & GTM engineering practice; key engagement part-time (healthcare AI start-up)",
       "section": "experience",
-      "date_note": "R1/R6 say August 2026; BAS resumes and LinkedIn say July 2026. Using July.",
-      "context_line": "Board-level strategy for an AI compliance product sold into independent clinical practices"
+      "date_note": "source template 2026-09-27: title and employer from the source template (was 'Founder, Business Consultant, and GTM Engineer | Strategic Market Insights'). Dates July 2026 – Present.",
+      "context_line": "Advisory & GTM engineering practice · Key Engagement: healthcare AI start-up (confidential)"
     },
     {
       "key": "psp",
       "order": 2,
       "employer": "Professional Sports Publications",
       "confidential": false,
-      "title": "Advertising Sales Director, Pro Division",
+      "title": "Advertising Sales Director - Pro-Division",
       "title_variants": [
         "Ad Sales Director",
-        "Advertising Sales Director"
+        "Advertising Sales Director",
+        "Advertising Sales Director, Pro Division"
       ],
       "location": "New York, NY",
       "start": "2026-03",
-      "end": null,
+      "end": "2026-08",
       "engagement": "Full-time",
       "section": "experience",
-      "date_note": "LinkedIn shows end Aug 2026. Gate-1 question.",
-      "context_line": "Official NFL & MLB team publication advertising and sponsorship"
+      "date_note": "Gate 1: ended August 2026 (matches LinkedIn and the source template).",
+      "context_line": "Print-Media Advertising Agency supporting all major professional and university sports teams (yearbook and program ad placement)"
     },
     {
       "key": "nyl",
@@ -72,26 +92,28 @@
       "order": 4,
       "employer": "TEKsystems",
       "confidential": false,
-      "title": "Specialized Lead – Data Analytics & Data Insights",
+      "title": "Specialized Lead - Data Analytics & Insights",
       "title_variants": [
-        "Specialized Lead – Cloud Applications & Data Analytics"
+        "Specialized Lead – Cloud Applications & Data Analytics",
+        "Specialized Lead – Data Analytics & Data Insights"
       ],
       "location": "New York, NY",
       "start": "2024",
-      "end": "2025",
+      "end": "2025-11",
       "engagement": "Full-time",
       "section": "experience",
-      "date_note": "LinkedIn: Nov 2024 – Oct 2025 under a different title. Year-only display (2024 – 2025) matches both.",
-      "context_line": "Enterprise technology and data solution sales · Media & Entertainment, Parks, Utilities, Life Sciences"
+      "date_note": "source template 2026-09-27: 2024 – November 2025 (LinkedIn: Nov 2024 – Oct 2025).",
+      "context_line": "Top firm for I.T. Staffing & Managed Services with flexible engagement types that work with 85% of Fortune 500 companies"
     },
     {
       "key": "tek_recruiter",
       "order": 5,
       "employer": "TEKsystems",
       "confidential": false,
-      "title": "Enterprise Recruiter – Global Services",
+      "title": "Enterprise Recruiter – Global Services Division",
       "title_variants": [
-        "National Recruiter – Data Analytics & Insights"
+        "National Recruiter – Data Analytics & Insights",
+        "Enterprise Recruiter – Global Services"
       ],
       "location": "Boston, MA",
       "start": "2021",
@@ -99,24 +121,25 @@
       "engagement": "Full-time",
       "section": "experience",
       "date_note": "LinkedIn: Mar 2021 – Nov 2024.",
-      "context_line": ""
+      "context_line": "Top firm for I.T. Staffing & Managed Services with flexible engagement types that work with 85% of Fortune 500 companies"
     },
     {
       "key": "demanddrive",
       "order": 6,
-      "employer": "Amazon Business / demandDrive",
+      "employer": "demandDrive (Amazon Business & RealPage)",
       "confidential": false,
-      "title": "Sales Development Representative / Inside Sales Representative",
+      "title": "Sales Development Representative / Inside Sales Rep",
       "title_variants": [
-        "Inside Sales Representative"
+        "Inside Sales Representative",
+        "Sales Development Representative / Inside Sales Representative"
       ],
       "location": "Waltham, MA",
       "start": "2018",
-      "end": "2020",
+      "end": "2021",
       "engagement": "Full-time",
       "section": "experience",
-      "date_note": "Resumes say 2018–2021; LinkedIn says Aug 2018 – Sep 2020. Using 2018 – 2020.",
-      "context_line": "E-commerce and retail technology"
+      "date_note": "source template 2026-09-27: 2018 – 2021 (resumes and the template); LinkedIn says Aug 2018 – Sep 2020.",
+      "context_line": "Outsourced SDR and Sales Representative firm. Key Engagements: SaaS product Propertyware for RealPage, Amazon Key for Business launch"
     },
     {
       "key": "yri",
@@ -154,32 +177,50 @@
   "education": [
     {
       "school": "University of Maine Business School",
-      "degree": "B.S., Finance & Marketing (Double Major)",
+      "degree": "B.S., Double Major in Finance and Marketing",
       "degree_variants": [
+        "B.S., Finance & Marketing (Double Major)",
         "Bachelor of Science, Business Administration – Finance & Marketing",
         "BS Finance + BBA Marketing (LinkedIn lists two degrees)"
       ],
       "location": "Orono, ME",
       "year": "2018",
+      "date_display": "Spring 2018",
       "date_note": "Resumes: Spring 2018 / Sept 2014 – Dec 2018. LinkedIn: 2013 – 2018.",
-      "bullet_ids": [
+      "bullet_ids": [],
+      "hidden_bullet_ids": [
         "edu-capstone"
       ]
     }
   ],
   "certifications": [
     {
-      "name": "Claude 101",
+      "name": "Data Analytics & Insights: Data Insights",
+      "issuer": "TEKsystems",
+      "date": "2023-12",
+      "credential_id": null,
+      "source": "LinkedIn + BAS resumes",
+      "tags": [
+        "data-solutions"
+      ],
+      "sort": 1,
+      "hidden_by_default": false
+    },
+    {
+      "name": "Claude 101 Certification",
       "issuer": "Anthropic",
       "date": "2026-08",
       "credential_id": "xid9zxhxo3mw",
       "source": "LinkedIn + BAS resumes",
       "tags": [
         "ai-in-workflow"
-      ]
+      ],
+      "name_before_template": "Claude 101",
+      "sort": 2,
+      "hidden_by_default": false
     },
     {
-      "name": "Claude Code 101",
+      "name": "Claude Code 101 Certification",
       "issuer": "Anthropic",
       "date": "2026",
       "credential_id": null,
@@ -187,7 +228,10 @@
       "tags": [
         "building-with-ai",
         "ai-in-workflow"
-      ]
+      ],
+      "name_before_template": "Claude Code 101",
+      "sort": 3,
+      "hidden_by_default": false
     },
     {
       "name": "Claude for CoWork",
@@ -197,7 +241,9 @@
       "source": "BAS resumes",
       "tags": [
         "ai-in-workflow"
-      ]
+      ],
+      "sort": 4,
+      "hidden_by_default": false
     },
     {
       "name": "Insurance Broker License — Accident, Health, Life, Variable Life & Variable Annuity",
@@ -207,41 +253,185 @@
       "source": "LinkedIn",
       "tags": [
         "referral-network"
-      ]
-    },
-    {
-      "name": "Data Analytics & Insights: Data Insights",
-      "issuer": "TEKsystems",
-      "date": "2023-12",
-      "credential_id": null,
-      "source": "LinkedIn + BAS resumes",
-      "tags": [
-        "data-solutions"
-      ]
+      ],
+      "sort": 5,
+      "hidden_by_default": true,
+      "hidden_note": "source template 2026-09-27: not on the source template; kept in the database, hidden by default."
     }
   ],
   "technologies": [
     {
-      "name": "Salesforce",
+      "name": "Salesforce (Classic, Lightning)",
       "category": "CRM & Sales Tools",
       "tags": [
         "crm-discipline",
         "pipeline-management"
-      ]
+      ],
+      "sort": 1,
+      "origin": "template"
     },
     {
-      "name": "LinkedIn Sales Navigator",
+      "name": "LinkedIn (Sales Navigator, Recruiter)",
       "category": "CRM & Sales Tools",
       "tags": [
-        "prospecting"
-      ]
+        "prospecting",
+        "hiring-onboarding"
+      ],
+      "sort": 2,
+      "origin": "template"
     },
     {
       "name": "ZoomInfo",
       "category": "CRM & Sales Tools",
       "tags": [
         "prospecting"
-      ]
+      ],
+      "sort": 3,
+      "origin": "template"
+    },
+    {
+      "name": "Google Tag Manager",
+      "category": "Marketing & Analytics",
+      "tags": [
+        "audience-measurement",
+        "demand-generation"
+      ],
+      "sort": 4,
+      "origin": "template"
+    },
+    {
+      "name": "Apollo.io",
+      "category": "CRM & Sales Tools",
+      "tags": [
+        "prospecting",
+        "demand-generation"
+      ],
+      "sort": 5,
+      "origin": "template"
+    },
+    {
+      "name": "Squarespace",
+      "category": "Marketing & Analytics",
+      "tags": [
+        "content-brand"
+      ],
+      "sort": 6,
+      "origin": "template"
+    },
+    {
+      "name": "Marketo",
+      "category": "Marketing & Analytics",
+      "tags": [
+        "demand-generation",
+        "campaign-development",
+        "marketing-sales-alignment"
+      ],
+      "sort": 7,
+      "origin": "template"
+    },
+    {
+      "name": "HubSpot",
+      "category": "CRM & Sales Tools",
+      "tags": [
+        "crm-discipline",
+        "demand-generation"
+      ],
+      "sort": 8,
+      "origin": "template"
+    },
+    {
+      "name": "Canva",
+      "category": "Design",
+      "tags": [
+        "enablement-collateral",
+        "content-brand"
+      ],
+      "sort": 9,
+      "origin": "template"
+    },
+    {
+      "name": "Trello",
+      "category": "Productivity",
+      "tags": [
+        "operating-cadence"
+      ],
+      "sort": 10,
+      "origin": "template"
+    },
+    {
+      "name": "Miro",
+      "category": "Design",
+      "tags": [
+        "enablement-collateral",
+        "stakeholder-alignment"
+      ],
+      "sort": 11,
+      "origin": "template"
+    },
+    {
+      "name": "Microsoft Copilot",
+      "category": "AI",
+      "tags": [
+        "ai-in-workflow"
+      ],
+      "sort": 12,
+      "origin": "template"
+    },
+    {
+      "name": "Claude & Claude Code (Sonnet 5.x / Opus 5 / Fable 5)",
+      "category": "AI",
+      "tags": [
+        "ai-in-workflow",
+        "building-with-ai"
+      ],
+      "sort": 13,
+      "origin": "template"
+    },
+    {
+      "name": "OpenAI (GPT-5.6, Sol, Terra, Luna)",
+      "category": "AI",
+      "tags": [
+        "ai-in-workflow"
+      ],
+      "sort": 14,
+      "origin": "template"
+    },
+    {
+      "name": "GitHub",
+      "category": "Engineering",
+      "tags": [
+        "building-with-ai"
+      ],
+      "sort": 15,
+      "origin": "template"
+    },
+    {
+      "name": "Model Context Protocol (MCP) Servers",
+      "category": "Engineering",
+      "tags": [
+        "building-with-ai",
+        "ai-in-workflow"
+      ],
+      "sort": 16,
+      "origin": "template"
+    },
+    {
+      "name": "GCP",
+      "category": "Cloud",
+      "tags": [
+        "cloud-infrastructure"
+      ],
+      "sort": 17,
+      "origin": "template"
+    },
+    {
+      "name": "Visual Studio & VS Code",
+      "category": "Engineering",
+      "tags": [
+        "building-with-ai"
+      ],
+      "sort": 18,
+      "origin": "template"
     },
     {
       "name": "Tableau (beginner)",
@@ -249,63 +439,38 @@
       "tags": [
         "data-solutions",
         "forecasting"
-      ]
+      ],
+      "sort": 19,
+      "origin": "template"
     },
     {
-      "name": "Microsoft Excel & Office Suite",
+      "name": "Microsoft Excel (VLOOKUPs, INDEX-MATCH-MATCH, XLOOKUP)",
+      "category": "Analytics",
+      "tags": [
+        "revenue-modeling",
+        "forecasting"
+      ],
+      "sort": 20,
+      "origin": "template"
+    },
+    {
+      "name": "Microsoft Stack",
       "category": "Productivity",
       "tags": [
-        "revenue-modeling"
-      ]
+        "cloud-infrastructure"
+      ],
+      "sort": 21,
+      "origin": "template"
     },
     {
-      "name": "Microsoft Copilot",
-      "category": "AI",
-      "tags": [
-        "ai-in-workflow"
-      ]
-    },
-    {
-      "name": "Claude (Opus 5, Sonnet 5, Fable 5)",
-      "category": "AI",
-      "tags": [
-        "ai-in-workflow"
-      ]
-    },
-    {
-      "name": "Claude Code",
-      "category": "AI",
-      "tags": [
-        "building-with-ai"
-      ]
-    },
-    {
-      "name": "OpenAI (GPT-5.6, Sol, Terra, Luna)",
-      "category": "AI",
-      "tags": [
-        "ai-in-workflow"
-      ]
-    },
-    {
-      "name": "Trello",
+      "name": "Office-Place Collaboration Tools (Slack, MS Teams, Webex, Google Meet, Zoom)",
       "category": "Productivity",
       "tags": [
+        "stakeholder-alignment",
         "operating-cadence"
-      ]
-    },
-    {
-      "name": "Canva",
-      "category": "Design",
-      "tags": [
-        "enablement-collateral"
-      ]
-    },
-    {
-      "name": "Miro",
-      "category": "Design",
-      "tags": [
-        "enablement-collateral"
-      ]
+      ],
+      "sort": 22,
+      "origin": "template"
     }
   ],
   "domain_fluency": [
@@ -570,6 +735,16 @@
         "board-advisory",
         "feasibility-roadmap"
       ]
+    },
+    {
+      "text": "AI Adoption Strategies for Sales Enablement and Business Growth",
+      "tags": [
+        "ai-in-workflow",
+        "readiness-assessment",
+        "enablement-collateral",
+        "building-with-ai"
+      ],
+      "origin": "template"
     }
   ],
   "summaries": [
@@ -992,6 +1167,411 @@
           ]
         }
       ]
+    }
+  ],
+  "technology_notes": "source template 2026-09-27: list and order from the source template. Normalized: 'Hubspot Canva' split into HubSpot and Canva; 'Claude Code AI' + 'Claude Code (Sonnet 5.x / Opus 5/ Fable 5)' merged; 'Visual Studio' + 'Visual Code Studio' merged as 'Visual Studio & VS Code'.",
+  "tagline_phrases": [
+    {
+      "text": "Sales Professional (End to End Sales)",
+      "tags": [
+        "full-cycle-sales",
+        "new-business",
+        "closing",
+        "prospecting"
+      ],
+      "sort": 1,
+      "origin": "template"
+    },
+    {
+      "text": "Marketing, Advertising, Product, Services, & Sales GTM Engineer",
+      "tags": [
+        "building-with-ai",
+        "gtm-strategy",
+        "media-ad-sales",
+        "demand-generation",
+        "managed-services-sales"
+      ],
+      "sort": 2,
+      "origin": "template"
+    },
+    {
+      "text": "Business Strategy",
+      "tags": [
+        "board-advisory",
+        "feasibility-roadmap",
+        "competitive-analysis",
+        "market-sizing"
+      ],
+      "sort": 3,
+      "origin": "template"
+    },
+    {
+      "text": "GTM and Sales/Marketing Execution Specialist",
+      "tags": [
+        "gtm-strategy",
+        "launch-sequencing",
+        "demand-generation",
+        "marketing-sales-alignment",
+        "channel-strategy"
+      ],
+      "sort": 4,
+      "origin": "template"
+    },
+    {
+      "text": "Systems Thinker",
+      "tags": [
+        "scenario-planning",
+        "operating-cadence",
+        "process-improvement"
+      ],
+      "sort": 5,
+      "origin": "template"
+    },
+    {
+      "text": "Process Engineer",
+      "tags": [
+        "process-improvement",
+        "crm-discipline",
+        "operating-cadence"
+      ],
+      "sort": 6,
+      "origin": "template"
+    },
+    {
+      "text": "AI Adoption Enthusiast",
+      "tags": [
+        "ai-in-workflow",
+        "ai-ml-solutions",
+        "readiness-assessment",
+        "building-with-ai"
+      ],
+      "sort": 7,
+      "origin": "template"
+    }
+  ],
+  "core_competencies": [
+    {
+      "label": "Go-To-Market & Revenue",
+      "items": [
+        {
+          "text": "GTM strategy",
+          "tags": [
+            "gtm-strategy"
+          ]
+        },
+        {
+          "text": "market segmentation",
+          "tags": [
+            "market-segmentation"
+          ]
+        },
+        {
+          "text": "product positioning & messaging",
+          "tags": [
+            "positioning-messaging"
+          ]
+        },
+        {
+          "text": "value proposition development",
+          "tags": [
+            "positioning-messaging",
+            "proposal-development"
+          ]
+        },
+        {
+          "text": "customer discovery",
+          "tags": [
+            "customer-discovery",
+            "discovery"
+          ]
+        },
+        {
+          "text": "pipeline management",
+          "tags": [
+            "pipeline-management"
+          ]
+        },
+        {
+          "text": "revenue forecasting & KPI tracking",
+          "tags": [
+            "forecasting",
+            "quota-attainment"
+          ]
+        },
+        {
+          "text": "contract negotiation",
+          "tags": [
+            "negotiation"
+          ]
+        },
+        {
+          "text": "proposal development",
+          "tags": [
+            "proposal-development"
+          ]
+        },
+        {
+          "text": "solution selling",
+          "tags": [
+            "discovery",
+            "full-cycle-sales"
+          ]
+        },
+        {
+          "text": "account mapping",
+          "tags": [
+            "account-management",
+            "multi-stakeholder-selling"
+          ]
+        },
+        {
+          "text": "client retention",
+          "tags": [
+            "account-management",
+            "customer-success",
+            "account-expansion"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Research & Analysis",
+      "items": [
+        {
+          "text": "Market landscape analysis",
+          "tags": [
+            "market-research",
+            "market-sizing"
+          ]
+        },
+        {
+          "text": "competitive intelligence",
+          "tags": [
+            "competitive-analysis"
+          ]
+        },
+        {
+          "text": "barriers-to-entry assessment",
+          "tags": [
+            "competitive-analysis",
+            "feasibility-roadmap"
+          ]
+        },
+        {
+          "text": "decision-tree modeling",
+          "tags": [
+            "scenario-planning",
+            "exit-path-modeling"
+          ]
+        },
+        {
+          "text": "financial forecasting (P&L)",
+          "tags": [
+            "revenue-modeling",
+            "forecasting"
+          ]
+        },
+        {
+          "text": "unit economics (CAC, payback, churn, TTFV)",
+          "tags": [
+            "unit-economics",
+            "growth-efficiency"
+          ]
+        },
+        {
+          "text": "scenario planning",
+          "tags": [
+            "scenario-planning"
+          ]
+        },
+        {
+          "text": "business process improvement",
+          "tags": [
+            "process-improvement"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "AI & Data",
+      "items": [
+        {
+          "text": "Claude (Opus 5, Sonnet 5, Fable 5)",
+          "tags": [
+            "ai-in-workflow"
+          ]
+        },
+        {
+          "text": "Claude Code",
+          "tags": [
+            "building-with-ai"
+          ]
+        },
+        {
+          "text": "OpenAI / ChatGPT",
+          "tags": [
+            "ai-in-workflow"
+          ]
+        },
+        {
+          "text": "Microsoft Copilot",
+          "tags": [
+            "ai-in-workflow"
+          ]
+        },
+        {
+          "text": "prompt engineering",
+          "tags": [
+            "ai-in-workflow"
+          ]
+        },
+        {
+          "text": "GenAI & machine learning",
+          "tags": [
+            "ai-ml-solutions"
+          ]
+        },
+        {
+          "text": "AI governance & output verification",
+          "tags": [
+            "risk-governance",
+            "ai-in-workflow"
+          ]
+        },
+        {
+          "text": "data analytics",
+          "tags": [
+            "data-solutions"
+          ]
+        },
+        {
+          "text": "Tableau",
+          "tags": [
+            "data-solutions"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Tools & Platforms",
+      "items": [
+        {
+          "text": "Salesforce CRM",
+          "tags": [
+            "crm-discipline"
+          ]
+        },
+        {
+          "text": "ZoomInfo",
+          "tags": [
+            "prospecting"
+          ]
+        },
+        {
+          "text": "LinkedIn Sales Navigator",
+          "tags": [
+            "prospecting"
+          ]
+        },
+        {
+          "text": "Microsoft Excel & Office Suite",
+          "tags": [
+            "revenue-modeling"
+          ]
+        },
+        {
+          "text": "Miro",
+          "tags": [
+            "enablement-collateral"
+          ]
+        },
+        {
+          "text": "Trello",
+          "tags": [
+            "operating-cadence"
+          ]
+        },
+        {
+          "text": "Canva",
+          "tags": [
+            "enablement-collateral",
+            "content-brand"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Funding & Commercial Mechanics",
+      "items": [
+        {
+          "text": "Restricted & tax-advantaged funding mechanisms (co-op, MDF, 501(c)(3))",
+          "tags": [
+            "funding-source-diagnostics"
+          ]
+        },
+        {
+          "text": "non-dilutive federal grant strategy (SBIR)",
+          "tags": [
+            "capital-strategy"
+          ]
+        },
+        {
+          "text": "managed services & RFP response",
+          "tags": [
+            "managed-services-sales",
+            "rfp-response"
+          ]
+        },
+        {
+          "text": "board & trustee engagement",
+          "tags": [
+            "board-trustee-engagement"
+          ]
+        }
+      ]
+    }
+  ],
+  "engagements": [
+    {
+      "key": "healthcare",
+      "role": "liminal",
+      "client": "Healthcare Technology Start-Up (Confidential)",
+      "location": "New York, NY",
+      "start": "2026-07",
+      "end": null,
+      "commitment": "Part Time",
+      "subtitle": "Principal Business Strategist – GTM Plan, Business Architectural Roadmap, Blueprint to Obtain Necessary Funding – Healthcare FinTech Start-Up",
+      "confidential": true,
+      "needs_details": false,
+      "achievements": [
+        "lim-gtm-ownership",
+        "lim-customer-discovery-sprint",
+        "lim-distribution-pivot",
+        "lim-unit-economic-gates",
+        "lim-market-sizing-exit-paths",
+        "lim-collateral",
+        "lim-non-dilutive-capital",
+        "lim-scenario-planning",
+        "lim-claude-code-tracker"
+      ],
+      "notes": "source template 2026-09-27: header, subtitle and the nine long-form bullets from Section C of the source template."
+    },
+    {
+      "key": "hvac",
+      "role": "liminal",
+      "client": "HVAC Services Firm (Confidential)",
+      "location": null,
+      "start": null,
+      "end": null,
+      "commitment": null,
+      "subtitle": null,
+      "confidential": true,
+      "needs_details": true,
+      "achievements": [
+        "art-run-muhfveal-0"
+      ],
+      "ask": "Client name as it should print, location, start and end dates, commitment (part time / project), a one-line description of the engagement, and 1–2 more accomplishments.",
+      "notes": "source template 2026-09-27: created from the learned HVAC feasibility-dashboard bullet. Hidden until the Match Desk collects its details."
     }
   ]
 }

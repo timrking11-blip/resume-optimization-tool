@@ -1,5 +1,5 @@
 {
-  "_about": "Hand-curated achievements. One entry per real accomplishment. 'canonical' is the bare-bone bullet held to the Resume 1 length band (p10–p90 of R1 = 97–167 chars, hard ceiling 170). 'variants' are angle-specific rewrites. 'patterns' are regexes (case-insensitive) that assign every raw bullet in sources/raw_extract.json to this achievement; ingest fails if any raw bullet matches nothing. 'confidence': verified (consistent across sources) | asserted (single source) | conflict (sources disagree — see notes).",
+  "_about": "Hand-curated achievements. One entry per real accomplishment. 'canonical' is the bare-bone bullet held to the Resume 1 length band (p10–p90 of R1 = 97–167 chars, hard ceiling 170). 'variants' are angle-specific rewrites; the 'longform' variant is the Section C (Business Consulting Engagements) wording, held to its own band (ceiling 340). 'patterns' are regexes (case-insensitive) that assign every raw bullet in sources/raw_extract.json to this achievement; ingest fails if any raw bullet matches nothing. 'confidence': verified (consistent across sources) | asserted (single source) | conflict (sources disagree — see notes).",
   "achievements": [
     {
       "id": "psp-closed-deals",
@@ -75,7 +75,7 @@
       "metrics": [],
       "confidence": "verified",
       "notes": "R1 'Sonnett' corrected.",
-      "patterns": ["decision-makers"]
+      "patterns": ["decision-?makers"]
     },
     {
       "id": "psp-full-cycle-ownership",
@@ -162,7 +162,6 @@
       "notes": "",
       "patterns": ["weather-exposed", "adMarketplace-adjacent"]
     },
-
     {
       "id": "lim-thought-partner",
       "role": "liminal",
@@ -211,7 +210,7 @@
       "metrics": [{"label": "recommendations", "value": 12, "unit": "count"}, {"label": "stage gates", "value": 4, "unit": "count"}],
       "confidence": "verified",
       "notes": "",
-      "patterns": ["Synthesized multiple internal", "Reconciled the founder", "Produced a business roadmap"]
+      "patterns": ["Synthesized multiple internal", "Reconciled the founder", "Produced a business roadmap", "four-pillar"]
     },
     {
       "id": "lim-competitive-venture-odds",
@@ -253,7 +252,8 @@
       "role": "liminal",
       "canonical": "Mapped a $0.76B category growing to $5.9B by 2035, benchmarked five comparables, and modeled four exit paths with base-rate odds and P&L forecasts.",
       "variants": {
-        "fda": "Modeled four exit paths with probability-weighted outcomes, recommending licensing and payer co-development over a $3–8M, 18–36-month FDA Class II build."
+        "fda": "Modeled four exit paths with probability-weighted outcomes, recommending licensing and payer co-development over a $3–8M, 18–36-month FDA Class II build.",
+        "longform": "Mapped a $0.76B category projected to reach $5.9B by 2035 (22.8% CAGR), benchmarked five direct comparables across four structural models, and built a decision tree of four exit paths with base-rate odds attached — including the cautionary comparable that won regulatory clearance and still failed on commercialization."
       },
       "tags": {"market-sizing": 1.0, "exit-path-modeling": 1.0, "scenario-planning": 0.9, "competitive-analysis": 0.6, "revenue-modeling": 0.6},
       "metrics": [{"label": "category size 2025", "value": 760000000, "unit": "USD"}, {"label": "category size 2035", "value": 5900000000, "unit": "USD"}, {"label": "CAGR", "value": 22.8, "unit": "%"}],
@@ -266,7 +266,8 @@
       "role": "liminal",
       "canonical": "Own go-to-market for an AI compliance product sold to independent clinical practices — segmentation, positioning, $99/$249 pricing tiers, and channel strategy.",
       "variants": {
-        "from-zero": "Built the go-to-market engine for an AI product from zero — segmentation, positioning, pricing tiers, and channel strategy — where no GTM function existed."
+        "from-zero": "Built the go-to-market engine for an AI product from zero — segmentation, positioning, pricing tiers, and channel strategy — where no GTM function existed.",
+        "longform": "Own go-to-market for an AI compliance product sold into independent clinical practices — segmentation, positioning, pricing tiers ($99/$249), channel strategy, and the sequencing that determines which motion gets funded first."
       },
       "tags": {"gtm-strategy": 1.0, "market-segmentation": 0.9, "positioning-messaging": 0.9, "pricing-packaging": 0.9, "channel-strategy": 0.9, "healthcare-regulatory": 0.4},
       "metrics": [{"label": "pricing tiers", "value": 249, "unit": "USD/mo"}],
@@ -279,20 +280,35 @@
       "role": "liminal",
       "canonical": "Set the unit-economic gates the business runs on — CAC under $900, payback under 12 months, churn under 5%, TTFV under 7 days — redirecting GTM to channel partners.",
       "variants": {
-        "validation": "Designed a validation sprint that showed distribution, not product, decides the outcome, redirecting GTM to channel partnerships on CAC payback."
+        "longform": "Set the unit-economic gates the motion is now measured against: blended CAC under $900, payback under 12 months, monthly churn under 5%, time-to-first-value under 7 days."
       },
       "tags": {"growth-efficiency": 1.0, "unit-economics": 0.9, "channel-strategy": 0.9, "channel-partnerships": 0.8, "forecasting": 0.5, "customer-discovery": 0.5},
       "metrics": [{"label": "blended CAC cap", "value": 900, "unit": "USD"}, {"label": "payback cap", "value": 12, "unit": "months"}, {"label": "monthly churn cap", "value": 5, "unit": "%"}, {"label": "TTFV cap", "value": 7, "unit": "days"}],
       "confidence": "verified",
       "notes": "",
-      "patterns": ["CAC under", "validation sprint"]
+      "patterns": ["CAC under"]
+    },
+    {
+      "id": "lim-distribution-pivot",
+      "role": "liminal",
+      "canonical": "Concluded distribution, not product, decides the outcome, redirecting GTM to malpractice-carrier and professional-association channel partners.",
+      "variants": {
+        "validation": "Designed a validation sprint that showed distribution, not product, decides the outcome, redirecting GTM to channel partnerships on CAC payback.",
+        "longform": "Concluded that distribution — not product — decides the outcome, redirecting GTM toward malpractice-carrier and professional-association channel partnerships after modeling that a direct human sales motion cannot carry a 12–18 month CAC payback at those price points."
+      },
+      "tags": {"channel-strategy": 1.0, "channel-partnerships": 0.9, "growth-efficiency": 0.7, "unit-economics": 0.6, "customer-discovery": 0.6, "gtm-strategy": 0.6},
+      "metrics": [{"label": "CAC payback modeled", "value": 18, "unit": "months (12–18)"}],
+      "confidence": "verified",
+      "notes": "Split from lim-unit-economic-gates (source template 2026-09-27): the template states it as its own Section C bullet.",
+      "patterns": ["validation sprint", "distribution.{1,4}not product"]
     },
     {
       "id": "lim-customer-discovery-sprint",
       "role": "liminal",
       "canonical": "Designed a 30–40 interview discovery sprint — screener, guide, scoring rubric, 150-account universe — with a pre-agreed go/no-go threshold.",
       "variants": {
-        "segmentation": "Designed the segmentation the commercial strategy rests on, classifying a 150-account universe by dependence on incumbent platforms."
+        "segmentation": "Designed the segmentation the commercial strategy rests on, classifying a 150-account universe by dependence on incumbent platforms.",
+        "longform": "Designed and launched a 30–40 interview customer discovery sprint to size real addressable demand — screener, interview guide, scoring rubric, and 150-practice candidate universe built from scratch — classifying prospects by platform dependence against a pre-agreed threshold that fires a documented kill/pivot decision instead of a debate."
       },
       "tags": {"primary-research": 1.0, "customer-discovery": 1.0, "market-segmentation": 0.8},
       "metrics": [{"label": "interviews", "value": 40, "unit": "count"}, {"label": "account universe", "value": 150, "unit": "accounts"}],
@@ -318,7 +334,8 @@
       "role": "liminal",
       "canonical": "Produced the collateral the company sells with: pitch deck, competitive battlecards, partner negotiation sheets, and an eight-document executive round table.",
       "variants": {
-        "exec": "Developed executive-ready messaging leaders deliver themselves — board briefings and an eight-document round table with per-presentation talking points."
+        "exec": "Developed executive-ready messaging leaders deliver themselves — board briefings and an eight-document round table with per-presentation talking points.",
+        "longform": "Produced the customer- and investor-facing collateral the company now sells with: pitch deck, competitive battlecards, partner negotiation sheets, and an eight-document executive round table with per-presentation talking points."
       },
       "tags": {"enablement-collateral": 1.0, "executive-communication": 0.9, "competitive-analysis": 0.5, "content-brand": 0.5, "proposal-development": 0.5},
       "metrics": [{"label": "round-table documents", "value": 8, "unit": "count"}],
@@ -335,7 +352,7 @@
       "metrics": [],
       "confidence": "verified",
       "notes": "",
-      "patterns": ["RACI"]
+      "patterns": ["RACI", "sign-off criteria"]
     },
     {
       "id": "lim-readiness-assessment",
@@ -363,7 +380,9 @@
       "id": "lim-claude-code-tracker",
       "role": "liminal",
       "canonical": "Built a multi-tenant, role-scoped client engagement tracker with Claude Code — 60 automated tests asserting cross-client data isolation — with no engineering background.",
-      "variants": {},
+      "variants": {
+        "longform": "Built the multi-tenant, role-scoped client engagement tracker that runs the advisory practice using Claude Code — including 60 automated tests asserting cross-client data isolation — with no prior engineering background."
+      },
       "tags": {"building-with-ai": 1.0, "ai-in-workflow": 0.9, "process-improvement": 0.5, "risk-governance": 0.4},
       "metrics": [{"label": "automated tests", "value": 60, "unit": "tests"}],
       "confidence": "verified",
@@ -374,7 +393,9 @@
       "id": "lim-non-dilutive-capital",
       "role": "liminal",
       "canonical": "Designed the non-dilutive capital stack — clinical revenue, NIH SBIR, state grants, payer pilots — recommending a ~$2.15M federal route ahead of equity.",
-      "variants": {},
+      "variants": {
+        "longform": "Ran financial forecasting (P&L, tool-stack cost model, Year-1 ARR band) and barriers-to-entry analysis to price strategic alternatives before capital committed; recommended a ~$2.15M non-dilutive federal funding route over an equity raise, tied to a dated decision gate."
+      },
       "tags": {"capital-strategy": 1.0, "revenue-modeling": 0.7, "scenario-planning": 0.5, "healthcare-regulatory": 0.5},
       "metrics": [{"label": "non-dilutive route", "value": 2150000, "unit": "USD"}],
       "confidence": "verified",
@@ -385,14 +406,15 @@
       "id": "lim-scenario-planning",
       "role": "liminal",
       "canonical": "Applied scenario planning and second- and third-order consequence analysis across business, technology, regulatory, and organizational exposure.",
-      "variants": {},
+      "variants": {
+        "longform": "Applied scenario planning and second- and third-order consequence analysis across business, technology, regulatory, and organizational exposure — surfacing downstream consequences before commitments locked in."
+      },
       "tags": {"scenario-planning": 1.0, "risk-governance": 0.7, "board-advisory": 0.4},
       "metrics": [],
       "confidence": "asserted",
       "notes": "LinkedIn only.",
       "patterns": ["scenario planning"]
     },
-
     {
       "id": "tekl-coaching",
       "role": "tek_lead",
@@ -489,7 +511,6 @@
       "notes": "",
       "patterns": ["Fortune 500"]
     },
-
     {
       "id": "tekr-750k",
       "role": "tek_recruiter",
@@ -547,7 +568,6 @@
       "notes": "",
       "patterns": ["Sourced, screened"]
     },
-
     {
       "id": "dd-territory-proposal",
       "role": "demanddrive",
@@ -572,7 +592,6 @@
       "notes": "",
       "patterns": ["200%"]
     },
-
     {
       "id": "nyl-referral-book",
       "role": "nyl",
@@ -595,7 +614,6 @@
       "notes": "",
       "patterns": ["need-based"]
     },
-
     {
       "id": "yri-marketing",
       "role": "yri",
@@ -618,7 +636,6 @@
       "notes": "Internship; hidden by default.",
       "patterns": ["EZ Pass", "customer concerns", "customer sign-ups", "toll-booth-free"]
     },
-
     {
       "id": "edu-capstone",
       "role": "education",

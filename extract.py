@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Resume Optimization Tool · source extractor.
 
-Reads every resume version (docx + pdf), the Liminal work summary, and the LinkedIn
-capture, and writes sources/raw_extract.json: one record per source with every bullet
+Reads every resume version (docx + pdf), the Liminal work summary, the LinkedIn
+capture, and the source template (S19), and writes sources/raw_extract.json: one record per source with every bullet
 (verbatim, tagged with role + section), summary paragraphs, competency lines, systems
 lines, and certification lines. Nothing is rewritten here — curation happens in
 curation/achievements.json, and rot.py refuses to build if any raw bullet is unassigned.
@@ -37,10 +37,11 @@ SOURCES = [
     ("R16_admarketplace_adv_success", BAS / "Timothy King Resume - adMarketplace Advertiser Success.docx", "adMarketplace — Advertiser Success", "docx"),
     ("S17_liminal_summary", CAREER / "Liminal_Chief_of_Strategy_Summary.md.pdf", "Liminal work summary (pre-written bullets)", "pdf_liminal"),
     ("S18_linkedin", ROOT / "sources/linkedin_2026-09-25.md", "LinkedIn public profile (captured 2026-09-25)", "linkedin_md"),
+    ("S19_source_template", ROOT / "sources/TIM KING SOURCE RESUME.docx", "Source template (default layout since 2026-09-27; Sections A–D)", "docx_template"),
 ]
 
 ROLE_PATTERNS = [
-    ("liminal", r"Liminal|Healthcare (AI|FinTech|Tech)|Chief Strategy|Chief of Strategy|Strategy Consultant"),
+    ("liminal", r"Liminal|Healthcare (AI|FinTech|Tech)|Chief Strategy|Chief of Strategy|Strategy Consultant|Strategic Market Insights"),
     ("psp", r"Professional Sports Publications|PSP Sports|Ad(vertising)? Sales Director"),
     ("nyl", r"New York Life"),
     ("tek_lead", r"Specialized Lead"),
@@ -106,7 +107,7 @@ def new_record(sid, path, target, kind):
     return {"id": sid, "file": str(path.relative_to(CAREER.parent)), "md5": md5(path),
             "target_role": target, "kind": kind, "headline": None, "bullets": [],
             "summary": [], "competency_lines": [], "systems_lines": [], "skills_lines": [],
-            "cert_lines": [], "portfolio": [], "role_headers": []}
+            "cert_lines": [], "portfolio": [], "role_headers": [], "tagline_lines": []}
 
 
 def parse_docx(rec, path):
@@ -159,6 +160,58 @@ def parse_docx(rec, path):
         if section == "portfolio":
             rec["portfolio"].append(txt)
             continue
+
+
+TEMPLATE_HEADS = {"professional summary & areas of expertise": "summary", "education": "education",
+                  "professional experience": "experience", "credentialing & certifications": "certifications",
+                  "business consulting engagements": "consulting", "core competencies": "skills"}
+
+
+def parse_template(rec, path):
+    """The source template. Its yellow 'Section A:'…'Section D:' labels are Tim's annotations, never resume text:
+    A = tagline, B = areas-of-expertise line, C = Business Consulting Engagements, D = Core Competencies."""
+    section, role, tech_next = "header", None, False
+    for txt, is_list in docx_paragraphs(path):
+        txt = re.sub(r"^Section [A-D]:\s*", "", txt)
+        head = TEMPLATE_HEADS.get(txt.lower())
+        if head:
+            section, role = head, ("liminal" if head == "consulting" else None)
+            continue
+        if section == "header":
+            continue                                   # name and contact line
+        if section == "summary":
+            if re.match(r"^Technologies\s*:?$", txt):
+                tech_next = True
+            elif tech_next:
+                rec["systems_lines"].append("Technologies: " + txt)
+                tech_next = False
+            elif "•" in txt:
+                rec["competency_lines"].append(txt)     # Section B
+            else:
+                rec["tagline_lines"].append(txt)        # Section A
+            continue
+        if section == "experience":
+            r = None if is_list else role_of(txt)
+            if is_list:
+                rec["bullets"].append({"role": role or "UNKNOWN", "section": "experience", "text": txt})
+            elif r and " | " in txt:
+                role = r
+                rec["role_headers"].append({"role": r, "text": txt})
+            elif role:
+                rec["role_headers"].append({"role": role, "text": txt})   # context line
+            continue
+        if section == "consulting":                      # Section C: long-form engagement bullets
+            if is_list:
+                rec["bullets"].append({"role": "liminal", "section": "consulting", "text": txt})
+            else:
+                rec["role_headers"].append({"role": "liminal", "text": txt})
+            continue
+        if section == "education":
+            rec["role_headers"].append({"role": "education", "text": txt})
+        elif section == "certifications":
+            rec["cert_lines"].append(txt)
+        elif section == "skills":
+            rec["skills_lines"].append(txt)             # Section D
 
 
 def pdf_text(path):
@@ -261,7 +314,7 @@ def main():
             sys.exit(f"missing source: {path}")
         rec = new_record(sid, path, target, kind)
         {"docx": parse_docx, "pdf_resume": parse_fox, "pdf_liminal": parse_liminal,
-         "linkedin_md": parse_linkedin}[kind](rec, path)
+         "linkedin_md": parse_linkedin, "docx_template": parse_template}[kind](rec, path)
         out.append(rec)
     (ROOT / "sources/raw_extract.json").write_text(json.dumps(out, indent=2, ensure_ascii=False), encoding="utf-8")
     total = 0

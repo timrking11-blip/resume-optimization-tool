@@ -65,7 +65,9 @@
       "origin": "artifact",
       "notes": "Learned from Match Desk run run-muhfveal",
       "metrics": [],
-      "patterns": [],
+      "patterns": [
+        "HVAC"
+      ],
       "variants": {}
     },
     {
@@ -299,63 +301,77 @@
   "profile_overrides": {
     "roles": {
       "psp": {
-        "end": "2026-08",
-        "date_note": "Gate 1: ended August 2026 (matches LinkedIn)."
+        "end": "2026-08"
       },
       "liminal": {
-        "title": "Founder, Business Consultant, and GTM Engineer",
-        "employer": "Strategic Market Insights",
-        "confidential": false,
-        "engagement": "Advisory & GTM engineering practice · Key engagement: healthcare AI start-up (confidential)",
-        "context_line": "Advisory & GTM engineering practice · Key engagement: healthcare AI start-up (confidential)",
         "title_variants": [
           "Chief Strategy Consultant",
           "Chief Strategy Officer",
           "Chief of Strategy",
-          "Principal Business Strategy Consultant"
-        ],
-        "date_note": "Renamed 2026-09-25 from 'Chief Strategy Consultant | Confidential Healthcare AI Start-Up'. Dates kept at July 2026 – Present (the healthcare engagement start)."
+          "Principal Business Strategy Consultant",
+          "Founder, Business Consultant, and GTM Engineer"
+        ]
       }
-    }
+    },
+    "_history": [
+      {
+        "superseded": "source template 2026-09-27",
+        "roles.liminal": {
+          "title": "Founder, Business Consultant, and GTM Engineer",
+          "employer": "Strategic Market Insights",
+          "confidential": false,
+          "engagement": "Advisory & GTM engineering practice · Key engagement: healthcare AI start-up (confidential)",
+          "context_line": "Advisory & GTM engineering practice · Key engagement: healthcare AI start-up (confidential)"
+        }
+      }
+    ]
   },
   "baseline_overrides": {
     "_gate": "gate1-q1/q2/q5; user request 2026-09-25: role reframed as Founder, Business Consultant, and GTM Engineer | Strategic Market Insights (healthcare AI start-up = key client)",
-    "summary": "Revenue and go-to-market operator with eight years of full-cycle B2B, media, and enterprise technology sales. Founder of Strategic Market Insights, a consulting and GTM engineering practice whose key engagement advises a healthcare AI start-up's CEO and board on go-to-market, pricing, and buy-vs-build strategy. Wins net-new business from cold, from Fortune 500 accounts at TEKsystems to NFL and MLB team partnerships, by building the CPM, CPA, and unit-economics case a finance team can defend. Has led a team of up to five and builds AI-enabled GTM tooling with Claude Code.",
-    "caps": {
-      "liminal": 6,
-      "psp": 6,
-      "tek_lead": 4,
-      "tek_recruiter": 4,
-      "demanddrive": 2,
-      "nyl": 2,
-      "yri": 1,
-      "massdot": 1
-    },
-    "layout": {
-      "expertise_block": "after_education"
-    },
-    "priority_overrides": {
-      "liminal": [
-        "lim-thought-partner",
-        "lim-build-vs-buy",
-        "lim-gtm-ownership",
-        "lim-unit-economic-gates",
-        "lim-staffing-restructure",
-        "lim-claude-code-tracker",
-        "lim-market-sizing-exit-paths",
-        "lim-data-rights",
-        "lim-competitive-venture-odds",
-        "lim-customer-discovery-sprint",
-        "lim-feasibility-roadmap",
-        "lim-non-dilutive-capital",
-        "lim-operating-cadence",
-        "lim-collateral",
-        "lim-engagement-terms",
-        "lim-unit-economics-benchmarks",
-        "lim-readiness-assessment",
-        "lim-entity-ip-structure",
-        "lim-scenario-planning"
-      ]
-    }
+    "_history": [
+      {
+        "superseded": "source template 2026-09-27",
+        "values": {
+          "summary": "Revenue and go-to-market operator with eight years of full-cycle B2B, media, and enterprise technology sales. Founder of Strategic Market Insights, a consulting and GTM engineering practice whose key engagement advises a healthcare AI start-up's CEO and board on go-to-market, pricing, and buy-vs-build strategy. Wins net-new business from cold, from Fortune 500 accounts at TEKsystems to NFL and MLB team partnerships, by building the CPM, CPA, and unit-economics case a finance team can defend. Has led a team of up to five and builds AI-enabled GTM tooling with Claude Code.",
+          "caps": {
+            "liminal": 6,
+            "psp": 6,
+            "tek_lead": 4,
+            "tek_recruiter": 4,
+            "demanddrive": 2,
+            "nyl": 2,
+            "yri": 1,
+            "massdot": 1
+          },
+          "layout": {
+            "expertise_block": "after_education"
+          },
+          "priority_overrides": {
+            "liminal": [
+              "lim-thought-partner",
+              "lim-build-vs-buy",
+              "lim-gtm-ownership",
+              "lim-unit-economic-gates",
+              "lim-staffing-restructure",
+              "lim-claude-code-tracker",
+              "lim-market-sizing-exit-paths",
+              "lim-data-rights",
+              "lim-competitive-venture-odds",
+              "lim-customer-discovery-sprint",
+              "lim-feasibility-roadmap",
+              "lim-non-dilutive-capital",
+              "lim-operating-cadence",
+              "lim-collateral",
+              "lim-engagement-terms",
+              "lim-unit-economics-benchmarks",
+              "lim-readiness-assessment",
+              "lim-entity-ip-structure",
+              "lim-scenario-planning"
+            ]
+          }
+        },
+        "why": "The source template is the baseline now: caps, priorities and layout live in baseline.json; the summary paragraph is off."
+      }
+    ]
   }
 }
