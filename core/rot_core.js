@@ -8,7 +8,7 @@
   root.RotCore = api;
 })(typeof globalThis !== "undefined" ? globalThis : this, function () {
 "use strict";
-const VERSION = "1.0.0";
+const VERSION = "1.1.0";
 const SCHEMAS = { bank: "rot-library/3", model: "rot-resume/2", template: "rot-docx-template/1", backup: "cch-backup/1", taxonomy: "rot-taxonomy/1" };
 
 /* ------------------------------ util ------------------------------ */
@@ -776,6 +776,126 @@ async function buildPdf(m, tpl, jspdf, loadFonts){
   return {doc, font:FONT};
 }
 
+/* ------------------------------ claims: confidence, conflicts, and the projection of a backup into a bank (mirrors claims.py; export shape as rot.py cmd_export) ------------------------------
+   A backup (cch-backup/1) holds the four tiers in the repo's curation shapes:
+     sources[]     {id, kind: resume|linkedin|paste|answer, label, authored_at, observed_at, source_type}
+     evidence[]    {id, source, source_type, channel, quote, observed_at, locator}                                    (tier 1, verbatim)
+     subjects[]    {id, kind: role|engagement|education|credential|tool|expertise, key?, sort?, hidden?, tags?,
+                    facts:{pred:{value, evidence:[ids], contradicting:[{value, evidence:[ids]}], resolution:{value, why, at}}}}   (tier 2)
+     achievements[] {id, role, engagement?, canonical, evidence:[ids], contradicting?, resolution?, tags:{tid:w}, metrics?, variants?, confidence?, origin, retired?}
+     taxonomy      {id, user_tags:{}}   settings {confidence?, length_band?, longform_band?, scoring?, caps?, persona?, engine?}
+     sessions[], feedback[], outcomes[], review_log[]                                                                   (tiers 3 and 4)
+   projectLibrary() turns that into the bank the engine reads; every printed line therefore traces to evidence rows. */
+const CONFIDENCE_DEFAULTS = {formula_version:"1.0",
+  strengths:{USER_ENTERED:1.0, INTERVIEW_RESPONSE:0.95, MASTER_RESUME:0.9, HISTORICAL_RESUME:0.8, PUBLIC_PROFILE:0.7, EXTERNAL_RESEARCH:0.6, MODEL_INFERENCE:0.5},
+  corroboration_bonus:0.05, cap:0.98, verified_confidence:1.0, contradiction_penalty:0.3,
+  print:{fact_min:0.6, number_min:0.7, disputed:"never", on_conflict:"print_stronger_and_warn"},
+  bands:{summary_max_words:55, tagline_phrase_max_chars:60, expertise_item_max_chars:70, technology_max_chars:90, core_item_max_chars:80}};
+const HUB_DEFAULTS = {
+  length_band:{source:"cch-default", n:0, min:60, p10:97, p25:120, median:143, p75:160, p90:168, max:170, hard_ceiling:170},
+  longform_band:{source:"cch-default", n:0, min:170, median:250, max:340, hard_ceiling:340},
+  scoring:{variant_min:1.5, variant_margin:1.25, priority_bonus:1.5, metric_bonus:0.5, family_rollup:0.25, hidden_role_min:4.0},
+  caps:[6,5,4,4,3,2,2,2], competency_count:16,
+};
+/* Deterministic: the strongest supporting source, +bonus per extra independent source type, capped; a first-hand statement verifies;
+   an unresolved contradiction disputes. supports/contradicts are evidence rows; a row may carry its own `strength`. */
+function confidenceFor(supports, contradicts, resolved, cfg){
+  cfg=cfg||CONFIDENCE_DEFAULTS;
+  if(!supports||!supports.length) return {confidence:0, basis:"no evidence", status:"active"};
+  const types=new Set(supports.map(e=>e.source_type));
+  let conf=Math.min(cfg.cap, Math.max(...supports.map(e=>e.strength??cfg.strengths[e.source_type]??0.5)) + cfg.corroboration_bonus*(types.size-1));
+  let basis=`${supports.length} evidence, ${types.size} source type${types.size>1?"s":""}`;
+  if(types.has("USER_ENTERED")){ conf=cfg.verified_confidence; basis+=", verified by you"; }
+  let status="active";
+  const nCon=(contradicts||[]).length;
+  if(nCon && !resolved){ conf=Math.round(Math.max(0, conf-cfg.contradiction_penalty)*1000)/1000; status="disputed"; basis+=`, ${nCon} contradicting, unresolved`; }
+  else if(nCon) basis+=`, ${nCon} contradicting, resolved`;
+  return {confidence:Math.round(conf*1000)/1000, basis, status};
+}
+const DATE_RE=/^(\d{4})(?:-(\d{2}))?$/, NUMERIC_RE=/^\s*[-+]?(\d+\.?\d*|\.\d+)([eE][-+]?\d+)?\s*$/;
+function dateParts(v){ const m=DATE_RE.exec(String(v??"").trim()); return m?[+m[1], m[2]?+m[2]:null]:null; }
+/* Two values for the same fact disagree. 2024 and 2024-11 are compatible (one is coarser); 2020 and 2021 are not. */
+function valuesConflict(a, b){
+  if(a==null||a===""||b==null||b==="") return false;
+  const da=dateParts(a), db=dateParts(b);
+  if(da&&db) return da[0]!==db[0] || (da[1]!=null&&db[1]!=null&&da[1]!==db[1]);
+  const sa=String(a).replace(/,/g,""), sb=String(b).replace(/,/g,"");
+  if(NUMERIC_RE.test(sa)&&NUMERIC_RE.test(sb)) return Math.abs(parseFloat(sa)-parseFloat(sb))>1e-9;
+  return norm(a)!==norm(b);
+}
+const isYear = n => /^(19|20)\d\d$/.test(n);
+/* one claim from a fact: its winning value, confidence from its evidence, and the numbers those quotes state */
+function claimOf(id, kind, subjectId, predicate, fact, text, ev, cfg){
+  const rows=ids=>(ids||[]).map(i=>ev[i]).filter(Boolean);
+  const value=fact.resolution?fact.resolution.value:fact.value;
+  const sup=rows(fact.evidence).concat(fact.resolution?[{id:id+":resolution", source_type:"USER_ENTERED", quote:String(fact.resolution.value), observed_at:fact.resolution.at||null}]:[]);
+  const con=(fact.contradicting||[]).flatMap(c=>rows(c.evidence));
+  const {confidence, status, basis}=confidenceFor(sup.map(e=>({...e, strength:e.strength??cfg.strengths[e.source_type]??0.5})), con, !!fact.resolution, cfg);
+  const numbers=new Set(numberTokens(value)); for(const e of sup) for(const n of numberTokens(e.quote)) numbers.add(n);
+  const types=[...new Set(sup.map(e=>e.source_type))].sort();
+  const latest=sup.map(e=>e.observed_at||e.authored_at||"").filter(Boolean).sort().pop()||null;
+  return {id, kind, subject:subjectId, predicate, value, unit:null, text:text||`${predicate}: ${value}`, confidence, confidence_basis:basis, status,
+    valid_from:null, valid_to:null, as_of:null, evidence:{n:sup.length, source_types:types, latest}, numbers:[...numbers].sort((a,b)=>+a-+b)};
+}
+/* The bank (rot-library/3) a shell hands to createEngine. taxonomy = {families, tags}; opts = {now, templateId, templateDocx}. */
+function projectLibrary(backup, taxonomy, opts={}){
+  const S0=backup.settings||{}, cfg={...CONFIDENCE_DEFAULTS, ...(S0.confidence||{})};
+  const ev=Object.fromEntries((backup.evidence||[]).map(e=>[e.id,e]));
+  const subjects=backup.subjects||[], claims=[];
+  const val=f=>f?(f.resolution?f.resolution.value:f.value):null;
+  const has=f=>f && val(f)!=null && val(f)!=="";
+  const factClaim=(s, kind, pred, label)=>{ const f=s.facts&&s.facts[pred]; if(!has(f)) return null; const id=`${s.id}:${pred}`; claims.push(claimOf(id, kind, s.id, pred, f, `${label}: ${pred} ${val(f)}`, ev, cfg)); return id; };
+  const roleSubjects=subjects.filter(s=>s.kind==="role").slice().sort((a,b)=>(a.sort??99)-(b.sort??99));
+  const roles=roleSubjects.map(s=>{ const g=p=>val(s.facts&&s.facts[p]); const who=`${g("title")||s.key} at ${g("employer")||"?"}`;
+    const ids=["title","employer","location","start","end"].map(p=>factClaim(s,"role_fact",p,who)).filter(Boolean);
+    const start=g("start"), end=g("end"), dates=start?`${fmtDate(start)} – ${fmtDate(end)}`:(end?fmtDate(end):"");
+    return {key:s.key, sort:s.sort??99, title:g("title")||"", employer:g("employer")||"", location:g("location")||null, start:start||null, end:end||null, dates,
+      engagement:null, context:g("location")||null, hidden:!!s.hidden, claim_ids:ids}; });
+  const engagements=subjects.filter(s=>s.kind==="engagement").map(s=>{ const g=p=>val(s.facts&&s.facts[p]); const who=g("client")||s.key;
+    const ids=["client","location","start","end","commitment","subtitle"].map(p=>factClaim(s,"engagement_fact",p,who)).filter(Boolean);
+    const start=g("start");
+    return {key:s.key, role:s.role||(roleSubjects[0]&&roleSubjects[0].key)||null, client:g("client")||"", location:g("location")||null, start:start||null, end:g("end")||null,
+      dates:start?`${fmtDate(start)} – ${fmtDate(g("end"))}`:null, commitment:g("commitment")||null, subtitle:g("subtitle")||null, needs_details:!start, ask:null, achievements:[], claim_ids:ids}; });
+  const achievements=(backup.achievements||[]).filter(a=>!a.retired).map(a=>{
+    const f={value:a.canonical, evidence:a.evidence||[], contradicting:a.contradicting||[], resolution:a.resolution||null};
+    const c=claimOf(`ach:${a.id}`, "achievement", `ach:${a.id}`, "text", f, a.canonical, ev, cfg); claims.push(c);
+    const tags=Object.fromEntries(Object.entries(a.tags||{}).filter(([t])=>taxonomy.tags[t]));
+    const texts=[{id:`${a.id}:c`, kind:"canonical", angle:null, text:a.canonical, score_adj:0}]
+      .concat((a.variants||[]).map((v,i)=>({id:`${a.id}:v${i}`, kind:v.kind||"learned", angle:v.angle||null, text:v.text, score_adj:v.score_adj||0})));
+    const metrics=(a.metrics&&a.metrics.length)?a.metrics:[...numberTokens(a.canonical)].filter(n=>!isYear(n)).map(n=>({value:+n}));
+    const eng=a.engagement||null; if(eng){ const e=engagements.find(x=>x.key===eng); if(e && !e.achievements.includes(a.id)) e.achievements.push(a.id); }
+    return {id:a.id, role:a.role, engagement:eng, confidence:a.confidence||(c.evidence.source_types.includes("USER_ENTERED")?"verified":"asserted"), tags, metrics, claim_ids:[`ach:${a.id}`], texts};
+  });
+  const education=subjects.filter(s=>s.kind==="education").map(s=>{ const g=p=>val(s.facts&&s.facts[p]); const ids=["school","degree","date"].map(p=>factClaim(s,"education",p,g("school")||s.id)).filter(Boolean);
+    return {school:g("school")||"", degree:g("degree")||"", year:g("date")||null, date_display:g("date")||null, degree_line:[g("degree"), g("date")].filter(Boolean).join(" | "), bullet_ids:[], claim_id:ids.find(i=>i.endsWith(":degree"))||ids[0]||null}; });
+  const certifications=subjects.filter(s=>s.kind==="credential").map(s=>{ const g=p=>val(s.facts&&s.facts[p]); const ids=["name","issuer","date"].map(p=>factClaim(s,"credential",p,g("name")||s.id)).filter(Boolean);
+    return {name:g("name")||"", issuer:g("issuer")||"", date:g("date")||null, status:null, note:g("note")||null, hidden:!!s.hidden, claim_id:ids[0]||null}; });
+  const technologies=subjects.filter(s=>s.kind==="tool").map(s=>({name:val(s.facts&&s.facts.name)||"", category:"Tools", tags:s.tags||[], sort:s.sort??null, claim_id:factClaim(s,"tool","name","Tool")}));
+  const competencies=subjects.filter(s=>s.kind==="expertise").map(s=>({text:val(s.facts&&s.facts.text)||"", tags:s.tags||[], sort:s.sort??null, origin:"user", claim_id:factClaim(s,"expertise","text","Skill")}));
+  const identity={name:"", location:"", phone:"", email:"", links:[], ...(backup.identity||{})};
+  const caps={}, priority={};
+  roleSubjects.forEach((s,i)=>{ caps[s.key]=(S0.caps&&S0.caps[s.key])??HUB_DEFAULTS.caps[Math.min(i, HUB_DEFAULTS.caps.length-1)]; priority[s.key]=achievements.filter(a=>a.role===s.key&&!a.engagement).map(a=>a.id); });
+  const newest=roleSubjects.length?roleSubjects[0].key:null;
+  const first=(identity.name||"").trim().split(/\s+/)[0]||"the candidate";
+  const settings={fallback_role:newest, default_engagement_role:newest, education_claim_default:(education[0]&&education[0].claim_id)||"edu:none:degree",
+    template_id:opts.templateId||"neutral-1", edition:"hub",
+    questions:{consulting:[], consulting_regex:"", engagement_tag:null},
+    prompts:{persona:{name:identity.name||"the candidate", first, subject:"they", possessive:"their", possessive_cap:"Their", standard_label:"one-line accomplishment", ...(S0.persona||{})},
+      bullet_example:{place:newest?"r:"+newest:"r:current", text:"Cut speed-to-lead from 26 hours to under 2 with new routing rules and a weekly SLA review.", tags:["lead-routing-sla"]},
+      entry_example:{text:"Salesforce (administrator)", tags:["crm-discipline"]}},
+    ...(S0.engine||{})};
+  return {schema:"rot-library/3", exported_at:opts.now||new Date().toISOString(),
+    tiers:{"1":"Evidence","2":"Derived knowledge","3":"Generation","4":"Feedback"},
+    confidence:{formula_version:cfg.formula_version, print:cfg.print, bands:cfg.bands},
+    claims, template:{id:settings.template_id, docx:opts.templateDocx||"template/docx_template.json", section_order:[]},
+    identity, length_band:S0.length_band||HUB_DEFAULTS.length_band, longform_band:S0.longform_band||HUB_DEFAULTS.longform_band,
+    families:taxonomy.families||{}, tags:taxonomy.tags||{}, roles, achievements, tagline_phrases:[], competencies, core_competencies:[], engagements,
+    expertise_areas:[], technologies, domain_fluency:[], certifications, education, summaries:[],
+    baseline:{template:settings.template_id, summary_enabled:false, section_order:[], caps, priority, engagement_caps:Object.fromEntries(engagements.map(e=>[e.key,5])),
+      competency_count:S0.competency_count||HUB_DEFAULTS.competency_count, competency_order:competencies.map(c=>c.text), tagline_count:0, angle_map:{},
+      scoring:{...HUB_DEFAULTS.scoring, ...(S0.scoring||{})}, settings}};
+}
+
 return {
   VERSION, SCHEMAS, createEngine,
   util: { esc, escRe, MONTHS, fmtDate, REQ_HINT, uniq, norm, splitList, PHRASE_SECTIONS, TOOL_LEXICON, isSkip, cleanBullet, cleanPhrase, splitAnswer, splitPhrases, shortRole, sectionOf, placeKey },
@@ -783,5 +903,6 @@ return {
   score: { coverage, matchScore, tagWeight, rankByTags },
   doc: { btext, docParagraphs, xmlEsc, rprXml, documentXml, plainText, pdfSafe, abToB64, PDF_METRICS, docxParts, buildDocx, buildPdf },
   layouts: { source: SOURCE_LAYOUT },
+  claims: { CONFIDENCE_DEFAULTS, HUB_DEFAULTS, confidenceFor, valuesConflict, dateParts, claimOf, projectLibrary },
 };
 });
