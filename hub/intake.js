@@ -323,8 +323,10 @@ if(typeof document!=="undefined" && root.CCH && root.CCH.Hub){
     if(s.entries_new) parts.push(`${s.entries_new} new entr${s.entries_new>1?"ies":"y"}`); if(s.entries_corroborated) parts.push(`${s.entries_corroborated} entr${s.entries_corroborated>1?"ies":"y"} confirmed by a second source`);
     if(s.education||s.certifications) parts.push(`${s.education+s.certifications} education or certification item${s.education+s.certifications>1?"s":""}`); if(s.skills||s.tools) parts.push(`${s.skills} skills, ${s.tools} tools`);
     if(s.conflicts) parts.push(`${s.conflicts} conflict${s.conflicts>1?"s":""} to settle (marked on the role cards)`);
-    const label=cur.meta.label; ctx.refreshEvidence(); discard(); $("#intakeFile").value=""; $("#intakeFileName").textContent=""; $("#intakeText").value="";
-    status(`<b>Added to your record</b> from ${esc(label)}: ${parts.join(", ")||"nothing new"}. ${s.lines} lines kept as evidence.`);
+    const label=cur.meta.label, summary=`${parts.join(", ")||"nothing new"}. ${s.lines} lines kept as evidence.`;
+    ctx.refreshEvidence(); discard(); $("#intakeFile").value=""; $("#intakeFileName").textContent=""; $("#intakeText").value="";
+    status(`<b>Added to your record</b> from ${esc(label)}: ${summary} Your roles and entries are filled in below.`);
+    if(ctx.revealRoles) ctx.revealRoles(`<b>Just added from ${esc(label)}:</b> ${summary}${s.conflicts?" Settle the conflicts marked below.":" Check the details, then match a posting."}`);
     ctx.toast("Added to your record. Download a backup when you are done.");
   }
   function discard(){ cur=null; $("#intakeReview").hidden=true; $("#intakeReview").innerHTML=""; }

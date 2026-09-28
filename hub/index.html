@@ -54,6 +54,8 @@ section[data-view]{display:grid;gap:20px}
 .col{display:grid;gap:20px;min-width:0}
 .panel{background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:20px;display:grid;gap:12px;min-width:0;box-shadow:var(--shadow-sm)}
 .panel > *{min-width:0}
+.panel.flash{animation:flash 1.8s ease-out 1}
+@keyframes flash{0%{box-shadow:0 0 0 4px var(--accent-ring),var(--shadow)}100%{box-shadow:var(--shadow-sm)}}
 .panel h2{font-family:var(--f-display);font-weight:700;font-size:18px;letter-spacing:-.015em;margin:0;display:flex;align-items:center;gap:10px;flex-wrap:wrap;text-wrap:balance}
 .panel h2 .tag{font-family:var(--f-ui);font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:var(--accent-dim);color:var(--accent)}
 .panel h3{font-family:var(--f-ui);font-weight:600;font-size:14px;margin:6px 0 0;color:var(--ink)}
@@ -137,7 +139,7 @@ input[type=file]::file-selector-button{font:inherit;font-weight:600;font-size:13
 .status{font-size:13px;color:var(--slate);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .spin{width:14px;height:14px;border-radius:50%;border:2px solid var(--rule);border-top-color:var(--accent);animation:sp .9s linear infinite;flex:none}
 @keyframes sp{to{transform:rotate(360deg)}}
-@media (prefers-reduced-motion: reduce){.spin{animation:none} .meter i{transition:none}}
+@media (prefers-reduced-motion: reduce){.spin{animation:none} .meter i{transition:none} .panel.flash{animation:none}}
 .jdview{font-size:12.5px;line-height:1.55;max-height:200px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;background:var(--surface-2);border-radius:8px;padding:12px;border:1px solid var(--rule);margin-top:8px}
 mark{background:var(--hl);color:var(--hl-ink);border-radius:2px;padding:0 1px}
 #questions{display:grid;gap:10px;grid-template-columns:minmax(0,1fr)}
@@ -270,11 +272,12 @@ mark{background:var(--hl);color:var(--hl-ink);border-radius:2px;padding:0 1px}
             </div>
             <label class="f" for="idLinkedin">LinkedIn URL<input type="text" id="idLinkedin" placeholder="https://www.linkedin.com/in/…"></label>
           </div>
-          <div class="panel">
-            <h2>Roles and what you did in them</h2>
-            <p class="lede">One card per job. Paste accomplishments as lines; each line becomes an entry with the skills it proves and the numbers it states.</p>
+          <div class="panel" id="pRoles">
+            <h2>Your roles and entries <span class="tag">filled from your uploads</span></h2>
+            <p class="lede">These fill in by themselves when you scan a resume above: one card per job, each accomplishment an entry that shows the skills it proves and the numbers it states. Edit any detail here. Add a role by hand only for work that is on no document.</p>
+            <p class="note" id="rolesNote" hidden></p>
             <div id="roles" class="list"></div>
-            <div class="row"><button class="primary" id="addRole">Add a role</button><span class="hint">Newest first. An early role can be marked "earlier" so it prints only when a posting calls for it.</span></div>
+            <div class="row"><button id="addRole">Add a role by hand</button><span class="hint">Newest first. Mark an early role "earlier" so it prints only when a posting calls for it.</span></div>
           </div>
           <div class="panel">
             <h2>Education, certifications, skills, tools</h2>

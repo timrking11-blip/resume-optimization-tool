@@ -152,10 +152,12 @@ function renderRoles(){
       </div>
       ${conflicts}
       <ul class="lines">${lines.map(a=>`<li data-line-id="${esc(a.id)}"><input type="text" data-line value="${esc(a.canonical)}" aria-label="Accomplishment"><button class="ghost" data-del-line="${esc(a.id)}" title="Remove this entry">Remove</button><div class="tags">${tagChips(a)}</div>${a.contradicting&&a.contradicting.length&&!a.resolution?`<div style="grid-column:1 / 3">${conflictHtml("ach", a.id, "", {value:a.canonical, evidence:a.evidence, contradicting:a.contradicting, resolution:a.resolution})}</div>`:""}</li>`).join("")}</ul>
-      <label class="f">Paste accomplishments, one per line<textarea data-paste rows="3" placeholder="Cut speed-to-lead from 26 hours to under 2 with new routing rules.&#10;Grew partner-sourced pipeline 40% year over year."></textarea></label>
+      <label class="f">Add accomplishments the document missed, one per line<textarea data-paste rows="2" placeholder="Cut speed-to-lead from 26 hours to under 2 with new routing rules.&#10;Grew partner-sourced pipeline 40% year over year."></textarea></label>
       <div class="row"><button data-addlines>Add these lines</button><label class="hint"><input type="checkbox" data-hidden ${s.hidden?"checked":""}> Earlier role: print only when a posting calls for it</label><button class="ghost danger" data-del-role>Remove role</button></div>
-    </div>`; }).join("") : `<p class="hint">No roles yet. Add your current or most recent job first.</p>`;
+    </div>`; }).join("") : `<p class="hint">No roles yet. Scan a resume above and they appear here, or add one by hand.</p>`;
 }
+/* after a scan lands: bring the roles panel into view and say what just arrived */
+function revealRoles(html){ const p=$("#pRoles"), n=$("#rolesNote"); if(html){ n.innerHTML=html; n.hidden=false; } p.classList.remove("flash"); void p.offsetWidth; p.classList.add("flash"); p.scrollIntoView({behavior:"smooth", block:"start"}); }
 /* education, certifications, skills, tools: one subject each */
 function addSubject(kind, prefix, facts, quote, locator){
   const subs=store.get("subjects"), ev=store.get("evidence"), srcs=ensureSource(store.get("sources"));
@@ -887,7 +889,7 @@ async function boot(hot){
   useCap("downloads").then(d=>{ D.downloads=d; });
   useCap("sample").then(s=>{ D.sample=s; renderStats(); if(D.questions.length) renderQuestions(); });
   /* other page modules (intake.js) get the page's record helpers once everything is mounted */
-  Hub.emit("ready", {store, D, get E(){ return E; }, get T(){ return T; }, bank, writeAll, toast, tagsFor, val, today, slug, refreshEvidence(){ renderIdentity(); renderRoles(); renderLists(); renderReady(); $("#tiers").innerHTML=tiersHtml(); renderStats(); }});
+  Hub.emit("ready", {store, D, get E(){ return E; }, get T(){ return T; }, bank, writeAll, toast, tagsFor, val, today, slug, revealRoles, refreshEvidence(){ renderIdentity(); renderRoles(); renderLists(); renderReady(); $("#tiers").innerHTML=tiersHtml(); renderStats(); }});
 }
 (function(){
   let booted=false; const once=d=>{ if(booted) return; booted=true; boot(d||{}); };
