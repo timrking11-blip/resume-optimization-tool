@@ -37,7 +37,7 @@ Layout `rot-layout/1` (`core/layouts/source-2026-09.json`, `neutral-1.json`): `s
 
 ## Sessions and outcomes
 
-Desk sessions `rmd.session.v1` (browser and `data/users/<uid>/workspace/sessions/<runId>`); Hub sessions are the same field names plus `edition`, `core`, `score`, `final_model`, stored under `sessions[runId]` in the browser store. Outcomes `{run_id, applied_at, response: pending|no_response|screen|interview|offer|rejected, note, recorded_at}`.
+Desk sessions `rmd.session.v1` (browser and `data/users/<uid>/workspace/sessions/<runId>`); Hub sessions are the same field names plus `edition`, `core`, `score`, `final_model`, stored under `sessions[runId]` in the browser store. Additive since core 1.2.0 in both: `scoreBefore`, `covBefore` (the match and coverage when the questions were asked), `extraSrc` (which question a ticked tool came from), and per question `potential` and `outcome`. Older sessions without them restore unchanged. Outcomes `{run_id, applied_at, response: pending|no_response|screen|interview|offer|rejected, note, recorded_at}`.
 
 ## The Hub backup · `cch-backup/1`
 

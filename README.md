@@ -86,8 +86,9 @@ resume.db             the database (committed)
 data/library.json     export consumed by the web artifact (confidential names scrubbed)
 data/dump.sql         text dump for readable diffs
 artifact/index.html   Resume Match Desk source: a shell over the shared engine
-core/rot_core.js      the shared engine (RotCore 1.1.1): helpers, number check, scoring, document builders, createEngine, prompts,
-                      claims and projectLibrary; no person in it (tests/core/no_person.test.js); published with both pages
+core/rot_core.js      the shared engine (RotCore 1.2.0): helpers, number check, scoring, document builders, createEngine, prompts,
+                      claims and projectLibrary, and the scorecard (reads the match: growth, potential, outcomes, tools named);
+                      no person in it (tests/core/no_person.test.js); published with both pages
 core/layouts/         section order and headings per template (rot-layout/1), embedded in the template JSON
 core/taxonomy/        gtm_v1.json, the Hub's GTM skill taxonomy (tools/derive_taxonomy.py); curation/taxonomy.json stays Tim's
 hub/                  Career Companion Hub, the public edition: index.html, hub.js (match, questions, files, sessions, outcomes),

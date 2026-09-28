@@ -184,6 +184,24 @@ mark{background:var(--hl);color:var(--hl-ink);border-radius:2px;padding:0 1px}
 .sheet .k-summary{text-align:justify;margin-bottom:.5em}
 .qb .lf.err{color:var(--gap)}
 .qb textarea.blocked{border-color:var(--gap)}
+/* the scorecard: reads the match, never changes it */
+.req.flipped{background:var(--ok-bg);box-shadow:inset 3px 0 0 var(--ok)}
+.grow{display:grid;gap:6px}
+.grow h3{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin:0;font-family:var(--cond);font-size:14px;font-weight:600}
+.grow ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.grow li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;padding:6px 10px;border-radius:6px;background:var(--surface-2);font-size:13px}
+.grow li .g{font-family:var(--mono);font-size:11px;color:var(--navy);font-variant-numeric:tabular-nums;white-space:nowrap}
+.grow li .words{grid-column:1 / 3;font-size:12px;color:var(--muted)}
+.badge.delta{border-color:var(--navy);color:var(--navy);font-variant-numeric:tabular-nums}
+.q .crit{font-size:12px;color:var(--muted)}
+.q .crit b{color:var(--navy);font-weight:600}
+.q .outcome{font-size:12px;font-weight:500;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:3px 8px}
+.toolask{font-size:11.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}
+.toolask:empty{display:none}
+.toolask label{display:inline-flex;align-items:center;gap:4px;color:var(--ink)}
+.toolask input[type=checkbox]{accent-color:var(--navy);width:13px;height:13px;margin:0}
+.sheet .fresh-item{background:#EEF6D0;border-radius:2px;padding:0 2px}
+details.how summary{cursor:pointer}
 .learn h3{font-family:var(--cond);font-size:14px;margin:0 0 6px;font-weight:600}
 .learn ul{margin:0;padding-left:18px;font-size:13px}
 .learn li{margin-bottom:2px}
@@ -245,6 +263,9 @@ mark{background:var(--hl);color:var(--hl-ink);border-radius:2px;padding:0 1px}
           </div>
         </div>
         <div class="status" id="claude1Status" hidden></div>
+        <details class="how"><summary class="hint">How this match is scored</summary><p class="hint" id="howScored"></p></details>
+        <p class="note" id="heldNote" hidden></p>
+        <div class="grow" id="grow" hidden><h3>Where the match can grow <span class="hint" id="growHead"></span></h3><ul id="growList"></ul><p class="hint">Criteria, not claims: each line says what a bullet would have to demonstrate, in the posting's own words.</p></div>
         <div class="reqs" id="reqs" role="list"></div>
         <details>
           <summary class="hint">Show matched phrases in the posting</summary>
@@ -270,6 +291,7 @@ mark{background:var(--hl);color:var(--hl-ink);border-radius:2px;padding:0 1px}
       <div class="sheetbar">
         <div class="row">
           <span class="badge" id="phaseBadge">DRAFT</span>
+          <span class="badge delta" id="deltaNote" hidden></span>
           <span class="hint" id="sheetHint">Hover a bullet to keep, swap, drop, or polish it. Click any text to edit it, including the tagline and expertise lines.</span>
         </div>
         <div class="row">
@@ -357,6 +379,7 @@ const S = {
   sectionEdits:{}, engDetails:{}, editsC:{}, excludedC:new Set(), extra:{tagline:[],expertise:[],technology:[],competency:[]},
   questions:[], newAch:[], adj:{}, inbox:[], runs:[], feedback:[],
   ctl1:null, ctl2:null, ctlQ:null, writeChain:{}, syncMeta:null,
+  scoreBefore:null, covBefore:null, extraSrc:{},
   step:1, locked:null, uid:null, idResolved:false, touched:false, pendingLib:null, localSavedAt:null, recent:[]
 };
 
@@ -364,7 +387,7 @@ const S = {
    These wrappers keep the page's names: each passes S as the draft, and DESK_SETTINGS carries this resume's own role keys and tag ids. */
 const DESK_SETTINGS = { default_engagement_role:"hc_ai_strategy", fallback_role:"psp", education_claim_default:"edu:umaine:degree", template_id:"source-2026-09", edition:"desk",
   questions:{ consulting:[["board-advisory",1],["feasibility-roadmap",1],["managed-services-sales",0.5]], consulting_regex:"\\b(consult|advisory|advisor|client engagement|engagements)\\b", engagement_tag:"board-advisory" },
-  prompts:{ persona:{name:"Tim King", first:"Tim", subject:"he", possessive:"his", possessive_cap:"His", standard_label:"Resume 1"},
+  prompts:{ growth_list:true, persona:{name:"Tim King", first:"Tim", subject:"he", possessive:"his", possessive_cap:"His", standard_label:"Resume 1"},
     bullet_example:{place:"r:hc_ai_strategy", text:"Built a custom CRM with automated weekly enrichment syncs and research agents feeding a two-way GitHub-synced workflow.", tags:["crm-discipline","building-with-ai"]},
     entry_example:{text:"Salesforce Apex (basic)", tags:["crm-discipline"]} } };
 /* the bank carries the same settings (baseline.settings, exported by rot.py); DESK_SETTINGS is the fallback until every bank has them */
@@ -408,6 +431,10 @@ function libraryDigest(){ return E.libraryDigest(); }
 function draftDigest(){ return E.draftDigest(S); }
 function currentBulletDigest(){ return E.currentBulletDigest(S); }
 function findChosen(aid){ return E.findChosen(S, aid); }
+/* the scorecard reads the match (where it can grow, what a question is worth, what each answer did); it never feeds back into it */
+const Scorecard=RotCore.scorecard;
+const withPotential = qs => qs.map(q=>({...q, potential:Scorecard.potential(S.req, S.cov, q.tag)}));
+function markBefore(){ S.scoreBefore=S.score; S.covBefore={...S.cov}; }
 
 function toast(msg){ const t=$("#toast"); t.textContent=msg; t.hidden=false; clearTimeout(toast._t); toast._t=setTimeout(()=>t.hidden=true, 3200); }
 function setStep(n){ S.step=n; document.querySelectorAll("#steps li").forEach(li=>{ const s=+li.dataset.s; li.classList.toggle("done", s<n); li.classList.toggle("active", s===n); }); }
@@ -438,10 +465,17 @@ function renderMatch(){
   $("#meter").style.width = (S.score==null?0:Math.round(S.score*100))+"%";
   const rows = Object.entries(req).sort((a,b)=>b[1].weight-a[1].weight).map(([t,r])=>{
     const c=cov[t]||0, st=c>=0.8?["ok","proven"]:(c>0?["warn","partial"]:["gap","gap"]);
-    return `<div class="req" role="listitem"><span class="pill ${st[0]}">${st[1]}</span><span class="lbl" title="${esc(r.phrases.join(", "))}">${esc(tags[t].label)} <em>· ${esc(r.phrases.slice(0,3).join(", "))}</em></span><span class="w">${r.weight.toFixed(1)}<span class="wbar"><i style="width:${Math.round(r.weight/3*100)}%"></i></span></span></div>`;
+    const flipped=S.covBefore && Math.min(S.covBefore[t]||0,1)<1 && c>=1;   // proven by an answer on this posting
+    return `<div class="req ${flipped?"flipped":""}" role="listitem" ${flipped?'title="Proven by your answer on this posting"':""}><span class="pill ${st[0]}">${st[1]}</span><span class="lbl" title="${esc(r.phrases.join(", "))}">${esc(tags[t].label)} <em>· ${esc(r.phrases.slice(0,3).join(", "))}</em></span><span class="w">${r.weight.toFixed(1)}<span class="wbar"><i style="width:${Math.round(r.weight/3*100)}%"></i></span></span></div>`;
   });
   for(const u of S.uncatalogued) rows.push(`<div class="req" role="listitem"><span class="pill gap">new</span><span class="lbl" title="Not in the tag taxonomy yet">${esc(u.phrase)} <em>· not in taxonomy</em></span><span class="w">${(+u.weight||1).toFixed(1)}</span></div>`);
   $("#reqs").innerHTML = rows.join("") || `<p class="hint">No requirements detected yet.</p>`;
+  $("#howScored").textContent=Scorecard.EXPLAIN;
+  const held=disputedAchievements().size, hn=$("#heldNote"); hn.hidden=!held;
+  if(held) hn.innerHTML=`<b>${held} bullet${held===1?" is":"s are"} held back</b>: a fact behind ${held===1?"it":"them"} is disputed in your record. Resolve it in curation/claims.json (or ask Claude to resolve it) and it prints again after the next sync.`;
+  const g=Scorecard.growth(req, cov, tags, 6), gw=$("#grow"); gw.hidden=!g.length;
+  if(g.length){ $("#growHead").textContent=`${Scorecard.pct(Scorecard.headroom(req, cov))}% of the match is still open`;
+    $("#growList").innerHTML=g.map(x=>`<li><span>${esc(x.label)}${x.coverage>0?` <em class="hint">(partly proven)</em>`:""}</span><span class="g">up to +${Scorecard.pct(x.gain)}%</span><span class="words">the posting says: ${esc(x.words.map(w=>`“${w}”`).join(", "))}</span></li>`).join(""); }
   const phrases=[...new Set(Object.values(req).flatMap(r=>r.phrases))].sort((a,b)=>b.length-a.length);
   let h=esc(S.jd);
   if(phrases.length){ const re=new RegExp("(?<![A-Za-z0-9-])("+phrases.map(p=>escRe(esc(p))).join("|")+")(?![A-Za-z0-9])","gi"); h=h.replace(re,"<mark>$1</mark>"); }
@@ -466,7 +500,8 @@ function renderSheet(){
   if(m.summary) H.push(`<p class="k-summary"><span class="ln" contenteditable="true" spellcheck="true" data-line="summary" title="Summary paragraph, built from the claims on this draft">${esc(m.summary)}</span>${evidenceChip(S.summaryClaims,false)}</p>`);
   H.push(`<p class="k-tagline"><span class="ln" contenteditable="true" spellcheck="true" data-line="tagline" title="Section A. Edit freely; separate phrases with |">${esc(m.tagline.join(" | "))}</span></p>`);
   H.push(`<p class="k-expertise"><span class="ln" contenteditable="true" spellcheck="true" data-line="expertise" title="Section B. Edit freely; separate items with •">${esc(m.expertise.join(" • "))}</span></p>`);
-  H.push(`<p class="k-tech_label"><u>Technologies</u>:</p><p class="k-tech_line"><span class="ln" contenteditable="true" spellcheck="true" data-line="technologies" title="Separate tools with commas">${esc(m.technologies.join(", "))}</span></p>`);
+  const freshTools=new Set(S.extra.technology.map(norm));   // tools that came from answers on this posting are marked, at their usual zero weight
+  H.push(`<p class="k-tech_label"><u>Technologies</u>:</p><p class="k-tech_line"><span class="ln" contenteditable="true" spellcheck="true" data-line="technologies" title="Separate tools with commas">${m.technologies.map(t=>freshTools.has(norm(t))?`<span class="fresh-item" title="Added from your answer on this posting">${esc(t)}</span>`:esc(t)).join(", ")}</span></p>`);
   H.push(`<p class="k-heading">Education</p>`);
   for(const e of m.education) H.push(`<p class="k-school">${esc(e.school)}</p><p class="k-degree">${esc(e.degree_line)}</p>`);
   H.push(`<p class="k-heading">Professional Experience</p>`);
@@ -492,6 +527,36 @@ function renderSheet(){
   $("#sheet").innerHTML=H.join("");
   $("#phaseBadge").textContent = final ? "FINAL" : (S.phase==="idle"?"BASELINE":"DRAFT");
   $("#phaseBadge").classList.toggle("final", final);
+  const dn=$("#deltaNote");   // before → after, read from the match, once the final draft exists
+  if(final && S.scoreBefore!=null && S.score!=null){ const diff=S.score-S.scoreBefore; dn.hidden=false; dn.textContent=`${Scorecard.pct(S.scoreBefore)}% → ${Scorecard.pct(S.score)}%${Math.abs(diff)>=0.0005?` · ${diff>0?"+":"−"}${Scorecard.pct(Math.abs(diff))} from your answers`:" · no change from your answers"}`; }
+  else dn.hidden=true;
+}
+/* the criterion a question is aimed at: what would count, in the posting's words, and what it is worth; never a suggested answer */
+function critLine(q){
+  const sec=sectionOf(q), L=S.lib;
+  if(sec==="technology") return "Improves the Technologies line. No change to the match: a tool counts only when a bullet under a role shows it in use.";
+  if(sec==="expertise"||sec==="tagline") return `Improves the ${sec==="tagline"?"tagline":"expertise line"}. No change to the match.`;
+  if(sec==="engagement") return "Counts when it becomes a printed Section C bullet.";
+  if(!q.tag||!L.tags[q.tag]) return "Counts when your answer becomes a printed bullet that proves a requirement of the posting.";
+  const p=q.potential??Scorecard.potential(S.req, S.cov, q.tag), words=((S.req[q.tag]&&S.req[q.tag].phrases)||[]).slice(0,4);
+  return `<b>Worth up to +${Scorecard.pct(p)}%</b>${p<0.0005?" (already proven; a stronger bullet can still replace a weaker one)":""} · counts when your answer becomes a bullet that demonstrates ${esc(L.tags[q.tag].label.toLowerCase())}${words.length?`; the posting's words: ${esc(words.map(w=>`“${w}”`).join(", "))}`:""}. Only what you actually did.`;
+}
+/* tools an answer names that the Technologies line lacks: offered, never assumed; a ticked tool reaches the bank through the inbox like any technology entry */
+function toolAskHtml(ix, answer){
+  const known=[...S.lib.technologies.map(t=>t.name), ...inboxPhrases("technology").map(t=>t.text)];
+  const named=Scorecard.toolsNamed(answer, known), mine=S.extra.technology.filter(t=>S.extraSrc[t]===ix), list=uniq([...named, ...mine]);
+  if(!list.length) return "";
+  return `<span>Not listed in tools &amp; technologies:</span>${list.map(t=>`<label><input type="checkbox" data-addtool="${ix}|${esc(t)}" ${S.extra.technology.some(x=>norm(x)===norm(t))?"checked":""}> ${esc(t)}</label>`).join("")}<span>Add?</span>`;
+}
+function outcomeText(q, ix, c){
+  const sec=sectionOf(q); if(isSkip(q.answer)) return "Skipped.";
+  const blockedN=(q.bullets||[]).filter(b=>blocking(b.qa).length).length, r=c.byQuestion[ix];
+  if(sec==="technology"||sec==="expertise"||sec==="tagline"||sec==="competency"){ const n=(q.bullets||[]).filter(b=>b.on).length||1; return `Added ${n} item${n===1?"":"s"} to the ${sec==="technology"?"Technologies":sec==="tagline"?"tagline":sec==="competency"?"core competencies":"expertise"} line. No change to the match.`; }
+  const parts=[];
+  if(r&&r.entries) parts.push(r.delta>=0.0005 ? `+${Scorecard.pct(r.delta)}%: ${r.entries} new bullet${r.entries===1?" proves":"s prove"} a requirement nothing proved yet` : `${r.entries} new bullet${r.entries===1?"":"s"}, no change to the match: that requirement was already proven, so this strengthens the draft, not the score`);
+  if(r&&r.enriched) parts.push(`${r.enriched} enriched an existing bullet (better wording, same match)`);
+  if(blockedN) parts.push(`${blockedN} held back: a number not in your answer`);
+  return (parts.length?parts.join(" · "):"Nothing printable came of it yet")+".";
 }
 function placeOptions(cur, lead){
   const groups=placeGroups();
@@ -520,11 +585,13 @@ function renderQuestions(){
     return `
     <div class="q"><div class="qh"><span class="qn">${ix+1}</span><p>${esc(q.question)}</p></div>
       <div class="meta"><span class="sec ${sec!=="experience"?"alt":""}">${esc(sectionLabel(q))}</span>${q.why?`<span class="why">${esc(q.why)}</span>`:""}</div>
+      <div class="crit">${critLine(q)}</div>
       ${form}
       <textarea id="ans${ix}" data-ix="${ix}" placeholder="${esc(q.hint||(ph?ph.hint:(sec==="engagement"?"What you did for this client: bullet points are fine (scope, method, measurable result). Leave blank to skip.":"Bullet points are fine: what you did, the scope, the measurable result. Leave blank to skip.")))}">${esc(q.answer||"")}</textarea>
+      <div class="toolask" data-toolask="${ix}">${toolAskHtml(ix, q.answer||"")}</div>
       <div class="meta">${S.lib.tags[q.tag]?`<span>Proves: <b>${esc(S.lib.tags[q.tag].label)}</b></span>`:""}
         ${sec==="experience"?`<label for="role${ix}"><span class="lb">${q.bullets?.length?"Default role":"Goes under"}</span><select id="role${ix}" data-ix="${ix}" title="The role this answer is mostly about. Each bullet it becomes can go under its own role.">${roles.map(r=>`<option value="${esc(r.key)}" ${r.key===q.role?"selected":""}>${esc(shortRole(r))}</option>`).join("")}</select></label>`:`<span>Limit: ${lim} characters per entry</span>`}</div>
-      <div class="qa-row"><button class="ghost" data-conv="${ix}" ${q.busy?"disabled":""}>${convLabel}</button>${q.busy?`<span class="spin" aria-hidden="true"></span><span class="hint">Claude is writing…</span>`:""}${q.note?`<span class="hint">${esc(q.note)}</span>`:""}</div>
+      <div class="qa-row"><button class="ghost" data-conv="${ix}" ${q.busy?"disabled":""}>${convLabel}</button>${q.busy?`<span class="spin" aria-hidden="true"></span><span class="hint">Claude is writing…</span>`:""}${q.note?`<span class="hint">${esc(q.note)}</span>`:""}${q.outcome?`<span class="outcome">${esc(q.outcome)}</span>`:""}</div>
       ${items}
     </div>`; }).join("");
   $("#finalBtn").disabled = !S.questions.length || S.phase==="finalizing";
@@ -592,7 +659,7 @@ async function logFeedback(action, aid, text){
 function lockCurrent(){ S.locked=Object.fromEntries(Object.entries(S.chosen).map(([r,items])=>[r, items.map(i=>i.a.id)])); }
 function recompute(){ S.chosen=select(S.req); S.cov=coverage(S.req,S.chosen); S.score=Object.keys(S.req).length?matchScore(S.req,S.cov):null; renderMatch(); renderSheet(); }
 function resetPosting(){ Object.assign(S,{excluded:new Set(), pinned:new Set(), textChoice:{}, edits:{}, tagline:null, compOrder:null,
-  summaryOn:false, summary:null, summaryClaims:[], outcome:null, outcomeEvents:[],
+  summaryOn:false, summary:null, summaryClaims:[], outcome:null, outcomeEvents:[], scoreBefore:null, covBefore:null, extraSrc:{},
   sectionEdits:{}, engDetails:{}, editsC:{}, excludedC:new Set(), extra:{tagline:[],expertise:[],technology:[],competency:[]}, questions:[], newAch:[]}); $("#sumToggle").checked=false; renderOutcome(); }
 /* Prompt versions travel with every run (tier 3), so a later review can tell which wording produced which line. Bump when a prompt changes. */
 const PROMPT_VERSIONS=E.prompts.VERSIONS;
@@ -606,7 +673,7 @@ async function doMatch(){
   resetPosting();
   Object.assign(S,{locked:null, jd, req:extractRequirements(jd), uncatalogued:[], phase:"draft"});
   $("#jdTag").hidden = jd!==SAMPLE_JD.trim();
-  recompute(); setStep(2);
+  recompute(); markBefore(); setStep(2);
   S.runId="run-"+Date.now().toString(36);
   const reqW=Object.fromEntries(Object.entries(S.req).map(([t,r])=>[t,r.weight]));
   await saveRun({created:new Date().toISOString(), status:"draft", company:$("#company").value||null, title:$("#role").value||null, jd_text:jd.slice(0,20000), requirements:reqW, match_score:S.score, source:"artifact", synced:false, sync_status:"draft", template:S.lib.template?.id||null, prompt_versions:PROMPT_VERSIONS}, true);
@@ -616,7 +683,7 @@ async function doMatch(){
 
 function useQuickQuestions(note){
   S.ctl1?.abort();
-  S.questions=templateQuestions(); $("#qStatus").textContent=note||""; $("#quickQBtn").hidden=true; $("#claude1Status").hidden=true;
+  S.questions=withPotential(templateQuestions()); $("#qStatus").textContent=note||""; $("#quickQBtn").hidden=true; $("#claude1Status").hidden=true;
   renderQuestions(); setStep(3);
 }
 
@@ -637,9 +704,9 @@ async function claudeTailor(){
       S.req=t.req; S.uncatalogued=t.uncatalogued;
       if(t.tagline) S.tagline=t.tagline;
       if(t.compOrder) S.compOrder=t.compOrder;
-      const qs=t.questions;
-      recompute();
-      if(!S.questions.length || !S.questions.some(q=>q.answer)){ S.questions = qs.length>=3 ? qs : templateQuestions(); }
+      recompute(); markBefore();
+      const qs=withPotential(t.questions);
+      if(!S.questions.length || !S.questions.some(q=>q.answer)){ S.questions = qs.length>=3 ? qs : withPotential(templateQuestions()); }
       $("#qStatus").textContent = qs.length>=3 ? "" : "Claude returned fewer than three questions, so these come from the gap analysis.";
       renderQuestions(); setStep(3);
       st.innerHTML=`<span class="pill ok">tailored</span><span>Claude adjusted requirement weights, ordered your tagline and expertise line, and drafted your questions.</span>`;
@@ -732,6 +799,8 @@ async function doFinal(){
   if(!S.sample && (bullets.length||phrases.length)) fs.innerHTML=`<span class="hint">Claude isn't available here, so each line of your answers became an entry. Use Polish on the sheet once Claude is allowed.</span>`;
   // engagement details, phrases, and new bullets join this posting's draft at once
   for(const d of details) S.engDetails[d.key]={...(S.engDetails[d.key]||{}), ...d.fields};
+  const ticked=S.extra.technology.filter(t=>S.extraSrc[t]!=null);   // tools ticked under an answer stay, and reach the inbox like any technology entry
+  for(const t of ticked) if(!phrases.some(p=>p.section==="technology" && norm(p.text)===norm(t))) phrases.push({section:"technology", text:t, tags:[]});
   S.extra={tagline:[],expertise:[],technology:[],competency:[]};
   for(const p of phrases) if(!S.extra[p.section].some(x=>norm(typeof x==="string"?x:x.text)===norm(p.text))) S.extra[p.section].push(p.section==="competency"?{text:p.text,tags:p.tags}:p.text);
   S.newAch=[];
@@ -751,9 +820,11 @@ async function doFinal(){
       if(!b.engagement) S.pinned.add(id);
     }
   });
-  lockCurrent(); S.phase="final"; recompute(); renderQuestions(); setStep(4); persist(true);
-  const nAdded=bullets.length+phrases.length+details.length;
-  toast((nAdded?`Added ${nAdded} new entr${nAdded>1?"ies":"y"}. `:"")+(skippedQa?`${skippedQa} left out: numbers not in your answers. `:"")+"Final draft ready.");
+  lockCurrent(); S.phase="final"; recompute();
+  const contrib=Scorecard.contributions(E, S); S.questions.forEach((q,ix)=>{ q.outcome=outcomeText(q, ix, contrib); });   // what each answer did, read from the match
+  renderQuestions(); setStep(4); persist(true);
+  const nAdded=bullets.length+phrases.length+details.length, diff=(S.scoreBefore!=null&&S.score!=null)?S.score-S.scoreBefore:0;
+  toast((nAdded?`Added ${nAdded} new entr${nAdded>1?"ies":"y"}. `:"")+(skippedQa?`${skippedQa} left out: numbers not in your answers. `:"")+(Math.abs(diff)>=0.0005?`Match ${Scorecard.pct(S.scoreBefore)}% → ${Scorecard.pct(S.score)}%. `:"")+"Final draft ready.");
   // persist learning (deterministic doc ids, so building the final twice never duplicates entries)
   const m=resumeModel();
   await saveRun({status:"final", finalized:new Date().toISOString(), match_score:S.score, tagline:m.tagline, expertise_order:m.expertise,
@@ -1024,9 +1095,11 @@ document.addEventListener("pointerdown", ()=>{ S.touched=true; }, {capture:true}
 $("#finalBtn").onclick=doFinal;
 $("#quickQBtn").onclick=()=>useQuickQuestions("Quick questions from the gap analysis. Claude's version was skipped.");
 ["#jd","#company","#role"].forEach(sel=>$(sel).addEventListener("input", ()=>{ S.touched=true; persist(); }));
+const toolTimers={};
 $("#questions").addEventListener("input", e=>{
   S.touched=true; persist();
-  const ix=e.target.dataset.ix; if(ix!=null && S.questions[ix] && e.target.tagName==="TEXTAREA") S.questions[ix].answer=e.target.value;
+  const ix=e.target.dataset.ix; if(ix!=null && S.questions[ix] && e.target.tagName==="TEXTAREA"){ S.questions[ix].answer=e.target.value;
+    clearTimeout(toolTimers[ix]); toolTimers[ix]=setTimeout(()=>{ const box=$(`[data-toolask="${ix}"]`); if(box) box.innerHTML=toolAskHtml(+ix, S.questions[ix].answer||""); }, 400); }
   const ef=e.target.dataset.ef; if(ef){ const [q,k]=ef.split(":"); const Q=S.questions[+q]; if(Q){ Q.fields=Q.fields||{}; Q.fields[k]=e.target.value; } }
   const bt=e.target.dataset.btxt; if(bt){ const [q,b]=bt.split(":").map(Number); const Q=S.questions[q], B=Q?.bullets?.[b]; if(B){ B.text=e.target.value; const ph=PHRASE_SECTIONS[sectionOf(Q)]; const lim=ph?ph.max:S.lib.length_band.hard_ceiling; const cc=$(`#bcc${q}-${b}`); if(cc){ cc.textContent=B.text.length; cc.classList.toggle("over", B.text.length>lim); }
       if(!ph){ B.qa=bulletQa(Q,B); const blk=blocking(B.qa); const cb=$(`#bon${q}-${b}`), msg=$(`#bqa${q}-${b}`); if(cb){ cb.disabled=!!blk.length; if(!blk.length && !cb.checked){ cb.checked=true; B.on=true; } } e.target.classList.toggle("blocked", !!blk.length); if(msg) msg.textContent = blk.length ? `Not printable yet: ${blk.join("; ")}. Edit the text, or add that fact to your answer and re-polish.` : "Passes: every number is in your answer."; } } }
@@ -1043,6 +1116,8 @@ $("#questions").addEventListener("change", e=>{
   if(bp){ const [q,b]=bp.split(":").map(Number); const B=S.questions[q]?.bullets?.[b], p=parsePlace(e.target.value);
     if(B && p){ B.role=p.role; B.engagement=p.engagement; placeChanged(q, [b], e.target.id); } }
   const bo=e.target.dataset.bon; if(bo){ const [q,b]=bo.split(":").map(Number); const B=S.questions[q]?.bullets?.[b]; if(B) B.on=e.target.checked; }
+  const at=e.target.dataset.addtool;   // a tool named in an answer joins the Technologies line at its usual zero weight and is marked on the sheet
+  if(at){ const [q,tool]=at.split("|"); if(e.target.checked){ if(!S.extra.technology.some(t=>norm(t)===norm(tool))) S.extra.technology.push(tool); S.extraSrc[tool]=+q; } else { S.extra.technology=S.extra.technology.filter(t=>norm(t)!==norm(tool)); delete S.extraSrc[tool]; } recompute(); persist(true); }
 });
 $("#questions").addEventListener("click", e=>{ const b=e.target.closest("button[data-conv]"); if(!b) return; const ix=+b.dataset.conv; convertQuestions([ix], "Claude is turning that answer into resume entries…"); });
 $("#polishAllBtn").onclick=()=>{ readAnswers(); const ixs=S.questions.map((q,ix)=>ix).filter(ix=>!isSkip(S.questions[ix].answer)); convertQuestions(ixs, `Claude is polishing ${ixs.length} answer${ixs.length>1?"s":""}…`); };
@@ -1060,8 +1135,9 @@ function serializeState(){
     excluded:[...S.excluded], pinned:[...S.pinned], locked:S.locked, textChoice:S.textChoice, edits:S.edits,
     tagline:S.tagline, compOrder:S.compOrder, sectionEdits:S.sectionEdits, engDetails:S.engDetails, editsC:S.editsC, excludedC:[...S.excludedC], extra:S.extra,
     summaryOn:S.summaryOn, summary:S.summary, summaryClaims:S.summaryClaims, outcome:S.outcome, outcomeEvents:S.outcomeEvents,
-    questions:S.questions.map(q=>({question:q.question, why:q.why||"", tag:q.tag||null, role:q.role, hint:q.hint||"", section:sectionOf(q), engagement:q.engagement||null, fields:q.fields||null, answer:q.answer||"", bullets:q.bullets||null, note:q.note||""})),
-    newAch:S.newAch, qStatus:$("#qStatus").textContent, lib_exported_at:S.lib.exported_at||null};
+    questions:S.questions.map(q=>({question:q.question, why:q.why||"", tag:q.tag||null, role:q.role, hint:q.hint||"", section:sectionOf(q), engagement:q.engagement||null, fields:q.fields||null, answer:q.answer||"", bullets:q.bullets||null, note:q.note||"", potential:q.potential??null, outcome:q.outcome||""})),
+    newAch:S.newAch, qStatus:$("#qStatus").textContent, lib_exported_at:S.lib.exported_at||null,
+    scoreBefore:S.scoreBefore, covBefore:S.covBefore, extraSrc:S.extraSrc};
 }
 function readLocal(){ try{ const t=localStorage.getItem(LS_KEY); return t?JSON.parse(t):null; }catch{ return null; } }
 function wsRef(){ return S.db ? (S.uid ? S.db.doc(`data/users/${S.uid}/workspace`) : S.db.doc("meta/workspace")) : null; }
@@ -1115,6 +1191,7 @@ function restoreState(st){
   S.excludedC=new Set(st.excludedC||[]); S.extra={tagline:[],expertise:[],technology:[],competency:[], ...(st.extra?clone(st.extra):{})};
   S.questions=(st.questions||[]).map(q=>({...q, section:q.section||"experience", busy:false}));
   S.newAch=st.newAch?clone(st.newAch):[];
+  S.scoreBefore=st.scoreBefore??null; S.covBefore=st.covBefore?{...st.covBefore}:null; S.extraSrc=st.extraSrc?{...st.extraSrc}:{};
   S.summaryOn=!!st.summaryOn && !!st.summary; S.summary=st.summary||null; S.summaryClaims=st.summaryClaims||[]; S.outcome=st.outcome||null; S.outcomeEvents=st.outcomeEvents||[];
   $("#sumToggle").checked=S.summaryOn; renderOutcome();
   remapSynced(st.synced_map);
@@ -1238,8 +1315,8 @@ async function start(hotData){
   useCap("downloads").then(d=>{ S.downloads=d; });
   useCap("sample").then(s=>{ S.sample=s; if(S.questions.length) renderQuestions(); });
   const firstUse=()=>{ // first-ever visit only: show the sample posting, matched with keyword scoring
-    $("#jd").value=SAMPLE_JD; $("#jdTag").hidden=false; S.jd=SAMPLE_JD; S.req=extractRequirements(SAMPLE_JD); S.phase="draft"; recompute();
-    S.questions=templateQuestions(); renderQuestions(); setStep(2);
+    $("#jd").value=SAMPLE_JD; $("#jdTag").hidden=false; S.jd=SAMPLE_JD; S.req=extractRequirements(SAMPLE_JD); S.phase="draft"; recompute(); markBefore();
+    S.questions=withPotential(templateQuestions()); renderQuestions(); setStep(2);
     $("#qStatus").textContent="Sample questions for the sample posting. Press Match to have Claude draft yours."; };
   const [db, user]=await Promise.all([useCap("db"), useCap("user")]);
   if(user){ try{ S.uid=await user.id(); }catch{} }

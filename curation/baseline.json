@@ -234,6 +234,7 @@
       "engagement_tag": "board-advisory"
     },
     "prompts": {
+      "growth_list": true,
       "persona": {"name": "Tim King", "first": "Tim", "subject": "he", "possessive": "his", "possessive_cap": "His", "standard_label": "Resume 1"},
       "bullet_example": {"place": "r:liminal", "text": "Built a custom CRM with automated weekly enrichment syncs and research agents feeding a two-way GitHub-synced workflow.", "tags": ["crm-discipline", "building-with-ai"]},
       "entry_example": {"text": "Salesforce Apex (basic)", "tags": ["crm-discipline"]}

@@ -2,7 +2,9 @@
 
 ## Resume Match Desk (private)
 
-Tim's page over his own record. `artifact/index.html`, published at https://claude.ai/artifact/MjpDTLqwPWSc9ujB4A3uUh (Version 9, shared with invited people only). Capabilities `db`, `sample`, `downloads`, `user`. The record is git JSON exported to `data/library.json`; a download marks the run pending and the hourly sync (`SYNC_RUNBOOK.md`) folds answers, edits and feedback back into git and re-exports the bank into `library/current`. Never republish the page during a sync; publish only with nothing pending and outside :00–:15.
+Tim's page over his own record. `artifact/index.html`, published at https://claude.ai/artifact/MjpDTLqwPWSc9ujB4A3uUh (Version 10, shared with invited people only). Capabilities `db`, `sample`, `downloads`, `user`. The record is git JSON exported to `data/library.json`; a download marks the run pending and the hourly sync (`SYNC_RUNBOOK.md`) folds answers, edits and feedback back into git and re-exports the bank into `library/current`. Never republish the page during a sync; publish only with nothing pending and outside :00–:15.
+
+Version 10 (2026-09-28) carries the scorecard from the shared core: "How this match is scored", "Where the match can grow" (criteria in the posting's words with what each is worth), per-question potential and outcome, the before → after badge, highlighted requirement rows proven by an answer, a held-back note for bullets whose facts are disputed in `curation/claims.json`, and the "Not listed in tools & technologies… Add?" prompt under answers (ticked tools reach the bank through the inbox like any technology entry). Claude's five questions receive the growth list (tailor@7). Disputes are still settled in git; an in-page chooser backed by the sync is a later plan.
 
 ## Career Companion Hub (public)
 
@@ -21,6 +23,10 @@ Tim's page over his own record. `artifact/index.html`, published at https://clau
 **Where the data lives.** In the viewer's browser only. Backups are JSON files (`cch-backup/1`) the person downloads and can load on any device. "Delete everything" needs the word `delete` typed.
 
 **Without Claude** (signed out, or consent declined): keyword matching, template questions from the gap analysis, answers split into entries as typed, the layout heuristic for uploads. Everything still verifies and downloads.
+
+**The demo.** *Try the example person* loads a fictional record (`hub/example/make_example.py`) with exactly one open discrepancy, chosen for judgment: the latest resume says the person owned pricing and packaging for a product tier, LinkedIn says they partnered with product marketing and finance on it. *Load a sample posting* (a close fit, starts near 75%) and *Load a stretch posting* (a reach, starts near 58%) fill fictional postings so the questions can be seen at once.
+
+**The scorecard** (shared core, `RotCore.scorecard`; reads the match, never changes it): "How this match is scored" in plain language; "Where the match can grow" as criteria in the posting's own words with what proving each would add; each question says what it is worth and what would count; after the final draft the badge shows before → after and each question its outcome (a new entry that proved a skill, an enrichment, a Tools-line addition, held back); tools named in an answer are offered for the Tools line at their usual zero weight.
 
 ### Feature registry
 

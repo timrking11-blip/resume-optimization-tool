@@ -16,8 +16,9 @@ Everything either edition knows sits in one of four tiers. Nothing moves up a ti
 `core/rot_core.js` (RotCore, semver `VERSION`) is one classic script both pages load and `node --test` requires. It holds:
 
 - `util`, `qa`, `score`, `doc` — text helpers, the number and first-person checks, coverage and match score, and the document builders (`docParagraphs` → Word XML, PDF, plain text) driven by a **layout** (`core/layouts/*.json`, rot-layout/1) that a template JSON carries.
-- `createEngine(ctx)` — matching (`extractRequirements`), selection (`select`, `compute`), the resume model (`resumeModel`), placement of answer entries, template questions, digests, and `prompts` (tailor, bullets, tighten, summary: pure builders and parsers; the shells talk to Claude).
+- `createEngine(ctx)` — matching (`extractRequirements`), selection (`select`, `compute`), the resume model (`resumeModel`), placement of answer entries, template questions, digests, and `prompts` (tailor, bullets, tighten, summary: pure builders and parsers; the shells talk to Claude). With `settings.prompts.growth_list` the tailor prompt carries the ranked list of requirements not yet proven, so Claude's questions aim where the match can grow and phrase each "why" as a criterion, never a suggested answer (tailor@7, both editions).
 - `claims.projectLibrary(backup, taxonomy)` — turns a `cch-backup/1` record into the bank (`rot-library/3`) the engine reads, with claims, confidence and disputes.
+- `scorecard` — reads the match without changing it: `growth` (unproven requirements ranked by what proving each would add), `potential`, `headroom`, `toolsNamed` (tools an answer names that the Tools line lacks), `contributions` (what each answered question did, in question order), and the plain-language `EXPLAIN`. Both shells render it; nothing in it feeds back into coverage or the score.
 
 Nothing personal is in `core/` or `hub/` (`tests/core/no_person.test.js`). The Desk keeps Tim's role keys, prompt persona and template in settings the bank exports (`baseline.settings`).
 
@@ -28,19 +29,22 @@ flowchart LR
   subgraph Sources
     R[Resumes · LinkedIn · typed entries · answers]
   end
-  R --> E[Tier 1 · Evidence rows]
-  E --> C[Tier 2 · Claims with confidence]
+  R --> I["Intake (Hub): Word · PDF · text or paste → verbatim lines<br/>Claude points at lines, or a layout heuristic → review → merge<br/>corroboration · conflicts"]
+  I --> E[Tier 1 · Evidence rows]
+  R --> E
+  E --> C[Tier 2 · Claims with confidence · disputes]
   C --> P[projectLibrary → bank rot-library/3]
   P --> G[Tier 3 · Engine: match · select · model · QA]
+  G --> S["Scorecard: where the match can grow · per-answer outcomes<br/>reads the match, never changes it"]
   G --> D[Word · PDF · text]
-  G --> Q[Questions → answers → verified entries]
+  G --> Q[Questions aimed at the growth list → answers → verified entries]
   Q -- approved --> E
   D --> F[Tier 4 · Feedback and outcomes]
   subgraph Desk edition
-    DB[(page database + hourly sync)] --- P
+    DB[(page database + hourly sync · disputes settled in git)] --- P
   end
   subgraph Hub edition
-    BS[(browser store + backups)] --- P
+    BS[(browser store + backups · disputes settled by choosers)] --- P
   end
 ```
 

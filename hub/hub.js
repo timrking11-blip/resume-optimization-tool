@@ -6,7 +6,8 @@ const $ = s => document.querySelector(s);
 const {esc, escRe, uniq, norm, splitList, PHRASE_SECTIONS, isSkip, cleanBullet, cleanPhrase, splitAnswer, splitPhrases, shortRole, sectionOf, placeKey} = RotCore.util;
 const {numberTokens, blocking, answerQuotes} = RotCore.qa;
 const {plainText, abToB64} = RotCore.doc;
-const {Hub, BrowserStore, Scorecard, clone} = CCH;
+const {Hub, BrowserStore, clone} = CCH;
+const Scorecard = RotCore.scorecard;
 const LOCAL = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) || location.protocol==="file:";
 const GUIDE_URL = "https://claude.ai/artifact/786dD7KPL85z3Fp9v4xTz8";   // hub/guide.html as published
 /* Fallback until the template loads. Must equal core/layouts/neutral-1.json (tests/hub/hub.test.js checks). */
@@ -18,7 +19,27 @@ const SECTION_LABELS = {experience:"Experience entry", technology:"Tools line", 
 const SAMPLE_ERR = {not_granted:"Claude isn't allowed on this page. Allow it when the page asks, or reload and try again.", sampling_disabled:"Claude isn't available for this account.", rate_limited:"Claude is busy right now. Wait a minute and try again.", invalid_json:"Claude's reply came back malformed. Try again.", prompt_too_large:"That answer is too long for one pass. Shorten it and try again.", refused:"Claude declined this one. Rephrase the answer and try again.", empty_completion:"Claude returned nothing. Add a specific and try again.", session_expired:"Your Claude session expired. Sign in again, then retry."};
 const sampleErr = e => SAMPLE_ERR[e?.code] || `Claude couldn't finish (${esc(e?.code||"error")}). Try again.`;
 const LINE_EDIT = {tagline:{sep:["|"], join:" | "}, expertise:{sep:["•","·"], join:" • "}, technologies:{sep:[","], join:", "}};
-/* a fictional posting, so the questions can be seen without finding one first */
+/* two fictional postings, so the questions can be seen without finding one first: a close fit and a stretch */
+const STRETCH_JD = `GTM Strategy Lead
+Orbit Labs · San Francisco, CA or Remote · Full-time
+
+About Orbit Labs
+Orbit Labs (Series A, 35 people) builds an AI assistant for clinic operations teams. We have twelve paying customers and need a repeatable go-to-market motion.
+
+What you'll do
+- Define the ideal customer profile, segmentation and positioning for our first two verticals.
+- Design pricing tiers and packaging with the founders; run the pilot program and convert pilots to paid.
+- Run customer discovery interviews (30+ in the first quarter) and turn them into a sales narrative and playbook.
+- Build the first forecast, pipeline stages and CRM setup (HubSpot) for a team of two AEs.
+- Prepare board updates on GTM progress and lead the weekly go-to-market review.
+- Stand up channel partnerships where a direct motion cannot carry the CAC.
+
+What you bring
+- 5+ years across go-to-market strategy, revenue operations or early-stage sales leadership.
+- Experience defining ICP and pricing for a new product; you have taken something from zero to first customers.
+- Structured discovery and stakeholder alignment skills; experience presenting to founders, boards or executives.
+- Comfort with ambiguity and with generative AI tools as part of your daily workflow.
+- Healthcare or clinic-operations experience is a bonus.`;
 const SAMPLE_JD = `Director, Revenue Operations
 Northgate Software · Denver, CO (hybrid) · Full-time
 
@@ -885,8 +906,11 @@ Hub.register({id:"evidence", label:"Your evidence", order:1,
 Hub.register({id:"match", label:"Match a posting", order:2,
   mount(){
     $("#matchBtn").onclick=doMatch; $("#newBtn").onclick=newPosting; $("#finalBtn").onclick=doFinal;
-    $("#sampleJdBtn").onclick=()=>{ if($("#jd").value.trim() && $("#jd").value.trim()!==SAMPLE_JD.trim() && D.phase!=="idle") newPosting();
-      $("#jd").value=SAMPLE_JD; $("#company").value="Northgate Software"; $("#role").value="Director, Revenue Operations"; $("#jdHint").textContent="Sample posting loaded (fictional). Press Match against my record."; persist(); $("#matchBtn").focus(); };
+    const SAMPLES={close:{jd:SAMPLE_JD, company:"Northgate Software", title:"Director, Revenue Operations", note:"Sample posting loaded (fictional, a close fit). Press Match against my record."},
+                   stretch:{jd:STRETCH_JD, company:"Orbit Labs", title:"GTM Strategy Lead", note:"Stretch posting loaded (fictional, a reach). Press Match against my record and see how far the questions carry it."}};
+    const loadSample=kind=>{ const s=SAMPLES[kind]; const cur=$("#jd").value.trim(); if(cur && cur!==s.jd.trim() && D.phase!=="idle") newPosting();
+      $("#jd").value=s.jd; $("#company").value=s.company; $("#role").value=s.title; $("#jdHint").textContent=s.note; persist(); $("#matchBtn").focus(); };
+    $("#sampleJdBtn").onclick=()=>loadSample("close"); $("#stretchJdBtn").onclick=()=>loadSample("stretch");
     $("#heldNote").addEventListener("click", e=>{ if(e.target.closest("[data-goto]")){ Hub.show("evidence"); revealRoles(); } });
     $("#quickQBtn").onclick=()=>useQuickQuestions("Quick questions from the gap analysis. Claude's version was skipped.");
     $("#polishAllBtn").onclick=()=>{ readAnswers(); const ixs=D.questions.map((q,ix)=>ix).filter(ix=>!isSkip(D.questions[ix].answer)); convertQuestions(ixs, `Claude is polishing ${ixs.length} answer${ixs.length>1?"s":""}…`); };

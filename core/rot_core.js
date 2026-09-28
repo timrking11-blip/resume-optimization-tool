@@ -8,7 +8,7 @@
   root.RotCore = api;
 })(typeof globalThis !== "undefined" ? globalThis : this, function () {
 "use strict";
-const VERSION = "1.1.1";
+const VERSION = "1.2.0";
 const SCHEMAS = { bank: "rot-library/3", model: "rot-resume/2", template: "rot-docx-template/1", backup: "cch-backup/1", taxonomy: "rot-taxonomy/1" };
 
 /* ------------------------------ util ------------------------------ */
@@ -507,22 +507,23 @@ function findChosen(d, aid){ for(const items of Object.values(d.chosen)) for(con
 /* ------------------------------ prompts: pure builders and parsers (the shell talks to Claude) ------------------------------
    Wording comes from ctx.settings.prompts: persona {name, first, subject, possessive, possessive_cap, standard_label},
    bullet_example {place, text, tags}, entry_example {text, tags}. Bump VERSIONS whenever a prompt's text changes. */
-/* Hub edition only (the Desk's prompt bytes are pinned by goldens): the requirements not yet proven, ranked by what proving each
+/* With settings.prompts.growth_list (both editions since tailor@7): the requirements not yet proven, ranked by what proving each
    would add to the match, so the questions aim where the match can grow and their "why" names the criterion, never an answer. */
+const growthOn = () => !!((ctx.settings.prompts||{}).growth_list);
 function growthSection(d){
-  if(ctx.settings.edition!=="hub" || !d.cov) return "";
+  if(!growthOn() || !d.cov) return "";
   const tot=Object.values(d.req).reduce((a,r)=>a+r.weight,0)||1;
   const gaps=Object.entries(d.req).map(([t,r])=>({t, w:r.weight, c:Math.min(d.cov[t]||0,1), ph:r.phrases||[]})).map(g=>({...g, gain:g.w*(1-g.c)/tot})).filter(g=>g.gain>0.0005).sort((a,b)=>b.gain-a.gain).slice(0,8);
   if(!gaps.length) return "";
   return `\nWHERE THE MATCH CAN GROW (requirement id: label | up to +N points of the match if an entry proves it | the posting's words):\n${gaps.map(g=>`${g.t}: ${ctx.bank.tags[g.t].label} | +${(g.gain*100).toFixed(1)} | ${g.ph.slice(0,4).join(", ")}`).join("\n")}\n`;
 }
 function growthRules(d){
-  if(ctx.settings.edition!=="hub" || !d.cov) return "";
+  if(!growthOn() || !d.cov) return "";
   return `\n- At least four of the five followups target WHERE THE MATCH CAN GROW, highest potential first, one requirement each. Write each "why" as the criterion that would count (what an entry would have to demonstrate, in the posting's words) and never as a suggested answer or an assumption about what ${P_first(d)} did.`;
 }
 const P_first = () => prompts.persona().first;
 const prompts = {
-  VERSIONS: {tailor:"tailor@6", bullets:"bullets@6", tighten:"tighten@2", summary:"summary@1"},   // the Hub edition appends the growth section to tailor@6 (see growthSection)
+  VERSIONS: {tailor:"tailor@7", bullets:"bullets@6", tighten:"tighten@2", summary:"summary@1"},   // tailor@7 = tailor@6 + the growth section when settings.prompts.growth_list is on
   persona(){ const p=(ctx.settings.prompts||{}).persona||{};
     return {name:p.name||"the candidate", first:p.first||"the candidate", subject:p.subject||"they", possessive:p.possessive||"their", possessive_cap:p.possessive_cap||"Their", standard_label:p.standard_label||"Resume 1"}; },
   /* one call weighs the posting, orders Sections A and B, and drafts the five questions */
@@ -896,7 +897,7 @@ function projectLibrary(backup, taxonomy, opts={}){
   const settings={fallback_role:newest, default_engagement_role:newest, education_claim_default:(education[0]&&education[0].claim_id)||"edu:none:degree",
     template_id:opts.templateId||"neutral-1", edition:"hub",
     questions:{consulting:[], consulting_regex:"", engagement_tag:null},
-    prompts:{persona:{name:identity.name||"the candidate", first, subject:"they", possessive:"their", possessive_cap:"Their", standard_label:"one-line accomplishment", ...(S0.persona||{})},
+    prompts:{growth_list:true, persona:{name:identity.name||"the candidate", first, subject:"they", possessive:"their", possessive_cap:"Their", standard_label:"one-line accomplishment", ...(S0.persona||{})},
       bullet_example:{place:newest?"r:"+newest:"r:current", text:"Cut speed-to-lead from 26 hours to under 2 with new routing rules and a weekly SLA review.", tags:["lead-routing-sla"]},
       entry_example:{text:"Salesforce (administrator)", tags:["crm-discipline"]}},
     ...(S0.engine||{})};
@@ -912,9 +913,43 @@ function projectLibrary(backup, taxonomy, opts={}){
       scoring:{...HUB_DEFAULTS.scoring, ...(S0.scoring||{})}, settings}};
 }
 
+/* ------------------------------ scorecard: reads the match without changing it ------------------------------
+   Where the match can grow, what one requirement is worth, which tools an answer names that the Tools line lacks, and what each
+   answered question did. Shared by both editions; none of it feeds back into coverage or the score. */
+const scTotal = req => Object.values(req||{}).reduce((a,r)=>a+r.weight,0) || 1;
+function scGrowth(req, cov, tags, limit){
+  const tot=scTotal(req);
+  return Object.entries(req||{}).map(([t,r])=>{ const c=Math.min((cov||{})[t]||0,1);
+      return {tag:t, label:(tags&&tags[t]&&tags[t].label)||t, weight:r.weight, coverage:c, words:(r.phrases||[]).slice(0,4), gain:r.weight*(1-c)/tot}; })
+    .filter(g=>g.gain>0.0005).sort((a,b)=>b.gain-a.gain||a.tag.localeCompare(b.tag)).slice(0, limit||8);
+}
+function scPotential(req, cov, tag){ if(!tag||!req||!req[tag]) return 0; return req[tag].weight*(1-Math.min((cov||{})[tag]||0,1))/scTotal(req); }
+const scHeadroom = (req, cov) => Object.keys(req||{}).reduce((a,t)=>a+scPotential(req, cov, t), 0);
+function scToolsNamed(text, knownNames){
+  const known=new Set((knownNames||[]).map(n=>norm(String(n).replace(/\.io$/,"")))), out=[];
+  for(const t of TOOL_LEXICON){ if(new RegExp("(?<![A-Za-z0-9])"+escRe(t)+"(?![A-Za-z0-9])").test(text||"") && !known.has(norm(t.replace(/\.io$/,"")))) out.push(t); }
+  return out.slice(0,6);
+}
+/* in question order: the match with that question's entries added on top of the earlier ones, minus the match without them */
+function scContributions(E, d){
+  const fresh=d.newAch||[], byQ=new Map();
+  for(const x of fresh){ const k=x.q_ix==null?-1:x.q_ix; if(!byQ.has(k)) byQ.set(k,[]); byQ.get(k).push(x); }
+  const freshIds=new Set(fresh.map(x=>x.ach?x.ach.id:x.attach));
+  const scoreWith=qs=>{ const keep=fresh.filter(x=>qs.has(x.q_ix==null?-1:x.q_ix)), keepIds=new Set(keep.map(x=>x.ach?x.ach.id:x.attach));
+    const pinned=new Set([...d.pinned].filter(id=>!freshIds.has(id)||keepIds.has(id)));
+    return E.compute({...d, newAch:keep, pinned, locked:null}, d.req).score||0; };
+  const order=[...byQ.keys()].sort((a,b)=>a-b), seen=new Set(); let prev=scoreWith(seen); const out={before:prev, byQuestion:{}};
+  for(const ix of order){ seen.add(ix); const now=scoreWith(seen); const xs=byQ.get(ix);
+    out.byQuestion[ix]={delta:now-prev, entries:xs.filter(x=>x.ach).length, enriched:xs.filter(x=>x.attach).length}; prev=now; }
+  out.after=prev; return out;
+}
+const scPct = x => (Math.round(x*1000)/10).toFixed(1);
+const SC_EXPLAIN = "The posting is read for the skills it asks for; each gets a weight from how strongly the posting stresses it. The match is the share of that weight already proven by the entries printed under your roles. A skill counts once: the first entry that proves it earns the full weight, and a second entry for the same skill changes nothing. The Skills and Tools lines don't count. An answer moves the match only when it becomes a printed entry that proves a skill no entry proved yet.";
+
 return {
   VERSION, SCHEMAS, createEngine,
   util: { esc, escRe, MONTHS, fmtDate, REQ_HINT, uniq, norm, splitList, PHRASE_SECTIONS, TOOL_LEXICON, isSkip, cleanBullet, cleanPhrase, splitAnswer, splitPhrases, shortRole, sectionOf, placeKey },
+  scorecard: { growth: scGrowth, potential: scPotential, headroom: scHeadroom, toolsNamed: scToolsNamed, contributions: scContributions, pct: scPct, EXPLAIN: SC_EXPLAIN },
   qa: { NUMBER_WORDS, numberTokens, FIRST_PERSON, qaLine, blocking, answerQuotes },
   score: { coverage, matchScore, tagWeight, rankByTags },
   doc: { btext, docParagraphs, xmlEsc, rprXml, documentXml, plainText, pdfSafe, abToB64, PDF_METRICS, docxParts, buildDocx, buildPdf },

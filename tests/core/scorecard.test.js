@@ -1,20 +1,26 @@
 "use strict";
 /* The scorecard reads the match without changing it: growth list, potential per requirement, tools named in an answer,
-   and what each answered question did. Also: the Hub edition's tailor prompt carries the growth section; the Desk's does not. */
+   and what each answered question did. The tailor prompt carries the growth section when settings.prompts.growth_list is on. */
 const test = require("node:test");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
 const { R, ROOT, taxonomy, postings, engine, draft } = require("../lib/riley.js");
-const S = require(path.join(ROOT, "hub", "scorecard.js"));
+const S = R.scorecard;
 
 const EX = JSON.parse(fs.readFileSync(path.join(ROOT, "hub", "example", "backup.json"), "utf8"));
 function exampleEngine() {
-  const T = R.createEngine({ bank: { tags: taxonomy.tags }, settings: {} });
-  for (const a of EX.achievements) if (!Object.keys(a.tags || {}).length) a.tags = Object.fromEntries(Object.keys(T.extractRequirements(a.canonical)).map(t => [t, 1]));
-  const lib = R.claims.projectLibrary(EX, taxonomy, { now: "2026-09-28T00:00:00Z" });
+  const T = R.createEngine({ bank: { tags: taxonomy.tags }, settings: {} }), B = JSON.parse(JSON.stringify(EX));
+  for (const a of B.achievements) if (!Object.keys(a.tags || {}).length) a.tags = Object.fromEntries(Object.keys(T.extractRequirements(a.canonical)).map(t => [t, 1]));
+  const lib = R.claims.projectLibrary(B, taxonomy, { now: "2026-09-28T00:00:00Z" });
   return { lib, E: R.createEngine({ bank: lib, settings: lib.baseline.settings }) };
 }
+
+test("the core carries the scorecard and the Hub alias points at it", () => {
+  assert.equal(R.VERSION, "1.2.0");
+  assert.deepEqual(require(path.join(ROOT, "hub", "scorecard.js")), S);
+  assert.equal(engine().E.prompts.VERSIONS.tailor, "tailor@7");
+});
 
 test("growth ranks the unproven requirements by what proving them would add, and the gains sum to the headroom", () => {
   const { lib, E } = exampleEngine();
@@ -29,6 +35,8 @@ test("growth ranks the unproven requirements by what proving them would add, and
   assert.ok(Math.abs(d.score + S.headroom(d.req, d.cov) - 1) < 1e-9, "score plus headroom is the whole posting");
   assert.equal(S.potential(d.req, d.cov, "crm-discipline"), 0, "a proven requirement has no potential left");
   assert.equal(S.potential(d.req, d.cov, "not-a-tag"), 0);
+  const stretch = draft(E, postings["05"]);
+  assert.ok(stretch.score < d.score - 0.1, "the stretch posting starts well below the close fit");
 });
 
 test("toolsNamed offers the tools an answer names that the Tools line lacks", () => {
@@ -46,8 +54,8 @@ test("contributions attribute the change in the match to each answered question 
     : { n, q_ix: q, b_ix: 0, ach: { id: `gate2-t-${n}`, role, engagement: null, confidence: "asserted", fresh: true, has_metrics: /\d/.test(text), tags: Object.fromEntries(tags.map(t => [t, 1])), metrics: [], texts: [{ id: `new:t:${n}`, kind: "learned", angle: "gate2", text, score_adj: 0, fresh: true }] }, role, tags, engagement: null, longform: null, text: { text } };
   d.newAch = [
     mk(0, 1, "hal", "Built the CRO's weekly pipeline review in Looker with coverage by segment and win rates.", ["revenue-analytics"]),
-    mk(1, 2, "hal", "Ran the forecast call every Monday for 12 leaders.", ["forecasting"]),                     // a skill already proven: no change
-    mk(2, 3, "hal", "Added a stage-exit checklist to the forecast process.", ["forecasting"], "hal-forecast"),  // an enrichment: no change
+    mk(1, 2, "hal", "Ran the forecast call every Monday for 12 leaders.", ["forecasting"]),
+    mk(2, 3, "hal", "Added a stage-exit checklist to the forecast process.", ["forecasting"], "hal-forecast"),
   ];
   d.pinned.add("gate2-t-0"); d.pinned.add("gate2-t-1"); d.pinned.add("hal-forecast");
   Object.assign(d, E.compute(d, d.req));
@@ -61,16 +69,14 @@ test("contributions attribute the change in the match to each answered question 
   assert.ok(d.score - before > 0.055, "the real match moved by the new entry, and only by it");
 });
 
-test("the Hub edition's tailor prompt carries the growth section; the Desk's prompt does not", () => {
-  const { E } = exampleEngine();
+test("the tailor prompt carries the growth section when growth_list is on, and not otherwise", () => {
+  const { E, lib } = exampleEngine();
   const d = draft(E, postings["01"]);
   const p = E.prompts.tailor(d);
   assert.ok(p.includes("WHERE THE MATCH CAN GROW"));
   assert.ok(p.includes("revenue-analytics: Revenue Analytics & Dashboards | +6.0 | dashboards, looker"));
   assert.ok(p.includes("At least four of the five followups target WHERE THE MATCH CAN GROW"));
   assert.ok(p.includes("never as a suggested answer"));
-  const desk = engine(); // riley bank with edition "hub" too, so force the desk edition
-  const Ed = R.createEngine({ bank: desk.lib, settings: { ...desk.lib.baseline.settings, edition: "desk" } });
-  const dd = draft(Ed, postings["01"]);
-  assert.ok(!Ed.prompts.tailor(dd).includes("WHERE THE MATCH CAN GROW"));
+  const off = R.createEngine({ bank: lib, settings: { ...lib.baseline.settings, prompts: { ...lib.baseline.settings.prompts, growth_list: false } } });
+  assert.ok(!off.prompts.tailor(draft(off, postings["01"])).includes("WHERE THE MATCH CAN GROW"));
 });
