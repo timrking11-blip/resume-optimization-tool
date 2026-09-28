@@ -1,0 +1,1322 @@
+{
+ "version": "gtm/1",
+ "_about": "Career Companion Hub skill taxonomy v1 for go-to-market, sales, marketing and revenue roles. Derived by tools/derive_taxonomy.py; edit that file, not this one. Shape: families {id: label}, tags {id: {family, label, synonyms}}; a posting is matched on whole-word synonyms.",
+ "families": {
+  "gtm": "Go-To-Market",
+  "sales": "Sales & Revenue",
+  "marketing": "Marketing & Demand",
+  "media": "Media, Advertising & AdTech",
+  "strategy": "Strategy & Advisory",
+  "finance": "Finance & Unit Economics",
+  "leadership": "Leadership & Coaching",
+  "operations": "Operations & Process",
+  "change": "Change & Enablement",
+  "research": "Research & Insight",
+  "data_ai": "Data, AI & Technology",
+  "partnerships": "Partnerships & Channel",
+  "customer": "Customer & Account Growth",
+  "revops": "Revenue Operations"
+ },
+ "tags": {
+  "enablement-collateral": {
+   "family": "change",
+   "label": "Enablement & Collateral",
+   "synonyms": [
+    "sales enablement",
+    "enablement",
+    "collateral",
+    "battlecards",
+    "one-pagers",
+    "pitch materials",
+    "sales tools",
+    "playbooks"
+   ]
+  },
+  "executive-communication": {
+   "family": "change",
+   "label": "Executive Communication",
+   "synonyms": [
+    "executive communication",
+    "board briefing",
+    "briefing",
+    "talking points",
+    "executive presence",
+    "storytelling",
+    "written communication",
+    "presentation skills",
+    "memo"
+   ]
+  },
+  "influence-without-authority": {
+   "family": "change",
+   "label": "Influence Without Authority",
+   "synonyms": [
+    "influence without authority",
+    "without direct authority",
+    "dotted line",
+    "matrixed organization",
+    "coordinate across",
+    "orchestrate"
+   ]
+  },
+  "readiness-assessment": {
+   "family": "change",
+   "label": "Readiness & Adoption Assessment",
+   "synonyms": [
+    "readiness",
+    "adoption",
+    "change management",
+    "transformation",
+    "organizational change",
+    "change impact",
+    "rollout"
+   ]
+  },
+  "stakeholder-alignment": {
+   "family": "change",
+   "label": "Stakeholder Alignment",
+   "synonyms": [
+    "stakeholder",
+    "stakeholders",
+    "alignment",
+    "buy-in",
+    "consensus",
+    "influence",
+    "cross-functional"
+   ]
+  },
+  "account-expansion": {
+   "family": "customer",
+   "label": "Account Expansion & Upsell",
+   "synonyms": [
+    "expansion",
+    "upsell",
+    "cross-sell",
+    "grow accounts",
+    "account growth",
+    "land and expand",
+    "wallet share",
+    "renewal",
+    "renewals",
+    "book of business"
+   ]
+  },
+  "account-management": {
+   "family": "customer",
+   "label": "Strategic Account Management",
+   "synonyms": [
+    "account management",
+    "account planning",
+    "strategic accounts",
+    "key accounts",
+    "account mapping",
+    "stakeholder mapping",
+    "org mapping",
+    "relationship management",
+    "client relationships"
+   ]
+  },
+  "customer-success": {
+   "family": "customer",
+   "label": "Customer Success & Onboarding",
+   "synonyms": [
+    "customer success",
+    "customer experience",
+    "client services",
+    "customer satisfaction",
+    "nps"
+   ]
+  },
+  "referral-network": {
+   "family": "customer",
+   "label": "Referral & Network Selling",
+   "synonyms": [
+    "referral",
+    "referrals",
+    "networking",
+    "community",
+    "warm introductions",
+    "relationship-driven",
+    "affinity"
+   ]
+  },
+  "renewals-retention": {
+   "family": "customer",
+   "label": "Renewals & Retention",
+   "synonyms": [
+    "retention",
+    "net revenue retention",
+    "nrr",
+    "expansion revenue",
+    "annual commitment",
+    "annual commitments"
+   ]
+  },
+  "ai-in-workflow": {
+   "family": "data_ai",
+   "label": "AI in Daily Workflow",
+   "synonyms": [
+    "claude",
+    "chatgpt",
+    "openai",
+    "copilot",
+    "prompt",
+    "prompt engineering",
+    "ai tools",
+    "ai-assisted",
+    "automation",
+    "workflow automation",
+    "ai-native",
+    "ai fluency",
+    "gpt",
+    "gemini"
+   ]
+  },
+  "ai-ml-solutions": {
+   "family": "data_ai",
+   "label": "AI / ML Solution Selling",
+   "synonyms": [
+    "ai",
+    "artificial intelligence",
+    "machine learning",
+    "ml",
+    "genai",
+    "generative ai",
+    "llm",
+    "computer vision",
+    "ai solutions",
+    "ai adoption",
+    "ai products",
+    "agentic"
+   ]
+  },
+  "building-with-ai": {
+   "family": "data_ai",
+   "label": "Building Software with AI (Claude Code)",
+   "synonyms": [
+    "claude code",
+    "vibe coding",
+    "no-code",
+    "low-code",
+    "build tools",
+    "internal tools",
+    "prototype",
+    "gtm engineer",
+    "gtm engineering",
+    "revenue engineering",
+    "go-to-market engineer",
+    "clay",
+    "workflow builder",
+    "github",
+    "mcp",
+    "model context protocol",
+    "vs code",
+    "visual studio"
+   ]
+  },
+  "cloud-infrastructure": {
+   "family": "data_ai",
+   "label": "Cloud & Enterprise Platforms",
+   "synonyms": [
+    "cloud",
+    "azure",
+    "aws",
+    "gcp",
+    "infrastructure",
+    "adobe",
+    "enterprise software",
+    "saas",
+    "google cloud"
+   ]
+  },
+  "data-solutions": {
+   "family": "data_ai",
+   "label": "Data & Analytics Solution Selling",
+   "synonyms": [
+    "data analytics",
+    "data & analytics",
+    "data solutions",
+    "analytics solutions",
+    "data platform",
+    "data governance",
+    "data science",
+    "business intelligence",
+    "bi",
+    "tableau",
+    "data-driven"
+   ]
+  },
+  "revenue-modeling": {
+   "family": "finance",
+   "label": "Revenue & Financial Modeling",
+   "synonyms": [
+    "financial model",
+    "financial modeling",
+    "revenue model",
+    "revenue modeling",
+    "p&l",
+    "forecast model",
+    "benchmarks",
+    "comparables",
+    "arr forecast",
+    "excel",
+    "xlookup"
+   ]
+  },
+  "unit-economics": {
+   "family": "finance",
+   "label": "Unit Economics",
+   "synonyms": [
+    "unit economics",
+    "contribution margin",
+    "gross margin",
+    "cost model",
+    "cost modeling",
+    "economics"
+   ]
+  },
+  "channel-strategy": {
+   "family": "gtm",
+   "label": "Channel Strategy",
+   "synonyms": [
+    "channel strategy",
+    "channel",
+    "distribution",
+    "distribution strategy",
+    "partner channel",
+    "indirect"
+   ]
+  },
+  "gtm-strategy": {
+   "family": "gtm",
+   "label": "GTM Strategy",
+   "synonyms": [
+    "go-to-market",
+    "go to market",
+    "gtm",
+    "gtm strategy",
+    "commercial strategy",
+    "market entry",
+    "route to market"
+   ]
+  },
+  "launch-sequencing": {
+   "family": "gtm",
+   "label": "Launch & Sequencing",
+   "synonyms": [
+    "launch",
+    "product launch",
+    "roadmap",
+    "sequencing",
+    "phased",
+    "stage-gate",
+    "milestone"
+   ]
+  },
+  "market-segmentation": {
+   "family": "gtm",
+   "label": "Market Segmentation",
+   "synonyms": [
+    "segmentation",
+    "segment",
+    "icp",
+    "ideal customer profile",
+    "target market",
+    "persona"
+   ]
+  },
+  "positioning-messaging": {
+   "family": "gtm",
+   "label": "Positioning & Messaging",
+   "synonyms": [
+    "positioning",
+    "messaging",
+    "value proposition",
+    "value prop",
+    "narrative",
+    "differentiation"
+   ]
+  },
+  "pricing-packaging": {
+   "family": "gtm",
+   "label": "Pricing & Packaging",
+   "synonyms": [
+    "pricing",
+    "packaging",
+    "price tiers",
+    "monetization",
+    "rate card"
+   ]
+  },
+  "vertical-gtm": {
+   "family": "gtm",
+   "label": "Vertical GTM",
+   "synonyms": [
+    "vertical",
+    "verticalization",
+    "industry vertical",
+    "vertical strategy",
+    "industry-specific"
+   ]
+  },
+  "hiring-onboarding": {
+   "family": "leadership",
+   "label": "Hiring & Onboarding",
+   "synonyms": [
+    "hiring",
+    "hire",
+    "recruit",
+    "recruiting",
+    "onboarding",
+    "talent",
+    "build a team",
+    "scale the team",
+    "headcount"
+   ]
+  },
+  "performance-management": {
+   "family": "leadership",
+   "label": "Performance Management",
+   "synonyms": [
+    "performance management",
+    "1:1",
+    "one-on-one",
+    "accountability",
+    "activity metrics",
+    "cadence",
+    "inspection",
+    "manage a team",
+    "team of",
+    "direct reports",
+    "lead a team",
+    "people management"
+   ]
+  },
+  "player-coach": {
+   "family": "leadership",
+   "label": "Player-Coach Leadership",
+   "synonyms": [
+    "player-coach",
+    "player coach",
+    "carry a quota while",
+    "hands-on leader",
+    "selling manager",
+    "working manager"
+   ]
+  },
+  "team-coaching": {
+   "family": "leadership",
+   "label": "Team Coaching & Development",
+   "synonyms": [
+    "coach",
+    "coaching",
+    "mentor",
+    "mentoring",
+    "develop reps",
+    "team development",
+    "training",
+    "ramp"
+   ]
+  },
+  "abm": {
+   "family": "marketing",
+   "label": "Account-Based Programs",
+   "synonyms": [
+    "account-based",
+    "abm",
+    "account based marketing",
+    "target accounts",
+    "named accounts"
+   ]
+  },
+  "audience-growth": {
+   "family": "marketing",
+   "label": "Audience & Subscriber Growth",
+   "synonyms": [
+    "subscriber",
+    "subscribers",
+    "audience growth",
+    "subscriber base",
+    "newsletter growth",
+    "followers",
+    "community growth"
+   ]
+  },
+  "budget-ownership": {
+   "family": "marketing",
+   "label": "Budget Ownership",
+   "synonyms": [
+    "budget",
+    "media budget",
+    "annual budget",
+    "spend",
+    "seven-figure budget",
+    "p&l ownership",
+    "budget ownership"
+   ]
+  },
+  "campaign-development": {
+   "family": "marketing",
+   "label": "Campaign Development",
+   "synonyms": [
+    "campaign",
+    "campaigns",
+    "campaign optimization",
+    "paid media",
+    "performance marketing"
+   ]
+  },
+  "content-brand": {
+   "family": "marketing",
+   "label": "Content & Brand Messaging",
+   "synonyms": [
+    "content",
+    "copy",
+    "brand",
+    "brand identity",
+    "social media",
+    "website content",
+    "squarespace",
+    "canva"
+   ]
+  },
+  "demand-generation": {
+   "family": "marketing",
+   "label": "Demand Generation",
+   "synonyms": [
+    "demand generation",
+    "demand gen",
+    "lead gen",
+    "mql",
+    "inbound",
+    "growth marketing",
+    "acquisition marketing",
+    "marketo",
+    "marketing automation"
+   ]
+  },
+  "events-field": {
+   "family": "marketing",
+   "label": "Events & Field Marketing",
+   "synonyms": [
+    "events",
+    "field marketing",
+    "webinars",
+    "webinar",
+    "conferences",
+    "trade shows",
+    "event marketing"
+   ]
+  },
+  "growth-efficiency": {
+   "family": "marketing",
+   "label": "Growth Efficiency (CAC, Payback, Churn)",
+   "synonyms": [
+    "cac",
+    "customer acquisition cost",
+    "payback",
+    "churn",
+    "ltv",
+    "retention rate",
+    "time to value",
+    "growth efficiency",
+    "efficiency metrics"
+   ]
+  },
+  "lifecycle-email": {
+   "family": "marketing",
+   "label": "Lifecycle & Email Marketing",
+   "synonyms": [
+    "lifecycle",
+    "lifecycle marketing",
+    "email marketing",
+    "newsletter",
+    "newsletters",
+    "esp",
+    "klaviyo",
+    "drip",
+    "nurture",
+    "win-back",
+    "open rate",
+    "click rate"
+   ]
+  },
+  "marketing-analytics-attribution": {
+   "family": "marketing",
+   "label": "Marketing Analytics & Attribution",
+   "synonyms": [
+    "cohort",
+    "cohorts",
+    "marketing analytics",
+    "conversion rate optimization",
+    "cro",
+    "funnel analytics"
+   ]
+  },
+  "marketing-sales-alignment": {
+   "family": "marketing",
+   "label": "Marketing–Sales Alignment",
+   "synonyms": [
+    "marketing and sales alignment",
+    "sales and marketing",
+    "revenue operations",
+    "revops",
+    "handoff",
+    "sla"
+   ]
+  },
+  "paid-media": {
+   "family": "marketing",
+   "label": "Paid Media",
+   "synonyms": [
+    "paid social",
+    "paid search",
+    "ppc",
+    "media buying",
+    "google ads",
+    "meta ads",
+    "ad spend"
+   ]
+  },
+  "product-marketing": {
+   "family": "marketing",
+   "label": "Product Marketing",
+   "synonyms": [
+    "product marketing",
+    "launch messaging",
+    "competitive positioning",
+    "sales enablement content",
+    "product launches",
+    "go-to-market messaging"
+   ]
+  },
+  "seo-sem": {
+   "family": "marketing",
+   "label": "SEO & SEM",
+   "synonyms": [
+    "seo",
+    "sem",
+    "search engine optimization",
+    "organic search",
+    "keywords",
+    "search marketing"
+   ]
+  },
+  "adtech-fluency": {
+   "family": "media",
+   "label": "AdTech Fluency (CDP, Clean Rooms, Identity)",
+   "synonyms": [
+    "adtech",
+    "ad tech",
+    "ad-tech",
+    "cdp",
+    "customer data platform",
+    "clean room",
+    "clean rooms",
+    "identity graph",
+    "identity resolution",
+    "first-party data",
+    "programmatic",
+    "dsp",
+    "ssp",
+    "search intent",
+    "real-time bidding"
+   ]
+  },
+  "audience-measurement": {
+   "family": "media",
+   "label": "Audience Insights & Measurement",
+   "synonyms": [
+    "measurement",
+    "attribution",
+    "audience",
+    "audience insights",
+    "brand recall",
+    "readership",
+    "analytics",
+    "campaign performance",
+    "outcomes",
+    "google tag manager",
+    "google analytics",
+    "ga4"
+   ]
+  },
+  "cpm-cpa-modeling": {
+   "family": "media",
+   "label": "CPM / CPA / ROI Modeling",
+   "synonyms": [
+    "cpm",
+    "cpa",
+    "cost per acquisition",
+    "cost-per-acquisition",
+    "roas",
+    "roi",
+    "cpc",
+    "reach",
+    "impressions",
+    "media math",
+    "media planning"
+   ]
+  },
+  "cross-platform": {
+   "family": "media",
+   "label": "Integrated Cross-Platform Selling",
+   "synonyms": [
+    "cross-platform",
+    "multi-platform",
+    "omnichannel",
+    "print and digital",
+    "streaming",
+    "ctv",
+    "linear",
+    "integrated"
+   ]
+  },
+  "media-ad-sales": {
+   "family": "media",
+   "label": "Media & Advertising Sales",
+   "synonyms": [
+    "advertising sales",
+    "ad sales",
+    "media sales",
+    "advertisers",
+    "agencies",
+    "agency",
+    "brands",
+    "publisher",
+    "print",
+    "digital advertising"
+   ]
+  },
+  "retail-media": {
+   "family": "media",
+   "label": "Retail Media",
+   "synonyms": [
+    "retail media",
+    "retail media network",
+    "retail media networks",
+    "sponsored products",
+    "onsite display",
+    "offsite audiences",
+    "shopper marketing",
+    "cpg"
+   ]
+  },
+  "sponsorship": {
+   "family": "media",
+   "label": "Sponsorship & Integrated Partnerships",
+   "synonyms": [
+    "sponsorship",
+    "sponsorships",
+    "integrated partnerships",
+    "integrated marketing",
+    "activation",
+    "sports marketing",
+    "team partnerships"
+   ]
+  },
+  "sports-media": {
+   "family": "media",
+   "label": "Sports & Entertainment Media",
+   "synonyms": [
+    "sports",
+    "entertainment",
+    "league",
+    "yearbook",
+    "media & entertainment",
+    "m&e"
+   ]
+  },
+  "operating-cadence": {
+   "family": "operations",
+   "label": "Operating Cadence & Governance",
+   "synonyms": [
+    "operating cadence",
+    "operating rhythm",
+    "raci",
+    "escalation",
+    "decision log",
+    "governance",
+    "weekly review",
+    "gate review",
+    "operating model",
+    "trello"
+   ]
+  },
+  "process-improvement": {
+   "family": "operations",
+   "label": "Sales Process Design & Improvement",
+   "synonyms": [
+    "process improvement",
+    "process design",
+    "sales process",
+    "playbook",
+    "standardize",
+    "methodology",
+    "best practices",
+    "repeatable",
+    "scalable process",
+    "efficiency"
+   ]
+  },
+  "alliances-ecosystem": {
+   "family": "partnerships",
+   "label": "Alliances & Ecosystem",
+   "synonyms": [
+    "technology partners",
+    "isv",
+    "isvs",
+    "ecosystem partners"
+   ]
+  },
+  "channel-partnerships": {
+   "family": "partnerships",
+   "label": "Channel Partnerships",
+   "synonyms": [
+    "channel partners",
+    "channel partnerships",
+    "resellers",
+    "carriers",
+    "associations",
+    "affiliates",
+    "marketplace"
+   ]
+  },
+  "co-marketing": {
+   "family": "partnerships",
+   "label": "Co-Marketing & Co-Selling",
+   "synonyms": [
+    "joint marketing",
+    "co-selling",
+    "joint go-to-market",
+    "partner campaigns",
+    "joint campaigns"
+   ]
+  },
+  "partner-enablement": {
+   "family": "partnerships",
+   "label": "Partner Enablement",
+   "synonyms": [
+    "partner enablement",
+    "certification program",
+    "partner training",
+    "partner portal",
+    "certify partners",
+    "partner certification"
+   ]
+  },
+  "partner-negotiation": {
+   "family": "partnerships",
+   "label": "Partner & Data Deal Negotiation",
+   "synonyms": [
+    "partner negotiation",
+    "licensing",
+    "data licensing",
+    "data partnership",
+    "white-label",
+    "rev-share",
+    "revenue share",
+    "terms sheet"
+   ]
+  },
+  "partner-recruitment": {
+   "family": "partnerships",
+   "label": "Partner Recruitment",
+   "synonyms": [
+    "partner recruitment",
+    "recruit partners",
+    "agency partners",
+    "holding company",
+    "holding companies",
+    "reseller",
+    "agency relationships"
+   ]
+  },
+  "strategic-partnerships": {
+   "family": "partnerships",
+   "label": "Strategic Partnerships",
+   "synonyms": [
+    "partnership",
+    "partnerships",
+    "strategic partnerships",
+    "alliances",
+    "alliance",
+    "partner",
+    "ecosystem",
+    "co-marketing"
+   ]
+  },
+  "customer-discovery": {
+   "family": "research",
+   "label": "Customer Discovery & Validation",
+   "synonyms": [
+    "customer discovery",
+    "validation",
+    "product-market fit",
+    "pmf",
+    "kill/pivot",
+    "go/no-go",
+    "hypothesis",
+    "experiment"
+   ]
+  },
+  "market-research": {
+   "family": "research",
+   "label": "Market & Competitive Research",
+   "synonyms": [
+    "market research",
+    "industry research",
+    "research",
+    "insights",
+    "trend analysis",
+    "benchmarking"
+   ]
+  },
+  "primary-research": {
+   "family": "research",
+   "label": "Primary Research Design",
+   "synonyms": [
+    "primary research",
+    "interviews",
+    "customer interviews",
+    "survey",
+    "screener",
+    "research design",
+    "sampling",
+    "rubric",
+    "voice of customer",
+    "voc"
+   ]
+  },
+  "capacity-planning": {
+   "family": "revops",
+   "label": "Capacity & Resource Planning",
+   "synonyms": [
+    "capacity",
+    "resource planning",
+    "staffing model",
+    "headcount plan",
+    "workforce"
+   ]
+  },
+  "crm-discipline": {
+   "family": "revops",
+   "label": "CRM Discipline",
+   "synonyms": [
+    "salesforce",
+    "crm hygiene",
+    "crm adoption",
+    "data hygiene",
+    "field completion",
+    "hubspot",
+    "crm"
+   ]
+  },
+  "deal-desk": {
+   "family": "revops",
+   "label": "Deal Desk & Quote-to-Cash",
+   "synonyms": [
+    "deal desk",
+    "quote-to-cash",
+    "quote to cash",
+    "cpq",
+    "approval workflow",
+    "discount approval",
+    "order forms",
+    "contract desk"
+   ]
+  },
+  "forecasting": {
+   "family": "revops",
+   "label": "Forecasting",
+   "synonyms": [
+    "forecast",
+    "forecasting",
+    "forecast accuracy",
+    "revenue planning",
+    "kpi",
+    "metrics",
+    "reporting"
+   ]
+  },
+  "lead-routing-sla": {
+   "family": "revops",
+   "label": "Lead Routing & SLAs",
+   "synonyms": [
+    "lead routing",
+    "routing rules",
+    "speed-to-lead",
+    "speed to lead",
+    "slas",
+    "service level agreement",
+    "lead assignment",
+    "lead response time"
+   ]
+  },
+  "pipeline-management": {
+   "family": "revops",
+   "label": "Pipeline Management",
+   "synonyms": [
+    "pipeline",
+    "pipeline management",
+    "pipeline hygiene",
+    "pipeline generation",
+    "funnel"
+   ]
+  },
+  "revenue-analytics": {
+   "family": "revops",
+   "label": "Revenue Analytics & Dashboards",
+   "synonyms": [
+    "revenue analytics",
+    "dashboards",
+    "dashboard",
+    "kpis",
+    "pipeline coverage",
+    "win rates",
+    "looker",
+    "power bi",
+    "sales analytics"
+   ]
+  },
+  "sales-compensation": {
+   "family": "revops",
+   "label": "Sales Compensation",
+   "synonyms": [
+    "sales compensation",
+    "comp plan",
+    "comp plans",
+    "commission",
+    "commissions",
+    "quota setting",
+    "incentive plan",
+    "spiffs"
+   ]
+  },
+  "sales-process-stages": {
+   "family": "revops",
+   "label": "Sales Process & Stage Definitions",
+   "synonyms": [
+    "stage definitions",
+    "pipeline stages",
+    "deal stages",
+    "sales methodology",
+    "exit criteria",
+    "opportunity stages"
+   ]
+  },
+  "tech-stack-consolidation": {
+   "family": "revops",
+   "label": "Systems & Tech Stack Consolidation",
+   "synonyms": [
+    "consolidation",
+    "consolidate",
+    "consolidating",
+    "crm consolidation",
+    "tech stack",
+    "salesforce administration",
+    "salesforce admin",
+    "crm migration",
+    "systems integration",
+    "revenue tech stack"
+   ]
+  },
+  "territory-design": {
+   "family": "revops",
+   "label": "Territory Design",
+   "synonyms": [
+    "territory",
+    "territory planning",
+    "territory design",
+    "coverage model",
+    "territory management"
+   ]
+  },
+  "closing": {
+   "family": "sales",
+   "label": "Closing",
+   "synonyms": [
+    "closing",
+    "closed-won",
+    "signed",
+    "win rate",
+    "conversion"
+   ]
+  },
+  "discovery": {
+   "family": "sales",
+   "label": "Discovery & Consultative Selling",
+   "synonyms": [
+    "discovery",
+    "consultative",
+    "solution selling",
+    "challenger",
+    "diagnostic",
+    "needs analysis",
+    "needs assessment",
+    "trusted advisor"
+   ]
+  },
+  "enterprise-sales": {
+   "family": "sales",
+   "label": "Enterprise Sales",
+   "synonyms": [
+    "enterprise accounts",
+    "enterprise brands",
+    "enterprise deals",
+    "enterprise buyers",
+    "large enterprise",
+    "global accounts",
+    "enterprise segment"
+   ]
+  },
+  "executive-selling": {
+   "family": "sales",
+   "label": "Executive & C-Suite Selling",
+   "synonyms": [
+    "c-suite",
+    "c-level",
+    "executive",
+    "cxo",
+    "cfo",
+    "cmo",
+    "vp-level",
+    "senior stakeholders"
+   ]
+  },
+  "full-cycle-sales": {
+   "family": "sales",
+   "label": "Full-Cycle Sales Ownership",
+   "synonyms": [
+    "full cycle",
+    "full-cycle",
+    "end-to-end sales",
+    "own the sales cycle",
+    "prospect to close",
+    "quota-carrying",
+    "individual contributor"
+   ]
+  },
+  "managed-services-sales": {
+   "family": "sales",
+   "label": "Managed Services & Solution Sales",
+   "synonyms": [
+    "managed services",
+    "professional services",
+    "it services",
+    "staffing",
+    "staff augmentation",
+    "solutions",
+    "services sales",
+    "consulting sales"
+   ]
+  },
+  "multi-stakeholder-selling": {
+   "family": "sales",
+   "label": "Multi-Stakeholder & Matrixed Selling",
+   "synonyms": [
+    "multi-stakeholder",
+    "multiple stakeholders",
+    "matrixed",
+    "buying committee",
+    "complex sales",
+    "complex deals",
+    "enterprise sales",
+    "long sales cycle"
+   ]
+  },
+  "negotiation": {
+   "family": "sales",
+   "label": "Negotiation & Deal Structuring",
+   "synonyms": [
+    "negotiation",
+    "negotiate",
+    "deal structuring",
+    "deal structure",
+    "contract",
+    "commercial terms",
+    "pricing negotiation",
+    "procurement"
+   ]
+  },
+  "new-business": {
+   "family": "sales",
+   "label": "New Business Development",
+   "synonyms": [
+    "new business",
+    "new logo",
+    "net-new",
+    "net new",
+    "hunter",
+    "business development"
+   ]
+  },
+  "outbound-sequencing": {
+   "family": "sales",
+   "label": "Outbound & Sequencing",
+   "synonyms": [
+    "sequences",
+    "cadences",
+    "email sequences",
+    "outreach.io",
+    "salesloft"
+   ]
+  },
+  "proof-of-value": {
+   "family": "sales",
+   "label": "POC / Proof of Value",
+   "synonyms": [
+    "proof of concept",
+    "poc",
+    "proof of value",
+    "pov",
+    "pilot",
+    "trial"
+   ]
+  },
+  "proposal-development": {
+   "family": "sales",
+   "label": "Proposal Development",
+   "synonyms": [
+    "proposal",
+    "proposals",
+    "business case",
+    "pitch",
+    "presentation",
+    "deck",
+    "sow",
+    "statement of work"
+   ]
+  },
+  "prospecting": {
+   "family": "sales",
+   "label": "Prospecting & Outbound",
+   "synonyms": [
+    "prospecting",
+    "outbound",
+    "cold outreach",
+    "cold calling",
+    "lead generation",
+    "top of funnel",
+    "sourcing",
+    "sdr",
+    "bdr",
+    "zoominfo",
+    "sales navigator",
+    "apollo",
+    "apollo.io"
+   ]
+  },
+  "qualification": {
+   "family": "sales",
+   "label": "Qualification",
+   "synonyms": [
+    "qualification",
+    "qualify",
+    "qualified",
+    "meddic",
+    "bant",
+    "budget authority",
+    "sql",
+    "sales qualified"
+   ]
+  },
+  "quota-attainment": {
+   "family": "sales",
+   "label": "Quota Attainment",
+   "synonyms": [
+    "quota",
+    "attainment",
+    "exceed target",
+    "over-achievement",
+    "president's club",
+    "revenue target",
+    "annual revenue",
+    "bookings",
+    "arr"
+   ]
+  },
+  "rfp-response": {
+   "family": "sales",
+   "label": "RFP Response",
+   "synonyms": [
+    "rfp",
+    "rfi",
+    "request for proposal",
+    "tender",
+    "bid"
+   ]
+  },
+  "sdr-management": {
+   "family": "sales",
+   "label": "SDR Team Management",
+   "synonyms": [
+    "sdrs",
+    "bdrs",
+    "sales development",
+    "sdr team",
+    "meetings booked",
+    "qualified meetings"
+   ]
+  },
+  "competitive-analysis": {
+   "family": "strategy",
+   "label": "Competitive Analysis",
+   "synonyms": [
+    "competitive",
+    "competitor",
+    "competitive analysis",
+    "competitive intelligence",
+    "battlecard",
+    "battle card",
+    "landscape",
+    "moat",
+    "barriers to entry"
+   ]
+  },
+  "executive-advisory": {
+   "family": "strategy",
+   "label": "Executive & Board Advisory",
+   "synonyms": [
+    "advisory",
+    "advisor",
+    "board",
+    "board of directors",
+    "executive advisor",
+    "strategic advisor",
+    "fractional",
+    "advise founders",
+    "board updates"
+   ]
+  },
+  "market-sizing": {
+   "family": "strategy",
+   "label": "Market Sizing & Category Analysis",
+   "synonyms": [
+    "market sizing",
+    "tam",
+    "sam",
+    "som",
+    "market size",
+    "category",
+    "cagr",
+    "market analysis",
+    "opportunity assessment"
+   ]
+  },
+  "scenario-planning": {
+   "family": "strategy",
+   "label": "Scenario & Decision-Tree Planning",
+   "synonyms": [
+    "scenario",
+    "scenario planning",
+    "decision tree",
+    "options analysis",
+    "risk assessment",
+    "second-order",
+    "base rates",
+    "probability"
+   ]
+  }
+ }
+}

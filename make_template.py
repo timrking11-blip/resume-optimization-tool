@@ -69,6 +69,12 @@ def build(src, layout):
 
     numbering = part("word/numbering.xml")
     abstract_of = dict(re.findall(r'<w:num w:numId="(\d+)"[^>]*>\s*<w:abstractNumId w:val="(\d+)"/>', numbering))
+    for key, nid in list(nums.items()):          # a source that lacks a list falls back to its first one
+        if nid not in abstract_of:
+            nums[key] = next(iter(abstract_of))
+    # colours and line alignment come from the layout; the defaults are the source template's own
+    palette = {"accent": "1F3864", "muted": "444444", "rule": "999999", "context": "808080", "cert_note": "404040", **(layout.get("theme") or {})}
+    jc_line = '<w:jc w:val="center"/>' if (layout.get("style") or {}).get("center_lines", True) else ""
     indents = {}
     for key, nid in nums.items():
         a = re.search(r'<w:abstractNum [^>]*w:abstractNumId="%s".*?</w:abstractNum>' % abstract_of[nid], numbering, re.S).group(0)
@@ -119,17 +125,17 @@ def build(src, layout):
 
     # ---- paragraph definitions (pPr), values from the source's paragraphs; spacing in twips
     npr = lambda key: f'<w:numPr><w:ilvl w:val="0"/><w:numId w:val="{nums[key]}"/></w:numPr>'
-    rule = '<w:pBdr><w:bottom w:val="single" w:sz="6" w:space="2" w:color="999999"/></w:pBdr>'
+    rule = f'<w:pBdr><w:bottom w:val="single" w:sz="6" w:space="2" w:color="{palette["rule"]}"/></w:pBdr>'
     date_tab = f'<w:tabs><w:tab w:val="right" w:pos="{content_w}"/></w:tabs>'
     ppr = {
         "name": '<w:pPr><w:spacing w:after="40"/><w:jc w:val="center"/></w:pPr>',
         "contact": '<w:pPr><w:spacing w:after="200"/><w:jc w:val="center"/></w:pPr>',
         "heading": f'<w:pPr><w:pStyle w:val="Heading1"/><w:keepNext/>{rule}<w:spacing w:before="240" w:after="100"/></w:pPr>',
         "summary": '<w:pPr><w:spacing w:after="100"/><w:jc w:val="both"/></w:pPr>',
-        "tagline": '<w:pPr><w:spacing w:after="100"/><w:jc w:val="center"/></w:pPr>',
-        "expertise": '<w:pPr><w:spacing w:after="100"/><w:jc w:val="center"/></w:pPr>',
-        "tech_label": '<w:pPr><w:keepNext/><w:jc w:val="center"/></w:pPr>',
-        "tech_line": '<w:pPr><w:jc w:val="center"/></w:pPr>',
+        "tagline": f'<w:pPr><w:spacing w:after="100"/>{jc_line}</w:pPr>',
+        "expertise": f'<w:pPr><w:spacing w:after="100"/>{jc_line}</w:pPr>',
+        "tech_label": f'<w:pPr><w:keepNext/>{jc_line}</w:pPr>',
+        "tech_line": f'<w:pPr>{jc_line}</w:pPr>',
         "school": '<w:pPr><w:keepNext/><w:spacing w:after="20"/></w:pPr>',
         "degree": '<w:pPr><w:spacing w:after="100"/></w:pPr>',
         "role_header": f'<w:pPr><w:keepNext/>{date_tab}</w:pPr>',
@@ -146,9 +152,9 @@ def build(src, layout):
     # run styles: rPr is composed in schema order (rStyle, rFonts, b, i, color, sz, u) by both renderers
     styles = {
         "plain": {}, "bold": {"b": 1}, "italic": {"i": 1}, "bold_italic": {"b": 1, "i": 1}, "bold_u": {"b": 1, "u": 1},
-        "name": {"b": 1, "color": "1F3864"}, "contact": {"color": "444444"}, "link": {"link": 1},
-        "heading": {"b": 1, "color": "1F3864", "sz": 20}, "degree": {"i": 1, "color": "444444"},
-        "context": {"color": "808080", "sz": 16}, "cert_note": {"i": 1, "color": "404040"},
+        "name": {"b": 1, "color": palette["accent"]}, "contact": {"color": palette["muted"]}, "link": {"link": 1},
+        "heading": {"b": 1, "color": palette["accent"], "sz": 20}, "degree": {"i": 1, "color": palette["muted"]},
+        "context": {"color": palette["context"], "sz": 16}, "cert_note": {"i": 1, "color": palette["cert_note"]},
     }
     # spacing and line rules restated for the HTML and jsPDF renderers (points; line = multiple of single spacing)
     tw = lambda v: round(v / 20, 2)
@@ -163,8 +169,8 @@ def build(src, layout):
         "line": {"context": 276 / 240, "list": 250 / 240},
         "indent": {k: {"left": tw(v["left"]), "hanging": tw(v["hanging"]), "glyph": v["glyph"] if len(v["glyph"]) == 1 and ord(v["glyph"]) < 0xF000 else "•"}
                    for k, v in indents.items()},
-        "colors": {"navy": "#1F3864", "contact": "#444444", "rule": "#999999", "context": "#808080", "degree": "#444444",
-                   "cert_note": "#404040", "ink": "#000000"},
+        "colors": {"navy": "#" + palette["accent"], "contact": "#" + palette["muted"], "rule": "#" + palette["rule"], "context": "#" + palette["context"],
+                   "degree": "#" + palette["muted"], "cert_note": "#" + palette["cert_note"], "ink": "#000000"},
         "context_size": 8,
     }
     return {

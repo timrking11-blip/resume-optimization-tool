@@ -1,0 +1,234 @@
+{
+ "schema": "rot-docx-template/1",
+ "source": {
+  "file": "neutral_template.docx",
+  "md5": "ad77ae5c4aa8e06dea91e5d39bcee839",
+  "made_at": "2026-09-28T04:39:00"
+ },
+ "parts": {
+  "[Content_Types].xml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<Types xmlns=\"http://schemas.openxmlformats.org/package/2006/content-types\"><Default Extension=\"rels\" ContentType=\"application/vnd.openxmlformats-package.relationships+xml\"/><Default Extension=\"xml\" ContentType=\"application/xml\"/><Override PartName=\"/word/document.xml\" ContentType=\"application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml\"/><Override PartName=\"/word/styles.xml\" ContentType=\"application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml\"/><Override PartName=\"/word/numbering.xml\" ContentType=\"application/vnd.openxmlformats-officedocument.wordprocessingml.numbering+xml\"/><Override PartName=\"/word/settings.xml\" ContentType=\"application/vnd.openxmlformats-officedocument.wordprocessingml.settings+xml\"/><Override PartName=\"/word/webSettings.xml\" ContentType=\"application/vnd.openxmlformats-officedocument.wordprocessingml.webSettings+xml\"/><Override PartName=\"/word/fontTable.xml\" ContentType=\"application/vnd.openxmlformats-officedocument.wordprocessingml.fontTable+xml\"/><Override PartName=\"/word/theme/theme1.xml\" ContentType=\"application/vnd.openxmlformats-officedocument.theme+xml\"/><Override PartName=\"/docProps/core.xml\" ContentType=\"application/vnd.openxmlformats-package.core-properties+xml\"/><Override PartName=\"/docProps/app.xml\" ContentType=\"application/vnd.openxmlformats-officedocument.extended-properties+xml\"/></Types>",
+  "_rels/.rels": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<Relationships xmlns=\"http://schemas.openxmlformats.org/package/2006/relationships\"><Relationship Id=\"rId1\" Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument\" Target=\"word/document.xml\"/><Relationship Id=\"rId2\" Type=\"http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties\" Target=\"docProps/core.xml\"/><Relationship Id=\"rId3\" Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/extended-properties\" Target=\"docProps/app.xml\"/></Relationships>",
+  "word/styles.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<w:styles xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\"><w:docDefaults><w:rPrDefault><w:rPr><w:rFonts w:asciiTheme=\"majorHAnsi\" w:hAnsiTheme=\"majorHAnsi\" w:cstheme=\"majorHAnsi\"/><w:sz w:val=\"20\"/><w:szCs w:val=\"20\"/></w:rPr></w:rPrDefault><w:pPrDefault><w:pPr><w:spacing w:after=\"60\" w:line=\"240\" w:lineRule=\"auto\"/></w:pPr></w:pPrDefault></w:docDefaults><w:style w:type=\"paragraph\" w:default=\"1\" w:styleId=\"Normal\"><w:name w:val=\"Normal\"/></w:style><w:style w:type=\"paragraph\" w:styleId=\"Title\"><w:name w:val=\"Title\"/><w:basedOn w:val=\"Normal\"/><w:pPr><w:jc w:val=\"center\"/></w:pPr><w:rPr><w:b/><w:sz w:val=\"32\"/></w:rPr></w:style><w:style w:type=\"paragraph\" w:styleId=\"Heading1\"><w:name w:val=\"heading 1\"/><w:basedOn w:val=\"Normal\"/><w:next w:val=\"Normal\"/><w:pPr><w:keepNext/><w:spacing w:before=\"240\" w:after=\"100\"/><w:outlineLvl w:val=\"0\"/></w:pPr><w:rPr><w:b/><w:sz w:val=\"20\"/></w:rPr></w:style><w:style w:type=\"paragraph\" w:styleId=\"ListParagraph\"><w:name w:val=\"List Paragraph\"/><w:basedOn w:val=\"Normal\"/><w:pPr><w:ind w:left=\"360\"/><w:contextualSpacing/></w:pPr></w:style><w:style w:type=\"character\" w:styleId=\"Hyperlink\"><w:name w:val=\"Hyperlink\"/><w:rPr><w:color w:val=\"0563C1\"/><w:u w:val=\"single\"/></w:rPr></w:style></w:styles>",
+  "word/numbering.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<w:numbering xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\"><w:abstractNum w:abstractNumId=\"0\"><w:multiLevelType w:val=\"hybridMultilevel\"/><w:lvl w:ilvl=\"0\"><w:start w:val=\"1\"/><w:numFmt w:val=\"bullet\"/><w:lvlText w:val=\"•\"/><w:lvlJc w:val=\"left\"/><w:pPr><w:ind w:left=\"360\" w:hanging=\"360\"/></w:pPr></w:lvl></w:abstractNum><w:abstractNum w:abstractNumId=\"1\"><w:multiLevelType w:val=\"hybridMultilevel\"/><w:lvl w:ilvl=\"0\"><w:start w:val=\"1\"/><w:numFmt w:val=\"bullet\"/><w:lvlText w:val=\"•\"/><w:lvlJc w:val=\"left\"/><w:pPr><w:ind w:left=\"360\" w:hanging=\"360\"/></w:pPr></w:lvl></w:abstractNum><w:abstractNum w:abstractNumId=\"2\"><w:multiLevelType w:val=\"hybridMultilevel\"/><w:lvl w:ilvl=\"0\"><w:start w:val=\"1\"/><w:numFmt w:val=\"bullet\"/><w:lvlText w:val=\"•\"/><w:lvlJc w:val=\"left\"/><w:pPr><w:ind w:left=\"360\" w:hanging=\"360\"/></w:pPr></w:lvl></w:abstractNum><w:num w:numId=\"1\"><w:abstractNumId w:val=\"0\"/></w:num><w:num w:numId=\"2\"><w:abstractNumId w:val=\"1\"/></w:num><w:num w:numId=\"5\"><w:abstractNumId w:val=\"2\"/></w:num></w:numbering>",
+  "word/settings.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<w:settings xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\"><w:defaultTabStop w:val=\"720\"/><w:characterSpacingControl w:val=\"doNotCompress\"/><w:compat><w:compatSetting w:name=\"compatibilityMode\" w:uri=\"http://schemas.microsoft.com/office/word\" w:val=\"15\"/></w:compat></w:settings>",
+  "word/webSettings.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<w:webSettings xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\"><w:optimizeForBrowser/><w:allowPNG/></w:webSettings>",
+  "word/fontTable.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<w:fonts xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\"><w:font w:name=\"Calibri\"><w:panose1 w:val=\"020F0502020204030204\"/><w:charset w:val=\"00\"/><w:family w:val=\"swiss\"/><w:pitch w:val=\"variable\"/></w:font><w:font w:name=\"Symbol\"><w:panose1 w:val=\"05050102010706020507\"/><w:charset w:val=\"02\"/><w:family w:val=\"roman\"/><w:pitch w:val=\"variable\"/></w:font></w:fonts>",
+  "word/theme/theme1.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<a:theme xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\" name=\"Neutral\"><a:themeElements><a:clrScheme name=\"Neutral\"><a:dk1><a:sysClr val=\"windowText\" lastClr=\"000000\"/></a:dk1><a:lt1><a:sysClr val=\"window\" lastClr=\"FFFFFF\"/></a:lt1><a:dk2><a:srgbClr val=\"44546A\"/></a:dk2><a:lt2><a:srgbClr val=\"E7E6E6\"/></a:lt2><a:accent1><a:srgbClr val=\"4472C4\"/></a:accent1><a:accent2><a:srgbClr val=\"ED7D31\"/></a:accent2><a:accent3><a:srgbClr val=\"A5A5A5\"/></a:accent3><a:accent4><a:srgbClr val=\"FFC000\"/></a:accent4><a:accent5><a:srgbClr val=\"5B9BD5\"/></a:accent5><a:accent6><a:srgbClr val=\"70AD47\"/></a:accent6><a:hlink><a:srgbClr val=\"0563C1\"/></a:hlink><a:folHlink><a:srgbClr val=\"954F72\"/></a:folHlink></a:clrScheme><a:fontScheme name=\"Neutral\"><a:majorFont><a:latin typeface=\"Calibri\"/><a:ea typeface=\"\"/><a:cs typeface=\"\"/></a:majorFont><a:minorFont><a:latin typeface=\"Calibri\"/><a:ea typeface=\"\"/><a:cs typeface=\"\"/></a:minorFont></a:fontScheme><a:fmtScheme name=\"Neutral\"><a:fillStyleLst><a:solidFill><a:schemeClr val=\"phClr\"/></a:solidFill><a:solidFill><a:schemeClr val=\"phClr\"/></a:solidFill><a:solidFill><a:schemeClr val=\"phClr\"/></a:solidFill></a:fillStyleLst><a:lnStyleLst><a:ln w=\"6350\"><a:solidFill><a:schemeClr val=\"phClr\"/></a:solidFill></a:ln><a:ln w=\"12700\"><a:solidFill><a:schemeClr val=\"phClr\"/></a:solidFill></a:ln><a:ln w=\"19050\"><a:solidFill><a:schemeClr val=\"phClr\"/></a:solidFill></a:ln></a:lnStyleLst><a:effectStyleLst><a:effectStyle><a:effectLst/></a:effectStyle><a:effectStyle><a:effectLst/></a:effectStyle><a:effectStyle><a:effectLst/></a:effectStyle></a:effectStyleLst><a:bgFillStyleLst><a:solidFill><a:schemeClr val=\"phClr\"/></a:solidFill><a:solidFill><a:schemeClr val=\"phClr\"/></a:solidFill><a:solidFill><a:schemeClr val=\"phClr\"/></a:solidFill></a:bgFillStyleLst></a:fmtScheme></a:themeElements><a:objectDefaults/><a:extraClrSchemeLst/></a:theme>",
+  "docProps/app.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<Properties xmlns=\"http://schemas.openxmlformats.org/officeDocument/2006/extended-properties\" xmlns:vt=\"http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes\"><Template>Normal</Template><Application>Resume Optimization Tool</Application><DocSecurity>0</DocSecurity><ScaleCrop>false</ScaleCrop><LinksUpToDate>false</LinksUpToDate><SharedDoc>false</SharedDoc><HyperlinksChanged>false</HyperlinksChanged><AppVersion>16.0000</AppVersion></Properties>"
+ },
+ "core_xml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<cp:coreProperties xmlns:cp=\"http://schemas.openxmlformats.org/package/2006/metadata/core-properties\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:dcmitype=\"http://purl.org/dc/dcmitype/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><dc:title>{title}</dc:title><dc:creator>{author}</dc:creator><cp:lastModifiedBy>{author}</cp:lastModifiedBy><dcterms:created xsi:type=\"dcterms:W3CDTF\">{stamp}</dcterms:created><dcterms:modified xsi:type=\"dcterms:W3CDTF\">{stamp}</dcterms:modified></cp:coreProperties>",
+ "doc_open": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<w:document xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\"><w:body>",
+ "doc_close": "<w:sectPr><w:pgSz w:w=\"12240\" w:h=\"15840\"/><w:pgMar w:top=\"1008\" w:right=\"1008\" w:bottom=\"1008\" w:left=\"1008\" w:header=\"708\" w:footer=\"708\" w:gutter=\"0\"/><w:cols w:space=\"708\"/><w:docGrid w:linePitch=\"360\"/></w:sectPr></w:body></w:document>",
+ "rels_open": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<Relationships xmlns=\"http://schemas.openxmlformats.org/package/2006/relationships\">",
+ "rels_base": [
+  "<Relationship Id=\"rId1\" Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles\" Target=\"styles.xml\"/>",
+  "<Relationship Id=\"rId2\" Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/numbering\" Target=\"numbering.xml\"/>",
+  "<Relationship Id=\"rId3\" Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/settings\" Target=\"settings.xml\"/>",
+  "<Relationship Id=\"rId4\" Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/webSettings\" Target=\"webSettings.xml\"/>",
+  "<Relationship Id=\"rId5\" Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/fontTable\" Target=\"fontTable.xml\"/>",
+  "<Relationship Id=\"rId6\" Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/theme\" Target=\"theme/theme1.xml\"/>"
+ ],
+ "rel_hyperlink": "<Relationship Id=\"{id}\" Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink\" Target=\"{url}\" TargetMode=\"External\"/>",
+ "rels_close": "</Relationships>",
+ "ppr": {
+  "name": "<w:pPr><w:spacing w:after=\"40\"/><w:jc w:val=\"center\"/></w:pPr>",
+  "contact": "<w:pPr><w:spacing w:after=\"200\"/><w:jc w:val=\"center\"/></w:pPr>",
+  "heading": "<w:pPr><w:pStyle w:val=\"Heading1\"/><w:keepNext/><w:pBdr><w:bottom w:val=\"single\" w:sz=\"6\" w:space=\"2\" w:color=\"9A9A9A\"/></w:pBdr><w:spacing w:before=\"240\" w:after=\"100\"/></w:pPr>",
+  "summary": "<w:pPr><w:spacing w:after=\"100\"/><w:jc w:val=\"both\"/></w:pPr>",
+  "tagline": "<w:pPr><w:spacing w:after=\"100\"/></w:pPr>",
+  "expertise": "<w:pPr><w:spacing w:after=\"100\"/></w:pPr>",
+  "tech_label": "<w:pPr><w:keepNext/></w:pPr>",
+  "tech_line": "<w:pPr></w:pPr>",
+  "school": "<w:pPr><w:keepNext/><w:spacing w:after=\"20\"/></w:pPr>",
+  "degree": "<w:pPr><w:spacing w:after=\"100\"/></w:pPr>",
+  "role_header": "<w:pPr><w:keepNext/><w:tabs><w:tab w:val=\"right\" w:pos=\"10224\"/></w:tabs></w:pPr>",
+  "role_context": "<w:pPr><w:keepNext/><w:spacing w:after=\"100\" w:line=\"276\" w:lineRule=\"auto\"/></w:pPr>",
+  "bullet": "<w:pPr><w:pStyle w:val=\"ListParagraph\"/><w:numPr><w:ilvl w:val=\"0\"/><w:numId w:val=\"1\"/></w:numPr><w:spacing w:after=\"80\"/></w:pPr>",
+  "bullet_last": "<w:pPr><w:pStyle w:val=\"ListParagraph\"/><w:numPr><w:ilvl w:val=\"0\"/><w:numId w:val=\"1\"/></w:numPr><w:spacing w:after=\"240\"/></w:pPr>",
+  "cert": "<w:pPr><w:numPr><w:ilvl w:val=\"0\"/><w:numId w:val=\"2\"/></w:numPr><w:spacing w:after=\"40\" w:line=\"250\" w:lineRule=\"auto\"/></w:pPr>",
+  "eng_header": "<w:pPr><w:keepNext/><w:spacing w:after=\"80\"/></w:pPr>",
+  "eng_subtitle": "<w:pPr><w:keepNext/><w:spacing w:after=\"80\"/></w:pPr>",
+  "eng_bullet": "<w:pPr><w:pStyle w:val=\"ListParagraph\"/><w:numPr><w:ilvl w:val=\"0\"/><w:numId w:val=\"5\"/></w:numPr><w:spacing w:after=\"40\" w:line=\"250\" w:lineRule=\"auto\"/><w:contextualSpacing w:val=\"0\"/></w:pPr>",
+  "eng_bullet_last": "<w:pPr><w:pStyle w:val=\"ListParagraph\"/><w:numPr><w:ilvl w:val=\"0\"/><w:numId w:val=\"5\"/></w:numPr><w:spacing w:after=\"160\" w:line=\"250\" w:lineRule=\"auto\"/><w:contextualSpacing w:val=\"0\"/></w:pPr>",
+  "comp": "<w:pPr><w:pStyle w:val=\"ListParagraph\"/><w:numPr><w:ilvl w:val=\"0\"/><w:numId w:val=\"2\"/></w:numPr><w:spacing w:after=\"70\" w:line=\"250\" w:lineRule=\"auto\"/></w:pPr>"
+ },
+ "styles": {
+  "plain": {},
+  "bold": {
+   "b": 1
+  },
+  "italic": {
+   "i": 1
+  },
+  "bold_italic": {
+   "b": 1,
+   "i": 1
+  },
+  "bold_u": {
+   "b": 1,
+   "u": 1
+  },
+  "name": {
+   "b": 1,
+   "color": "1F1F1F"
+  },
+  "contact": {
+   "color": "444444"
+  },
+  "link": {
+   "link": 1
+  },
+  "heading": {
+   "b": 1,
+   "color": "1F1F1F",
+   "sz": 20
+  },
+  "degree": {
+   "i": 1,
+   "color": "444444"
+  },
+  "context": {
+   "color": "6B6B6B",
+   "sz": 16
+  },
+  "cert_note": {
+   "i": 1,
+   "color": "404040"
+  }
+ },
+ "metrics": {
+  "font": "Calibri",
+  "fallback_font": "Carlito",
+  "size": 10,
+  "single": 1.2207,
+  "ascent": 0.9521,
+  "hyperlink": "#0563C1",
+  "page": {
+   "width": 612.0,
+   "height": 792.0,
+   "top": 50.4,
+   "bottom": 50.4,
+   "left": 50.4,
+   "right": 50.4
+  },
+  "space": {
+   "name": 2.0,
+   "contact": 10.0,
+   "heading_before": 12.0,
+   "heading_after": 5.0,
+   "rule_gap": 2,
+   "rule_width": 0.75,
+   "tagline": 5.0,
+   "school": 1.0,
+   "degree": 5.0,
+   "context": 5.0,
+   "bullet_last": 12.0,
+   "cert": 2.0,
+   "eng_header": 4.0,
+   "eng_subtitle": 4.0,
+   "eng_bullet": 2.0,
+   "eng_bullet_last": 8.0
+  },
+  "line": {
+   "context": 1.15,
+   "list": 1.0416666666666667
+  },
+  "indent": {
+   "experience": {
+    "left": 18.0,
+    "hanging": 18.0,
+    "glyph": "•"
+   },
+   "certs": {
+    "left": 18.0,
+    "hanging": 18.0,
+    "glyph": "•"
+   },
+   "engagements": {
+    "left": 18.0,
+    "hanging": 18.0,
+    "glyph": "•"
+   },
+   "competencies": {
+    "left": 18.0,
+    "hanging": 18.0,
+    "glyph": "•"
+   }
+  },
+  "colors": {
+   "navy": "#1F1F1F",
+   "contact": "#444444",
+   "rule": "#9A9A9A",
+   "context": "#6B6B6B",
+   "degree": "#444444",
+   "cert_note": "#404040",
+   "ink": "#000000"
+  },
+  "context_size": 8
+ },
+ "numbering": {
+  "experience": "1",
+  "certs": "2",
+  "engagements": "5",
+  "competencies": "2"
+ },
+ "layout": {
+  "schema": "rot-layout/1",
+  "id": "neutral-1",
+  "sections": [
+   {
+    "kind": "header"
+   },
+   {
+    "kind": "lines",
+    "heading": "Summary",
+    "blocks": [
+     "summary"
+    ]
+   },
+   {
+    "kind": "lines",
+    "heading": "Skills",
+    "blocks": [
+     "expertise",
+     "technologies"
+    ]
+   },
+   {
+    "kind": "experience",
+    "heading": "Experience"
+   },
+   {
+    "kind": "engagements",
+    "heading": "Consulting & Advisory"
+   },
+   {
+    "kind": "education",
+    "heading": "Education"
+   },
+   {
+    "kind": "certifications",
+    "heading": "Certifications"
+   }
+  ],
+  "labels": {
+   "technologies": "Tools"
+  },
+  "joins": {
+   "tagline": " | ",
+   "expertise": " • ",
+   "technologies": ", ",
+   "core": ", "
+  },
+  "theme": {
+   "accent": "1F1F1F",
+   "muted": "444444",
+   "rule": "9A9A9A",
+   "context": "6B6B6B",
+   "cert_note": "404040"
+  },
+  "style": {
+   "center_lines": false
+  }
+ }
+}

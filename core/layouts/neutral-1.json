@@ -1,0 +1,18 @@
+{
+  "schema": "rot-layout/1",
+  "id": "neutral-1",
+  "_about": "Career Companion Hub's neutral, ATS-safe layout: single column, standard headings, a Summary only when one is written, one Skills line plus a Tools line, Experience, Consulting & Advisory only when present, Education, Certifications. Built into hub/template/docx_template.json by make_template.py --layout; the theme keys colour the run styles and the heading rule, and style.center_lines=false keeps the Skills and Tools lines left-aligned.",
+  "sections": [
+    {"kind": "header"},
+    {"kind": "lines", "heading": "Summary", "blocks": ["summary"]},
+    {"kind": "lines", "heading": "Skills", "blocks": ["expertise", "technologies"]},
+    {"kind": "experience", "heading": "Experience"},
+    {"kind": "engagements", "heading": "Consulting & Advisory"},
+    {"kind": "education", "heading": "Education"},
+    {"kind": "certifications", "heading": "Certifications"}
+  ],
+  "labels": {"technologies": "Tools"},
+  "joins": {"tagline": " | ", "expertise": " • ", "technologies": ", ", "core": ", "},
+  "theme": {"accent": "1F1F1F", "muted": "444444", "rule": "9A9A9A", "context": "6B6B6B", "cert_note": "404040"},
+  "style": {"center_lines": false}
+}
