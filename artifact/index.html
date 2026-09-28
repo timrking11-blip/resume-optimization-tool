@@ -362,8 +362,11 @@ const S = {
 
 /* The engine (core/rot_core.js) holds matching, selection, Section C, the resume model, placement and the question drafts.
    These wrappers keep the page's names: each passes S as the draft, and DESK_SETTINGS carries this resume's own role keys and tag ids. */
-const DESK_SETTINGS = { default_engagement_role:"hc_ai_strategy", fallback_role:"psp", education_claim_default:"edu:umaine:degree", template_id:"source-2026-09",
-  questions:{ consulting:[["board-advisory",1],["feasibility-roadmap",1],["managed-services-sales",0.5]], consulting_regex:"\\b(consult|advisory|advisor|client engagement|engagements)\\b", engagement_tag:"board-advisory" } };
+const DESK_SETTINGS = { default_engagement_role:"hc_ai_strategy", fallback_role:"psp", education_claim_default:"edu:umaine:degree", template_id:"source-2026-09", edition:"desk",
+  questions:{ consulting:[["board-advisory",1],["feasibility-roadmap",1],["managed-services-sales",0.5]], consulting_regex:"\\b(consult|advisory|advisor|client engagement|engagements)\\b", engagement_tag:"board-advisory" },
+  prompts:{ persona:{name:"Tim King", first:"Tim", subject:"he", possessive:"his", possessive_cap:"His", standard_label:"Resume 1"},
+    bullet_example:{place:"r:hc_ai_strategy", text:"Built a custom CRM with automated weekly enrichment syncs and research agents feeding a two-way GitHub-synced workflow.", tags:["crm-discipline","building-with-ai"]},
+    entry_example:{text:"Salesforce Apex (basic)", tags:["crm-discipline"]} } };
 const E = RotCore.createEngine({ get bank(){ return S.lib; }, get settings(){ return DESK_SETTINGS; } });
 function extractRequirements(text){ return E.extractRequirements(text); }
 const claimById = id => E.claimById(id);
@@ -590,7 +593,7 @@ function resetPosting(){ Object.assign(S,{excluded:new Set(), pinned:new Set(), 
   summaryOn:false, summary:null, summaryClaims:[], outcome:null, outcomeEvents:[],
   sectionEdits:{}, engDetails:{}, editsC:{}, excludedC:new Set(), extra:{tagline:[],expertise:[],technology:[],competency:[]}, questions:[], newAch:[]}); $("#sumToggle").checked=false; renderOutcome(); }
 /* Prompt versions travel with every run (tier 3), so a later review can tell which wording produced which line. Bump when a prompt changes. */
-const PROMPT_VERSIONS={tailor:"tailor@6", bullets:"bullets@6", tighten:"tighten@2", summary:"summary@1"};
+const PROMPT_VERSIONS=E.prompts.VERSIONS;
 
 async function doMatch(){
   const jd=$("#jd").value.trim();
@@ -621,82 +624,18 @@ async function claudeTailor(){
   $("#qStatus").innerHTML=`<span class="spin" aria-hidden="true"></span> Drafting questions…`; $("#quickQBtn").hidden=false;
   $("#stop1").onclick=()=>S.ctl1?.abort();
   const ctl=S.ctl1=new AbortController();
-  const L=S.lib, taxo=Object.entries(L.tags).map(([id,t])=>`${id}: ${t.label}`).join("\n");
-  const roleList=L.roles.map(r=>`${r.key}: ${r.title} | ${r.employer} | ${r.dates}`).join("\n");
-  const engList=(L.engagements||[]).map(engState).map(e=>`${e.key}: ${e.client} | ${e.needs_details?"NEEDS DETAILS (not shown until dates and a description are given)":`${e.dates||""} | ${e.subtitle||""}`}`).join("\n");
-  const tools=unknownTools(S.jd);
-  const prompt=`You are tailoring Tim King's resume to one job description. His template has no summary paragraph: a tagline line (Section A) and an areas-of-expertise line (Section B) carry the positioning. Use ONLY facts present in the candidate library and draft below. Never invent employers, titles, numbers, tools, or outcomes.
-
-JOB DESCRIPTION:
-<<<
-${S.jd.slice(0,12000)}
->>>
-
-TAG TAXONOMY (id: label):
-${taxo}
-
-DETERMINISTIC REQUIREMENT MAP (tag id: weight 0-3):
-${Object.entries(S.req).map(([t,r])=>`${t}: ${r.weight}`).join("\n")||"(none)"}
-
-ROLES (key: title | employer | dates):
-${roleList}
-
-CONSULTING ENGAGEMENTS (Section C; key: client | status):
-${engList||"(none)"}
-
-CURRENT DRAFT BULLETS:
-${draftDigest()}
-
-FULL LIBRARY (achievement id | role | canonical bullet):
-${libraryDigest()}
-
-TAGLINE OPTIONS (Section A, exact text):
-${(L.tagline_phrases||[]).map(p=>p.text).join(" | ")}
-
-EXPERTISE OPTIONS (Section B, choose only from these, exact text):
-${L.competencies.map(c=>c.text).join(" | ")}
-
-TECHNOLOGIES ALREADY LISTED: ${L.technologies.map(t=>t.name).join(", ")}
-TOOLS THE POSTING NAMES THAT ARE NOT LISTED: ${tools.join(", ")||"(none detected)"}
-
-Reply with ONLY one JSON object:
-{"company": string|null, "title": string|null,
- "requirements": [{"tag": "<tag id from taxonomy>", "weight": <0.5 to 3, 3 = must-have>, "why": "<short evidence from the posting>"}],
- "uncatalogued": [{"phrase": "<requirement no tag covers>", "weight": <1-3>}],
- "tagline": ["<4 to 7 phrases in print order, most relevant to this posting first: exact TAGLINE OPTIONS, plus at most 2 new phrases of 60 characters or fewer that the library clearly supports>"],
- "expertise_order": ["<up to 16 exact EXPERTISE OPTIONS, most relevant first>"],
- "followups": [{"question": "...", "why": "<which requirement this proves and why it matters>", "tag": "<tag id>", "section": "experience"|"engagement"|"technology"|"tagline"|"expertise", "role": "<role key, for experience>", "engagement": "<engagement key, for engagement>", "hint": "<what a strong answer includes>"}]}
-Requirements: return up to 20 tags with your corrected importance. Followups: exactly 5, one concrete question each, no compound questions.
-- Most should be "experience": target the highest-weight requirements the draft proves weakly or not at all, or implied experience Tim likely has but hasn't stated (quota %, team size, deal size, cycle length).
-- If the posting values consulting or advisory work and an engagement NEEDS DETAILS, make one "engagement" question for it (it asks for dates, how to name the client, a one-line description, and what else he delivered).
-- If the posting names tools that are not listed, make one "technology" question naming them.
-- Use "tagline" or "expertise" only when the posting stresses an identity or a strength no option covers.
-Address Tim directly in second person ("you", "your"), never "Tim" or "he". Don't ask about anything already well evidenced.`;
+  const prompt=E.prompts.tailor(S);
   try{
     const r = await S.sample.json(prompt, {signal:ctl.signal, modelTier:"default"});
     if(ctl.signal.aborted) return;
     if(r && typeof r==="object"){
-      if(r.company && !$("#company").value) $("#company").value=String(r.company).slice(0,80);
-      if(r.title && !$("#role").value) $("#role").value=String(r.title).slice(0,120);
-      for(const q of (Array.isArray(r.requirements)?r.requirements:[])){
-        const t=String(q.tag||""), w=Math.max(0.5,Math.min(3,+q.weight||0));
-        if(!L.tags[t]||!w) continue;
-        S.req[t] = S.req[t] ? {...S.req[t], weight:Math.round(Math.max(S.req[t].weight,w)*100)/100} : {weight:w, phrases:[String(q.why||"").slice(0,40)].filter(Boolean)};
-      }
-      S.uncatalogued=(Array.isArray(r.uncatalogued)?r.uncatalogued:[]).filter(u=>u&&u.phrase).slice(0,8).map(u=>({phrase:String(u.phrase).slice(0,80), weight:+u.weight||1}));
-      const opts=new Set((L.tagline_phrases||[]).map(p=>p.text)); let fresh=0;
-      const tl=(Array.isArray(r.tagline)?r.tagline:[]).map(x=>String(x||"").trim()).filter(x=>x && (opts.has(x) || (x.length<=60 && !/\b(I|my|we)\b/.test(x) && fresh++<2)));
-      if(tl.length>=4) S.tagline=uniq(tl).slice(0,7);
-      const eopts=new Set(L.competencies.map(c=>c.text)); const co=(r.expertise_order||r.competency_order||[]).filter(c=>eopts.has(c));
-      if(co.length>=6) S.compOrder=co;
-      const SECS=new Set(["experience","engagement","technology","tagline","expertise"]);
-      const qs=(Array.isArray(r.followups)?r.followups:[]).filter(q=>q&&q.question).slice(0,5).map(q=>{
-        let section=SECS.has(q.section)?q.section:"experience";
-        const eng=engByKey(q.engagement)||(section==="engagement"?(L.engagements||[]).map(engState).find(e=>e.needs_details):null);
-        if(section==="engagement" && !eng) section="experience";
-        return {question:String(q.question), why:String(q.why||""), tag:L.tags[q.tag]?q.tag:null, section,
-          engagement:section==="engagement"?eng.key:null, role:L.roles.some(x=>x.key===q.role)?q.role:(section==="engagement"?(eng.role||"hc_ai_strategy"):"psp"),
-          hint:String(q.hint||""), fields:{}}; });
+      const t=E.prompts.parseTailor(S, r);
+      if(t.company && !$("#company").value) $("#company").value=t.company;
+      if(t.title && !$("#role").value) $("#role").value=t.title;
+      S.req=t.req; S.uncatalogued=t.uncatalogued;
+      if(t.tagline) S.tagline=t.tagline;
+      if(t.compOrder) S.compOrder=t.compOrder;
+      const qs=t.questions;
       recompute();
       if(!S.questions.length || !S.questions.some(q=>q.answer)){ S.questions = qs.length>=3 ? qs : templateQuestions(); }
       $("#qStatus").textContent = qs.length>=3 ? "" : "Claude returned fewer than three questions, so these come from the gap analysis.";
@@ -713,7 +652,6 @@ Address Tim directly in second person ("you", "your"), never "Tim" or "he". Don'
     useQuickQuestions();
   }finally{ $("#quickQBtn").hidden=true; }
 }
-
 /* ------------------------------ answers -> bullets and entries (Claude) ------------------------------ */
 const SAMPLE_ERR = {not_granted:"Claude isn't allowed on this page. Allow it when the page asks, or reload and try again.", sampling_disabled:"Claude isn't available for this account.", rate_limited:"Claude is busy right now. Wait a minute and try again.", invalid_json:"Claude's reply came back malformed. Try again.", prompt_too_large:"That answer is too long for one pass. Shorten it and try again.", refused:"Claude declined this one. Rephrase the answer and try again.", empty_completion:"Claude returned nothing. Add a specific and try again.", session_expired:"Your Claude session expired. Sign in again, then retry."};
 const sampleErr = e => SAMPLE_ERR[e?.code] || `Claude couldn't finish (${esc(e?.code||"error")}). Try again.`;
@@ -721,57 +659,10 @@ const sampleErr = e => SAMPLE_ERR[e?.code] || `Claude couldn't finish (${esc(e?.
    bullets (short and long form), and tagline / expertise / technology answers become short entries. Over-long bullets get a tightening pass. */
 async function claudeBullets(items, ctl){
   const band=S.lib.length_band, lband=S.lib.longform_band||{min:170,hard_ceiling:340};
-  const kindOf=q=>{ const s=sectionOf(q); return PHRASE_SECTIONS[s]?s:(s==="engagement"?"engagement":"bullet"); };
-  // where a bullet may go: the resume's roles, consulting engagements that print, earlier roles, and each answer's own default
-  const offer=new Map();
-  for(const r of S.lib.roles.filter(r=>!r.hidden||S.chosen[r.key])) offer.set("r:"+r.key, `${r.title} | ${r.employer} | ${r.dates}`);
-  for(const e of (S.lib.engagements||[]).map(engState).filter(e=>!e.needs_details||S.questions.some(q=>q.engagement===e.key))) offer.set("e:"+e.key, `consulting client "${e.client}" (Business Consulting Engagements section)`);
-  for(const r of S.lib.roles.filter(r=>r.hidden&&!S.chosen[r.key])) offer.set("r:"+r.key, `${r.title} | ${r.employer} | ${r.dates} (earlier role, not on this resume: only when the answer clearly describes work there)`);
-  for(const q of items){ if(PHRASE_SECTIONS[sectionOf(q)]) continue; const d=defaultPlace(q), k=placeKey(d); if(!offer.has(k)) offer.set(k, placeName(d)); }
-  const prompt=`Turn Tim King's interview answers into content for his resume template.
-BULLET answers (kind "bullet"): resume bullets in his "Resume 1" bare-bone style.
-- Verb-first, outcome- and impact-driven, ${band.p10}-${band.hard_ceiling} characters each (aim for about ${band.median}).
-- Implied first person: never "I", "my", "we", or "Tim". Past tense for past roles; present tense only for the current role.
-- An answer written as bullet points or several sentences may become 1 to 3 bullets, one per distinct accomplishment. Merge fragments that describe the same thing.
-- If an answer strengthens an existing bullet listed below, rewrite that bullet and put its id in "achievement_id"; otherwise use null.
-ENGAGEMENT answers (kind "engagement"): bullets for a consulting engagement in the Business Consulting Engagements section. For each distinct accomplishment return "text" (the short version, ${band.p10}-${band.hard_ceiling} characters) and "longform" (${lband.min||170}-${lband.hard_ceiling} characters: the same facts with scope, method, and result, in the style of the examples below).
-PLACEMENT (bullet and engagement answers): each bullet goes under the job or consulting client where that work happened. Return "place": one id from PLACES. An answer that draws on several jobs becomes separate bullets, each with its own place. When the answer doesn't say where the work happened, use the place shown with the answer. A bullet placed at a consulting client (an "e:" id) also gets "longform" as described above. Use "achievement_id" only for an existing bullet from the same place.
-ENTRY answers (kind "tagline", "expertise", "technology", or "competency"): return "entries", never bullets.
-- tagline: identity phrases of 60 characters or fewer, e.g. "Process Engineer", "GTM and Sales/Marketing Execution Specialist".
-- expertise: Title Case skills of 70 characters or fewer, e.g. "Lead Generation & Prospecting".
-- technology: tool names exactly as a resume lists them, with the level in parentheses only if the answer states it, e.g. "Salesforce Apex (basic)". Only tools the answer says were used.
-- competency: short lowercase phrases, e.g. "partner enablement".
-Every kind: use ONLY facts stated in the answer. Never invent results, metrics, or tools. If an answer adds nothing usable (empty, "no", "none"), return nothing for it.
-
-POSTING: ${$("#role").value||"(title unknown)"} at ${$("#company").value||"(company unknown)"}
-
-PLACES (id: where the bullet prints)
-${[...offer].map(([k,v])=>`${k}: ${v}`).join("\n")}
-
-ANSWERS
-${items.map((q,n)=>`${n+1}. [kind: ${kindOf(q)} | proves: ${q.tag||"general"}${PHRASE_SECTIONS[sectionOf(q)]?"":` | place: ${placeKey(defaultPlace(q))}`}]\nQ: ${q.question}\nA: ${String(q.answer).slice(0,2000)}`).join("\n\n")}
-
-EXISTING BULLETS (achievement id | role | text)
-${currentBulletDigest()}
-
-SECTION C STYLE EXAMPLES
-${(S.lib.achievements.flatMap(a=>a.texts.filter(t=>t.angle==="longform").map(t=>t.text))).slice(0,3).map(t=>"- "+t).join("\n")}
-
-TAG IDS YOU MAY USE: ${Object.keys(S.lib.tags).join(", ")}
-
-Reply with ONLY one JSON object, for example:
-{"bullets":[{"q":1,"place":"r:hc_ai_strategy","text":"Built a custom CRM with automated weekly enrichment syncs and research agents feeding a two-way GitHub-synced workflow.","longform":null,"tags":["crm-discipline","building-with-ai"],"achievement_id":null}],
- "entries":[{"q":2,"text":"Salesforce Apex (basic)","tags":["crm-discipline"]}]}`;
+  const offer=E.prompts.offers(S, items);
+  const prompt=E.prompts.bullets(S, items, offer, {title:$("#role").value, company:$("#company").value});
   const r=await S.sample.json(prompt,{signal:ctl.signal, modelTier:"default", cache:false});
-  const src=b=>items[(+b.q||1)-1]||items[0];
-  const quotesOf=q=>[String(q.answer||"")].concat(q.fields?[Object.values(q.fields).filter(Boolean).join("; ")]:[]);
-  const claimsOf=aid=>aid?((S.lib.achievements.find(a=>a.id===aid)||{}).claim_ids||[]):[];
-  const out=(Array.isArray(r?.bullets)?r.bullets:[]).filter(b=>b&&typeof b.text==="string"&&b.text.trim().length>20&&!PHRASE_SECTIONS[sectionOf(src(b))])
-    .map(b=>{ const s=src(b), pid=[b.place, "r:"+b.place, "e:"+b.place].find(v=>offer.has(v)), p=(pid&&parsePlace(pid))||defaultPlace(s);
-      return {q:(+b.q||1), ix:s.ix, role:p.role, engagement:p.engagement, text:cleanBullet(b.text), longform:(p.engagement&&typeof b.longform==="string"&&b.longform.trim().length>40)?cleanBullet(b.longform):null,
-      tags:(Array.isArray(b.tags)?b.tags:[]).filter(t=>S.lib.tags[t]).concat(s.tag&&!(b.tags||[]).includes(s.tag)?[s.tag]:[]), achievement_id:(b.achievement_id&&attachOk(b.achievement_id,p))?b.achievement_id:null}; });
-  const entries=(Array.isArray(r?.entries)?r.entries:[]).filter(e=>e&&typeof e.text==="string"&&e.text.trim()).map(e=>{ const s=src(e); const sec=sectionOf(s);
-    return {q:(+e.q||1), ix:s.ix, text:cleanPhrase(e.text, PHRASE_SECTIONS[sec]?sec:"technology"), tags:(Array.isArray(e.tags)?e.tags:[]).filter(t=>S.lib.tags[t])}; }).filter(e=>e.text && PHRASE_SECTIONS[sectionOf(items.find(q=>q.ix===e.ix)||{})]);
+  const {bullets:out, entries}=E.prompts.parseBullets(S, items, offer, r);
   const over=out.filter(b=>b.text.length>band.hard_ceiling);
   if(over.length && !ctl.signal.aborted){
     try{ const fixed=await claudeTighten(over.map(b=>b.text), ctl); over.forEach((b,i)=>{ if(fixed[i]) b.text=cleanBullet(fixed[i]); }); }catch(e){ /* keep the longer versions; they are flagged on the sheet */ }
@@ -780,20 +671,11 @@ Reply with ONLY one JSON object, for example:
   if(lover.length && !ctl.signal.aborted){
     try{ const fixed=await claudeTighten(lover.map(b=>b.longform), ctl, "longform"); lover.forEach((b,i)=>{ if(fixed[i]) b.longform=cleanBullet(fixed[i]); }); }catch(e){}
   }
-  // tier-3 QA: a converted bullet may only state what the answer (or the bank bullet it enriches) states
-  for(const b of out){ const q=items.find(x=>x.ix===b.ix)||{}; const ids=claimsOf(b.achievement_id), quotes=quotesOf(q);
-    b.qa=qaLine(b.text, ids, quotes, band); if(b.longform) b.qa=b.qa.concat(qaLine(b.longform, ids, quotes, lband).map(x=>"long form: "+x)); }
+  E.prompts.qaBullets(out, items);   // a converted bullet may only state what the answer (or the bank bullet it enriches) states
   return {bullets:out, entries};
 }
 async function claudeTighten(texts, ctl, mode){
-  const band=S.lib.length_band, lband=S.lib.longform_band||{min:170,hard_ceiling:340};
-  const std = mode==="longform" ? `the Business Consulting Engagements standard: verb-first, outcome-driven, ${lband.min||170}-${lband.hard_ceiling} characters with scope, method, and result`
-                               : `Tim King's "Resume 1" standard: verb-first, outcome-driven, ${band.p10}-${band.hard_ceiling} characters`;
-  const prompt=`Tighten each resume bullet to ${std}, implied first person (no "I", "my", "we"), the same facts and numbers, nothing invented.
-BULLETS
-${texts.map((t,i)=>`${i+1}. ${t}`).join("\n")}
-Reply with ONLY a JSON array of ${texts.length} strings in the same order.`;
-  const r=await S.sample.json(prompt,{signal:ctl?.signal, modelTier:"default", cache:false});
+  const r=await S.sample.json(E.prompts.tighten(texts, mode),{signal:ctl?.signal, modelTier:"default", cache:false});
   return Array.isArray(r)? r.map(x=>typeof x==="string"?x.trim():"") : [];
 }
 function readAnswers(){ S.questions.forEach((q,ix)=>{ const a=$("#ans"+ix); if(a) q.answer=a.value.trim(); const s=$("#role"+ix); if(s) q.role=s.value||q.role;
@@ -981,25 +863,14 @@ async function polishBullet(aid, sec){
 }
 /* The optional summary: Claude writes it only from the claims on this draft, and it is checked against their evidence. */
 async function claudeSummary(){
-  const m=resumeModel(); const band=S.lib.length_band;
-  const ids=[...new Set([...(m.roles.flatMap(r=>r.bullets.flatMap(b=>b.claim_ids||[]))), ...(m.trace.tagline||[])])].slice(0,24);
-  const facts=ids.map(claimById).filter(Boolean).map(c=>`- [${c.id}] ${c.text}${c.numbers&&c.numbers.length?` (numbers you may use: ${c.numbers.join(", ")})`:""}`).join("\n");
-  const words=(S.lib.confidence&&S.lib.confidence.bands&&S.lib.confidence.bands.summary_max_words)||55;
-  const prompt=`Write the Professional Summary paragraph for Tim King's resume for this posting, using ONLY the facts below.
-RULES: at most ${words} words, one paragraph, implied first person (never "I", "my", "we", or "Tim"), open with a role noun such as "Revenue and go-to-market operator", no adjectives without a fact behind them, and use a number only if it appears in the facts' allowed numbers. Never invent employers, clients, tools or outcomes.
-POSTING: ${$("#role").value||"(title unknown)"} at ${$("#company").value||"(company unknown)"}
-${S.jd.slice(0,3000)}
-
-FACTS (claim id, statement):
-${facts}
-
-Reply with ONLY one JSON object: {"summary": "<the paragraph>", "claims_used": ["<claim ids the paragraph relies on>"]}`;
+  const m=resumeModel();
+  const {prompt, ids, words}=E.prompts.summary(S, m, {title:$("#role").value, company:$("#company").value});
   const r=await S.sample.json(prompt,{modelTier:"default", cache:false});
   let text=String(r?.summary||"").replace(/\s+/g," ").trim(); if(!text) throw Object.assign(new Error("empty"),{code:"empty_completion"});
   const used=(Array.isArray(r?.claims_used)?r.claims_used:[]).filter(id=>claimById(id)); const basis=used.length?used:ids;
   let qa=qaLine(text, basis, [], null);
   if(blocking(qa).length){   // one retry without the unsupported numbers
-    const r2=await S.sample.json(`Rewrite this resume summary so it contains none of these numbers: ${blocking(qa).join("; ")}. Keep it under ${words} words, implied first person, same facts otherwise. Reply with ONLY {"summary": "..."}\n\n${text}`,{modelTier:"default", cache:false});
+    const r2=await S.sample.json(E.prompts.summaryRetry(text, blocking(qa), words),{modelTier:"default", cache:false});
     text=String(r2?.summary||"").replace(/\s+/g," ").trim(); qa=qaLine(text, basis, [], null);
   }
   if(blocking(qa).length) throw Object.assign(new Error(qa.join("; ")),{code:"qa"});

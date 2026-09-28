@@ -392,6 +392,7 @@ function resumeModel(d){
   if(d.summaryOn && d.summary) trace.summary=d.summaryClaims||[];
   return {
     schema:"rot-resume/2", template:(L.template&&L.template.id)||ctx.settings.template_id,
+    generator:{core:VERSION, edition:ctx.settings.edition||"desk", prompt_versions:prompts.VERSIONS},   // tier 3 provenance: what wrote this model
     identity:{name:id.name, location:id.location, phone:id.phone, email:id.email, links:id.links||[{label:"LinkedIn Profile", url:"https://"+id.linkedin}]},
     summary:(d.summaryOn && d.summary)||null,
     tagline, expertise, technologies, education, roles:outRoles, certifications:certs, engagements, core_competencies:core, trace
@@ -464,8 +465,192 @@ function draftDigest(d){
 }
 function currentBulletDigest(d){ return Object.entries(d.chosen).flatMap(([r,items])=>items.map(i=>`${i.a.id} | ${r} | ${d.edits[i.a.id]??i.t.text}`)).join("\n"); }
 function findChosen(d, aid){ for(const items of Object.values(d.chosen)) for(const i of items) if(i.a.id===aid) return i; return null; }
+/* ------------------------------ prompts: pure builders and parsers (the shell talks to Claude) ------------------------------
+   Wording comes from ctx.settings.prompts: persona {name, first, subject, possessive, possessive_cap, standard_label},
+   bullet_example {place, text, tags}, entry_example {text, tags}. Bump VERSIONS whenever a prompt's text changes. */
+const prompts = {
+  VERSIONS: {tailor:"tailor@6", bullets:"bullets@6", tighten:"tighten@2", summary:"summary@1"},
+  persona(){ const p=(ctx.settings.prompts||{}).persona||{};
+    return {name:p.name||"the candidate", first:p.first||"the candidate", subject:p.subject||"they", possessive:p.possessive||"their", possessive_cap:p.possessive_cap||"Their", standard_label:p.standard_label||"Resume 1"}; },
+  /* one call weighs the posting, orders Sections A and B, and drafts the five questions */
+  tailor(d){
+    const L=ctx.bank, P=prompts.persona(), taxo=Object.entries(L.tags).map(([id,t])=>`${id}: ${t.label}`).join("\n");
+    const roleList=L.roles.map(r=>`${r.key}: ${r.title} | ${r.employer} | ${r.dates}`).join("\n");
+    const engList=(L.engagements||[]).map(e=>engState(d,e)).map(e=>`${e.key}: ${e.client} | ${e.needs_details?"NEEDS DETAILS (not shown until dates and a description are given)":`${e.dates||""} | ${e.subtitle||""}`}`).join("\n");
+    const tools=unknownTools(d, d.jd);
+    return `You are tailoring ${P.name}'s resume to one job description. ${P.possessive_cap} template has no summary paragraph: a tagline line (Section A) and an areas-of-expertise line (Section B) carry the positioning. Use ONLY facts present in the candidate library and draft below. Never invent employers, titles, numbers, tools, or outcomes.
+
+JOB DESCRIPTION:
+<<<
+${d.jd.slice(0,12000)}
+>>>
+
+TAG TAXONOMY (id: label):
+${taxo}
+
+DETERMINISTIC REQUIREMENT MAP (tag id: weight 0-3):
+${Object.entries(d.req).map(([t,r])=>`${t}: ${r.weight}`).join("\n")||"(none)"}
+
+ROLES (key: title | employer | dates):
+${roleList}
+
+CONSULTING ENGAGEMENTS (Section C; key: client | status):
+${engList||"(none)"}
+
+CURRENT DRAFT BULLETS:
+${draftDigest(d)}
+
+FULL LIBRARY (achievement id | role | canonical bullet):
+${libraryDigest()}
+
+TAGLINE OPTIONS (Section A, exact text):
+${(L.tagline_phrases||[]).map(p=>p.text).join(" | ")}
+
+EXPERTISE OPTIONS (Section B, choose only from these, exact text):
+${L.competencies.map(c=>c.text).join(" | ")}
+
+TECHNOLOGIES ALREADY LISTED: ${L.technologies.map(t=>t.name).join(", ")}
+TOOLS THE POSTING NAMES THAT ARE NOT LISTED: ${tools.join(", ")||"(none detected)"}
+
+Reply with ONLY one JSON object:
+{"company": string|null, "title": string|null,
+ "requirements": [{"tag": "<tag id from taxonomy>", "weight": <0.5 to 3, 3 = must-have>, "why": "<short evidence from the posting>"}],
+ "uncatalogued": [{"phrase": "<requirement no tag covers>", "weight": <1-3>}],
+ "tagline": ["<4 to 7 phrases in print order, most relevant to this posting first: exact TAGLINE OPTIONS, plus at most 2 new phrases of 60 characters or fewer that the library clearly supports>"],
+ "expertise_order": ["<up to 16 exact EXPERTISE OPTIONS, most relevant first>"],
+ "followups": [{"question": "...", "why": "<which requirement this proves and why it matters>", "tag": "<tag id>", "section": "experience"|"engagement"|"technology"|"tagline"|"expertise", "role": "<role key, for experience>", "engagement": "<engagement key, for engagement>", "hint": "<what a strong answer includes>"}]}
+Requirements: return up to 20 tags with your corrected importance. Followups: exactly 5, one concrete question each, no compound questions.
+- Most should be "experience": target the highest-weight requirements the draft proves weakly or not at all, or implied experience ${P.first} likely has but hasn't stated (quota %, team size, deal size, cycle length).
+- If the posting values consulting or advisory work and an engagement NEEDS DETAILS, make one "engagement" question for it (it asks for dates, how to name the client, a one-line description, and what else ${P.subject} delivered).
+- If the posting names tools that are not listed, make one "technology" question naming them.
+- Use "tagline" or "expertise" only when the posting stresses an identity or a strength no option covers.
+Address ${P.first} directly in second person ("you", "your"), never "${P.first}" or "${P.subject}". Don't ask about anything already well evidenced.`;
+  },
+  /* the tailor reply as plain data: merged requirement weights, uncatalogued phrases, tagline/expertise orders (null = keep), questions */
+  parseTailor(d, r){
+    const L=ctx.bank, req={...d.req};
+    for(const q of (Array.isArray(r.requirements)?r.requirements:[])){
+      const t=String(q.tag||""), w=Math.max(0.5,Math.min(3,+q.weight||0));
+      if(!L.tags[t]||!w) continue;
+      req[t] = req[t] ? {...req[t], weight:Math.round(Math.max(req[t].weight,w)*100)/100} : {weight:w, phrases:[String(q.why||"").slice(0,40)].filter(Boolean)};
+    }
+    const uncatalogued=(Array.isArray(r.uncatalogued)?r.uncatalogued:[]).filter(u=>u&&u.phrase).slice(0,8).map(u=>({phrase:String(u.phrase).slice(0,80), weight:+u.weight||1}));
+    const opts=new Set((L.tagline_phrases||[]).map(p=>p.text)); let fresh=0;
+    const tl=(Array.isArray(r.tagline)?r.tagline:[]).map(x=>String(x||"").trim()).filter(x=>x && (opts.has(x) || (x.length<=60 && !/\b(I|my|we)\b/.test(x) && fresh++<2)));
+    const eopts=new Set(L.competencies.map(c=>c.text)); const co=(r.expertise_order||r.competency_order||[]).filter(c=>eopts.has(c));
+    const SECS=new Set(["experience","engagement","technology","tagline","expertise"]);
+    const questions=(Array.isArray(r.followups)?r.followups:[]).filter(q=>q&&q.question).slice(0,5).map(q=>{
+      let section=SECS.has(q.section)?q.section:"experience";
+      const eng=engByKey(q.engagement)||(section==="engagement"?(L.engagements||[]).map(e=>engState(d,e)).find(e=>e.needs_details):null);
+      if(section==="engagement" && !eng) section="experience";
+      return {question:String(q.question), why:String(q.why||""), tag:L.tags[q.tag]?q.tag:null, section,
+        engagement:section==="engagement"?eng.key:null, role:L.roles.some(x=>x.key===q.role)?q.role:(section==="engagement"?(eng.role||ctx.settings.default_engagement_role):ctx.settings.fallback_role),
+        hint:String(q.hint||""), fields:{}}; });
+    return {company:r.company?String(r.company).slice(0,80):null, title:r.title?String(r.title).slice(0,120):null, req, uncatalogued,
+      tagline:tl.length>=4?uniq(tl).slice(0,7):null, compOrder:co.length>=6?co:null, questions};
+  },
+  /* where a bullet may go: the resume's roles, consulting engagements that print, earlier roles, and each answer's own default */
+  offers(d, items){
+    const L=ctx.bank, offer=new Map();
+    for(const r of L.roles.filter(r=>!r.hidden||d.chosen[r.key])) offer.set("r:"+r.key, `${r.title} | ${r.employer} | ${r.dates}`);
+    for(const e of (L.engagements||[]).map(e=>engState(d,e)).filter(e=>!e.needs_details||d.questions.some(q=>q.engagement===e.key))) offer.set("e:"+e.key, `consulting client "${e.client}" (Business Consulting Engagements section)`);
+    for(const r of L.roles.filter(r=>r.hidden&&!d.chosen[r.key])) offer.set("r:"+r.key, `${r.title} | ${r.employer} | ${r.dates} (earlier role, not on this resume: only when the answer clearly describes work there)`);
+    for(const q of items){ if(PHRASE_SECTIONS[sectionOf(q)]) continue; const p=defaultPlace(q), k=placeKey(p); if(!offer.has(k)) offer.set(k, placeName(d, p)); }
+    return offer;
+  },
+  /* one call converts any number of answers into bullets (short and Section C long form) and short entries */
+  bullets(d, items, offer, posting){
+    const L=ctx.bank, P=prompts.persona(), band=L.length_band, lband=L.longform_band||{min:170,hard_ceiling:340};
+    const kindOf=q=>{ const s=sectionOf(q); return PHRASE_SECTIONS[s]?s:(s==="engagement"?"engagement":"bullet"); };
+    const ex=(ctx.settings.prompts||{}).bullet_example||{place:"r:current", text:"Built the weekly pipeline review that the sales team adopted within one quarter.", tags:["pipeline-management"]};
+    const ex2=(ctx.settings.prompts||{}).entry_example||{text:"Salesforce (admin)", tags:["crm-discipline"]};
+    return `Turn ${P.name}'s interview answers into content for ${P.possessive} resume template.
+BULLET answers (kind "bullet"): resume bullets in ${P.possessive} "${P.standard_label}" bare-bone style.
+- Verb-first, outcome- and impact-driven, ${band.p10}-${band.hard_ceiling} characters each (aim for about ${band.median}).
+- Implied first person: never "I", "my", "we", or "${P.first}". Past tense for past roles; present tense only for the current role.
+- An answer written as bullet points or several sentences may become 1 to 3 bullets, one per distinct accomplishment. Merge fragments that describe the same thing.
+- If an answer strengthens an existing bullet listed below, rewrite that bullet and put its id in "achievement_id"; otherwise use null.
+ENGAGEMENT answers (kind "engagement"): bullets for a consulting engagement in the Business Consulting Engagements section. For each distinct accomplishment return "text" (the short version, ${band.p10}-${band.hard_ceiling} characters) and "longform" (${lband.min||170}-${lband.hard_ceiling} characters: the same facts with scope, method, and result, in the style of the examples below).
+PLACEMENT (bullet and engagement answers): each bullet goes under the job or consulting client where that work happened. Return "place": one id from PLACES. An answer that draws on several jobs becomes separate bullets, each with its own place. When the answer doesn't say where the work happened, use the place shown with the answer. A bullet placed at a consulting client (an "e:" id) also gets "longform" as described above. Use "achievement_id" only for an existing bullet from the same place.
+ENTRY answers (kind "tagline", "expertise", "technology", or "competency"): return "entries", never bullets.
+- tagline: identity phrases of 60 characters or fewer, e.g. "Process Engineer", "GTM and Sales/Marketing Execution Specialist".
+- expertise: Title Case skills of 70 characters or fewer, e.g. "Lead Generation & Prospecting".
+- technology: tool names exactly as a resume lists them, with the level in parentheses only if the answer states it, e.g. "Salesforce Apex (basic)". Only tools the answer says were used.
+- competency: short lowercase phrases, e.g. "partner enablement".
+Every kind: use ONLY facts stated in the answer. Never invent results, metrics, or tools. If an answer adds nothing usable (empty, "no", "none"), return nothing for it.
+
+POSTING: ${(posting&&posting.title)||"(title unknown)"} at ${(posting&&posting.company)||"(company unknown)"}
+
+PLACES (id: where the bullet prints)
+${[...offer].map(([k,v])=>`${k}: ${v}`).join("\n")}
+
+ANSWERS
+${items.map((q,n)=>`${n+1}. [kind: ${kindOf(q)} | proves: ${q.tag||"general"}${PHRASE_SECTIONS[sectionOf(q)]?"":` | place: ${placeKey(defaultPlace(q))}`}]\nQ: ${q.question}\nA: ${String(q.answer).slice(0,2000)}`).join("\n\n")}
+
+EXISTING BULLETS (achievement id | role | text)
+${currentBulletDigest(d)}
+
+SECTION C STYLE EXAMPLES
+${(L.achievements.flatMap(a=>a.texts.filter(t=>t.angle==="longform").map(t=>t.text))).slice(0,3).map(t=>"- "+t).join("\n")}
+
+TAG IDS YOU MAY USE: ${Object.keys(L.tags).join(", ")}
+
+Reply with ONLY one JSON object, for example:
+{"bullets":[{"q":1,"place":"${ex.place}","text":"${ex.text}","longform":null,"tags":${JSON.stringify(ex.tags)},"achievement_id":null}],
+ "entries":[{"q":2,"text":"${ex2.text}","tags":${JSON.stringify(ex2.tags)}}]}`;
+  },
+  /* the bullets reply as clean bullets with a place each, and clean entries; the shell runs the tighten passes, then qaBullets */
+  parseBullets(d, items, offer, r){
+    const L=ctx.bank;
+    const src=b=>items[(+b.q||1)-1]||items[0];
+    const bullets=(Array.isArray(r?.bullets)?r.bullets:[]).filter(b=>b&&typeof b.text==="string"&&b.text.trim().length>20&&!PHRASE_SECTIONS[sectionOf(src(b))])
+      .map(b=>{ const s=src(b), pid=[b.place, "r:"+b.place, "e:"+b.place].find(v=>offer.has(v)), p=(pid&&parsePlace(pid))||defaultPlace(s);
+        return {q:(+b.q||1), ix:s.ix, role:p.role, engagement:p.engagement, text:cleanBullet(b.text), longform:(p.engagement&&typeof b.longform==="string"&&b.longform.trim().length>40)?cleanBullet(b.longform):null,
+        tags:(Array.isArray(b.tags)?b.tags:[]).filter(t=>L.tags[t]).concat(s.tag&&!(b.tags||[]).includes(s.tag)?[s.tag]:[]), achievement_id:(b.achievement_id&&attachOk(b.achievement_id,p))?b.achievement_id:null}; });
+    const entries=(Array.isArray(r?.entries)?r.entries:[]).filter(e=>e&&typeof e.text==="string"&&e.text.trim()).map(e=>{ const s=src(e); const sec=sectionOf(s);
+      return {q:(+e.q||1), ix:s.ix, text:cleanPhrase(e.text, PHRASE_SECTIONS[sec]?sec:"technology"), tags:(Array.isArray(e.tags)?e.tags:[]).filter(t=>L.tags[t])}; }).filter(e=>e.text && PHRASE_SECTIONS[sectionOf(items.find(q=>q.ix===e.ix)||{})]);
+    return {bullets, entries};
+  },
+  /* tier-3 QA: a converted bullet may only state what the answer (or the bank bullet it enriches) states */
+  qaBullets(bullets, items){
+    const L=ctx.bank, band=L.length_band, lband=L.longform_band||{min:170,hard_ceiling:340};
+    const quotesOf=q=>[String(q.answer||"")].concat(q.fields?[Object.values(q.fields).filter(Boolean).join("; ")]:[]);
+    const claimsOf=aid=>aid?((L.achievements.find(a=>a.id===aid)||{}).claim_ids||[]):[];
+    for(const b of bullets){ const q=items.find(x=>x.ix===b.ix)||{}; const ids=claimsOf(b.achievement_id), quotes=quotesOf(q);
+      b.qa=qaLine(b.text, ids, quotes, band, claimById); if(b.longform) b.qa=b.qa.concat(qaLine(b.longform, ids, quotes, lband, claimById).map(x=>"long form: "+x)); }
+    return bullets;
+  },
+  tighten(texts, mode){
+    const L=ctx.bank, P=prompts.persona(), band=L.length_band, lband=L.longform_band||{min:170,hard_ceiling:340};
+    const std = mode==="longform" ? `the Business Consulting Engagements standard: verb-first, outcome-driven, ${lband.min||170}-${lband.hard_ceiling} characters with scope, method, and result`
+                                 : `${P.name}'s "${P.standard_label}" standard: verb-first, outcome-driven, ${band.p10}-${band.hard_ceiling} characters`;
+    return `Tighten each resume bullet to ${std}, implied first person (no "I", "my", "we"), the same facts and numbers, nothing invented.
+BULLETS
+${texts.map((t,i)=>`${i+1}. ${t}`).join("\n")}
+Reply with ONLY a JSON array of ${texts.length} strings in the same order.`;
+  },
+  /* the optional summary paragraph is written only from the claims on the draft; the shell checks the answer with qaLine */
+  summary(d, m, posting){
+    const L=ctx.bank, P=prompts.persona();
+    const ids=[...new Set([...(m.roles.flatMap(r=>r.bullets.flatMap(b=>b.claim_ids||[]))), ...(m.trace.tagline||[])])].slice(0,24);
+    const facts=ids.map(claimById).filter(Boolean).map(c=>`- [${c.id}] ${c.text}${c.numbers&&c.numbers.length?` (numbers you may use: ${c.numbers.join(", ")})`:""}`).join("\n");
+    const words=(L.confidence&&L.confidence.bands&&L.confidence.bands.summary_max_words)||55;
+    const prompt=`Write the Professional Summary paragraph for ${P.name}'s resume for this posting, using ONLY the facts below.
+RULES: at most ${words} words, one paragraph, implied first person (never "I", "my", "we", or "${P.first}"), open with a role noun such as "Revenue and go-to-market operator", no adjectives without a fact behind them, and use a number only if it appears in the facts' allowed numbers. Never invent employers, clients, tools or outcomes.
+POSTING: ${(posting&&posting.title)||"(title unknown)"} at ${(posting&&posting.company)||"(company unknown)"}
+${d.jd.slice(0,3000)}
+
+FACTS (claim id, statement):
+${facts}
+
+Reply with ONLY one JSON object: {"summary": "<the paragraph>", "claims_used": ["<claim ids the paragraph relies on>"]}`;
+    return {prompt, ids, words};
+  },
+  summaryRetry(text, blocked, words){ return `Rewrite this resume summary so it contains none of these numbers: ${blocked.join("; ")}. Keep it under ${words} words, implied first person, same facts otherwise. Reply with ONLY {"summary": "..."}\n\n${text}`; },
+};
+
 function compute(d, req){ const chosen=select(d, req); const cov=coverage(req, chosen); return {chosen, cov, score:Object.keys(req).length?matchScore(req, cov):null}; }
-return { extractRequirements, claimById, disputedAchievements, angleScore, longText, parsePlace, defaultPlace, bulletPlace, attachOk, bulletQa, libraryDigest, textAdj, allAchievements, scoreAch, pickText, inboxEngDetails, engState, visibleEngagements, engMembers, engExclude, engagementsModel, select, inboxPhrases, rankTagline, rankCompetencies, rankTech, rankCore, resumeModel, placeName, placeGroups, unknownTools, consultingWanted, templateQuestions, draftDigest, currentBulletDigest, findChosen, unsyncedInbox, engByKey, compute };
+return { extractRequirements, claimById, disputedAchievements, angleScore, longText, parsePlace, defaultPlace, bulletPlace, attachOk, bulletQa, libraryDigest, textAdj, allAchievements, scoreAch, pickText, inboxEngDetails, engState, visibleEngagements, engMembers, engExclude, engagementsModel, select, inboxPhrases, rankTagline, rankCompetencies, rankTech, rankCore, resumeModel, placeName, placeGroups, unknownTools, consultingWanted, templateQuestions, draftDigest, currentBulletDigest, findChosen, unsyncedInbox, engByKey, compute, prompts };
 }
 
 /* ------------------------------ Word and PDF files (the shell passes JSZip, jsPDF and a font loader) ------------------------------ */
