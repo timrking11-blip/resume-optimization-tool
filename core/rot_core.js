@@ -168,8 +168,308 @@ function plainText(m){
   return L.join("\n");
 }
 
+
+/* ------------------------------ the engine: matching, selection, Section C, the resume model, placement, question drafts ------------------------------
+   createEngine(ctx) reads ctx.bank (rot-library/3) and ctx.settings on every call, so a shell may swap the bank underneath it.
+   Functions that need the working draft take it as their first argument `d`: {req, jd, cov, chosen, pinned, excluded, locked,
+   textChoice, edits, editsC, excludedC, tagline, compOrder, sectionEdits, extra, engDetails, newAch, inbox, adj, summaryOn, summary,
+   summaryClaims, runId, questions}. Settings the engine reads: default_engagement_role, education_claim_default, template_id,
+   questions.{consulting:[[tag, weight]], consulting_regex, engagement_tag}. Mirrors rot.py select / assemble. */
+function createEngine(ctx){
+function extractRequirements(text){
+  const lines = text.split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
+  const boost = new Set(); let inReq=false;
+  lines.forEach((l,i)=>{ if(l.length<80 && REQ_HINT.test(l)) inReq=true; else if(l.length<60 && l.endsWith(":") && !REQ_HINT.test(l)) inReq=false; if(inReq) boost.add(i); });
+  const low = lines.map(l=>l.toLowerCase()); const req={};
+  for (const [tid,t] of Object.entries(ctx.bank.tags)){
+    let hits=0; const phrases=new Set();
+    for (const syn of t.synonyms){
+      const re = new RegExp("(?<![a-z0-9-])"+escRe(syn.toLowerCase())+"(?![a-z0-9])","g");
+      low.forEach((l,i)=>{ const m=l.match(re); if(m){ hits += m.length*(syn.length>4?1:0.6)*(boost.has(i)?1.4:1); phrases.add(syn);} });
+    }
+    if(hits) req[tid]={weight:Math.round(Math.min(hits,3)*100)/100, phrases:[...phrases].sort()};
+  }
+  return req;
+}
+function textAdj(d, t){ return (t.score_adj||0) + (d.adj[t.id]||0); }
+const unsyncedInbox = (d) => d.inbox.filter(b=>!b.synced);
+/* ------------------------------ tier 2 lookups and tier-3 QA (mirrors claims.py) ------------------------------ */
+function claimById(id){ if(!ctx.bank._claims){ ctx.bank._claims=Object.fromEntries((ctx.bank.claims||[]).map(c=>[c.id,c])); } return ctx.bank._claims[id]; }
+function disputedAchievements(){ const out=new Set(); for(const c of ctx.bank.claims||[]) if(c.status==="disputed" && (c.kind==="metric"||c.kind==="achievement")) out.add((c.kind==="metric"?c.subject:c.id).split(":").slice(1).join(":")); return out; }
+function allAchievements(d){
+  const held=disputedAchievements();   // a disputed number never prints
+  const base = ctx.bank.achievements.filter(a=>!held.has(a.id)).map(a=>({...a, texts:[...a.texts], has_metrics:(a.metrics||[]).length>0}));
+  const byId = Object.fromEntries(base.map(a=>[a.id,a]));
+  for (const b of unsyncedInbox(d)){
+    if(d.runId && b.run_id===d.runId && b.angle==="gate2") continue;   // this posting's answer bullets are already on the draft (d.newAch)
+    const sec=b.section||"experience";
+    if(sec!=="experience" && sec!=="engagement") continue;          // phrases and engagement details are not bullets
+    const texts=[{id:"inbox:"+b._id, kind:"learned", angle:b.angle||"learned", text:b.text, score_adj:0}];
+    if(b.longform) texts.push({id:"inbox-lf:"+b._id, kind:"learned", angle:"longform", text:b.longform, score_adj:0});
+    if (b.achievement_id && byId[b.achievement_id]) byId[b.achievement_id].texts.push(...texts);
+    else if (b.role) base.push({id:"inbox-"+b._id, role:b.role, engagement:b.engagement_key||null, confidence:"asserted", tags:Object.fromEntries((b.tags||[]).filter(t=>ctx.bank.tags[t]).map(t=>[t,1])), metrics:[], has_metrics:/\d/.test(b.text), texts});
+  }
+  for (const a of d.newAch){
+    if (a.attach && byId[a.attach]) { byId[a.attach].texts.push(a.text); if(a.longText) byId[a.attach].texts.push(a.longText); }
+    else if (a.ach) base.push(a.ach);
+  }
+  return base;
+}
+function scoreAch(d, a, req){
+  const tags=ctx.bank.tags, keys=Object.keys(req);
+  if(!keys.length) return [0,[]];
+  const famW={}; for(const tid of keys){ const f=tags[tid].family; famW[f]=(famW[f]||0)+req[tid].weight; }
+  let s=0; const why=[];
+  for(const [tid,w] of Object.entries(a.tags)){ if(req[tid]){ s+=w*req[tid].weight; why.push(tid);} else if(tags[tid]) s+=0.25*w*Math.min(famW[tags[tid].family]||0,2); }
+  const adj=Math.max(...a.texts.map(t=>textAdj(d,t)));
+  const conf={verified:1,asserted:0.95,conflict:0.9}[a.confidence] ?? 0.9;
+  return [(s+adj)*conf, why];
+}
+function angleScore(m, req){
+  if(m.tag) return req[m.tag]?.weight||0;
+  if(m.tags) return Math.max(0,...m.tags.map(t=>req[t]?.weight||0));
+  if(m.family) return Math.max(0,...Object.entries(req).filter(([t])=>ctx.bank.tags[t].family===m.family).map(([,r])=>r.weight));
+  return 0;
+}
+function pickText(d, a, req){
+  const canon=a.texts.find(t=>t.kind==="canonical")||a.texts.find(t=>t.angle!=="longform")||a.texts[0];
+  if(d.textChoice[a.id]){ const t=a.texts.find(x=>x.id===d.textChoice[a.id]); if(t) return t; }
+  const newest=a.texts.find(t=>t.fresh && t.angle!=="longform"); if(newest) return newest;
+  const sc=ctx.bank.baseline.scoring||{};
+  const canonRel=Math.max(0,...Object.keys(a.tags).filter(t=>req[t]).map(t=>req[t].weight));
+  let best=canon, bestS=0;
+  for(const t of a.texts){ if(t.kind!=="variant"&&t.kind!=="learned") continue;
+    if(t.angle==="longform") continue;                             // Section C wording never prints under a role
+    const m=ctx.bank.baseline.angle_map[t.angle||""];
+    const s = m ? angleScore(m,req) : (t.kind==="learned" ? canonRel+0.1+textAdj(d, t) : 0);
+    if(s>bestS){best=t;bestS=s;} }
+  if(best!==canon && bestS>=(sc.variant_min??1.5) && bestS>(sc.variant_margin??1.25)*canonRel) return best;
+  if(best!==canon && best.kind==="learned" && bestS>=canonRel) return best;
+  return canon;
+}
+
+/* ------------------------------ Section C: consulting engagements ------------------------------ */
+function inboxEngDetails(d, key){
+  const docs=unsyncedInbox(d).filter(b=>b.section==="engagement_details" && b.engagement_key===key).sort((a,b)=>String(a.created||"").localeCompare(String(b.created||"")));
+  return docs.length ? docs[docs.length-1].details : null;
+}
+function engState(d, e){ const det=d.engDetails[e.key] || inboxEngDetails(d, e.key); return det ? {...e, ...Object.fromEntries(Object.entries(det).filter(([,v])=>v)), needs_details:false} : e; }
+function visibleEngagements(d){ return (ctx.bank.engagements||[]).map(e=>engState(d,e)).filter(e=>!e.needs_details); }
+function longText(a){ return a.texts.find(t=>t.kind==="learned"&&t.angle==="longform") || a.texts.find(t=>t.kind==="variant"&&t.angle==="longform") || null; }
+function engMembers(d, e, all){
+  const ids=[...(e.achievements||[])];
+  for(const a of all) if(a.engagement===e.key && !ids.includes(a.id)) ids.push(a.id);
+  for(const x of d.newAch) if(x.engagement===e.key){ const id=x.ach?x.ach.id:x.attach; if(id && !ids.includes(id)) ids.push(id); }
+  return ids;
+}
+/* a bullet with no long form prints once, in Section C; fresh engagement answers print only in Section C */
+function engExclude(d, all){
+  const byId=new Map(all.map(a=>[a.id,a])), ex=new Set();
+  for(const e of visibleEngagements(d)) for(const id of engMembers(d, e, all)){ const a=byId.get(id); if(a && !longText(a)) ex.add(id); }
+  for(const x of d.newAch) if(x.engagement) ex.add(x.ach?x.ach.id:x.attach);
+  return ex;
+}
+function engagementsModel(d, req){
+  const L=ctx.bank, sc=L.baseline.scoring||{}, caps=L.baseline.engagement_caps||{}, hasReq=Object.keys(req).length>0;
+  const all=allAchievements(d), byId=new Map(all.map(a=>[a.id,a]));
+  const printed=new Set(); for(const items of Object.values(d.chosen)) for(const i of items) printed.add(norm(d.edits[i.a.id]??i.t.text));
+  const out=[];
+  for(const e of visibleEngagements(d)){
+    const ids=engMembers(d, e, all).filter(id=>byId.has(id) && !d.excludedC.has(id));
+    const items=ids.map((id,rank)=>{ const a=byId.get(id); let s=0;
+      if(hasReq) s=scoreAch(d, a,req)[0]+(sc.priority_bonus??1.5)*Math.max(0,1-rank/Math.max(ids.length,1))+(a.has_metrics?(sc.metric_bonus??0.5):0);
+      if(a.fresh) s+=1000;
+      return {s, rank, a}; });
+    items.sort((x,y)=>(y.s-x.s)||(x.rank-y.rank));
+    const cap=(caps[e.key]??5)+items.filter(i=>i.a.fresh).length, picks=[];
+    for(const i of items){
+      const t=longText(i.a)||(i.a.texts.find(t=>t.kind==="canonical")||i.a.texts[0]);
+      const text=d.editsC[i.a.id]??t.text;
+      if(printed.has(norm(text))) continue;
+      printed.add(norm(text)); picks.push({aid:i.a.id, tid:t.id, text, fresh:!!i.a.fresh});
+      if(picks.length>=cap) break;
+    }
+    if(picks.length) out.push({key:e.key, client:e.client, location:e.location||null, dates:e.start?`${fmtDate(e.start)} – ${fmtDate(e.end)}`:null,
+      commitment:e.commitment||null, subtitle:e.subtitle||null, bullets:picks});
+  }
+  return out;
+}
+
+function select(d, req){
+  const L=ctx.bank, prio=L.baseline.priority, caps=L.baseline.caps, sc=L.baseline.scoring||{};
+  const hasReq=Object.keys(req).length>0, byRole={};
+  const all=allAchievements(d), ex=engExclude(d, all);
+  for(const a of all){
+    if(a.role==="education" || d.excluded.has(a.id) || ex.has(a.id)) continue;
+    let [s,why]=scoreAch(d, a,req);
+    const plist=prio[a.role]||[]; const ix=plist.indexOf(a.id); const rank= ix>=0?ix:99;
+    if(hasReq){ s+=(sc.priority_bonus??1.5)*Math.max(0,1-rank/Math.max(plist.length,1)); s+= a.has_metrics?(sc.metric_bonus??0.5):0; }
+    if(d.pinned.has(a.id)) s+=1000;
+    (byRole[a.role] ||= []).push({s:Math.round(s*1000)/1000, rank, a, why});
+  }
+  const chosen={};
+  for(const [role,items] of Object.entries(byRole)){
+    items.sort((x,y)=>(y.s-x.s)||(x.rank-y.rank));
+    const info=L.roles.find(r=>r.key===role); if(!info) continue;
+    const pinnedHere=items.some(i=>d.pinned.has(i.a.id));
+    const lock=d.locked?.[role];
+    if(info.hidden && !pinnedHere && !(lock&&lock.length) && (!hasReq || items[0].s < (sc.hidden_role_min??4))) continue;
+    const cap=(caps[role]??3) + items.filter(i=>i.a.fresh).length;
+    let pick;
+    if(lock){
+      // a curated or restored draft stays exactly as it was; new pinned bullets go on top, open slots fill with the next best
+      const byId=new Map(items.map(i=>[i.a.id,i]));
+      const locked=lock.map(id=>byId.get(id)).filter(Boolean);
+      const newPins=items.filter(i=>d.pinned.has(i.a.id) && !locked.includes(i));
+      pick=[...newPins, ...locked];
+      for(const i of items){ if(pick.length>=cap) break; if(!pick.includes(i)) pick.push(i); }
+    } else pick=items.slice(0,cap);
+    chosen[role]=pick.map(i=>({...i, t:pickText(d, i.a,req)}));
+  }
+  return chosen;
+}
+/* phrases answered on an earlier posting count before the hourly sync folds them into the bank */
+function inboxPhrases(d, section){ return unsyncedInbox(d).filter(b=>b.section===section && b.text).map(b=>({text:b.text, name:b.text, tags:b.tags||[], area:b.area||null})); }
+/* Section A */
+function rankTagline(d, req){
+  if(d.sectionEdits.tagline) return d.sectionEdits.tagline;
+  const n=ctx.bank.baseline.tagline_count||7;
+  const store=[...(ctx.bank.tagline_phrases||[]), ...inboxPhrases(d, "tagline")];
+  const base=d.tagline ? d.tagline : rankByTags(store, req).map(p=>p.text);
+  return uniq([...d.extra.tagline, ...base]).slice(0, Math.max(n, d.extra.tagline.length));
+}
+/* Section B: template order, JD-relevant items first when there is a posting */
+function rankCompetencies(d, req){
+  if(d.sectionEdits.expertise) return d.sectionEdits.expertise;
+  const b=ctx.bank.baseline, n=b.competency_count||16, order=b.competency_order||[];
+  let base;
+  if(d.compOrder) base=d.compOrder;
+  else if(!Object.keys(req).length) base=order;
+  else {
+    const pos=new Map(order.map((t,i)=>[t,i]));
+    const comps=[...ctx.bank.competencies, ...inboxPhrases(d, "expertise")].map((c,i)=>({...c, p:pos.has(c.text)?pos.get(c.text):1000+i})).sort((x,y)=>x.p-y.p);
+    base=rankByTags(comps,req).filter(c=>tagWeight(c.tags,req)>0).slice(0,n).map(c=>c.text);
+    for(const t of order){ if(base.length>=n) break; if(!base.includes(t)) base.push(t); }
+  }
+  return uniq([...d.extra.expertise, ...base]).slice(0, Math.max(n, d.extra.expertise.length));
+}
+function rankTech(d, req){
+  if(d.sectionEdits.technologies) return d.sectionEdits.technologies;
+  const all=[...ctx.bank.technologies, ...inboxPhrases(d, "technology")];
+  return uniq([...d.extra.technology, ...rankByTags(all, req).map(t=>t.name)]);
+}
+/* Section D: area order fixed, items JD-ranked within an area */
+function rankCore(d, req){
+  if(d.sectionEdits.core) return d.sectionEdits.core;
+  const areas=(ctx.bank.core_competencies||[]).map(a=>({label:a.label, items:[...a.items]}));
+  for(const it of [...inboxPhrases(d, "competency"), ...d.extra.competency.map(t=>typeof t==="string"?{text:t,tags:[]}:t)]){
+    let target=areas.find(x=>x.label===it.area);
+    if(!target){ let best=-1; for(const x of areas){ const have=new Set(x.items.flatMap(i=>i.tags)); const s=(it.tags||[]).filter(t=>have.has(t)).length; if(s>best){ best=s; target=x; } } }
+    if(target && !target.items.some(i=>norm(i.text)===norm(it.text))) target.items.unshift({text:it.text, tags:it.tags||[]});
+  }
+  return areas.map(a=>({label:a.label, items:rankByTags(a.items, req).map(i=>i.text)}));
+}
+
+/* ------------------------------ resume model (schema rot-resume/2, same as rot.py assemble) ------------------------------ */
+function resumeModel(d){
+  const L=ctx.bank, req=d.req, id=L.identity, trace={};
+  const roles=[...Object.keys(d.chosen)].map(k=>L.roles.find(r=>r.key===k)).filter(Boolean).sort((a,b)=>a.sort-b.sort);
+  const byText=(list,key)=>Object.fromEntries((list||[]).map(x=>[x[key], x.claim_id]).filter(x=>x[1]));
+  const tagline=rankTagline(d, req), expertise=rankCompetencies(d, req), technologies=rankTech(d, req);
+  const tl=byText(L.tagline_phrases,"text"), ex=byText(L.competencies,"text"), tc=byText(L.technologies,"name");
+  trace.tagline=tagline.map(t=>tl[t]).filter(Boolean); trace.expertise=expertise.map(t=>ex[t]).filter(Boolean); trace.technologies=technologies.map(t=>tc[t]).filter(Boolean);
+  const education=L.education.map((e,n)=>{ const sid=(e.claim_id||ctx.settings.education_claim_default).split(":").slice(0,-1).join(":"); trace[`education:${n}`]=[`${sid}:school`,`${sid}:degree`,`${sid}:date`];
+    return {school:e.school, degree_line:e.degree_line||`${e.degree} | ${e.date_display||e.year}`, bullets:[]}; });
+  const achClaims=a=>a.claim_ids||[];
+  const outRoles=roles.map(r=>{ trace[`role:${r.key}`]=r.claim_ids||[`role:${r.key}:title`,`role:${r.key}:employer`,`role:${r.key}:start`,`role:${r.key}:end`,`role:${r.key}:context`];
+    return {key:r.key, title:r.title, employer:r.employer, location:r.location, dates:r.dates, context:[r.location, r.context].filter(Boolean).join(" · "),
+      bullets:d.chosen[r.key].map((i,n)=>{ const ids=achClaims(i.a); trace[`role:${r.key}:${n}`]=ids; return {aid:i.a.id, tid:i.t.id, text:d.edits[i.a.id]??i.t.text, fresh:!!i.a.fresh||!!i.t.fresh, claim_ids:ids}; })}; });
+  const certs=L.certifications.filter(c=>!c.hidden).map((c,n)=>{ if(c.claim_id){ const sid=c.claim_id.split(":").slice(0,-1).join(":"); trace[`cert:${n}`]=[`${sid}:name`,`${sid}:issuer`].concat(c.status?[`${sid}:status`]:[]); }
+    return {name:c.name, issuer:c.issuer, note:c.note||(c.status?"In Progress":null)}; });
+  const engagements=engagementsModel(d, req).map(e=>{ const lib=(L.engagements||[]).find(x=>x.key===e.key); trace[`eng:${e.key}`]=(lib&&lib.claim_ids)||[];
+    e.bullets=e.bullets.map((b,n)=>{ const a=allAchievements(d).find(x=>x.id===b.aid); const ids=a?achClaims(a):[]; trace[`eng:${e.key}:${n}`]=ids; return {...b, claim_ids:ids}; }); return e; });
+  const core=rankCore(d, req).map(a=>{ const items=(L.core_competencies||[]).find(x=>x.label===a.label)?.items||[]; const m=Object.fromEntries(items.map(i=>[i.text,i.claim_id])); trace[`core:${a.label}`]=a.items.map(t=>m[t]).filter(Boolean); return a; });
+  if(d.summaryOn && d.summary) trace.summary=d.summaryClaims||[];
+  return {
+    schema:"rot-resume/2", template:(L.template&&L.template.id)||ctx.settings.template_id,
+    identity:{name:id.name, location:id.location, phone:id.phone, email:id.email, links:id.links||[{label:"LinkedIn Profile", url:"https://"+id.linkedin}]},
+    summary:(d.summaryOn && d.summary)||null,
+    tagline, expertise, technologies, education, roles:outRoles, certifications:certs, engagements, core_competencies:core, trace
+  };
+}
+
+const engByKey = k => (ctx.bank.engagements||[]).find(e=>e.key===k);
+function parsePlace(v){ v=String(v||""); const key=v.slice(2);
+  if(v.startsWith("e:")){ const e=engByKey(key); return e ? {role:e.role||ctx.settings.default_engagement_role, engagement:key} : null; }
+  return v.startsWith("r:") && ctx.bank.roles.some(r=>r.key===key) ? {role:key, engagement:null} : null; }
+function defaultPlace(q){ const e=sectionOf(q)==="engagement" && q.engagement ? engByKey(q.engagement) : null;
+  return e ? {role:e.role||ctx.settings.default_engagement_role, engagement:e.key} : {role:q.role, engagement:null}; }
+function bulletPlace(q, b){ return b && (b.role || b.engagement) ? {role:b.role || defaultPlace(q).role, engagement:b.engagement || null} : defaultPlace(q); }
+function placeName(d, p){
+  if(p.engagement){ const e=engByKey(p.engagement); return e ? engState(d, e).client.replace(/ \(Confidential\)$/,"") : p.engagement; }
+  const r=ctx.bank.roles.find(r=>r.key===p.role); return r ? shortRole(r) : p.role; }
+/* the resume's roles, then consulting engagements that print, then earlier roles (picking one adds that role to the resume) */
+function placeGroups(d){
+  const onDraft=ctx.bank.roles.filter(r=>!r.hidden || d.chosen[r.key]), earlier=ctx.bank.roles.filter(r=>r.hidden && !d.chosen[r.key]);
+  const engs=(ctx.bank.engagements||[]).map(e=>engState(d,e)).filter(e=>!e.needs_details || d.questions.some(q=>q.engagement===e.key));
+  return [["Professional Experience", onDraft.map(r=>["r:"+r.key, shortRole(r)])],
+          ["Consulting engagements (Section C)", engs.map(e=>["e:"+e.key, e.client.replace(/ \(Confidential\)$/,"")])],
+          ["Earlier roles (adds the role to this resume)", earlier.map(r=>["r:"+r.key, shortRole(r)])]].filter(g=>g[1].length);
+}
+/* an answer bullet can enrich a bank bullet only from the same role (or engagement) */
+function attachOk(aid, p){ const a=ctx.bank.achievements.find(x=>x.id===aid); if(!a) return false;
+  if(p.engagement){ const e=engByKey(p.engagement); return !!e && ((e.achievements||[]).includes(aid) || a.engagement===p.engagement); }
+  return a.role===p.role; }
+/* the number check for an answer bullet in its current place: its answer, plus the bank bullet it enriches (same place only) */
+function bulletQa(Q, B){
+  const p=bulletPlace(Q,B), ids=(B.achievement_id&&attachOk(B.achievement_id,p))?((ctx.bank.achievements.find(a=>a.id===B.achievement_id)||{}).claim_ids||[]):[];
+  let qa=qaLine(B.text, ids, answerQuotes(Q), ctx.bank.length_band, claimById);
+  if(B.longform && p.engagement) qa=qa.concat(qaLine(B.longform, ids, answerQuotes(Q), ctx.bank.longform_band||{hard_ceiling:340}, claimById).map(x=>"long form: "+x));
+  return qa;
+}
+/* tools the posting names that neither the Technologies list nor Section D mentions yet */
+function unknownTools(d, jd){
+  const known=[...ctx.bank.technologies.map(t=>t.name), ...(ctx.bank.core_competencies||[]).flatMap(a=>a.items.map(i=>i.text)), ...inboxPhrases(d, "technology").map(t=>t.text), ...d.extra.technology].join(" | ").toLowerCase();
+  const found=[];
+  for(const t of TOOL_LEXICON){ const re=new RegExp("(?<![A-Za-z0-9])"+escRe(t)+"(?![A-Za-z0-9])"); if(re.test(jd) && !known.includes(t.toLowerCase().replace(/\.io$/,""))) found.push(t); }
+  return found.slice(0,6);
+}
+function consultingWanted(d){
+  const r=d.req, w=t=>r[t]?.weight||0, cfg=ctx.settings.questions||{};
+  const score=(cfg.consulting||[]).reduce((a,[t,k])=>a+w(t)*k, 0);
+  return score >= 1 || (cfg.consulting_regex ? new RegExp(cfg.consulting_regex, "i").test(d.jd) : false);
+}
+function templateQuestions(d){
+  const tags=ctx.bank.tags;
+  const gaps=Object.entries(d.req).map(([t,r])=>({t,w:r.weight,c:d.cov[t]||0,ph:r.phrases})).sort((a,b)=>(b.w*(1-Math.min(b.c,1)))-(a.w*(1-Math.min(a.c,1))));
+  const roleFor=t=>{ let best=null,bs=-1; for(const a of ctx.bank.achievements){ const w=a.tags[t]||0; const r=ctx.bank.roles.find(x=>x.key===a.role); if(r&&!r.hidden&&w>bs){bs=w;best=a.role;} } return best||ctx.bank.roles[0].key; };
+  const qs=[];
+  const waiting=(ctx.bank.engagements||[]).map(e=>engState(d,e)).find(e=>e.needs_details);
+  if(waiting && consultingWanted(d)) qs.push({section:"engagement", engagement:waiting.key, tag:ctx.settings.questions.engagement_tag, role:waiting.role||ctx.settings.default_engagement_role,
+    question:`This posting values consulting work. Your ${waiting.client.replace(/ \(Confidential\)$/,"")} engagement has a bullet but no details yet. When did it run, how should the client read on a resume, and what else did you deliver?`,
+    why:"Section C can only show an engagement once it has dates and a one-line description.", fields:{}});
+  const tools=unknownTools(d, d.jd);
+  if(tools.length) qs.push({section:"technology", tag:null, role:null, question:`The posting names ${tools.join(", ")}. Which of these have you used, and at what level?`,
+    why:"Your Technologies line doesn't list them yet. Anything you name here joins it.", hint:"e.g. Salesforce Apex (basic), Looker (dashboards). Write no to skip."});
+  for(const g of gaps){ if(qs.length>=5) break;
+    qs.push({section:"experience", tag:g.t, role:roleFor(g.t), question:`The posting leans on ${tags[g.t].label.toLowerCase()} (“${g.ph.slice(0,2).join("”, “")}”). What's your strongest concrete example? Say what you did, the scope, and the measurable result.`, why: g.c>0?"Your draft touches this only lightly.":"Nothing in your draft proves this yet.", hint:"e.g. who, how many, how much, what changed"}); }
+  return qs.slice(0,5);
+}
+
+function libraryDigest(){
+  return ctx.bank.achievements.filter(a=>a.role!=="education").map(a=>`${a.id} | ${a.role} | ${(a.texts.find(t=>t.kind==="canonical")||a.texts[0]).text}`).join("\n");
+}
+function draftDigest(d){
+  return Object.entries(d.chosen).map(([r,items])=>`[${r}]\n`+items.map(i=>`- (${i.a.id}) ${i.t.text}`).join("\n")).join("\n");
+}
+function currentBulletDigest(d){ return Object.entries(d.chosen).flatMap(([r,items])=>items.map(i=>`${i.a.id} | ${r} | ${d.edits[i.a.id]??i.t.text}`)).join("\n"); }
+function findChosen(d, aid){ for(const items of Object.values(d.chosen)) for(const i of items) if(i.a.id===aid) return i; return null; }
+function compute(d, req){ const chosen=select(d, req); const cov=coverage(req, chosen); return {chosen, cov, score:Object.keys(req).length?matchScore(req, cov):null}; }
+return { extractRequirements, claimById, disputedAchievements, angleScore, longText, parsePlace, defaultPlace, bulletPlace, attachOk, bulletQa, libraryDigest, textAdj, allAchievements, scoreAch, pickText, inboxEngDetails, engState, visibleEngagements, engMembers, engExclude, engagementsModel, select, inboxPhrases, rankTagline, rankCompetencies, rankTech, rankCore, resumeModel, placeName, placeGroups, unknownTools, consultingWanted, templateQuestions, draftDigest, currentBulletDigest, findChosen, unsyncedInbox, engByKey, compute };
+}
+
 return {
-  VERSION, SCHEMAS,
+  VERSION, SCHEMAS, createEngine,
   util: { esc, escRe, MONTHS, fmtDate, REQ_HINT, uniq, norm, splitList, PHRASE_SECTIONS, TOOL_LEXICON, isSkip, cleanBullet, cleanPhrase, splitAnswer, splitPhrases, shortRole, sectionOf, placeKey },
   qa: { NUMBER_WORDS, numberTokens, FIRST_PERSON, qaLine, blocking, answerQuotes },
   score: { coverage, matchScore, tagWeight, rankByTags },
