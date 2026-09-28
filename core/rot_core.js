@@ -91,40 +91,65 @@ function rankByTags(items, req){ if(!Object.keys(req).length) return [...items];
 
 /* ------------------------------ documents: paragraphs, Word XML, PDF metrics, plain text (mirror rot.py model_paragraphs / docx_bytes) ------------------------------ */
 const btext = b => typeof b==="string" ? b : b.text;
+/* Section order and headings of a template (rot-layout/1). The source template's layout is the default; a template JSON may carry
+   its own under tpl.layout. rot.py's model_paragraphs() and render_md() read the same shape (core/layouts/*.json). */
+const SOURCE_LAYOUT = {"schema":"rot-layout/1","id":"source-2026-09","sections":[{"kind":"header"},{"kind":"lines","heading":"Professional Summary & Areas of Expertise","blocks":["summary","tagline","expertise","technologies"],"always":true},{"kind":"education","heading":"Education"},{"kind":"experience","heading":"Professional Experience"},{"kind":"certifications","heading":"Credentialing & Certifications"},{"kind":"engagements","heading":"Business Consulting Engagements"},{"kind":"core_competencies","heading":"Core Competencies"}],"labels":{"technologies":"Technologies"},"joins":{"tagline":" | ","expertise":" • ","technologies":", ","core":", "}};
+function layoutOf(layout){ const Ly=layout||SOURCE_LAYOUT; return {sections:Ly.sections||SOURCE_LAYOUT.sections, J:{...SOURCE_LAYOUT.joins, ...(Ly.joins||{})}, LB:{...SOURCE_LAYOUT.labels, ...(Ly.labels||{})}}; }
+function lineBlocks(m){ return {summary:!!m.summary, tagline:(m.tagline||[]).length>0, expertise:(m.expertise||[]).length>0, technologies:(m.technologies||[]).length>0}; }
 /* The resume as [kind, runs] paragraphs. Mirrors model_paragraphs() in rot.py, so the page and the CLI build the same document.
    A run is [style, text], ["tab"], or ["link", label, url]. */
-function docParagraphs(m){
-  const i=m.identity, P=[];
-  P.push(["name",[["name",i.name]]]);
-  const contact=[["contact",`${i.location} | ${i.phone} | ${i.email}`+((i.links||[]).length?" | ":"")]];
-  (i.links||[]).forEach((ln,k)=>{ if(k) contact.push(["contact"," | "]); contact.push(["link",ln.label,ln.url]); });
-  P.push(["contact",contact]);
-  P.push(["heading",[["heading","Professional Summary & Areas of Expertise"]]]);
-  if(m.summary) P.push(["summary",[["plain",m.summary]]]);
-  if(m.tagline.length) P.push(["tagline",[["plain",m.tagline.join(" | ")]]]);
-  if(m.expertise.length) P.push(["expertise",[["plain",m.expertise.join(" • ")]]]);
-  if(m.technologies.length){ P.push(["tech_label",[["bold_u","Technologies"],["bold",":"]]]); P.push(["tech_line",[["plain",m.technologies.join(", ")]]]); }
-  if(m.education.length){ P.push(["heading",[["heading","Education"]]]); for(const e of m.education){ P.push(["school",[["bold",e.school]]]); P.push(["degree",[["degree",e.degree_line]]]); for(const b of e.bullets||[]) P.push(["bullet",[["plain",btext(b)]]]); } }
-  P.push(["heading",[["heading","Professional Experience"]]]);
-  for(const r of m.roles){
-    P.push(["role_header",[["bold",`${r.title} | ${r.employer} |`],["tab"],["plain",r.dates]]]);
-    if(r.context) P.push(["role_context",[["context",r.context]]]);
-    r.bullets.forEach((b,k)=>P.push([k===r.bullets.length-1?"bullet_last":"bullet",[["plain",btext(b)]]]));
+function docParagraphs(m, layout){
+  const {sections, J, LB}=layoutOf(layout), i=m.identity, P=[];
+  const heading=t=>P.push(["heading",[["heading",t]]]);
+  for(const sec of sections){
+    if(sec.kind==="header"){
+      P.push(["name",[["name",i.name]]]);
+      const contact=[["contact",`${i.location} | ${i.phone} | ${i.email}`+((i.links||[]).length?" | ":"")]];
+      (i.links||[]).forEach((ln,k)=>{ if(k) contact.push(["contact"," | "]); contact.push(["link",ln.label,ln.url]); });
+      P.push(["contact",contact]);
+    } else if(sec.kind==="lines"){
+      const has=lineBlocks(m), blocks=sec.blocks||[];
+      if(!sec.always && !blocks.some(b=>has[b])) continue;
+      heading(sec.heading);
+      for(const b of blocks){
+        if(b==="summary" && has.summary) P.push(["summary",[["plain",m.summary]]]);
+        else if(b==="tagline" && has.tagline) P.push(["tagline",[["plain",m.tagline.join(J.tagline)]]]);
+        else if(b==="expertise" && has.expertise) P.push(["expertise",[["plain",m.expertise.join(J.expertise)]]]);
+        else if(b==="technologies" && has.technologies){ P.push(["tech_label",[["bold_u",LB.technologies],["bold",":"]]]); P.push(["tech_line",[["plain",m.technologies.join(J.technologies)]]]); }
+      }
+    } else if(sec.kind==="education"){
+      if(!(m.education||[]).length) continue;
+      heading(sec.heading);
+      for(const e of m.education){ P.push(["school",[["bold",e.school]]]); P.push(["degree",[["degree",e.degree_line]]]); for(const b of e.bullets||[]) P.push(["bullet",[["plain",btext(b)]]]); }
+    } else if(sec.kind==="experience"){
+      heading(sec.heading);
+      for(const r of m.roles){
+        P.push(["role_header",[["bold",`${r.title} | ${r.employer} |`],["tab"],["plain",r.dates]]]);
+        if(r.context) P.push(["role_context",[["context",r.context]]]);
+        r.bullets.forEach((b,k)=>P.push([k===r.bullets.length-1?"bullet_last":"bullet",[["plain",btext(b)]]]));
+      }
+    } else if(sec.kind==="certifications"){
+      if(!(m.certifications||[]).length) continue;
+      heading(sec.heading);
+      for(const c of m.certifications){ const runs=[["bold",c.name],["plain",` — ${c.issuer}`]]; if(c.note) runs.push(["cert_note",` (${c.note})`]); P.push(["cert",runs]); }
+    } else if(sec.kind==="engagements"){
+      if(!(m.engagements||[]).length) continue;
+      heading(sec.heading);
+      for(const e of m.engagements){
+        const runs=[["bold",e.client]];
+        if(e.location) runs.push(["bold_italic",` | ${e.location} |`]);
+        if(e.dates) runs.push(["bold",(e.location?" ":" | ")+e.dates]);
+        if(e.commitment) runs.push(["plain",` (${e.commitment})`]);
+        P.push(["eng_header",runs]);
+        if(e.subtitle) P.push(["eng_subtitle",[["italic",e.subtitle]]]);
+        e.bullets.forEach((b,k)=>P.push([k===e.bullets.length-1?"eng_bullet_last":"eng_bullet",[["plain",btext(b)]]]));
+      }
+    } else if(sec.kind==="core_competencies"){
+      if(!(m.core_competencies||[]).length) continue;
+      heading(sec.heading);
+      for(const a of m.core_competencies) P.push(["comp",[["bold",a.label+": "],["plain",a.items.join(J.core)]]]);
+    }
   }
-  if(m.certifications.length){ P.push(["heading",[["heading","Credentialing & Certifications"]]]);
-    for(const c of m.certifications){ const runs=[["bold",c.name],["plain",` — ${c.issuer}`]]; if(c.note) runs.push(["cert_note",` (${c.note})`]); P.push(["cert",runs]); } }
-  if(m.engagements.length){ P.push(["heading",[["heading","Business Consulting Engagements"]]]);
-    for(const e of m.engagements){
-      const runs=[["bold",e.client]];
-      if(e.location) runs.push(["bold_italic",` | ${e.location} |`]);
-      if(e.dates) runs.push(["bold",(e.location?" ":" | ")+e.dates]);
-      if(e.commitment) runs.push(["plain",` (${e.commitment})`]);
-      P.push(["eng_header",runs]);
-      if(e.subtitle) P.push(["eng_subtitle",[["italic",e.subtitle]]]);
-      e.bullets.forEach((b,k)=>P.push([k===e.bullets.length-1?"eng_bullet_last":"eng_bullet",[["plain",btext(b)]]]));
-    } }
-  if(m.core_competencies.length){ P.push(["heading",[["heading","Core Competencies"]]]);
-    for(const a of m.core_competencies) P.push(["comp",[["bold",a.label+": "],["plain",a.items.join(", ")]]]); }
   return P;
 }
 function xmlEsc(s){ return String(s??"").replace(/[\x00-\x08\x0b\x0c\x0e-\x1f]/g,"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
@@ -135,7 +160,7 @@ function rprXml(style, tpl){ const f=tpl.styles[style]||{}; let x=f.link?'<w:rSt
   return `<w:rPr>${x}</w:rPr>`; }
 function documentXml(m, tpl){
   const links=[], body=[];
-  for(const [kind,runs] of docParagraphs(m)){
+  for(const [kind,runs] of docParagraphs(m, tpl.layout)){
     let out="";
     for(const r of runs){
       if(r[0]==="tab") out+=`<w:r>${rprXml("plain",tpl)}<w:tab/></w:r>`;
@@ -156,15 +181,27 @@ const PDF_METRICS={font:"Calibri", size:10, single:1.2207, ascent:0.9521, hyperl
   space:{name:2,contact:10,heading_before:12,heading_after:5,rule_gap:2,rule_width:0.75,tagline:5,school:1,degree:5,context:5,bullet_last:12,cert:2,eng_header:4,eng_subtitle:4,eng_bullet:2,eng_bullet_last:8},
   line:{context:1.15,list:250/240}, indent:{experience:{left:18,hanging:18,glyph:"•"},certs:{left:15.1,hanging:10.75,glyph:"•"},engagements:{left:15.1,hanging:10.75,glyph:"•"},competencies:{left:18,hanging:18,glyph:"•"}},
   colors:{rule:"#999999"}};
-function plainText(m){
-  const i=m.identity; const L=[i.name, `${i.location} | ${i.phone} | ${i.email}`+((i.links||[]).length?" | "+(i.links||[]).map(l=>`${l.label}: ${l.url}`).join(" | "):""), "",
-    "PROFESSIONAL SUMMARY & AREAS OF EXPERTISE"].concat(m.summary?[m.summary,""]:[]).concat([m.tagline.join(" | "), "", m.expertise.join(" • "), "", "Technologies: "+m.technologies.join(", "), "", "EDUCATION"]);
-  m.education.forEach(e=>L.push(e.school, e.degree_line));
-  L.push("", "PROFESSIONAL EXPERIENCE");
-  for(const r of m.roles){ L.push(`${r.title} | ${r.employer} | ${r.dates}`, r.context||""); r.bullets.forEach(b=>L.push("• "+btext(b))); L.push(""); }
-  L.push("CREDENTIALING & CERTIFICATIONS", ...m.certifications.map(c=>`• ${c.name} — ${c.issuer}${c.note?` (${c.note})`:""}`));
-  if(m.engagements.length){ L.push("", "BUSINESS CONSULTING ENGAGEMENTS"); for(const e of m.engagements){ L.push(`${e.client}${e.location?` | ${e.location} |`:""}${e.dates?` ${e.dates}`:""}${e.commitment?` (${e.commitment})`:""}`); if(e.subtitle) L.push(e.subtitle); e.bullets.forEach(b=>L.push("• "+btext(b))); L.push(""); } }
-  L.push("CORE COMPETENCIES", ...m.core_competencies.map(a=>`• ${a.label}: ${a.items.join(", ")}`));
+function plainText(m, layout){
+  const {sections, J, LB}=layoutOf(layout), i=m.identity, L=[];
+  for(const sec of sections){
+    if(sec.kind==="header") L.push(i.name, `${i.location} | ${i.phone} | ${i.email}`+((i.links||[]).length?" | "+(i.links||[]).map(l=>`${l.label}: ${l.url}`).join(" | "):""), "");
+    else if(sec.kind==="lines"){
+      const has=lineBlocks(m), blocks=sec.blocks||[];
+      if(!sec.always && !blocks.some(b=>has[b])) continue;
+      L.push(sec.heading.toUpperCase());
+      for(const b of blocks){
+        if(b==="summary"){ if(has.summary) L.push(m.summary, ""); }
+        else if(b==="tagline") L.push((m.tagline||[]).join(J.tagline), "");
+        else if(b==="expertise") L.push((m.expertise||[]).join(J.expertise), "");
+        else if(b==="technologies") L.push(LB.technologies+": "+(m.technologies||[]).join(J.technologies), "");
+      }
+    }
+    else if(sec.kind==="education"){ L.push(sec.heading.toUpperCase()); (m.education||[]).forEach(e=>L.push(e.school, e.degree_line)); }
+    else if(sec.kind==="experience"){ L.push("", sec.heading.toUpperCase()); for(const r of m.roles){ L.push(`${r.title} | ${r.employer} | ${r.dates}`, r.context||""); r.bullets.forEach(b=>L.push("• "+btext(b))); L.push(""); } }
+    else if(sec.kind==="certifications") L.push(sec.heading.toUpperCase(), ...(m.certifications||[]).map(c=>`• ${c.name} — ${c.issuer}${c.note?` (${c.note})`:""}`));
+    else if(sec.kind==="engagements"){ if(!(m.engagements||[]).length) continue; L.push("", sec.heading.toUpperCase()); for(const e of m.engagements){ L.push(`${e.client}${e.location?` | ${e.location} |`:""}${e.dates?` ${e.dates}`:""}${e.commitment?` (${e.commitment})`:""}`); if(e.subtitle) L.push(e.subtitle); e.bullets.forEach(b=>L.push("• "+btext(b))); L.push(""); } }
+    else if(sec.kind==="core_competencies") L.push(sec.heading.toUpperCase(), ...(m.core_competencies||[]).map(a=>`• ${a.label}: ${a.items.join(J.core)}`));
+  }
   return L.join("\n");
 }
 
@@ -707,7 +744,7 @@ async function buildPdf(m, tpl, jspdf, loadFonts){
       cur.push(tk); lw+=tk.w; }
     while(cur.length && cur[cur.length-1].sp){ lw-=cur.pop().w; }
     if(cur.length) lines.push({toks:cur,w:lw}); return lines.length?lines:[{toks:[],w:0}]; }
-  const paras=docParagraphs(m).map(([kind,runs])=>{ const k=K[kind]||{}, ind=k.list?M.indent[k.list]:null;
+  const paras=docParagraphs(m, tpl&&tpl.layout).map(([kind,runs])=>{ const k=K[kind]||{}, ind=k.list?M.indent[k.list]:null;
     const x=X0+(ind?ind.left:0), w=CW-(ind?ind.left:0);
     let lines, right=null;
     if(k.tab){ const ti=runs.findIndex(r=>r[0]==="tab"); const rt=tokens(runs.slice(ti+1)); right={toks:rt, w:rt.reduce((a,t)=>a+t.w,0)}; lines=wrap(tokens(runs.slice(0,ti)), w-right.w-12); }
@@ -744,5 +781,6 @@ return {
   qa: { NUMBER_WORDS, numberTokens, FIRST_PERSON, qaLine, blocking, answerQuotes },
   score: { coverage, matchScore, tagWeight, rankByTags },
   doc: { btext, docParagraphs, xmlEsc, rprXml, documentXml, plainText, pdfSafe, abToB64, PDF_METRICS, docxParts, buildDocx, buildPdf },
+  layouts: { source: SOURCE_LAYOUT },
 };
 });

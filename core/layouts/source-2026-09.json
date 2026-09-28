@@ -1,0 +1,16 @@
+{
+  "schema": "rot-layout/1",
+  "id": "source-2026-09",
+  "_about": "Section order and headings of the source template. docParagraphs (core) and model_paragraphs/render_md (rot.py) both read this shape; a 'lines' section prints its heading and whichever of its blocks the model has ('always' prints the heading even when every block is empty). The core embeds a copy as RotCore.layouts.source; tests/core/layout_sync.test.js keeps the two identical.",
+  "sections": [
+    {"kind": "header"},
+    {"kind": "lines", "heading": "Professional Summary & Areas of Expertise", "blocks": ["summary", "tagline", "expertise", "technologies"], "always": true},
+    {"kind": "education", "heading": "Education"},
+    {"kind": "experience", "heading": "Professional Experience"},
+    {"kind": "certifications", "heading": "Credentialing & Certifications"},
+    {"kind": "engagements", "heading": "Business Consulting Engagements"},
+    {"kind": "core_competencies", "heading": "Core Competencies"}
+  ],
+  "labels": {"technologies": "Technologies"},
+  "joins": {"tagline": " | ", "expertise": " • ", "technologies": ", ", "core": ", "}
+}

@@ -788,69 +788,116 @@ def btext(b):
     return b["text"] if isinstance(b, dict) else b
 
 
-def model_paragraphs(m):
-    """The resume as (paragraph kind, runs) in template order; a run is (style, text), ("tab",) or ("link", label, url).
+LAYOUTS = ROOT / "core" / "layouts"
+_SOURCE_LAYOUT = None
+
+
+def load_layout(name="source-2026-09"):
+    """A layout (rot-layout/1): section order, headings, joins and labels; see core/layouts/."""
+    return jload(LAYOUTS / f"{name}.json")
+
+
+def template_layout(tpl=None):
+    """The layout a template JSON carries, else the source template's."""
+    return (tpl or load_template()).get("layout") or load_layout()
+
+
+def _layout_parts(layout):
+    global _SOURCE_LAYOUT
+    if _SOURCE_LAYOUT is None:
+        _SOURCE_LAYOUT = load_layout()
+    ly = layout or _SOURCE_LAYOUT
+    return (ly.get("sections") or _SOURCE_LAYOUT["sections"], {**_SOURCE_LAYOUT["joins"], **(ly.get("joins") or {})},
+            {**_SOURCE_LAYOUT["labels"], **(ly.get("labels") or {})})
+
+
+def _line_blocks(m):
+    return {"summary": bool(m.get("summary")), "tagline": bool(m.get("tagline")), "expertise": bool(m.get("expertise")),
+            "technologies": bool(m.get("technologies"))}
+
+
+def model_paragraphs(m, layout=None):
+    """The resume as (paragraph kind, runs) in the layout's order; a run is (style, text), ("tab",) or ("link", label, url).
     The Match Desk's docParagraphs() mirrors this exactly, so the page and the CLI build the same document."""
+    sections, J, LB = _layout_parts(layout)
     i, P = m["identity"], []
-    P.append(("name", [("name", i["name"])]))
-    contact = [("contact", f"{i['location']} | {i['phone']} | {i['email']}" + (" | " if i.get("links") else ""))]
-    for k, ln in enumerate(i.get("links") or []):
-        if k:
-            contact.append(("contact", " | "))
-        contact.append(("link", ln["label"], ln["url"]))
-    P.append(("contact", contact))
-    P.append(("heading", [("heading", "Professional Summary & Areas of Expertise")]))
-    if m.get("summary"):
-        P.append(("summary", [("plain", m["summary"])]))
-    if m.get("tagline"):
-        P.append(("tagline", [("plain", " | ".join(m["tagline"]))]))
-    if m.get("expertise"):
-        P.append(("expertise", [("plain", " • ".join(m["expertise"]))]))
-    if m.get("technologies"):
-        P.append(("tech_label", [("bold_u", "Technologies"), ("bold", ":")]))
-        P.append(("tech_line", [("plain", ", ".join(m["technologies"]))]))
-    if m.get("education"):
-        P.append(("heading", [("heading", "Education")]))
-        for e in m["education"]:
-            P.append(("school", [("bold", e["school"])]))
-            P.append(("degree", [("degree", e["degree_line"])]))
-            for b in e.get("bullets") or []:
-                P.append(("bullet", [("plain", btext(b))]))
-    P.append(("heading", [("heading", "Professional Experience")]))
-    for r in m["roles"]:
-        P.append(("role_header", [("bold", f"{r['title']} | {r['employer']} |"), ("tab",), ("plain", r["dates"])]))
-        if r.get("context"):
-            P.append(("role_context", [("context", r["context"])]))
-        n = len(r["bullets"])
-        for k, b in enumerate(r["bullets"]):
-            P.append(("bullet_last" if k == n - 1 else "bullet", [("plain", btext(b))]))
-    if m.get("certifications"):
-        P.append(("heading", [("heading", "Credentialing & Certifications")]))
-        for c in m["certifications"]:
-            runs = [("bold", c["name"]), ("plain", f" — {c['issuer']}")]
-            if c.get("note"):
-                runs.append(("cert_note", f" ({c['note']})"))
-            P.append(("cert", runs))
-    if m.get("engagements"):
-        P.append(("heading", [("heading", "Business Consulting Engagements")]))
-        for e in m["engagements"]:
-            runs = [("bold", e["client"])]
-            if e.get("location"):
-                runs.append(("bold_italic", f" | {e['location']} |"))
-            if e.get("dates"):
-                runs.append(("bold", (" " if e.get("location") else " | ") + e["dates"]))
-            if e.get("commitment"):
-                runs.append(("plain", f" ({e['commitment']})"))
-            P.append(("eng_header", runs))
-            if e.get("subtitle"):
-                P.append(("eng_subtitle", [("italic", e["subtitle"])]))
-            n = len(e["bullets"])
-            for k, b in enumerate(e["bullets"]):
-                P.append(("eng_bullet_last" if k == n - 1 else "eng_bullet", [("plain", btext(b))]))
-    if m.get("core_competencies"):
-        P.append(("heading", [("heading", "Core Competencies")]))
-        for a in m["core_competencies"]:
-            P.append(("comp", [("bold", a["label"] + ": "), ("plain", ", ".join(a["items"]))]))
+    heading = lambda t: P.append(("heading", [("heading", t)]))
+    for sec in sections:
+        kind = sec["kind"]
+        if kind == "header":
+            P.append(("name", [("name", i["name"])]))
+            contact = [("contact", f"{i['location']} | {i['phone']} | {i['email']}" + (" | " if i.get("links") else ""))]
+            for k, ln in enumerate(i.get("links") or []):
+                if k:
+                    contact.append(("contact", " | "))
+                contact.append(("link", ln["label"], ln["url"]))
+            P.append(("contact", contact))
+        elif kind == "lines":
+            has, blocks = _line_blocks(m), sec.get("blocks") or []
+            if not sec.get("always") and not any(has[b] for b in blocks):
+                continue
+            heading(sec["heading"])
+            for b in blocks:
+                if b == "summary" and has["summary"]:
+                    P.append(("summary", [("plain", m["summary"])]))
+                elif b == "tagline" and has["tagline"]:
+                    P.append(("tagline", [("plain", J["tagline"].join(m["tagline"]))]))
+                elif b == "expertise" and has["expertise"]:
+                    P.append(("expertise", [("plain", J["expertise"].join(m["expertise"]))]))
+                elif b == "technologies" and has["technologies"]:
+                    P.append(("tech_label", [("bold_u", LB["technologies"]), ("bold", ":")]))
+                    P.append(("tech_line", [("plain", J["technologies"].join(m["technologies"]))]))
+        elif kind == "education":
+            if not m.get("education"):
+                continue
+            heading(sec["heading"])
+            for e in m["education"]:
+                P.append(("school", [("bold", e["school"])]))
+                P.append(("degree", [("degree", e["degree_line"])]))
+                for b in e.get("bullets") or []:
+                    P.append(("bullet", [("plain", btext(b))]))
+        elif kind == "experience":
+            heading(sec["heading"])
+            for r in m["roles"]:
+                P.append(("role_header", [("bold", f"{r['title']} | {r['employer']} |"), ("tab",), ("plain", r["dates"])]))
+                if r.get("context"):
+                    P.append(("role_context", [("context", r["context"])]))
+                n = len(r["bullets"])
+                for k, b in enumerate(r["bullets"]):
+                    P.append(("bullet_last" if k == n - 1 else "bullet", [("plain", btext(b))]))
+        elif kind == "certifications":
+            if not m.get("certifications"):
+                continue
+            heading(sec["heading"])
+            for c in m["certifications"]:
+                runs = [("bold", c["name"]), ("plain", f" — {c['issuer']}")]
+                if c.get("note"):
+                    runs.append(("cert_note", f" ({c['note']})"))
+                P.append(("cert", runs))
+        elif kind == "engagements":
+            if not m.get("engagements"):
+                continue
+            heading(sec["heading"])
+            for e in m["engagements"]:
+                runs = [("bold", e["client"])]
+                if e.get("location"):
+                    runs.append(("bold_italic", f" | {e['location']} |"))
+                if e.get("dates"):
+                    runs.append(("bold", (" " if e.get("location") else " | ") + e["dates"]))
+                if e.get("commitment"):
+                    runs.append(("plain", f" ({e['commitment']})"))
+                P.append(("eng_header", runs))
+                if e.get("subtitle"):
+                    P.append(("eng_subtitle", [("italic", e["subtitle"])]))
+                n = len(e["bullets"])
+                for k, b in enumerate(e["bullets"]):
+                    P.append(("eng_bullet_last" if k == n - 1 else "eng_bullet", [("plain", btext(b))]))
+        elif kind == "core_competencies":
+            if not m.get("core_competencies"):
+                continue
+            heading(sec["heading"])
+            for a in m["core_competencies"]:
+                P.append(("comp", [("bold", a["label"] + ": "), ("plain", J["core"].join(a["items"]))]))
     return P
 
 
@@ -880,7 +927,7 @@ def docx_bytes(m, tpl=None):
     """A Word document built from the source template's own styles, numbering and theme."""
     tpl = tpl or load_template()
     links, body = [], []
-    for kind, runs in model_paragraphs(m):
+    for kind, runs in model_paragraphs(m, tpl.get("layout")):
         out = []
         for r in runs:
             if r[0] == "tab":
@@ -919,11 +966,11 @@ HTML_STYLE = {"bold": "font-weight:700", "italic": "font-style:italic", "bold_it
               "context": "color:#808080;font-size:8pt", "cert_note": "font-style:italic;color:#404040", "plain": ""}
 
 
-def render_html(m):
+def render_html(m, layout=None):
     """HTML in the template's layout (preview, and the PDF fallback when Word is unavailable)."""
     e = html.escape
     out = []
-    for kind, runs in model_paragraphs(m):
+    for kind, runs in model_paragraphs(m, layout):
         spans, right = [], []
         tgt = spans
         for r in runs:
@@ -940,31 +987,56 @@ def render_html(m):
     return tpl.replace("{{title}}", e(f"{m['identity']['name']} — Resume")).replace("{{body}}", "\n".join(out))
 
 
-def render_md(m):
-    i = m["identity"]
-    links = " · ".join(f"[{ln['label']}]({ln['url']})" for ln in i.get("links") or [])
-    L = [f"# {i['name']}", f"{i['location']} | {i['phone']} | {i['email']}" + (f" | {links}" if links else ""), "",
-         "## Professional Summary & Areas of Expertise"] + ([m["summary"], ""] if m.get("summary") else []) + [
-         " | ".join(m.get("tagline") or []), "", " • ".join(m.get("expertise") or []), "",
-         f"**Technologies:** {', '.join(m.get('technologies') or [])}", "", "## Education"]
-    for ed in m.get("education") or []:
-        L += [f"**{ed['school']}**  ", f"*{ed['degree_line']}*"] + [f"- {btext(b)}" for b in ed.get("bullets") or []]
-    L += ["", "## Professional Experience"]
-    for r in m["roles"]:
-        L += [f"**{r['title']} | {r['employer']}** | {r['dates']}  ", f"{r.get('context') or ''}"]
-        L += [f"- {btext(b)}" for b in r["bullets"]] + [""]
-    if m.get("certifications"):
-        L += ["## Credentialing & Certifications"] + [f"- **{c['name']}** — {c['issuer']}" + (f" *({c['note']})*" if c.get("note") else "")
-                                                   for c in m["certifications"]] + [""]
-    if m.get("engagements"):
-        L += ["## Business Consulting Engagements"]
-        for g in m["engagements"]:
-            L += [f"**{g['client']}** | {g.get('location') or ''} | {g.get('dates') or ''}" + (f" ({g['commitment']})" if g.get("commitment") else "") + "  "]
-            if g.get("subtitle"):
-                L += [f"*{g['subtitle']}*"]
-            L += [f"- {btext(b)}" for b in g["bullets"]] + [""]
-    if m.get("core_competencies"):
-        L += ["## Core Competencies"] + [f"- **{a['label']}:** {', '.join(a['items'])}" for a in m["core_competencies"]]
+def render_md(m, layout=None):
+    sections, J, LB = _layout_parts(layout)
+    i, L = m["identity"], []
+    for sec in sections:
+        kind = sec["kind"]
+        if kind == "header":
+            links = " · ".join(f"[{ln['label']}]({ln['url']})" for ln in i.get("links") or [])
+            L += [f"# {i['name']}", f"{i['location']} | {i['phone']} | {i['email']}" + (f" | {links}" if links else ""), ""]
+        elif kind == "lines":
+            has, blocks = _line_blocks(m), sec.get("blocks") or []
+            if not sec.get("always") and not any(has[b] for b in blocks):
+                continue
+            L += [f"## {sec['heading']}"]
+            for b in blocks:
+                if b == "summary":
+                    if has["summary"]:
+                        L += [m["summary"], ""]
+                elif b == "tagline":
+                    L += [J["tagline"].join(m.get("tagline") or []), ""]
+                elif b == "expertise":
+                    L += [J["expertise"].join(m.get("expertise") or []), ""]
+                elif b == "technologies":
+                    L += [f"**{LB['technologies']}:** {J['technologies'].join(m.get('technologies') or [])}", ""]
+        elif kind == "education":
+            L += [f"## {sec['heading']}"]
+            for ed in m.get("education") or []:
+                L += [f"**{ed['school']}**  ", f"*{ed['degree_line']}*"] + [f"- {btext(b)}" for b in ed.get("bullets") or []]
+        elif kind == "experience":
+            L += ["", f"## {sec['heading']}"]
+            for r in m["roles"]:
+                L += [f"**{r['title']} | {r['employer']}** | {r['dates']}  ", f"{r.get('context') or ''}"]
+                L += [f"- {btext(b)}" for b in r["bullets"]] + [""]
+        elif kind == "certifications":
+            if not m.get("certifications"):
+                continue
+            L += [f"## {sec['heading']}"] + [f"- **{c['name']}** — {c['issuer']}" + (f" *({c['note']})*" if c.get("note") else "")
+                                             for c in m["certifications"]] + [""]
+        elif kind == "engagements":
+            if not m.get("engagements"):
+                continue
+            L += [f"## {sec['heading']}"]
+            for g in m["engagements"]:
+                L += [f"**{g['client']}** | {g.get('location') or ''} | {g.get('dates') or ''}" + (f" ({g['commitment']})" if g.get("commitment") else "") + "  "]
+                if g.get("subtitle"):
+                    L += [f"*{g['subtitle']}*"]
+                L += [f"- {btext(b)}" for b in g["bullets"]] + [""]
+        elif kind == "core_competencies":
+            if not m.get("core_competencies"):
+                continue
+            L += [f"## {sec['heading']}"] + [f"- **{a['label']}:** {J['core'].join(a['items'])}" for a in m["core_competencies"]]
     return "\n".join(L) + "\n"
 
 
@@ -1084,8 +1156,10 @@ def write_outputs(m, base_path, con=None, strict=True):
               base_path.with_suffix(".trace.json"))
         if errors and strict:
             sys.exit(f"QA FAIL: {len(errors)} error(s) in {base_path.name}; fix the claim or the wording (or pass --force to write anyway)")
-    md, h = render_md(m), render_html(m)
-    blob = docx_bytes(m)
+    tpl = load_template()
+    ly = template_layout(tpl)
+    md, h = render_md(m, ly), render_html(m, ly)
+    blob = docx_bytes(m, tpl)
     with zipfile.ZipFile(io.BytesIO(blob)) as z:
         doc_xml = z.read("word/document.xml").decode("utf-8")
     for text, where in ((md, "markdown"), (h, "html"), (doc_xml, "docx"), (json.dumps(m, ensure_ascii=False), "json")):

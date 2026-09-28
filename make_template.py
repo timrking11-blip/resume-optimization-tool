@@ -8,17 +8,20 @@ the Resume Match Desk (Word download, PDF layout, preview) all render from this 
 
   python make_template.py                      rebuild from sources/TIM KING SOURCE RESUME.docx
   python make_template.py "path/to/new.docx"   copy an updated source into sources/, then rebuild
+  python make_template.py --source X.docx --layout core/layouts/neutral-1.json --out hub/template/docx_template.json
+                                               build another template from another source docx and layout (rot-layout/1)
 
 The yellow "Section A:"…"Section D:" labels in the source are annotations and never reach a resume.
 Normalized on purpose: one heading spacing everywhere, one bullet style per section, and a right tab
 stop for role dates instead of runs of tab characters.
 """
-import datetime as dt, hashlib, json, re, shutil, sys, zipfile
+import argparse, datetime as dt, hashlib, json, re, shutil, sys, zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 SRC = ROOT / "sources" / "TIM KING SOURCE RESUME.docx"
 OUT = ROOT / "templates" / "docx_template.json"
+LAYOUT = ROOT / "core" / "layouts" / "source-2026-09.json"
 W = "http://schemas.openxmlformats.org/wordprocessingml/2006/main"
 
 
@@ -41,7 +44,7 @@ def num_id(p):
     return m.group(1) if m else None
 
 
-def build(src):
+def build(src, layout):
     z = zipfile.ZipFile(src)
     part = lambda n: z.read(n).decode("utf-8")
     doc = part("word/document.xml")
@@ -58,8 +61,11 @@ def build(src):
         if n:
             used.setdefault(section, []).append(n)
     common = lambda s, d: max(set(used.get(s, [d])), key=used.get(s, [d]).count)
-    nums = {"experience": common("professional experience", "1"), "certs": common("credentialing & certifications", "5"),
-            "engagements": common("business consulting engagements", "5"), "competencies": common("core competencies", "2")}
+    heads = {s["kind"]: s["heading"].lower() for s in layout["sections"] if s.get("heading")}   # the layout names each section
+    nums = {"experience": common(heads.get("experience", "professional experience"), "1"),
+            "certs": common(heads.get("certifications", "credentialing & certifications"), "5"),
+            "engagements": common(heads.get("engagements", "business consulting engagements"), "5"),
+            "competencies": common(heads.get("core_competencies", "core competencies"), "2")}
 
     numbering = part("word/numbering.xml")
     abstract_of = dict(re.findall(r'<w:num w:numId="(\d+)"[^>]*>\s*<w:abstractNumId w:val="(\d+)"/>', numbering))
@@ -176,23 +182,33 @@ def build(src):
         "rel_hyperlink": f'<Relationship Id="{{id}}" Type="{rel}hyperlink" Target="{{url}}" TargetMode="External"/>',
         "rels_close": "</Relationships>",
         "ppr": ppr, "styles": styles, "metrics": metrics, "numbering": nums,
+        "layout": {k: v for k, v in layout.items() if not k.startswith("_")},
     }
 
 
 def main():
-    if len(sys.argv) > 1:
-        new = Path(sys.argv[1]).expanduser().resolve()
+    ap = argparse.ArgumentParser(description="Build a docx template JSON from a source .docx and a layout.")
+    ap.add_argument("new_source", nargs="?", help="copy this .docx over the source template first (legacy form)")
+    ap.add_argument("--source", default=str(SRC), help="the source .docx (default: the source template)")
+    ap.add_argument("--layout", default=str(LAYOUT), help="a rot-layout/1 JSON (default: core/layouts/source-2026-09.json)")
+    ap.add_argument("--out", default=str(OUT), help="where to write the template JSON")
+    a = ap.parse_args()
+    src, out = Path(a.source).expanduser().resolve(), Path(a.out)
+    if a.new_source:
+        new = Path(a.new_source).expanduser().resolve()
         if not new.exists():
             sys.exit(f"missing: {new}")
         if new != SRC.resolve():
             shutil.copy2(new, SRC)
             print(f"copied {new.name} -> sources/")
-    if not SRC.exists():
-        sys.exit(f"missing source template: {SRC}")
-    t = build(SRC)
-    OUT.parent.mkdir(exist_ok=True)
-    OUT.write_text(json.dumps(t, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(f"wrote {OUT.relative_to(ROOT)} ({OUT.stat().st_size // 1024} KB) from {SRC.name}; "
+        src = SRC.resolve()
+    if not src.exists():
+        sys.exit(f"missing source template: {src}")
+    layout = json.loads(Path(a.layout).read_text(encoding="utf-8"))
+    t = build(src, layout)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(t, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    print(f"wrote {out.relative_to(ROOT) if out.is_relative_to(ROOT) else out} ({out.stat().st_size // 1024} KB) from {src.name} with layout {layout.get('id')}; "
           f"lists: {t['numbering']}; page {t['metrics']['page']}")
     print("next: python extract.py && python rot.py ingest && python rot.py build --version vN")
 

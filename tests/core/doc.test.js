@@ -22,6 +22,23 @@ test("docParagraphs follows the source template's section order", () => {
   assert.equal(withSummary[3], "summary");
 });
 
+test("another layout changes the sections, headings and labels without touching the paragraph kinds", () => {
+  const NEUTRAL = { schema: "rot-layout/1", id: "neutral-test",
+    sections: [{ kind: "header" }, { kind: "lines", heading: "Summary", blocks: ["summary"] }, { kind: "lines", heading: "Skills", blocks: ["expertise", "technologies"] },
+      { kind: "experience", heading: "Experience" }, { kind: "engagements", heading: "Consulting & Advisory" }, { kind: "education", heading: "Education" }, { kind: "certifications", heading: "Certifications" }],
+    labels: { technologies: "Tools" }, joins: { expertise: ", " } };
+  const P = R.doc.docParagraphs(MODEL, NEUTRAL);
+  assert.deepEqual(P.map(p => p[0]), ["name", "contact", "heading", "expertise", "tech_label", "tech_line", "heading", "role_header", "role_context", "bullet", "bullet_last",
+    "heading", "school", "degree", "heading", "cert"]);
+  assert.deepEqual(P.filter(p => p[0] === "heading").map(p => p[1][0][1]), ["Skills", "Experience", "Education", "Certifications"]);
+  assert.equal(P.find(p => p[0] === "tech_label")[1][0][1], "Tools");
+  assert.equal(P.find(p => p[0] === "expertise")[1][0][1], "Forecasting, Pricing & Packaging");
+  const withSummary = R.doc.docParagraphs({ ...MODEL, summary: "A paragraph." }, NEUTRAL).map(p => p[0]);
+  assert.deepEqual(withSummary.slice(2, 4), ["heading", "summary"]);
+  const txt = R.doc.plainText(MODEL, NEUTRAL);
+  assert.ok(txt.includes("SKILLS") && txt.includes("Tools: Salesforce, Looker") && !txt.includes("CORE COMPETENCIES"));
+});
+
 test("documentXml wraps the body in the template's document and reports the hyperlinks", () => {
   const tpl = require(path.resolve(__dirname, "..", "..", "templates", "docx_template.json"));
   const { xml, links } = R.doc.documentXml(MODEL, tpl);
