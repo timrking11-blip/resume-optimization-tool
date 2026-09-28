@@ -329,7 +329,7 @@ mark{background:var(--hl);color:var(--hl-ink);border-radius:2px;padding:0 1px}
               <label class="f" for="role">Role title<input type="text" id="role" placeholder="auto-detected when Claude is on"></label>
             </div>
             <label class="f" for="jd">Posting text<textarea id="jd" spellcheck="false" placeholder="Paste the whole posting: responsibilities and requirements."></textarea></label>
-            <div class="row"><button class="primary" id="matchBtn">Match against my record</button><button id="newBtn" title="Start a blank posting. This one stays under Saved postings.">New posting</button><span class="hint" id="jdHint"></span></div>
+            <div class="row"><button class="primary" id="matchBtn">Match against my record</button><button id="sampleJdBtn" title="A fictional posting, so you can see the questions without finding one first">Load a sample posting</button><button id="newBtn" title="Start a blank posting. This one stays under Saved postings.">New posting</button><span class="hint" id="jdHint"></span></div>
           </div>
           <div class="panel">
             <h2>Match</h2>
@@ -338,6 +338,7 @@ mark{background:var(--hl);color:var(--hl-ink);border-radius:2px;padding:0 1px}
               <div style="flex:1;display:grid;gap:6px;min-width:160px"><div class="meter"><i id="meter" style="width:0"></i></div><div class="hint">Weighted share of the posting's requirements your draft already proves.</div></div>
             </div>
             <div class="status" id="claude1Status" hidden></div>
+            <p class="note" id="heldNote" hidden></p>
             <div class="reqs" id="reqs" role="list"></div>
             <details><summary class="hint">Show matched phrases in the posting</summary><div class="jdview" id="jdview"></div></details>
           </div>

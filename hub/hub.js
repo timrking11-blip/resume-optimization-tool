@@ -18,6 +18,27 @@ const SECTION_LABELS = {experience:"Experience entry", technology:"Tools line", 
 const SAMPLE_ERR = {not_granted:"Claude isn't allowed on this page. Allow it when the page asks, or reload and try again.", sampling_disabled:"Claude isn't available for this account.", rate_limited:"Claude is busy right now. Wait a minute and try again.", invalid_json:"Claude's reply came back malformed. Try again.", prompt_too_large:"That answer is too long for one pass. Shorten it and try again.", refused:"Claude declined this one. Rephrase the answer and try again.", empty_completion:"Claude returned nothing. Add a specific and try again.", session_expired:"Your Claude session expired. Sign in again, then retry."};
 const sampleErr = e => SAMPLE_ERR[e?.code] || `Claude couldn't finish (${esc(e?.code||"error")}). Try again.`;
 const LINE_EDIT = {tagline:{sep:["|"], join:" | "}, expertise:{sep:["•","·"], join:" • "}, technologies:{sep:[","], join:", "}};
+/* a fictional posting, so the questions can be seen without finding one first */
+const SAMPLE_JD = `Director, Revenue Operations
+Northgate Software · Denver, CO (hybrid) · Full-time
+
+About Northgate
+Northgate makes planning software for mid-market manufacturers. We are a Series C company with 400 employees and a 90-person go-to-market team.
+
+What you'll do
+- Own the revenue forecast: stage definitions, weekly cadence, and the accuracy the executive team and board rely on.
+- Run our Salesforce instance and the systems around it (HubSpot, Outreach, Gong, Looker), including the roadmap for consolidating tools acquired through two acquisitions.
+- Design territories, lead routing and SLAs for SDR and AE teams; measure speed-to-lead and conversion at every stage.
+- Partner with product marketing and finance on pricing and packaging changes, including the launch of a mid-market tier.
+- Build the dashboards and pipeline reviews the CRO uses every week; report on pipeline coverage and win rates.
+- Lead and grow a team of analysts and administrators.
+
+What you bring
+- 6+ years in revenue operations, sales operations or a related role at a B2B SaaS company.
+- Proven forecasting accuracy improvements and CRM consolidation experience.
+- Salesforce administration depth; Looker or Tableau fluency; comfortable with SQL basics.
+- Experience presenting to C-suite stakeholders and aligning sales, customer success and marketing.
+- Bonus: pricing and packaging work, or a quota-carrying background.`;
 
 /* The working draft (the engine's `d`) plus this page's own state */
 const D = {
@@ -118,11 +139,37 @@ function tagChips(a){
   return (nums.length?`<span class="t n" title="Numbers this entry states">${nums.map(esc).join(" · ")}</span>`:`<span class="t" title="A number makes an entry provable and stronger in a match">no number yet</span>`)+(tags||`<span class="t">no skill tag yet</span>`);
 }
 /* a fact two documents disagree on: both values with their sources, and the person's pick settles it */
-function sourceLabel(evIds){ const ev=store.get("evidence"), srcs=store.get("sources"); const labels=new Set(); for(const id of evIds||[]){ const row=ev.find(e=>e.id===id); const s=row&&srcs.find(x=>x.id===row.source); labels.add(s?s.label:(row?row.source:"?")); } return [...labels].join(", "); }
+const monthYear = s => { const d=s?new Date(s):null; return d&&!isNaN(d) ? d.toLocaleDateString([], {month:"short", year:"numeric"}) : ""; };
+function sourceLabel(evIds){ const ev=store.get("evidence"), srcs=store.get("sources"); const labels=new Set(); for(const id of evIds||[]){ const row=ev.find(e=>e.id===id); const s=row&&srcs.find(x=>x.id===row.source); const when=monthYear((s&&s.authored_at)||(row&&row.observed_at)); labels.add((s?s.label:(row?row.source:"?"))+(when?` · ${when}`:"")); } return [...labels].join(", "); }
+/* what the choice implies, so the person decides on the stakes and not on which line came first */
+function stakes(kind, id, pred, f){
+  if(kind==="ach") return "Two documents describe the same work differently. An interviewer will ask what you personally did and decided; pick the statement you could defend in detail, because the stronger claim is worth more only if a reference would say the same. If they are two separate pieces of work, keep both.";
+  if(pred==="title") return "Titles are checked against references and HR records. Use the one your employer would confirm; scope belongs in the entries beneath it.";
+  if(pred==="employer") return "Two names for one employer usually mean a rename or an acquisition. Use the name a reference call would recognize.";
+  if(pred==="start"||pred==="end") return dateStakes(id, pred, f);
+  if(pred==="school"||pred==="degree"||pred==="date") return "Education details are verified in background checks. Use what the registrar would confirm.";
+  return "Pick the value you can back with a record.";
+}
+function dateStakes(id, pred, f){
+  const s=store.get("subjects").find(x=>x.id===id); if(!s) return "";
+  const others=roleSubjects().filter(r=>r.key!==s.key), ym=(v,end)=>v?(String(v).length===4?`${v}-${end?"12":"01"}`:String(v)):null;
+  const months=(a,b)=>{ const [ay,am]=a.split("-").map(Number), [by,bm]=b.split("-").map(Number); return (by-ay)*12+(bm-am); };
+  const notes=[];
+  for(const v of [f.value, ...f.contradicting.map(c=>c.value)]){
+    if(pred==="end"){ const e=ym(v,true)||"9999-12", mine=ym(val(s.facts.start))||"0000-01";
+      const next=others.map(r=>({r, s:ym(val(r.facts&&r.facts.start))})).filter(x=>x.s && x.s>mine).sort((a,b)=>a.s.localeCompare(b.s))[0]; if(!next) continue;
+      const m=months(e, next.s), who=val(next.r.facts.employer)||next.r.key;
+      notes.push(`${v==null?"Present":v} ${m<0?`overlaps ${who} by ${-m} month${-m===1?"":"s"}`:(m>1?`leaves a ${m}-month gap before ${who}`:`runs straight into ${who}`)}`); }
+    else { const st=ym(v); if(!st) continue; const prev=others.map(r=>({r, e:ym(val(r.facts&&r.facts.end),true)||"9999-12", s:ym(val(r.facts&&r.facts.start))})).filter(x=>x.s && x.s<st).sort((a,b)=>b.s.localeCompare(a.s))[0]; if(!prev) continue;
+      const m=months(prev.e, st), who=val(prev.r.facts.employer)||prev.r.key;
+      notes.push(`${v} ${m<0?`overlaps ${who} by ${-m} month${-m===1?"":"s"}`:(m>1?`leaves a ${m}-month gap after ${who}`:`follows ${who} directly`)}`); }
+  }
+  return (notes.length?`What each choice implies: ${notes.join("; ")}. `:"")+"Dates set the order of your roles and any gap a reader will ask about; use the dates on the offer letter or in the HR system.";
+}
 function conflictHtml(kind, id, pred, f){
   if(!f || !(f.contradicting||[]).length || f.resolution) return "";
   const cur=f.value, show=v=>v==null||v===""?"Present":String(v);
-  return `<div class="conflict" role="group"><span>Two sources disagree${pred?` on <b>${esc(pred)}</b>`:""}. Which is right?</span>
+  return `<div class="conflict" role="group"><span>Two sources disagree${pred?` on <b>${esc(pred)}</b>`:""}. Which is right?</span><span class="hint">${esc(stakes(kind, id, pred, f))}</span>
     <div class="cv"><b>${esc(show(cur))}</b><span class="src">${esc(sourceLabel(f.evidence))}</span><button data-resolve="${kind}|${esc(id)}|${esc(pred||"")}|0">Use this</button></div>
     ${f.contradicting.map((c,i)=>`<div class="cv"><b>${esc(show(c.value))}</b><span class="src">${esc(sourceLabel(c.evidence))}</span><button data-resolve="${kind}|${esc(id)}|${esc(pred||"")}|${i+1}">Use this</button>${kind==="ach"?`<button class="ghost" data-split="${esc(id)}|${i}" title="Keep both as separate entries">They are different things</button>`:""}</div>`).join("")}</div>`;
 }
@@ -251,6 +298,8 @@ function renderMatch(){
     return `<div class="req" role="listitem"><span class="pill ${st[0]}">${st[1]}</span><span class="lbl" title="${esc(r.phrases.join(", "))}">${esc((tags[t]||{label:t}).label)} <em>· ${esc(r.phrases.slice(0,3).join(", "))}</em></span><span class="w">${r.weight.toFixed(1)}</span></div>`; });
   for(const u of D.uncatalogued) rows.push(`<div class="req" role="listitem"><span class="pill gap">new</span><span class="lbl" title="Not in the skill taxonomy yet">${esc(u.phrase)} <em>· not in taxonomy</em></span><span class="w">${(+u.weight||1).toFixed(1)}</span></div>`);
   $("#reqs").innerHTML=rows.join("") || `<p class="hint">No requirements detected yet.</p>`;
+  const held=E.disputedAchievements().size, hn=$("#heldNote"); hn.hidden=!held;
+  if(held) hn.innerHTML=`<b>${held} entr${held===1?"y is":"ies are"} held back</b> until you settle the disagreement under Your evidence. A statement two documents make differently never prints on its own. <button class="ghost" data-goto="evidence">Go and decide</button>`;
   const phrases=[...new Set(Object.values(req).flatMap(r=>r.phrases))].sort((a,b)=>b.length-a.length); let h=esc(D.jd);
   if(phrases.length){ const re=new RegExp("(?<![A-Za-z0-9-])("+phrases.map(p=>escRe(esc(p))).join("|")+")(?![A-Za-z0-9])","gi"); h=h.replace(re,"<mark>$1</mark>"); }
   $("#jdview").innerHTML=h;
@@ -780,13 +829,19 @@ Hub.register({id:"evidence", label:"Your evidence", order:1,
     ["#skills","#tools"].forEach(s=>$(s).addEventListener("input", ()=>{ $("#listsNote").textContent="Unsaved changes."; }));
     $("#goMatch").onclick=()=>Hub.show("match");
     $("#loadExample").onclick=async()=>{ if(!store.isEmpty()){ toast("The example replaces what is here: download a backup and delete everything first."); return; }
-      try{ const r=await fetch("example/backup.json"); if(!r.ok) throw new Error(String(r.status)); loadBackup(await r.json(), "Loaded the example person (fictional). Open Match a posting to see the whole flow."); }catch(e){ toast("The example couldn't load."); } };
+      try{ const r=await fetch("example/backup.json"); if(!r.ok) throw new Error(String(r.status)); loadBackup(await r.json(), "Loaded the example person (fictional).");
+        const n=bank().claims.filter(c=>c.status==="disputed").length;
+        revealRoles(`<b>Example loaded:</b> a fictional record built from four documents (three resumes and a LinkedIn profile). ${n?`They disagree in ${n===1?"one place":n+" places"}, marked below: read both statements and decide which the person could defend. Until then that entry is held back.`:"Nothing is in dispute."} Then open <b>Match a posting</b> and load the sample posting.`); }
+      catch(e){ toast("The example couldn't load."); } };
   },
   refresh(){ renderIdentity(); renderRoles(); renderLists(); renderReady(); $("#tiers").innerHTML=tiersHtml(); }});
 
 Hub.register({id:"match", label:"Match a posting", order:2,
   mount(){
     $("#matchBtn").onclick=doMatch; $("#newBtn").onclick=newPosting; $("#finalBtn").onclick=doFinal;
+    $("#sampleJdBtn").onclick=()=>{ if($("#jd").value.trim() && $("#jd").value.trim()!==SAMPLE_JD.trim() && D.phase!=="idle") newPosting();
+      $("#jd").value=SAMPLE_JD; $("#company").value="Northgate Software"; $("#role").value="Director, Revenue Operations"; $("#jdHint").textContent="Sample posting loaded (fictional). Press Match against my record."; persist(); $("#matchBtn").focus(); };
+    $("#heldNote").addEventListener("click", e=>{ if(e.target.closest("[data-goto]")){ Hub.show("evidence"); revealRoles(); } });
     $("#quickQBtn").onclick=()=>useQuickQuestions("Quick questions from the gap analysis. Claude's version was skipped.");
     $("#polishAllBtn").onclick=()=>{ readAnswers(); const ixs=D.questions.map((q,ix)=>ix).filter(ix=>!isSkip(D.questions[ix].answer)); convertQuestions(ixs, `Claude is polishing ${ixs.length} answer${ixs.length>1?"s":""}…`); };
     $("#recent").addEventListener("change", e=>{ const id=e.target.value; e.target.value=""; if(id) openSaved(id); });

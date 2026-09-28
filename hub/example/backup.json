@@ -1,0 +1,1983 @@
+{
+ "schema": "cch-backup/1",
+ "core": "1.1.0",
+ "exported_at": "2026-09-28T00:00:00Z",
+ "edition": "hub",
+ "fixture": "riley-mahoney/1 · hub example",
+ "identity": {
+  "name": "Riley Mahoney",
+  "location": "Denver, CO",
+  "phone": "(555) 010-0199",
+  "email": "riley.mahoney@example.com",
+  "links": [
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/rileymahoney-example"
+   }
+  ]
+ },
+ "sources": [
+  {
+   "id": "src:v1",
+   "kind": "resume",
+   "label": "resume_v1_classic.docx",
+   "authored_at": "2026-03-02",
+   "observed_at": "2026-09-28",
+   "source_type": "HISTORICAL_RESUME"
+  },
+  {
+   "id": "src:v2",
+   "kind": "resume",
+   "label": "resume_v2_media_partnerships.docx",
+   "authored_at": "2025-11-14",
+   "observed_at": "2026-09-28",
+   "source_type": "HISTORICAL_RESUME"
+  },
+  {
+   "id": "src:v3",
+   "kind": "resume",
+   "label": "resume_v3_revops.docx",
+   "authored_at": "2026-08-20",
+   "observed_at": "2026-09-28",
+   "source_type": "HISTORICAL_RESUME"
+  },
+  {
+   "id": "src:li",
+   "kind": "linkedin",
+   "label": "linkedin_profile.pdf",
+   "authored_at": "2026-09-20",
+   "observed_at": "2026-09-28",
+   "source_type": "PUBLIC_PROFILE"
+  }
+ ],
+ "evidence": [
+  {
+   "id": "ev:v1:role:hal",
+   "source": "src:v1",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Director of Revenue Operations | Halcyon Metrics | Denver, CO  January 2024 – Present",
+   "observed_at": "2026-03-02",
+   "locator": "role header (v1)"
+  },
+  {
+   "id": "ev:v2:role:hal",
+   "source": "src:v2",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Halcyon Metrics — Director of Revenue Operations (Denver, CO) · Jan 2024 – Present",
+   "observed_at": "2025-11-14",
+   "locator": "role header (v2)"
+  },
+  {
+   "id": "ev:v3:role:hal",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Director of Revenue Operations, Halcyon Metrics  January 2024 – Present  Denver, CO",
+   "observed_at": "2026-08-20",
+   "locator": "role header (v3)"
+  },
+  {
+   "id": "ev:li:role:hal",
+   "source": "src:li",
+   "source_type": "PUBLIC_PROFILE",
+   "channel": "upload:linkedin",
+   "quote": "Halcyon Metrics / Director of Revenue Operations / Jan 2024 - Present",
+   "observed_at": "2026-09-20",
+   "locator": "role header (li)"
+  },
+  {
+   "id": "ev:v3:role:lark",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Fractional GTM Advisor, Larkspur Health  February 2023 – August 2023  Remote",
+   "observed_at": "2026-08-20",
+   "locator": "role header (v3)"
+  },
+  {
+   "id": "ev:li:role:lark",
+   "source": "src:li",
+   "source_type": "PUBLIC_PROFILE",
+   "channel": "upload:linkedin",
+   "quote": "Larkspur Health / Fractional GTM Advisor / Feb 2023 - Aug 2023",
+   "observed_at": "2026-09-20",
+   "locator": "role header (li)"
+  },
+  {
+   "id": "ev:v1:role:kes",
+   "source": "src:v1",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Senior Account Executive | Kestrel Adtech | Remote  2021 – 2024",
+   "observed_at": "2026-03-02",
+   "locator": "role header (v1)"
+  },
+  {
+   "id": "ev:v2:role:kes",
+   "source": "src:v2",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Kestrel Adtech — Senior Account Executive (Remote) · Mar 2021 – Nov 2023",
+   "observed_at": "2025-11-14",
+   "locator": "role header (v2)"
+  },
+  {
+   "id": "ev:v3:role:kes",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Senior Account Executive, Kestrel Adtech  March 2021 – November 2023  Remote",
+   "observed_at": "2026-08-20",
+   "locator": "role header (v3)"
+  },
+  {
+   "id": "ev:li:role:kes",
+   "source": "src:li",
+   "source_type": "PUBLIC_PROFILE",
+   "channel": "upload:linkedin",
+   "quote": "Kestrel Adtech / Senior Account Executive / Mar 2021 - Nov 2023",
+   "observed_at": "2026-09-20",
+   "locator": "role header (li)"
+  },
+  {
+   "id": "ev:v1:role:pin",
+   "source": "src:v1",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Marketing Manager | Pinecrest Sports Media | Boulder, CO  June 2018 – February 2021",
+   "observed_at": "2026-03-02",
+   "locator": "role header (v1)"
+  },
+  {
+   "id": "ev:v2:role:pin",
+   "source": "src:v2",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Pinecrest Sports Media — Senior Marketing Manager (Boulder, CO) · Jun 2018 – Feb 2021",
+   "observed_at": "2025-11-14",
+   "locator": "role header (v2)"
+  },
+  {
+   "id": "ev:v3:role:pin",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Marketing Manager, Pinecrest Sports Media  June 2018 – February 2021  Boulder, CO",
+   "observed_at": "2026-08-20",
+   "locator": "role header (v3)"
+  },
+  {
+   "id": "ev:li:role:pin",
+   "source": "src:li",
+   "source_type": "PUBLIC_PROFILE",
+   "channel": "upload:linkedin",
+   "quote": "Pinecrest Sports Media / Senior Marketing Manager / Jun 2018 - Feb 2021",
+   "observed_at": "2026-09-20",
+   "locator": "role header (li)"
+  },
+  {
+   "id": "ev:v1:role:qui",
+   "source": "src:v1",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Sales Development Representative | Quillstone Software | Denver, CO  August 2016 – May 2018",
+   "observed_at": "2026-03-02",
+   "locator": "role header (v1)"
+  },
+  {
+   "id": "ev:li:role:qui",
+   "source": "src:li",
+   "source_type": "PUBLIC_PROFILE",
+   "channel": "upload:linkedin",
+   "quote": "Quillstone Software / Sales Development Representative / Aug 2016 - May 2018",
+   "observed_at": "2026-09-20",
+   "locator": "role header (li)"
+  },
+  {
+   "id": "ev:v1:hal-forecast",
+   "source": "src:v1",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Rebuilt the weekly forecast process across three regions, lifting forecast accuracy from 71% to 93% within two quarters.",
+   "observed_at": "2026-03-02",
+   "locator": "bullet (v1)"
+  },
+  {
+   "id": "ev:v3:hal-forecast",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Redesigned forecasting cadence and stage definitions; forecast accuracy rose from 71% to 93% in two quarters.",
+   "observed_at": "2026-08-20",
+   "locator": "bullet (v3)"
+  },
+  {
+   "id": "ev:li:hal-forecast",
+   "source": "src:li",
+   "source_type": "PUBLIC_PROFILE",
+   "channel": "upload:linkedin",
+   "quote": "Improved forecast accuracy to 93% by rebuilding the weekly forecast process.",
+   "observed_at": "2026-09-20",
+   "locator": "bullet (li)"
+  },
+  {
+   "id": "ev:v1:hal-crm",
+   "source": "src:v1",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Consolidated three CRMs into a single Salesforce instance shared by sales, customer success and marketing.",
+   "observed_at": "2026-03-02",
+   "locator": "bullet (v1)"
+  },
+  {
+   "id": "ev:v2:hal-crm",
+   "source": "src:v2",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Merged 3 CRMs into one Salesforce org, giving sales, CS and marketing one customer record.",
+   "observed_at": "2025-11-14",
+   "locator": "bullet (v2)"
+  },
+  {
+   "id": "ev:v3:hal-crm",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Led the consolidation of 3 CRMs into one Salesforce instance across sales, customer success and marketing, retiring two legacy tools.",
+   "observed_at": "2026-08-20",
+   "locator": "bullet (v3)"
+  },
+  {
+   "id": "ev:v1:hal-routing",
+   "source": "src:v1",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Designed lead routing rules and an SLA that cut speed-to-lead from 26 hours to under 2 hours and lifted SQL-to-opportunity conversion by 18 points.",
+   "observed_at": "2026-03-02",
+   "locator": "bullet (v1)"
+  },
+  {
+   "id": "ev:v3:hal-routing",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Introduced routing and SLA rules that took speed-to-lead from 26 hours to under 2 hours; SQL-to-opportunity conversion improved 18 points.",
+   "observed_at": "2026-08-20",
+   "locator": "bullet (v3)"
+  },
+  {
+   "id": "ev:v1:hal-pricing",
+   "source": "src:v1",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Built the pricing and packaging model for a new mid-market tier that reached $1.2M ARR in its first year.",
+   "observed_at": "2026-03-02",
+   "locator": "bullet (v1)"
+  },
+  {
+   "id": "ev:v3:hal-pricing",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Owned pricing and packaging for the mid-market tier, which reached $1,200,000 in ARR in year one.",
+   "observed_at": "2026-08-20",
+   "locator": "bullet (v3)"
+  },
+  {
+   "id": "ev:li:hal-pricing",
+   "source": "src:li",
+   "source_type": "PUBLIC_PROFILE",
+   "channel": "upload:linkedin",
+   "quote": "Partnered with product marketing and finance on pricing and packaging for the new mid-market tier; the tier reached $1.2M ARR in its first year.",
+   "observed_at": "2026-09-20",
+   "locator": "bullet (li)"
+  },
+  {
+   "id": "ev:v3:hal-team",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Manage a team of 4 (two analysts and two Salesforce administrators) supporting a 60-person revenue organization.",
+   "observed_at": "2026-08-20",
+   "locator": "bullet (v3)"
+  },
+  {
+   "id": "ev:v1:hal-pipeline",
+   "source": "src:v1",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Grew qualified pipeline to $6.1M through territory redesign and a rebuilt SDR-to-AE handoff.",
+   "observed_at": "2026-03-02",
+   "locator": "bullet (v1)"
+  },
+  {
+   "id": "ev:v3:hal-pipeline",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Grew qualified pipeline to $6.8M through territory redesign and a new SDR-to-AE handoff.",
+   "observed_at": "2026-08-20",
+   "locator": "bullet (v3)"
+  },
+  {
+   "id": "ev:v1:kes-quota",
+   "source": "src:v1",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Closed $2.4M in new business in FY2023 at 128% of quota, the top result on a team of nine.",
+   "observed_at": "2026-03-02",
+   "locator": "bullet (v1)"
+  },
+  {
+   "id": "ev:v2:kes-quota",
+   "source": "src:v2",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Delivered $2.4M in new business in FY2023 (128% of quota), first of nine on the team.",
+   "observed_at": "2025-11-14",
+   "locator": "bullet (v2)"
+  },
+  {
+   "id": "ev:li:kes-quota",
+   "source": "src:li",
+   "source_type": "PUBLIC_PROFILE",
+   "channel": "upload:linkedin",
+   "quote": "128% of quota in FY2023 with $2.4M in new business.",
+   "observed_at": "2026-09-20",
+   "locator": "bullet (li)"
+  },
+  {
+   "id": "ev:v2:kes-grocery",
+   "source": "src:v2",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Won the retail media network's first three grocery accounts, including a $600K annual commitment from a regional chain.",
+   "observed_at": "2025-11-14",
+   "locator": "bullet (v2)"
+  },
+  {
+   "id": "ev:v1:kes-cases",
+   "source": "src:v1",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Built ROAS and CPM business cases for CMO and CFO buyers, raising average deal size 35%.",
+   "observed_at": "2026-03-02",
+   "locator": "bullet (v1)"
+  },
+  {
+   "id": "ev:v2:kes-cases",
+   "source": "src:v2",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Wrote the ROAS/CPM business case template used with CMO and CFO buyers; average deal size grew 35%.",
+   "observed_at": "2025-11-14",
+   "locator": "bullet (v2)"
+  },
+  {
+   "id": "ev:v2:kes-committee",
+   "source": "src:v2",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Ran discovery-led cycles with buying committees of 6 to 8 stakeholders across brand, agency and finance teams.",
+   "observed_at": "2025-11-14",
+   "locator": "bullet (v2)"
+  },
+  {
+   "id": "ev:v1:kes-agencies",
+   "source": "src:v1",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "I partnered with agency holding companies to expand the network into 12 new brands over 18 months.",
+   "observed_at": "2026-03-02",
+   "locator": "bullet (v1)"
+  },
+  {
+   "id": "ev:v2:kes-agencies",
+   "source": "src:v2",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Expanded the network into 12 new brands in 18 months through agency holding-company partnerships.",
+   "observed_at": "2025-11-14",
+   "locator": "bullet (v2)"
+  },
+  {
+   "id": "ev:v1:pin-newsletter",
+   "source": "src:v1",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Grew newsletter subscribers from 40K to 110K in 18 months while holding a 38% open rate.",
+   "observed_at": "2026-03-02",
+   "locator": "bullet (v1)"
+  },
+  {
+   "id": "ev:v2:pin-newsletter",
+   "source": "src:v2",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Grew the newsletter from 40,000 to 110,000 subscribers in 18 months at a 38% open rate.",
+   "observed_at": "2025-11-14",
+   "locator": "bullet (v2)"
+  },
+  {
+   "id": "ev:v1:pin-sponsored",
+   "source": "src:v1",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Launched a sponsored-content product that produced $850K in first-year revenue.",
+   "observed_at": "2026-03-02",
+   "locator": "bullet (v1)"
+  },
+  {
+   "id": "ev:v2:pin-sponsored",
+   "source": "src:v2",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Created and sold a sponsored-content product: $850,000 in revenue in its first year.",
+   "observed_at": "2025-11-14",
+   "locator": "bullet (v2)"
+  },
+  {
+   "id": "ev:v2:pin-budget",
+   "source": "src:v2",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Managed a $1.1M annual media budget; paid social returned 3.2x ROAS.",
+   "observed_at": "2025-11-14",
+   "locator": "bullet (v2)"
+  },
+  {
+   "id": "ev:li:pin-budget",
+   "source": "src:li",
+   "source_type": "PUBLIC_PROFILE",
+   "channel": "upload:linkedin",
+   "quote": "Owned a $1.1M media budget and delivered 3.2x ROAS on paid social.",
+   "observed_at": "2026-09-20",
+   "locator": "bullet (li)"
+  },
+  {
+   "id": "ev:v1:pin-rebrand",
+   "source": "src:v1",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Led the rebrand of three regional sports properties, coordinating design, editorial, sales collateral and a 14-market launch calendar, while keeping the combined program within 4% of budget.",
+   "observed_at": "2026-03-02",
+   "locator": "bullet (v1)"
+  },
+  {
+   "id": "ev:v1:qui-meetings",
+   "source": "src:v1",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Booked 140 qualified meetings in a year and finished #1 of 12 SDRs.",
+   "observed_at": "2026-03-02",
+   "locator": "bullet (v1)"
+  },
+  {
+   "id": "ev:li:qui-meetings",
+   "source": "src:li",
+   "source_type": "PUBLIC_PROFILE",
+   "channel": "upload:linkedin",
+   "quote": "Top SDR of 12 with 140 qualified meetings booked in one year.",
+   "observed_at": "2026-09-20",
+   "locator": "bullet (li)"
+  },
+  {
+   "id": "ev:v1:qui-sequences",
+   "source": "src:v1",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Wrote outbound sequences adopted team-wide, lifting reply rates from 9% to 14%.",
+   "observed_at": "2026-03-02",
+   "locator": "bullet (v1)"
+  },
+  {
+   "id": "ev:v3:lark-icp",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Defined the ideal customer profile and three pricing tiers for a digital health startup; the first 5 pilot clinics signed within 4 months.",
+   "observed_at": "2026-08-20",
+   "locator": "bullet (v3)"
+  },
+  {
+   "id": "ev:li:lark-icp",
+   "source": "src:li",
+   "source_type": "PUBLIC_PROFILE",
+   "channel": "upload:linkedin",
+   "quote": "Defined ICP and pricing tiers; first 5 pilot clinics signed within 4 months.",
+   "observed_at": "2026-09-20",
+   "locator": "bullet (li)"
+  },
+  {
+   "id": "ev:v3:lark-discovery",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Built the sales narrative and a 30-interview customer discovery plan the founders ran before raising their seed round.",
+   "observed_at": "2026-08-20",
+   "locator": "bullet (v3)"
+  },
+  {
+   "id": "ev:v1:edu",
+   "source": "src:v1",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Lakeside State University — B.A., Communication, 2016",
+   "observed_at": "2026-03-02",
+   "locator": "education"
+  },
+  {
+   "id": "ev:v2:edu",
+   "source": "src:v2",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Lakeside State University — B.A., Communication, 2016",
+   "observed_at": "2025-11-14",
+   "locator": "education"
+  },
+  {
+   "id": "ev:v3:edu",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Lakeside State University — B.A., Communication, 2016",
+   "observed_at": "2026-08-20",
+   "locator": "education"
+  },
+  {
+   "id": "ev:li:edu",
+   "source": "src:li",
+   "source_type": "PUBLIC_PROFILE",
+   "channel": "upload:linkedin",
+   "quote": "Lakeside State University — B.A., Communication, 2016",
+   "observed_at": "2026-09-20",
+   "locator": "education"
+  },
+  {
+   "id": "ev:v1:hubspot-revops",
+   "source": "src:v1",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "HubSpot Revenue Operations Certification (2023)",
+   "observed_at": "2026-03-02",
+   "locator": "certification"
+  },
+  {
+   "id": "ev:v2:hubspot-revops",
+   "source": "src:v2",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "HubSpot Revenue Operations Certification (2023)",
+   "observed_at": "2025-11-14",
+   "locator": "certification"
+  },
+  {
+   "id": "ev:v3:hubspot-revops",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "HubSpot Revenue Operations Certification (2023)",
+   "observed_at": "2026-08-20",
+   "locator": "certification"
+  },
+  {
+   "id": "ev:li:hubspot-revops",
+   "source": "src:li",
+   "source_type": "PUBLIC_PROFILE",
+   "channel": "upload:linkedin",
+   "quote": "HubSpot Revenue Operations Certification (2023)",
+   "observed_at": "2026-09-20",
+   "locator": "certification"
+  },
+  {
+   "id": "ev:v2:ga-iq",
+   "source": "src:v2",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Google Analytics Individual Qualification (2020)",
+   "observed_at": "2025-11-14",
+   "locator": "certification"
+  },
+  {
+   "id": "ev:li:sf-trailhead",
+   "source": "src:li",
+   "source_type": "PUBLIC_PROFILE",
+   "channel": "upload:linkedin",
+   "quote": "Salesforce Trailhead: Sales Cloud Basics",
+   "observed_at": "2026-09-20",
+   "locator": "certification"
+  },
+  {
+   "id": "ev:v1:tool:salesforce",
+   "source": "src:v1",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Salesforce",
+   "observed_at": "2026-03-02",
+   "locator": "tools line"
+  },
+  {
+   "id": "ev:v1:tool:hubspot",
+   "source": "src:v1",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "HubSpot",
+   "observed_at": "2026-03-02",
+   "locator": "tools line"
+  },
+  {
+   "id": "ev:v1:tool:outreach",
+   "source": "src:v1",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Outreach",
+   "observed_at": "2026-03-02",
+   "locator": "tools line"
+  },
+  {
+   "id": "ev:v1:tool:gong",
+   "source": "src:v1",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Gong",
+   "observed_at": "2026-03-02",
+   "locator": "tools line"
+  },
+  {
+   "id": "ev:v1:tool:clari",
+   "source": "src:v1",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Clari",
+   "observed_at": "2026-03-02",
+   "locator": "tools line"
+  },
+  {
+   "id": "ev:v1:tool:looker",
+   "source": "src:v1",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Looker",
+   "observed_at": "2026-03-02",
+   "locator": "tools line"
+  },
+  {
+   "id": "ev:v1:tool:zoominfo",
+   "source": "src:v1",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "ZoomInfo",
+   "observed_at": "2026-03-02",
+   "locator": "tools line"
+  },
+  {
+   "id": "ev:v1:tool:excel",
+   "source": "src:v1",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Excel",
+   "observed_at": "2026-03-02",
+   "locator": "tools line"
+  },
+  {
+   "id": "ev:v1:tool:notion",
+   "source": "src:v1",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Notion",
+   "observed_at": "2026-03-02",
+   "locator": "tools line"
+  },
+  {
+   "id": "ev:v2:tool:salesforce",
+   "source": "src:v2",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Salesforce",
+   "observed_at": "2025-11-14",
+   "locator": "tools line"
+  },
+  {
+   "id": "ev:v2:tool:hubspot",
+   "source": "src:v2",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "HubSpot",
+   "observed_at": "2025-11-14",
+   "locator": "tools line"
+  },
+  {
+   "id": "ev:v2:tool:the-trade-desk",
+   "source": "src:v2",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "The Trade Desk",
+   "observed_at": "2025-11-14",
+   "locator": "tools line"
+  },
+  {
+   "id": "ev:v2:tool:google-analytics",
+   "source": "src:v2",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Google Analytics",
+   "observed_at": "2025-11-14",
+   "locator": "tools line"
+  },
+  {
+   "id": "ev:v3:tool:salesforce",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Salesforce",
+   "observed_at": "2026-08-20",
+   "locator": "tools line"
+  },
+  {
+   "id": "ev:v3:tool:hubspot",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "HubSpot",
+   "observed_at": "2026-08-20",
+   "locator": "tools line"
+  },
+  {
+   "id": "ev:v3:tool:outreach",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Outreach",
+   "observed_at": "2026-08-20",
+   "locator": "tools line"
+  },
+  {
+   "id": "ev:v3:tool:gong",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Gong",
+   "observed_at": "2026-08-20",
+   "locator": "tools line"
+  },
+  {
+   "id": "ev:v3:tool:looker",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Looker",
+   "observed_at": "2026-08-20",
+   "locator": "tools line"
+  },
+  {
+   "id": "ev:v3:tool:tableau",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Tableau",
+   "observed_at": "2026-08-20",
+   "locator": "tools line"
+  },
+  {
+   "id": "ev:v3:tool:zoominfo",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "ZoomInfo",
+   "observed_at": "2026-08-20",
+   "locator": "tools line"
+  },
+  {
+   "id": "ev:li:tool:salesforce",
+   "source": "src:li",
+   "source_type": "PUBLIC_PROFILE",
+   "channel": "upload:linkedin",
+   "quote": "Salesforce",
+   "observed_at": "2026-09-20",
+   "locator": "tools line"
+  },
+  {
+   "id": "ev:v2:skill:retail-media-networks",
+   "source": "src:v2",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Retail media networks",
+   "observed_at": "2025-11-14",
+   "locator": "skills"
+  },
+  {
+   "id": "ev:v2:skill:agency-partnerships",
+   "source": "src:v2",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Agency partnerships",
+   "observed_at": "2025-11-14",
+   "locator": "skills"
+  },
+  {
+   "id": "ev:v2:skill:roas-and-cpm-business-cases",
+   "source": "src:v2",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "ROAS and CPM business cases",
+   "observed_at": "2025-11-14",
+   "locator": "skills"
+  },
+  {
+   "id": "ev:v2:skill:discovery-and-multi-stakeholder-selling",
+   "source": "src:v2",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Discovery and multi-stakeholder selling",
+   "observed_at": "2025-11-14",
+   "locator": "skills"
+  },
+  {
+   "id": "ev:v2:skill:newsletter-and-lifecycle-marketing",
+   "source": "src:v2",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Newsletter and lifecycle marketing",
+   "observed_at": "2025-11-14",
+   "locator": "skills"
+  },
+  {
+   "id": "ev:v2:skill:paid-social",
+   "source": "src:v2",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Paid social",
+   "observed_at": "2025-11-14",
+   "locator": "skills"
+  },
+  {
+   "id": "ev:v2:skill:budget-ownership",
+   "source": "src:v2",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Budget ownership",
+   "observed_at": "2025-11-14",
+   "locator": "skills"
+  },
+  {
+   "id": "ev:v3:skill:forecasting",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Forecasting",
+   "observed_at": "2026-08-20",
+   "locator": "skills"
+  },
+  {
+   "id": "ev:v3:skill:territory-design",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Territory design",
+   "observed_at": "2026-08-20",
+   "locator": "skills"
+  },
+  {
+   "id": "ev:v3:skill:lead-routing",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Lead routing",
+   "observed_at": "2026-08-20",
+   "locator": "skills"
+  },
+  {
+   "id": "ev:v3:skill:pricing-and-packaging",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Pricing and packaging",
+   "observed_at": "2026-08-20",
+   "locator": "skills"
+  },
+  {
+   "id": "ev:v3:skill:crm-consolidation",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "CRM consolidation",
+   "observed_at": "2026-08-20",
+   "locator": "skills"
+  },
+  {
+   "id": "ev:v3:skill:icp-definition",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "ICP definition",
+   "observed_at": "2026-08-20",
+   "locator": "skills"
+  },
+  {
+   "id": "ev:v3:skill:discovery-interviews",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Discovery interviews",
+   "observed_at": "2026-08-20",
+   "locator": "skills"
+  },
+  {
+   "id": "ev:v3:skill:pilot-programs",
+   "source": "src:v3",
+   "source_type": "HISTORICAL_RESUME",
+   "channel": "upload:resume",
+   "quote": "Pilot programs",
+   "observed_at": "2026-08-20",
+   "locator": "skills"
+  }
+ ],
+ "subjects": [
+  {
+   "id": "role:hal",
+   "kind": "role",
+   "key": "hal",
+   "sort": 1,
+   "hidden": false,
+   "facts": {
+    "title": {
+     "value": "Director of Revenue Operations",
+     "evidence": [
+      "ev:v1:role:hal",
+      "ev:v2:role:hal",
+      "ev:v3:role:hal",
+      "ev:li:role:hal"
+     ],
+     "contradicting": []
+    },
+    "employer": {
+     "value": "Halcyon Metrics",
+     "evidence": [
+      "ev:v1:role:hal",
+      "ev:v2:role:hal",
+      "ev:v3:role:hal",
+      "ev:li:role:hal"
+     ],
+     "contradicting": []
+    },
+    "location": {
+     "value": "Denver, CO",
+     "evidence": [
+      "ev:v1:role:hal",
+      "ev:v2:role:hal",
+      "ev:v3:role:hal",
+      "ev:li:role:hal"
+     ],
+     "contradicting": []
+    },
+    "start": {
+     "value": "2024-01",
+     "evidence": [
+      "ev:v1:role:hal",
+      "ev:v2:role:hal",
+      "ev:v3:role:hal",
+      "ev:li:role:hal"
+     ],
+     "contradicting": []
+    },
+    "end": {
+     "value": null,
+     "evidence": [
+      "ev:v1:role:hal",
+      "ev:v2:role:hal",
+      "ev:v3:role:hal",
+      "ev:li:role:hal"
+     ],
+     "contradicting": []
+    }
+   }
+  },
+  {
+   "id": "role:lark",
+   "kind": "role",
+   "key": "lark",
+   "sort": 2,
+   "hidden": false,
+   "facts": {
+    "title": {
+     "value": "Fractional GTM Advisor",
+     "evidence": [
+      "ev:v3:role:lark",
+      "ev:li:role:lark"
+     ],
+     "contradicting": []
+    },
+    "employer": {
+     "value": "Larkspur Health",
+     "evidence": [
+      "ev:v3:role:lark",
+      "ev:li:role:lark"
+     ],
+     "contradicting": []
+    },
+    "location": {
+     "value": "Remote",
+     "evidence": [
+      "ev:v3:role:lark",
+      "ev:li:role:lark"
+     ],
+     "contradicting": []
+    },
+    "start": {
+     "value": "2023-02",
+     "evidence": [
+      "ev:v3:role:lark",
+      "ev:li:role:lark"
+     ],
+     "contradicting": []
+    },
+    "end": {
+     "value": "2023-08",
+     "evidence": [
+      "ev:v3:role:lark",
+      "ev:li:role:lark"
+     ],
+     "contradicting": []
+    }
+   }
+  },
+  {
+   "id": "role:kes",
+   "kind": "role",
+   "key": "kes",
+   "sort": 3,
+   "hidden": false,
+   "facts": {
+    "title": {
+     "value": "Senior Account Executive",
+     "evidence": [
+      "ev:v1:role:kes",
+      "ev:v2:role:kes",
+      "ev:v3:role:kes",
+      "ev:li:role:kes"
+     ],
+     "contradicting": []
+    },
+    "employer": {
+     "value": "Kestrel Adtech",
+     "evidence": [
+      "ev:v1:role:kes",
+      "ev:v2:role:kes",
+      "ev:v3:role:kes",
+      "ev:li:role:kes"
+     ],
+     "contradicting": []
+    },
+    "location": {
+     "value": "Remote",
+     "evidence": [
+      "ev:v1:role:kes",
+      "ev:v2:role:kes",
+      "ev:v3:role:kes",
+      "ev:li:role:kes"
+     ],
+     "contradicting": []
+    },
+    "start": {
+     "value": "2021-03",
+     "evidence": [
+      "ev:v1:role:kes",
+      "ev:v2:role:kes",
+      "ev:v3:role:kes",
+      "ev:li:role:kes"
+     ],
+     "contradicting": []
+    },
+    "end": {
+     "value": "2023-11",
+     "evidence": [
+      "ev:v2:role:kes",
+      "ev:v3:role:kes",
+      "ev:li:role:kes"
+     ],
+     "contradicting": [
+      {
+       "value": "2024",
+       "evidence": [
+        "ev:v1:role:kes"
+       ]
+      }
+     ],
+     "resolution": {
+      "value": "2023-11",
+      "why": "offer letter for the next role is dated December 2023",
+      "at": "2026-09-21"
+     }
+    }
+   }
+  },
+  {
+   "id": "role:pin",
+   "kind": "role",
+   "key": "pin",
+   "sort": 4,
+   "hidden": false,
+   "facts": {
+    "title": {
+     "value": "Senior Marketing Manager",
+     "evidence": [
+      "ev:v2:role:pin",
+      "ev:li:role:pin"
+     ],
+     "contradicting": [
+      {
+       "value": "Marketing Manager",
+       "evidence": [
+        "ev:v1:role:pin",
+        "ev:v3:role:pin"
+       ]
+      }
+     ],
+     "resolution": {
+      "value": "Senior Marketing Manager",
+      "why": "title on the 2020 promotion letter",
+      "at": "2026-09-21"
+     }
+    },
+    "employer": {
+     "value": "Pinecrest Sports Media",
+     "evidence": [
+      "ev:v1:role:pin",
+      "ev:v2:role:pin",
+      "ev:v3:role:pin",
+      "ev:li:role:pin"
+     ],
+     "contradicting": []
+    },
+    "location": {
+     "value": "Boulder, CO",
+     "evidence": [
+      "ev:v1:role:pin",
+      "ev:v2:role:pin",
+      "ev:v3:role:pin",
+      "ev:li:role:pin"
+     ],
+     "contradicting": []
+    },
+    "start": {
+     "value": "2018-06",
+     "evidence": [
+      "ev:v1:role:pin",
+      "ev:v2:role:pin",
+      "ev:v3:role:pin",
+      "ev:li:role:pin"
+     ],
+     "contradicting": []
+    },
+    "end": {
+     "value": "2021-02",
+     "evidence": [
+      "ev:v1:role:pin",
+      "ev:v2:role:pin",
+      "ev:v3:role:pin",
+      "ev:li:role:pin"
+     ],
+     "contradicting": []
+    }
+   }
+  },
+  {
+   "id": "role:qui",
+   "kind": "role",
+   "key": "qui",
+   "sort": 5,
+   "hidden": true,
+   "facts": {
+    "title": {
+     "value": "Sales Development Representative",
+     "evidence": [
+      "ev:v1:role:qui",
+      "ev:li:role:qui"
+     ],
+     "contradicting": []
+    },
+    "employer": {
+     "value": "Quillstone Software",
+     "evidence": [
+      "ev:v1:role:qui",
+      "ev:li:role:qui"
+     ],
+     "contradicting": []
+    },
+    "location": {
+     "value": "Denver, CO",
+     "evidence": [
+      "ev:v1:role:qui",
+      "ev:li:role:qui"
+     ],
+     "contradicting": []
+    },
+    "start": {
+     "value": "2016-08",
+     "evidence": [
+      "ev:v1:role:qui",
+      "ev:li:role:qui"
+     ],
+     "contradicting": []
+    },
+    "end": {
+     "value": "2018-05",
+     "evidence": [
+      "ev:v1:role:qui",
+      "ev:li:role:qui"
+     ],
+     "contradicting": []
+    }
+   }
+  },
+  {
+   "id": "edu:lakeside",
+   "kind": "education",
+   "facts": {
+    "school": {
+     "value": "Lakeside State University",
+     "evidence": [
+      "ev:v1:edu",
+      "ev:v2:edu",
+      "ev:v3:edu",
+      "ev:li:edu"
+     ]
+    },
+    "degree": {
+     "value": "B.A., Communication",
+     "evidence": [
+      "ev:v1:edu",
+      "ev:v2:edu",
+      "ev:v3:edu",
+      "ev:li:edu"
+     ]
+    },
+    "date": {
+     "value": "2016",
+     "evidence": [
+      "ev:v1:edu",
+      "ev:v2:edu",
+      "ev:v3:edu",
+      "ev:li:edu"
+     ]
+    }
+   }
+  },
+  {
+   "id": "cred:hubspot-revops",
+   "kind": "credential",
+   "facts": {
+    "name": {
+     "value": "HubSpot Revenue Operations Certification",
+     "evidence": [
+      "ev:v1:hubspot-revops",
+      "ev:v2:hubspot-revops",
+      "ev:v3:hubspot-revops",
+      "ev:li:hubspot-revops"
+     ]
+    },
+    "issuer": {
+     "value": "HubSpot",
+     "evidence": [
+      "ev:v1:hubspot-revops",
+      "ev:v2:hubspot-revops",
+      "ev:v3:hubspot-revops",
+      "ev:li:hubspot-revops"
+     ]
+    },
+    "date": {
+     "value": "2023",
+     "evidence": [
+      "ev:v1:hubspot-revops",
+      "ev:v2:hubspot-revops",
+      "ev:v3:hubspot-revops",
+      "ev:li:hubspot-revops"
+     ]
+    }
+   }
+  },
+  {
+   "id": "cred:ga-iq",
+   "kind": "credential",
+   "facts": {
+    "name": {
+     "value": "Google Analytics Individual Qualification",
+     "evidence": [
+      "ev:v2:ga-iq"
+     ]
+    },
+    "issuer": {
+     "value": "Google",
+     "evidence": [
+      "ev:v2:ga-iq"
+     ]
+    },
+    "date": {
+     "value": "2020",
+     "evidence": [
+      "ev:v2:ga-iq"
+     ]
+    }
+   }
+  },
+  {
+   "id": "cred:sf-trailhead",
+   "kind": "credential",
+   "facts": {
+    "name": {
+     "value": "Salesforce Trailhead: Sales Cloud Basics",
+     "evidence": [
+      "ev:li:sf-trailhead"
+     ]
+    },
+    "issuer": {
+     "value": "Salesforce",
+     "evidence": [
+      "ev:li:sf-trailhead"
+     ]
+    }
+   }
+  },
+  {
+   "id": "tool:salesforce",
+   "kind": "tool",
+   "sort": 0,
+   "facts": {
+    "name": {
+     "value": "Salesforce",
+     "evidence": [
+      "ev:v1:tool:salesforce",
+      "ev:v2:tool:salesforce",
+      "ev:v3:tool:salesforce",
+      "ev:li:tool:salesforce"
+     ]
+    }
+   }
+  },
+  {
+   "id": "tool:hubspot",
+   "kind": "tool",
+   "sort": 1,
+   "facts": {
+    "name": {
+     "value": "HubSpot",
+     "evidence": [
+      "ev:v1:tool:hubspot",
+      "ev:v2:tool:hubspot",
+      "ev:v3:tool:hubspot"
+     ]
+    }
+   }
+  },
+  {
+   "id": "tool:outreach",
+   "kind": "tool",
+   "sort": 2,
+   "facts": {
+    "name": {
+     "value": "Outreach",
+     "evidence": [
+      "ev:v1:tool:outreach",
+      "ev:v3:tool:outreach"
+     ]
+    }
+   }
+  },
+  {
+   "id": "tool:gong",
+   "kind": "tool",
+   "sort": 3,
+   "facts": {
+    "name": {
+     "value": "Gong",
+     "evidence": [
+      "ev:v1:tool:gong",
+      "ev:v3:tool:gong"
+     ]
+    }
+   }
+  },
+  {
+   "id": "tool:clari",
+   "kind": "tool",
+   "sort": 4,
+   "facts": {
+    "name": {
+     "value": "Clari",
+     "evidence": [
+      "ev:v1:tool:clari"
+     ]
+    }
+   }
+  },
+  {
+   "id": "tool:looker",
+   "kind": "tool",
+   "sort": 5,
+   "facts": {
+    "name": {
+     "value": "Looker",
+     "evidence": [
+      "ev:v1:tool:looker",
+      "ev:v3:tool:looker"
+     ]
+    }
+   }
+  },
+  {
+   "id": "tool:zoominfo",
+   "kind": "tool",
+   "sort": 6,
+   "facts": {
+    "name": {
+     "value": "ZoomInfo",
+     "evidence": [
+      "ev:v1:tool:zoominfo",
+      "ev:v3:tool:zoominfo"
+     ]
+    }
+   }
+  },
+  {
+   "id": "tool:excel",
+   "kind": "tool",
+   "sort": 7,
+   "facts": {
+    "name": {
+     "value": "Excel",
+     "evidence": [
+      "ev:v1:tool:excel"
+     ]
+    }
+   }
+  },
+  {
+   "id": "tool:notion",
+   "kind": "tool",
+   "sort": 8,
+   "facts": {
+    "name": {
+     "value": "Notion",
+     "evidence": [
+      "ev:v1:tool:notion"
+     ]
+    }
+   }
+  },
+  {
+   "id": "tool:the-trade-desk",
+   "kind": "tool",
+   "sort": 9,
+   "facts": {
+    "name": {
+     "value": "The Trade Desk",
+     "evidence": [
+      "ev:v2:tool:the-trade-desk"
+     ]
+    }
+   }
+  },
+  {
+   "id": "tool:google-analytics",
+   "kind": "tool",
+   "sort": 10,
+   "facts": {
+    "name": {
+     "value": "Google Analytics",
+     "evidence": [
+      "ev:v2:tool:google-analytics"
+     ]
+    }
+   }
+  },
+  {
+   "id": "tool:tableau",
+   "kind": "tool",
+   "sort": 11,
+   "facts": {
+    "name": {
+     "value": "Tableau",
+     "evidence": [
+      "ev:v3:tool:tableau"
+     ]
+    }
+   }
+  },
+  {
+   "id": "skill:retail-media-networks",
+   "kind": "expertise",
+   "sort": 0,
+   "facts": {
+    "text": {
+     "value": "Retail media networks",
+     "evidence": [
+      "ev:v2:skill:retail-media-networks"
+     ]
+    }
+   }
+  },
+  {
+   "id": "skill:agency-partnerships",
+   "kind": "expertise",
+   "sort": 1,
+   "facts": {
+    "text": {
+     "value": "Agency partnerships",
+     "evidence": [
+      "ev:v2:skill:agency-partnerships"
+     ]
+    }
+   }
+  },
+  {
+   "id": "skill:roas-and-cpm-business-cases",
+   "kind": "expertise",
+   "sort": 2,
+   "facts": {
+    "text": {
+     "value": "ROAS and CPM business cases",
+     "evidence": [
+      "ev:v2:skill:roas-and-cpm-business-cases"
+     ]
+    }
+   }
+  },
+  {
+   "id": "skill:discovery-and-multi-stakeholder-selling",
+   "kind": "expertise",
+   "sort": 3,
+   "facts": {
+    "text": {
+     "value": "Discovery and multi-stakeholder selling",
+     "evidence": [
+      "ev:v2:skill:discovery-and-multi-stakeholder-selling"
+     ]
+    }
+   }
+  },
+  {
+   "id": "skill:newsletter-and-lifecycle-marketing",
+   "kind": "expertise",
+   "sort": 4,
+   "facts": {
+    "text": {
+     "value": "Newsletter and lifecycle marketing",
+     "evidence": [
+      "ev:v2:skill:newsletter-and-lifecycle-marketing"
+     ]
+    }
+   }
+  },
+  {
+   "id": "skill:paid-social",
+   "kind": "expertise",
+   "sort": 5,
+   "facts": {
+    "text": {
+     "value": "Paid social",
+     "evidence": [
+      "ev:v2:skill:paid-social"
+     ]
+    }
+   }
+  },
+  {
+   "id": "skill:budget-ownership",
+   "kind": "expertise",
+   "sort": 6,
+   "facts": {
+    "text": {
+     "value": "Budget ownership",
+     "evidence": [
+      "ev:v2:skill:budget-ownership"
+     ]
+    }
+   }
+  },
+  {
+   "id": "skill:forecasting",
+   "kind": "expertise",
+   "sort": 7,
+   "facts": {
+    "text": {
+     "value": "Forecasting",
+     "evidence": [
+      "ev:v3:skill:forecasting"
+     ]
+    }
+   }
+  },
+  {
+   "id": "skill:territory-design",
+   "kind": "expertise",
+   "sort": 8,
+   "facts": {
+    "text": {
+     "value": "Territory design",
+     "evidence": [
+      "ev:v3:skill:territory-design"
+     ]
+    }
+   }
+  },
+  {
+   "id": "skill:lead-routing",
+   "kind": "expertise",
+   "sort": 9,
+   "facts": {
+    "text": {
+     "value": "Lead routing",
+     "evidence": [
+      "ev:v3:skill:lead-routing"
+     ]
+    }
+   }
+  },
+  {
+   "id": "skill:pricing-and-packaging",
+   "kind": "expertise",
+   "sort": 10,
+   "facts": {
+    "text": {
+     "value": "Pricing and packaging",
+     "evidence": [
+      "ev:v3:skill:pricing-and-packaging"
+     ]
+    }
+   }
+  },
+  {
+   "id": "skill:crm-consolidation",
+   "kind": "expertise",
+   "sort": 11,
+   "facts": {
+    "text": {
+     "value": "CRM consolidation",
+     "evidence": [
+      "ev:v3:skill:crm-consolidation"
+     ]
+    }
+   }
+  },
+  {
+   "id": "skill:icp-definition",
+   "kind": "expertise",
+   "sort": 12,
+   "facts": {
+    "text": {
+     "value": "ICP definition",
+     "evidence": [
+      "ev:v3:skill:icp-definition"
+     ]
+    }
+   }
+  },
+  {
+   "id": "skill:discovery-interviews",
+   "kind": "expertise",
+   "sort": 13,
+   "facts": {
+    "text": {
+     "value": "Discovery interviews",
+     "evidence": [
+      "ev:v3:skill:discovery-interviews"
+     ]
+    }
+   }
+  },
+  {
+   "id": "skill:pilot-programs",
+   "kind": "expertise",
+   "sort": 14,
+   "facts": {
+    "text": {
+     "value": "Pilot programs",
+     "evidence": [
+      "ev:v3:skill:pilot-programs"
+     ]
+    }
+   }
+  }
+ ],
+ "achievements": [
+  {
+   "id": "hal-forecast",
+   "role": "hal",
+   "canonical": "Redesigned forecasting cadence and stage definitions; forecast accuracy rose from 71% to 93% in two quarters.",
+   "evidence": [
+    "ev:v1:hal-forecast",
+    "ev:v3:hal-forecast",
+    "ev:li:hal-forecast"
+   ],
+   "tags": {},
+   "metrics": [],
+   "origin": "intake",
+   "contradicting": []
+  },
+  {
+   "id": "hal-crm",
+   "role": "hal",
+   "canonical": "Led the consolidation of 3 CRMs into one Salesforce instance across sales, customer success and marketing, retiring two legacy tools.",
+   "evidence": [
+    "ev:v1:hal-crm",
+    "ev:v2:hal-crm",
+    "ev:v3:hal-crm"
+   ],
+   "tags": {},
+   "metrics": [],
+   "origin": "intake",
+   "contradicting": []
+  },
+  {
+   "id": "hal-routing",
+   "role": "hal",
+   "canonical": "Introduced routing and SLA rules that took speed-to-lead from 26 hours to under 2 hours; SQL-to-opportunity conversion improved 18 points.",
+   "evidence": [
+    "ev:v1:hal-routing",
+    "ev:v3:hal-routing"
+   ],
+   "tags": {},
+   "metrics": [],
+   "origin": "intake",
+   "contradicting": []
+  },
+  {
+   "id": "hal-pricing",
+   "role": "hal",
+   "canonical": "Owned pricing and packaging for the mid-market tier, which reached $1,200,000 in ARR in year one.",
+   "evidence": [
+    "ev:v1:hal-pricing",
+    "ev:v3:hal-pricing"
+   ],
+   "tags": {},
+   "metrics": [],
+   "origin": "intake",
+   "contradicting": [
+    {
+     "value": "Partnered with product marketing and finance on pricing and packaging for the new mid-market tier; the tier reached $1.2M ARR in its first year.",
+     "evidence": [
+      "ev:li:hal-pricing"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hal-team",
+   "role": "hal",
+   "canonical": "Manage a team of 4 (two analysts and two Salesforce administrators) supporting a 60-person revenue organization.",
+   "evidence": [
+    "ev:v3:hal-team"
+   ],
+   "tags": {},
+   "metrics": [],
+   "origin": "intake",
+   "contradicting": []
+  },
+  {
+   "id": "hal-pipeline",
+   "role": "hal",
+   "canonical": "Grew qualified pipeline to $6.8M through territory redesign and a new SDR-to-AE handoff.",
+   "evidence": [
+    "ev:v3:hal-pipeline"
+   ],
+   "tags": {},
+   "metrics": [],
+   "origin": "intake",
+   "contradicting": [
+    {
+     "value": "Grew qualified pipeline to $6.1M through territory redesign and a rebuilt SDR-to-AE handoff.",
+     "evidence": [
+      "ev:v1:hal-pipeline"
+     ]
+    }
+   ],
+   "resolution": {
+    "value": "Grew qualified pipeline to $6.8M through territory redesign and a new SDR-to-AE handoff.",
+    "why": "pipeline report at hand-off shows $6.8M",
+    "at": "2026-09-21"
+   }
+  },
+  {
+   "id": "kes-quota",
+   "role": "kes",
+   "canonical": "Closed $2.4M in new business in FY2023 at 128% of quota, the top result on a team of nine.",
+   "evidence": [
+    "ev:v1:kes-quota",
+    "ev:v2:kes-quota",
+    "ev:li:kes-quota"
+   ],
+   "tags": {},
+   "metrics": [],
+   "origin": "intake",
+   "contradicting": []
+  },
+  {
+   "id": "kes-grocery",
+   "role": "kes",
+   "canonical": "Won the retail media network's first three grocery accounts, including a $600K annual commitment from a regional chain.",
+   "evidence": [
+    "ev:v2:kes-grocery"
+   ],
+   "tags": {},
+   "metrics": [],
+   "origin": "intake",
+   "contradicting": []
+  },
+  {
+   "id": "kes-cases",
+   "role": "kes",
+   "canonical": "Built ROAS and CPM business cases for CMO and CFO buyers, raising average deal size 35%.",
+   "evidence": [
+    "ev:v1:kes-cases",
+    "ev:v2:kes-cases"
+   ],
+   "tags": {},
+   "metrics": [],
+   "origin": "intake",
+   "contradicting": []
+  },
+  {
+   "id": "kes-committee",
+   "role": "kes",
+   "canonical": "Ran discovery-led cycles with buying committees of 6 to 8 stakeholders across brand, agency and finance teams.",
+   "evidence": [
+    "ev:v2:kes-committee"
+   ],
+   "tags": {},
+   "metrics": [],
+   "origin": "intake",
+   "contradicting": []
+  },
+  {
+   "id": "kes-agencies",
+   "role": "kes",
+   "canonical": "I partnered with agency holding companies to expand the network into 12 new brands over 18 months.",
+   "evidence": [
+    "ev:v1:kes-agencies",
+    "ev:v2:kes-agencies"
+   ],
+   "tags": {},
+   "metrics": [],
+   "origin": "intake",
+   "contradicting": []
+  },
+  {
+   "id": "pin-newsletter",
+   "role": "pin",
+   "canonical": "Grew newsletter subscribers from 40K to 110K in 18 months while holding a 38% open rate.",
+   "evidence": [
+    "ev:v1:pin-newsletter",
+    "ev:v2:pin-newsletter"
+   ],
+   "tags": {},
+   "metrics": [],
+   "origin": "intake",
+   "contradicting": []
+  },
+  {
+   "id": "pin-sponsored",
+   "role": "pin",
+   "canonical": "Launched a sponsored-content product that produced $850K in first-year revenue.",
+   "evidence": [
+    "ev:v1:pin-sponsored",
+    "ev:v2:pin-sponsored"
+   ],
+   "tags": {},
+   "metrics": [],
+   "origin": "intake",
+   "contradicting": []
+  },
+  {
+   "id": "pin-budget",
+   "role": "pin",
+   "canonical": "Managed a $1.1M annual media budget; paid social returned 3.2x ROAS.",
+   "evidence": [
+    "ev:v2:pin-budget",
+    "ev:li:pin-budget"
+   ],
+   "tags": {},
+   "metrics": [],
+   "origin": "intake",
+   "contradicting": []
+  },
+  {
+   "id": "pin-rebrand",
+   "role": "pin",
+   "canonical": "Led the rebrand of three regional sports properties, coordinating design, editorial, sales collateral and a 14-market launch calendar, while keeping the combined program within 4% of budget.",
+   "evidence": [
+    "ev:v1:pin-rebrand"
+   ],
+   "tags": {},
+   "metrics": [],
+   "origin": "intake",
+   "contradicting": []
+  },
+  {
+   "id": "qui-meetings",
+   "role": "qui",
+   "canonical": "Booked 140 qualified meetings in a year and finished #1 of 12 SDRs.",
+   "evidence": [
+    "ev:v1:qui-meetings",
+    "ev:li:qui-meetings"
+   ],
+   "tags": {},
+   "metrics": [],
+   "origin": "intake",
+   "contradicting": []
+  },
+  {
+   "id": "qui-sequences",
+   "role": "qui",
+   "canonical": "Wrote outbound sequences adopted team-wide, lifting reply rates from 9% to 14%.",
+   "evidence": [
+    "ev:v1:qui-sequences"
+   ],
+   "tags": {},
+   "metrics": [],
+   "origin": "intake",
+   "contradicting": []
+  },
+  {
+   "id": "lark-icp",
+   "role": "lark",
+   "canonical": "Defined the ideal customer profile and three pricing tiers for a digital health startup; the first 5 pilot clinics signed within 4 months.",
+   "evidence": [
+    "ev:v3:lark-icp",
+    "ev:li:lark-icp"
+   ],
+   "tags": {},
+   "metrics": [],
+   "origin": "intake",
+   "contradicting": []
+  },
+  {
+   "id": "lark-discovery",
+   "role": "lark",
+   "canonical": "Built the sales narrative and a 30-interview customer discovery plan the founders ran before raising their seed round.",
+   "evidence": [
+    "ev:v3:lark-discovery"
+   ],
+   "tags": {},
+   "metrics": [],
+   "origin": "intake",
+   "contradicting": []
+  }
+ ],
+ "taxonomy": {
+  "id": "gtm/1",
+  "user_tags": {}
+ },
+ "settings": {},
+ "sessions": [],
+ "feedback": [],
+ "outcomes": [],
+ "review_log": [],
+ "meta": {
+  "created_at": "2026-09-21",
+  "last_backup_at": null,
+  "entries": 19,
+  "note": "Fictional record for the Career Companion Hub demo. One discrepancy is left open on purpose: the Halcyon pricing entry."
+ }
+}
