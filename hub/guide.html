@@ -1,0 +1,174 @@
+<title>Career Companion Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F3F5F7; --surface:#FFFFFF; --surface-2:#F7F9FA; --ink:#0F1720; --ink-soft:#3B4754; --slate:#66727F; --rule:#E1E6EB; --rule-strong:#C9D2DA;
+  --accent:#136F6A; --accent-hover:#0F5C58; --accent-ink:#FFFFFF; --accent-dim:#E6F2F1; --accent-ring:rgba(19,111,106,.22); --signal:#B26A0B; --signal-dim:#FBF1E0; --ok:#22764A; --ok-dim:#E4F3EA; --focus:#136F6A;
+  --shadow-sm:0 1px 2px rgba(15,23,32,.06); --shadow:0 1px 2px rgba(15,23,32,.05),0 12px 32px -14px rgba(15,23,32,.22);
+  --f-display:"Manrope","IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --f-ui:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ color-scheme:dark; --paper:#0E141B; --surface:#151D26; --surface-2:#1A242E; --ink:#E9EEF2; --ink-soft:#B7C2CC; --slate:#8B98A5; --rule:#273340; --rule-strong:#35424F; --accent:#5CC0B8; --accent-hover:#79CFC8; --accent-ink:#0B1716; --accent-dim:#13302E; --accent-ring:rgba(92,192,184,.3); --signal:#E3A54B; --signal-dim:#2E2213; --ok:#7CC79A; --ok-dim:#16301F; --focus:#5CC0B8; --shadow-sm:0 1px 2px rgba(0,0,0,.35); --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 32px -14px rgba(0,0,0,.6); } }
+:root[data-theme="dark"]{ color-scheme:dark; --paper:#0E141B; --surface:#151D26; --surface-2:#1A242E; --ink:#E9EEF2; --ink-soft:#B7C2CC; --slate:#8B98A5; --rule:#273340; --rule-strong:#35424F; --accent:#5CC0B8; --accent-hover:#79CFC8; --accent-ink:#0B1716; --accent-dim:#13302E; --accent-ring:rgba(92,192,184,.3); --signal:#E3A54B; --signal-dim:#2E2213; --ok:#7CC79A; --ok-dim:#16301F; --focus:#5CC0B8; --shadow-sm:0 1px 2px rgba(0,0,0,.35); --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 32px -14px rgba(0,0,0,.6); }
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-ui);font-size:16px;line-height:1.6;padding-inline:16px;padding-block:0 72px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:40px;align-items:start}
+@media (max-width:860px){ .wrap{grid-template-columns:minmax(0,1fr)} nav.toc{display:none} }
+header.mast{grid-column:1 / -1;padding-block:32px 22px;border-bottom:1px solid var(--rule);display:grid;gap:12px}
+.brandrow{display:flex;align-items:center;gap:14px}
+.mark{flex:none;width:40px;height:40px;border-radius:11px;background:var(--accent);display:grid;place-items:center;box-shadow:0 6px 16px -6px var(--accent-ring),inset 0 1px 0 rgba(255,255,255,.18)}
+.mark svg{width:22px;height:22px;display:block}
+.eyebrow{font-family:var(--f-ui);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+h1{font-family:var(--f-display);font-weight:800;font-size:clamp(28px,4.4vw,40px);line-height:1.08;letter-spacing:-.025em;margin:0;text-wrap:balance;max-width:24ch}
+.lede{font-size:17px;color:var(--ink-soft);max-width:64ch;margin:0}
+main{display:grid;gap:36px;max-width:66ch}
+section{display:grid;gap:12px}
+h2{font-family:var(--f-display);font-weight:700;font-size:24px;letter-spacing:-.02em;margin:16px 0 0;text-wrap:balance;scroll-margin-top:16px}
+h3{font-size:15px;font-weight:600;margin:8px 0 0}
+p{margin:0}
+ul,ol{margin:0;padding-left:22px;display:grid;gap:6px}
+a{color:var(--accent)}
+.cta{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14.5px;color:var(--accent-ink);background:var(--accent);border-radius:8px;padding:10px 16px;text-decoration:none;width:max-content;box-shadow:var(--shadow-sm);transition:background .15s}
+.cta:hover{background:var(--accent-hover)}
+.note{background:var(--accent-dim);border-left:3px solid var(--accent);padding:12px 14px;border-radius:0 8px 8px 0;color:var(--ink-soft);font-size:15px}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:15px;font-variant-numeric:tabular-nums;background:var(--surface);border:1px solid var(--rule);border-radius:10px;overflow:hidden;box-shadow:var(--shadow-sm)}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+tr:last-child td{border-bottom:0}
+th{font-family:var(--f-ui);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);background:var(--surface-2)}
+.tblwrap{overflow-x:auto}
+.checks{list-style:none;padding:0;display:grid;gap:8px}
+.checks li{display:grid;grid-template-columns:26px 1fr;gap:12px;align-items:start;background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:12px 14px;box-shadow:var(--shadow-sm)}
+.checks .k{width:26px;height:26px;border-radius:50%;display:inline-grid;place-items:center;background:var(--accent-dim);color:var(--accent);font-weight:700;font-size:12px;margin-top:1px}
+.checks b{font-weight:600}
+.checks span.why{display:block;color:var(--slate);font-size:14px}
+dl{display:grid;grid-template-columns:max-content 1fr;gap:8px 16px;margin:0;font-size:15px}
+dt{font-family:var(--f-ui);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);padding-top:4px}
+dd{margin:0}
+@media (max-width:480px){ dl{grid-template-columns:1fr} }
+nav.toc{position:sticky;top:calc(16px + env(safe-area-inset-top, 0px));display:grid;gap:2px;font-size:14px;padding:14px;margin-top:36px;background:var(--surface);border:1px solid var(--rule);border-radius:12px;box-shadow:var(--shadow-sm)}
+nav.toc .eyebrow{margin-bottom:6px;color:var(--slate)}
+nav.toc a{color:var(--ink-soft);text-decoration:none;padding:6px 8px;border-radius:6px;font-weight:500}
+nav.toc a:hover{color:var(--accent);background:var(--accent-dim)}
+.tiers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.tier{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:14px;display:grid;gap:4px;box-shadow:var(--shadow-sm)}
+.tier .tn{font-family:var(--f-ui);font-size:10.5px;font-weight:600;color:var(--slate);letter-spacing:.06em;text-transform:uppercase}
+.tier b{font-family:var(--f-display);font-weight:700;font-size:17px;letter-spacing:-.01em}
+.tier span{font-size:14px;color:var(--ink-soft)}
+@media (max-width:480px){ .tiers{grid-template-columns:1fr} }
+footer{grid-column:1 / -1;margin-top:20px;padding-top:14px;border-top:1px solid var(--rule);color:var(--slate);font-size:13px}
+</style>
+
+<div class="wrap">
+  <header class="mast">
+    <div class="brandrow">
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.2 4.2L19 7.5" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="eyebrow">Career Companion Hub · the guide</div>
+    </div>
+    <h1>What to bring, what the checks mean, and where your data goes</h1>
+    <p class="lede">Career Companion Hub tailors a resume to a job posting from your own record, asks you targeted questions instead of inventing lines, and lets you download Word and PDF files in which every sentence traces back to something you actually said. This page explains how to get the most out of it.</p>
+    <a class="cta" id="openHub" href="#" hidden>Open Career Companion Hub →</a>
+  </header>
+
+  <main>
+    <section id="who">
+      <h2>Who it is for</h2>
+      <p>People applying for <b>go-to-market, sales, marketing, revenue operations and partnerships roles</b>. The skill vocabulary the page reads postings with (94 skills in 14 families, from forecasting and lead routing to retail media and lifecycle email) is tuned to those jobs. Other fields will still match on the words they share, but the questions will be less sharp.</p>
+      <p>It suits you if you would rather answer five pointed questions than let a tool guess, and if you want to sign your name to every line.</p>
+    </section>
+
+    <section id="bring">
+      <h2>What to bring</h2>
+      <p>The first version takes typed or pasted entries. Ten minutes is enough to start; the more of your history you enter, the better the match.</p>
+      <div class="tblwrap"><table>
+        <thead><tr><th>Bring</th><th>Time</th><th>What it gets you</th></tr></thead>
+        <tbody>
+          <tr><td><b>Your current resume</b>, pasted role by role, plus <b>one posting</b></td><td>10 min</td><td>A working draft and five questions. In testing on a full record, one resume alone recovered about two thirds of what the full record could prove.</td></tr>
+          <tr><td>+ the accomplishments from <b>two older resumes</b> and your <b>LinkedIn About and experience text</b></td><td>20 min</td><td>Around nine tenths of a full record's coverage. Older resumes hold the numbers you have since dropped; those numbers are exactly what postings ask for.</td></tr>
+          <tr><td>+ anything past four documents</td><td>—</td><td>Small gains. Spend the time answering the questions instead.</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">Paste accomplishments <b>one per line</b>, in the words you used at the time. The page keeps your line as evidence, tidies the capitalisation and full stop for printing, tags the skills it proves and notes the numbers it states. A line with a number is worth two without.</p>
+    </section>
+
+    <section id="session">
+      <h2>How a session goes</h2>
+      <ol>
+        <li><b>Match.</b> Paste a posting. The page turns it into weighted requirements and scores how much of it your record already proves. The draft on the right is the subset of your entries that proves the most, in a plain template a recruiter's software reads without trouble.</li>
+        <li><b>Ask.</b> You get up to five questions aimed at the requirements the draft proves weakly, or tools the posting names that your record lacks. Answer with specifics: scope, numbers, outcome. Skip any you like.</li>
+        <li><b>Verify.</b> Each answer becomes one to three entries. Before an entry can print, every number in it must appear in your answer. You choose which entries to use and which role each goes under.</li>
+        <li><b>Download.</b> Word or PDF, in the neutral template. Downloading also adds the entries you approved to your record, with your answer as their evidence, so the next posting starts stronger.</li>
+      </ol>
+      <p>With Claude allowed on the page (it asks once per visit and runs on your own Claude account), the questions are written for the posting, your answers are turned into resume wording, a Polish button tightens any line, and an optional summary paragraph is written only from the facts on the draft and checked against them. Without Claude, everything still works: the questions come from the gap analysis and each line of your answer becomes an entry as typed.</p>
+    </section>
+
+    <section id="checks">
+      <h2>The readiness checks</h2>
+      <p>The meter under <i>Your evidence</i> tracks six things. You can match a posting before all six pass; they tell you what would sharpen the result.</p>
+      <ul class="checks">
+        <li><span class="k">1</span><div><b>Your name and email are entered.</b><span class="why">They print on the sheet. They are never part of a question to Claude.</span></div></li>
+        <li><span class="k">2</span><div><b>Every role has a title, employer and start date.</b><span class="why">Dates order the resume and decide which roles count as recent.</span></div></li>
+        <li><span class="k">3</span><div><b>Each recent role has at least three accomplishments.</b><span class="why">Recent means ended within six years. Fewer than three and the draft cannot choose; it can only print what there is.</span></div></li>
+        <li><span class="k">4</span><div><b>At least half of your accomplishments state a number.</b><span class="why">Numbers are what a posting's "proven", "improved" and "grew" are asking for, and they are the facts the page can check.</span></div></li>
+        <li><span class="k">5</span><div><b>Three or more skills and three or more tools listed.</b><span class="why">They print as the Skills and Tools lines and are ordered by the posting each time.</span></div></li>
+        <li><span class="k">6</span><div><b>No facts in conflict.</b><span class="why">When two statements about the same fact disagree, that fact is held back from printing until you settle it. A number in dispute never prints.</span></div></li>
+      </ul>
+    </section>
+
+    <section id="record">
+      <h2>How your record is organised</h2>
+      <p>Everything the page knows sits in four tiers, and nothing moves up a tier without a step you can see.</p>
+      <div class="tiers">
+        <div class="tier"><span class="tn">Tier 1 · Evidence</span><b>What you said</b><span>Verbatim lines: what you typed, pasted or answered, each with a source and a date.</span></div>
+        <div class="tier"><span class="tn">Tier 2 · Derived</span><b>Claims with a confidence</b><span>Facts drawn from the evidence: titles, dates, accomplishments, the numbers each one states. Your own statement counts as verified.</span></div>
+        <div class="tier"><span class="tn">Tier 3 · Generation</span><b>The draft</b><span>Every printed line names the claims behind it. Claude's wording is checked against them before it prints; Claude's words never become evidence.</span></div>
+        <div class="tier"><span class="tn">Tier 4 · Feedback</span><b>What you did with it</b><span>Keep, drop and edit clicks, and the outcome of each application. Recorded and reported, never used to rewrite your facts.</span></div>
+      </div>
+    </section>
+
+    <section id="storage">
+      <h2>Browser storage and backups</h2>
+      <p>The page has no server. Your record lives in this browser's storage for this page, which means:</p>
+      <ul>
+        <li>Another browser, another device, a private window or cleared site data will show an <b>empty page</b>.</li>
+        <li><b>Download a backup after each session</b> (Backup &amp; privacy). It is one JSON file with your whole record: evidence, entries, postings, answers and outcomes. Load it on any device to continue.</li>
+        <li>Storage is limited to about 5 MB. The meter shows what you use; a full record with a dozen postings is well under 1 MB.</li>
+        <li><b>Delete everything</b> removes the record from this browser. Type <i>delete</i> to enable it. Your backups are unaffected.</li>
+      </ul>
+    </section>
+
+    <section id="privacy">
+      <h2>Where your data goes</h2>
+      <p><b>Nowhere, unless you send it.</b> Nothing is posted, emailed, shared or logged, and there are no analytics.</p>
+      <p>When you press a button that asks Claude (matching with Claude on, converting an answer, Polish, the summary), the relevant text goes to Claude on <i>your</i> Claude account: the posting, your accomplishments and answers, your role titles, employers and dates. Your phone number, email address and backup file are never included. You allow this once per visit, and you can decline: the page keeps working with keyword matching and your answers as typed.</p>
+      <h3>What the page never does</h3>
+      <ul>
+        <li>Invent an employer, title, date, number, tool or outcome.</li>
+        <li>Print a number that is not in your evidence or your answer, or a fact whose evidence is in conflict.</li>
+        <li>Treat Claude's wording as a fact about you. Only your words are evidence.</li>
+        <li>Rank your history by what "usually works". Keep and drop clicks adjust ordering for you alone, in your browser.</li>
+      </ul>
+    </section>
+
+    <section id="faq">
+      <h2>Questions people ask</h2>
+      <dl>
+        <dt>Uploads?</dt><dd>Not yet. This version takes typed and pasted entries so that every line is one you chose. Document upload with a review step is the next feature.</dd>
+        <dt>Templates?</dt><dd>One, deliberately plain: single column, standard headings, Calibri, real Word bullets, no tables or text boxes. It is built to be read correctly by applicant tracking systems.</dd>
+        <dt>Why five?</dt><dd>Because a posting rarely has more than five requirements your record proves weakly, and because answering well takes attention. You can ask for quick questions from the gap analysis instead at any time.</dd>
+        <dt>Editing?</dt><dd>Yes, click any line on the sheet. An edit to a line built from a claim is checked the same way an answer is: numbers you add must already be in your evidence.</dd>
+        <dt>Example?</dt><dd>A fictional record you can load into an empty page to see the whole flow before entering your own. Delete everything before entering yours.</dd>
+      </dl>
+    </section>
+  </main>
+
+  <nav class="toc" aria-label="On this page">
+    <span class="eyebrow">On this page</span>
+    <a href="#who">Who it is for</a><a href="#bring">What to bring</a><a href="#session">How a session goes</a><a href="#checks">The readiness checks</a><a href="#record">How your record is organised</a><a href="#storage">Storage and backups</a><a href="#privacy">Where your data goes</a><a href="#faq">Questions</a>
+  </nav>
+
+  <footer>Career Companion Hub is free to use. Your record stays in your browser; keep a backup.</footer>
+</div>
+<script>
+(function(){ const HUB_URL="https://claude.ai/artifact/QyjWByEDftrtDWv6cMZrRx"; const a=document.getElementById("openHub"); if(HUB_URL){ a.href=HUB_URL; a.hidden=false; } })();
+</script>

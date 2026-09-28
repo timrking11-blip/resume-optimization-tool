@@ -8,7 +8,7 @@
   root.RotCore = api;
 })(typeof globalThis !== "undefined" ? globalThis : this, function () {
 "use strict";
-const VERSION = "1.1.0";
+const VERSION = "1.1.1";
 const SCHEMAS = { bank: "rot-library/3", model: "rot-resume/2", template: "rot-docx-template/1", backup: "cch-backup/1", taxonomy: "rot-taxonomy/1" };
 
 /* ------------------------------ util ------------------------------ */
@@ -104,7 +104,8 @@ function docParagraphs(m, layout){
   for(const sec of sections){
     if(sec.kind==="header"){
       P.push(["name",[["name",i.name]]]);
-      const contact=[["contact",`${i.location} | ${i.phone} | ${i.email}`+((i.links||[]).length?" | ":"")]];
+      const cparts=[i.location,i.phone,i.email].filter(Boolean).join(" | ");   // a blank field prints nothing, not an empty slot
+      const contact=[["contact",cparts+((i.links||[]).length?" | ":"")]];
       (i.links||[]).forEach((ln,k)=>{ if(k) contact.push(["contact"," | "]); contact.push(["link",ln.label,ln.url]); });
       P.push(["contact",contact]);
     } else if(sec.kind==="lines"){
@@ -184,7 +185,7 @@ const PDF_METRICS={font:"Calibri", size:10, single:1.2207, ascent:0.9521, hyperl
 function plainText(m, layout){
   const {sections, J, LB}=layoutOf(layout), i=m.identity, L=[];
   for(const sec of sections){
-    if(sec.kind==="header") L.push(i.name, `${i.location} | ${i.phone} | ${i.email}`+((i.links||[]).length?" | "+(i.links||[]).map(l=>`${l.label}: ${l.url}`).join(" | "):""), "");
+    if(sec.kind==="header") L.push(i.name, [i.location,i.phone,i.email].filter(Boolean).join(" | ")+((i.links||[]).length?" | "+(i.links||[]).map(l=>`${l.label}: ${l.url}`).join(" | "):""), "");
     else if(sec.kind==="lines"){
       const has=lineBlocks(m), blocks=sec.blocks||[];
       if(!sec.always && !blocks.some(b=>has[b])) continue;
@@ -870,8 +871,9 @@ function projectLibrary(backup, taxonomy, opts={}){
     return {school:g("school")||"", degree:g("degree")||"", year:g("date")||null, date_display:g("date")||null, degree_line:[g("degree"), g("date")].filter(Boolean).join(" | "), bullet_ids:[], claim_id:ids.find(i=>i.endsWith(":degree"))||ids[0]||null}; });
   const certifications=subjects.filter(s=>s.kind==="credential").map(s=>{ const g=p=>val(s.facts&&s.facts[p]); const ids=["name","issuer","date"].map(p=>factClaim(s,"credential",p,g("name")||s.id)).filter(Boolean);
     return {name:g("name")||"", issuer:g("issuer")||"", date:g("date")||null, status:null, note:g("note")||null, hidden:!!s.hidden, claim_id:ids[0]||null}; });
-  const technologies=subjects.filter(s=>s.kind==="tool").map(s=>({name:val(s.facts&&s.facts.name)||"", category:"Tools", tags:s.tags||[], sort:s.sort??null, claim_id:factClaim(s,"tool","name","Tool")}));
-  const competencies=subjects.filter(s=>s.kind==="expertise").map(s=>({text:val(s.facts&&s.facts.text)||"", tags:s.tags||[], sort:s.sort??null, origin:"user", claim_id:factClaim(s,"expertise","text","Skill")}));
+  const bySort=(a,b)=>((a.sort??999)-(b.sort??999));   // the person's order is the baseline order
+  const technologies=subjects.filter(s=>s.kind==="tool").slice().sort(bySort).map(s=>({name:val(s.facts&&s.facts.name)||"", category:"Tools", tags:s.tags||[], sort:s.sort??null, claim_id:factClaim(s,"tool","name","Tool")}));
+  const competencies=subjects.filter(s=>s.kind==="expertise").slice().sort(bySort).map(s=>({text:val(s.facts&&s.facts.text)||"", tags:s.tags||[], sort:s.sort??null, origin:"user", claim_id:factClaim(s,"expertise","text","Skill")}));
   const identity={name:"", location:"", phone:"", email:"", links:[], ...(backup.identity||{})};
   const caps={}, priority={};
   roleSubjects.forEach((s,i)=>{ caps[s.key]=(S0.caps&&S0.caps[s.key])??HUB_DEFAULTS.caps[Math.min(i, HUB_DEFAULTS.caps.length-1)]; priority[s.key]=achievements.filter(a=>a.role===s.key&&!a.engagement).map(a=>a.id); });

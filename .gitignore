@@ -9,3 +9,5 @@ learnings*.json
 .DS_Store
 sync/
 tests/parity/golden/run-*/
+preview/
+.claude/

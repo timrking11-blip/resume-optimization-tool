@@ -839,7 +839,8 @@ def model_paragraphs(m, layout=None):
         kind = sec["kind"]
         if kind == "header":
             P.append(("name", [("name", i["name"])]))
-            contact = [("contact", f"{i['location']} | {i['phone']} | {i['email']}" + (" | " if i.get("links") else ""))]
+            cparts = " | ".join(x for x in (i.get("location"), i.get("phone"), i.get("email")) if x)   # a blank field prints nothing, not an empty slot
+            contact = [("contact", cparts + (" | " if i.get("links") else ""))]
             for k, ln in enumerate(i.get("links") or []):
                 if k:
                     contact.append(("contact", " | "))
@@ -1007,7 +1008,7 @@ def render_md(m, layout=None):
         kind = sec["kind"]
         if kind == "header":
             links = " · ".join(f"[{ln['label']}]({ln['url']})" for ln in i.get("links") or [])
-            L += [f"# {i['name']}", f"{i['location']} | {i['phone']} | {i['email']}" + (f" | {links}" if links else ""), ""]
+            L += [f"# {i['name']}", " | ".join(x for x in (i.get("location"), i.get("phone"), i.get("email")) if x) + (f" | {links}" if links else ""), ""]
         elif kind == "lines":
             has, blocks = _line_blocks(m), sec.get("blocks") or []
             if not sec.get("always") and not any(has[b] for b in blocks):

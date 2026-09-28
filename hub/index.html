@@ -1,0 +1,381 @@
+<title>Career Companion Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=Carlito:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="core/rot_core.js"></script>
+<script src="store.js"></script>
+<style>
+:root{
+  --paper:#F3F5F7; --surface:#FFFFFF; --surface-2:#F7F9FA; --ink:#0F1720; --ink-soft:#3B4754; --slate:#66727F; --rule:#E1E6EB; --rule-soft:#EDF0F3; --rule-strong:#C9D2DA;
+  --accent:#136F6A; --accent-hover:#0F5C58; --accent-ink:#FFFFFF; --accent-dim:#E6F2F1; --accent-ring:rgba(19,111,106,.22);
+  --signal:#B26A0B; --signal-dim:#FBF1E0; --bad:#B4433C; --bad-dim:#FBE9E7; --ok:#22764A; --ok-dim:#E4F3EA; --focus:#136F6A;
+  --hl:#F3F0B4; --hl-ink:#2A2E0E; --sheet:#FFFFFF; --sheet-ink:#000000;
+  --shadow-sm:0 1px 2px rgba(15,23,32,.06); --shadow:0 1px 2px rgba(15,23,32,.05),0 12px 32px -14px rgba(15,23,32,.22); --shadow-lg:0 2px 4px rgba(15,23,32,.06),0 24px 48px -20px rgba(15,23,32,.28);
+  --f-display:"Manrope","IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --f-ui:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace; --f-doc:Calibri,Carlito,"Segoe UI",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ color-scheme:dark;
+    --paper:#0E141B; --surface:#151D26; --surface-2:#1A242E; --ink:#E9EEF2; --ink-soft:#B7C2CC; --slate:#8B98A5; --rule:#273340; --rule-soft:#202B36; --rule-strong:#35424F;
+    --accent:#5CC0B8; --accent-hover:#79CFC8; --accent-ink:#0B1716; --accent-dim:#13302E; --accent-ring:rgba(92,192,184,.3);
+    --signal:#E3A54B; --signal-dim:#2E2213; --bad:#E58F88; --bad-dim:#3A1F1D; --ok:#7CC79A; --ok-dim:#16301F; --focus:#5CC0B8;
+    --hl:#5A5E1F; --hl-ink:#F4F6C8; --shadow-sm:0 1px 2px rgba(0,0,0,.35); --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 32px -14px rgba(0,0,0,.6); --shadow-lg:0 2px 4px rgba(0,0,0,.35),0 24px 48px -20px rgba(0,0,0,.7); }
+}
+:root[data-theme="dark"]{ color-scheme:dark;
+  --paper:#0E141B; --surface:#151D26; --surface-2:#1A242E; --ink:#E9EEF2; --ink-soft:#B7C2CC; --slate:#8B98A5; --rule:#273340; --rule-soft:#202B36; --rule-strong:#35424F;
+  --accent:#5CC0B8; --accent-hover:#79CFC8; --accent-ink:#0B1716; --accent-dim:#13302E; --accent-ring:rgba(92,192,184,.3);
+  --signal:#E3A54B; --signal-dim:#2E2213; --bad:#E58F88; --bad-dim:#3A1F1D; --ok:#7CC79A; --ok-dim:#16301F; --focus:#5CC0B8;
+  --hl:#5A5E1F; --hl-ink:#F4F6C8; --shadow-sm:0 1px 2px rgba(0,0,0,.35); --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 32px -14px rgba(0,0,0,.6); --shadow-lg:0 2px 4px rgba(0,0,0,.35),0 24px 48px -20px rgba(0,0,0,.7); }
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-ui);font-size:15px;line-height:1.55;padding-inline:16px;padding-block:0 64px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1240px;margin:0 auto;display:grid;gap:22px}
+header.mast{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;padding-block:28px 18px;border-bottom:1px solid var(--rule)}
+.brand{display:grid;gap:10px;min-width:0}
+.brandrow{display:flex;align-items:center;gap:14px}
+.mark{flex:none;width:40px;height:40px;border-radius:11px;background:var(--accent);display:grid;place-items:center;box-shadow:0 6px 16px -6px var(--accent-ring),inset 0 1px 0 rgba(255,255,255,.18)}
+.mark svg{width:22px;height:22px;display:block}
+.brand h1{font-family:var(--f-display);font-weight:800;font-size:clamp(26px,4.2vw,36px);line-height:1.05;letter-spacing:-.025em;margin:0;text-wrap:balance}
+.brand p{margin:0;color:var(--ink-soft);font-size:15px;max-width:66ch}
+.eyebrow{font-family:var(--f-ui);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:flex-end;max-width:520px}
+.chip{font-family:var(--f-ui);font-size:12px;font-weight:500;color:var(--ink-soft);background:var(--surface);border:1px solid var(--rule);border-radius:999px;padding:4px 11px;font-variant-numeric:tabular-nums;box-shadow:var(--shadow-sm)}
+.chip b{color:var(--ink);font-weight:700}
+.chip.warn{color:var(--signal);border-color:transparent;background:var(--signal-dim)}
+.chip.ok{color:var(--ok);border-color:transparent;background:var(--ok-dim)}
+#nav{display:inline-flex;flex-wrap:wrap;gap:4px;padding:4px;background:var(--surface-2);border:1px solid var(--rule);border-radius:11px;width:max-content;max-width:100%}
+#nav .tab{font:inherit;font-weight:600;font-size:13.5px;color:var(--slate);background:transparent;border:0;border-radius:8px;padding:8px 14px;cursor:pointer;transition:color .15s,background .15s}
+#nav .tab:hover{color:var(--ink)}
+#nav .tab.on{color:var(--ink);background:var(--surface);box-shadow:var(--shadow-sm)}
+#nav .tab:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+section[data-view]{display:grid;gap:20px}
+.grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:20px;align-items:start}
+.col{display:grid;gap:20px;min-width:0}
+.panel{background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:20px;display:grid;gap:12px;min-width:0;box-shadow:var(--shadow-sm)}
+.panel > *{min-width:0}
+.panel h2{font-family:var(--f-display);font-weight:700;font-size:18px;letter-spacing:-.015em;margin:0;display:flex;align-items:center;gap:10px;flex-wrap:wrap;text-wrap:balance}
+.panel h2 .tag{font-family:var(--f-ui);font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:var(--accent-dim);color:var(--accent)}
+.panel h3{font-family:var(--f-ui);font-weight:600;font-size:14px;margin:6px 0 0;color:var(--ink)}
+.lede{color:var(--ink-soft);margin:0;max-width:66ch}
+.hint{font-size:12.5px;color:var(--slate)}
+.err{color:var(--bad)}
+label.f{display:grid;gap:5px;font-family:var(--f-ui);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--slate)}
+input[type=text],input[type=month],input[type=date],textarea,select{font:inherit;font-family:var(--f-ui);font-size:14px;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:9px 11px;width:100%;text-transform:none;letter-spacing:0;box-shadow:inset 0 1px 1px rgba(15,23,32,.03);transition:border-color .15s,box-shadow .15s}
+input[type=text]:hover,textarea:hover,select:hover{border-color:var(--rule-strong)}
+input[type=text]:focus,input[type=month]:focus,input[type=date]:focus,textarea:focus,select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-ring)}
+textarea{resize:vertical;line-height:1.45;min-height:64px}
+#jd{min-height:220px;font-size:13.5px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+button{font:inherit;font-weight:600;font-size:13.5px;cursor:pointer;border-radius:8px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);padding:8px 14px;box-shadow:var(--shadow-sm);transition:background .15s,border-color .15s,color .15s,transform .05s}
+button:hover{border-color:var(--rule-strong);background:var(--surface-2)}
+button:active{transform:translateY(1px)}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+button.primary:hover{background:var(--accent-hover);border-color:var(--accent-hover)}
+button.ghost{background:transparent;border-color:transparent;color:var(--accent);padding-inline:8px;box-shadow:none}
+button.ghost:hover{background:var(--accent-dim);border-color:transparent}
+button.danger{border-color:var(--bad);color:var(--bad)}
+button.danger:hover{background:var(--bad-dim)}
+button:disabled{opacity:.5;cursor:not-allowed;transform:none}
+button:focus-visible,[contenteditable]:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+details summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:6px}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"";width:6px;height:6px;border-right:1.5px solid var(--slate);border-bottom:1.5px solid var(--slate);transform:rotate(-45deg);transition:transform .15s;margin-left:2px}
+details[open] summary::before{transform:rotate(45deg)}
+/* evidence entry */
+.role{border:1px solid var(--rule);border-radius:10px;padding:14px 16px 14px 18px;display:grid;gap:12px;background:var(--surface);box-shadow:inset 3px 0 0 var(--accent)}
+.role .head{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.role .head label.f{font-size:10.5px}
+.lines{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.lines li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 10px;align-items:start;padding:10px 12px;border:1px solid var(--rule-soft);border-radius:8px;background:var(--surface-2)}
+.lines li input[type=text]{font-size:13.5px}
+.lines .tags{grid-column:1 / 3;display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.t{font-family:var(--f-ui);font-size:11px;font-weight:500;padding:2px 8px;border-radius:999px;background:var(--surface);border:1px solid var(--rule);color:var(--ink-soft)}
+.t.n{color:var(--signal);background:var(--signal-dim);border-color:transparent;font-family:var(--f-mono);font-size:10.5px}
+.t.first{color:var(--bad);background:var(--bad-dim);border-color:transparent}
+.ready{display:grid;gap:8px;list-style:none;margin:0;padding:0}
+.ready li{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:center;font-size:14px}
+.ready li .k{width:22px;height:22px;border-radius:50%;display:inline-grid;place-items:center;font-size:11px;font-weight:700;font-family:var(--f-ui)}
+.ready li.ok .k{background:var(--ok-dim);color:var(--ok)} .ready li.no .k{background:var(--surface-2);color:var(--slate);border:1px solid var(--rule)}
+.ready li.no{color:var(--ink-soft)}
+.meter{height:10px;border-radius:999px;background:var(--surface-2);border:1px solid var(--rule);overflow:hidden}
+.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-hover));border-radius:999px;transition:width .3s}
+/* match */
+.scorebox{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.score{font-family:var(--f-display);font-weight:800;font-size:46px;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.score small{font-size:18px;color:var(--slate);font-weight:600;letter-spacing:0}
+.reqs{display:grid;gap:4px;max-height:320px;overflow:auto;padding-right:4px}
+.req{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;padding:7px 10px;border-radius:8px;background:var(--surface-2);font-size:13px}
+.pill{font-family:var(--f-ui);font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.pill.ok{background:var(--ok-dim);color:var(--ok)} .pill.warn{background:var(--signal-dim);color:var(--signal)} .pill.gap{background:var(--bad-dim);color:var(--bad)}
+.req .lbl{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500}
+.req .lbl em{font-style:normal;color:var(--slate);font-size:12px;font-weight:400}
+.w{font-family:var(--f-mono);font-size:11px;color:var(--slate);font-variant-numeric:tabular-nums}
+.status{font-size:13px;color:var(--slate);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.spin{width:14px;height:14px;border-radius:50%;border:2px solid var(--rule);border-top-color:var(--accent);animation:sp .9s linear infinite;flex:none}
+@keyframes sp{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion: reduce){.spin{animation:none} .meter i{transition:none}}
+.jdview{font-size:12.5px;line-height:1.55;max-height:200px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;background:var(--surface-2);border-radius:8px;padding:12px;border:1px solid var(--rule);margin-top:8px}
+mark{background:var(--hl);color:var(--hl-ink);border-radius:2px;padding:0 1px}
+#questions{display:grid;gap:10px;grid-template-columns:minmax(0,1fr)}
+.q{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;padding:14px;border:1px solid var(--rule);border-radius:10px;background:var(--surface);min-width:0;box-shadow:var(--shadow-sm)}
+.q > *{min-width:0}
+.q .qh{display:flex;gap:10px;align-items:flex-start}
+.q .qn{flex:none;width:24px;height:24px;border-radius:50%;background:var(--accent-dim);color:var(--accent);display:inline-grid;place-items:center;font-size:12px;font-weight:700;margin-top:1px}
+.q p{margin:0;overflow-wrap:anywhere;font-weight:500}
+.q .why{font-size:12px;color:var(--slate);overflow-wrap:anywhere}
+.q textarea{min-height:64px;background:var(--surface-2)}
+.q .meta{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;font-size:12px;color:var(--slate)}
+.q .meta label{display:flex;align-items:center;gap:6px;flex:1 1 220px;min-width:0}
+.q .meta .lb{white-space:nowrap;flex:none}
+.q select{flex:1 1 auto;width:100%;max-width:100%;min-width:0;padding:5px 8px;font-size:12px;background:var(--surface);text-overflow:ellipsis}
+.q .sec{font-family:var(--f-ui);font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:999px;border:1px solid var(--rule);color:var(--slate);background:var(--surface-2);white-space:nowrap}
+.qa-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;min-width:0}
+.qb{list-style:none;margin:0;padding:0;display:grid;gap:6px;grid-template-columns:minmax(0,1fr)}
+.qb li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px;align-items:start;min-width:0}
+.qb input[type=checkbox]{margin-top:9px;accent-color:var(--accent);width:15px;height:15px}
+.qb textarea{min-height:0;font-size:13px;background:var(--surface);border-color:var(--ok)}
+.qb textarea.blocked{border-color:var(--bad)}
+.qb .cc{font-family:var(--f-mono);font-size:11px;color:var(--slate);margin-top:9px}
+.qb .cc.over{color:var(--bad)}
+.qb .lf{grid-column:2 / 4;font-size:12px;color:var(--slate)}
+.qb .lf.err{color:var(--bad)}
+.qb .bpl{grid-column:2 / 4;display:flex;align-items:center;gap:6px;font-size:12px;color:var(--slate);min-width:0}
+.qb .bpl .lb{white-space:nowrap;flex:none}
+.qb .bpl select.alt{border-color:var(--accent);color:var(--accent)}
+/* the sheet */
+.sheetwrap{position:static;display:grid;gap:10px;min-width:0}
+.sheetbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+.badge{font-family:var(--f-ui);font-size:10.5px;font-weight:700;letter-spacing:.08em;padding:3px 9px;border-radius:999px;border:1px solid var(--rule);color:var(--slate);background:var(--surface)}
+.badge.final{border-color:transparent;color:var(--ok);background:var(--ok-dim)}
+.sheet{background:var(--sheet);color:var(--sheet-ink);font-family:var(--f-doc);font-size:12.5px;line-height:1.2207;padding:36px 42px;border-radius:6px;box-shadow:var(--shadow-lg);border:1px solid var(--rule);overflow-wrap:anywhere}
+@media (min-width:1100px){ .sheetwrap{position:sticky;top:calc(12px + env(safe-area-inset-top, 0px))} .sheet{max-height:calc(100vh - 110px);overflow:auto} }
+.sheet p{margin:0}
+.sheet a{color:#0563C1;text-decoration:underline}
+.sheet .k-name{text-align:center;font-weight:700;font-size:1.25em;color:#1F1F1F;margin-bottom:.2em}
+.sheet .k-contact{text-align:center;color:#444;margin-bottom:1em}
+.sheet .k-heading{font-weight:700;color:#1F1F1F;margin:1.2em 0 .5em;padding-bottom:.2em;border-bottom:1px solid #9A9A9A}
+.sheet .k-summary{text-align:justify;margin-bottom:.5em}
+.sheet .k-expertise,.sheet .k-tech_line{margin-bottom:.5em}
+.sheet .k-tech_label{font-weight:700}
+.sheet .k-school{font-weight:700;margin-bottom:.1em}
+.sheet .k-degree{font-style:italic;color:#444;margin-bottom:.5em}
+.sheet .k-role_header{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-weight:700}
+.sheet .k-role_header .dt{font-weight:400;white-space:nowrap}
+.sheet .k-role_context{color:#6B6B6B;font-size:.8em;line-height:1.404;margin-bottom:.5em}
+.sheet .k-bullet,.sheet .k-bullet_last{position:relative;padding-left:1.8em}
+.sheet .k-bullet::before,.sheet .k-bullet_last::before{content:"\2022";position:absolute;left:0}
+.sheet .k-bullet_last{margin-bottom:1.2em}
+.sheet .k-cert,.sheet .k-eng_bullet,.sheet .k-eng_bullet_last{position:relative;padding-left:1.51em;margin-bottom:.2em;line-height:1.2716}
+.sheet .k-cert::before,.sheet .k-eng_bullet::before,.sheet .k-eng_bullet_last::before{content:"\2022";position:absolute;left:.435em}
+.sheet .k-eng_bullet_last{margin-bottom:.8em}
+.sheet .k-eng_header{margin-bottom:.4em}
+.sheet .k-eng_subtitle{font-style:italic;margin-bottom:.4em}
+.sheet .bt,.sheet .ln{outline:none;border-radius:2px}
+.sheet .ln[contenteditable]:hover,.sheet .bt:hover{background:#F2F5FA}
+.sheet .new .bt{background:#E4F3EE}
+.sheet .ctl{display:inline-flex;gap:2px;margin-left:6px;vertical-align:1px;opacity:0;transition:opacity .15s}
+.sheet p:hover .ctl,.sheet p:focus-within .ctl{opacity:1}
+.sheet .ctl button{font-family:var(--f-ui);font-size:10.5px;font-weight:600;padding:0 7px;line-height:18px;border-radius:4px;background:#F1F3F7;color:#136F6A;border:1px solid #D5DBE5;box-shadow:none}
+.sheet .ctl button:hover{background:#E6F2F1;border-color:#B9D8D5}
+.sheet .ctl select{font-family:var(--f-ui);font-size:10.5px;font-weight:600;width:auto;max-width:9.5em;height:20px;padding:0 2px;border-radius:4px;background:#F1F3F7;color:#136F6A;border:1px solid #D5DBE5;box-shadow:none}
+.sheet .cc{font-family:var(--f-mono);font-size:9.5px;color:#8A8F99;margin-left:4px}
+.sheet .cc.over{color:#B4433C}
+.sheet .ev{font-family:var(--f-ui);font-size:9.5px;font-weight:600;color:#5B6B85;margin-left:4px;background:#EEF2F8;border-radius:999px;padding:1px 6px;white-space:nowrap}
+.sheet .ev.you{background:#E4F3EE;color:#1F5C58}
+.sheet .empty{font-family:var(--f-ui);color:#6B6B6B;font-size:13px;padding:16px;border:1px dashed #C9CFD6;border-radius:8px}
+@media (hover:none){.sheet .ctl{opacity:1}}
+/* saved postings, backup, explainer */
+.list{display:grid;gap:8px}
+.card{border:1px solid var(--rule);border-radius:10px;padding:14px 16px;background:var(--surface);display:grid;gap:10px;box-shadow:var(--shadow-sm)}
+.card .top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:baseline}
+.card .top b{font-weight:600;font-family:var(--f-display);font-size:15px}
+.ocform{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ocform .full{grid-column:1 / 3}
+.tiers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.tier{border:1px solid var(--rule);border-radius:10px;padding:14px;background:var(--surface-2);display:grid;gap:6px;align-content:start}
+.tier .tn{font-family:var(--f-ui);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--slate)}
+.tier b{font-family:var(--f-display);font-weight:800;font-size:22px;letter-spacing:-.02em}
+.prose{max-width:66ch;display:grid;gap:10px}
+.prose p{margin:0}
+.prose ul{margin:0;padding-left:20px}
+.note{font-size:13px;color:var(--ink-soft);background:var(--accent-dim);border-left:3px solid var(--accent);padding:10px 12px;border-radius:0 8px 8px 0}
+.toast{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom, 0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:10px;font-size:13px;font-weight:500;box-shadow:var(--shadow-lg);z-index:5;max-width:min(92vw,560px)}
+@media (max-width:1100px){ .tiers{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:900px){ .grid{grid-template-columns:minmax(0,1fr)} .sheet{padding:22px 20px} .tiers{grid-template-columns:1fr} .chips{justify-content:flex-start;max-width:none} }
+@media (max-width:480px){ .row2,.row3,.ocform{grid-template-columns:1fr} .ocform .full{grid-column:1} .score{font-size:36px} .panel{padding:16px} }
+</style>
+
+<div class="wrap">
+  <header class="mast">
+    <div class="brand">
+      <div class="brandrow">
+        <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.2 4.2L19 7.5" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div><div class="eyebrow">Match · Ask · Verify · Download</div><h1>Career Companion Hub</h1></div>
+      </div>
+      <p>Tailor your resume to any job posting in minutes, using only what you have actually done. See how your record matches the role, answer a few targeted questions to close the gaps, and download a Word or PDF in which every line traces back to your own words and every number is one you stated.</p>
+    </div>
+    <div class="chips" id="stats"><span class="chip">loading…</span></div>
+  </header>
+  <nav id="nav" role="tablist" aria-label="Sections"></nav>
+  <main id="views">
+
+    <section data-view="evidence" hidden>
+      <div class="grid">
+        <div class="col">
+          <div class="panel" id="pIdentity">
+            <h2>You <span class="tag">tier 1 · your words</span></h2>
+            <p class="lede">What you type here is first-hand evidence. It never leaves this browser except through a backup you download or a question you ask Claude.</p>
+            <div class="row2">
+              <label class="f" for="idName">Name<input type="text" id="idName" autocomplete="name"></label>
+              <label class="f" for="idLoc">Location<input type="text" id="idLoc" placeholder="City, ST"></label>
+              <label class="f" for="idPhone">Phone<input type="text" id="idPhone" autocomplete="tel"></label>
+              <label class="f" for="idEmail">Email<input type="text" id="idEmail" autocomplete="email"></label>
+            </div>
+            <label class="f" for="idLinkedin">LinkedIn URL<input type="text" id="idLinkedin" placeholder="https://www.linkedin.com/in/…"></label>
+          </div>
+          <div class="panel">
+            <h2>Roles and what you did in them</h2>
+            <p class="lede">One card per job. Paste accomplishments as lines; each line becomes an entry with the skills it proves and the numbers it states.</p>
+            <div id="roles" class="list"></div>
+            <div class="row"><button class="primary" id="addRole">Add a role</button><span class="hint">Newest first. An early role can be marked "earlier" so it prints only when a posting calls for it.</span></div>
+          </div>
+          <div class="panel">
+            <h2>Education, certifications, skills, tools</h2>
+            <div class="row3" id="eduForm">
+              <label class="f" for="eduSchool">School<input type="text" id="eduSchool"></label>
+              <label class="f" for="eduDegree">Degree<input type="text" id="eduDegree" placeholder="B.A., Communication"></label>
+              <label class="f" for="eduYear">Year<input type="text" id="eduYear" placeholder="2016"></label>
+            </div>
+            <div class="row"><button id="addEdu">Add education</button></div>
+            <ul class="lines" id="eduList"></ul>
+            <div class="row3">
+              <label class="f" for="certName">Certification<input type="text" id="certName"></label>
+              <label class="f" for="certIssuer">Issuer<input type="text" id="certIssuer"></label>
+              <label class="f" for="certYear">Year<input type="text" id="certYear"></label>
+            </div>
+            <div class="row"><button id="addCert">Add certification</button></div>
+            <ul class="lines" id="certList"></ul>
+            <label class="f" for="skills">Skills line (comma separated, as you'd print them)<textarea id="skills" rows="2" placeholder="Forecasting, Pricing and packaging, Lead routing"></textarea></label>
+            <label class="f" for="tools">Tools (comma separated)<textarea id="tools" rows="2" placeholder="Salesforce, HubSpot, Looker"></textarea></label>
+            <div class="row"><button id="saveLists">Save skills and tools</button><span class="hint" id="listsNote"></span></div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="panel">
+            <h2>Ready to match?</h2>
+            <div class="meter"><i id="readyMeter" style="width:0"></i></div>
+            <ul class="ready" id="readyList"></ul>
+            <p class="hint" id="readyHint"></p>
+            <div class="row"><button class="primary" id="goMatch">Match a posting</button><button id="loadExample" title="Loads a fictional person so you can see the whole flow before entering your own record">Try the example person</button></div>
+          </div>
+          <div class="panel">
+            <h2>What the record holds <span class="tag">tier 2 · derived</span></h2>
+            <div class="tiers" id="tiers"></div>
+            <p class="hint">Claims are the facts drawn from your words with a confidence; the draft prints from claims, never from free text.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section data-view="match" hidden>
+      <div class="grid">
+        <div class="col">
+          <div class="panel">
+            <h2>Job description</h2>
+            <p class="hint" id="restoreNote" aria-live="polite" hidden></p>
+            <label class="f" for="recent" id="recentWrap" hidden>Saved postings<select id="recent"><option value="">Open a saved posting…</option></select></label>
+            <div class="row2">
+              <label class="f" for="company">Company<input type="text" id="company" placeholder="auto-detected when Claude is on"></label>
+              <label class="f" for="role">Role title<input type="text" id="role" placeholder="auto-detected when Claude is on"></label>
+            </div>
+            <label class="f" for="jd">Posting text<textarea id="jd" spellcheck="false" placeholder="Paste the whole posting: responsibilities and requirements."></textarea></label>
+            <div class="row"><button class="primary" id="matchBtn">Match against my record</button><button id="newBtn" title="Start a blank posting. This one stays under Saved postings.">New posting</button><span class="hint" id="jdHint"></span></div>
+          </div>
+          <div class="panel">
+            <h2>Match</h2>
+            <div class="scorebox">
+              <div class="score" id="score">–<small>%</small></div>
+              <div style="flex:1;display:grid;gap:6px;min-width:160px"><div class="meter"><i id="meter" style="width:0"></i></div><div class="hint">Weighted share of the posting's requirements your draft already proves.</div></div>
+            </div>
+            <div class="status" id="claude1Status" hidden></div>
+            <div class="reqs" id="reqs" role="list"></div>
+            <details><summary class="hint">Show matched phrases in the posting</summary><div class="jdview" id="jdview"></div></details>
+          </div>
+          <div class="panel">
+            <h2>Five questions</h2>
+            <p class="hint">Each question targets a requirement the draft proves weakly or a tool the posting names that your record lacks. Numbers, scope, outcome: specifics beat adjectives. Your answers become entries only after you approve them.</p>
+            <div class="status" id="qStatus">Paste a posting and press Match.</div>
+            <div id="questions"></div>
+            <div class="row"><button class="primary" id="finalBtn" disabled>Build the final resume</button><button id="polishAllBtn" hidden>Polish all answers with Claude</button><button class="ghost" id="quickQBtn" hidden>Use quick questions instead</button><span class="status" id="finalStatus"></span></div>
+          </div>
+        </div>
+        <div class="sheetwrap">
+          <div class="sheetbar">
+            <div class="row"><span class="badge" id="phaseBadge">DRAFT</span><span class="hint">Hover a line to keep, swap, drop or polish it. Click any text to edit it.</span></div>
+            <div class="row">
+              <label class="hint" for="sumToggle" title="Off by default. When on, Claude writes up to 55 words from the claims on this draft and the words are checked against their evidence."><input type="checkbox" id="sumToggle"> Summary paragraph</label>
+              <button id="copyBtn">Copy text</button><button id="docxBtn">Download Word</button><button class="primary" id="pdfBtn">Download PDF</button>
+            </div>
+            <span class="hint" id="syncNote" aria-live="polite"></span>
+          </div>
+          <article class="sheet" id="sheet" aria-label="Resume preview"></article>
+        </div>
+      </div>
+    </section>
+
+    <section data-view="postings" hidden>
+      <div class="panel">
+        <h2>Saved postings and outcomes <span class="tag">tier 4 · feedback</span></h2>
+        <p class="lede">Every posting you matched stays here with its draft. Record what happened; it is stored with that resume version and reported, never used to re-rank anything by itself.</p>
+        <div class="list" id="postings"></div>
+      </div>
+    </section>
+
+    <section data-view="backup" hidden>
+      <div class="grid">
+        <div class="panel">
+          <h2>Backup and privacy</h2>
+          <p class="lede">This page keeps your record in this browser only. Clearing site data, a private window, or another device means an empty page, so download a backup after each session.</p>
+          <div class="chips" id="storage"></div>
+          <div class="row"><button class="primary" id="backupBtn">Download backup</button><label class="f" style="flex:1 1 220px">Load a backup<input type="file" id="restoreFile" accept="application/json,.json"></label></div>
+          <p class="hint" id="backupNote"></p>
+          <h3>Delete everything</h3>
+          <p class="hint">Removes your record, postings and outcomes from this browser. Type <b>delete</b> to enable the button.</p>
+          <div class="row"><input type="text" id="wipeConfirm" placeholder="delete" style="max-width:160px"><button class="danger" id="wipeBtn" disabled>Delete everything on this page</button></div>
+        </div>
+        <div class="panel prose">
+          <h2>Where your data goes</h2>
+          <p><b>Nowhere, unless you send it.</b> Your record lives in this browser's storage. A backup is a file you download. When you press a button that asks Claude (match questions, converting an answer, polishing a line, the summary), the relevant text goes to Claude on your own Claude account, after you allow it once per visit; Claude's replies are checked here against your own words before anything prints.</p>
+          <p><b>What the page never does:</b> it doesn't invent a number, employer, title or tool; it doesn't print a fact whose evidence is in conflict; it doesn't post, email or share anything; it doesn't keep analytics.</p>
+          <p><b>What Claude never sees:</b> your backup file, your phone number and email (they print on the sheet but are not part of any question), or postings you didn't match while Claude was on.</p>
+        </div>
+      </div>
+    </section>
+
+    <section data-view="how" hidden>
+      <div class="grid">
+        <div class="panel prose">
+          <h2>How it works</h2>
+          <p>Most resume tools generate. This one <b>retrieves and asks</b>. Your record is a small evidence base: what you did, in your words, with the numbers you stated. A posting is turned into weighted requirements. The draft is the subset of your record that proves them best, printed in a plain template a recruiter's software reads without trouble.</p>
+          <p>Where the draft proves a requirement weakly, you get a question, not a made-up line. Your answer becomes an entry only after the page checks that every number in it appears in what you wrote, and after you approve it. That is the whole design: the model drafts, you own the facts and the signature.</p>
+          <ul>
+            <li><b>Start with:</b> one current resume's worth of roles and bullets, and one posting. Ten minutes.</li>
+            <li><b>Better with:</b> the accomplishments from two or three older resumes and your LinkedIn summary. In testing, that reached roughly ninety per cent of what a full record finds; past four documents the gain is small.</li>
+            <li><b>Built for:</b> go-to-market, sales, marketing and revenue roles. The skill list is tuned to those postings.</li>
+          </ul>
+          <p class="note" id="guideNote">A longer guide, with what to bring and why, is linked from here once it is published.</p>
+        </div>
+        <div class="panel">
+          <h2>The four tiers</h2>
+          <div class="tiers" id="tiers2"></div>
+          <p class="hint">Evidence is what happened. Derived knowledge is what the page infers, with a confidence. Generation is what gets written, traced to claims. Feedback is what you did with it. Nothing flows backward without a step you can see.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+<div class="toast" id="toast" hidden></div>
+<script src="hub.js"></script>
