@@ -258,6 +258,16 @@ Go-To-Market Strategy | Market Segmentation & Positioning | Pricing & Channel St
 TECHNOLOGIES ALREADY LISTED: Salesforce (Classic, Lightning), LinkedIn (Sales Navigator, Recruiter), ZoomInfo, Google Tag Manager, Apollo.io, Squarespace, Marketo, HubSpot, Canva, Trello, Miro, Microsoft Copilot, Claude & Claude Code (Sonnet 5.x / Opus 5 / Fable 5), OpenAI (GPT-5.6, Sol, Terra, Luna), GitHub, Model Context Protocol (MCP) Servers, GCP, Visual Studio & VS Code, Tableau (beginner), Microsoft Excel (VLOOKUPs, INDEX-MATCH-MATCH, XLOOKUP), Microsoft Stack, Office-Place Collaboration Tools (Slack, MS Teams, Webex, Google Meet, Zoom)
 TOOLS THE POSTING NAMES THAT ARE NOT LISTED: (none detected)
 
+WHERE THE MATCH CAN GROW (requirement id: label | up to +N points of the match if an entry proves it | the posting's words):
+forecasting: Forecasting | +2.3 | forecasting
+executive-selling: Executive & C-Suite Selling | +2.0 | c-suite, cfo, cmo, executive
+strategic-partnerships: Strategic Partnerships | +1.5 | partner, partnerships
+hiring-onboarding: Hiring & Onboarding | +1.2 | hire, hiring
+multi-stakeholder-selling: Multi-Stakeholder & Matrixed Selling | +1.2 | multi-stakeholder
+stakeholder-alignment: Stakeholder Alignment | +1.2 | stakeholders
+media-ad-sales: Media & Advertising Sales | +0.5 | advertising sales, agencies, agency, brands
+adtech-fluency: AdTech Fluency (CDP, Clean Rooms, Identity) | +0.5 | ad tech, ad-tech, clean rooms, first-party data
+
 Reply with ONLY one JSON object:
 {"company": string|null, "title": string|null,
  "requirements": [{"tag": "<tag id from taxonomy>", "weight": <0.5 to 3, 3 = must-have>, "why": "<short evidence from the posting>"}],
@@ -270,4 +280,5 @@ Requirements: return up to 20 tags with your corrected importance. Followups: ex
 - If the posting values consulting or advisory work and an engagement NEEDS DETAILS, make one "engagement" question for it (it asks for dates, how to name the client, a one-line description, and what else he delivered).
 - If the posting names tools that are not listed, make one "technology" question naming them.
 - Use "tagline" or "expertise" only when the posting stresses an identity or a strength no option covers.
+- At least four of the five followups target WHERE THE MATCH CAN GROW, highest potential first, one requirement each. Write each "why" as the criterion that would count (what an entry would have to demonstrate, in the posting's words) and never as a suggested answer or an assumption about what Tim did.
 Address Tim directly in second person ("you", "your"), never "Tim" or "he". Don't ask about anything already well evidenced.
