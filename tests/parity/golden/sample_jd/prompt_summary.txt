@@ -1,0 +1,52 @@
+Write the Professional Summary paragraph for Tim King's resume for this posting, using ONLY the facts below.
+RULES: at most 55 words, one paragraph, implied first person (never "I", "my", "we", or "Tim"), open with a role noun such as "Revenue and go-to-market operator", no adjectives without a fact behind them, and use a number only if it appears in the facts' allowed numbers. Never invent employers, clients, tools or outcomes.
+POSTING: (title unknown) at (company unknown)
+Director, Go-To-Market — Advertiser Partnerships
+New York, NY (Hybrid)
+
+About the role
+We are an AI-native ad-tech company helping brands reach high-intent audiences across conversational surfaces. We're hiring a Director of Go-To-Market to own our advertiser partnerships motion from first conversation to signed contract, and to build the playbook the next five sellers will run.
+
+What you'll do
+- Own full-cycle new business with brands and agencies: prospecting, discovery, business case, negotiation, and close.
+- Build ROI and cost-per-acquisition business cases that a CMO and CFO can both defend; fluency in CPM, CPA, ROAS, and measurement is essential.
+- Define segmentation, positioning, and pricing for new verticals; partner with product on packaging.
+- Stand up channel and agency partnerships that scale beyond direct sales.
+- Build forecasting and pipeline discipline in Salesforce; report weekly to the executive team.
+- Hire, coach, and develop a small team of account executives as a player-coach.
+
+What you'll bring
+- 7+ years in advertising sales, media sales, or ad tech with a track record of exceeding quota.
+- Experience selling into complex, multi-stakeholder buying committees at enterprise brands.
+- Working knowledge of clean rooms, CDPs, identity resolution, and first-party data.
+- Comfort presenting to C-suite and board-level stakeholders.
+- Hands-on use of generative AI tools (ChatGPT, Claude) in your daily workflow.
+- Bonus: experience at an early-stage startup or building a GTM function from zero.
+
+FACTS (claim id, statement):
+- [ach:lim-gtm-ownership] Own go-to-market for the client's AI compliance product sold to independent clinical practices — segmentation, positioning, $99/$249 tiers, and channel strategy. (numbers you may use: 99, 249)
+- [metric:lim-gtm-ownership:pricing-tiers] pricing tiers: 249 USD/mo (numbers you may use: 99, 249)
+- [ach:lim-claude-code-tracker] Built the practice's multi-tenant client engagement tracker with Claude Code, with 60 automated tests enforcing cross-client data isolation. (numbers you may use: 60)
+- [metric:lim-claude-code-tracker:automated-tests] automated tests: 60 tests (numbers you may use: 60)
+- [ach:art-run-muhbu38f-0] Built a custom CRM from scratch with GTM and prospecting connectors, automated weekly contact enrichment, and account-research agents two-way synced to GitHub. (numbers you may use: 2)
+- [ach:lim-distribution-pivot] Concluded distribution, not product, decides the outcome, redirecting GTM to malpractice-carrier and professional-association channel partners. (numbers you may use: 12, 18)
+- [metric:lim-distribution-pivot:cac-payback-modeled] CAC payback modeled: 18 months (12–18) (numbers you may use: 12, 18)
+- [ach:lim-feasibility-roadmap] Reconciled the client founder's four-pillar vision and three build memos into one staged roadmap: 12 recommendations, 4 stage gates, 8 board decisions. (numbers you may use: 1, 2, 3, 4, 8, 12, 500000)
+- [metric:lim-feasibility-roadmap:recommendations] recommendations: 12 count (numbers you may use: 1, 3, 4, 8, 12)
+- [metric:lim-feasibility-roadmap:stage-gates] stage gates: 4 count (numbers you may use: 1, 3, 4, 8, 12)
+- [ach:lim-thought-partner] Advise the CEO and board of a healthcare AI start-up client, translating business, technology, regulatory, and workforce tradeoffs into board-ready decisions.
+- [ach:lim-engagement-terms] Negotiated the engagement's terms directly, restructuring a 320-hour proposal into 166 hours at the same fee and pulling the key deliverable to Day 15. (numbers you may use: 15, 30, 166, 320)
+- [metric:lim-engagement-terms:scope-reduction] scope reduction: 48 % (numbers you may use: 48)
+- [ach:psp-cpm-business-case] Modeled a $10.98 blended CPM against 1.32M reach and a $2,849 cost-per-acquisition benchmark to price a $14,500 buy on outcome economics. (numbers you may use: 1, 10.98, 44, 46, 77, 78, 2849, 14500, 1320000)
+- [metric:psp-cpm-business-case:blended-cpm] blended CPM: 10.98 USD (numbers you may use: 1, 10.98, 44, 46, 77, 78, 2849, 14500, 1320000)
+- [metric:psp-cpm-business-case:category-cpa-benchmark] category CPA benchmark: 2849 USD (numbers you may use: 1, 10.98, 44, 46, 77, 78, 2849, 14500, 1320000)
+- [metric:psp-cpm-business-case:combined-reach] combined reach: 1320000 people (numbers you may use: 1, 10.98, 44, 46, 77, 78, 2849, 14500, 1320000)
+- [metric:psp-cpm-business-case:placement-price] placement price: 14500 USD (numbers you may use: 1, 10.98, 44, 46, 77, 78, 2849, 14500, 1320000)
+- [ach:psp-closed-deals] Closed 5 signed NFL and MLB team-media partnerships, all paid in full at signing, including 2 accounts with no prior purchase history. (numbers you may use: 2, 3, 4, 5, 14035)
+- [metric:psp-closed-deals:net-new-accounts] net-new accounts: 2 accounts (numbers you may use: 2, 5)
+- [metric:psp-closed-deals:signed-deals] signed deals: 5 deals (numbers you may use: 2, 5, 2026)
+- [ach:psp-full-cycle-ownership] Owned the full sales cycle in a pure new-business role — prospecting, discovery, pricing, proposal, negotiation, and close — with no SDR layer. (numbers you may use: 1, 2, 5)
+- [ach:psp-pipeline-discovery] Built and maintained a ~$115K active proposal pipeline through a diagnostic, discovery-first approach rather than a pitch-led one. (numbers you may use: 1, 115000)
+- [metric:psp-pipeline-discovery:active-pipeline] active pipeline: 115000 USD (numbers you may use: 115000)
+
+Reply with ONLY one JSON object: {"summary": "<the paragraph>", "claims_used": ["<claim ids the paragraph relies on>"]}

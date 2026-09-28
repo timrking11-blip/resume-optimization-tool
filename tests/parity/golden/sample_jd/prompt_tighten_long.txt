@@ -1,0 +1,4 @@
+Tighten each resume bullet to the Business Consulting Engagements standard: verb-first, outcome-driven, 170-340 characters with scope, method, and result, implied first person (no "I", "my", "we"), the same facts and numbers, nothing invented.
+BULLETS
+1. Built a custom CRM with automated weekly enrichment syncs and research agents feeding a two-way GitHub-synced workflow that the whole team adopted within one quarter.
+Reply with ONLY a JSON array of 1 strings in the same order.

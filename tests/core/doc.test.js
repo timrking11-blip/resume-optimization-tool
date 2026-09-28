@@ -32,6 +32,17 @@ test("documentXml wraps the body in the template's document and reports the hype
   assert.ok(!xml.includes("undefined"));
 });
 
+test("docxParts keeps rot.py's part order and stamps only core.xml", () => {
+  const tpl = require(path.resolve(__dirname, "..", "..", "templates", "docx_template.json"));
+  const parts = R.doc.docxParts(MODEL, tpl, "2026-01-01T00:00:00Z");
+  const names = Object.keys(parts);
+  assert.deepEqual(names.slice(0, 4), ["[Content_Types].xml", "_rels/.rels", "word/document.xml", "word/_rels/document.xml.rels"]);
+  assert.equal(names[names.length - 1], "docProps/core.xml");
+  assert.ok(parts["docProps/core.xml"].includes("2026-01-01T00:00:00Z") && parts["docProps/core.xml"].includes("Test Person"));
+  assert.ok(parts["word/_rels/document.xml.rels"].includes("https://example.com/in/t"));
+  assert.equal(names.length, Object.keys(tpl.parts).length + 3);
+});
+
 test("plainText and xmlEsc", () => {
   const txt = R.doc.plainText(MODEL);
   assert.ok(txt.includes("PROFESSIONAL EXPERIENCE") && txt.includes("• Rebuilt the forecast."));

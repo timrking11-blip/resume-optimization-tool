@@ -468,11 +468,96 @@ function compute(d, req){ const chosen=select(d, req); const cov=coverage(req, c
 return { extractRequirements, claimById, disputedAchievements, angleScore, longText, parsePlace, defaultPlace, bulletPlace, attachOk, bulletQa, libraryDigest, textAdj, allAchievements, scoreAch, pickText, inboxEngDetails, engState, visibleEngagements, engMembers, engExclude, engagementsModel, select, inboxPhrases, rankTagline, rankCompetencies, rankTech, rankCore, resumeModel, placeName, placeGroups, unknownTools, consultingWanted, templateQuestions, draftDigest, currentBulletDigest, findChosen, unsyncedInbox, engByKey, compute };
 }
 
+/* ------------------------------ Word and PDF files (the shell passes JSZip, jsPDF and a font loader) ------------------------------ */
+/* The document's parts in the order rot.py's docx_bytes writes them: the template's own parts plus a document.xml built from docParagraphs. */
+function docxParts(m, tpl, stamp){
+  const {xml, links}=documentXml(m, tpl), parts={};
+  parts["[Content_Types].xml"]=tpl.parts["[Content_Types].xml"];
+  parts["_rels/.rels"]=tpl.parts["_rels/.rels"];
+  parts["word/document.xml"]=xml;
+  parts["word/_rels/document.xml.rels"]=tpl.rels_open+tpl.rels_base.join("")+links.map(([id,url])=>tpl.rel_hyperlink.replace("{id}",()=>id).replace("{url}",()=>xmlEsc(url))).join("")+tpl.rels_close;
+  for(const [name,x] of Object.entries(tpl.parts)) if(name!=="[Content_Types].xml" && name!=="_rels/.rels") parts[name]=x;
+  parts["docProps/core.xml"]=tpl.core_xml.replace("{title}",()=>xmlEsc(m.identity.name+" — Resume")).replace(/\{author\}/g,()=>xmlEsc(m.identity.name)).replace(/\{stamp\}/g,()=>stamp);
+  return parts;
+}
+async function buildDocx(m, tpl, JSZip, opts={}){
+  if(!JSZip) throw new Error("jszip");
+  const zip=new JSZip(), stamp=opts.stamp||new Date().toISOString().replace(/\.\d{3}Z$/,"Z");
+  for(const [name,data] of Object.entries(docxParts(m, tpl, stamp))) zip.file(name, data, {createFolders:false});   // no folder entries, as rot.py writes it
+  return zip.generateAsync({type:opts.type||"blob", mimeType:"application/vnd.openxmlformats-officedocument.wordprocessingml.document", compression:"DEFLATE"});
+}
+/* jsPDF: the template's layout in Carlito, the metric-compatible twin of Calibri. loadFonts(doc) registers Carlito and returns true, or false for Helvetica. */
+async function buildPdf(m, tpl, jspdf, loadFonts){
+  const { jsPDF } = jspdf;
+  const doc=new jsPDF({unit:"pt", format:"letter", compress:true});
+  const M=(tpl&&tpl.metrics)||PDF_METRICS, STY=(tpl&&tpl.styles)||{};
+  const carlito=await loadFonts(doc);
+  const FONT=carlito?"Carlito":"helvetica", T=carlito?(s=>String(s)):pdfSafe;
+  const P=M.page, X0=P.left, X1=P.width-P.right, CW=X1-X0, TOP=P.top, BOT=P.height-P.bottom, SP=M.space;
+  const SGL=M.single, ASC=M.ascent;
+  // Word's paragraph rules from the template: alignment, spacing (the larger of after/before wins), line multiple,
+  // list indent, keep-with-next, and "contextual" spacing (no space between two list paragraphs of the same style)
+  const K={name:{align:"center",after:SP.name}, contact:{align:"center",after:SP.contact},
+    heading:{before:SP.heading_before,after:SP.heading_after,rule:true,keep:true}, summary:{after:SP.tagline}, tagline:{align:"center",after:SP.tagline}, expertise:{align:"center",after:SP.tagline},
+    tech_label:{align:"center",keep:true}, tech_line:{align:"center"}, school:{after:SP.school,keep:true}, degree:{after:SP.degree},
+    role_header:{keep:true,tab:true}, role_context:{after:SP.context,line:M.line.context,keep:true},
+    bullet:{list:"experience",after:4,group:"list"}, bullet_last:{list:"experience",after:SP.bullet_last,group:"list"},
+    cert:{list:"certs",after:SP.cert,line:M.line.list}, eng_header:{after:SP.eng_header,keep:true}, eng_subtitle:{after:SP.eng_subtitle,keep:true},
+    eng_bullet:{list:"engagements",after:SP.eng_bullet,line:M.line.list}, eng_bullet_last:{list:"engagements",after:SP.eng_bullet_last,line:M.line.list},
+    comp:{list:"competencies",after:3.5,line:M.line.list,group:"list"}};
+  const style=st=>{ const f=STY[st]||{}; return {b:!!f.b, i:!!f.i, u:!!f.u||!!f.link, color:f.link?M.hyperlink:(f.color?"#"+f.color:"#000000"), size:f.sz?f.sz/2:M.size, link:!!f.link}; };
+  const setF=sy=>{ doc.setFont(FONT, sy.b&&sy.i?"bolditalic":sy.b?"bold":sy.i?"italic":"normal"); doc.setFontSize(sy.size); };
+  const width=(t,sy)=>{ setF(sy); return doc.getTextWidth(t); };
+  function tokens(runs){ const out=[]; for(const r of runs){ if(r[0]==="tab") continue; const sy=style(r[0]==="link"?"link":r[0]); const txt=T(r[1]);
+      for(const part of txt.split(/(\s+)/)) if(part){ const sp=/^\s+$/.test(part), t=sp?" ":part; out.push({t, sy, sp, url:r[0]==="link"?r[2]:null, w:width(t,sy)}); } } return out; }
+  /* draw same-style stretches as one string, so the PDF keeps real spaces: copy/paste and applicant-tracking parsers read words, not glyph runs */
+  function segments(toks){ const segs=[]; for(const tk of toks){ const last=segs[segs.length-1]; if(last && last.sy===tk.sy && last.url===tk.url){ last.t+=tk.t; last.w+=tk.w; } else segs.push({t:tk.t, sy:tk.sy, url:tk.url, w:tk.w}); } return segs; }
+  function drawSegs(segs, x, base){ for(const sg of segs){ setF(sg.sy); doc.setTextColor(sg.sy.color); doc.text(sg.t, x, base);
+      if(sg.sy.u){ doc.setDrawColor(sg.sy.color); doc.setLineWidth(0.5); doc.line(x, base+1.3, x+sg.w, base+1.3); }
+      if(sg.url) doc.link(x, base-sg.sy.size*ASC, sg.w, sg.sy.size*SGL, {url:sg.url});
+      x+=sg.w; } }
+  function wrap(toks, w){ const lines=[]; let cur=[], lw=0;
+    for(const tk of toks){ if(!cur.length && tk.sp) continue;
+      if(!tk.sp && lw+tk.w>w && cur.length){ while(cur.length && cur[cur.length-1].sp){ lw-=cur.pop().w; } lines.push({toks:cur,w:lw}); cur=[]; lw=0; }
+      cur.push(tk); lw+=tk.w; }
+    while(cur.length && cur[cur.length-1].sp){ lw-=cur.pop().w; }
+    if(cur.length) lines.push({toks:cur,w:lw}); return lines.length?lines:[{toks:[],w:0}]; }
+  const paras=docParagraphs(m).map(([kind,runs])=>{ const k=K[kind]||{}, ind=k.list?M.indent[k.list]:null;
+    const x=X0+(ind?ind.left:0), w=CW-(ind?ind.left:0);
+    let lines, right=null;
+    if(k.tab){ const ti=runs.findIndex(r=>r[0]==="tab"); const rt=tokens(runs.slice(ti+1)); right={toks:rt, w:rt.reduce((a,t)=>a+t.w,0)}; lines=wrap(tokens(runs.slice(0,ti)), w-right.w-12); }
+    else lines=wrap(tokens(runs), w);
+    const size=Math.max(...runs.filter(r=>r[0]!=="tab").map(r=>style(r[0]==="link"?"link":r[0]).size));
+    return {kind, k, ind, x, w, lines, right, size, lh:size*SGL*(k.line||1)}; });
+  let y=TOP, prev=null;
+  const newPage=()=>{ doc.addPage(); y=TOP; };
+  paras.forEach((p,ix)=>{
+    const k=p.k; let gap = prev ? ((prev.k.group && prev.k.group===k.group) ? 0 : Math.max(prev.k.after||0, k.before||0)) : 0;
+    let need=gap+p.lh*Math.min(p.lines.length,2);
+    if(k.keep && paras[ix+1]) need=gap+p.lh*p.lines.length+(k.after||0)+paras[ix+1].lh*Math.min(paras[ix+1].lines.length,2)+(k.rule?3:0);
+    if(y+need>BOT && y>TOP+1){ newPage(); gap=0; }
+    y+=gap;
+    p.lines.forEach((ln,li)=>{
+      if(y+p.lh>BOT+0.5){ newPage(); }
+      const base=y+p.size*ASC;
+      let cx = k.align==="center" ? X0+(CW-ln.w)/2 : p.x;
+      if(li===0 && p.ind){ const sy=style("plain"); setF(sy); doc.setTextColor("#000000"); doc.text(T(p.ind.glyph||"•"), X0+p.ind.left-p.ind.hanging, base); }
+      drawSegs(segments(ln.toks), cx, base);
+      if(p.right && li===p.lines.length-1) drawSegs(segments(p.right.toks), X1-p.right.w, base);
+      y+=p.lh;
+    });
+    if(k.rule){ y+=SP.rule_gap; doc.setDrawColor(M.colors?.rule||"#999999"); doc.setLineWidth(SP.rule_width); doc.line(X0, y, X1, y); y+=SP.rule_width; }
+    prev=p;
+  });
+  doc.setProperties({title:`${m.identity.name} — Resume`, author:m.identity.name, creator:"Resume Match Desk"});
+  return {doc, font:FONT};
+}
+
 return {
   VERSION, SCHEMAS, createEngine,
   util: { esc, escRe, MONTHS, fmtDate, REQ_HINT, uniq, norm, splitList, PHRASE_SECTIONS, TOOL_LEXICON, isSkip, cleanBullet, cleanPhrase, splitAnswer, splitPhrases, shortRole, sectionOf, placeKey },
   qa: { NUMBER_WORDS, numberTokens, FIRST_PERSON, qaLine, blocking, answerQuotes },
   score: { coverage, matchScore, tagWeight, rankByTags },
-  doc: { btext, docParagraphs, xmlEsc, rprXml, documentXml, plainText, pdfSafe, abToB64, PDF_METRICS },
+  doc: { btext, docParagraphs, xmlEsc, rprXml, documentXml, plainText, pdfSafe, abToB64, PDF_METRICS, docxParts, buildDocx, buildPdf },
 };
 });

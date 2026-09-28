@@ -63,6 +63,9 @@ function boot(scripts, libText, tplText) {
 function outputs(P, S, extra = {}) {
   const model = P("resumeModel")();
   const out = { "model.json": JSON.stringify(model, null, 1) + "\n", "document.xml": P("documentXml")(model, S.tpl).xml, "text.txt": P("plainText")(model) + "\n" };
+  // every Word part, once the core builds them (Phase 1 step 3c); the stamp is fixed so the output is stable
+  const parts = P("typeof RotCore !== 'undefined' && RotCore.doc && RotCore.doc.docxParts ? RotCore.doc.docxParts : null");
+  if (parts) out["parts.json"] = JSON.stringify(parts(model, S.tpl, "STAMP"), null, 1) + "\n";
   for (const [k, v] of Object.entries(extra)) if (v != null) out[k] = typeof v === "string" ? v : JSON.stringify(v, null, 1) + "\n";
   return out;
 }
@@ -79,7 +82,15 @@ const cases = {
     const tailor = cap.last; cap.last = null;
     const items = S.questions.map((q, ix) => ({ ...q, ix })).filter(q => (q.section || "experience") === "experience").slice(0, 2).map(q => ({ ...q, answer: ANSWER }));
     try { await P("claudeBullets")(items, new AbortController()); } catch { /* the stub throws after recording the prompt */ }
-    return outputs(P, S, { "questions.json": S.questions, "prompt_tailor.txt": tailor, "prompt_bullets.txt": cap.last });
+    const bullets = cap.last; cap.last = null;
+    const LONG = "Built a custom CRM with automated weekly enrichment syncs and research agents feeding a two-way GitHub-synced workflow that the whole team adopted within one quarter.";
+    try { await P("claudeTighten")([LONG], new AbortController()); } catch { /* recorded */ }
+    const tighten = cap.last; cap.last = null;
+    try { await P("claudeTighten")([LONG], new AbortController(), "longform"); } catch { /* recorded */ }
+    const tightenLong = cap.last; cap.last = null;
+    try { await P("claudeSummary")(); } catch { /* recorded */ }
+    return outputs(P, S, { "questions.json": S.questions, "prompt_tailor.txt": tailor, "prompt_bullets.txt": bullets,
+      "prompt_tighten.txt": tighten, "prompt_tighten_long.txt": tightenLong, "prompt_summary.txt": cap.last });
   },
 };
 function runCases() {
