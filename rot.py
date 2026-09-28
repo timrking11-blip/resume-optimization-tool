@@ -777,6 +777,19 @@ def assemble(con, req, base, prof, version, jd_meta=None):
     }
 
 
+def _alias_settings(s):
+    """Edition settings for the bank: role keys aliased like everything else exported, notes dropped."""
+    s = json.loads(json.dumps(s))
+    s.pop("_about", None)
+    for k in ("fallback_role", "default_engagement_role"):
+        if s.get(k):
+            s[k] = ROLE_ALIAS.get(s[k], s[k])
+    ex = (s.get("prompts") or {}).get("bullet_example") or {}
+    if isinstance(ex.get("place"), str) and ex["place"].startswith("r:"):
+        ex["place"] = "r:" + ROLE_ALIAS.get(ex["place"][2:], ex["place"][2:])
+    return s
+
+
 def load_template():
     t = jload(TEMPLATE)
     if not t:
@@ -1291,9 +1304,10 @@ def cmd_export(args):
                        "degree_line": f"{r['degree']} | {r['date_display'] or r['year']}", "bullet_ids": json.loads(r["bullet_ids"]), "claim_id": r["claim_id"]}
                       for r in con.execute("SELECT * FROM education")],
         "summaries": [{"source": r["source_id"] or "baseline", "tags": json.loads(r["tags"]), "text": r["text"]} for r in con.execute("SELECT * FROM summaries")],
-        "baseline": {k: ({ROLE_ALIAS.get(rk, rk): rv for rk, rv in base.get(k).items()} if k in ("caps", "priority") else base.get(k))
-                     for k in ("template", "summary_enabled", "section_order", "caps", "priority", "engagement_caps", "competency_count",
-                               "competency_order", "tagline_count", "angle_map", "scoring")},
+        "baseline": {**{k: ({ROLE_ALIAS.get(rk, rk): rv for rk, rv in base.get(k).items()} if k in ("caps", "priority") else base.get(k))
+                        for k in ("template", "summary_enabled", "section_order", "caps", "priority", "engagement_caps", "competency_count",
+                                  "competency_order", "tagline_count", "angle_map", "scoring")},
+                     "settings": _alias_settings(base.get("settings") or {})},
     }
     s = json.dumps(lib, ensure_ascii=False, indent=1)
     scrub_check(s, "library.json")

@@ -367,7 +367,9 @@ const DESK_SETTINGS = { default_engagement_role:"hc_ai_strategy", fallback_role:
   prompts:{ persona:{name:"Tim King", first:"Tim", subject:"he", possessive:"his", possessive_cap:"His", standard_label:"Resume 1"},
     bullet_example:{place:"r:hc_ai_strategy", text:"Built a custom CRM with automated weekly enrichment syncs and research agents feeding a two-way GitHub-synced workflow.", tags:["crm-discipline","building-with-ai"]},
     entry_example:{text:"Salesforce Apex (basic)", tags:["crm-discipline"]} } };
-const E = RotCore.createEngine({ get bank(){ return S.lib; }, get settings(){ return DESK_SETTINGS; } });
+/* the bank carries the same settings (baseline.settings, exported by rot.py); DESK_SETTINGS is the fallback until every bank has them */
+const E = RotCore.createEngine({ get bank(){ return S.lib; }, get settings(){ const b=(S.lib&&S.lib.baseline&&S.lib.baseline.settings)||{};
+  return {...DESK_SETTINGS, ...b, questions:{...DESK_SETTINGS.questions, ...(b.questions||{})}, prompts:{...DESK_SETTINGS.prompts, ...(b.prompts||{})}}; } });
 function extractRequirements(text){ return E.extractRequirements(text); }
 const claimById = id => E.claimById(id);
 function disputedAchievements(){ return E.disputedAchievements(); }

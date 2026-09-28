@@ -1,6 +1,6 @@
 {
  "schema": "rot-library/3",
- "exported_at": "2026-09-28T03:12:00",
+ "exported_at": "2026-09-28T04:19:35",
  "tiers": {
   "1": "Evidence: what actually happened",
   "2": "Derived knowledge: what the system infers",
@@ -13162,6 +13162,53 @@
    "metric_bonus": 0.5,
    "family_rollup": 0.25,
    "hidden_role_min": 4.0
+  },
+  "settings": {
+   "fallback_role": "psp",
+   "default_engagement_role": "hc_ai_strategy",
+   "education_claim_default": "edu:umaine:degree",
+   "questions": {
+    "consulting": [
+     [
+      "board-advisory",
+      1
+     ],
+     [
+      "feasibility-roadmap",
+      1
+     ],
+     [
+      "managed-services-sales",
+      0.5
+     ]
+    ],
+    "consulting_regex": "\\b(consult|advisory|advisor|client engagement|engagements)\\b",
+    "engagement_tag": "board-advisory"
+   },
+   "prompts": {
+    "persona": {
+     "name": "Tim King",
+     "first": "Tim",
+     "subject": "he",
+     "possessive": "his",
+     "possessive_cap": "His",
+     "standard_label": "Resume 1"
+    },
+    "bullet_example": {
+     "place": "r:hc_ai_strategy",
+     "text": "Built a custom CRM with automated weekly enrichment syncs and research agents feeding a two-way GitHub-synced workflow.",
+     "tags": [
+      "crm-discipline",
+      "building-with-ai"
+     ]
+    },
+    "entry_example": {
+     "text": "Salesforce Apex (basic)",
+     "tags": [
+      "crm-discipline"
+     ]
+    }
+   }
   }
  }
 }

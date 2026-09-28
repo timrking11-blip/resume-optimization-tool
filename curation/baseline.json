@@ -222,5 +222,21 @@
     "healthcare": 9,
     "hvac": 3
   },
-  "tagline_count": 7
+  "tagline_count": 7,
+  "settings": {
+    "_about": "Edition settings the shared engine reads (core/rot_core.js createEngine ctx.settings): the role a consulting bullet defaults to, the role an unplaced answer falls back to, the claim id behind the education line, which tags mean 'this posting values consulting', and the persona wording the prompts use. Role keys are internal here and aliased on export.",
+    "fallback_role": "psp",
+    "default_engagement_role": "liminal",
+    "education_claim_default": "edu:umaine:degree",
+    "questions": {
+      "consulting": [["board-advisory", 1], ["feasibility-roadmap", 1], ["managed-services-sales", 0.5]],
+      "consulting_regex": "\\b(consult|advisory|advisor|client engagement|engagements)\\b",
+      "engagement_tag": "board-advisory"
+    },
+    "prompts": {
+      "persona": {"name": "Tim King", "first": "Tim", "subject": "he", "possessive": "his", "possessive_cap": "His", "standard_label": "Resume 1"},
+      "bullet_example": {"place": "r:liminal", "text": "Built a custom CRM with automated weekly enrichment syncs and research agents feeding a two-way GitHub-synced workflow.", "tags": ["crm-discipline", "building-with-ai"]},
+      "entry_example": {"text": "Salesforce Apex (basic)", "tags": ["crm-discipline"]}
+    }
+  }
 }

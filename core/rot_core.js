@@ -257,7 +257,8 @@ function scoreAch(d, a, req){
   if(!keys.length) return [0,[]];
   const famW={}; for(const tid of keys){ const f=tags[tid].family; famW[f]=(famW[f]||0)+req[tid].weight; }
   let s=0; const why=[];
-  for(const [tid,w] of Object.entries(a.tags)){ if(req[tid]){ s+=w*req[tid].weight; why.push(tid);} else if(tags[tid]) s+=0.25*w*Math.min(famW[tags[tid].family]||0,2); }
+  const roll=(ctx.bank.baseline&&ctx.bank.baseline.scoring&&ctx.bank.baseline.scoring.family_rollup)??0.25;   // a partial credit for tags in a required family
+  for(const [tid,w] of Object.entries(a.tags)){ if(req[tid]){ s+=w*req[tid].weight; why.push(tid);} else if(tags[tid]) s+=roll*w*Math.min(famW[tags[tid].family]||0,2); }
   const adj=Math.max(...a.texts.map(t=>textAdj(d,t)));
   const conf={verified:1,asserted:0.95,conflict:0.9}[a.confidence] ?? 0.9;
   return [(s+adj)*conf, why];
