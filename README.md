@@ -121,7 +121,7 @@ The Match Desk saves your working state as you go: the posting, company and titl
 
 1. **Gate 1 (baseline):** five questions asked after the phase-1 draft. The answers are stored in `followups` (gate 1) and applied through `curation/learned.json`, which supersedes rows and never overwrites them.
 2. **Gate 2 (per JD, in the artifact):** Claude weighs the posting against the taxonomy, orders the tagline (and may propose up to two new phrases the bank supports), orders the expertise line, and asks five questions. Each question has a `section`:
-   - **Experience:** a weakly proven requirement becomes a Resume 1 bullet.
+   - **Experience:** a weakly proven requirement becomes one or more Resume 1 bullets. Each bullet has its own **Goes under** place, because one answer can draw on several jobs. Claude proposes the role each bullet describes: a role on the resume, a consulting engagement, or an earlier role, which then joins the resume. The picker under each converted bullet changes it, and **Move to…** on a new bullet in the draft moves it after the final draft. A bullet that enriches a bank bullet can't be moved if it keeps a number that only that bank bullet's evidence supports.
    - **Consulting engagement:** asked when the posting values consulting and an engagement still lacks details. A short form collects the client name as it should print, location, dates, commitment and a one-line description; the answer becomes Section C bullets (short and long form).
    - **Technology:** asked when the posting names tools your list doesn't have. Tools you've used join the Technologies line.
    - **Tagline / Expertise:** asked when the posting stresses an identity or strength no stored phrase covers.

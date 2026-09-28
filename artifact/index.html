@@ -116,6 +116,9 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .qb .cc{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:8px}
 .qb .cc.over{color:var(--gap)}
 .qb .lf{grid-column:2 / 4;font-size:12px;color:var(--muted)}
+.qb .bpl{grid-column:2 / 4;display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);min-width:0}
+.qb .bpl .lb{white-space:nowrap;flex:none}
+.qb .bpl select.alt{border-color:var(--navy);color:var(--navy)}
 .syncnote{font-size:12px;color:var(--muted)}
 .syncnote b{color:var(--ok)}
 .jdview{font-size:12.5px;line-height:1.55;max-height:220px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;background:var(--surface-2);border-radius:6px;padding:10px;border:1px solid var(--line)}
@@ -159,6 +162,7 @@ mark{background:var(--hl);color:var(--hl-ink);border-radius:2px;padding:0 1px}
 .sheet .ctl{display:inline-flex;gap:2px;margin-left:6px;vertical-align:1px;opacity:0;transition:opacity .15s}
 .sheet p:hover .ctl,.sheet p:focus-within .ctl{opacity:1}
 .sheet .ctl button{font-family:var(--ui);font-size:10.5px;font-weight:500;padding:0 6px;line-height:18px;border-radius:3px;background:#F1F3F7;color:#1F3864;border:1px solid #D5DBE5}
+.sheet .ctl select{font-family:var(--ui);font-size:10.5px;font-weight:500;width:auto;max-width:9.5em;height:20px;padding:0 2px;border-radius:3px;background:#F1F3F7;color:#1F3864;border:1px solid #D5DBE5}
 .sheet .cc{font-family:var(--mono);font-size:9.5px;color:#8A8F99;margin-left:4px}
 .sheet .cc.over{color:#B3261E}
 .sheet .await{font-family:var(--ui);font-size:11px;color:#8A6D1E;background:#FBF3DC;border:1px dashed #D9B75A;border-radius:4px;padding:4px 8px;margin:.3em 0 .6em}
@@ -433,6 +437,7 @@ function allAchievements(){
   const base = S.lib.achievements.filter(a=>!held.has(a.id)).map(a=>({...a, texts:[...a.texts], has_metrics:(a.metrics||[]).length>0}));
   const byId = Object.fromEntries(base.map(a=>[a.id,a]));
   for (const b of unsyncedInbox()){
+    if(S.runId && b.run_id===S.runId && b.angle==="gate2") continue;   // this posting's answer bullets are already on the draft (S.newAch)
     const sec=b.section||"experience";
     if(sec!=="experience" && sec!=="engagement") continue;          // phrases and engagement details are not bullets
     const texts=[{id:"inbox:"+b._id, kind:"learned", angle:b.angle||"learned", text:b.text, score_adj:0}];
@@ -706,11 +711,14 @@ const LINE_EDIT = {tagline:{sep:["|"], join:" | "}, expertise:{sep:["•","·"],
 function renderSheet(){
   const m=resumeModel(), band=S.lib.length_band, lband=S.lib.longform_band||{hard_ceiling:340};
   const final=S.phase==="final";
-  const ctl=(acts,aid)=>`<span class="ctl">${acts.map(([a,l,t])=>`<button data-act="${a}" data-aid="${esc(aid)}" title="${esc(t)}">${l}</button>`).join("")}</span>`;
+  const ctl=(acts,aid,extra="")=>`<span class="ctl">${acts.map(([a,l,t])=>`<button data-act="${a}" data-aid="${esc(aid)}" title="${esc(t)}">${l}</button>`).join("")}${extra}</span>`;
   const ROLE_ACTS=[["keep","Keep","Keep: pin and raise its future score"],["swap","Swap","Swap for the next-best bullet in this role"],["drop","Drop","Drop: remove and lower its future score"],["polish","Polish","Polish: Claude rewrites it to the Resume 1 standard with the same facts"]];
   const C_ACTS=[["dropc","Drop","Leave it out of Section C for this posting"],["polishc","Polish","Polish: Claude tightens it to the Section C standard with the same facts"]];
   const bullet=(b,kind,sec)=>{ const n=b.text.length, ceil=sec==="c"?lband.hard_ceiling:band.hard_ceiling;
-    return `<p class="k-${kind} ${b.fresh?"new":""}"><span class="bt" contenteditable="true" spellcheck="true" data-sec="${sec}" data-aid="${esc(b.aid)}">${esc(b.text)}</span><span class="cc ${n>ceil?"over":""}" title="characters (ceiling ${ceil})">${n}</span>${evidenceChip(b.claim_ids,b.fresh)}${ctl(sec==="c"?C_ACTS:ROLE_ACTS,b.aid)}</p>`; };
+    // an answer bullet from this posting can move under another role or consulting engagement
+    const fi=b.fresh ? S.newAch.findIndex(x=>(x.ach&&x.ach.id===b.aid)||(x.attach===b.aid&&x.text&&x.text.id===b.tid)) : -1;
+    const mv=fi>=0 ? `<select data-mv="${fi}" aria-label="Move this bullet under another role" title="Move this answer bullet under another role or consulting engagement">${placeOptions(placeKey(S.newAch[fi]), "Move to…")}</select>` : "";
+    return `<p class="k-${kind} ${b.fresh?"new":""}"><span class="bt" contenteditable="true" spellcheck="true" data-sec="${sec}" data-aid="${esc(b.aid)}">${esc(b.text)}</span><span class="cc ${n>ceil?"over":""}" title="characters (ceiling ${ceil})">${n}</span>${evidenceChip(b.claim_ids,b.fresh)}${ctl(sec==="c"?C_ACTS:ROLE_ACTS,b.aid,mv)}</p>`; };
   const i=m.identity, H=[];
   H.push(`<p class="k-name">${esc(i.name)}</p>`);
   H.push(`<p class="k-contact">${esc(`${i.location} | ${i.phone} | ${i.email}`)}${(i.links||[]).map(l=>` | <a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("")}</p>`);
@@ -752,6 +760,44 @@ function shortRole(r){
 }
 const engByKey = k => (S.lib.engagements||[]).find(e=>e.key===k);
 function sectionOf(q){ return q.section || "experience"; }
+/* Where an answer bullet prints: under a role (Professional Experience) or a consulting engagement (Section C).
+   Every bullet keeps its own place, because one answer can draw on several jobs. Places read "r:<role>" or "e:<engagement>". */
+const placeKey = p => p.engagement ? "e:"+p.engagement : "r:"+p.role;
+function parsePlace(v){ v=String(v||""); const key=v.slice(2);
+  if(v.startsWith("e:")){ const e=engByKey(key); return e ? {role:e.role||"hc_ai_strategy", engagement:key} : null; }
+  return v.startsWith("r:") && S.lib.roles.some(r=>r.key===key) ? {role:key, engagement:null} : null; }
+function defaultPlace(q){ const e=sectionOf(q)==="engagement" && q.engagement ? engByKey(q.engagement) : null;
+  return e ? {role:e.role||"hc_ai_strategy", engagement:e.key} : {role:q.role, engagement:null}; }
+function bulletPlace(q, b){ return b && (b.role || b.engagement) ? {role:b.role || defaultPlace(q).role, engagement:b.engagement || null} : defaultPlace(q); }
+function placeName(p){
+  if(p.engagement){ const e=engByKey(p.engagement); return e ? engState(e).client.replace(/ \(Confidential\)$/,"") : p.engagement; }
+  const r=S.lib.roles.find(r=>r.key===p.role); return r ? shortRole(r) : p.role; }
+/* the resume's roles, then consulting engagements that print, then earlier roles (picking one adds that role to the resume) */
+function placeGroups(){
+  const onDraft=S.lib.roles.filter(r=>!r.hidden || S.chosen[r.key]), earlier=S.lib.roles.filter(r=>r.hidden && !S.chosen[r.key]);
+  const engs=(S.lib.engagements||[]).map(engState).filter(e=>!e.needs_details || S.questions.some(q=>q.engagement===e.key));
+  return [["Professional Experience", onDraft.map(r=>["r:"+r.key, shortRole(r)])],
+          ["Consulting engagements (Section C)", engs.map(e=>["e:"+e.key, e.client.replace(/ \(Confidential\)$/,"")])],
+          ["Earlier roles (adds the role to this resume)", earlier.map(r=>["r:"+r.key, shortRole(r)])]].filter(g=>g[1].length);
+}
+function placeOptions(cur, lead){
+  const groups=placeGroups();
+  if(cur && !groups.some(([,l])=>l.some(([v])=>v===cur))){ const p=parsePlace(cur); if(p) groups.unshift(["Current", [[cur, placeName(p)]]]); }
+  const opt=([v,l])=>`<option value="${esc(v)}"${v===cur?(lead?" disabled":" selected"):""}>${esc(l)}</option>`;
+  return (lead?`<option value="" selected>${esc(lead)}</option>`:"") + groups.map(([g,l])=>`<optgroup label="${esc(g)}">${l.map(opt).join("")}</optgroup>`).join("");
+}
+/* an answer bullet can enrich a bank bullet only from the same role (or engagement) */
+function attachOk(aid, p){ const a=S.lib.achievements.find(x=>x.id===aid); if(!a) return false;
+  if(p.engagement){ const e=engByKey(p.engagement); return !!e && ((e.achievements||[]).includes(aid) || a.engagement===p.engagement); }
+  return a.role===p.role; }
+/* the number check for an answer bullet in its current place: its answer, plus the bank bullet it enriches (same place only) */
+function answerQuotes(Q){ return Q ? [Q.answer||""].concat(Q.fields?[Object.values(Q.fields).filter(Boolean).join("; ")]:[]) : []; }
+function bulletQa(Q, B){
+  const p=bulletPlace(Q,B), ids=(B.achievement_id&&attachOk(B.achievement_id,p))?((S.lib.achievements.find(a=>a.id===B.achievement_id)||{}).claim_ids||[]):[];
+  let qa=qaLine(B.text, ids, answerQuotes(Q), S.lib.length_band);
+  if(B.longform && p.engagement) qa=qa.concat(qaLine(B.longform, ids, answerQuotes(Q), S.lib.longform_band||{hard_ceiling:340}).map(x=>"long form: "+x));
+  return qa;
+}
 function sectionLabel(q){
   const s=sectionOf(q);
   if(s==="engagement"){ const e=engByKey(q.engagement); return "Consulting engagement · Section C"+(e?` · ${e.client.replace(/ \(Confidential\)$/,"")}`:""); }
@@ -766,14 +812,17 @@ function renderQuestions(){
     if(sec==="engagement"){ const e=engState(engByKey(q.engagement)||{}), f={...e, ...(q.fields||{})};
       form=`<div class="engform">${ENG_INPUTS.map(([k,label,phd])=>`<label class="f" for="ef${ix}-${k}">${label}<input type="text" id="ef${ix}-${k}" data-ef="${ix}:${k}" value="${esc(f[k]||"")}" placeholder="${esc(phd)}"></label>`).join("")}</div>`; }
     const lim = ph ? ph.max : (sec==="engagement" ? (S.lib.longform_band?.hard_ceiling||340) : S.lib.length_band.hard_ceiling);
-    const items = q.bullets?.length ? `<ul class="qb">${q.bullets.map((b,bi)=>{ const blk=blocking(b.qa); return `<li><input type="checkbox" id="bon${ix}-${bi}" data-bon="${ix}:${bi}" ${b.on&&!blk.length?"checked":""} ${blk.length?"disabled":""} aria-label="Use this entry"><textarea id="btx${ix}-${bi}" data-btxt="${ix}:${bi}" rows="${ph?1:2}" class="${blk.length?"blocked":""}" aria-label="Entry text">${esc(b.text)}</textarea><span class="cc ${b.text.length>(ph?ph.max:S.lib.length_band.hard_ceiling)?"over":""}" id="bcc${ix}-${bi}">${b.text.length}</span>${b.longform?`<span class="lf">Section C wording (${b.longform.length} chars): ${esc(b.longform)}</span>`:""}${blk.length?`<span class="lf err" id="bqa${ix}-${bi}">Not printable yet: ${esc(blk.join("; "))}. Edit the text, or add that fact to your answer and re-polish.</span>`:""}</li>`; }).join("")}</ul>` : "";
+    const dflt=placeKey(defaultPlace(q));
+    const items = q.bullets?.length ? `<ul class="qb">${q.bullets.map((b,bi)=>{ const blk=blocking(b.qa), pl=ph?null:bulletPlace(q,b), pk=pl?placeKey(pl):"";
+      const where = pl ? `<label class="bpl" for="bpl${ix}-${bi}"><span class="lb">Goes under</span><select id="bpl${ix}-${bi}" data-bplace="${ix}:${bi}" class="${pk!==dflt?"alt":""}" title="The role or consulting engagement this bullet describes">${placeOptions(pk)}</select></label>` : "";
+      return `<li><input type="checkbox" id="bon${ix}-${bi}" data-bon="${ix}:${bi}" ${b.on&&!blk.length?"checked":""} ${blk.length?"disabled":""} aria-label="Use this entry"><textarea id="btx${ix}-${bi}" data-btxt="${ix}:${bi}" rows="${ph?1:2}" class="${blk.length?"blocked":""}" aria-label="Entry text">${esc(b.text)}</textarea><span class="cc ${b.text.length>(ph?ph.max:S.lib.length_band.hard_ceiling)?"over":""}" id="bcc${ix}-${bi}">${b.text.length}</span>${where}${b.longform&&(!pl||pl.engagement)?`<span class="lf">Section C wording (${b.longform.length} chars): ${esc(b.longform)}</span>`:""}${blk.length?`<span class="lf err" id="bqa${ix}-${bi}">Not printable yet: ${esc(blk.join("; "))}. Edit the text, or add that fact to your answer and re-polish.</span>`:""}</li>`; }).join("")}</ul>` : "";
     return `
     <div class="q"><div class="qh"><span class="qn">${ix+1}</span><p>${esc(q.question)}</p></div>
       <div class="meta"><span class="sec ${sec!=="experience"?"alt":""}">${esc(sectionLabel(q))}</span>${q.why?`<span class="why">${esc(q.why)}</span>`:""}</div>
       ${form}
       <textarea id="ans${ix}" data-ix="${ix}" placeholder="${esc(q.hint||(ph?ph.hint:(sec==="engagement"?"What you did for this client: bullet points are fine (scope, method, measurable result). Leave blank to skip.":"Bullet points are fine: what you did, the scope, the measurable result. Leave blank to skip.")))}">${esc(q.answer||"")}</textarea>
       <div class="meta">${S.lib.tags[q.tag]?`<span>Proves: <b>${esc(S.lib.tags[q.tag].label)}</b></span>`:""}
-        ${sec==="experience"?`<label for="role${ix}"><span class="lb">Goes under</span><select id="role${ix}" data-ix="${ix}" title="Which role this answer becomes a bullet for">${roles.map(r=>`<option value="${esc(r.key)}" ${r.key===q.role?"selected":""}>${esc(shortRole(r))}</option>`).join("")}</select></label>`:`<span>Limit: ${lim} characters per entry</span>`}</div>
+        ${sec==="experience"?`<label for="role${ix}"><span class="lb">${q.bullets?.length?"Default role":"Goes under"}</span><select id="role${ix}" data-ix="${ix}" title="The role this answer is mostly about. Each bullet it becomes can go under its own role.">${roles.map(r=>`<option value="${esc(r.key)}" ${r.key===q.role?"selected":""}>${esc(shortRole(r))}</option>`).join("")}</select></label>`:`<span>Limit: ${lim} characters per entry</span>`}</div>
       <div class="qa-row"><button class="ghost" data-conv="${ix}" ${q.busy?"disabled":""}>${convLabel}</button>${q.busy?`<span class="spin" aria-hidden="true"></span><span class="hint">Claude is writing…</span>`:""}${q.note?`<span class="hint">${esc(q.note)}</span>`:""}</div>
       ${items}
     </div>`; }).join("");
@@ -845,7 +894,7 @@ function resetPosting(){ Object.assign(S,{excluded:new Set(), pinned:new Set(), 
   summaryOn:false, summary:null, summaryClaims:[], outcome:null, outcomeEvents:[],
   sectionEdits:{}, engDetails:{}, editsC:{}, excludedC:new Set(), extra:{tagline:[],expertise:[],technology:[],competency:[]}, questions:[], newAch:[]}); $("#sumToggle").checked=false; renderOutcome(); }
 /* Prompt versions travel with every run (tier 3), so a later review can tell which wording produced which line. Bump when a prompt changes. */
-const PROMPT_VERSIONS={tailor:"tailor@6", bullets:"bullets@5", tighten:"tighten@2", summary:"summary@1"};
+const PROMPT_VERSIONS={tailor:"tailor@6", bullets:"bullets@6", tighten:"tighten@2", summary:"summary@1"};
 
 /* tools the posting names that neither the Technologies list nor Section D mentions yet */
 function unknownTools(jd){
@@ -1012,12 +1061,17 @@ function cleanPhrase(t, sec){ t=String(t).replace(/^[\s•·\-*–—\d.)]+/,"")
 function splitAnswer(a){ let parts=String(a).split(/\r?\n+/); if(parts.length===1) parts=String(a).split(/\s+[•·]\s+|;\s+/); return parts.map(cleanBullet).filter(s=>s.length>12); }
 function splitPhrases(a, sec){ if(isSkip(a)) return []; return String(a).split(/\r?\n+|;|,(?![^(]*\))/).map(x=>cleanPhrase(x,sec)).filter(x=>x.length>1 && !isSkip(x)); }
 function currentBulletDigest(){ return Object.entries(S.chosen).flatMap(([r,items])=>items.map(i=>`${i.a.id} | ${r} | ${S.edits[i.a.id]??i.t.text}`)).join("\n"); }
-function roleLine(key){ const r=S.lib.roles.find(x=>x.key===key); return r?`${key} (${r.title} | ${r.employer} | ${r.dates})`:key; }
 /* One call converts any number of answers: experience answers become Resume 1 bullets, engagement answers become Section C
    bullets (short and long form), and tagline / expertise / technology answers become short entries. Over-long bullets get a tightening pass. */
 async function claudeBullets(items, ctl){
   const band=S.lib.length_band, lband=S.lib.longform_band||{min:170,hard_ceiling:340};
   const kindOf=q=>{ const s=sectionOf(q); return PHRASE_SECTIONS[s]?s:(s==="engagement"?"engagement":"bullet"); };
+  // where a bullet may go: the resume's roles, consulting engagements that print, earlier roles, and each answer's own default
+  const offer=new Map();
+  for(const r of S.lib.roles.filter(r=>!r.hidden||S.chosen[r.key])) offer.set("r:"+r.key, `${r.title} | ${r.employer} | ${r.dates}`);
+  for(const e of (S.lib.engagements||[]).map(engState).filter(e=>!e.needs_details||S.questions.some(q=>q.engagement===e.key))) offer.set("e:"+e.key, `consulting client "${e.client}" (Business Consulting Engagements section)`);
+  for(const r of S.lib.roles.filter(r=>r.hidden&&!S.chosen[r.key])) offer.set("r:"+r.key, `${r.title} | ${r.employer} | ${r.dates} (earlier role, not on this resume: only when the answer clearly describes work there)`);
+  for(const q of items){ if(PHRASE_SECTIONS[sectionOf(q)]) continue; const d=defaultPlace(q), k=placeKey(d); if(!offer.has(k)) offer.set(k, placeName(d)); }
   const prompt=`Turn Tim King's interview answers into content for his resume template.
 BULLET answers (kind "bullet"): resume bullets in his "Resume 1" bare-bone style.
 - Verb-first, outcome- and impact-driven, ${band.p10}-${band.hard_ceiling} characters each (aim for about ${band.median}).
@@ -1025,6 +1079,7 @@ BULLET answers (kind "bullet"): resume bullets in his "Resume 1" bare-bone style
 - An answer written as bullet points or several sentences may become 1 to 3 bullets, one per distinct accomplishment. Merge fragments that describe the same thing.
 - If an answer strengthens an existing bullet listed below, rewrite that bullet and put its id in "achievement_id"; otherwise use null.
 ENGAGEMENT answers (kind "engagement"): bullets for a consulting engagement in the Business Consulting Engagements section. For each distinct accomplishment return "text" (the short version, ${band.p10}-${band.hard_ceiling} characters) and "longform" (${lband.min||170}-${lband.hard_ceiling} characters: the same facts with scope, method, and result, in the style of the examples below).
+PLACEMENT (bullet and engagement answers): each bullet goes under the job or consulting client where that work happened. Return "place": one id from PLACES. An answer that draws on several jobs becomes separate bullets, each with its own place. When the answer doesn't say where the work happened, use the place shown with the answer. A bullet placed at a consulting client (an "e:" id) also gets "longform" as described above. Use "achievement_id" only for an existing bullet from the same place.
 ENTRY answers (kind "tagline", "expertise", "technology", or "competency"): return "entries", never bullets.
 - tagline: identity phrases of 60 characters or fewer, e.g. "Process Engineer", "GTM and Sales/Marketing Execution Specialist".
 - expertise: Title Case skills of 70 characters or fewer, e.g. "Lead Generation & Prospecting".
@@ -1034,8 +1089,11 @@ Every kind: use ONLY facts stated in the answer. Never invent results, metrics, 
 
 POSTING: ${$("#role").value||"(title unknown)"} at ${$("#company").value||"(company unknown)"}
 
+PLACES (id: where the bullet prints)
+${[...offer].map(([k,v])=>`${k}: ${v}`).join("\n")}
+
 ANSWERS
-${items.map((q,n)=>`${n+1}. [kind: ${kindOf(q)} | proves: ${q.tag||"general"}${kindOf(q)==="bullet"?` | role: ${roleLine(q.role)}`:""}${q.engagement?` | engagement: ${engByKey(q.engagement)?.client||q.engagement}`:""}]\nQ: ${q.question}\nA: ${String(q.answer).slice(0,2000)}`).join("\n\n")}
+${items.map((q,n)=>`${n+1}. [kind: ${kindOf(q)} | proves: ${q.tag||"general"}${PHRASE_SECTIONS[sectionOf(q)]?"":` | place: ${placeKey(defaultPlace(q))}`}]\nQ: ${q.question}\nA: ${String(q.answer).slice(0,2000)}`).join("\n\n")}
 
 EXISTING BULLETS (achievement id | role | text)
 ${currentBulletDigest()}
@@ -1046,15 +1104,16 @@ ${(S.lib.achievements.flatMap(a=>a.texts.filter(t=>t.angle==="longform").map(t=>
 TAG IDS YOU MAY USE: ${Object.keys(S.lib.tags).join(", ")}
 
 Reply with ONLY one JSON object, for example:
-{"bullets":[{"q":1,"text":"Built a custom CRM with automated weekly enrichment syncs and research agents feeding a two-way GitHub-synced workflow.","longform":null,"tags":["crm-discipline","building-with-ai"],"achievement_id":null}],
+{"bullets":[{"q":1,"place":"r:hc_ai_strategy","text":"Built a custom CRM with automated weekly enrichment syncs and research agents feeding a two-way GitHub-synced workflow.","longform":null,"tags":["crm-discipline","building-with-ai"],"achievement_id":null}],
  "entries":[{"q":2,"text":"Salesforce Apex (basic)","tags":["crm-discipline"]}]}`;
   const r=await S.sample.json(prompt,{signal:ctl.signal, modelTier:"default", cache:false});
   const src=b=>items[(+b.q||1)-1]||items[0];
   const quotesOf=q=>[String(q.answer||"")].concat(q.fields?[Object.values(q.fields).filter(Boolean).join("; ")]:[]);
   const claimsOf=aid=>aid?((S.lib.achievements.find(a=>a.id===aid)||{}).claim_ids||[]):[];
   const out=(Array.isArray(r?.bullets)?r.bullets:[]).filter(b=>b&&typeof b.text==="string"&&b.text.trim().length>20&&!PHRASE_SECTIONS[sectionOf(src(b))])
-    .map(b=>{ const s=src(b); return {q:(+b.q||1), ix:s.ix, role:s.role, text:cleanBullet(b.text), longform:(sectionOf(s)==="engagement"&&typeof b.longform==="string"&&b.longform.trim().length>40)?cleanBullet(b.longform):null,
-      tags:(Array.isArray(b.tags)?b.tags:[]).filter(t=>S.lib.tags[t]).concat(s.tag&&!(b.tags||[]).includes(s.tag)?[s.tag]:[]), achievement_id:b.achievement_id||null}; });
+    .map(b=>{ const s=src(b), pid=[b.place, "r:"+b.place, "e:"+b.place].find(v=>offer.has(v)), p=(pid&&parsePlace(pid))||defaultPlace(s);
+      return {q:(+b.q||1), ix:s.ix, role:p.role, engagement:p.engagement, text:cleanBullet(b.text), longform:(p.engagement&&typeof b.longform==="string"&&b.longform.trim().length>40)?cleanBullet(b.longform):null,
+      tags:(Array.isArray(b.tags)?b.tags:[]).filter(t=>S.lib.tags[t]).concat(s.tag&&!(b.tags||[]).includes(s.tag)?[s.tag]:[]), achievement_id:(b.achievement_id&&attachOk(b.achievement_id,p))?b.achievement_id:null}; });
   const entries=(Array.isArray(r?.entries)?r.entries:[]).filter(e=>e&&typeof e.text==="string"&&e.text.trim()).map(e=>{ const s=src(e); const sec=sectionOf(s);
     return {q:(+e.q||1), ix:s.ix, text:cleanPhrase(e.text, PHRASE_SECTIONS[sec]?sec:"technology"), tags:(Array.isArray(e.tags)?e.tags:[]).filter(t=>S.lib.tags[t])}; }).filter(e=>e.text && PHRASE_SECTIONS[sectionOf(items.find(q=>q.ix===e.ix)||{})]);
   const over=out.filter(b=>b.text.length>band.hard_ceiling);
@@ -1088,7 +1147,7 @@ async function convertQuestions(ixs, label){
   const items=ixs.map(ix=>({...S.questions[ix], ix})).filter(q=>!isSkip(q.answer));
   if(!items.length){ toast("Write an answer first."); return; }
   if(!S.sample){ for(const q of items){ const sec=sectionOf(q);
-      S.questions[q.ix].bullets = PHRASE_SECTIONS[sec] ? splitPhrases(q.answer, sec).map(t=>({text:t,on:true,tags:q.tag?[q.tag]:[]})) : splitAnswer(q.answer).map(t=>({text:t,on:true,tags:q.tag?[q.tag]:[]}));
+      S.questions[q.ix].bullets = PHRASE_SECTIONS[sec] ? splitPhrases(q.answer, sec).map(t=>({text:t,on:true,tags:q.tag?[q.tag]:[]})) : splitAnswer(q.answer).map(t=>({text:t,on:true,tags:q.tag?[q.tag]:[], ...defaultPlace(q)}));
       S.questions[q.ix].note="Claude isn't available here, so each line of your answer became an entry. Edit below."; } renderQuestions(); return; }
   const ctl=S.ctlQ=new AbortController();
   for(const q of items){ S.questions[q.ix].busy=true; S.questions[q.ix].note=""; }
@@ -1097,9 +1156,10 @@ async function convertQuestions(ixs, label){
     const {bullets, entries}=await claudeBullets(items, ctl);
     for(const q of items){
       const mine = PHRASE_SECTIONS[sectionOf(q)] ? entries.filter(e=>e.ix===q.ix).map(e=>({text:e.text,on:true,tags:e.tags}))
-                                                 : bullets.filter(b=>b.ix===q.ix).map(b=>({text:b.text,longform:b.longform,on:!blocking(b.qa).length,qa:b.qa||[],tags:b.tags,achievement_id:b.achievement_id}));
+                                                 : bullets.filter(b=>b.ix===q.ix).map(b=>({text:b.text,longform:b.longform,on:!blocking(b.qa).length,qa:b.qa||[],tags:b.tags,achievement_id:b.achievement_id,role:b.role,engagement:b.engagement}));
       S.questions[q.ix].bullets=mine;
-      S.questions[q.ix].note=mine.length?"":"Claude found nothing usable in this answer. Add a specific (scope, number, outcome, tool) and try again.";
+      const nPlaces=new Set(mine.filter(b=>b.role||b.engagement).map(placeKey)).size;
+      S.questions[q.ix].note=mine.length?(nPlaces>1?`This answer covers ${nPlaces} roles, so each bullet goes under its own. Change any below.`:""):"Claude found nothing usable in this answer. Add a specific (scope, number, outcome, tool) and try again.";
     }
     $("#finalStatus").textContent="";
   }catch(e){
@@ -1122,11 +1182,12 @@ async function doFinal(){
     const sec=sectionOf(q);
     if(sec==="engagement" && q.engagement){ const f=Object.fromEntries(Object.entries(q.fields||{}).filter(([,v])=>v)); if(f.start||f.subtitle||f.client) details.push({key:q.engagement, fields:f}); }
     if(isSkip(q.answer)) continue;
-    const list = q.bullets&&q.bullets.length ? q.bullets.filter(b=>b.on&&b.text.trim())
+    const list = q.bullets&&q.bullets.length ? q.bullets.map((b,bi)=>({...b, bi})).filter(b=>b.on&&b.text.trim())
                : (!S.sample ? (PHRASE_SECTIONS[sec] ? splitPhrases(q.answer,sec).map(t=>({text:t,tags:[]})) : splitAnswer(q.answer).map(t=>({text:t,tags:[]}))) : []);
     if(PHRASE_SECTIONS[sec]){ for(const b of list) phrases.push({section:sec, text:cleanPhrase(b.text,sec), tags:(b.tags&&b.tags.length?b.tags:(q.tag?[q.tag]:[]))}); continue; }
     for(const b of list){ if(blocking(b.qa).length){ skippedQa++; continue; }   // a number you never stated cannot print
-      bullets.push({role:q.role, q_ix:q.ix, text:cleanBullet(b.text), longform:b.longform?cleanBullet(b.longform):null, tags:(b.tags&&b.tags.length?b.tags:(q.tag?[q.tag]:[])), achievement_id:b.achievement_id||null, engagement:sec==="engagement"?q.engagement:null}); }
+      const p=bulletPlace(q,b);   // each bullet goes where it was placed, so one answer can feed several roles
+      bullets.push({role:p.role, engagement:p.engagement, q_ix:q.ix, b_ix:b.bi??null, text:cleanBullet(b.text), longform:(p.engagement&&b.longform)?cleanBullet(b.longform):null, tags:(b.tags&&b.tags.length?b.tags:(q.tag?[q.tag]:[])), achievement_id:(b.achievement_id&&attachOk(b.achievement_id,p))?b.achievement_id:null}); }
   }
   if(!S.sample && (bullets.length||phrases.length)) fs.innerHTML=`<span class="hint">Claude isn't available here, so each line of your answers became an entry. Use Polish on the sheet once Claude is allowed.</span>`;
   // engagement details, phrases, and new bullets join this posting's draft at once
@@ -1141,12 +1202,12 @@ async function doFinal(){
     const tid="new:"+S.runId+":"+n;
     const lt=b.longform?{id:tid+":lf", kind:"learned", angle:"longform", text:b.longform, score_adj:0, fresh:true}:null;
     if(b.achievement_id && known.has(b.achievement_id)){
-      S.newAch.push({attach:b.achievement_id, role, tags:tagList, engagement:b.engagement, longform:b.longform, q_ix:b.q_ix, text:{id:tid, kind:"learned", angle:"gate2", text:b.text, score_adj:0, fresh:true}, longText:lt});
+      S.newAch.push({n, attach:b.achievement_id, role, tags:tagList, engagement:b.engagement, longform:b.longform, q_ix:b.q_ix, b_ix:b.b_ix, text:{id:tid, kind:"learned", angle:"gate2", text:b.text, score_adj:0, fresh:true}, longText:lt});
       if(!b.engagement) S.pinned.add(b.achievement_id);
     }else{
       const id="gate2-"+S.runId+"-"+n;
       const texts=[{id:tid, kind:"learned", angle:"gate2", text:b.text, score_adj:0, fresh:true}]; if(lt) texts.push(lt);
-      S.newAch.push({ach:{id, role, engagement:b.engagement, confidence:"asserted", fresh:true, has_metrics:/\d/.test(b.text), tags:Object.fromEntries(tagList.map(t=>[t,1])), metrics:[], texts}, role, tags:tagList, engagement:b.engagement, longform:b.longform, q_ix:b.q_ix, text:{text:b.text}});
+      S.newAch.push({n, ach:{id, role, engagement:b.engagement, confidence:"asserted", fresh:true, has_metrics:/\d/.test(b.text), tags:Object.fromEntries(tagList.map(t=>[t,1])), metrics:[], texts}, role, tags:tagList, engagement:b.engagement, longform:b.longform, q_ix:b.q_ix, b_ix:b.b_ix, text:{text:b.text}});
       if(!b.engagement) S.pinned.add(id);
     }
   });
@@ -1158,22 +1219,38 @@ async function doFinal(){
   await saveRun({status:"final", finalized:new Date().toISOString(), match_score:S.score, tagline:m.tagline, expertise_order:m.expertise,
     summary:m.summary||null, summary_on:!!S.summaryOn, prompt_versions:PROMPT_VERSIONS, outcome:S.outcome||null,
     followups:S.questions.map(q=>({question:q.question, answer:q.answer||"", tag:q.tag, role:q.role, section:sectionOf(q), engagement_key:q.engagement||null, fields:q.fields||null})),
-    new_bullets:S.newAch.map(x=>({role:x.role, achievement_id:x.attach||null, text:x.text.text, tags:x.tags, section:x.engagement?"engagement":"experience", engagement_key:x.engagement||null, longform:x.longform||null, q_ix:x.q_ix??null})),
-    final_resume:{tagline:m.tagline, expertise:m.expertise, technologies:m.technologies, roles:m.roles.map(r=>({key:r.key, bullets:r.bullets.map(b=>({aid:b.aid, text:b.text}))})),
-      engagements:m.engagements.map(e=>({key:e.key, bullets:e.bullets.map(b=>({aid:b.aid, text:b.text}))}))}});
+    ...finalRecord()});
   if(S.db && S.runId){
-    for(const [n,x] of S.newAch.entries()) inboxWrite(`${S.runId}-g${n}`, {role:x.role, achievement_id:x.attach||null, angle:"gate2", text:x.text.text, tags:x.tags, section:x.engagement?"engagement":"experience", engagement_key:x.engagement||null, longform:x.longform||null, q_ix:x.q_ix??null});
+    for(const x of S.newAch) writeGate(x);
     for(const d of details){ const e=engByKey(d.key); inboxWrite(`${S.runId}-eng-${d.key}`, {section:"engagement_details", engagement_key:d.key, details:d.fields, text:`${(d.fields.client||e?.client||d.key)} · ${[d.fields.start, d.fields.end||"Present"].filter(Boolean).join(" – ")}`}); }
     phrases.forEach((p,n)=>inboxWrite(`${S.runId}-p${n}`, {section:p.section, text:p.text, tags:p.tags}));
   }
 }
+/* What the run and the inbox record for each answer bullet. The sync reads role, engagement and q_ix from the run's
+   new_bullets (index n is page id gate2-<run>-<n>) and the printed text from final_resume, so both follow every move and edit. */
+const freshN = x => x.n ?? +(x.ach ? String(x.ach.id).split("-").pop() : String(x.text.id).split(":").pop());
+const editDocId = aid => `${S.runId}-e-${String(aid).replace(/[^A-Za-z0-9_-]/g,"").slice(0,60)}`;
+function nbRecord(x){ return {role:x.role, achievement_id:x.attach||null, text:x.text.text, tags:x.tags, section:x.engagement?"engagement":"experience",
+  engagement_key:x.engagement||null, longform:x.engagement?(x.longform||null):null, q_ix:x.q_ix??null, b_ix:x.b_ix??null}; }
+function gateDoc(x){ const id=x.ach?x.ach.id:null;
+  return {...nbRecord(x), angle:"gate2", text:(id&&S.edits[id])||x.text.text, longform:x.engagement?((id&&S.editsC[id])||x.longform||null):null}; }
+function writeGate(x){ if(!S.db || !S.runId) return; const d=gateDoc(x); inboxWrite(`${S.runId}-g${freshN(x)}`, d); if(x.editDoc) inboxWrite(x.editDoc, d); }
+function finalRecord(){
+  const m=resumeModel(), intact=S.newAch.every((x,k)=>freshN(x)===k);   // positions must match gate2 ids
+  return {...(intact?{new_bullets:S.newAch.map(nbRecord)}:{}),
+    final_resume:{tagline:m.tagline, expertise:m.expertise, technologies:m.technologies, roles:m.roles.map(r=>({key:r.key, bullets:r.bullets.map(b=>({aid:b.aid, text:b.text}))})),
+      engagements:m.engagements.map(e=>({key:e.key, bullets:e.bullets.map(b=>({aid:b.aid, text:b.text}))}))}};
+}
 function saveEdit(aid, i, txt){
   lockCurrent(); S.edits[aid]=txt; S.pinned.add(aid); persist(true);
   logFeedback("edit", aid, {tid:i.t.id, text:txt});
+  const x=S.newAch.find(x=>(x.ach&&x.ach.id===aid)||(x.attach===aid&&x.text.id===i.t.id));
+  if(x && x.attach) x.edited=txt;   // an edit of this posting's answer text, not of the bank bullet it enriches
   if(!S.db || !S.runId) return;
   const g=String(aid).match(/^gate2-.+-(\d+)$/);
-  const id = g ? `${S.runId}-g${g[1]}` : `${S.runId}-e-${String(aid).replace(/[^A-Za-z0-9_-]/g,"").slice(0,60)}`;
-  inboxWrite(id, {role:i.a.role, achievement_id:(g||String(aid).startsWith("inbox-"))?null:aid, angle:g?"gate2":"edit", text:txt, tags:Object.keys(i.a.tags), section:"experience"});
+  if(g && x) writeGate(x);
+  else inboxWrite(g?`${S.runId}-g${g[1]}`:editDocId(aid), {role:i.a.role, achievement_id:(g||String(aid).startsWith("inbox-"))?null:aid, angle:g?"gate2":"edit", text:txt, tags:Object.keys(i.a.tags), section:"experience"});
+  if(S.phase==="final") saveRun(finalRecord());
 }
 /* Section C edits keep the long form: a bank bullet's edit becomes its new long form at the next sync */
 function saveEditC(aid, txt){
@@ -1182,8 +1259,52 @@ function saveEditC(aid, txt){
   if(!S.db || !S.runId) return;
   const a=allAchievements().find(a=>a.id===aid); const eng=visibleEngagements().find(e=>engMembers(e,[a].filter(Boolean)).includes(aid));
   const g=String(aid).match(/^gate2-.+-(\d+)$/);
-  if(g && x) inboxWrite(`${S.runId}-g${g[1]}`, {role:x.role, achievement_id:null, angle:"gate2", text:x.text.text, tags:x.tags, section:"engagement", engagement_key:x.engagement||null, longform:txt});
+  if(g && x) writeGate(x);
   else if(a && !String(aid).startsWith("inbox-")) inboxWrite(`${S.runId}-c-${String(aid).replace(/[^A-Za-z0-9_-]/g,"").slice(0,60)}`, {role:a.role, achievement_id:aid, angle:"longform", text:txt, tags:Object.keys(a.tags), section:"engagement", engagement_key:eng?eng.key:null});
+  if(S.phase==="final") saveRun(finalRecord());
+}
+/* Move an answer bullet under another role or consulting engagement, from its question card or the sheet.
+   The rest of the draft keeps its layout; the question card, the run and the inbox all record the new place. */
+function applyMove(n, p){
+  const x=S.newAch[n]; if(!x || !p || placeKey(x)===placeKey(p)) return false;
+  const k=freshN(x), Q=S.questions[x.q_ix], B=Q?.bullets?.[x.b_ix];
+  if(x.attach){   // it no longer enriches that bank bullet: it becomes a bullet of its own in the new place
+    const blk=blocking(qaLine(x.edited||x.text.text, [], answerQuotes(Q), null));   // its numbers must now come from the answer alone
+    if(blk.length){ if(B){ B.role=x.role; B.engagement=x.engagement||null; } return blk; }
+    const X=x.attach, id=`gate2-${S.runId}-${k}`;
+    if(!S.newAch.some(y=>y!==x && y.attach===X)) S.pinned.delete(X);
+    if(x.edited){ S.edits[id]=x.edited; if(S.edits[X]===x.edited) delete S.edits[X]; x.editDoc=editDocId(X); }   // that edit's inbox copy now describes this bullet
+    x.ach={id, role:p.role, engagement:p.engagement, confidence:"asserted", fresh:true, has_metrics:/\d/.test(x.text.text),
+      tags:Object.fromEntries((x.tags||[]).filter(t=>S.lib.tags[t]).map(t=>[t,1])), metrics:[], texts:[x.text]};
+    x.text={text:x.text.text}; delete x.attach; delete x.longText; delete x.edited;
+    if(B) B.achievement_id=null;
+  }
+  const id=x.ach.id;
+  x.role=x.ach.role=p.role; x.engagement=x.ach.engagement=p.engagement;
+  if(p.engagement && !x.longform && B && B.longform) x.longform=cleanBullet(B.longform);
+  const short=x.ach.texts.filter(t=>t.angle!=="longform");   // the Section C wording goes along only to an engagement
+  x.ach.texts = p.engagement && x.longform ? short.concat([{id:short[0].id+":lf", kind:"learned", angle:"longform", text:x.longform, score_adj:0, fresh:true}]) : short;
+  if(p.engagement) S.pinned.delete(id); else S.pinned.add(id);
+  if(B){ B.role=p.role; B.engagement=p.engagement; }
+  writeGate(x);
+  return true;
+}
+function moveFresh(moves, focusId){
+  lockCurrent(); let last=null, refused=null;
+  for(const [n,p] of moves){ const r=applyMove(n,p); if(r===true) last=p; else if(Array.isArray(r)) refused=r; }
+  recompute(); renderQuestions(); persist(true);
+  if(last && S.phase==="final") saveRun(finalRecord());
+  if(focusId) $("#"+focusId)?.focus();
+  if(refused) toast(`Not moved: ${refused.join("; ")}. That number comes from the bank bullet it enriches. Edit it out first.`);
+  else if(last) toast(`Moved under ${placeName(last)}.`);
+}
+/* A place picked on a question card applies to the final draft at once when that bullet is already on it */
+function placeChanged(q, bis, focusId){
+  const Q=S.questions[q], moves=[];
+  for(const bi of bis){ const n=S.newAch.findIndex(x=>x.q_ix===q && x.b_ix===bi); if(n>=0) moves.push([n, bulletPlace(Q, Q.bullets[bi])]); }
+  if(moves.length) moveFresh(moves);   // may refuse a move and put the bullet back
+  for(const bi of bis){ const B=Q.bullets[bi], was=blocking(B.qa).length; B.qa=bulletQa(Q,B); if(blocking(B.qa).length) B.on=false; else if(was) B.on=true; }
+  renderQuestions(); if(focusId) $("#"+focusId)?.focus();
 }
 async function polishBullet(aid, sec){
   if(!S.sample){ toast("Claude isn't available in this view. Edit the text directly."); return; }
@@ -1287,6 +1408,11 @@ $("#sheet").addEventListener("focusout", e=>{
   if(!txt || txt===cur) return;
   saveEdit(aid, i, txt);
   renderSheet();
+});
+$("#sheet").addEventListener("change", e=>{
+  const s=e.target.closest("select[data-mv]"); if(!s) return;
+  const p=parsePlace(s.value); if(!p){ s.value=""; return; }
+  S.touched=true; moveFresh([[+s.dataset.mv, p]]);
 });
 $("#sheet").addEventListener("keydown", e=>{ if(e.key==="Enter" && e.target.closest(".bt,.ln")){ e.preventDefault(); e.target.blur(); } });
 
@@ -1492,11 +1618,19 @@ $("#questions").addEventListener("input", e=>{
   const ix=e.target.dataset.ix; if(ix!=null && S.questions[ix] && e.target.tagName==="TEXTAREA") S.questions[ix].answer=e.target.value;
   const ef=e.target.dataset.ef; if(ef){ const [q,k]=ef.split(":"); const Q=S.questions[+q]; if(Q){ Q.fields=Q.fields||{}; Q.fields[k]=e.target.value; } }
   const bt=e.target.dataset.btxt; if(bt){ const [q,b]=bt.split(":").map(Number); const Q=S.questions[q], B=Q?.bullets?.[b]; if(B){ B.text=e.target.value; const ph=PHRASE_SECTIONS[sectionOf(Q)]; const lim=ph?ph.max:S.lib.length_band.hard_ceiling; const cc=$(`#bcc${q}-${b}`); if(cc){ cc.textContent=B.text.length; cc.classList.toggle("over", B.text.length>lim); }
-      if(!ph){ const ids=B.achievement_id?((S.lib.achievements.find(a=>a.id===B.achievement_id)||{}).claim_ids||[]):[]; B.qa=qaLine(B.text, ids, [Q.answer||""].concat(Q.fields?[Object.values(Q.fields).filter(Boolean).join("; ")]:[]), S.lib.length_band); const blk=blocking(B.qa); const cb=$(`#bon${q}-${b}`), msg=$(`#bqa${q}-${b}`); if(cb){ cb.disabled=!!blk.length; if(!blk.length && !cb.checked){ cb.checked=true; B.on=true; } } e.target.classList.toggle("blocked", !!blk.length); if(msg) msg.textContent = blk.length ? `Not printable yet: ${blk.join("; ")}. Edit the text, or add that fact to your answer and re-polish.` : "Passes: every number is in your answer."; } } }
+      if(!ph){ B.qa=bulletQa(Q,B); const blk=blocking(B.qa); const cb=$(`#bon${q}-${b}`), msg=$(`#bqa${q}-${b}`); if(cb){ cb.disabled=!!blk.length; if(!blk.length && !cb.checked){ cb.checked=true; B.on=true; } } e.target.classList.toggle("blocked", !!blk.length); if(msg) msg.textContent = blk.length ? `Not printable yet: ${blk.join("; ")}. Edit the text, or add that fact to your answer and re-polish.` : "Passes: every number is in your answer."; } } }
 });
 $("#questions").addEventListener("change", e=>{
   S.touched=true; persist();
-  const ix=e.target.dataset.ix; if(ix!=null && S.questions[ix] && e.target.tagName==="SELECT") S.questions[ix].role=e.target.value;
+  const ix=e.target.dataset.ix;
+  if(ix!=null && S.questions[ix] && e.target.tagName==="SELECT"){ const Q=S.questions[ix], old=Q.role; Q.role=e.target.value;
+    // bullets that went under the old default follow the new one; bullets placed elsewhere stay put
+    const follow=(Q.bullets||[]).map((B,bi)=>bi).filter(bi=>{ const B=Q.bullets[bi]; return !B.engagement && (!B.role || B.role===old); });
+    follow.forEach(bi=>{ Q.bullets[bi].role=Q.role; });
+    if((Q.bullets||[]).length) placeChanged(+ix, follow, e.target.id); }   // re-render so each picker shows whether it differs from the default
+  const bp=e.target.dataset.bplace;
+  if(bp){ const [q,b]=bp.split(":").map(Number); const B=S.questions[q]?.bullets?.[b], p=parsePlace(e.target.value);
+    if(B && p){ B.role=p.role; B.engagement=p.engagement; placeChanged(q, [b], e.target.id); } }
   const bo=e.target.dataset.bon; if(bo){ const [q,b]=bo.split(":").map(Number); const B=S.questions[q]?.bullets?.[b]; if(B) B.on=e.target.checked; }
 });
 $("#questions").addEventListener("click", e=>{ const b=e.target.closest("button[data-conv]"); if(!b) return; const ix=+b.dataset.conv; convertQuestions([ix], "Claude is turning that answer into resume entries…"); });
@@ -1596,8 +1730,8 @@ function sessionFromRun(r){
   const nb=r.new_bullets||[];
   const newAch=nb.map((b,n)=>{ const t={id:`new:${r._id}:${n}`, kind:"learned", angle:"gate2", text:b.text, score_adj:0, fresh:true};
     const lt=b.longform?{id:`new:${r._id}:${n}:lf`, kind:"learned", angle:"longform", text:b.longform, score_adj:0, fresh:true}:null;
-    return b.achievement_id ? {attach:b.achievement_id, role:b.role, tags:b.tags||[], engagement:b.engagement_key||null, longform:b.longform||null, text:t, longText:lt}
-      : {ach:{id:`gate2-${r._id}-${n}`, role:b.role, engagement:b.engagement_key||null, confidence:"asserted", fresh:true, has_metrics:/\d/.test(b.text), tags:Object.fromEntries((b.tags||[]).filter(x=>S.lib.tags[x]).map(x=>[x,1])), metrics:[], texts:[t].concat(lt?[lt]:[])}, role:b.role, tags:b.tags||[], engagement:b.engagement_key||null, longform:b.longform||null, text:{text:b.text}}; });
+    return b.achievement_id ? {n, q_ix:b.q_ix??null, b_ix:b.b_ix??null, attach:b.achievement_id, role:b.role, tags:b.tags||[], engagement:b.engagement_key||null, longform:b.longform||null, text:t, longText:lt}
+      : {n, q_ix:b.q_ix??null, b_ix:b.b_ix??null, ach:{id:`gate2-${r._id}-${n}`, role:b.role, engagement:b.engagement_key||null, confidence:"asserted", fresh:true, has_metrics:/\d/.test(b.text), tags:Object.fromEntries((b.tags||[]).filter(x=>S.lib.tags[x]).map(x=>[x,1])), metrics:[], texts:[t].concat(lt?[lt]:[])}, role:b.role, tags:b.tags||[], engagement:b.engagement_key||null, longform:b.longform||null, text:{text:b.text}}; });
   let locked=null; const edits={};
   const fr=r.final_resume;
   // keep the final layout; only answer-derived bullets keep their draft text (bank bullets show the current bank wording)

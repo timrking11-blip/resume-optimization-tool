@@ -8,7 +8,7 @@ Every resume renders in the source template (`TIM KING SOURCE RESUME.docx`, Sect
 
 | `section` | What it is | Lands in |
 |---|---|---|
-| `experience` (or missing) | a Resume 1 bullet for a role | an achievement or a learned bullet |
+| `experience` (or missing) | a Resume 1 bullet for a role; each bullet carries its own `role`, so one answer can feed several roles | an achievement or a learned bullet |
 | `engagement` | a Section C bullet for a consulting engagement (`engagement_key`); may carry a `longform` version, and edits of a Section C bullet arrive with `angle: "longform"` | an achievement tied to that engagement |
 | `engagement_details` | client name as printed, location, dates, commitment, one-line description (`details`) | `learned.json` → `engagement_updates` (the engagement stops waiting for details) |
 | `tagline` / `expertise` / `technology` / `competency` | a short phrase for Section A, the Section B line, the Technologies line, or a Section D category | `learned.json` → `tagline_phrases` / `competencies` / `technologies` / `core_competencies` |
