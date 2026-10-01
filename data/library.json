@@ -1,6 +1,6 @@
 {
  "schema": "rot-library/3",
- "exported_at": "2026-10-01T11:59:07",
+ "exported_at": "2026-10-01T12:00:02",
  "tiers": {
   "1": "Evidence: what actually happened",
   "2": "Derived knowledge: what the system infers",
@@ -10588,20 +10588,6 @@
      "kind": "variant",
      "angle": "driver",
      "text": "Won a proof-of-concept RFP with Universal Parks — scoping the proof of value, driving technical evaluation, and owning the relationship through award.",
-     "score_adj": 0
-    },
-    {
-     "id": 150,
-     "kind": "learned",
-     "angle": "gate2",
-     "text": "Sourced and staffed 8 solution architects across 8 digital transformation workstreams on a 12–18 month renewable managed services engagement worth over $1M annually.",
-     "score_adj": 0
-    },
-    {
-     "id": 157,
-     "kind": "learned",
-     "angle": "gate2",
-     "text": "Sourced and staffed 8 solution architects across 8 workstreams on a 12-18 month renewable managed services engagement worth $1M annually.",
      "score_adj": 0
     },
     {
