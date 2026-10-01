@@ -1,6 +1,6 @@
 {
  "schema": "rot-library/3",
- "exported_at": "2026-10-01T11:56:17",
+ "exported_at": "2026-10-01T11:57:26",
  "tiers": {
   "1": "Evidence: what actually happened",
   "2": "Derived knowledge: what the system infers",
@@ -7915,28 +7915,6 @@
    ]
   },
   {
-   "id": "tool:salesforce-dashboards-native-components:name",
-   "kind": "tool",
-   "subject": "tool:salesforce-dashboards-native-components",
-   "predicate": "name",
-   "value": "Salesforce Dashboards (native components)",
-   "unit": null,
-   "text": "Salesforce Dashboards (native components)",
-   "confidence": 1.0,
-   "status": "active",
-   "valid_from": null,
-   "valid_to": null,
-   "as_of": null,
-   "evidence": {
-    "n": 1,
-    "source_types": [
-     "USER_ENTERED"
-    ],
-    "latest": "2026-10-01T11:54:44"
-   },
-   "numbers": []
-  },
-  {
    "id": "tool:salesforce-dashboards:name",
    "kind": "tool",
    "subject": "tool:salesforce-dashboards",
@@ -10620,10 +10598,17 @@
      "score_adj": 0
     },
     {
-     "id": 155,
+     "id": 157,
      "kind": "learned",
      "angle": "gate2",
-     "text": "Sourced and staffed 8 solution architects across 8 digital transformation workstreams on a 12–18 month renewable managed services engagement worth $1M annually.",
+     "text": "Sourced and staffed 8 solution architects across 8 workstreams on a 12-18 month renewable managed services engagement worth $1M annually.",
+     "score_adj": 0
+    },
+    {
+     "id": 159,
+     "kind": "learned",
+     "angle": "gate2",
+     "text": "Sourced and staffed 8 solution architects across 8 digital transformation workstreams on a 12–18 month renewable managed services engagement worth over $1M annually.",
      "score_adj": 0
     }
    ]
@@ -11364,10 +11349,17 @@
      "score_adj": 0
     },
     {
-     "id": 151,
+     "id": 156,
      "kind": "learned",
      "angle": "gate2",
-     "text": "Built a weekly capacity forecast, RACI, and decision log for the operating cadence, tracking 3–4 concurrent streams through gated sprint cycles.",
+     "text": "Mapped stakeholder intervention and sign-off criteria for a startup client, defining who owned gates and approvals across the engagement.",
+     "score_adj": 0
+    },
+    {
+     "id": 158,
+     "kind": "learned",
+     "angle": "gate2",
+     "text": "Onboarded a healthcare tech startup's team to a gated tracking system, giving the CEO approval oversight on dev expenses and fractional work hours.",
      "score_adj": 0
     }
    ]
@@ -13516,15 +13508,6 @@
    "category": "Learned",
    "tags": [],
    "sort": 105,
-   "claim_id": null
-  },
-  {
-   "name": "Salesforce Dashboards (native components)",
-   "category": "Learned",
-   "tags": [
-    "data-solutions"
-   ],
-   "sort": 106,
    "claim_id": null
   }
  ],

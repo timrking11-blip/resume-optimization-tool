@@ -971,19 +971,6 @@
       "evidence": [
         "ev:phrase:run-munaofq1:demandbase"
       ]
-    },
-    {
-      "name": "Salesforce Dashboards (native components)",
-      "tags": [
-        "data-solutions"
-      ],
-      "origin": "artifact",
-      "created": "2026-10-01T11:54:44",
-      "category": "Learned",
-      "status": "accepted",
-      "evidence": [
-        "ev:phrase:run-munaofq1:salesforce-dashboards-native-components"
-      ]
     }
   ],
   "competencies": [],

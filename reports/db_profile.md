@@ -6,7 +6,7 @@ Generated 2026-10-01 by `rot.py profile`.
 | Tier | Tables | Rows |
 |---|---|---|
 | 1. Evidence: what actually happened | `evidence`, `sources`, `raw_bullets`, `followups` | 1234 |
-| 2. Derived knowledge: what the system infers | `claims`, `claim_evidence`, `claim_relations`, `claim_confidence_history`, `achievements`, `achievement_tags`, `achievement_evidence`, `bullets`, `tags`, `competencies`, `technologies`, `certifications`, `education`, `tagline_phrases`, `core_competencies`, `engagements`, `engagement_achievements`, `roles`, `summaries`, `job_descriptions`, `jd_requirements` | 4781 |
+| 2. Derived knowledge: what the system infers | `claims`, `claim_evidence`, `claim_relations`, `claim_confidence_history`, `achievements`, `achievement_tags`, `achievement_evidence`, `bullets`, `tags`, `competencies`, `technologies`, `certifications`, `education`, `tagline_phrases`, `core_competencies`, `engagements`, `engagement_achievements`, `roles`, `summaries`, `job_descriptions`, `jd_requirements` | 4783 |
 | 3. Generation: what was written | `generation_events`, `prompt_versions`, `generated_resumes` | 313 |
 | 4. Feedback: what happened afterwards | `feedback`, `outcomes` | 19 |
 
@@ -24,7 +24,7 @@ Generated 2026-10-01 by `rot.py profile`.
 | metric | 53 | 0 | 0 | 0.888 |
 | role_fact | 44 | 0 | 2 | 0.867 |
 | tagline | 9 | 0 | 0 | 0.944 |
-| tool | 29 | 0 | 0 | 0.943 |
+| tool | 28 | 0 | 1 | 0.941 |
 
 | Evidence source type | Rows |
 |---|---|
@@ -42,12 +42,12 @@ Disputed claims: **0**
 | `sources` | 19 | one resume version / capture |
 | `raw_bullets` | 372 | one bullet as written in one source |
 | `achievements` | 80 | one real accomplishment |
-| `bullets` | 155 | one bare-bone rendering of an achievement (all versions) |
+| `bullets` | 159 | one bare-bone rendering of an achievement (all versions) |
 | `tags` | 84 | one niche skill/keyword |
 | `achievement_tags` | 318 | achievement × tag (one-to-many) |
 | `achievement_evidence` | 395 | achievement × raw bullet |
 | `competencies` | 34 | one competency phrase |
-| `technologies` | 29 | one tool |
+| `technologies` | 28 | one tool |
 | `certifications` | 5 | one credential |
 | `summaries` | 1 | one summary variant |
 | `tagline_phrases` | 9 | one Section A tagline phrase |
@@ -58,7 +58,7 @@ Disputed claims: **0**
 | `followups` | 33 | one gate question |
 | `feedback` | 19 | one keep/reject/edit |
 
-Current (non-superseded, accepted) bullets: **127**.
+Current (non-superseded, accepted) bullets: **129**.
 
 ## Bullet length vs. the Resume 1 standard
 
