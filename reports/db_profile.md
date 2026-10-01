@@ -6,7 +6,7 @@ Generated 2026-10-01 by `rot.py profile`.
 | Tier | Tables | Rows |
 |---|---|---|
 | 1. Evidence: what actually happened | `evidence`, `sources`, `raw_bullets`, `followups` | 1234 |
-| 2. Derived knowledge: what the system infers | `claims`, `claim_evidence`, `claim_relations`, `claim_confidence_history`, `achievements`, `achievement_tags`, `achievement_evidence`, `bullets`, `tags`, `competencies`, `technologies`, `certifications`, `education`, `tagline_phrases`, `core_competencies`, `engagements`, `engagement_achievements`, `roles`, `summaries`, `job_descriptions`, `jd_requirements` | 4783 |
+| 2. Derived knowledge: what the system infers | `claims`, `claim_evidence`, `claim_relations`, `claim_confidence_history`, `achievements`, `achievement_tags`, `achievement_evidence`, `bullets`, `tags`, `competencies`, `technologies`, `certifications`, `education`, `tagline_phrases`, `core_competencies`, `engagements`, `engagement_achievements`, `roles`, `summaries`, `job_descriptions`, `jd_requirements` | 4787 |
 | 3. Generation: what was written | `generation_events`, `prompt_versions`, `generated_resumes` | 313 |
 | 4. Feedback: what happened afterwards | `feedback`, `outcomes` | 19 |
 
@@ -42,7 +42,7 @@ Disputed claims: **0**
 | `sources` | 19 | one resume version / capture |
 | `raw_bullets` | 372 | one bullet as written in one source |
 | `achievements` | 80 | one real accomplishment |
-| `bullets` | 159 | one bare-bone rendering of an achievement (all versions) |
+| `bullets` | 163 | one bare-bone rendering of an achievement (all versions) |
 | `tags` | 84 | one niche skill/keyword |
 | `achievement_tags` | 318 | achievement × tag (one-to-many) |
 | `achievement_evidence` | 395 | achievement × raw bullet |
@@ -58,7 +58,7 @@ Disputed claims: **0**
 | `followups` | 33 | one gate question |
 | `feedback` | 19 | one keep/reject/edit |
 
-Current (non-superseded, accepted) bullets: **129**.
+Current (non-superseded, accepted) bullets: **131**.
 
 ## Bullet length vs. the Resume 1 standard
 

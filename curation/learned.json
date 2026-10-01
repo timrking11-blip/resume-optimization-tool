@@ -595,16 +595,6 @@
       ]
     },
     {
-      "achievement_id": "tekl-universal-poc",
-      "angle": "gate2",
-      "text": "Sourced and staffed 8 solution architects across 8 digital transformation workstreams on a 12–18 month renewable managed services engagement worth over $1M annually.",
-      "origin": "artifact",
-      "status": "accepted",
-      "evidence": [
-        "ev:ans:run-munaofq1:2"
-      ]
-    },
-    {
       "achievement_id": "lim-operating-cadence",
       "angle": "gate2",
       "text": "Built a weekly capacity forecast, RACI, and decision log for the operating cadence, tracking 3–4 concurrent streams through gated sprint cycles.",
