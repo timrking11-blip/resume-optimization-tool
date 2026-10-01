@@ -1,0 +1,327 @@
+{
+  "trace": {
+    "cert:0": [
+      "cred:data-analytics-insights-data-insights:name",
+      "cred:data-analytics-insights-data-insights:issuer"
+    ],
+    "cert:1": [
+      "cred:claude-101:name",
+      "cred:claude-101:issuer"
+    ],
+    "cert:2": [
+      "cred:claude-code-101:name",
+      "cred:claude-code-101:issuer"
+    ],
+    "cert:3": [
+      "cred:claude-for-cowork:name",
+      "cred:claude-for-cowork:issuer",
+      "cred:claude-for-cowork:status"
+    ],
+    "core:AI & Data": [
+      "core:ai-data:ai-governance-output-verification:text",
+      "core:ai-data:genai-machine-learning:text",
+      "core:ai-data:claude-opus-5-sonnet-5-fable-5:text",
+      "core:ai-data:openai-chatgpt:text",
+      "core:ai-data:microsoft-copilot:text",
+      "core:ai-data:prompt-engineering:text",
+      "core:ai-data:data-analytics:text",
+      "core:ai-data:tableau:text",
+      "core:ai-data:claude-code:text"
+    ],
+    "core:Funding & Commercial Mechanics": [
+      "core:funding-commercial-mechanics:managed-services-rfp-response:text",
+      "core:funding-commercial-mechanics:non-dilutive-federal-grant-strategy-sbir:text",
+      "core:funding-commercial-mechanics:restricted-tax-advantaged-funding-mechanisms-co-:text",
+      "core:funding-commercial-mechanics:board-trustee-engagement:text"
+    ],
+    "core:Go-To-Market & Revenue": [
+      "core:go-to-market-revenue:revenue-forecasting-kpi-tracking:text",
+      "core:go-to-market-revenue:gtm-strategy:text",
+      "core:go-to-market-revenue:pipeline-management:text",
+      "core:go-to-market-revenue:client-retention:text",
+      "core:go-to-market-revenue:market-segmentation:text",
+      "core:go-to-market-revenue:product-positioning-messaging:text",
+      "core:go-to-market-revenue:value-proposition-development:text",
+      "core:go-to-market-revenue:customer-discovery:text",
+      "core:go-to-market-revenue:contract-negotiation:text",
+      "core:go-to-market-revenue:proposal-development:text",
+      "core:go-to-market-revenue:solution-selling:text",
+      "core:go-to-market-revenue:account-mapping:text"
+    ],
+    "core:Research & Analysis": [
+      "core:research-analysis:financial-forecasting-p-l:text",
+      "core:research-analysis:business-process-improvement:text",
+      "core:research-analysis:competitive-intelligence:text",
+      "core:research-analysis:barriers-to-entry-assessment:text",
+      "core:research-analysis:market-landscape-analysis:text",
+      "core:research-analysis:decision-tree-modeling:text",
+      "core:research-analysis:unit-economics-cac-payback-churn-ttfv:text",
+      "core:research-analysis:scenario-planning:text"
+    ],
+    "core:Tools & Platforms": [
+      "core:tools-platforms:canva:text",
+      "core:tools-platforms:salesforce-crm:text",
+      "core:tools-platforms:miro:text",
+      "core:tools-platforms:zoominfo:text",
+      "core:tools-platforms:linkedin-sales-navigator:text",
+      "core:tools-platforms:microsoft-excel-office-suite:text",
+      "core:tools-platforms:trello:text"
+    ],
+    "education:0": [
+      "edu:umaine:school",
+      "edu:umaine:degree",
+      "edu:umaine:date"
+    ],
+    "eng:healthcare": [
+      "eng:healthcare:client",
+      "eng:healthcare:location",
+      "eng:healthcare:start",
+      "eng:healthcare:end",
+      "eng:healthcare:commitment",
+      "eng:healthcare:subtitle"
+    ],
+    "eng:healthcare:0": [
+      "ach:lim-gtm-ownership",
+      "metric:lim-gtm-ownership:pricing-tiers"
+    ],
+    "eng:healthcare:1": [
+      "ach:lim-claude-code-tracker",
+      "metric:lim-claude-code-tracker:automated-tests"
+    ],
+    "eng:healthcare:2": [
+      "ach:lim-collateral",
+      "metric:lim-collateral:round-table-documents"
+    ],
+    "eng:healthcare:3": [
+      "ach:lim-distribution-pivot",
+      "metric:lim-distribution-pivot:cac-payback-modeled"
+    ],
+    "eng:healthcare:4": [
+      "ach:lim-unit-economic-gates",
+      "metric:lim-unit-economic-gates:blended-cac-cap",
+      "metric:lim-unit-economic-gates:monthly-churn-cap",
+      "metric:lim-unit-economic-gates:payback-cap",
+      "metric:lim-unit-economic-gates:ttfv-cap"
+    ],
+    "eng:healthcare:5": [
+      "ach:lim-non-dilutive-capital",
+      "metric:lim-non-dilutive-capital:non-dilutive-route"
+    ],
+    "eng:healthcare:6": [
+      "ach:lim-customer-discovery-sprint",
+      "metric:lim-customer-discovery-sprint:account-universe",
+      "metric:lim-customer-discovery-sprint:interviews"
+    ],
+    "eng:healthcare:7": [
+      "ach:lim-market-sizing-exit-paths",
+      "metric:lim-market-sizing-exit-paths:cagr",
+      "metric:lim-market-sizing-exit-paths:category-size-2025",
+      "metric:lim-market-sizing-exit-paths:category-size-2035"
+    ],
+    "eng:healthcare:8": [
+      "ach:lim-scenario-planning"
+    ],
+    "eng:hvac": [
+      "eng:hvac:client",
+      "eng:hvac:location",
+      "eng:hvac:start",
+      "eng:hvac:end",
+      "eng:hvac:commitment",
+      "eng:hvac:subtitle"
+    ],
+    "eng:hvac:0": [
+      "ach:art-run-muhfveal-0"
+    ],
+    "eng:hvac:1": [
+      "ach:art-run-mukn8dul-0"
+    ],
+    "expertise": [
+      "expertise:ai-adoption-strategies-for-sales-enablement-and-:text",
+      "expertise:change-readiness-stakeholder-alignment:text",
+      "expertise:pipeline-development-crm-discipline:text",
+      "expertise:revenue-forecasting-kpi-management:text",
+      "expertise:sales-team-coaching-performance-management:text",
+      "expertise:strategic-partnerships-channel:text",
+      "expertise:go-to-market-strategy:text",
+      "expertise:business-process-improvement:text",
+      "expertise:cpm-cpa-roi-business-cases:text",
+      "expertise:hiring-onboarding-seller-ramp:text",
+      "expertise:ai-data-platform-solution-selling:text",
+      "expertise:lead-generation-prospecting:text",
+      "expertise:prompt-engineering-ai-enabled-workflow:text",
+      "expertise:market-segmentation-positioning:text",
+      "expertise:executive-board-level-communication:text",
+      "expertise:buy-vs-build-competitive-analysis:text"
+    ],
+    "role:demanddrive": [
+      "role:demanddrive:title",
+      "role:demanddrive:employer",
+      "role:demanddrive:start",
+      "role:demanddrive:end",
+      "role:demanddrive:context"
+    ],
+    "role:demanddrive:0": [
+      "ach:dd-territory-proposal",
+      "metric:dd-territory-proposal:launch-growth"
+    ],
+    "role:demanddrive:1": [
+      "ach:dd-200-quota",
+      "metric:dd-200-quota:first-month-quota-attainment"
+    ],
+    "role:hc_ai_strategy": [
+      "role:hc_ai_strategy:title",
+      "role:hc_ai_strategy:employer",
+      "role:hc_ai_strategy:start",
+      "role:hc_ai_strategy:end",
+      "role:hc_ai_strategy:context"
+    ],
+    "role:hc_ai_strategy:0": [
+      "ach:lim-claude-code-tracker",
+      "metric:lim-claude-code-tracker:automated-tests"
+    ],
+    "role:hc_ai_strategy:1": [
+      "ach:lim-readiness-assessment",
+      "metric:lim-readiness-assessment:gaps-closed-into-plan"
+    ],
+    "role:hc_ai_strategy:2": [
+      "ach:lim-gtm-ownership",
+      "metric:lim-gtm-ownership:pricing-tiers"
+    ],
+    "role:hc_ai_strategy:3": [
+      "ach:lim-operating-cadence"
+    ],
+    "role:hc_ai_strategy:4": [
+      "ach:lim-collateral",
+      "metric:lim-collateral:round-table-documents"
+    ],
+    "role:hc_ai_strategy:5": [
+      "ach:art-run-muhghrt2-3"
+    ],
+    "role:hc_ai_strategy:6": [
+      "ach:art-run-muhbu38f-0"
+    ],
+    "role:massdot": [
+      "role:massdot:title",
+      "role:massdot:employer",
+      "role:massdot:start",
+      "role:massdot:end",
+      "role:massdot:context"
+    ],
+    "role:massdot:0": [
+      "ach:massdot-adoption"
+    ],
+    "role:psp": [
+      "role:psp:title",
+      "role:psp:employer",
+      "role:psp:start",
+      "role:psp:end",
+      "role:psp:context"
+    ],
+    "role:psp:0": [
+      "ach:psp-125-leads",
+      "metric:psp-125-leads:qualified-leads-per-week"
+    ],
+    "role:psp:1": [
+      "ach:psp-pipeline-discovery",
+      "metric:psp-pipeline-discovery:active-pipeline"
+    ],
+    "role:psp:2": [
+      "ach:art-run-mukrbv3p-4"
+    ],
+    "role:psp:3": [
+      "ach:psp-cpm-business-case",
+      "metric:psp-cpm-business-case:blended-cpm",
+      "metric:psp-cpm-business-case:category-cpa-benchmark",
+      "metric:psp-cpm-business-case:combined-reach",
+      "metric:psp-cpm-business-case:placement-price"
+    ],
+    "role:psp:4": [
+      "ach:psp-closed-deals",
+      "metric:psp-closed-deals:net-new-accounts",
+      "metric:psp-closed-deals:signed-deals"
+    ],
+    "role:tek_lead": [
+      "role:tek_lead:title",
+      "role:tek_lead:employer",
+      "role:tek_lead:start",
+      "role:tek_lead:end",
+      "role:tek_lead:context"
+    ],
+    "role:tek_lead:0": [
+      "ach:tekl-verticalization-lift",
+      "metric:tekl-verticalization-lift:crm-field-completion",
+      "metric:tekl-verticalization-lift:lead-to-opp-conversion"
+    ],
+    "role:tek_lead:1": [
+      "ach:tekl-coaching",
+      "metric:tekl-coaching:direct-reports",
+      "metric:tekl-coaching:practice-size"
+    ],
+    "role:tek_lead:2": [
+      "ach:tekl-me-vertical-gtm"
+    ],
+    "role:tek_lead:3": [
+      "ach:tekl-solution-scoping"
+    ],
+    "role:tek_recruiter": [
+      "role:tek_recruiter:title",
+      "role:tek_recruiter:employer",
+      "role:tek_recruiter:start",
+      "role:tek_recruiter:end",
+      "role:tek_recruiter:context"
+    ],
+    "role:tek_recruiter:0": [
+      "ach:tekr-nike"
+    ],
+    "role:tek_recruiter:1": [
+      "ach:tekr-recruiting-talent",
+      "metric:tekr-recruiting-talent:years-recruiting"
+    ],
+    "role:tek_recruiter:2": [
+      "ach:tekr-750k",
+      "metric:tekr-750k:annual-revenue"
+    ],
+    "role:tek_recruiter:3": [
+      "ach:tekr-wayfair-disney",
+      "metric:tekr-wayfair-disney:net-new-enterprise-logos"
+    ],
+    "tagline": [
+      "tagline:process-engineer:text",
+      "tagline:ai-adoption-enthusiast:text",
+      "tagline:marketing-advertising-product-services-sales-gtm:text",
+      "tagline:gtm-and-sales-marketing-execution-specialist:text",
+      "tagline:systems-thinker:text",
+      "tagline:sales-professional-end-to-end-sales:text",
+      "tagline:business-strategy:text"
+    ],
+    "technologies": [
+      "tool:salesforce:name",
+      "tool:miro:name",
+      "tool:linkedin:name",
+      "tool:canva:name",
+      "tool:tableau:name",
+      "tool:hubspot:name",
+      "tool:microsoft-excel:name",
+      "tool:office-place-collaboration-tools:name",
+      "tool:google-tag-manager:name",
+      "tool:zoominfo:name",
+      "tool:apollo-io:name",
+      "tool:squarespace:name",
+      "tool:microsoft-copilot:name",
+      "tool:claude:name",
+      "tool:openai:name",
+      "tool:model-context-protocol:name",
+      "tool:marketo:name",
+      "tool:trello:name",
+      "tool:github:name",
+      "tool:gcp:name",
+      "tool:visual-studio:name",
+      "tool:microsoft-stack:name"
+    ]
+  },
+  "errors": [
+    "role:massdot:0: first person"
+  ],
+  "warnings": [],
+  "checked_at": "2026-10-01T11:56:32"
+}

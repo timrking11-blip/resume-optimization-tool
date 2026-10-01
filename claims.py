@@ -91,8 +91,19 @@ def append_jsonl(path, rows):
     """Append rows whose id is new. Never rewrites existing lines (the log is append-only)."""
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    have = {r["id"] for r in read_jsonl(path)}
-    new = [r for r in rows if r["id"] not in have]
+    old = read_jsonl(path)
+    have = {r["id"] for r in old}
+    # the same words from the same place are one row, even if the id scheme for them changed
+    said = {(r.get("source_ref"), r.get("locator"), sha1(r["quote"])) for r in old if r.get("quote")}
+    new = []
+    for r in rows:
+        k = (r.get("source_ref"), r.get("locator"), sha1(r["quote"])) if r.get("quote") else None
+        if r["id"] in have or (k and k in said):
+            continue
+        have.add(r["id"])
+        if k:
+            said.add(k)
+        new.append(r)
     if new:
         with open(path, "a", encoding="utf-8") as f:
             for r in new:
@@ -134,13 +145,19 @@ def source_evidence(raw, cfg):
 
 def logged_evidence(cfg):
     """Tim's own words: Gate answers, sheet edits, engagement details, chat statements (append-only logs)."""
-    rows = []
+    rows, seen = [], {}
     for name in ("answers.jsonl", "statements.jsonl"):
         for r in read_jsonl(EVID / name):
             r = dict(r)
             r.setdefault("source_type", "USER_ENTERED")
             r["strength"] = cfg["strengths"].get(r["source_type"], 0.5)
             r["hash"] = sha1(r["quote"])
+            # the logs stay verbatim; a legacy id reused for a different quote (sheet edits of an unbanked bullet) is told apart on read
+            if r["id"] in seen and seen[r["id"]] != r["hash"]:
+                r["id"] = f"{r['id']}:h{r['hash'][:10]}"
+            elif r["id"] in seen:
+                continue
+            seen[r["id"]] = r["hash"]
             rows.append(r)
     return rows
 

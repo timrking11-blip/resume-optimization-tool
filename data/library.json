@@ -1,6 +1,6 @@
 {
  "schema": "rot-library/3",
- "exported_at": "2026-09-28T04:19:35",
+ "exported_at": "2026-10-01T11:56:17",
  "tiers": {
   "1": "Evidence: what actually happened",
   "2": "Derived knowledge: what the system infers",
@@ -38,14 +38,27 @@
    "valid_to": null,
    "as_of": null,
    "evidence": {
-    "n": 2,
+    "n": 7,
     "source_types": [
      "USER_ENTERED"
     ],
-    "latest": "2026-09-25T19:19:21.716Z"
+    "latest": "2026-09-30T03:33:06.670Z"
    },
    "numbers": [
-    "2"
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "6",
+    "7",
+    "8",
+    "12",
+    "17",
+    "18",
+    "90",
+    "1000000",
+    "2000000"
    ]
   },
   {
@@ -62,14 +75,28 @@
    "valid_to": null,
    "as_of": null,
    "evidence": {
-    "n": 1,
+    "n": 6,
     "source_types": [
      "USER_ENTERED"
     ],
-    "latest": "2026-09-25T19:19:21.716Z"
+    "latest": "2026-09-30T03:33:06.670Z"
    },
    "numbers": [
-    "60"
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "6",
+    "7",
+    "8",
+    "12",
+    "17",
+    "18",
+    "60",
+    "90",
+    "1000000",
+    "2000000"
    ]
   },
   {
@@ -460,6 +487,216 @@
    ]
   },
   {
+   "id": "ach:art-run-munaofq1-0",
+   "kind": "achievement",
+   "subject": "role:tek_lead",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Owned weekly, monthly, and yearly revenue metrics for the Data Analytics department and two-recruiter team, reporting to Delivery leadership.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2024",
+   "valid_to": "2025-11",
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-30T03:33:06.670Z"
+   },
+   "numbers": [
+    "2"
+   ]
+  },
+  {
+   "id": "ach:art-run-munaofq1-1",
+   "kind": "achievement",
+   "subject": "role:tek_lead",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Influenced deal prioritization by weighting opportunities on exclusivity, repeat-buyer status, and engagement scope to align personnel to closeable business.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2024",
+   "valid_to": "2025-11",
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-30T03:33:06.670Z"
+   },
+   "numbers": [
+    "2"
+   ]
+  },
+  {
+   "id": "ach:art-run-munaofq1-2",
+   "kind": "achievement",
+   "subject": "role:tek_lead",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Ran Salesforce-based win-loss reviews and aligned with business office Directors, Delivery leadership, and regional sales teams under shared department incentives.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2024",
+   "valid_to": "2025-11",
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-30T03:33:06.670Z"
+   },
+   "numbers": [
+    "2"
+   ]
+  },
+  {
+   "id": "ach:art-run-munaofq1-3",
+   "kind": "achievement",
+   "subject": "role:hc_ai_strategy",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Designed a RACI matrix and delegation/escalation protocols with CEO sign-off, governing IP decisions and board-ready recommendations.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2026-07",
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-30T03:33:06.670Z"
+   },
+   "numbers": [
+    "1",
+    "2",
+    "4",
+    "12",
+    "17",
+    "90",
+    "2000000"
+   ]
+  },
+  {
+   "id": "ach:art-run-munaofq1-4",
+   "kind": "achievement",
+   "subject": "role:hc_ai_strategy",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Identified an SBIR federal funding route through NIH, aligning the product for D2P2 qualification to unlock up to $2M in capital with CEO sign-off.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2026-07",
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-30T03:33:06.670Z"
+   },
+   "numbers": [
+    "1",
+    "2",
+    "4",
+    "12",
+    "17",
+    "90",
+    "2000000"
+   ]
+  },
+  {
+   "id": "ach:art-run-munaofq1-5",
+   "kind": "achievement",
+   "subject": "role:hc_ai_strategy",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Presented business architecture, GTM strategy, and SBIR application to CRO, COO, and Chief Clinical Officer, gating 17 items to funding lock.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2026-07",
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-30T03:33:06.670Z"
+   },
+   "numbers": [
+    "1",
+    "2",
+    "4",
+    "12",
+    "17",
+    "90",
+    "2000000"
+   ]
+  },
+  {
+   "id": "ach:art-run-munaofq1-8",
+   "kind": "achievement",
+   "subject": "role:hc_ai_strategy",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Ran a two-site catchment and territory analysis for a proposed branch location, measuring drive-time overlap and setting a monthly cost ceiling for site viability.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2026-07",
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-30T03:33:06.670Z"
+   },
+   "numbers": [
+    "2"
+   ]
+  },
+  {
+   "id": "ach:art-run-munaofq1-9",
+   "kind": "achievement",
+   "subject": "role:hc_ai_strategy",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Built a phase-gated decision system — structured client intake, source-tagged evidence, and go/no-go criteria — to drive the engagement's analysis.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2026-07",
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-30T03:33:06.670Z"
+   },
+   "numbers": [
+    "2"
+   ]
+  },
+  {
    "id": "ach:dd-200-quota",
    "kind": "achievement",
    "subject": "role:demanddrive",
@@ -790,28 +1027,37 @@
    "value": null,
    "unit": null,
    "text": "Reconciled the client founder's four-pillar vision and three build memos into one staged roadmap: 12 recommendations, 4 stage gates, 8 board decisions.",
-   "confidence": 0.98,
+   "confidence": 1.0,
    "status": "active",
    "valid_from": "2026-07",
    "valid_to": null,
    "as_of": null,
    "evidence": {
-    "n": 5,
+    "n": 10,
     "source_types": [
      "HISTORICAL_RESUME",
      "MASTER_RESUME",
-     "PUBLIC_PROFILE"
+     "PUBLIC_PROFILE",
+     "USER_ENTERED"
     ],
-    "latest": "2026-09-26T20:40:00"
+    "latest": "2026-09-30T03:33:06.670Z"
    },
    "numbers": [
+    "0",
     "1",
     "2",
     "3",
     "4",
+    "6",
+    "7",
     "8",
     "12",
-    "500000"
+    "17",
+    "18",
+    "90",
+    "500000",
+    "1000000",
+    "2000000"
    ]
   },
   {
@@ -917,16 +1163,23 @@
    "valid_to": null,
    "as_of": null,
    "evidence": {
-    "n": 6,
+    "n": 7,
     "source_types": [
      "HISTORICAL_RESUME",
      "MASTER_RESUME",
      "USER_ENTERED"
     ],
-    "latest": "2026-09-28T02:59:11.781Z"
+    "latest": "2026-09-30T03:33:06.670Z"
    },
    "numbers": [
-    "1"
+    "1",
+    "3",
+    "4",
+    "7",
+    "8",
+    "12",
+    "18",
+    "1000000"
    ]
   },
   {
@@ -1649,16 +1902,19 @@
    "valid_to": "2025-11",
    "as_of": null,
    "evidence": {
-    "n": 19,
+    "n": 20,
     "source_types": [
      "HISTORICAL_RESUME",
      "MASTER_RESUME",
      "PUBLIC_PROFILE",
      "USER_ENTERED"
     ],
-    "latest": "2026-09-26T20:40:00"
+    "latest": "2026-09-30T03:33:06.670Z"
    },
    "numbers": [
+    "3",
+    "4",
+    "7",
     "8",
     "12",
     "18",
@@ -3453,11 +3709,11 @@
    "valid_to": null,
    "as_of": null,
    "evidence": {
-    "n": 3,
+    "n": 4,
     "source_types": [
      "USER_ENTERED"
     ],
-    "latest": "2026-09-28T02:59:11.781Z"
+    "latest": "2026-09-30T07:42:13"
    },
    "numbers": [
     "8",
@@ -3470,20 +3726,20 @@
    "kind": "engagement_fact",
    "subject": "eng:hvac",
    "predicate": "commitment",
-   "value": "Part Time",
+   "value": "pro bono",
    "unit": null,
-   "text": "HVAC Services Firm (Confidential): commitment = Part Time",
+   "text": "HVAC Services Firm (Confidential): commitment = pro bono",
    "confidence": 1.0,
    "status": "active",
    "valid_from": null,
    "valid_to": null,
    "as_of": null,
    "evidence": {
-    "n": 1,
+    "n": 2,
     "source_types": [
      "USER_ENTERED"
     ],
-    "latest": "2026-09-28T02:59:11.781Z"
+    "latest": "2026-09-30T07:42:13"
    },
    "numbers": [
     "8",
@@ -3505,11 +3761,11 @@
    "valid_to": null,
    "as_of": null,
    "evidence": {
-    "n": 1,
+    "n": 2,
     "source_types": [
      "USER_ENTERED"
     ],
-    "latest": "2026-09-28T02:59:11.781Z"
+    "latest": "2026-09-30T07:42:13"
    },
    "numbers": [
     "8",
@@ -3531,11 +3787,11 @@
    "valid_to": null,
    "as_of": null,
    "evidence": {
-    "n": 1,
+    "n": 2,
     "source_types": [
      "USER_ENTERED"
     ],
-    "latest": "2026-09-28T02:59:11.781Z"
+    "latest": "2026-09-30T07:42:13"
    },
    "numbers": [
     "8",
@@ -3557,11 +3813,11 @@
    "valid_to": null,
    "as_of": null,
    "evidence": {
-    "n": 1,
+    "n": 2,
     "source_types": [
      "USER_ENTERED"
     ],
-    "latest": "2026-09-28T02:59:11.781Z"
+    "latest": "2026-09-30T07:42:13"
    },
    "numbers": [
     "8",
@@ -3583,11 +3839,11 @@
    "valid_to": null,
    "as_of": null,
    "evidence": {
-    "n": 1,
+    "n": 2,
     "source_types": [
      "USER_ENTERED"
     ],
-    "latest": "2026-09-28T02:59:11.781Z"
+    "latest": "2026-09-30T07:42:13"
    },
    "numbers": [
     "8",
@@ -7216,6 +7472,72 @@
    ]
   },
   {
+   "id": "tool:clay:name",
+   "kind": "tool",
+   "subject": "tool:clay",
+   "predicate": "name",
+   "value": "Clay",
+   "unit": null,
+   "text": "Clay",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": null,
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-30T07:42:13"
+   },
+   "numbers": []
+  },
+  {
+   "id": "tool:demandbase:name",
+   "kind": "tool",
+   "subject": "tool:demandbase",
+   "predicate": "name",
+   "value": "Demandbase",
+   "unit": null,
+   "text": "Demandbase",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": null,
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-30T07:42:13"
+   },
+   "numbers": []
+  },
+  {
+   "id": "tool:explorium-ai:name",
+   "kind": "tool",
+   "subject": "tool:explorium-ai",
+   "predicate": "name",
+   "value": "Explorium AI",
+   "unit": null,
+   "text": "Explorium AI",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": null,
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-30T07:42:13"
+   },
+   "numbers": []
+  },
+  {
    "id": "tool:gcp:name",
    "kind": "tool",
    "subject": "tool:gcp",
@@ -7264,6 +7586,28 @@
     "5",
     "5.6"
    ]
+  },
+  {
+   "id": "tool:gong:name",
+   "kind": "tool",
+   "subject": "tool:gong",
+   "predicate": "name",
+   "value": "Gong",
+   "unit": null,
+   "text": "Gong",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": null,
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-30T07:42:13"
+   },
+   "numbers": []
   },
   {
    "id": "tool:google-tag-manager:name",
@@ -7569,6 +7913,50 @@
     "5.5",
     "5.6"
    ]
+  },
+  {
+   "id": "tool:salesforce-dashboards-native-components:name",
+   "kind": "tool",
+   "subject": "tool:salesforce-dashboards-native-components",
+   "predicate": "name",
+   "value": "Salesforce Dashboards (native components)",
+   "unit": null,
+   "text": "Salesforce Dashboards (native components)",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": null,
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-10-01T11:54:44"
+   },
+   "numbers": []
+  },
+  {
+   "id": "tool:salesforce-dashboards:name",
+   "kind": "tool",
+   "subject": "tool:salesforce-dashboards",
+   "predicate": "name",
+   "value": "Salesforce Dashboards",
+   "unit": null,
+   "text": "Salesforce Dashboards",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": null,
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-09-30T07:42:13"
+   },
+   "numbers": []
   },
   {
    "id": "tool:salesforce:name",
@@ -9710,6 +10098,13 @@
      "kind": "canonical",
      "angle": null,
      "text": "Reconciled the client founder's four-pillar vision and three build memos into one staged roadmap: 12 recommendations, 4 stage gates, 8 board decisions.",
+     "score_adj": -0.6
+    },
+    {
+     "id": 154,
+     "kind": "learned",
+     "angle": "edit",
+     "text": "Reconciled founder's four-pillar vision and three build memos into one staged roadmap: 12 recommendations, 4 stage gates, 8 board decisions.",
      "score_adj": 0
     }
    ]
@@ -10218,10 +10613,17 @@
      "score_adj": 0
     },
     {
-     "id": 113,
+     "id": 150,
      "kind": "learned",
      "angle": "gate2",
-     "text": "Sourced and staffed 8 solution architects across 8 workstreams on a 12-18 month renewable managed services engagement worth $1M annually.",
+     "text": "Sourced and staffed 8 solution architects across 8 digital transformation workstreams on a 12–18 month renewable managed services engagement worth over $1M annually.",
+     "score_adj": 0
+    },
+    {
+     "id": 155,
+     "kind": "learned",
+     "angle": "gate2",
+     "text": "Sourced and staffed 8 solution architects across 8 digital transformation workstreams on a 12–18 month renewable managed services engagement worth $1M annually.",
      "score_adj": 0
     }
    ]
@@ -10955,10 +11357,17 @@
      "score_adj": 0
     },
     {
-     "id": 138,
+     "id": 149,
      "kind": "learned",
      "angle": "gate2",
-     "text": "Onboarded a healthcare tech startup's team to a gated tracking system, giving the CEO approval oversight on dev expenses and fractional work hours.",
+     "text": "Mapped stakeholder intervention and sign-off criteria for a startup client, defining who owned gates and approvals across the engagement.",
+     "score_adj": 0
+    },
+    {
+     "id": 151,
+     "kind": "learned",
+     "angle": "gate2",
+     "text": "Built a weekly capacity forecast, RACI, and decision log for the operating cadence, tracking 3–4 concurrent streams through gated sprint cycles.",
      "score_adj": 0
     }
    ]
@@ -11055,6 +11464,13 @@
      "angle": null,
      "text": "Built a custom CRM from scratch with GTM and prospecting connectors, automated weekly contact enrichment, and account-research agents two-way synced to GitHub.",
      "score_adj": 0
+    },
+    {
+     "id": 152,
+     "kind": "learned",
+     "angle": "edit",
+     "text": "Built a custom CRM with GTM and prospecting connectors, automating weekly contact enrichment and account-research agents two-way synced to GitHub.",
+     "score_adj": 0
     }
    ]
   },
@@ -11078,6 +11494,13 @@
      "kind": "canonical",
      "angle": null,
      "text": "Diagnosed data-sync failures caused by null values and missing governance rules, then enforced sync governance constraints through 60 automated tests.",
+     "score_adj": 0
+    },
+    {
+     "id": 153,
+     "kind": "learned",
+     "angle": "edit",
+     "text": "Diagnosed data-sync failures from null values and missing governance rules, then enforced sync constraints via 60 automated tests.",
      "score_adj": 0
     }
    ]
@@ -11524,6 +11947,206 @@
      "kind": "canonical",
      "angle": null,
      "text": "Tracked hiring-trend shifts in remote-work requirements through COVID, identifying incremental employer adaptation in the post-pandemic workplace.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-munaofq1-0",
+   "role": "tek_lead",
+   "confidence": "asserted",
+   "tags": {
+    "revenue-modeling": 1.0,
+    "forecasting": 1.0,
+    "marketing-sales-alignment": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-munaofq1-0"
+   ],
+   "texts": [
+    {
+     "id": 139,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Owned weekly, monthly, and yearly revenue metrics for the Data Analytics department and two-recruiter team, reporting to Delivery leadership.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-munaofq1-1",
+   "role": "tek_lead",
+   "confidence": "asserted",
+   "tags": {
+    "marketing-sales-alignment": 1.0,
+    "pipeline-management": 1.0,
+    "qualification": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-munaofq1-1"
+   ],
+   "texts": [
+    {
+     "id": 140,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Influenced deal prioritization by weighting opportunities on exclusivity, repeat-buyer status, and engagement scope to align personnel to closeable business.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-munaofq1-2",
+   "role": "tek_lead",
+   "confidence": "asserted",
+   "tags": {
+    "crm-discipline": 1.0,
+    "stakeholder-alignment": 1.0,
+    "marketing-sales-alignment": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-munaofq1-2"
+   ],
+   "texts": [
+    {
+     "id": 141,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Ran Salesforce-based win-loss reviews and aligned with business office Directors, Delivery leadership, and regional sales teams under shared department incentives.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-munaofq1-3",
+   "role": "hc_ai_strategy",
+   "confidence": "asserted",
+   "tags": {
+    "risk-governance": 1.0,
+    "entity-ip-structure": 1.0,
+    "board-advisory": 1.0,
+    "executive-selling": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-munaofq1-3"
+   ],
+   "texts": [
+    {
+     "id": 142,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Designed a RACI matrix and delegation/escalation protocols with CEO sign-off, governing IP decisions and board-ready recommendations.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-munaofq1-4",
+   "role": "hc_ai_strategy",
+   "confidence": "asserted",
+   "tags": {
+    "capital-strategy": 1.0,
+    "funding-source-diagnostics": 1.0,
+    "healthcare-regulatory": 1.0,
+    "executive-selling": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-munaofq1-4"
+   ],
+   "texts": [
+    {
+     "id": 143,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Identified an SBIR federal funding route through NIH, aligning the product for D2P2 qualification to unlock up to $2M in capital with CEO sign-off.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-munaofq1-5",
+   "role": "hc_ai_strategy",
+   "confidence": "asserted",
+   "tags": {
+    "executive-selling": 1.0,
+    "executive-communication": 1.0,
+    "board-advisory": 1.0,
+    "risk-governance": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-munaofq1-5"
+   ],
+   "texts": [
+    {
+     "id": 144,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Presented business architecture, GTM strategy, and SBIR application to CRO, COO, and Chief Clinical Officer, gating 17 items to funding lock.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-munaofq1-8",
+   "role": "hc_ai_strategy",
+   "confidence": "asserted",
+   "tags": {
+    "market-sizing": 1.0,
+    "primary-research": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-munaofq1-8"
+   ],
+   "texts": [
+    {
+     "id": 145,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Ran a two-site catchment and territory analysis for a proposed branch location, measuring drive-time overlap and setting a monthly cost ceiling for site viability.",
+     "score_adj": 0
+    },
+    {
+     "id": 146,
+     "kind": "variant",
+     "angle": "longform",
+     "text": "Ran a two-site catchment and new-territory analysis for a services operator's proposed branch expansion, mapping drive-time overlap against existing sites and setting the monthly cost ceiling the location had to clear to justify the investment.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-munaofq1-9",
+   "role": "hc_ai_strategy",
+   "confidence": "asserted",
+   "tags": {
+    "process-improvement": 1.0,
+    "discovery": 1.0,
+    "primary-research": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-munaofq1-9"
+   ],
+   "texts": [
+    {
+     "id": 147,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Built a phase-gated decision system — structured client intake, source-tagged evidence, and go/no-go criteria — to drive the engagement's analysis.",
+     "score_adj": 0
+    },
+    {
+     "id": 148,
+     "kind": "variant",
+     "angle": "longform",
+     "text": "Designed and built the engagement's decision system end-to-end: an intake form converting raw inputs into a structured client profile, source-tagged evidence tracking, pre-set go/no-go criteria, and a phase-gated scan list sequencing the full analysis.",
      "score_adj": 0
     }
    ]
@@ -12337,13 +12960,15 @@
    "start": "2026-08",
    "end": "2026-09",
    "dates": "August 2026 – September 2026",
-   "commitment": "Part Time",
+   "commitment": "pro bono",
    "subtitle": "Consultant - Principal Analyst GTM Expansion",
    "needs_details": false,
    "ask": "Client name as it should print, location, start and end dates, commitment (part time / project), a one-line description of the engagement, and 1–2 more accomplishments.",
    "achievements": [
     "art-run-muhfveal-0",
-    "art-run-mukn8dul-0"
+    "art-run-mukn8dul-0",
+    "art-run-munaofq1-8",
+    "art-run-munaofq1-9"
    ]
   }
  ],
@@ -12849,6 +13474,58 @@
    ],
    "sort": 100,
    "claim_id": null
+  },
+  {
+   "name": "Gong",
+   "category": "Learned",
+   "tags": [
+    "data-solutions"
+   ],
+   "sort": 101,
+   "claim_id": null
+  },
+  {
+   "name": "Clay",
+   "category": "Learned",
+   "tags": [
+    "data-solutions"
+   ],
+   "sort": 102,
+   "claim_id": null
+  },
+  {
+   "name": "Explorium AI",
+   "category": "Learned",
+   "tags": [
+    "data-solutions"
+   ],
+   "sort": 103,
+   "claim_id": null
+  },
+  {
+   "name": "Salesforce Dashboards",
+   "category": "Learned",
+   "tags": [
+    "data-solutions"
+   ],
+   "sort": 104,
+   "claim_id": null
+  },
+  {
+   "name": "Demandbase",
+   "category": "Learned",
+   "tags": [],
+   "sort": 105,
+   "claim_id": null
+  },
+  {
+   "name": "Salesforce Dashboards (native components)",
+   "category": "Learned",
+   "tags": [
+    "data-solutions"
+   ],
+   "sort": 106,
+   "claim_id": null
   }
  ],
  "domain_fluency": [
@@ -12980,7 +13657,12 @@
     "art-run-mukn8dul-1",
     "art-run-mukn8dul-2",
     "art-run-mukn8dul-4",
-    "art-run-mukn8dul-5"
+    "art-run-mukn8dul-5",
+    "art-run-munaofq1-3",
+    "art-run-munaofq1-4",
+    "art-run-munaofq1-5",
+    "art-run-munaofq1-8",
+    "art-run-munaofq1-9"
    ],
    "psp": [
     "psp-closed-deals",
@@ -13012,7 +13694,10 @@
     "art-run-muhbu38f-2",
     "art-run-muhfveal-2",
     "art-run-mukrbv3p-3",
-    "art-run-mukrbv3p-5"
+    "art-run-mukrbv3p-5",
+    "art-run-munaofq1-0",
+    "art-run-munaofq1-1",
+    "art-run-munaofq1-2"
    ],
    "tek_recruiter": [
     "tekr-750k",
@@ -13186,6 +13871,7 @@
     "engagement_tag": "board-advisory"
    },
    "prompts": {
+    "growth_list": true,
     "persona": {
      "name": "Tim King",
      "first": "Tim",

@@ -370,6 +370,166 @@
       "evidence": [
         "ev:ans:run-mukrbv3p:3"
       ]
+    },
+    {
+      "id": "art-run-munaofq1-0",
+      "role": "tek_lead",
+      "canonical": "Owned weekly, monthly, and yearly revenue metrics for the Data Analytics department and two-recruiter team, reporting to Delivery leadership.",
+      "tags": {
+        "revenue-modeling": 1.0,
+        "forecasting": 1.0,
+        "marketing-sales-alignment": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-munaofq1",
+      "metrics": [],
+      "patterns": [],
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-munaofq1:0"
+      ]
+    },
+    {
+      "id": "art-run-munaofq1-1",
+      "role": "tek_lead",
+      "canonical": "Influenced deal prioritization by weighting opportunities on exclusivity, repeat-buyer status, and engagement scope to align personnel to closeable business.",
+      "tags": {
+        "marketing-sales-alignment": 1.0,
+        "pipeline-management": 1.0,
+        "qualification": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-munaofq1",
+      "metrics": [],
+      "patterns": [],
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-munaofq1:0"
+      ]
+    },
+    {
+      "id": "art-run-munaofq1-2",
+      "role": "tek_lead",
+      "canonical": "Ran Salesforce-based win-loss reviews and aligned with business office Directors, Delivery leadership, and regional sales teams under shared department incentives.",
+      "tags": {
+        "crm-discipline": 1.0,
+        "stakeholder-alignment": 1.0,
+        "marketing-sales-alignment": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-munaofq1",
+      "metrics": [],
+      "patterns": [],
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-munaofq1:0"
+      ]
+    },
+    {
+      "id": "art-run-munaofq1-3",
+      "role": "liminal",
+      "canonical": "Designed a RACI matrix and delegation/escalation protocols with CEO sign-off, governing IP decisions and board-ready recommendations.",
+      "tags": {
+        "risk-governance": 1.0,
+        "entity-ip-structure": 1.0,
+        "board-advisory": 1.0,
+        "executive-selling": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-munaofq1",
+      "metrics": [],
+      "patterns": [],
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-munaofq1:1"
+      ]
+    },
+    {
+      "id": "art-run-munaofq1-4",
+      "role": "liminal",
+      "canonical": "Identified an SBIR federal funding route through NIH, aligning the product for D2P2 qualification to unlock up to $2M in capital with CEO sign-off.",
+      "tags": {
+        "capital-strategy": 1.0,
+        "funding-source-diagnostics": 1.0,
+        "healthcare-regulatory": 1.0,
+        "executive-selling": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-munaofq1",
+      "metrics": [],
+      "patterns": [],
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-munaofq1:1"
+      ]
+    },
+    {
+      "id": "art-run-munaofq1-5",
+      "role": "liminal",
+      "canonical": "Presented business architecture, GTM strategy, and SBIR application to CRO, COO, and Chief Clinical Officer, gating 17 items to funding lock.",
+      "tags": {
+        "executive-selling": 1.0,
+        "executive-communication": 1.0,
+        "board-advisory": 1.0,
+        "risk-governance": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-munaofq1",
+      "metrics": [],
+      "patterns": [],
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-munaofq1:1"
+      ]
+    },
+    {
+      "id": "art-run-munaofq1-8",
+      "role": "liminal",
+      "canonical": "Ran a two-site catchment and territory analysis for a proposed branch location, measuring drive-time overlap and setting a monthly cost ceiling for site viability.",
+      "tags": {
+        "market-sizing": 1.0,
+        "primary-research": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-munaofq1",
+      "metrics": [],
+      "patterns": [],
+      "variants": {
+        "longform": "Ran a two-site catchment and new-territory analysis for a services operator's proposed branch expansion, mapping drive-time overlap against existing sites and setting the monthly cost ceiling the location had to clear to justify the investment."
+      },
+      "evidence": [
+        "ev:ans:run-munaofq1:3"
+      ],
+      "engagement": "hvac"
+    },
+    {
+      "id": "art-run-munaofq1-9",
+      "role": "liminal",
+      "canonical": "Built a phase-gated decision system — structured client intake, source-tagged evidence, and go/no-go criteria — to drive the engagement's analysis.",
+      "tags": {
+        "process-improvement": 1.0,
+        "discovery": 1.0,
+        "primary-research": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-munaofq1",
+      "metrics": [],
+      "patterns": [],
+      "variants": {
+        "longform": "Designed and built the engagement's decision system end-to-end: an intake form converting raw inputs into a structured client profile, source-tagged evidence tracking, pre-set go/no-go criteria, and a phase-gated scan list sequencing the full analysis."
+      },
+      "evidence": [
+        "ev:ans:run-munaofq1:3"
+      ],
+      "engagement": "hvac"
     }
   ],
   "bullets": [
@@ -432,6 +592,78 @@
       "status": "accepted",
       "evidence": [
         "ev:ans:run-mukn8dul:3"
+      ]
+    },
+    {
+      "achievement_id": "tekl-universal-poc",
+      "angle": "gate2",
+      "text": "Sourced and staffed 8 solution architects across 8 digital transformation workstreams on a 12–18 month renewable managed services engagement worth over $1M annually.",
+      "origin": "artifact",
+      "status": "accepted",
+      "evidence": [
+        "ev:ans:run-munaofq1:2"
+      ]
+    },
+    {
+      "achievement_id": "lim-operating-cadence",
+      "angle": "gate2",
+      "text": "Built a weekly capacity forecast, RACI, and decision log for the operating cadence, tracking 3–4 concurrent streams through gated sprint cycles.",
+      "origin": "artifact",
+      "status": "accepted",
+      "evidence": [
+        "ev:ans:run-munaofq1:2"
+      ]
+    },
+    {
+      "achievement_id": "art-run-muhbu38f-0",
+      "angle": "edit",
+      "text": "Built a custom CRM with GTM and prospecting connectors, automating weekly contact enrichment and account-research agents two-way synced to GitHub.",
+      "origin": "artifact",
+      "status": "accepted",
+      "evidence": [
+        "ev:ans:run-munaofq1:0",
+        "ev:ans:run-munaofq1:1",
+        "ev:ans:run-munaofq1:2",
+        "ev:ans:run-munaofq1:3",
+        "ev:ans:run-munaofq1:4"
+      ]
+    },
+    {
+      "achievement_id": "art-run-muhbu38f-1",
+      "angle": "edit",
+      "text": "Diagnosed data-sync failures from null values and missing governance rules, then enforced sync constraints via 60 automated tests.",
+      "origin": "artifact",
+      "status": "accepted",
+      "evidence": [
+        "ev:ans:run-munaofq1:0",
+        "ev:ans:run-munaofq1:1",
+        "ev:ans:run-munaofq1:2",
+        "ev:ans:run-munaofq1:3",
+        "ev:ans:run-munaofq1:4"
+      ]
+    },
+    {
+      "achievement_id": "lim-feasibility-roadmap",
+      "angle": "edit",
+      "text": "Reconciled founder's four-pillar vision and three build memos into one staged roadmap: 12 recommendations, 4 stage gates, 8 board decisions.",
+      "origin": "artifact",
+      "status": "accepted",
+      "evidence": [
+        "ev:ans:run-munaofq1:0",
+        "ev:ans:run-munaofq1:1",
+        "ev:ans:run-munaofq1:2",
+        "ev:ans:run-munaofq1:3",
+        "ev:ans:run-munaofq1:4"
+      ]
+    },
+    {
+      "achievement_id": "tekl-universal-poc",
+      "angle": "gate2",
+      "text": "Sourced and staffed 8 solution architects across 8 digital transformation workstreams on a 12–18 month renewable managed services engagement worth $1M annually.",
+      "origin": "artifact",
+      "status": "accepted",
+      "evidence": [
+        "ev:ans:run-munaofq1:2"
       ]
     }
   ],
@@ -676,6 +908,82 @@
       "evidence": [
         "ev:phrase:run-mukn8dul:notion"
       ]
+    },
+    {
+      "name": "Gong",
+      "tags": [
+        "data-solutions"
+      ],
+      "origin": "artifact",
+      "created": "2026-09-30T07:42:13",
+      "category": "Learned",
+      "status": "accepted",
+      "evidence": [
+        "ev:phrase:run-munaofq1:gong"
+      ]
+    },
+    {
+      "name": "Clay",
+      "tags": [
+        "data-solutions"
+      ],
+      "origin": "artifact",
+      "created": "2026-09-30T07:42:13",
+      "category": "Learned",
+      "status": "accepted",
+      "evidence": [
+        "ev:phrase:run-munaofq1:clay"
+      ]
+    },
+    {
+      "name": "Explorium AI",
+      "tags": [
+        "data-solutions"
+      ],
+      "origin": "artifact",
+      "created": "2026-09-30T07:42:13",
+      "category": "Learned",
+      "status": "accepted",
+      "evidence": [
+        "ev:phrase:run-munaofq1:explorium-ai"
+      ]
+    },
+    {
+      "name": "Salesforce Dashboards",
+      "tags": [
+        "data-solutions"
+      ],
+      "origin": "artifact",
+      "created": "2026-09-30T07:42:13",
+      "category": "Learned",
+      "status": "accepted",
+      "evidence": [
+        "ev:phrase:run-munaofq1:salesforce-dashboards"
+      ]
+    },
+    {
+      "name": "Demandbase",
+      "tags": [],
+      "origin": "artifact",
+      "created": "2026-09-30T07:42:13",
+      "category": "Learned",
+      "status": "accepted",
+      "evidence": [
+        "ev:phrase:run-munaofq1:demandbase"
+      ]
+    },
+    {
+      "name": "Salesforce Dashboards (native components)",
+      "tags": [
+        "data-solutions"
+      ],
+      "origin": "artifact",
+      "created": "2026-10-01T11:54:44",
+      "category": "Learned",
+      "status": "accepted",
+      "evidence": [
+        "ev:phrase:run-munaofq1:salesforce-dashboards-native-components"
+      ]
     }
   ],
   "competencies": [],
@@ -683,14 +991,15 @@
   "engagement_updates": {
     "hvac": {
       "client": "HVAC Services Firm (Confidential)",
-      "commitment": "Part Time",
+      "commitment": "pro bono",
       "end": "2026-09",
       "location": "Santa Clarita, CA",
       "start": "2026-08",
       "subtitle": "Consultant - Principal Analyst GTM Expansion",
       "needs_details": false,
       "evidence": [
-        "ev:eng:run-mukn8dul:hvac"
+        "ev:eng:run-mukn8dul:hvac",
+        "ev:eng:run-mulpf4ef:hvac"
       ]
     }
   }

@@ -697,6 +697,32 @@ INSERT INTO "achievement_tags" VALUES('art-run-mukrbv3p-5','executive-communicat
 INSERT INTO "achievement_tags" VALUES('art-run-mukrbv3p-5','audience-measurement',1.0);
 INSERT INTO "achievement_tags" VALUES('art-run-mukrbv3p-6','market-research',1.0);
 INSERT INTO "achievement_tags" VALUES('art-run-mukrbv3p-6','audience-measurement',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-munaofq1-0','revenue-modeling',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-munaofq1-0','forecasting',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-munaofq1-0','marketing-sales-alignment',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-munaofq1-1','marketing-sales-alignment',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-munaofq1-1','pipeline-management',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-munaofq1-1','qualification',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-munaofq1-2','crm-discipline',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-munaofq1-2','stakeholder-alignment',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-munaofq1-2','marketing-sales-alignment',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-munaofq1-3','risk-governance',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-munaofq1-3','entity-ip-structure',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-munaofq1-3','board-advisory',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-munaofq1-3','executive-selling',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-munaofq1-4','capital-strategy',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-munaofq1-4','funding-source-diagnostics',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-munaofq1-4','healthcare-regulatory',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-munaofq1-4','executive-selling',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-munaofq1-5','executive-selling',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-munaofq1-5','executive-communication',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-munaofq1-5','board-advisory',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-munaofq1-5','risk-governance',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-munaofq1-8','market-sizing',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-munaofq1-8','primary-research',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-munaofq1-9','process-improvement',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-munaofq1-9','discovery',1.0);
+INSERT INTO "achievement_tags" VALUES('art-run-munaofq1-9','primary-research',1.0);
 CREATE TABLE achievements (
   id         TEXT PRIMARY KEY,           -- psp-closed-deals …
   role_key   TEXT NOT NULL REFERENCES roles(key),
@@ -776,6 +802,14 @@ INSERT INTO "achievements" VALUES('art-run-mukrbv3p-3','tek_lead','asserted','Le
 INSERT INTO "achievements" VALUES('art-run-mukrbv3p-4','psp','asserted','Learned from Match Desk run run-mukrbv3p','[]');
 INSERT INTO "achievements" VALUES('art-run-mukrbv3p-5','tek_lead','asserted','Learned from Match Desk run run-mukrbv3p','[]');
 INSERT INTO "achievements" VALUES('art-run-mukrbv3p-6','tek_recruiter','asserted','Learned from Match Desk run run-mukrbv3p','[]');
+INSERT INTO "achievements" VALUES('art-run-munaofq1-0','tek_lead','asserted','Learned from Match Desk run run-munaofq1','[]');
+INSERT INTO "achievements" VALUES('art-run-munaofq1-1','tek_lead','asserted','Learned from Match Desk run run-munaofq1','[]');
+INSERT INTO "achievements" VALUES('art-run-munaofq1-2','tek_lead','asserted','Learned from Match Desk run run-munaofq1','[]');
+INSERT INTO "achievements" VALUES('art-run-munaofq1-3','liminal','asserted','Learned from Match Desk run run-munaofq1','[]');
+INSERT INTO "achievements" VALUES('art-run-munaofq1-4','liminal','asserted','Learned from Match Desk run run-munaofq1','[]');
+INSERT INTO "achievements" VALUES('art-run-munaofq1-5','liminal','asserted','Learned from Match Desk run run-munaofq1','[]');
+INSERT INTO "achievements" VALUES('art-run-munaofq1-8','liminal','asserted','Learned from Match Desk run run-munaofq1','[]');
+INSERT INTO "achievements" VALUES('art-run-munaofq1-9','liminal','asserted','Learned from Match Desk run run-munaofq1','[]');
 CREATE TABLE bullets (
   id             INTEGER PRIMARY KEY,
   achievement_id TEXT NOT NULL REFERENCES achievements(id),
@@ -882,7 +916,7 @@ INSERT INTO "bullets" VALUES(89,'tekl-coaching','canonical',NULL,'Led a team of 
 INSERT INTO "bullets" VALUES(90,'tekl-coaching','variant','player-coach','Led up to 5 direct reports while carrying an individual book — daily process reviews, 1:1 metric tracking, and deal inspection against quota.',141,'accepted','curated',0.0,'2026-09-25 18:02:44',NULL,NULL,NULL);
 INSERT INTO "bullets" VALUES(91,'tekl-coaching','variant','leader','Led, coached, and developed up to 5 direct reports inside a 30-person practice, including hiring, onboarding, and ramp for new team members.',140,'accepted','curated',0.0,'2026-09-25 18:02:44',NULL,NULL,NULL);
 INSERT INTO "bullets" VALUES(92,'lim-thought-partner','canonical',NULL,'Advise the CEO and board of a healthcare AI start-up client, translating business, technology, regulatory, and workforce tradeoffs into board-ready decisions.',158,'accepted','curated',0.0,'2026-09-25 19:37:28',NULL,NULL,NULL);
-INSERT INTO "bullets" VALUES(93,'lim-feasibility-roadmap','canonical',NULL,'Reconciled the client founder''s four-pillar vision and three build memos into one staged roadmap: 12 recommendations, 4 stage gates, 8 board decisions.',151,'accepted','curated',0.0,'2026-09-25 19:37:28',NULL,NULL,NULL);
+INSERT INTO "bullets" VALUES(93,'lim-feasibility-roadmap','canonical',NULL,'Reconciled the client founder''s four-pillar vision and three build memos into one staged roadmap: 12 recommendations, 4 stage gates, 8 board decisions.',151,'accepted','curated',-0.6,'2026-09-25 19:37:28',NULL,NULL,NULL);
 INSERT INTO "bullets" VALUES(94,'lim-data-rights','canonical',NULL,'Blocked a proposed EHR data migration as an uncompensated asset transfer, defining the NDA-to-BAA sequence that protected the client''s data asset.',146,'accepted','curated',0.0,'2026-09-25 19:37:28',NULL,NULL,NULL);
 INSERT INTO "bullets" VALUES(95,'lim-data-rights','variant','soft','Identified data-rights exposure in a proposed partner integration and defined the negotiation terms that protect the client''s core data asset.',142,'accepted','curated',0.0,'2026-09-25 19:37:28',NULL,NULL,NULL);
 INSERT INTO "bullets" VALUES(96,'lim-gtm-ownership','canonical',NULL,'Own go-to-market for the client''s AI compliance product sold to independent clinical practices — segmentation, positioning, $99/$249 tiers, and channel strategy.',161,'accepted','curated',0.0,'2026-09-25 19:37:28',NULL,NULL,NULL);
@@ -902,7 +936,7 @@ INSERT INTO "bullets" VALUES(109,'art-run-muhghrt2-2','canonical',NULL,'Evaluate
 INSERT INTO "bullets" VALUES(110,'art-run-muhghrt2-3','canonical',NULL,'Ran weekly forecasting cadence via a central dashboard tracking sequenced GTM gates and owners, resolving blockers with the team.',129,'accepted','artifact',0.0,'2026-09-26 23:33:34',NULL,NULL,NULL);
 INSERT INTO "bullets" VALUES(111,'lim-operating-cadence','learned','gate2','Mapped stakeholder intervention and sign-off criteria for a startup client, defining who owned gates and approvals across the engagement.',137,'accepted','artifact',0.0,'2026-09-26 23:33:34',138,'artifact update',NULL);
 INSERT INTO "bullets" VALUES(112,'tekl-southern-gas-discovery','learned','gate2','Helped stand up an Oil & Gas company''s ML and AI Center of Excellence, applying sensor data to predict and detect gas outages.',126,'accepted','artifact',-0.6,'2026-09-26 23:33:34',NULL,NULL,NULL);
-INSERT INTO "bullets" VALUES(113,'tekl-universal-poc','learned','gate2','Sourced and staffed 8 solution architects across 8 workstreams on a 12-18 month renewable managed services engagement worth $1M annually.',137,'accepted','artifact',0.0,'2026-09-26 23:33:34',NULL,NULL,NULL);
+INSERT INTO "bullets" VALUES(113,'tekl-universal-poc','learned','gate2','Sourced and staffed 8 solution architects across 8 workstreams on a 12-18 month renewable managed services engagement worth $1M annually.',137,'accepted','artifact',0.0,'2026-09-26 23:33:34',155,'artifact update',NULL);
 INSERT INTO "bullets" VALUES(114,'tekl-fortune500-discovery','learned','gate2','Closed $700K in revenue across 5 resources with a Senior Business Architect by diagnosing the org''s path from governance to ML/AI CoE.',134,'accepted','artifact',0.0,'2026-09-26 23:33:34',NULL,NULL,NULL);
 INSERT INTO "bullets" VALUES(115,'lim-market-sizing-exit-paths','variant','longform','Mapped a $0.76B category projected to reach $5.9B by 2035 (22.8% CAGR), benchmarked five direct comparables across four structural models, and built a decision tree of four exit paths with base-rate odds attached — including the cautionary comparable that won regulatory clearance and still failed on commercialization.',319,'accepted','curated',0.0,'2026-09-27 23:24:58',NULL,NULL,NULL);
 INSERT INTO "bullets" VALUES(116,'lim-gtm-ownership','variant','longform','Own go-to-market for an AI compliance product sold into independent clinical practices — segmentation, positioning, pricing tiers ($99/$249), channel strategy, and the sequencing that determines which motion gets funded first.',226,'accepted','curated',0.0,'2026-09-27 23:24:58',NULL,NULL,NULL);
@@ -927,7 +961,24 @@ INSERT INTO "bullets" VALUES(134,'art-run-mukrbv3p-3','canonical',NULL,'Briefed 
 INSERT INTO "bullets" VALUES(135,'art-run-mukrbv3p-4','canonical',NULL,'Mined macroeconomic ad-pricing data via AI research agents to map proximity-driven print/radio buying patterns and refocus targeting on co-op-funded buyers.',156,'accepted','artifact',0.0,'2026-09-28 07:12:00',NULL,NULL,NULL);
 INSERT INTO "bullets" VALUES(136,'art-run-mukrbv3p-5','canonical',NULL,'Analyzed CRM opportunity keywords to track emerging-tech demand shifts and delivered a data analytics insights playbook to SVPs at a 12,000-employee firm.',154,'accepted','artifact',0.0,'2026-09-28 07:12:00',NULL,NULL,NULL);
 INSERT INTO "bullets" VALUES(137,'art-run-mukrbv3p-6','canonical',NULL,'Tracked hiring-trend shifts in remote-work requirements through COVID, identifying incremental employer adaptation in the post-pandemic workplace.',146,'accepted','artifact',0.0,'2026-09-28 07:12:00',NULL,NULL,NULL);
-INSERT INTO "bullets" VALUES(138,'lim-operating-cadence','learned','gate2','Onboarded a healthcare tech startup''s team to a gated tracking system, giving the CEO approval oversight on dev expenses and fractional work hours.',147,'accepted','artifact',0.0,'2026-09-28 07:12:00',NULL,NULL,NULL);
+INSERT INTO "bullets" VALUES(138,'lim-operating-cadence','learned','gate2','Onboarded a healthcare tech startup''s team to a gated tracking system, giving the CEO approval oversight on dev expenses and fractional work hours.',147,'accepted','artifact',0.0,'2026-09-28 07:12:00',151,'artifact update',NULL);
+INSERT INTO "bullets" VALUES(139,'art-run-munaofq1-0','canonical',NULL,'Owned weekly, monthly, and yearly revenue metrics for the Data Analytics department and two-recruiter team, reporting to Delivery leadership.',141,'accepted','artifact',0.0,'2026-10-01 15:56:17',NULL,NULL,NULL);
+INSERT INTO "bullets" VALUES(140,'art-run-munaofq1-1','canonical',NULL,'Influenced deal prioritization by weighting opportunities on exclusivity, repeat-buyer status, and engagement scope to align personnel to closeable business.',157,'accepted','artifact',0.0,'2026-10-01 15:56:17',NULL,NULL,NULL);
+INSERT INTO "bullets" VALUES(141,'art-run-munaofq1-2','canonical',NULL,'Ran Salesforce-based win-loss reviews and aligned with business office Directors, Delivery leadership, and regional sales teams under shared department incentives.',163,'accepted','artifact',0.0,'2026-10-01 15:56:17',NULL,NULL,NULL);
+INSERT INTO "bullets" VALUES(142,'art-run-munaofq1-3','canonical',NULL,'Designed a RACI matrix and delegation/escalation protocols with CEO sign-off, governing IP decisions and board-ready recommendations.',133,'accepted','artifact',0.0,'2026-10-01 15:56:17',NULL,NULL,NULL);
+INSERT INTO "bullets" VALUES(143,'art-run-munaofq1-4','canonical',NULL,'Identified an SBIR federal funding route through NIH, aligning the product for D2P2 qualification to unlock up to $2M in capital with CEO sign-off.',147,'accepted','artifact',0.0,'2026-10-01 15:56:17',NULL,NULL,NULL);
+INSERT INTO "bullets" VALUES(144,'art-run-munaofq1-5','canonical',NULL,'Presented business architecture, GTM strategy, and SBIR application to CRO, COO, and Chief Clinical Officer, gating 17 items to funding lock.',141,'accepted','artifact',0.0,'2026-10-01 15:56:17',NULL,NULL,NULL);
+INSERT INTO "bullets" VALUES(145,'art-run-munaofq1-8','canonical',NULL,'Ran a two-site catchment and territory analysis for a proposed branch location, measuring drive-time overlap and setting a monthly cost ceiling for site viability.',163,'accepted','artifact',0.0,'2026-10-01 15:56:17',NULL,NULL,NULL);
+INSERT INTO "bullets" VALUES(146,'art-run-munaofq1-8','variant','longform','Ran a two-site catchment and new-territory analysis for a services operator''s proposed branch expansion, mapping drive-time overlap against existing sites and setting the monthly cost ceiling the location had to clear to justify the investment.',244,'accepted','artifact',0.0,'2026-10-01 15:56:17',NULL,NULL,NULL);
+INSERT INTO "bullets" VALUES(147,'art-run-munaofq1-9','canonical',NULL,'Built a phase-gated decision system — structured client intake, source-tagged evidence, and go/no-go criteria — to drive the engagement''s analysis.',147,'accepted','artifact',0.0,'2026-10-01 15:56:17',NULL,NULL,NULL);
+INSERT INTO "bullets" VALUES(148,'art-run-munaofq1-9','variant','longform','Designed and built the engagement''s decision system end-to-end: an intake form converting raw inputs into a structured client profile, source-tagged evidence tracking, pre-set go/no-go criteria, and a phase-gated scan list sequencing the full analysis.',252,'accepted','artifact',0.0,'2026-10-01 15:56:17',NULL,NULL,NULL);
+INSERT INTO "bullets" VALUES(149,'lim-operating-cadence','learned','gate2','Mapped stakeholder intervention and sign-off criteria for a startup client, defining who owned gates and approvals across the engagement.',137,'accepted','artifact',0.0,'2026-10-01 15:56:17',NULL,NULL,NULL);
+INSERT INTO "bullets" VALUES(150,'tekl-universal-poc','learned','gate2','Sourced and staffed 8 solution architects across 8 digital transformation workstreams on a 12–18 month renewable managed services engagement worth over $1M annually.',165,'accepted','artifact',0.0,'2026-10-01 15:56:17',NULL,NULL,NULL);
+INSERT INTO "bullets" VALUES(151,'lim-operating-cadence','learned','gate2','Built a weekly capacity forecast, RACI, and decision log for the operating cadence, tracking 3–4 concurrent streams through gated sprint cycles.',144,'accepted','artifact',0.0,'2026-10-01 15:56:17',NULL,NULL,NULL);
+INSERT INTO "bullets" VALUES(152,'art-run-muhbu38f-0','learned','edit','Built a custom CRM with GTM and prospecting connectors, automating weekly contact enrichment and account-research agents two-way synced to GitHub.',146,'accepted','artifact',0.0,'2026-10-01 15:56:17',NULL,NULL,NULL);
+INSERT INTO "bullets" VALUES(153,'art-run-muhbu38f-1','learned','edit','Diagnosed data-sync failures from null values and missing governance rules, then enforced sync constraints via 60 automated tests.',130,'accepted','artifact',0.0,'2026-10-01 15:56:17',NULL,NULL,NULL);
+INSERT INTO "bullets" VALUES(154,'lim-feasibility-roadmap','learned','edit','Reconciled founder''s four-pillar vision and three build memos into one staged roadmap: 12 recommendations, 4 stage gates, 8 board decisions.',140,'accepted','artifact',0.0,'2026-10-01 15:56:17',NULL,NULL,NULL);
+INSERT INTO "bullets" VALUES(155,'tekl-universal-poc','learned','gate2','Sourced and staffed 8 solution architects across 8 digital transformation workstreams on a 12–18 month renewable managed services engagement worth $1M annually.',160,'accepted','artifact',0.0,'2026-10-01 15:56:17',NULL,NULL,NULL);
 CREATE TABLE certifications (
   id INTEGER PRIMARY KEY, name TEXT NOT NULL, issuer TEXT, date TEXT, credential_id TEXT,
   status TEXT, source TEXT, tags TEXT
@@ -1262,6 +1313,22 @@ INSERT INTO "claim_confidence_history" VALUES(318,'eng:hvac:start','2026-09-28T0
 INSERT INTO "claim_confidence_history" VALUES(319,'eng:hvac:end','2026-09-28T03:12:00',1.0,'active',1,'1.0');
 INSERT INTO "claim_confidence_history" VALUES(320,'eng:hvac:commitment','2026-09-28T03:12:00',1.0,'active',1,'1.0');
 INSERT INTO "claim_confidence_history" VALUES(321,'eng:hvac:subtitle','2026-09-28T03:12:00',1.0,'active',1,'1.0');
+INSERT INTO "claim_confidence_history" VALUES(322,'ach:lim-feasibility-roadmap','2026-10-01T11:56:17',1.0,'active',10,'1.0');
+INSERT INTO "claim_confidence_history" VALUES(323,'ach:art-run-munaofq1-0','2026-10-01T11:56:17',1.0,'active',1,'1.0');
+INSERT INTO "claim_confidence_history" VALUES(324,'ach:art-run-munaofq1-1','2026-10-01T11:56:17',1.0,'active',1,'1.0');
+INSERT INTO "claim_confidence_history" VALUES(325,'ach:art-run-munaofq1-2','2026-10-01T11:56:17',1.0,'active',1,'1.0');
+INSERT INTO "claim_confidence_history" VALUES(326,'ach:art-run-munaofq1-3','2026-10-01T11:56:17',1.0,'active',1,'1.0');
+INSERT INTO "claim_confidence_history" VALUES(327,'ach:art-run-munaofq1-4','2026-10-01T11:56:17',1.0,'active',1,'1.0');
+INSERT INTO "claim_confidence_history" VALUES(328,'ach:art-run-munaofq1-5','2026-10-01T11:56:17',1.0,'active',1,'1.0');
+INSERT INTO "claim_confidence_history" VALUES(329,'ach:art-run-munaofq1-8','2026-10-01T11:56:17',1.0,'active',1,'1.0');
+INSERT INTO "claim_confidence_history" VALUES(330,'ach:art-run-munaofq1-9','2026-10-01T11:56:17',1.0,'active',1,'1.0');
+INSERT INTO "claim_confidence_history" VALUES(331,'tool:gong:name','2026-10-01T11:56:17',1.0,'active',1,'1.0');
+INSERT INTO "claim_confidence_history" VALUES(332,'tool:clay:name','2026-10-01T11:56:17',1.0,'active',1,'1.0');
+INSERT INTO "claim_confidence_history" VALUES(333,'tool:explorium-ai:name','2026-10-01T11:56:17',1.0,'active',1,'1.0');
+INSERT INTO "claim_confidence_history" VALUES(334,'tool:salesforce-dashboards:name','2026-10-01T11:56:17',1.0,'active',1,'1.0');
+INSERT INTO "claim_confidence_history" VALUES(335,'tool:demandbase:name','2026-10-01T11:56:17',1.0,'active',1,'1.0');
+INSERT INTO "claim_confidence_history" VALUES(336,'tool:salesforce-dashboards-native-components:name','2026-10-01T11:56:17',1.0,'active',1,'1.0');
+INSERT INTO "claim_confidence_history" VALUES(337,'eng:hvac:commitment','2026-10-01T11:56:17',1.0,'active',2,'1.0');
 CREATE TABLE claim_evidence (
   claim_id    TEXT NOT NULL REFERENCES claims(id),
   evidence_id TEXT NOT NULL REFERENCES evidence(id),
@@ -2333,6 +2400,7 @@ INSERT INTO "claim_evidence" VALUES('eng:healthcare:commitment','ev:S19_source_t
 INSERT INTO "claim_evidence" VALUES('eng:healthcare:subtitle','ev:S19_source_template:h12','supports');
 INSERT INTO "claim_evidence" VALUES('eng:hvac:client','ev:ans:run-muhfveal:0','supports');
 INSERT INTO "claim_evidence" VALUES('eng:hvac:client','ev:eng:run-mukn8dul:hvac','supports');
+INSERT INTO "claim_evidence" VALUES('eng:hvac:client','ev:eng:run-mulpf4ef:hvac','supports');
 INSERT INTO "claim_evidence" VALUES('eng:hvac:client','ev:stmt:2026-09-27:6','supports');
 INSERT INTO "claim_evidence" VALUES('contact:linkedin-profile:url','ev:S19_source_template:x0','supports');
 INSERT INTO "claim_evidence" VALUES('contact:github:url','ev:S19_source_template:x0','supports');
@@ -2535,6 +2603,11 @@ INSERT INTO "claim_evidence" VALUES('ach:lim-feasibility-roadmap','ev:R6_admarke
 INSERT INTO "claim_evidence" VALUES('ach:lim-feasibility-roadmap','ev:S17_liminal_summary:b6','supports');
 INSERT INTO "claim_evidence" VALUES('ach:lim-feasibility-roadmap','ev:S18_linkedin:b26','supports');
 INSERT INTO "claim_evidence" VALUES('ach:lim-feasibility-roadmap','ev:S19_source_template:b4','supports');
+INSERT INTO "claim_evidence" VALUES('ach:lim-feasibility-roadmap','ev:ans:run-munaofq1:0','supports');
+INSERT INTO "claim_evidence" VALUES('ach:lim-feasibility-roadmap','ev:ans:run-munaofq1:1','supports');
+INSERT INTO "claim_evidence" VALUES('ach:lim-feasibility-roadmap','ev:ans:run-munaofq1:2','supports');
+INSERT INTO "claim_evidence" VALUES('ach:lim-feasibility-roadmap','ev:ans:run-munaofq1:3','supports');
+INSERT INTO "claim_evidence" VALUES('ach:lim-feasibility-roadmap','ev:ans:run-munaofq1:4','supports');
 INSERT INTO "claim_evidence" VALUES('metric:lim-feasibility-roadmap:recommendations','ev:S17_liminal_summary:b6','supports');
 INSERT INTO "claim_evidence" VALUES('metric:lim-feasibility-roadmap:recommendations','ev:S19_source_template:b4','supports');
 INSERT INTO "claim_evidence" VALUES('metric:lim-feasibility-roadmap:stage-gates','ev:S17_liminal_summary:b6','supports');
@@ -2671,6 +2744,7 @@ INSERT INTO "claim_evidence" VALUES('ach:lim-operating-cadence','ev:R16_admarket
 INSERT INTO "claim_evidence" VALUES('ach:lim-operating-cadence','ev:S19_source_template:b3','supports');
 INSERT INTO "claim_evidence" VALUES('ach:lim-operating-cadence','ev:ans:run-muhfveal:4','supports');
 INSERT INTO "claim_evidence" VALUES('ach:lim-operating-cadence','ev:ans:run-mukn8dul:3','supports');
+INSERT INTO "claim_evidence" VALUES('ach:lim-operating-cadence','ev:ans:run-munaofq1:2','supports');
 INSERT INTO "claim_evidence" VALUES('ach:lim-readiness-assessment','ev:R15_versant_transformation:b14','supports');
 INSERT INTO "claim_evidence" VALUES('ach:lim-readiness-assessment','ev:S19_source_template:b2','supports');
 INSERT INTO "claim_evidence" VALUES('metric:lim-readiness-assessment:gaps-closed-into-plan','ev:R15_versant_transformation:b14','supports');
@@ -2735,6 +2809,7 @@ INSERT INTO "claim_evidence" VALUES('ach:tekl-universal-poc','ev:R9_knit_growth_
 INSERT INTO "claim_evidence" VALUES('ach:tekl-universal-poc','ev:S18_linkedin:b7','supports');
 INSERT INTO "claim_evidence" VALUES('ach:tekl-universal-poc','ev:S19_source_template:b13','supports');
 INSERT INTO "claim_evidence" VALUES('ach:tekl-universal-poc','ev:ans:run-muhghrt2:1','supports');
+INSERT INTO "claim_evidence" VALUES('ach:tekl-universal-poc','ev:ans:run-munaofq1:2','supports');
 INSERT INTO "claim_evidence" VALUES('ach:tekl-southern-gas-discovery','ev:R10_mri_simmons_audience:b6','supports');
 INSERT INTO "claim_evidence" VALUES('ach:tekl-southern-gas-discovery','ev:R11_magellan_measurement:b6','supports');
 INSERT INTO "claim_evidence" VALUES('ach:tekl-southern-gas-discovery','ev:R12_meridian_gtm:b6','supports');
@@ -3009,8 +3084,18 @@ INSERT INTO "claim_evidence" VALUES('ach:edu-capstone','ev:R5_luminance_commerci
 INSERT INTO "claim_evidence" VALUES('ach:edu-capstone','ev:R6_admarketplace_director:b21','supports');
 INSERT INTO "claim_evidence" VALUES('ach:edu-capstone','ev:R7_fox_weather_director:b17','supports');
 INSERT INTO "claim_evidence" VALUES('ach:art-run-muhbu38f-0','ev:ans:run-muhbu38f:0','supports');
+INSERT INTO "claim_evidence" VALUES('ach:art-run-muhbu38f-0','ev:ans:run-munaofq1:0','supports');
+INSERT INTO "claim_evidence" VALUES('ach:art-run-muhbu38f-0','ev:ans:run-munaofq1:1','supports');
+INSERT INTO "claim_evidence" VALUES('ach:art-run-muhbu38f-0','ev:ans:run-munaofq1:2','supports');
+INSERT INTO "claim_evidence" VALUES('ach:art-run-muhbu38f-0','ev:ans:run-munaofq1:3','supports');
+INSERT INTO "claim_evidence" VALUES('ach:art-run-muhbu38f-0','ev:ans:run-munaofq1:4','supports');
 INSERT INTO "claim_evidence" VALUES('ach:art-run-muhbu38f-0','ev:edit:run-muhbu38f:gate2-run-muhbu38f-0','supports');
 INSERT INTO "claim_evidence" VALUES('ach:art-run-muhbu38f-1','ev:ans:run-muhbu38f:1','supports');
+INSERT INTO "claim_evidence" VALUES('ach:art-run-muhbu38f-1','ev:ans:run-munaofq1:0','supports');
+INSERT INTO "claim_evidence" VALUES('ach:art-run-muhbu38f-1','ev:ans:run-munaofq1:1','supports');
+INSERT INTO "claim_evidence" VALUES('ach:art-run-muhbu38f-1','ev:ans:run-munaofq1:2','supports');
+INSERT INTO "claim_evidence" VALUES('ach:art-run-muhbu38f-1','ev:ans:run-munaofq1:3','supports');
+INSERT INTO "claim_evidence" VALUES('ach:art-run-muhbu38f-1','ev:ans:run-munaofq1:4','supports');
 INSERT INTO "claim_evidence" VALUES('ach:art-run-muhbu38f-2','ev:ans:run-muhbu38f:3','supports');
 INSERT INTO "claim_evidence" VALUES('ach:art-run-muhfveal-0','ev:S19_source_template:b1','supports');
 INSERT INTO "claim_evidence" VALUES('ach:art-run-muhfveal-0','ev:ans:run-muhfveal:0','supports');
@@ -3029,783 +3114,840 @@ INSERT INTO "claim_evidence" VALUES('ach:art-run-mukrbv3p-3','ev:ans:run-mukrbv3
 INSERT INTO "claim_evidence" VALUES('ach:art-run-mukrbv3p-4','ev:ans:run-mukrbv3p:3','supports');
 INSERT INTO "claim_evidence" VALUES('ach:art-run-mukrbv3p-5','ev:ans:run-mukrbv3p:3','supports');
 INSERT INTO "claim_evidence" VALUES('ach:art-run-mukrbv3p-6','ev:ans:run-mukrbv3p:3','supports');
+INSERT INTO "claim_evidence" VALUES('ach:art-run-munaofq1-0','ev:ans:run-munaofq1:0','supports');
+INSERT INTO "claim_evidence" VALUES('ach:art-run-munaofq1-1','ev:ans:run-munaofq1:0','supports');
+INSERT INTO "claim_evidence" VALUES('ach:art-run-munaofq1-2','ev:ans:run-munaofq1:0','supports');
+INSERT INTO "claim_evidence" VALUES('ach:art-run-munaofq1-3','ev:ans:run-munaofq1:1','supports');
+INSERT INTO "claim_evidence" VALUES('ach:art-run-munaofq1-4','ev:ans:run-munaofq1:1','supports');
+INSERT INTO "claim_evidence" VALUES('ach:art-run-munaofq1-5','ev:ans:run-munaofq1:1','supports');
+INSERT INTO "claim_evidence" VALUES('ach:art-run-munaofq1-8','ev:ans:run-munaofq1:3','supports');
+INSERT INTO "claim_evidence" VALUES('ach:art-run-munaofq1-9','ev:ans:run-munaofq1:3','supports');
 INSERT INTO "claim_evidence" VALUES('tagline:ai-strategy-workflow-automation-leader:text','ev:phrase:run-mukn8dul:ai-strategy-workflow-automation-leader','supports');
 INSERT INTO "claim_evidence" VALUES('tagline:advertising-analytics-market-intelligence-adviso:text','ev:phrase:run-mukrbv3p:advertising-analytics-market-intelligence-adviso','supports');
 INSERT INTO "claim_evidence" VALUES('tool:notion:name','ev:phrase:run-mukn8dul:notion','supports');
+INSERT INTO "claim_evidence" VALUES('tool:gong:name','ev:phrase:run-munaofq1:gong','supports');
+INSERT INTO "claim_evidence" VALUES('tool:clay:name','ev:phrase:run-munaofq1:clay','supports');
+INSERT INTO "claim_evidence" VALUES('tool:explorium-ai:name','ev:phrase:run-munaofq1:explorium-ai','supports');
+INSERT INTO "claim_evidence" VALUES('tool:salesforce-dashboards:name','ev:phrase:run-munaofq1:salesforce-dashboards','supports');
+INSERT INTO "claim_evidence" VALUES('tool:demandbase:name','ev:phrase:run-munaofq1:demandbase','supports');
+INSERT INTO "claim_evidence" VALUES('tool:salesforce-dashboards-native-components:name','ev:phrase:run-munaofq1:salesforce-dashboards-native-components','supports');
 INSERT INTO "claim_evidence" VALUES('eng:hvac:location','ev:eng:run-mukn8dul:hvac','supports');
+INSERT INTO "claim_evidence" VALUES('eng:hvac:location','ev:eng:run-mulpf4ef:hvac','supports');
 INSERT INTO "claim_evidence" VALUES('eng:hvac:start','ev:eng:run-mukn8dul:hvac','supports');
+INSERT INTO "claim_evidence" VALUES('eng:hvac:start','ev:eng:run-mulpf4ef:hvac','supports');
 INSERT INTO "claim_evidence" VALUES('eng:hvac:end','ev:eng:run-mukn8dul:hvac','supports');
+INSERT INTO "claim_evidence" VALUES('eng:hvac:end','ev:eng:run-mulpf4ef:hvac','supports');
 INSERT INTO "claim_evidence" VALUES('eng:hvac:commitment','ev:eng:run-mukn8dul:hvac','supports');
+INSERT INTO "claim_evidence" VALUES('eng:hvac:commitment','ev:eng:run-mulpf4ef:hvac','supports');
 INSERT INTO "claim_evidence" VALUES('eng:hvac:subtitle','ev:eng:run-mukn8dul:hvac','supports');
+INSERT INTO "claim_evidence" VALUES('eng:hvac:subtitle','ev:eng:run-mulpf4ef:hvac','supports');
 CREATE TABLE claim_history (                 -- a claim keeps its id; its earlier states are kept here
   id INTEGER PRIMARY KEY, claim_id TEXT NOT NULL, changed_at TEXT DEFAULT (datetime('now')),
   value TEXT, text TEXT, status TEXT, confidence REAL, why TEXT
 );
+INSERT INTO "claim_history" VALUES(1,'eng:hvac:commitment','2026-10-01T11:56:17','Part Time','HVAC Services Firm (Confidential): commitment = Part Time','active',1.0,'ingest: curation changed');
 CREATE TABLE claim_relations (               -- to_claim may also be a tag id (rel = tagged / maps_to)
   from_claim TEXT NOT NULL, to_claim TEXT NOT NULL, rel TEXT NOT NULL,   -- enums.relation
   confidence REAL DEFAULT 1.0, note TEXT, created_at TEXT DEFAULT (datetime('now')),
   PRIMARY KEY (from_claim, to_claim, rel)
 );
-INSERT INTO "claim_relations" VALUES('role:liminal:title','role:liminal@2026-09-25:title','supersedes',1.0,'replaced by the source template title on 2026-09-27','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:sales-professional-end-to-end-sales:text','ach:psp-full-cycle-ownership','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:sales-professional-end-to-end-sales:text','ach:psp-closed-deals','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:sales-professional-end-to-end-sales:text','ach:dd-200-quota','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:sales-professional-end-to-end-sales:text','ach:tekr-wayfair-disney','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:sales-professional-end-to-end-sales:text','ach:psp-125-leads','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:marketing-advertising-product-services-sales-gtm:text','ach:lim-gtm-ownership','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:marketing-advertising-product-services-sales-gtm:text','ach:lim-claude-code-tracker','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:marketing-advertising-product-services-sales-gtm:text','ach:art-run-muhghrt2-3','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:marketing-advertising-product-services-sales-gtm:text','ach:art-run-muhbu38f-2','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:marketing-advertising-product-services-sales-gtm:text','ach:art-run-muhbu38f-1','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:business-strategy:text','ach:art-run-muhfveal-0','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:business-strategy:text','ach:lim-feasibility-roadmap','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:business-strategy:text','ach:lim-market-sizing-exit-paths','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:business-strategy:text','ach:lim-thought-partner','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:business-strategy:text','ach:lim-competitive-venture-odds','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:gtm-and-sales-marketing-execution-specialist:text','ach:lim-gtm-ownership','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:gtm-and-sales-marketing-execution-specialist:text','ach:lim-distribution-pivot','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:gtm-and-sales-marketing-execution-specialist:text','ach:dd-territory-proposal','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:gtm-and-sales-marketing-execution-specialist:text','ach:art-run-muhghrt2-3','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:gtm-and-sales-marketing-execution-specialist:text','ach:tekl-me-vertical-gtm','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:systems-thinker:text','ach:lim-operating-cadence','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:systems-thinker:text','ach:tekl-verticalization-lift','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:systems-thinker:text','ach:lim-scenario-planning','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:systems-thinker:text','ach:art-run-muhghrt2-3','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:systems-thinker:text','ach:art-run-muhfveal-0','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:process-engineer:text','ach:tekl-verticalization-lift','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:process-engineer:text','ach:lim-operating-cadence','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:process-engineer:text','ach:art-run-muhghrt2-3','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:process-engineer:text','ach:art-run-muhbu38f-1','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:process-engineer:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:ai-adoption-enthusiast:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:ai-adoption-enthusiast:text','ach:lim-claude-code-tracker','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:ai-adoption-enthusiast:text','ach:tekr-nike','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:ai-adoption-enthusiast:text','ach:lim-readiness-assessment','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tagline:ai-adoption-enthusiast:text','ach:art-run-muhbu38f-1','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:go-to-market-strategy:text','ach:lim-gtm-ownership','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:go-to-market-strategy:text','ach:art-run-muhghrt2-3','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:go-to-market-strategy:text','ach:tekl-me-vertical-gtm','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:go-to-market-strategy:text','ach:lim-distribution-pivot','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:go-to-market-strategy:text','ach:dd-territory-proposal','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:market-segmentation-positioning:text','ach:lim-gtm-ownership','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:market-segmentation-positioning:text','ach:lim-customer-discovery-sprint','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:pricing-channel-strategy:text','ach:lim-gtm-ownership','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:pricing-channel-strategy:text','ach:lim-distribution-pivot','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:pricing-channel-strategy:text','ach:art-run-muhbu38f-2','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:pricing-channel-strategy:text','ach:lim-unit-economic-gates','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:new-business-development:text','ach:tekr-wayfair-disney','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:new-business-development:text','ach:psp-closed-deals','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:new-business-development:text','ach:psp-full-cycle-ownership','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:new-business-development:text','ach:tekr-750k','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:new-business-development:text','ach:psp-funding-source-qualification','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:full-cycle-enterprise-sales-prospect-to-close:text','ach:psp-full-cycle-ownership','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:full-cycle-enterprise-sales-prospect-to-close:text','ach:psp-closed-deals','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:full-cycle-enterprise-sales-prospect-to-close:text','ach:psp-net-revenue','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:full-cycle-enterprise-sales-prospect-to-close:text','ach:tekl-universal-poc','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:full-cycle-enterprise-sales-prospect-to-close:text','ach:psp-nine-stakeholder-deal','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:lead-generation-prospecting:text','ach:psp-125-leads','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:lead-generation-prospecting:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:lead-generation-prospecting:text','ach:psp-decision-makers-ai','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:lead-generation-prospecting:text','ach:dd-200-quota','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:consultative-diagnostic-discovery:text','ach:tekl-southern-gas-discovery','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:consultative-diagnostic-discovery:text','ach:psp-pipeline-discovery','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:consultative-diagnostic-discovery:text','ach:nyl-needs-assessment','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:consultative-diagnostic-discovery:text','ach:tekl-fortune500-discovery','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:consultative-diagnostic-discovery:text','ach:psp-funding-source-qualification','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:contract-proposal-development:text','ach:psp-nine-stakeholder-deal','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:contract-proposal-development:text','ach:lim-engagement-terms','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:contract-proposal-development:text','ach:art-run-muhfveal-1','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:contract-proposal-development:text','ach:psp-board-memo','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:contract-proposal-development:text','ach:psp-school-proposal','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:complex-multi-stakeholder-negotiation:text','ach:psp-nine-stakeholder-deal','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:complex-multi-stakeholder-negotiation:text','ach:lim-engagement-terms','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:complex-multi-stakeholder-negotiation:text','ach:tekl-fortune500-discovery','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:complex-multi-stakeholder-negotiation:text','ach:psp-full-cycle-ownership','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:complex-multi-stakeholder-negotiation:text','ach:psp-board-memo','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:executive-board-level-communication:text','ach:lim-thought-partner','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:executive-board-level-communication:text','ach:lim-feasibility-roadmap','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:executive-board-level-communication:text','ach:tekl-fortune500-discovery','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:executive-board-level-communication:text','ach:psp-board-memo','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:executive-board-level-communication:text','ach:lim-collateral','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:revenue-forecasting-kpi-management:text','ach:tekr-750k','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:revenue-forecasting-kpi-management:text','ach:psp-net-revenue','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:revenue-forecasting-kpi-management:text','ach:dd-200-quota','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:revenue-forecasting-kpi-management:text','ach:art-run-muhghrt2-3','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:revenue-forecasting-kpi-management:text','ach:tekr-vertex','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:pipeline-development-crm-discipline:text','ach:tekl-verticalization-lift','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:pipeline-development-crm-discipline:text','ach:psp-125-leads','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:pipeline-development-crm-discipline:text','ach:psp-pipeline-discovery','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:pipeline-development-crm-discipline:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:pipeline-development-crm-discipline:text','ach:tekl-coaching','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:strategic-account-planning-expansion:text','ach:tekr-vertex','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:strategic-account-planning-expansion:text','ach:psp-decision-makers-ai','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:strategic-account-planning-expansion:text','ach:tekl-universal-poc','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:strategic-account-planning-expansion:text','ach:psp-125-leads','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:media-sponsorship-sales:text','ach:psp-closed-deals','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:media-sponsorship-sales:text','ach:tekl-disney-enablement','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:media-sponsorship-sales:text','ach:psp-verticals','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:media-sponsorship-sales:text','ach:psp-net-revenue','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:media-sponsorship-sales:text','ach:psp-cpm-business-case','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:cpm-cpa-roi-business-cases:text','ach:psp-cpm-business-case','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:cpm-cpa-roi-business-cases:text','ach:psp-school-proposal','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:cpm-cpa-roi-business-cases:text','ach:tekl-me-vertical-gtm','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:ad-tech-fluency-cdp-clean-rooms-identity-graphs-:text','ach:tekl-me-vertical-gtm','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:ad-tech-fluency-cdp-clean-rooms-identity-graphs-:text','ach:tekl-disney-enablement','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:funding-source-diagnostics-co-op-mdf-sponsorship:text','ach:psp-nonprofit-reframe','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:funding-source-diagnostics-co-op-mdf-sponsorship:text','ach:psp-funding-source-qualification','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:buy-vs-build-competitive-analysis:text','ach:lim-competitive-venture-odds','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:buy-vs-build-competitive-analysis:text','ach:lim-build-vs-buy','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:buy-vs-build-competitive-analysis:text','ach:art-run-muhghrt2-2','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:buy-vs-build-competitive-analysis:text','ach:art-run-muhfveal-0','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:buy-vs-build-competitive-analysis:text','ach:lim-staffing-restructure','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:unit-economics-revenue-modeling:text','ach:lim-unit-economics-benchmarks','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:unit-economics-revenue-modeling:text','ach:lim-unit-economic-gates','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:unit-economics-revenue-modeling:text','ach:lim-distribution-pivot','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:unit-economics-revenue-modeling:text','ach:lim-staffing-restructure','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:unit-economics-revenue-modeling:text','ach:lim-non-dilutive-capital','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:market-sizing-scenario-planning:text','ach:lim-market-sizing-exit-paths','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:market-sizing-scenario-planning:text','ach:lim-scenario-planning','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:market-sizing-scenario-planning:text','ach:art-run-muhfveal-0','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:market-sizing-scenario-planning:text','ach:lim-competitive-venture-odds','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:market-sizing-scenario-planning:text','ach:lim-thought-partner','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:sales-team-coaching-performance-management:text','ach:tekl-coaching','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:hiring-onboarding-seller-ramp:text','ach:tekr-recruiting-talent','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:business-process-improvement:text','ach:tekl-verticalization-lift','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:business-process-improvement:text','ach:art-run-muhbu38f-1','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:business-process-improvement:text','ach:lim-operating-cadence','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:business-process-improvement:text','ach:dd-territory-proposal','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:business-process-improvement:text','ach:tekl-me-vertical-gtm','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:operating-cadence-design-raci-decision-logs:text','ach:lim-operating-cadence','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:operating-cadence-design-raci-decision-logs:text','ach:art-run-muhghrt2-3','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:change-readiness-stakeholder-alignment:text','ach:lim-readiness-assessment','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:change-readiness-stakeholder-alignment:text','ach:lim-operating-cadence','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:change-readiness-stakeholder-alignment:text','ach:lim-engagement-terms','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:primary-research-customer-discovery:text','ach:lim-customer-discovery-sprint','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:primary-research-customer-discovery:text','ach:art-run-muhfveal-1','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:primary-research-customer-discovery:text','ach:lim-distribution-pivot','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:primary-research-customer-discovery:text','ach:lim-unit-economic-gates','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:ai-data-platform-solution-selling:text','ach:tekl-solution-scoping','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:ai-data-platform-solution-selling:text','ach:tekl-southern-gas-discovery','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:ai-data-platform-solution-selling:text','ach:tekr-nike','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:ai-data-platform-solution-selling:text','ach:art-run-muhbu38f-1','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:prompt-engineering-ai-enabled-workflow:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:prompt-engineering-ai-enabled-workflow:text','ach:lim-claude-code-tracker','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:prompt-engineering-ai-enabled-workflow:text','ach:art-run-muhbu38f-1','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:prompt-engineering-ai-enabled-workflow:text','ach:psp-decision-makers-ai','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:strategic-partnerships-channel:text','ach:art-run-muhghrt2-2','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:strategic-partnerships-channel:text','ach:art-run-muhfveal-2','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:strategic-partnerships-channel:text','ach:lim-distribution-pivot','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:strategic-partnerships-channel:text','ach:lim-unit-economic-gates','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:strategic-partnerships-channel:text','ach:tekr-nike','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:data-rights-partner-terms:text','ach:lim-data-rights','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:data-rights-partner-terms:text','ach:art-run-muhghrt2-2','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:data-rights-partner-terms:text','ach:lim-entity-ip-structure','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:board-trustee-engagement:text','ach:psp-board-memo','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:prospect-identification-moves-management:text','ach:psp-school-proposal','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:prospect-identification-moves-management:text','ach:psp-nonprofit-reframe','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:prospect-identification-moves-management:text','ach:nyl-needs-assessment','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:business-analysis-advisory:text','ach:lim-feasibility-roadmap','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:business-analysis-advisory:text','ach:lim-thought-partner','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:business-analysis-advisory:text','ach:art-run-muhfveal-0','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:business-analysis-advisory:text','ach:lim-build-vs-buy','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:business-analysis-advisory:text','ach:lim-staffing-restructure','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:ai-adoption-strategies-for-sales-enablement-and-:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:ai-adoption-strategies-for-sales-enablement-and-:text','ach:lim-claude-code-tracker','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:ai-adoption-strategies-for-sales-enablement-and-:text','ach:tekl-disney-enablement','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:ai-adoption-strategies-for-sales-enablement-and-:text','ach:lim-readiness-assessment','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('expertise:ai-adoption-strategies-for-sales-enablement-and-:text','ach:lim-collateral','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:gtm-strategy:text','ach:lim-gtm-ownership','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:gtm-strategy:text','ach:art-run-muhghrt2-3','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:gtm-strategy:text','ach:tekl-me-vertical-gtm','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:gtm-strategy:text','ach:lim-distribution-pivot','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:gtm-strategy:text','ach:dd-territory-proposal','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:market-segmentation:text','ach:lim-gtm-ownership','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:market-segmentation:text','ach:lim-customer-discovery-sprint','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:product-positioning-messaging:text','ach:lim-gtm-ownership','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:value-proposition-development:text','ach:art-run-muhfveal-1','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:value-proposition-development:text','ach:psp-board-memo','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:value-proposition-development:text','ach:lim-gtm-ownership','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:value-proposition-development:text','ach:psp-school-proposal','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:value-proposition-development:text','ach:psp-cpm-business-case','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:customer-discovery:text','ach:tekl-southern-gas-discovery','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:customer-discovery:text','ach:psp-pipeline-discovery','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:customer-discovery:text','ach:nyl-needs-assessment','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:customer-discovery:text','ach:lim-customer-discovery-sprint','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:customer-discovery:text','ach:art-run-muhfveal-1','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:pipeline-management:text','ach:psp-pipeline-discovery','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:pipeline-management:text','ach:tekl-verticalization-lift','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:pipeline-management:text','ach:tekl-coaching','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:pipeline-management:text','ach:psp-125-leads','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:revenue-forecasting-kpi-tracking:text','ach:tekr-750k','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:revenue-forecasting-kpi-tracking:text','ach:psp-net-revenue','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:revenue-forecasting-kpi-tracking:text','ach:dd-200-quota','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:revenue-forecasting-kpi-tracking:text','ach:art-run-muhghrt2-3','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:revenue-forecasting-kpi-tracking:text','ach:tekr-vertex','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:contract-negotiation:text','ach:psp-nine-stakeholder-deal','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:contract-negotiation:text','ach:lim-engagement-terms','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:contract-negotiation:text','ach:psp-full-cycle-ownership','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:proposal-development:text','ach:art-run-muhfveal-1','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:proposal-development:text','ach:psp-board-memo','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:proposal-development:text','ach:psp-school-proposal','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:proposal-development:text','ach:psp-cpm-business-case','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:proposal-development:text','ach:psp-pipeline-discovery','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:solution-selling:text','ach:tekl-southern-gas-discovery','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:solution-selling:text','ach:psp-pipeline-discovery','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:solution-selling:text','ach:psp-full-cycle-ownership','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:solution-selling:text','ach:nyl-needs-assessment','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:solution-selling:text','ach:tekl-fortune500-discovery','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:account-mapping:text','ach:tekr-vertex','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:account-mapping:text','ach:psp-nine-stakeholder-deal','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:account-mapping:text','ach:psp-decision-makers-ai','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:account-mapping:text','ach:psp-125-leads','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:account-mapping:text','ach:tekl-fortune500-discovery','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:client-retention:text','ach:tekr-vertex','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:client-retention:text','ach:psp-decision-makers-ai','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:client-retention:text','ach:massdot-adoption','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:client-retention:text','ach:tekl-universal-poc','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:client-retention:text','ach:psp-125-leads','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:market-landscape-analysis:text','ach:lim-market-sizing-exit-paths','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:market-landscape-analysis:text','ach:art-run-muhfveal-0','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:market-landscape-analysis:text','ach:lim-competitive-venture-odds','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:competitive-intelligence:text','ach:lim-competitive-venture-odds','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:competitive-intelligence:text','ach:art-run-muhfveal-0','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:competitive-intelligence:text','ach:lim-market-sizing-exit-paths','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:competitive-intelligence:text','ach:lim-collateral','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:barriers-to-entry-assessment:text','ach:art-run-muhfveal-0','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:barriers-to-entry-assessment:text','ach:lim-feasibility-roadmap','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:barriers-to-entry-assessment:text','ach:lim-competitive-venture-odds','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:barriers-to-entry-assessment:text','ach:lim-build-vs-buy','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:barriers-to-entry-assessment:text','ach:lim-market-sizing-exit-paths','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:decision-tree-modeling:text','ach:lim-market-sizing-exit-paths','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:decision-tree-modeling:text','ach:lim-scenario-planning','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:decision-tree-modeling:text','ach:art-run-muhfveal-0','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:decision-tree-modeling:text','ach:lim-competitive-venture-odds','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:decision-tree-modeling:text','ach:lim-thought-partner','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:financial-forecasting-p-l:text','ach:lim-unit-economics-benchmarks','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:financial-forecasting-p-l:text','ach:art-run-muhghrt2-3','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:financial-forecasting-p-l:text','ach:lim-non-dilutive-capital','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:financial-forecasting-p-l:text','ach:lim-market-sizing-exit-paths','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:financial-forecasting-p-l:text','ach:lim-unit-economic-gates','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:unit-economics-cac-payback-churn-ttfv:text','ach:lim-unit-economic-gates','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:unit-economics-cac-payback-churn-ttfv:text','ach:lim-distribution-pivot','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:unit-economics-cac-payback-churn-ttfv:text','ach:lim-unit-economics-benchmarks','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:unit-economics-cac-payback-churn-ttfv:text','ach:lim-staffing-restructure','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:unit-economics-cac-payback-churn-ttfv:text','ach:lim-build-vs-buy','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:scenario-planning:text','ach:lim-scenario-planning','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:scenario-planning:text','ach:art-run-muhfveal-0','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:scenario-planning:text','ach:lim-market-sizing-exit-paths','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:scenario-planning:text','ach:lim-competitive-venture-odds','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:scenario-planning:text','ach:lim-thought-partner','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:business-process-improvement:text','ach:tekl-verticalization-lift','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:business-process-improvement:text','ach:art-run-muhbu38f-1','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:business-process-improvement:text','ach:lim-operating-cadence','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:business-process-improvement:text','ach:dd-territory-proposal','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:research-analysis:business-process-improvement:text','ach:tekl-me-vertical-gtm','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:claude-opus-5-sonnet-5-fable-5:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:claude-opus-5-sonnet-5-fable-5:text','ach:psp-decision-makers-ai','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:claude-opus-5-sonnet-5-fable-5:text','ach:lim-claude-code-tracker','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:claude-code:text','ach:lim-claude-code-tracker','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:claude-code:text','ach:art-run-muhbu38f-1','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:claude-code:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:openai-chatgpt:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:openai-chatgpt:text','ach:psp-decision-makers-ai','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:openai-chatgpt:text','ach:lim-claude-code-tracker','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:microsoft-copilot:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:microsoft-copilot:text','ach:psp-decision-makers-ai','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:microsoft-copilot:text','ach:lim-claude-code-tracker','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:prompt-engineering:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:prompt-engineering:text','ach:psp-decision-makers-ai','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:prompt-engineering:text','ach:lim-claude-code-tracker','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:genai-machine-learning:text','ach:tekr-nike','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:genai-machine-learning:text','ach:tekl-solution-scoping','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:genai-machine-learning:text','ach:tekl-southern-gas-discovery','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:ai-governance-output-verification:text','ach:art-run-muhbu38f-1','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:ai-governance-output-verification:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:ai-governance-output-verification:text','ach:psp-decision-makers-ai','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:ai-governance-output-verification:text','ach:lim-claude-code-tracker','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:ai-governance-output-verification:text','ach:lim-scenario-planning','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:data-analytics:text','ach:tekl-solution-scoping','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:data-analytics:text','ach:art-run-muhbu38f-1','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:data-analytics:text','ach:tekl-southern-gas-discovery','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:tableau:text','ach:tekl-solution-scoping','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:tableau:text','ach:art-run-muhbu38f-1','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:ai-data:tableau:text','ach:tekl-southern-gas-discovery','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:tools-platforms:salesforce-crm:text','ach:tekl-verticalization-lift','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:tools-platforms:salesforce-crm:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:tools-platforms:salesforce-crm:text','ach:psp-125-leads','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:tools-platforms:zoominfo:text','ach:psp-125-leads','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:tools-platforms:zoominfo:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:tools-platforms:zoominfo:text','ach:psp-decision-makers-ai','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:tools-platforms:zoominfo:text','ach:dd-200-quota','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:tools-platforms:linkedin-sales-navigator:text','ach:psp-125-leads','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:tools-platforms:linkedin-sales-navigator:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:tools-platforms:linkedin-sales-navigator:text','ach:psp-decision-makers-ai','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:tools-platforms:linkedin-sales-navigator:text','ach:dd-200-quota','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:tools-platforms:microsoft-excel-office-suite:text','ach:lim-unit-economics-benchmarks','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:tools-platforms:microsoft-excel-office-suite:text','ach:lim-non-dilutive-capital','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:tools-platforms:microsoft-excel-office-suite:text','ach:lim-market-sizing-exit-paths','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:tools-platforms:miro:text','ach:tekl-disney-enablement','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:tools-platforms:miro:text','ach:lim-collateral','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:tools-platforms:trello:text','ach:lim-operating-cadence','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:tools-platforms:trello:text','ach:art-run-muhghrt2-3','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:tools-platforms:canva:text','ach:lim-collateral','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:tools-platforms:canva:text','ach:yri-marketing','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:tools-platforms:canva:text','ach:tekl-disney-enablement','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:funding-commercial-mechanics:restricted-tax-advantaged-funding-mechanisms-co-:text','ach:psp-nonprofit-reframe','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:funding-commercial-mechanics:restricted-tax-advantaged-funding-mechanisms-co-:text','ach:psp-funding-source-qualification','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:funding-commercial-mechanics:non-dilutive-federal-grant-strategy-sbir:text','ach:lim-non-dilutive-capital','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:funding-commercial-mechanics:non-dilutive-federal-grant-strategy-sbir:text','ach:lim-competitive-venture-odds','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:funding-commercial-mechanics:non-dilutive-federal-grant-strategy-sbir:text','ach:lim-unit-economics-benchmarks','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:funding-commercial-mechanics:managed-services-rfp-response:text','ach:art-run-muhbu38f-2','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:funding-commercial-mechanics:managed-services-rfp-response:text','ach:tekl-universal-poc','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:funding-commercial-mechanics:managed-services-rfp-response:text','ach:tekr-wayfair-disney','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:funding-commercial-mechanics:managed-services-rfp-response:text','ach:tekr-nike','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:funding-commercial-mechanics:managed-services-rfp-response:text','ach:tekr-750k','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('core:funding-commercial-mechanics:board-trustee-engagement:text','ach:psp-board-memo','grounded_in',0.6,'tag overlap','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-closed-deals','role:psp','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:psp-closed-deals:signed-deals','ach:psp-closed-deals','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:psp-closed-deals:net-new-accounts','ach:psp-closed-deals','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-net-revenue','role:psp','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:psp-net-revenue:net-revenue-first-4-months','ach:psp-net-revenue','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-funding-source-qualification','role:psp','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:psp-funding-source-qualification:verticals-applied','ach:psp-funding-source-qualification','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-pipeline-discovery','role:psp','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:psp-pipeline-discovery:active-pipeline','ach:psp-pipeline-discovery','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-125-leads','role:psp','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:psp-125-leads:qualified-leads-per-week','ach:psp-125-leads','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-decision-makers-ai','role:psp','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-full-cycle-ownership','role:psp','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-cpm-business-case','role:psp','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:psp-cpm-business-case:blended-cpm','ach:psp-cpm-business-case','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:psp-cpm-business-case:combined-reach','ach:psp-cpm-business-case','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:psp-cpm-business-case:placement-price','ach:psp-cpm-business-case','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:psp-cpm-business-case:category-cpa-benchmark','ach:psp-cpm-business-case','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-nine-stakeholder-deal','role:psp','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:psp-nine-stakeholder-deal:budget-owners','ach:psp-nine-stakeholder-deal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-board-memo','role:psp','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:psp-board-memo:ask','ach:psp-board-memo','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:psp-board-memo:member-businesses','ach:psp-board-memo','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:psp-board-memo:readership','ach:psp-board-memo','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-school-proposal','role:psp','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:psp-school-proposal:brand-recall','ach:psp-school-proposal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:psp-school-proposal:cpm','ach:psp-school-proposal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-nonprofit-reframe','role:psp','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:psp-nonprofit-reframe:verticals','ach:psp-nonprofit-reframe','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-verticals','role:psp','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-thought-partner','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-build-vs-buy','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:lim-build-vs-buy:build-avoided','ach:lim-build-vs-buy','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:lim-build-vs-buy:recommended-path','ach:lim-build-vs-buy','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-staffing-restructure','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:lim-staffing-restructure:annual-cost-avoided','ach:lim-staffing-restructure','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:lim-staffing-restructure:annual-cost-avoided','ach:lim-staffing-restructure','grounded_in',0.8,'$946K/year proposed minus the $200–260K/year model','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:lim-staffing-restructure:cost-reduction','ach:lim-staffing-restructure','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-feasibility-roadmap','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:lim-feasibility-roadmap:recommendations','ach:lim-feasibility-roadmap','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:lim-feasibility-roadmap:stage-gates','ach:lim-feasibility-roadmap','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-competitive-venture-odds','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:lim-competitive-venture-odds:competitors-analyzed','ach:lim-competitive-venture-odds','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:lim-competitive-venture-odds:recommended-raise','ach:lim-competitive-venture-odds','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-unit-economics-benchmarks','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-data-rights','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-market-sizing-exit-paths','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:lim-market-sizing-exit-paths:category-size-2025','ach:lim-market-sizing-exit-paths','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:lim-market-sizing-exit-paths:category-size-2035','ach:lim-market-sizing-exit-paths','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:lim-market-sizing-exit-paths:cagr','ach:lim-market-sizing-exit-paths','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-gtm-ownership','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:lim-gtm-ownership:pricing-tiers','ach:lim-gtm-ownership','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-unit-economic-gates','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:lim-unit-economic-gates:blended-cac-cap','ach:lim-unit-economic-gates','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:lim-unit-economic-gates:payback-cap','ach:lim-unit-economic-gates','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:lim-unit-economic-gates:monthly-churn-cap','ach:lim-unit-economic-gates','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:lim-unit-economic-gates:ttfv-cap','ach:lim-unit-economic-gates','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-distribution-pivot','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:lim-distribution-pivot:cac-payback-modeled','ach:lim-distribution-pivot','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-customer-discovery-sprint','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:lim-customer-discovery-sprint:interviews','ach:lim-customer-discovery-sprint','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:lim-customer-discovery-sprint:account-universe','ach:lim-customer-discovery-sprint','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-engagement-terms','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:lim-engagement-terms:scope-reduction','ach:lim-engagement-terms','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:lim-engagement-terms:scope-reduction','ach:lim-engagement-terms','grounded_in',0.8,'320 hours cut to 166 hours','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-collateral','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:lim-collateral:round-table-documents','ach:lim-collateral','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-operating-cadence','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-readiness-assessment','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:lim-readiness-assessment:gaps-closed-into-plan','ach:lim-readiness-assessment','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-entity-ip-structure','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-claude-code-tracker','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:lim-claude-code-tracker:automated-tests','ach:lim-claude-code-tracker','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-non-dilutive-capital','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:lim-non-dilutive-capital:non-dilutive-route','ach:lim-non-dilutive-capital','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-scenario-planning','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-coaching','role:tek_lead','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:tekl-coaching:practice-size','ach:tekl-coaching','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:tekl-coaching:direct-reports','ach:tekl-coaching','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-universal-poc','role:tek_lead','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:tekl-universal-poc:expansion-value','ach:tekl-universal-poc','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:tekl-universal-poc:expansion-value','ach:tekl-universal-poc','grounded_in',0.8,'stated as multi-million-dollar; 2,000,000 is the floor used for scoring only','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-southern-gas-discovery','role:tek_lead','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-solution-scoping','role:tek_lead','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-me-vertical-gtm','role:tek_lead','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-verticalization-lift','role:tek_lead','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:tekl-verticalization-lift:lead-to-opp-conversion','ach:tekl-verticalization-lift','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:tekl-verticalization-lift:crm-field-completion','ach:tekl-verticalization-lift','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-disney-enablement','role:tek_lead','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-fortune500-discovery','role:tek_lead','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekr-750k','role:tek_recruiter','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:tekr-750k:annual-revenue','ach:tekr-750k','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekr-vertex','role:tek_recruiter','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:tekr-vertex:share-of-account-revenue','ach:tekr-vertex','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:tekr-vertex:new-groups-opened','ach:tekr-vertex','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekr-wayfair-disney','role:tek_recruiter','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:tekr-wayfair-disney:net-new-enterprise-logos','ach:tekr-wayfair-disney','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:tekr-wayfair-disney:net-new-enterprise-logos','ach:tekr-wayfair-disney','grounded_in',0.8,'Wayfair and Disney counted','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekr-nike','role:tek_recruiter','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekr-recruiting-talent','role:tek_recruiter','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:tekr-recruiting-talent:years-recruiting','ach:tekr-recruiting-talent','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:dd-territory-proposal','role:demanddrive','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:dd-territory-proposal:launch-growth','ach:dd-territory-proposal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:dd-200-quota','role:demanddrive','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('metric:dd-200-quota:first-month-quota-attainment','ach:dd-200-quota','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:nyl-referral-book','role:nyl','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:nyl-needs-assessment','role:nyl','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:yri-marketing','role:yri','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:massdot-adoption','role:massdot','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:edu-capstone','role:education','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhbu38f-0','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhbu38f-1','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhbu38f-2','role:tek_lead','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhfveal-0','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhfveal-1','role:demanddrive','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhfveal-2','role:tek_lead','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhghrt2-2','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhghrt2-3','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-0','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-0','eng:hvac','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-1','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-2','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-4','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-5','role:liminal','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-1','role:psp','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-2','role:psp','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-3','role:tek_lead','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-4','role:psp','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-5','role:tek_lead','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-6','role:tek_recruiter','part_of',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-closed-deals','closing','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-closed-deals','new-business','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-closed-deals','media-ad-sales','tagged',0.9,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-closed-deals','sponsorship','tagged',0.8,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-closed-deals','sports-media','tagged',0.8,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-closed-deals','quota-attainment','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-net-revenue','quota-attainment','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-net-revenue','closing','tagged',0.8,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-net-revenue','media-ad-sales','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-funding-source-qualification','qualification','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-funding-source-qualification','funding-source-diagnostics','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-funding-source-qualification','discovery','tagged',0.7,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-funding-source-qualification','new-business','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-funding-source-qualification','media-ad-sales','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-pipeline-discovery','pipeline-management','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-pipeline-discovery','discovery','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-pipeline-discovery','proposal-development','tagged',0.7,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-pipeline-discovery','stakeholder-alignment','tagged',0.4,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-125-leads','prospecting','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-125-leads','account-management','tagged',0.7,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-125-leads','crm-discipline','tagged',0.7,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-125-leads','pipeline-management','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-125-leads','demand-generation','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-decision-makers-ai','account-management','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-decision-makers-ai','prospecting','tagged',0.8,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-decision-makers-ai','ai-in-workflow','tagged',0.9,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-decision-makers-ai','executive-selling','tagged',0.4,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-full-cycle-ownership','full-cycle-sales','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-full-cycle-ownership','new-business','tagged',0.9,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-full-cycle-ownership','closing','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-full-cycle-ownership','negotiation','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-full-cycle-ownership','media-ad-sales','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-cpm-business-case','cpm-cpa-modeling','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-cpm-business-case','audience-measurement','tagged',0.9,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-cpm-business-case','proposal-development','tagged',0.8,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-cpm-business-case','cross-platform','tagged',0.7,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-cpm-business-case','media-ad-sales','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-nine-stakeholder-deal','multi-stakeholder-selling','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-nine-stakeholder-deal','negotiation','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-nine-stakeholder-deal','closing','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-nine-stakeholder-deal','unit-economics','tagged',0.4,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-nine-stakeholder-deal','sponsorship','tagged',0.4,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-board-memo','executive-communication','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-board-memo','proposal-development','tagged',0.9,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-board-memo','board-trustee-engagement','tagged',0.9,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-board-memo','multi-stakeholder-selling','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-board-memo','institutional-partnerships','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-school-proposal','institutional-partnerships','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-school-proposal','donor-relations','tagged',0.8,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-school-proposal','proposal-development','tagged',0.8,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-school-proposal','cpm-cpa-modeling','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-nonprofit-reframe','funding-source-diagnostics','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-nonprofit-reframe','donor-relations','tagged',0.8,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-nonprofit-reframe','discovery','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-nonprofit-reframe','vertical-gtm','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-verticals','vertical-gtm','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-verticals','media-ad-sales','tagged',0.7,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-verticals','qualification','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:psp-verticals','new-business','tagged',0.4,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-thought-partner','board-advisory','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-thought-partner','executive-communication','tagged',0.8,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-thought-partner','scenario-planning','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-thought-partner','healthcare-regulatory','tagged',0.4,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-build-vs-buy','buy-vs-build','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-build-vs-buy','feasibility-roadmap','tagged',0.7,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-build-vs-buy','unit-economics','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-build-vs-buy','cloud-infrastructure','tagged',0.4,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-build-vs-buy','healthcare-regulatory','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-staffing-restructure','capacity-planning','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-staffing-restructure','unit-economics','tagged',0.9,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-staffing-restructure','buy-vs-build','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-staffing-restructure','hiring-onboarding','tagged',0.4,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-staffing-restructure','board-advisory','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-feasibility-roadmap','feasibility-roadmap','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-feasibility-roadmap','launch-sequencing','tagged',0.9,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-feasibility-roadmap','board-advisory','tagged',0.7,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-feasibility-roadmap','executive-communication','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-competitive-venture-odds','competitive-analysis','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-competitive-venture-odds','capital-strategy','tagged',0.8,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-competitive-venture-odds','scenario-planning','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-competitive-venture-odds','market-research','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-unit-economics-benchmarks','revenue-modeling','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-unit-economics-benchmarks','unit-economics','tagged',0.9,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-unit-economics-benchmarks','capital-strategy','tagged',0.7,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-unit-economics-benchmarks','forecasting','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-data-rights','data-rights','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-data-rights','partner-negotiation','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-data-rights','risk-governance','tagged',0.7,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-data-rights','strategic-partnerships','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-data-rights','healthcare-regulatory','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-market-sizing-exit-paths','market-sizing','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-market-sizing-exit-paths','exit-path-modeling','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-market-sizing-exit-paths','scenario-planning','tagged',0.9,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-market-sizing-exit-paths','competitive-analysis','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-market-sizing-exit-paths','revenue-modeling','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-gtm-ownership','gtm-strategy','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-gtm-ownership','market-segmentation','tagged',0.9,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-gtm-ownership','positioning-messaging','tagged',0.9,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-gtm-ownership','pricing-packaging','tagged',0.9,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-gtm-ownership','channel-strategy','tagged',0.9,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-gtm-ownership','healthcare-regulatory','tagged',0.4,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-unit-economic-gates','growth-efficiency','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-unit-economic-gates','unit-economics','tagged',0.9,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-unit-economic-gates','channel-strategy','tagged',0.9,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-unit-economic-gates','channel-partnerships','tagged',0.8,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-unit-economic-gates','forecasting','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-unit-economic-gates','customer-discovery','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-distribution-pivot','channel-strategy','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-distribution-pivot','channel-partnerships','tagged',0.9,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-distribution-pivot','growth-efficiency','tagged',0.7,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-distribution-pivot','unit-economics','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-distribution-pivot','customer-discovery','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-distribution-pivot','gtm-strategy','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-customer-discovery-sprint','primary-research','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-customer-discovery-sprint','customer-discovery','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-customer-discovery-sprint','market-segmentation','tagged',0.8,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-engagement-terms','negotiation','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-engagement-terms','influence-without-authority','tagged',0.8,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-engagement-terms','capacity-planning','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-engagement-terms','stakeholder-alignment','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-collateral','enablement-collateral','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-collateral','executive-communication','tagged',0.9,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-collateral','competitive-analysis','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-collateral','content-brand','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-collateral','proposal-development','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-operating-cadence','operating-cadence','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-operating-cadence','process-improvement','tagged',0.8,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-operating-cadence','risk-governance','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-operating-cadence','performance-management','tagged',0.4,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-operating-cadence','readiness-assessment','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-readiness-assessment','readiness-assessment','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-readiness-assessment','launch-sequencing','tagged',0.8,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-readiness-assessment','stakeholder-alignment','tagged',0.7,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-readiness-assessment','risk-governance','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-entity-ip-structure','entity-ip-structure','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-entity-ip-structure','data-rights','tagged',0.8,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-entity-ip-structure','influence-without-authority','tagged',0.7,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-entity-ip-structure','partner-negotiation','tagged',0.4,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-claude-code-tracker','building-with-ai','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-claude-code-tracker','ai-in-workflow','tagged',0.9,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-claude-code-tracker','process-improvement','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-claude-code-tracker','risk-governance','tagged',0.4,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-claude-code-tracker','gtm-strategy','tagged',0.4,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-claude-code-tracker','crm-discipline','tagged',0.4,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-non-dilutive-capital','capital-strategy','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-non-dilutive-capital','revenue-modeling','tagged',0.7,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-non-dilutive-capital','scenario-planning','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-non-dilutive-capital','healthcare-regulatory','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-scenario-planning','scenario-planning','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-scenario-planning','risk-governance','tagged',0.7,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-scenario-planning','board-advisory','tagged',0.4,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-coaching','team-coaching','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-coaching','performance-management','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-coaching','player-coach','tagged',0.8,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-coaching','pipeline-management','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-coaching','hiring-onboarding','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-universal-poc','proof-of-value','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-universal-poc','rfp-response','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-universal-poc','managed-services-sales','tagged',0.9,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-universal-poc','account-expansion','tagged',0.8,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-universal-poc','closing','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-universal-poc','sports-media','tagged',0.3,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-southern-gas-discovery','discovery','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-southern-gas-discovery','data-solutions','tagged',0.9,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-southern-gas-discovery','ai-ml-solutions','tagged',0.7,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-southern-gas-discovery','executive-selling','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-southern-gas-discovery','new-business','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-solution-scoping','data-solutions','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-solution-scoping','ai-ml-solutions','tagged',0.9,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-solution-scoping','cloud-infrastructure','tagged',0.9,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-solution-scoping','discovery','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-solution-scoping','managed-services-sales','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-me-vertical-gtm','vertical-gtm','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-me-vertical-gtm','gtm-strategy','tagged',0.9,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-me-vertical-gtm','adtech-fluency','tagged',0.9,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-me-vertical-gtm','process-improvement','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-me-vertical-gtm','sports-media','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-me-vertical-gtm','audience-measurement','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-verticalization-lift','process-improvement','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-verticalization-lift','crm-discipline','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-verticalization-lift','pipeline-management','tagged',0.7,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-verticalization-lift','marketing-sales-alignment','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-verticalization-lift','forecasting','tagged',0.4,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-disney-enablement','enablement-collateral','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-disney-enablement','adtech-fluency','tagged',0.8,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-disney-enablement','media-ad-sales','tagged',0.7,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-disney-enablement','proposal-development','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-disney-enablement','sports-media','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-fortune500-discovery','executive-selling','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-fortune500-discovery','discovery','tagged',0.9,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-fortune500-discovery','multi-stakeholder-selling','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekl-fortune500-discovery','new-business','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekr-750k','quota-attainment','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekr-750k','new-business','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekr-750k','managed-services-sales','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekr-vertex','account-expansion','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekr-vertex','account-management','tagged',0.9,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekr-vertex','quota-attainment','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekr-vertex','multi-stakeholder-selling','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekr-wayfair-disney','new-business','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekr-wayfair-disney','managed-services-sales','tagged',0.9,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekr-wayfair-disney','sports-media','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekr-wayfair-disney','executive-selling','tagged',0.4,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekr-nike','ai-ml-solutions','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekr-nike','strategic-partnerships','tagged',0.7,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekr-nike','managed-services-sales','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekr-nike','new-business','tagged',0.4,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekr-recruiting-talent','hiring-onboarding','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:tekr-recruiting-talent','team-coaching','tagged',0.4,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:dd-territory-proposal','territory-design','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:dd-territory-proposal','process-improvement','tagged',0.8,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:dd-territory-proposal','launch-sequencing','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:dd-territory-proposal','new-business','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:dd-territory-proposal','gtm-strategy','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:dd-200-quota','quota-attainment','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:dd-200-quota','prospecting','tagged',0.8,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:dd-200-quota','new-business','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:nyl-referral-book','referral-network','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:nyl-referral-book','new-business','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:nyl-referral-book','donor-relations','tagged',0.4,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:nyl-needs-assessment','discovery','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:nyl-needs-assessment','donor-relations','tagged',0.6,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:nyl-needs-assessment','referral-network','tagged',0.3,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:yri-marketing','content-brand','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:yri-marketing','campaign-development','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:yri-marketing','launch-sequencing','tagged',0.4,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:massdot-adoption','customer-success','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:massdot-adoption','content-brand','tagged',0.4,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:massdot-adoption','readiness-assessment','tagged',0.3,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:edu-capstone','market-sizing','tagged',0.8,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:edu-capstone','competitive-analysis','tagged',0.8,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:edu-capstone','positioning-messaging','tagged',0.5,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhbu38f-0','crm-discipline','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhbu38f-0','building-with-ai','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhbu38f-0','ai-in-workflow','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhbu38f-0','prospecting','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhbu38f-1','risk-governance','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhbu38f-1','building-with-ai','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhbu38f-1','data-solutions','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhbu38f-1','process-improvement','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhbu38f-2','pricing-packaging','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhbu38f-2','rfp-response','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhbu38f-2','managed-services-sales','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhfveal-0','market-research','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhfveal-0','feasibility-roadmap','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhfveal-0','competitive-analysis','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhfveal-0','scenario-planning','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhfveal-1','primary-research','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhfveal-1','customer-discovery','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhfveal-1','proposal-development','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhfveal-2','strategic-partnerships','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhfveal-2','channel-partnerships','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhghrt2-2','strategic-partnerships','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhghrt2-2','channel-partnerships','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhghrt2-2','buy-vs-build','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhghrt2-2','data-rights','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhghrt2-3','forecasting','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhghrt2-3','operating-cadence','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhghrt2-3','gtm-strategy','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-0','feasibility-roadmap','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-0','risk-governance','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-0','scenario-planning','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-1','cross-platform','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-1','building-with-ai','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-1','content-brand','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-2','cross-platform','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-2','building-with-ai','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-2','content-brand','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-4','risk-governance','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-4','healthcare-regulatory','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-4','board-advisory','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-5','risk-governance','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-5','board-advisory','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-1','competitive-analysis','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-1','market-research','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-1','cpm-cpa-modeling','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-1','audience-measurement','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-2','market-research','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-2','market-segmentation','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-3','executive-communication','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-3','executive-selling','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-3','market-research','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-4','audience-measurement','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-4','market-research','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-4','adtech-fluency','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-4','gtm-strategy','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-5','market-research','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-5','data-solutions','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-5','executive-communication','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-5','audience-measurement','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-6','market-research','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-6','audience-measurement','tagged',1.0,NULL,'2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-gtm-ownership','eng:healthcare','part_of',1.0,'engagement membership','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-customer-discovery-sprint','eng:healthcare','part_of',1.0,'engagement membership','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-distribution-pivot','eng:healthcare','part_of',1.0,'engagement membership','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-unit-economic-gates','eng:healthcare','part_of',1.0,'engagement membership','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-market-sizing-exit-paths','eng:healthcare','part_of',1.0,'engagement membership','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-collateral','eng:healthcare','part_of',1.0,'engagement membership','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-non-dilutive-capital','eng:healthcare','part_of',1.0,'engagement membership','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-scenario-planning','eng:healthcare','part_of',1.0,'engagement membership','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:lim-claude-code-tracker','eng:healthcare','part_of',1.0,'engagement membership','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('ach:art-run-muhfveal-0','eng:hvac','part_of',1.0,'engagement membership','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tool:salesforce','ach:psp-125-leads','used_in',0.8,'named in the bullet','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tool:linkedin','ach:psp-decision-makers-ai','used_in',0.8,'named in the bullet','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tool:linkedin','ach:art-run-mukrbv3p-3','used_in',0.8,'named in the bullet','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tool:zoominfo','ach:psp-decision-makers-ai','used_in',0.8,'named in the bullet','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tool:google-tag-manager','ach:art-run-mukn8dul-1','used_in',0.8,'named in the bullet','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tool:squarespace','ach:art-run-mukn8dul-1','used_in',0.8,'named in the bullet','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tool:marketo','ach:art-run-muhfveal-0','used_in',0.8,'named in the bullet','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tool:claude','ach:psp-decision-makers-ai','used_in',0.8,'named in the bullet','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tool:claude','ach:lim-claude-code-tracker','used_in',0.8,'named in the bullet','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tool:claude','ach:art-run-mukn8dul-1','used_in',0.8,'named in the bullet','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tool:openai','ach:psp-decision-makers-ai','used_in',0.8,'named in the bullet','2026-09-28 07:12:00');
-INSERT INTO "claim_relations" VALUES('tool:github','ach:art-run-muhbu38f-0','used_in',0.8,'named in the bullet','2026-09-28 07:12:00');
+INSERT INTO "claim_relations" VALUES('role:liminal:title','role:liminal@2026-09-25:title','supersedes',1.0,'replaced by the source template title on 2026-09-27','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:sales-professional-end-to-end-sales:text','ach:psp-full-cycle-ownership','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:sales-professional-end-to-end-sales:text','ach:psp-closed-deals','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:sales-professional-end-to-end-sales:text','ach:dd-200-quota','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:sales-professional-end-to-end-sales:text','ach:tekr-wayfair-disney','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:sales-professional-end-to-end-sales:text','ach:psp-125-leads','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:marketing-advertising-product-services-sales-gtm:text','ach:lim-gtm-ownership','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:marketing-advertising-product-services-sales-gtm:text','ach:lim-claude-code-tracker','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:marketing-advertising-product-services-sales-gtm:text','ach:art-run-muhghrt2-3','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:marketing-advertising-product-services-sales-gtm:text','ach:art-run-muhbu38f-2','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:marketing-advertising-product-services-sales-gtm:text','ach:art-run-muhbu38f-1','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:business-strategy:text','ach:art-run-muhfveal-0','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:business-strategy:text','ach:lim-feasibility-roadmap','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:business-strategy:text','ach:lim-market-sizing-exit-paths','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:business-strategy:text','ach:lim-thought-partner','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:business-strategy:text','ach:lim-competitive-venture-odds','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:gtm-and-sales-marketing-execution-specialist:text','ach:lim-gtm-ownership','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:gtm-and-sales-marketing-execution-specialist:text','ach:lim-distribution-pivot','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:gtm-and-sales-marketing-execution-specialist:text','ach:dd-territory-proposal','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:gtm-and-sales-marketing-execution-specialist:text','ach:art-run-muhghrt2-3','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:gtm-and-sales-marketing-execution-specialist:text','ach:tekl-me-vertical-gtm','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:systems-thinker:text','ach:lim-operating-cadence','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:systems-thinker:text','ach:tekl-verticalization-lift','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:systems-thinker:text','ach:lim-scenario-planning','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:systems-thinker:text','ach:art-run-muhghrt2-3','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:systems-thinker:text','ach:art-run-muhfveal-0','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:process-engineer:text','ach:tekl-verticalization-lift','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:process-engineer:text','ach:lim-operating-cadence','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:process-engineer:text','ach:art-run-muhghrt2-3','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:process-engineer:text','ach:art-run-muhbu38f-1','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:process-engineer:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:ai-adoption-enthusiast:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:ai-adoption-enthusiast:text','ach:lim-claude-code-tracker','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:ai-adoption-enthusiast:text','ach:tekr-nike','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:ai-adoption-enthusiast:text','ach:lim-readiness-assessment','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tagline:ai-adoption-enthusiast:text','ach:art-run-muhbu38f-1','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:go-to-market-strategy:text','ach:lim-gtm-ownership','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:go-to-market-strategy:text','ach:art-run-muhghrt2-3','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:go-to-market-strategy:text','ach:tekl-me-vertical-gtm','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:go-to-market-strategy:text','ach:lim-distribution-pivot','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:go-to-market-strategy:text','ach:dd-territory-proposal','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:market-segmentation-positioning:text','ach:lim-gtm-ownership','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:market-segmentation-positioning:text','ach:lim-customer-discovery-sprint','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:pricing-channel-strategy:text','ach:lim-gtm-ownership','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:pricing-channel-strategy:text','ach:lim-distribution-pivot','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:pricing-channel-strategy:text','ach:art-run-muhbu38f-2','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:pricing-channel-strategy:text','ach:lim-unit-economic-gates','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:new-business-development:text','ach:tekr-wayfair-disney','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:new-business-development:text','ach:psp-closed-deals','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:new-business-development:text','ach:psp-full-cycle-ownership','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:new-business-development:text','ach:tekr-750k','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:new-business-development:text','ach:psp-funding-source-qualification','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:full-cycle-enterprise-sales-prospect-to-close:text','ach:psp-full-cycle-ownership','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:full-cycle-enterprise-sales-prospect-to-close:text','ach:psp-closed-deals','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:full-cycle-enterprise-sales-prospect-to-close:text','ach:psp-net-revenue','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:full-cycle-enterprise-sales-prospect-to-close:text','ach:tekl-universal-poc','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:full-cycle-enterprise-sales-prospect-to-close:text','ach:psp-nine-stakeholder-deal','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:lead-generation-prospecting:text','ach:psp-125-leads','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:lead-generation-prospecting:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:lead-generation-prospecting:text','ach:psp-decision-makers-ai','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:lead-generation-prospecting:text','ach:dd-200-quota','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:consultative-diagnostic-discovery:text','ach:tekl-southern-gas-discovery','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:consultative-diagnostic-discovery:text','ach:psp-pipeline-discovery','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:consultative-diagnostic-discovery:text','ach:nyl-needs-assessment','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:consultative-diagnostic-discovery:text','ach:tekl-fortune500-discovery','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:consultative-diagnostic-discovery:text','ach:psp-funding-source-qualification','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:contract-proposal-development:text','ach:psp-nine-stakeholder-deal','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:contract-proposal-development:text','ach:lim-engagement-terms','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:contract-proposal-development:text','ach:art-run-muhfveal-1','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:contract-proposal-development:text','ach:psp-board-memo','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:contract-proposal-development:text','ach:psp-school-proposal','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:complex-multi-stakeholder-negotiation:text','ach:psp-nine-stakeholder-deal','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:complex-multi-stakeholder-negotiation:text','ach:lim-engagement-terms','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:complex-multi-stakeholder-negotiation:text','ach:tekl-fortune500-discovery','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:complex-multi-stakeholder-negotiation:text','ach:psp-full-cycle-ownership','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:complex-multi-stakeholder-negotiation:text','ach:psp-board-memo','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:executive-board-level-communication:text','ach:lim-thought-partner','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:executive-board-level-communication:text','ach:lim-feasibility-roadmap','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:executive-board-level-communication:text','ach:tekl-fortune500-discovery','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:executive-board-level-communication:text','ach:psp-board-memo','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:executive-board-level-communication:text','ach:lim-collateral','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:revenue-forecasting-kpi-management:text','ach:tekr-750k','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:revenue-forecasting-kpi-management:text','ach:psp-net-revenue','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:revenue-forecasting-kpi-management:text','ach:dd-200-quota','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:revenue-forecasting-kpi-management:text','ach:art-run-muhghrt2-3','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:revenue-forecasting-kpi-management:text','ach:tekr-vertex','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:pipeline-development-crm-discipline:text','ach:tekl-verticalization-lift','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:pipeline-development-crm-discipline:text','ach:psp-125-leads','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:pipeline-development-crm-discipline:text','ach:psp-pipeline-discovery','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:pipeline-development-crm-discipline:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:pipeline-development-crm-discipline:text','ach:tekl-coaching','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:strategic-account-planning-expansion:text','ach:tekr-vertex','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:strategic-account-planning-expansion:text','ach:psp-decision-makers-ai','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:strategic-account-planning-expansion:text','ach:tekl-universal-poc','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:strategic-account-planning-expansion:text','ach:psp-125-leads','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:media-sponsorship-sales:text','ach:psp-closed-deals','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:media-sponsorship-sales:text','ach:tekl-disney-enablement','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:media-sponsorship-sales:text','ach:psp-verticals','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:media-sponsorship-sales:text','ach:psp-net-revenue','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:media-sponsorship-sales:text','ach:psp-cpm-business-case','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:cpm-cpa-roi-business-cases:text','ach:psp-cpm-business-case','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:cpm-cpa-roi-business-cases:text','ach:psp-school-proposal','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:cpm-cpa-roi-business-cases:text','ach:tekl-me-vertical-gtm','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:ad-tech-fluency-cdp-clean-rooms-identity-graphs-:text','ach:tekl-me-vertical-gtm','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:ad-tech-fluency-cdp-clean-rooms-identity-graphs-:text','ach:tekl-disney-enablement','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:funding-source-diagnostics-co-op-mdf-sponsorship:text','ach:psp-nonprofit-reframe','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:funding-source-diagnostics-co-op-mdf-sponsorship:text','ach:psp-funding-source-qualification','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:buy-vs-build-competitive-analysis:text','ach:lim-competitive-venture-odds','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:buy-vs-build-competitive-analysis:text','ach:lim-build-vs-buy','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:buy-vs-build-competitive-analysis:text','ach:art-run-muhghrt2-2','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:buy-vs-build-competitive-analysis:text','ach:art-run-muhfveal-0','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:buy-vs-build-competitive-analysis:text','ach:lim-staffing-restructure','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:unit-economics-revenue-modeling:text','ach:lim-unit-economics-benchmarks','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:unit-economics-revenue-modeling:text','ach:lim-unit-economic-gates','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:unit-economics-revenue-modeling:text','ach:lim-distribution-pivot','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:unit-economics-revenue-modeling:text','ach:lim-staffing-restructure','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:unit-economics-revenue-modeling:text','ach:lim-non-dilutive-capital','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:market-sizing-scenario-planning:text','ach:lim-market-sizing-exit-paths','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:market-sizing-scenario-planning:text','ach:lim-scenario-planning','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:market-sizing-scenario-planning:text','ach:art-run-muhfveal-0','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:market-sizing-scenario-planning:text','ach:lim-competitive-venture-odds','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:market-sizing-scenario-planning:text','ach:lim-thought-partner','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:sales-team-coaching-performance-management:text','ach:tekl-coaching','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:hiring-onboarding-seller-ramp:text','ach:tekr-recruiting-talent','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:business-process-improvement:text','ach:tekl-verticalization-lift','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:business-process-improvement:text','ach:art-run-muhbu38f-1','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:business-process-improvement:text','ach:lim-operating-cadence','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:business-process-improvement:text','ach:dd-territory-proposal','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:business-process-improvement:text','ach:tekl-me-vertical-gtm','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:operating-cadence-design-raci-decision-logs:text','ach:lim-operating-cadence','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:operating-cadence-design-raci-decision-logs:text','ach:art-run-muhghrt2-3','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:change-readiness-stakeholder-alignment:text','ach:lim-readiness-assessment','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:change-readiness-stakeholder-alignment:text','ach:lim-operating-cadence','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:change-readiness-stakeholder-alignment:text','ach:lim-engagement-terms','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:primary-research-customer-discovery:text','ach:lim-customer-discovery-sprint','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:primary-research-customer-discovery:text','ach:art-run-muhfveal-1','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:primary-research-customer-discovery:text','ach:lim-distribution-pivot','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:primary-research-customer-discovery:text','ach:lim-unit-economic-gates','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:ai-data-platform-solution-selling:text','ach:tekl-solution-scoping','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:ai-data-platform-solution-selling:text','ach:tekl-southern-gas-discovery','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:ai-data-platform-solution-selling:text','ach:tekr-nike','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:ai-data-platform-solution-selling:text','ach:art-run-muhbu38f-1','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:prompt-engineering-ai-enabled-workflow:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:prompt-engineering-ai-enabled-workflow:text','ach:lim-claude-code-tracker','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:prompt-engineering-ai-enabled-workflow:text','ach:art-run-muhbu38f-1','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:prompt-engineering-ai-enabled-workflow:text','ach:psp-decision-makers-ai','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:strategic-partnerships-channel:text','ach:art-run-muhghrt2-2','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:strategic-partnerships-channel:text','ach:art-run-muhfveal-2','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:strategic-partnerships-channel:text','ach:lim-distribution-pivot','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:strategic-partnerships-channel:text','ach:lim-unit-economic-gates','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:strategic-partnerships-channel:text','ach:tekr-nike','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:data-rights-partner-terms:text','ach:lim-data-rights','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:data-rights-partner-terms:text','ach:art-run-muhghrt2-2','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:data-rights-partner-terms:text','ach:lim-entity-ip-structure','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:board-trustee-engagement:text','ach:psp-board-memo','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:prospect-identification-moves-management:text','ach:psp-school-proposal','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:prospect-identification-moves-management:text','ach:psp-nonprofit-reframe','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:prospect-identification-moves-management:text','ach:nyl-needs-assessment','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:business-analysis-advisory:text','ach:lim-feasibility-roadmap','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:business-analysis-advisory:text','ach:lim-thought-partner','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:business-analysis-advisory:text','ach:art-run-muhfveal-0','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:business-analysis-advisory:text','ach:lim-build-vs-buy','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:business-analysis-advisory:text','ach:lim-staffing-restructure','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:ai-adoption-strategies-for-sales-enablement-and-:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:ai-adoption-strategies-for-sales-enablement-and-:text','ach:lim-claude-code-tracker','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:ai-adoption-strategies-for-sales-enablement-and-:text','ach:tekl-disney-enablement','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:ai-adoption-strategies-for-sales-enablement-and-:text','ach:lim-readiness-assessment','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('expertise:ai-adoption-strategies-for-sales-enablement-and-:text','ach:lim-collateral','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:gtm-strategy:text','ach:lim-gtm-ownership','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:gtm-strategy:text','ach:art-run-muhghrt2-3','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:gtm-strategy:text','ach:tekl-me-vertical-gtm','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:gtm-strategy:text','ach:lim-distribution-pivot','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:gtm-strategy:text','ach:dd-territory-proposal','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:market-segmentation:text','ach:lim-gtm-ownership','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:market-segmentation:text','ach:lim-customer-discovery-sprint','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:product-positioning-messaging:text','ach:lim-gtm-ownership','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:value-proposition-development:text','ach:art-run-muhfveal-1','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:value-proposition-development:text','ach:psp-board-memo','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:value-proposition-development:text','ach:lim-gtm-ownership','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:value-proposition-development:text','ach:psp-school-proposal','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:value-proposition-development:text','ach:psp-cpm-business-case','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:customer-discovery:text','ach:tekl-southern-gas-discovery','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:customer-discovery:text','ach:psp-pipeline-discovery','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:customer-discovery:text','ach:nyl-needs-assessment','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:customer-discovery:text','ach:lim-customer-discovery-sprint','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:customer-discovery:text','ach:art-run-muhfveal-1','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:pipeline-management:text','ach:psp-pipeline-discovery','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:pipeline-management:text','ach:tekl-verticalization-lift','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:pipeline-management:text','ach:tekl-coaching','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:pipeline-management:text','ach:psp-125-leads','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:revenue-forecasting-kpi-tracking:text','ach:tekr-750k','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:revenue-forecasting-kpi-tracking:text','ach:psp-net-revenue','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:revenue-forecasting-kpi-tracking:text','ach:dd-200-quota','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:revenue-forecasting-kpi-tracking:text','ach:art-run-muhghrt2-3','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:revenue-forecasting-kpi-tracking:text','ach:tekr-vertex','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:contract-negotiation:text','ach:psp-nine-stakeholder-deal','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:contract-negotiation:text','ach:lim-engagement-terms','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:contract-negotiation:text','ach:psp-full-cycle-ownership','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:proposal-development:text','ach:art-run-muhfveal-1','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:proposal-development:text','ach:psp-board-memo','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:proposal-development:text','ach:psp-school-proposal','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:proposal-development:text','ach:psp-cpm-business-case','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:proposal-development:text','ach:psp-pipeline-discovery','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:solution-selling:text','ach:tekl-southern-gas-discovery','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:solution-selling:text','ach:psp-pipeline-discovery','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:solution-selling:text','ach:psp-full-cycle-ownership','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:solution-selling:text','ach:nyl-needs-assessment','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:solution-selling:text','ach:tekl-fortune500-discovery','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:account-mapping:text','ach:tekr-vertex','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:account-mapping:text','ach:psp-nine-stakeholder-deal','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:account-mapping:text','ach:psp-decision-makers-ai','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:account-mapping:text','ach:psp-125-leads','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:account-mapping:text','ach:tekl-fortune500-discovery','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:client-retention:text','ach:tekr-vertex','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:client-retention:text','ach:psp-decision-makers-ai','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:client-retention:text','ach:massdot-adoption','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:client-retention:text','ach:tekl-universal-poc','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:go-to-market-revenue:client-retention:text','ach:psp-125-leads','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:market-landscape-analysis:text','ach:lim-market-sizing-exit-paths','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:market-landscape-analysis:text','ach:art-run-muhfveal-0','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:market-landscape-analysis:text','ach:lim-competitive-venture-odds','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:competitive-intelligence:text','ach:lim-competitive-venture-odds','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:competitive-intelligence:text','ach:art-run-muhfveal-0','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:competitive-intelligence:text','ach:lim-market-sizing-exit-paths','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:competitive-intelligence:text','ach:lim-collateral','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:barriers-to-entry-assessment:text','ach:art-run-muhfveal-0','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:barriers-to-entry-assessment:text','ach:lim-feasibility-roadmap','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:barriers-to-entry-assessment:text','ach:lim-competitive-venture-odds','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:barriers-to-entry-assessment:text','ach:lim-build-vs-buy','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:barriers-to-entry-assessment:text','ach:lim-market-sizing-exit-paths','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:decision-tree-modeling:text','ach:lim-market-sizing-exit-paths','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:decision-tree-modeling:text','ach:lim-scenario-planning','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:decision-tree-modeling:text','ach:art-run-muhfveal-0','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:decision-tree-modeling:text','ach:lim-competitive-venture-odds','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:decision-tree-modeling:text','ach:lim-thought-partner','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:financial-forecasting-p-l:text','ach:lim-unit-economics-benchmarks','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:financial-forecasting-p-l:text','ach:art-run-muhghrt2-3','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:financial-forecasting-p-l:text','ach:lim-non-dilutive-capital','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:financial-forecasting-p-l:text','ach:lim-market-sizing-exit-paths','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:financial-forecasting-p-l:text','ach:lim-unit-economic-gates','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:unit-economics-cac-payback-churn-ttfv:text','ach:lim-unit-economic-gates','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:unit-economics-cac-payback-churn-ttfv:text','ach:lim-distribution-pivot','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:unit-economics-cac-payback-churn-ttfv:text','ach:lim-unit-economics-benchmarks','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:unit-economics-cac-payback-churn-ttfv:text','ach:lim-staffing-restructure','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:unit-economics-cac-payback-churn-ttfv:text','ach:lim-build-vs-buy','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:scenario-planning:text','ach:lim-scenario-planning','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:scenario-planning:text','ach:art-run-muhfveal-0','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:scenario-planning:text','ach:lim-market-sizing-exit-paths','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:scenario-planning:text','ach:lim-competitive-venture-odds','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:scenario-planning:text','ach:lim-thought-partner','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:business-process-improvement:text','ach:tekl-verticalization-lift','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:business-process-improvement:text','ach:art-run-muhbu38f-1','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:business-process-improvement:text','ach:lim-operating-cadence','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:business-process-improvement:text','ach:dd-territory-proposal','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:research-analysis:business-process-improvement:text','ach:tekl-me-vertical-gtm','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:claude-opus-5-sonnet-5-fable-5:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:claude-opus-5-sonnet-5-fable-5:text','ach:psp-decision-makers-ai','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:claude-opus-5-sonnet-5-fable-5:text','ach:lim-claude-code-tracker','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:claude-code:text','ach:lim-claude-code-tracker','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:claude-code:text','ach:art-run-muhbu38f-1','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:claude-code:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:openai-chatgpt:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:openai-chatgpt:text','ach:psp-decision-makers-ai','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:openai-chatgpt:text','ach:lim-claude-code-tracker','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:microsoft-copilot:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:microsoft-copilot:text','ach:psp-decision-makers-ai','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:microsoft-copilot:text','ach:lim-claude-code-tracker','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:prompt-engineering:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:prompt-engineering:text','ach:psp-decision-makers-ai','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:prompt-engineering:text','ach:lim-claude-code-tracker','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:genai-machine-learning:text','ach:tekr-nike','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:genai-machine-learning:text','ach:tekl-solution-scoping','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:genai-machine-learning:text','ach:tekl-southern-gas-discovery','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:ai-governance-output-verification:text','ach:art-run-muhbu38f-1','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:ai-governance-output-verification:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:ai-governance-output-verification:text','ach:psp-decision-makers-ai','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:ai-governance-output-verification:text','ach:lim-claude-code-tracker','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:ai-governance-output-verification:text','ach:lim-scenario-planning','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:data-analytics:text','ach:tekl-solution-scoping','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:data-analytics:text','ach:art-run-muhbu38f-1','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:data-analytics:text','ach:tekl-southern-gas-discovery','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:tableau:text','ach:tekl-solution-scoping','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:tableau:text','ach:art-run-muhbu38f-1','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:ai-data:tableau:text','ach:tekl-southern-gas-discovery','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:tools-platforms:salesforce-crm:text','ach:tekl-verticalization-lift','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:tools-platforms:salesforce-crm:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:tools-platforms:salesforce-crm:text','ach:psp-125-leads','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:tools-platforms:zoominfo:text','ach:psp-125-leads','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:tools-platforms:zoominfo:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:tools-platforms:zoominfo:text','ach:psp-decision-makers-ai','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:tools-platforms:zoominfo:text','ach:dd-200-quota','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:tools-platforms:linkedin-sales-navigator:text','ach:psp-125-leads','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:tools-platforms:linkedin-sales-navigator:text','ach:art-run-muhbu38f-0','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:tools-platforms:linkedin-sales-navigator:text','ach:psp-decision-makers-ai','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:tools-platforms:linkedin-sales-navigator:text','ach:dd-200-quota','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:tools-platforms:microsoft-excel-office-suite:text','ach:lim-unit-economics-benchmarks','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:tools-platforms:microsoft-excel-office-suite:text','ach:lim-non-dilutive-capital','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:tools-platforms:microsoft-excel-office-suite:text','ach:lim-market-sizing-exit-paths','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:tools-platforms:miro:text','ach:tekl-disney-enablement','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:tools-platforms:miro:text','ach:lim-collateral','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:tools-platforms:trello:text','ach:lim-operating-cadence','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:tools-platforms:trello:text','ach:art-run-muhghrt2-3','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:tools-platforms:canva:text','ach:lim-collateral','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:tools-platforms:canva:text','ach:yri-marketing','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:tools-platforms:canva:text','ach:tekl-disney-enablement','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:funding-commercial-mechanics:restricted-tax-advantaged-funding-mechanisms-co-:text','ach:psp-nonprofit-reframe','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:funding-commercial-mechanics:restricted-tax-advantaged-funding-mechanisms-co-:text','ach:psp-funding-source-qualification','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:funding-commercial-mechanics:non-dilutive-federal-grant-strategy-sbir:text','ach:lim-non-dilutive-capital','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:funding-commercial-mechanics:non-dilutive-federal-grant-strategy-sbir:text','ach:lim-competitive-venture-odds','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:funding-commercial-mechanics:non-dilutive-federal-grant-strategy-sbir:text','ach:lim-unit-economics-benchmarks','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:funding-commercial-mechanics:managed-services-rfp-response:text','ach:art-run-muhbu38f-2','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:funding-commercial-mechanics:managed-services-rfp-response:text','ach:tekl-universal-poc','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:funding-commercial-mechanics:managed-services-rfp-response:text','ach:tekr-wayfair-disney','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:funding-commercial-mechanics:managed-services-rfp-response:text','ach:tekr-nike','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:funding-commercial-mechanics:managed-services-rfp-response:text','ach:tekr-750k','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('core:funding-commercial-mechanics:board-trustee-engagement:text','ach:psp-board-memo','grounded_in',0.6,'tag overlap','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-closed-deals','role:psp','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:psp-closed-deals:signed-deals','ach:psp-closed-deals','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:psp-closed-deals:net-new-accounts','ach:psp-closed-deals','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-net-revenue','role:psp','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:psp-net-revenue:net-revenue-first-4-months','ach:psp-net-revenue','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-funding-source-qualification','role:psp','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:psp-funding-source-qualification:verticals-applied','ach:psp-funding-source-qualification','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-pipeline-discovery','role:psp','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:psp-pipeline-discovery:active-pipeline','ach:psp-pipeline-discovery','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-125-leads','role:psp','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:psp-125-leads:qualified-leads-per-week','ach:psp-125-leads','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-decision-makers-ai','role:psp','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-full-cycle-ownership','role:psp','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-cpm-business-case','role:psp','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:psp-cpm-business-case:blended-cpm','ach:psp-cpm-business-case','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:psp-cpm-business-case:combined-reach','ach:psp-cpm-business-case','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:psp-cpm-business-case:placement-price','ach:psp-cpm-business-case','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:psp-cpm-business-case:category-cpa-benchmark','ach:psp-cpm-business-case','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-nine-stakeholder-deal','role:psp','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:psp-nine-stakeholder-deal:budget-owners','ach:psp-nine-stakeholder-deal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-board-memo','role:psp','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:psp-board-memo:ask','ach:psp-board-memo','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:psp-board-memo:member-businesses','ach:psp-board-memo','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:psp-board-memo:readership','ach:psp-board-memo','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-school-proposal','role:psp','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:psp-school-proposal:brand-recall','ach:psp-school-proposal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:psp-school-proposal:cpm','ach:psp-school-proposal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-nonprofit-reframe','role:psp','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:psp-nonprofit-reframe:verticals','ach:psp-nonprofit-reframe','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-verticals','role:psp','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-thought-partner','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-build-vs-buy','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:lim-build-vs-buy:build-avoided','ach:lim-build-vs-buy','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:lim-build-vs-buy:recommended-path','ach:lim-build-vs-buy','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-staffing-restructure','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:lim-staffing-restructure:annual-cost-avoided','ach:lim-staffing-restructure','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:lim-staffing-restructure:annual-cost-avoided','ach:lim-staffing-restructure','grounded_in',0.8,'$946K/year proposed minus the $200–260K/year model','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:lim-staffing-restructure:cost-reduction','ach:lim-staffing-restructure','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-feasibility-roadmap','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:lim-feasibility-roadmap:recommendations','ach:lim-feasibility-roadmap','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:lim-feasibility-roadmap:stage-gates','ach:lim-feasibility-roadmap','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-competitive-venture-odds','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:lim-competitive-venture-odds:competitors-analyzed','ach:lim-competitive-venture-odds','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:lim-competitive-venture-odds:recommended-raise','ach:lim-competitive-venture-odds','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-unit-economics-benchmarks','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-data-rights','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-market-sizing-exit-paths','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:lim-market-sizing-exit-paths:category-size-2025','ach:lim-market-sizing-exit-paths','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:lim-market-sizing-exit-paths:category-size-2035','ach:lim-market-sizing-exit-paths','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:lim-market-sizing-exit-paths:cagr','ach:lim-market-sizing-exit-paths','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-gtm-ownership','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:lim-gtm-ownership:pricing-tiers','ach:lim-gtm-ownership','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-unit-economic-gates','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:lim-unit-economic-gates:blended-cac-cap','ach:lim-unit-economic-gates','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:lim-unit-economic-gates:payback-cap','ach:lim-unit-economic-gates','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:lim-unit-economic-gates:monthly-churn-cap','ach:lim-unit-economic-gates','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:lim-unit-economic-gates:ttfv-cap','ach:lim-unit-economic-gates','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-distribution-pivot','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:lim-distribution-pivot:cac-payback-modeled','ach:lim-distribution-pivot','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-customer-discovery-sprint','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:lim-customer-discovery-sprint:interviews','ach:lim-customer-discovery-sprint','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:lim-customer-discovery-sprint:account-universe','ach:lim-customer-discovery-sprint','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-engagement-terms','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:lim-engagement-terms:scope-reduction','ach:lim-engagement-terms','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:lim-engagement-terms:scope-reduction','ach:lim-engagement-terms','grounded_in',0.8,'320 hours cut to 166 hours','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-collateral','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:lim-collateral:round-table-documents','ach:lim-collateral','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-operating-cadence','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-readiness-assessment','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:lim-readiness-assessment:gaps-closed-into-plan','ach:lim-readiness-assessment','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-entity-ip-structure','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-claude-code-tracker','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:lim-claude-code-tracker:automated-tests','ach:lim-claude-code-tracker','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-non-dilutive-capital','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:lim-non-dilutive-capital:non-dilutive-route','ach:lim-non-dilutive-capital','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-scenario-planning','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-coaching','role:tek_lead','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:tekl-coaching:practice-size','ach:tekl-coaching','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:tekl-coaching:direct-reports','ach:tekl-coaching','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-universal-poc','role:tek_lead','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:tekl-universal-poc:expansion-value','ach:tekl-universal-poc','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:tekl-universal-poc:expansion-value','ach:tekl-universal-poc','grounded_in',0.8,'stated as multi-million-dollar; 2,000,000 is the floor used for scoring only','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-southern-gas-discovery','role:tek_lead','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-solution-scoping','role:tek_lead','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-me-vertical-gtm','role:tek_lead','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-verticalization-lift','role:tek_lead','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:tekl-verticalization-lift:lead-to-opp-conversion','ach:tekl-verticalization-lift','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:tekl-verticalization-lift:crm-field-completion','ach:tekl-verticalization-lift','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-disney-enablement','role:tek_lead','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-fortune500-discovery','role:tek_lead','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekr-750k','role:tek_recruiter','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:tekr-750k:annual-revenue','ach:tekr-750k','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekr-vertex','role:tek_recruiter','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:tekr-vertex:share-of-account-revenue','ach:tekr-vertex','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:tekr-vertex:new-groups-opened','ach:tekr-vertex','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekr-wayfair-disney','role:tek_recruiter','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:tekr-wayfair-disney:net-new-enterprise-logos','ach:tekr-wayfair-disney','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:tekr-wayfair-disney:net-new-enterprise-logos','ach:tekr-wayfair-disney','grounded_in',0.8,'Wayfair and Disney counted','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekr-nike','role:tek_recruiter','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekr-recruiting-talent','role:tek_recruiter','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:tekr-recruiting-talent:years-recruiting','ach:tekr-recruiting-talent','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:dd-territory-proposal','role:demanddrive','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:dd-territory-proposal:launch-growth','ach:dd-territory-proposal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:dd-200-quota','role:demanddrive','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('metric:dd-200-quota:first-month-quota-attainment','ach:dd-200-quota','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:nyl-referral-book','role:nyl','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:nyl-needs-assessment','role:nyl','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:yri-marketing','role:yri','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:massdot-adoption','role:massdot','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:edu-capstone','role:education','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhbu38f-0','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhbu38f-1','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhbu38f-2','role:tek_lead','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhfveal-0','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhfveal-1','role:demanddrive','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhfveal-2','role:tek_lead','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhghrt2-2','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhghrt2-3','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-0','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-0','eng:hvac','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-1','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-2','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-4','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-5','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-1','role:psp','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-2','role:psp','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-3','role:tek_lead','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-4','role:psp','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-5','role:tek_lead','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-6','role:tek_recruiter','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-0','role:tek_lead','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-1','role:tek_lead','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-2','role:tek_lead','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-3','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-4','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-5','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-8','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-8','eng:hvac','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-9','role:liminal','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-9','eng:hvac','part_of',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-closed-deals','closing','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-closed-deals','new-business','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-closed-deals','media-ad-sales','tagged',0.9,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-closed-deals','sponsorship','tagged',0.8,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-closed-deals','sports-media','tagged',0.8,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-closed-deals','quota-attainment','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-net-revenue','quota-attainment','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-net-revenue','closing','tagged',0.8,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-net-revenue','media-ad-sales','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-funding-source-qualification','qualification','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-funding-source-qualification','funding-source-diagnostics','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-funding-source-qualification','discovery','tagged',0.7,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-funding-source-qualification','new-business','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-funding-source-qualification','media-ad-sales','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-pipeline-discovery','pipeline-management','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-pipeline-discovery','discovery','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-pipeline-discovery','proposal-development','tagged',0.7,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-pipeline-discovery','stakeholder-alignment','tagged',0.4,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-125-leads','prospecting','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-125-leads','account-management','tagged',0.7,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-125-leads','crm-discipline','tagged',0.7,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-125-leads','pipeline-management','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-125-leads','demand-generation','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-decision-makers-ai','account-management','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-decision-makers-ai','prospecting','tagged',0.8,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-decision-makers-ai','ai-in-workflow','tagged',0.9,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-decision-makers-ai','executive-selling','tagged',0.4,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-full-cycle-ownership','full-cycle-sales','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-full-cycle-ownership','new-business','tagged',0.9,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-full-cycle-ownership','closing','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-full-cycle-ownership','negotiation','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-full-cycle-ownership','media-ad-sales','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-cpm-business-case','cpm-cpa-modeling','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-cpm-business-case','audience-measurement','tagged',0.9,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-cpm-business-case','proposal-development','tagged',0.8,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-cpm-business-case','cross-platform','tagged',0.7,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-cpm-business-case','media-ad-sales','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-nine-stakeholder-deal','multi-stakeholder-selling','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-nine-stakeholder-deal','negotiation','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-nine-stakeholder-deal','closing','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-nine-stakeholder-deal','unit-economics','tagged',0.4,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-nine-stakeholder-deal','sponsorship','tagged',0.4,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-board-memo','executive-communication','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-board-memo','proposal-development','tagged',0.9,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-board-memo','board-trustee-engagement','tagged',0.9,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-board-memo','multi-stakeholder-selling','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-board-memo','institutional-partnerships','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-school-proposal','institutional-partnerships','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-school-proposal','donor-relations','tagged',0.8,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-school-proposal','proposal-development','tagged',0.8,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-school-proposal','cpm-cpa-modeling','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-nonprofit-reframe','funding-source-diagnostics','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-nonprofit-reframe','donor-relations','tagged',0.8,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-nonprofit-reframe','discovery','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-nonprofit-reframe','vertical-gtm','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-verticals','vertical-gtm','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-verticals','media-ad-sales','tagged',0.7,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-verticals','qualification','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:psp-verticals','new-business','tagged',0.4,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-thought-partner','board-advisory','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-thought-partner','executive-communication','tagged',0.8,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-thought-partner','scenario-planning','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-thought-partner','healthcare-regulatory','tagged',0.4,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-build-vs-buy','buy-vs-build','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-build-vs-buy','feasibility-roadmap','tagged',0.7,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-build-vs-buy','unit-economics','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-build-vs-buy','cloud-infrastructure','tagged',0.4,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-build-vs-buy','healthcare-regulatory','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-staffing-restructure','capacity-planning','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-staffing-restructure','unit-economics','tagged',0.9,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-staffing-restructure','buy-vs-build','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-staffing-restructure','hiring-onboarding','tagged',0.4,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-staffing-restructure','board-advisory','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-feasibility-roadmap','feasibility-roadmap','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-feasibility-roadmap','launch-sequencing','tagged',0.9,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-feasibility-roadmap','board-advisory','tagged',0.7,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-feasibility-roadmap','executive-communication','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-competitive-venture-odds','competitive-analysis','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-competitive-venture-odds','capital-strategy','tagged',0.8,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-competitive-venture-odds','scenario-planning','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-competitive-venture-odds','market-research','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-unit-economics-benchmarks','revenue-modeling','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-unit-economics-benchmarks','unit-economics','tagged',0.9,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-unit-economics-benchmarks','capital-strategy','tagged',0.7,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-unit-economics-benchmarks','forecasting','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-data-rights','data-rights','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-data-rights','partner-negotiation','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-data-rights','risk-governance','tagged',0.7,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-data-rights','strategic-partnerships','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-data-rights','healthcare-regulatory','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-market-sizing-exit-paths','market-sizing','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-market-sizing-exit-paths','exit-path-modeling','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-market-sizing-exit-paths','scenario-planning','tagged',0.9,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-market-sizing-exit-paths','competitive-analysis','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-market-sizing-exit-paths','revenue-modeling','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-gtm-ownership','gtm-strategy','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-gtm-ownership','market-segmentation','tagged',0.9,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-gtm-ownership','positioning-messaging','tagged',0.9,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-gtm-ownership','pricing-packaging','tagged',0.9,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-gtm-ownership','channel-strategy','tagged',0.9,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-gtm-ownership','healthcare-regulatory','tagged',0.4,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-unit-economic-gates','growth-efficiency','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-unit-economic-gates','unit-economics','tagged',0.9,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-unit-economic-gates','channel-strategy','tagged',0.9,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-unit-economic-gates','channel-partnerships','tagged',0.8,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-unit-economic-gates','forecasting','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-unit-economic-gates','customer-discovery','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-distribution-pivot','channel-strategy','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-distribution-pivot','channel-partnerships','tagged',0.9,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-distribution-pivot','growth-efficiency','tagged',0.7,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-distribution-pivot','unit-economics','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-distribution-pivot','customer-discovery','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-distribution-pivot','gtm-strategy','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-customer-discovery-sprint','primary-research','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-customer-discovery-sprint','customer-discovery','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-customer-discovery-sprint','market-segmentation','tagged',0.8,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-engagement-terms','negotiation','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-engagement-terms','influence-without-authority','tagged',0.8,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-engagement-terms','capacity-planning','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-engagement-terms','stakeholder-alignment','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-collateral','enablement-collateral','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-collateral','executive-communication','tagged',0.9,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-collateral','competitive-analysis','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-collateral','content-brand','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-collateral','proposal-development','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-operating-cadence','operating-cadence','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-operating-cadence','process-improvement','tagged',0.8,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-operating-cadence','risk-governance','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-operating-cadence','performance-management','tagged',0.4,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-operating-cadence','readiness-assessment','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-readiness-assessment','readiness-assessment','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-readiness-assessment','launch-sequencing','tagged',0.8,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-readiness-assessment','stakeholder-alignment','tagged',0.7,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-readiness-assessment','risk-governance','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-entity-ip-structure','entity-ip-structure','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-entity-ip-structure','data-rights','tagged',0.8,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-entity-ip-structure','influence-without-authority','tagged',0.7,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-entity-ip-structure','partner-negotiation','tagged',0.4,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-claude-code-tracker','building-with-ai','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-claude-code-tracker','ai-in-workflow','tagged',0.9,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-claude-code-tracker','process-improvement','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-claude-code-tracker','risk-governance','tagged',0.4,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-claude-code-tracker','gtm-strategy','tagged',0.4,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-claude-code-tracker','crm-discipline','tagged',0.4,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-non-dilutive-capital','capital-strategy','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-non-dilutive-capital','revenue-modeling','tagged',0.7,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-non-dilutive-capital','scenario-planning','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-non-dilutive-capital','healthcare-regulatory','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-scenario-planning','scenario-planning','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-scenario-planning','risk-governance','tagged',0.7,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-scenario-planning','board-advisory','tagged',0.4,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-coaching','team-coaching','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-coaching','performance-management','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-coaching','player-coach','tagged',0.8,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-coaching','pipeline-management','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-coaching','hiring-onboarding','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-universal-poc','proof-of-value','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-universal-poc','rfp-response','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-universal-poc','managed-services-sales','tagged',0.9,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-universal-poc','account-expansion','tagged',0.8,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-universal-poc','closing','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-universal-poc','sports-media','tagged',0.3,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-southern-gas-discovery','discovery','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-southern-gas-discovery','data-solutions','tagged',0.9,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-southern-gas-discovery','ai-ml-solutions','tagged',0.7,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-southern-gas-discovery','executive-selling','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-southern-gas-discovery','new-business','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-solution-scoping','data-solutions','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-solution-scoping','ai-ml-solutions','tagged',0.9,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-solution-scoping','cloud-infrastructure','tagged',0.9,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-solution-scoping','discovery','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-solution-scoping','managed-services-sales','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-me-vertical-gtm','vertical-gtm','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-me-vertical-gtm','gtm-strategy','tagged',0.9,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-me-vertical-gtm','adtech-fluency','tagged',0.9,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-me-vertical-gtm','process-improvement','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-me-vertical-gtm','sports-media','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-me-vertical-gtm','audience-measurement','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-verticalization-lift','process-improvement','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-verticalization-lift','crm-discipline','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-verticalization-lift','pipeline-management','tagged',0.7,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-verticalization-lift','marketing-sales-alignment','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-verticalization-lift','forecasting','tagged',0.4,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-disney-enablement','enablement-collateral','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-disney-enablement','adtech-fluency','tagged',0.8,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-disney-enablement','media-ad-sales','tagged',0.7,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-disney-enablement','proposal-development','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-disney-enablement','sports-media','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-fortune500-discovery','executive-selling','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-fortune500-discovery','discovery','tagged',0.9,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-fortune500-discovery','multi-stakeholder-selling','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekl-fortune500-discovery','new-business','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekr-750k','quota-attainment','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekr-750k','new-business','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekr-750k','managed-services-sales','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekr-vertex','account-expansion','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekr-vertex','account-management','tagged',0.9,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekr-vertex','quota-attainment','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekr-vertex','multi-stakeholder-selling','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekr-wayfair-disney','new-business','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekr-wayfair-disney','managed-services-sales','tagged',0.9,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekr-wayfair-disney','sports-media','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekr-wayfair-disney','executive-selling','tagged',0.4,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekr-nike','ai-ml-solutions','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekr-nike','strategic-partnerships','tagged',0.7,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekr-nike','managed-services-sales','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekr-nike','new-business','tagged',0.4,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekr-recruiting-talent','hiring-onboarding','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:tekr-recruiting-talent','team-coaching','tagged',0.4,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:dd-territory-proposal','territory-design','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:dd-territory-proposal','process-improvement','tagged',0.8,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:dd-territory-proposal','launch-sequencing','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:dd-territory-proposal','new-business','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:dd-territory-proposal','gtm-strategy','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:dd-200-quota','quota-attainment','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:dd-200-quota','prospecting','tagged',0.8,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:dd-200-quota','new-business','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:nyl-referral-book','referral-network','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:nyl-referral-book','new-business','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:nyl-referral-book','donor-relations','tagged',0.4,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:nyl-needs-assessment','discovery','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:nyl-needs-assessment','donor-relations','tagged',0.6,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:nyl-needs-assessment','referral-network','tagged',0.3,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:yri-marketing','content-brand','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:yri-marketing','campaign-development','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:yri-marketing','launch-sequencing','tagged',0.4,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:massdot-adoption','customer-success','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:massdot-adoption','content-brand','tagged',0.4,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:massdot-adoption','readiness-assessment','tagged',0.3,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:edu-capstone','market-sizing','tagged',0.8,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:edu-capstone','competitive-analysis','tagged',0.8,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:edu-capstone','positioning-messaging','tagged',0.5,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhbu38f-0','crm-discipline','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhbu38f-0','building-with-ai','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhbu38f-0','ai-in-workflow','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhbu38f-0','prospecting','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhbu38f-1','risk-governance','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhbu38f-1','building-with-ai','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhbu38f-1','data-solutions','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhbu38f-1','process-improvement','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhbu38f-2','pricing-packaging','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhbu38f-2','rfp-response','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhbu38f-2','managed-services-sales','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhfveal-0','market-research','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhfveal-0','feasibility-roadmap','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhfveal-0','competitive-analysis','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhfveal-0','scenario-planning','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhfveal-1','primary-research','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhfveal-1','customer-discovery','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhfveal-1','proposal-development','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhfveal-2','strategic-partnerships','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhfveal-2','channel-partnerships','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhghrt2-2','strategic-partnerships','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhghrt2-2','channel-partnerships','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhghrt2-2','buy-vs-build','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhghrt2-2','data-rights','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhghrt2-3','forecasting','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhghrt2-3','operating-cadence','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhghrt2-3','gtm-strategy','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-0','feasibility-roadmap','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-0','risk-governance','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-0','scenario-planning','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-1','cross-platform','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-1','building-with-ai','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-1','content-brand','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-2','cross-platform','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-2','building-with-ai','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-2','content-brand','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-4','risk-governance','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-4','healthcare-regulatory','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-4','board-advisory','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-5','risk-governance','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukn8dul-5','board-advisory','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-1','competitive-analysis','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-1','market-research','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-1','cpm-cpa-modeling','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-1','audience-measurement','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-2','market-research','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-2','market-segmentation','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-3','executive-communication','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-3','executive-selling','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-3','market-research','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-4','audience-measurement','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-4','market-research','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-4','adtech-fluency','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-4','gtm-strategy','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-5','market-research','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-5','data-solutions','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-5','executive-communication','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-5','audience-measurement','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-6','market-research','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-mukrbv3p-6','audience-measurement','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-0','revenue-modeling','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-0','forecasting','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-0','marketing-sales-alignment','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-1','marketing-sales-alignment','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-1','pipeline-management','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-1','qualification','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-2','crm-discipline','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-2','stakeholder-alignment','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-2','marketing-sales-alignment','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-3','risk-governance','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-3','entity-ip-structure','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-3','board-advisory','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-3','executive-selling','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-4','capital-strategy','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-4','funding-source-diagnostics','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-4','healthcare-regulatory','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-4','executive-selling','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-5','executive-selling','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-5','executive-communication','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-5','board-advisory','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-5','risk-governance','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-8','market-sizing','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-8','primary-research','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-9','process-improvement','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-9','discovery','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-munaofq1-9','primary-research','tagged',1.0,NULL,'2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-gtm-ownership','eng:healthcare','part_of',1.0,'engagement membership','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-customer-discovery-sprint','eng:healthcare','part_of',1.0,'engagement membership','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-distribution-pivot','eng:healthcare','part_of',1.0,'engagement membership','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-unit-economic-gates','eng:healthcare','part_of',1.0,'engagement membership','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-market-sizing-exit-paths','eng:healthcare','part_of',1.0,'engagement membership','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-collateral','eng:healthcare','part_of',1.0,'engagement membership','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-non-dilutive-capital','eng:healthcare','part_of',1.0,'engagement membership','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-scenario-planning','eng:healthcare','part_of',1.0,'engagement membership','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:lim-claude-code-tracker','eng:healthcare','part_of',1.0,'engagement membership','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('ach:art-run-muhfveal-0','eng:hvac','part_of',1.0,'engagement membership','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tool:salesforce','ach:psp-125-leads','used_in',0.8,'named in the bullet','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tool:salesforce','ach:art-run-munaofq1-2','used_in',0.8,'named in the bullet','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tool:linkedin','ach:psp-decision-makers-ai','used_in',0.8,'named in the bullet','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tool:linkedin','ach:art-run-mukrbv3p-3','used_in',0.8,'named in the bullet','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tool:zoominfo','ach:psp-decision-makers-ai','used_in',0.8,'named in the bullet','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tool:google-tag-manager','ach:art-run-mukn8dul-1','used_in',0.8,'named in the bullet','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tool:squarespace','ach:art-run-mukn8dul-1','used_in',0.8,'named in the bullet','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tool:marketo','ach:art-run-muhfveal-0','used_in',0.8,'named in the bullet','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tool:claude','ach:psp-decision-makers-ai','used_in',0.8,'named in the bullet','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tool:claude','ach:lim-claude-code-tracker','used_in',0.8,'named in the bullet','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tool:claude','ach:art-run-mukn8dul-1','used_in',0.8,'named in the bullet','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tool:openai','ach:psp-decision-makers-ai','used_in',0.8,'named in the bullet','2026-10-01 15:56:17');
+INSERT INTO "claim_relations" VALUES('tool:github','ach:art-run-muhbu38f-0','used_in',0.8,'named in the bullet','2026-10-01 15:56:17');
 CREATE TABLE claims (                        -- tier 2 (supersession like bullets)
   id          TEXT PRIMARY KEY,          -- role:psp:end | ach:psp-closed-deals | metric:psp-closed-deals:signed-deals | tool:… | tagline:…
   kind        TEXT NOT NULL,             -- role_fact | education | credential | tool | tagline | expertise | core_item | engagement_fact | contact | achievement | metric
@@ -3993,7 +4135,7 @@ INSERT INTO "claims" VALUES('eng:healthcare:location','engagement_fact','eng:hea
 INSERT INTO "claims" VALUES('eng:healthcare:start','engagement_fact','eng:healthcare','start','2026-07',NULL,NULL,'Healthcare Technology Start-Up (Confidential): start = 2026-07',NULL,NULL,NULL,'active',0.9,'1 evidence, 1 source type','1.0','curated',NULL,0,'2026-09-27T21:58:06',NULL,NULL);
 INSERT INTO "claims" VALUES('eng:healthcare:commitment','engagement_fact','eng:healthcare','commitment','Part Time',NULL,NULL,'Healthcare Technology Start-Up (Confidential): commitment = Part Time',NULL,NULL,NULL,'active',0.9,'1 evidence, 1 source type','1.0','curated',NULL,0,'2026-09-27T21:58:06',NULL,NULL);
 INSERT INTO "claims" VALUES('eng:healthcare:subtitle','engagement_fact','eng:healthcare','subtitle','Principal Business Strategist – GTM Plan, Business Architectural Roadmap, Blueprint to Obtain Necessary Funding – Healthcare FinTech Start-Up',NULL,NULL,'Healthcare Technology Start-Up (Confidential): subtitle = Principal Business Strategist – GTM Plan, Business Architectural Roadmap, Blueprint to Obtain Necessary Funding – Healthcare FinTech Start-Up',NULL,NULL,NULL,'active',0.9,'1 evidence, 1 source type','1.0','curated',NULL,0,'2026-09-27T21:58:06',NULL,NULL);
-INSERT INTO "claims" VALUES('eng:hvac:client','engagement_fact','eng:hvac','client','HVAC Services Firm (Confidential)',NULL,NULL,'HVAC Services Firm (Confidential)',NULL,NULL,NULL,'active',1.0,'3 evidence, 1 source type, verified by Tim','1.0','curated',NULL,1,'2026-09-27T21:58:06',NULL,NULL);
+INSERT INTO "claims" VALUES('eng:hvac:client','engagement_fact','eng:hvac','client','HVAC Services Firm (Confidential)',NULL,NULL,'HVAC Services Firm (Confidential)',NULL,NULL,NULL,'active',1.0,'4 evidence, 1 source type, verified by Tim','1.0','curated',NULL,1,'2026-09-27T21:58:06',NULL,NULL);
 INSERT INTO "claims" VALUES('contact:linkedin-profile:url','contact','contact:linkedin-profile','url','https://www.linkedin.com/in/timothy-king1124/?skipRedirect=true',NULL,NULL,'LinkedIn Profile: https://www.linkedin.com/in/timothy-king1124/?skipRedirect=true',NULL,NULL,NULL,'active',0.9,'1 evidence, 1 source type','1.0','curated',NULL,111,'2026-09-27T21:58:06',NULL,NULL);
 INSERT INTO "claims" VALUES('contact:github:url','contact','contact:github','url','https://github.com/timrking11-blip',NULL,NULL,'GitHub: https://github.com/timrking11-blip',NULL,NULL,NULL,'active',0.9,'1 evidence, 1 source type','1.0','curated',NULL,112,'2026-09-27T21:58:06',NULL,NULL);
 INSERT INTO "claims" VALUES('contact:website:url','contact','contact:website','url','https://www.strategicmarketinsights.services/',NULL,NULL,'Website: https://www.strategicmarketinsights.services/',NULL,NULL,NULL,'active',0.9,'1 evidence, 1 source type','1.0','curated',NULL,113,'2026-09-27T21:58:06',NULL,NULL);
@@ -4034,7 +4176,7 @@ INSERT INTO "claims" VALUES('metric:lim-build-vs-buy:recommended-path','metric',
 INSERT INTO "claims" VALUES('ach:lim-staffing-restructure','achievement','role:liminal','accomplished',NULL,NULL,NULL,'Restructured a proposed $946K/year five-person build into a one-engineer-plus-fractional model at $200–260K/year, a 73% cut.','2026-07',NULL,NULL,'active',1.0,'3 evidence, 2 source types, verified by Tim','1.0','curated',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
 INSERT INTO "claims" VALUES('metric:lim-staffing-restructure:annual-cost-avoided','metric','ach:lim-staffing-restructure','annual-cost-avoided','700000',700000.0,'USD','annual cost avoided: 700000 USD',NULL,NULL,NULL,'active',0.9,'grounded in 1 achievement ($946K/year proposed minus the $200–260K/year model)','1.0','curated',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
 INSERT INTO "claims" VALUES('metric:lim-staffing-restructure:cost-reduction','metric','ach:lim-staffing-restructure','cost-reduction','73',73.0,'%','cost reduction: 73 %',NULL,NULL,NULL,'active',0.8,'1 evidence, 1 source type','1.0','curated',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
-INSERT INTO "claims" VALUES('ach:lim-feasibility-roadmap','achievement','role:liminal','accomplished',NULL,NULL,NULL,'Reconciled the client founder''s four-pillar vision and three build memos into one staged roadmap: 12 recommendations, 4 stage gates, 8 board decisions.','2026-07',NULL,NULL,'active',0.98,'5 evidence, 3 source types','1.0','curated',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
+INSERT INTO "claims" VALUES('ach:lim-feasibility-roadmap','achievement','role:liminal','accomplished',NULL,NULL,NULL,'Reconciled the client founder''s four-pillar vision and three build memos into one staged roadmap: 12 recommendations, 4 stage gates, 8 board decisions.','2026-07',NULL,NULL,'active',1.0,'10 evidence, 4 source types, verified by Tim','1.0','curated',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
 INSERT INTO "claims" VALUES('metric:lim-feasibility-roadmap:recommendations','metric','ach:lim-feasibility-roadmap','recommendations','12',12.0,'count','recommendations: 12 count',NULL,NULL,NULL,'active',0.95,'2 evidence, 2 source types','1.0','curated',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
 INSERT INTO "claims" VALUES('metric:lim-feasibility-roadmap:stage-gates','metric','ach:lim-feasibility-roadmap','stage-gates','4',4.0,'count','stage gates: 4 count',NULL,NULL,NULL,'active',0.95,'2 evidence, 2 source types','1.0','curated',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
 INSERT INTO "claims" VALUES('ach:lim-competitive-venture-odds','achievement','role:liminal','accomplished',NULL,NULL,NULL,'Analyzed 15+ direct, platform-bundling, and affiliation competitors against venture base rates to size the raise at $1.5–3M and set go/no-go milestones.','2026-07',NULL,NULL,'active',0.8,'4 evidence, 1 source type','1.0','curated',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
@@ -4062,7 +4204,7 @@ INSERT INTO "claims" VALUES('ach:lim-engagement-terms','achievement','role:limin
 INSERT INTO "claims" VALUES('metric:lim-engagement-terms:scope-reduction','metric','ach:lim-engagement-terms','scope-reduction','48',48.0,'%','scope reduction: 48 %',NULL,NULL,NULL,'active',0.72,'grounded in 1 achievement (320 hours cut to 166 hours)','1.0','curated',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
 INSERT INTO "claims" VALUES('ach:lim-collateral','achievement','role:liminal','accomplished',NULL,NULL,NULL,'Produced the collateral the client sells with: pitch deck, competitive battlecards, partner negotiation sheets, and an eight-document executive round table.','2026-07',NULL,NULL,'active',0.95,'8 evidence, 2 source types','1.0','curated',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
 INSERT INTO "claims" VALUES('metric:lim-collateral:round-table-documents','metric','ach:lim-collateral','round-table-documents','8',8.0,'count','round-table documents: 8 count',NULL,NULL,NULL,'active',0.95,'8 evidence, 2 source types','1.0','curated',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
-INSERT INTO "claims" VALUES('ach:lim-operating-cadence','achievement','role:liminal','accomplished',NULL,NULL,NULL,'Built the operating cadence the client runs on: RACI and escalation thresholds, a weekly capacity forecast, and a one-page decision log with owner and date.','2026-07',NULL,NULL,'active',1.0,'6 evidence, 3 source types, verified by Tim','1.0','curated',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
+INSERT INTO "claims" VALUES('ach:lim-operating-cadence','achievement','role:liminal','accomplished',NULL,NULL,NULL,'Built the operating cadence the client runs on: RACI and escalation thresholds, a weekly capacity forecast, and a one-page decision log with owner and date.','2026-07',NULL,NULL,'active',1.0,'7 evidence, 3 source types, verified by Tim','1.0','curated',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
 INSERT INTO "claims" VALUES('ach:lim-readiness-assessment','achievement','role:liminal','accomplished',NULL,NULL,NULL,'Authored the launch-readiness assessment that reset the execution sequence, converting five organizational gaps into a dated plan with named owners.','2026-07',NULL,NULL,'active',0.95,'2 evidence, 2 source types','1.0','curated',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
 INSERT INTO "claims" VALUES('metric:lim-readiness-assessment:gaps-closed-into-plan','metric','ach:lim-readiness-assessment','gaps-closed-into-plan','5',5.0,'count','gaps closed into plan: 5 count',NULL,NULL,NULL,'active',0.95,'2 evidence, 2 source types','1.0','curated',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
 INSERT INTO "claims" VALUES('ach:lim-entity-ip-structure','achievement','role:liminal','accomplished',NULL,NULL,NULL,'Coordinated outside counsel, CPA, engineering, and founders to architect the entity, IP, and data-rights structure behind the client''s data assets.','2026-07',NULL,NULL,'active',1.0,'3 evidence, 2 source types, verified by Tim','1.0','curated',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
@@ -4074,7 +4216,7 @@ INSERT INTO "claims" VALUES('ach:lim-scenario-planning','achievement','role:limi
 INSERT INTO "claims" VALUES('ach:tekl-coaching','achievement','role:tek_lead','accomplished',NULL,NULL,NULL,'Led a team of up to 5 direct reports inside a 30-person practice, coaching performance through daily process reviews and 1:1 metric sessions.','2024','2025-11',NULL,'active',1.0,'19 evidence, 4 source types, verified by Tim','1.0','curated',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
 INSERT INTO "claims" VALUES('metric:tekl-coaching:practice-size','metric','ach:tekl-coaching','practice-size','30',30.0,'people','practice size: 30 people',NULL,NULL,NULL,'active',0.8,'3 evidence, 1 source type','1.0','curated',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
 INSERT INTO "claims" VALUES('metric:tekl-coaching:direct-reports','metric','ach:tekl-coaching','direct-reports','5',5.0,'reports (3–5)','direct reports: 5 reports (3–5)',NULL,NULL,NULL,'active',1.0,'1 evidence, 1 source type, verified by Tim','1.0','curated',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
-INSERT INTO "claims" VALUES('ach:tekl-universal-poc','achievement','role:tek_lead','accomplished',NULL,NULL,NULL,'Won a proof-of-concept RFP that opened a multi-million-dollar managed services expansion with Universal Parks.','2024','2025-11',NULL,'active',1.0,'19 evidence, 4 source types, verified by Tim','1.0','curated',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
+INSERT INTO "claims" VALUES('ach:tekl-universal-poc','achievement','role:tek_lead','accomplished',NULL,NULL,NULL,'Won a proof-of-concept RFP that opened a multi-million-dollar managed services expansion with Universal Parks.','2024','2025-11',NULL,'active',1.0,'20 evidence, 4 source types, verified by Tim','1.0','curated',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
 INSERT INTO "claims" VALUES('metric:tekl-universal-poc:expansion-value','metric','ach:tekl-universal-poc','expansion-value','2000000',2000000.0,'USD (multi-million)','expansion value: 2000000 USD (multi-million)',NULL,NULL,NULL,'active',0.9,'grounded in 1 achievement (stated as multi-million-dollar; 2,000,000 is the floor used for scoring only)','1.0','curated',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
 INSERT INTO "claims" VALUES('ach:tekl-southern-gas-discovery','achievement','role:tek_lead','accomplished',NULL,NULL,NULL,'Led discovery directly with Southern Company Gas''s Center of Excellence on data science, machine learning, and data governance.','2024','2025-11',NULL,'active',1.0,'18 evidence, 4 source types, verified by Tim','1.0','curated',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
 INSERT INTO "claims" VALUES('ach:tekl-solution-scoping','achievement','role:tek_lead','accomplished',NULL,NULL,NULL,'Scoped and positioned AI, data, and cloud solutions — graph, Adobe Enterprise Suite, Azure, computer vision — translating capability into commercial terms.','2024','2025-11',NULL,'active',0.98,'17 evidence, 3 source types','1.0','curated',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
@@ -4103,8 +4245,8 @@ INSERT INTO "claims" VALUES('ach:nyl-needs-assessment','achievement','role:nyl',
 INSERT INTO "claims" VALUES('ach:yri-marketing','achievement','role:yri','accomplished',NULL,NULL,NULL,'Wrote product marketing copy, website content, and social posts, and helped launch a premium leather accessories collection.','2016-08','2017-05',NULL,'active',0.7,'3 evidence, 1 source type','1.0','curated',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
 INSERT INTO "claims" VALUES('ach:massdot-adoption','achievement','role:massdot','accomplished',NULL,NULL,NULL,'Promoted EZ Pass adoption to Massachusetts residents and visitors, processing sign-ups through the transition to a toll-booth-free I-95.','2016-05','2016-09',NULL,'active',0.7,'4 evidence, 1 source type','1.0','curated',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
 INSERT INTO "claims" VALUES('ach:edu-capstone','achievement','role:education','accomplished',NULL,NULL,NULL,'Senior Capstone — Northeast Intermodal Competitive & Market Analysis: market sizing, Porter''s Five Forces, competitor profiling, and a positioning recommendation.',NULL,NULL,NULL,'active',0.8,'5 evidence, 1 source type','1.0','curated',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
-INSERT INTO "claims" VALUES('ach:art-run-muhbu38f-0','achievement','role:liminal','accomplished',NULL,NULL,NULL,'Built a custom CRM from scratch with GTM and prospecting connectors, automated weekly contact enrichment, and account-research agents two-way synced to GitHub.','2026-07',NULL,NULL,'active',1.0,'2 evidence, 1 source type, verified by Tim','1.0','artifact',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
-INSERT INTO "claims" VALUES('ach:art-run-muhbu38f-1','achievement','role:liminal','accomplished',NULL,NULL,NULL,'Diagnosed data-sync failures caused by null values and missing governance rules, then enforced sync governance constraints through 60 automated tests.','2026-07',NULL,NULL,'active',1.0,'1 evidence, 1 source type, verified by Tim','1.0','artifact',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
+INSERT INTO "claims" VALUES('ach:art-run-muhbu38f-0','achievement','role:liminal','accomplished',NULL,NULL,NULL,'Built a custom CRM from scratch with GTM and prospecting connectors, automated weekly contact enrichment, and account-research agents two-way synced to GitHub.','2026-07',NULL,NULL,'active',1.0,'7 evidence, 1 source type, verified by Tim','1.0','artifact',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
+INSERT INTO "claims" VALUES('ach:art-run-muhbu38f-1','achievement','role:liminal','accomplished',NULL,NULL,NULL,'Diagnosed data-sync failures caused by null values and missing governance rules, then enforced sync governance constraints through 60 automated tests.','2026-07',NULL,NULL,'active',1.0,'6 evidence, 1 source type, verified by Tim','1.0','artifact',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
 INSERT INTO "claims" VALUES('ach:art-run-muhbu38f-2','achievement','role:tek_lead','accomplished',NULL,NULL,NULL,'Partnered with a Principal Business Development Manager to set bill rates and price resource plans for Global Services RFP responses.','2024','2025-11',NULL,'active',1.0,'1 evidence, 1 source type, verified by Tim','1.0','artifact',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
 INSERT INTO "claims" VALUES('ach:art-run-muhfveal-0','achievement','role:liminal','accomplished',NULL,NULL,NULL,'Built a feasibility dashboard with kill/pivot triggers for an HVAC firm''s market-overlap expansion, using cost-ceilings to curb cannibalization and protect profit.','2026-07',NULL,NULL,'active',1.0,'2 evidence, 2 source types, verified by Tim','1.0','artifact',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
 INSERT INTO "claims" VALUES('ach:art-run-muhfveal-1','achievement','role:demanddrive','accomplished',NULL,NULL,NULL,'Interviewed 30+ property managers outside service range and proposed a batch-installation process, growing revenue 100% in one month.','2018','2021',NULL,'active',1.0,'1 evidence, 1 source type, verified by Tim','1.0','artifact',NULL,NULL,'2026-09-27T21:58:06',NULL,NULL);
@@ -4125,11 +4267,25 @@ INSERT INTO "claims" VALUES('ach:art-run-mukrbv3p-6','achievement','role:tek_rec
 INSERT INTO "claims" VALUES('tagline:ai-strategy-workflow-automation-leader:text','tagline','tagline:ai-strategy-workflow-automation-leader','text','AI Strategy & Workflow Automation Leader',NULL,NULL,'AI Strategy & Workflow Automation Leader',NULL,NULL,NULL,'active',1.0,'1 evidence, 1 source type, verified by Tim','1.0','claude-proposed',NULL,100,'2026-09-28T03:12:00',NULL,NULL);
 INSERT INTO "claims" VALUES('tagline:advertising-analytics-market-intelligence-adviso:text','tagline','tagline:advertising-analytics-market-intelligence-adviso','text','Advertising Analytics & Market Intelligence Advisor',NULL,NULL,'Advertising Analytics & Market Intelligence Advisor',NULL,NULL,NULL,'active',1.0,'1 evidence, 1 source type, verified by Tim','1.0','claude-proposed',NULL,101,'2026-09-28T03:12:00',NULL,NULL);
 INSERT INTO "claims" VALUES('tool:notion:name','tool','tool:notion','name','Notion',NULL,NULL,'Notion',NULL,NULL,NULL,'active',1.0,'1 evidence, 1 source type, verified by Tim','1.0','artifact',NULL,100,'2026-09-28T03:12:00',NULL,NULL);
-INSERT INTO "claims" VALUES('eng:hvac:location','engagement_fact','eng:hvac','location','Santa Clarita, CA',NULL,NULL,'HVAC Services Firm (Confidential): location = Santa Clarita, CA',NULL,NULL,NULL,'active',1.0,'1 evidence, 1 source type, verified by Tim','1.0','learned',NULL,NULL,'2026-09-28T03:12:00',NULL,NULL);
-INSERT INTO "claims" VALUES('eng:hvac:start','engagement_fact','eng:hvac','start','2026-08',NULL,NULL,'HVAC Services Firm (Confidential): start = 2026-08',NULL,NULL,NULL,'active',1.0,'1 evidence, 1 source type, verified by Tim','1.0','learned',NULL,NULL,'2026-09-28T03:12:00',NULL,NULL);
-INSERT INTO "claims" VALUES('eng:hvac:end','engagement_fact','eng:hvac','end','2026-09',NULL,NULL,'HVAC Services Firm (Confidential): end = 2026-09',NULL,NULL,NULL,'active',1.0,'1 evidence, 1 source type, verified by Tim','1.0','learned',NULL,NULL,'2026-09-28T03:12:00',NULL,NULL);
-INSERT INTO "claims" VALUES('eng:hvac:commitment','engagement_fact','eng:hvac','commitment','Part Time',NULL,NULL,'HVAC Services Firm (Confidential): commitment = Part Time',NULL,NULL,NULL,'active',1.0,'1 evidence, 1 source type, verified by Tim','1.0','learned',NULL,NULL,'2026-09-28T03:12:00',NULL,NULL);
-INSERT INTO "claims" VALUES('eng:hvac:subtitle','engagement_fact','eng:hvac','subtitle','Consultant - Principal Analyst GTM Expansion',NULL,NULL,'HVAC Services Firm (Confidential): subtitle = Consultant - Principal Analyst GTM Expansion',NULL,NULL,NULL,'active',1.0,'1 evidence, 1 source type, verified by Tim','1.0','learned',NULL,NULL,'2026-09-28T03:12:00',NULL,NULL);
+INSERT INTO "claims" VALUES('eng:hvac:location','engagement_fact','eng:hvac','location','Santa Clarita, CA',NULL,NULL,'HVAC Services Firm (Confidential): location = Santa Clarita, CA',NULL,NULL,NULL,'active',1.0,'2 evidence, 1 source type, verified by Tim','1.0','learned',NULL,NULL,'2026-09-28T03:12:00',NULL,NULL);
+INSERT INTO "claims" VALUES('eng:hvac:start','engagement_fact','eng:hvac','start','2026-08',NULL,NULL,'HVAC Services Firm (Confidential): start = 2026-08',NULL,NULL,NULL,'active',1.0,'2 evidence, 1 source type, verified by Tim','1.0','learned',NULL,NULL,'2026-09-28T03:12:00',NULL,NULL);
+INSERT INTO "claims" VALUES('eng:hvac:end','engagement_fact','eng:hvac','end','2026-09',NULL,NULL,'HVAC Services Firm (Confidential): end = 2026-09',NULL,NULL,NULL,'active',1.0,'2 evidence, 1 source type, verified by Tim','1.0','learned',NULL,NULL,'2026-09-28T03:12:00',NULL,NULL);
+INSERT INTO "claims" VALUES('eng:hvac:commitment','engagement_fact','eng:hvac','commitment','pro bono',NULL,NULL,'HVAC Services Firm (Confidential): commitment = pro bono',NULL,NULL,NULL,'active',1.0,'2 evidence, 1 source type, verified by Tim','1.0','learned',NULL,NULL,'2026-09-28T03:12:00',NULL,NULL);
+INSERT INTO "claims" VALUES('eng:hvac:subtitle','engagement_fact','eng:hvac','subtitle','Consultant - Principal Analyst GTM Expansion',NULL,NULL,'HVAC Services Firm (Confidential): subtitle = Consultant - Principal Analyst GTM Expansion',NULL,NULL,NULL,'active',1.0,'2 evidence, 1 source type, verified by Tim','1.0','learned',NULL,NULL,'2026-09-28T03:12:00',NULL,NULL);
+INSERT INTO "claims" VALUES('ach:art-run-munaofq1-0','achievement','role:tek_lead','accomplished',NULL,NULL,NULL,'Owned weekly, monthly, and yearly revenue metrics for the Data Analytics department and two-recruiter team, reporting to Delivery leadership.','2024','2025-11',NULL,'active',1.0,'1 evidence, 1 source type, verified by Tim','1.0','artifact',NULL,NULL,'2026-10-01T11:56:17',NULL,NULL);
+INSERT INTO "claims" VALUES('ach:art-run-munaofq1-1','achievement','role:tek_lead','accomplished',NULL,NULL,NULL,'Influenced deal prioritization by weighting opportunities on exclusivity, repeat-buyer status, and engagement scope to align personnel to closeable business.','2024','2025-11',NULL,'active',1.0,'1 evidence, 1 source type, verified by Tim','1.0','artifact',NULL,NULL,'2026-10-01T11:56:17',NULL,NULL);
+INSERT INTO "claims" VALUES('ach:art-run-munaofq1-2','achievement','role:tek_lead','accomplished',NULL,NULL,NULL,'Ran Salesforce-based win-loss reviews and aligned with business office Directors, Delivery leadership, and regional sales teams under shared department incentives.','2024','2025-11',NULL,'active',1.0,'1 evidence, 1 source type, verified by Tim','1.0','artifact',NULL,NULL,'2026-10-01T11:56:17',NULL,NULL);
+INSERT INTO "claims" VALUES('ach:art-run-munaofq1-3','achievement','role:liminal','accomplished',NULL,NULL,NULL,'Designed a RACI matrix and delegation/escalation protocols with CEO sign-off, governing IP decisions and board-ready recommendations.','2026-07',NULL,NULL,'active',1.0,'1 evidence, 1 source type, verified by Tim','1.0','artifact',NULL,NULL,'2026-10-01T11:56:17',NULL,NULL);
+INSERT INTO "claims" VALUES('ach:art-run-munaofq1-4','achievement','role:liminal','accomplished',NULL,NULL,NULL,'Identified an SBIR federal funding route through NIH, aligning the product for D2P2 qualification to unlock up to $2M in capital with CEO sign-off.','2026-07',NULL,NULL,'active',1.0,'1 evidence, 1 source type, verified by Tim','1.0','artifact',NULL,NULL,'2026-10-01T11:56:17',NULL,NULL);
+INSERT INTO "claims" VALUES('ach:art-run-munaofq1-5','achievement','role:liminal','accomplished',NULL,NULL,NULL,'Presented business architecture, GTM strategy, and SBIR application to CRO, COO, and Chief Clinical Officer, gating 17 items to funding lock.','2026-07',NULL,NULL,'active',1.0,'1 evidence, 1 source type, verified by Tim','1.0','artifact',NULL,NULL,'2026-10-01T11:56:17',NULL,NULL);
+INSERT INTO "claims" VALUES('ach:art-run-munaofq1-8','achievement','role:liminal','accomplished',NULL,NULL,NULL,'Ran a two-site catchment and territory analysis for a proposed branch location, measuring drive-time overlap and setting a monthly cost ceiling for site viability.','2026-07',NULL,NULL,'active',1.0,'1 evidence, 1 source type, verified by Tim','1.0','artifact',NULL,NULL,'2026-10-01T11:56:17',NULL,NULL);
+INSERT INTO "claims" VALUES('ach:art-run-munaofq1-9','achievement','role:liminal','accomplished',NULL,NULL,NULL,'Built a phase-gated decision system — structured client intake, source-tagged evidence, and go/no-go criteria — to drive the engagement''s analysis.','2026-07',NULL,NULL,'active',1.0,'1 evidence, 1 source type, verified by Tim','1.0','artifact',NULL,NULL,'2026-10-01T11:56:17',NULL,NULL);
+INSERT INTO "claims" VALUES('tool:gong:name','tool','tool:gong','name','Gong',NULL,NULL,'Gong',NULL,NULL,NULL,'active',1.0,'1 evidence, 1 source type, verified by Tim','1.0','artifact',NULL,101,'2026-10-01T11:56:17',NULL,NULL);
+INSERT INTO "claims" VALUES('tool:clay:name','tool','tool:clay','name','Clay',NULL,NULL,'Clay',NULL,NULL,NULL,'active',1.0,'1 evidence, 1 source type, verified by Tim','1.0','artifact',NULL,102,'2026-10-01T11:56:17',NULL,NULL);
+INSERT INTO "claims" VALUES('tool:explorium-ai:name','tool','tool:explorium-ai','name','Explorium AI',NULL,NULL,'Explorium AI',NULL,NULL,NULL,'active',1.0,'1 evidence, 1 source type, verified by Tim','1.0','artifact',NULL,103,'2026-10-01T11:56:17',NULL,NULL);
+INSERT INTO "claims" VALUES('tool:salesforce-dashboards:name','tool','tool:salesforce-dashboards','name','Salesforce Dashboards',NULL,NULL,'Salesforce Dashboards',NULL,NULL,NULL,'active',1.0,'1 evidence, 1 source type, verified by Tim','1.0','artifact',NULL,104,'2026-10-01T11:56:17',NULL,NULL);
+INSERT INTO "claims" VALUES('tool:demandbase:name','tool','tool:demandbase','name','Demandbase',NULL,NULL,'Demandbase',NULL,NULL,NULL,'active',1.0,'1 evidence, 1 source type, verified by Tim','1.0','artifact',NULL,105,'2026-10-01T11:56:17',NULL,NULL);
+INSERT INTO "claims" VALUES('tool:salesforce-dashboards-native-components:name','tool','tool:salesforce-dashboards-native-components','name','Salesforce Dashboards (native components)',NULL,NULL,'Salesforce Dashboards (native components)',NULL,NULL,NULL,'active',1.0,'1 evidence, 1 source type, verified by Tim','1.0','artifact',NULL,106,'2026-10-01T11:56:17',NULL,NULL);
 CREATE TABLE competencies (id INTEGER PRIMARY KEY, text TEXT NOT NULL UNIQUE, tags TEXT, sort INTEGER, origin TEXT, claim_id TEXT);
 INSERT INTO "competencies" VALUES(1,'Go-To-Market Strategy','["gtm-strategy"]',NULL,'curated','expertise:go-to-market-strategy:text');
 INSERT INTO "competencies" VALUES(2,'Market Segmentation & Positioning','["market-segmentation", "positioning-messaging"]',NULL,'curated','expertise:market-segmentation-positioning:text');
@@ -4237,6 +4393,8 @@ INSERT INTO "engagement_achievements" VALUES('healthcare','lim-scenario-planning
 INSERT INTO "engagement_achievements" VALUES('healthcare','lim-claude-code-tracker',8);
 INSERT INTO "engagement_achievements" VALUES('hvac','art-run-muhfveal-0',0);
 INSERT INTO "engagement_achievements" VALUES('hvac','art-run-mukn8dul-0',1);
+INSERT INTO "engagement_achievements" VALUES('hvac','art-run-munaofq1-8',2);
+INSERT INTO "engagement_achievements" VALUES('hvac','art-run-munaofq1-9',3);
 CREATE TABLE engagements (
   key TEXT PRIMARY KEY, role_key TEXT REFERENCES roles(key), client TEXT NOT NULL, location TEXT,
   start TEXT, end TEXT, commitment TEXT, subtitle TEXT, sort INTEGER,
@@ -4245,7 +4403,7 @@ CREATE TABLE engagements (
   notes TEXT
 , claim_id TEXT);
 INSERT INTO "engagements" VALUES('healthcare','liminal','Healthcare Technology Start-Up (Confidential)','New York, NY','2026-07',NULL,'Part Time','Principal Business Strategist – GTM Plan, Business Architectural Roadmap, Blueprint to Obtain Necessary Funding – Healthcare FinTech Start-Up',0,1,0,'source template 2026-09-27: header, subtitle and the nine long-form bullets from Section C of the source template.','eng:healthcare:client');
-INSERT INTO "engagements" VALUES('hvac','liminal','HVAC Services Firm (Confidential)','Santa Clarita, CA','2026-08','2026-09','Part Time','Consultant - Principal Analyst GTM Expansion',1,1,0,'source template 2026-09-27: created from the learned HVAC feasibility-dashboard bullet. Hidden until the Match Desk collects its details.','eng:hvac:client');
+INSERT INTO "engagements" VALUES('hvac','liminal','HVAC Services Firm (Confidential)','Santa Clarita, CA','2026-08','2026-09','pro bono','Consultant - Principal Analyst GTM Expansion',1,1,0,'source template 2026-09-27: created from the learned HVAC feasibility-dashboard bullet. Hidden until the Match Desk collects its details.','eng:hvac:client');
 CREATE TABLE enums (
   domain TEXT NOT NULL, code TEXT NOT NULL, label TEXT NOT NULL, sort INTEGER DEFAULT 0,
   PRIMARY KEY (domain, code)
@@ -5114,6 +5272,25 @@ INSERT INTO "evidence" VALUES('ev:ans:run-mukrbv3p:3','USER_ENTERED','match_desk
 INSERT INTO "evidence" VALUES('ev:phrase:run-mukn8dul:ai-strategy-workflow-automation-leader','USER_ENTERED','match_desk','run-mukn8dul','tagline_phrases entry',NULL,'AI Strategy & Workflow Automation Leader',NULL,'2026-09-28T03:12:00',1.0,'b61de2c4be2f8b11dfa097673982ab6b0b200776','2026-09-28 07:12:00',NULL);
 INSERT INTO "evidence" VALUES('ev:phrase:run-mukrbv3p:advertising-analytics-market-intelligence-adviso','USER_ENTERED','match_desk','run-mukrbv3p','tagline_phrases entry',NULL,'Advertising Analytics & Market Intelligence Advisor',NULL,'2026-09-28T03:12:00',1.0,'c116835a92682f5f02d3a702154f9060c2f42ba8','2026-09-28 07:12:00',NULL);
 INSERT INTO "evidence" VALUES('ev:phrase:run-mukn8dul:notion','USER_ENTERED','match_desk','run-mukn8dul','technologies entry',NULL,'Notion',NULL,'2026-09-28T03:12:00',1.0,'486af5da11b1d7b984dd0eec94e15310e479449f','2026-09-28 07:12:00',NULL);
+INSERT INTO "evidence" VALUES('ev:ans:run-munaofq1:0','USER_ENTERED','match_desk','run-munaofq1','followup 0','In your TEKsystems Data Analytics & Insights role, did you own or influence formal revenue operations processes (like shared sales/marketing metrics or process alignment) rather than staffing and account growth alone?','At TEKsystems I owned shared sales metrics in the form of weekly generated, monthly, and yearly revenue generated by my Department (Data Analytics), and team (2 recruiters) and was responsible for influencing processes and aligning personnel to closeable business which I determined based on a weighted set of criteria and taking into account new business opportunity. Typically I weighted that criteria by influence over the process (exclusive business, repeat buyers especially), and scope of work (we had multiple engagement models and managed service engagements were high revenue drivers). To evaluate this criteria I worked cross-functionally with local business office Directors, our Head of Delivery for Enterprise Applications, Data Analytics, & Insights (EADAI), and regional market salespeople ranging from Account Managers to Managed Services, Cloud partner, and Business Sector Business Development Managers. I would derive reports from salesforce on closed won business and do win-loss reviews with my team. We were also held to shared sales incentives as a Department. Reported up to the Head of Delivery for EADAI',NULL,'2026-09-30T03:33:06.670Z',1.0,'ce3d72b60a416c7a48038a7d514bccc3928b9d46','2026-10-01 15:56:17',NULL);
+INSERT INTO "evidence" VALUES('ev:ans:run-munaofq1:1','USER_ENTERED','match_desk','run-munaofq1','followup 1','For the executive round table and board-ready deliverables at the healthcare AI client, which specific executive titles (CRO, VP Sales, CEO, founder) reviewed or acted on them?','The CEO was the final signature on board-ready recommendations. She acted on them as well in the form of getting IP, designing an RACI Matrix, and implementing delegation and escalation protocols. This matrix when combined with a business architecture roadmap and 90 day sprint  to secure capital through a federal funding route I identified known as SBIR, governed by the NIH, which awards this to start-ups where our product was on track to be aligned to qualify for D2P2 funding (Direct-to-phase-2) which could raise up to $2 million in capital. The CEO signed off on this business decision. The Chief Risk Officer who owns control-layer verification and PHI boundary who I presented the business architecture blueprint, the Go-to-Market Strategy, and presentation with supporting memorandums, the Capital & Funding Strategy Sprint specifications and a Gap register and claims dashboard which applied RACI and gated 17-items to funding lock by filing which supported in detail who owns what and which of that was unsupported and in need of stipulation, a macro & base rate research annex and clinical pattern engine after market research (viability tests), feasibility recommendation and dashboard which comprised of a trigger set and decision log with 12 recommendations and 4 gates, as well as an SBIR application package which governed the funding route lock which was a 1:1 in matching the criteria. The COO and Chief Clinical officer both reviewed and acted on them in different capacities. presented via multiple presentations and with a producible pitch deck before a counsel round table as a fractional chief strategist',NULL,'2026-09-30T03:33:06.670Z',1.0,'066ab2486fb60c09f3fc8892452f88fe740abd78','2026-10-01 15:56:17',NULL);
+INSERT INTO "evidence" VALUES('ev:ans:run-munaofq1:2','USER_ENTERED','match_desk','run-munaofq1','followup 2','Beyond the weekly capacity forecast in your operating cadence work, have you sequenced deliverables across multiple sprints or engagements based on team capacity?','Partnered with a Principal Business Development Manager to set bill rates and price resource plans for Global Services RFP responses. Largest resource plan was scoped for 7 fractional Solution Architects on 7 different digital transformation workstreams. Sourced and staffed 8 solution architects across 8 workstreams on a 12–18 month renewable managed services engagement worth $1M annually. For my engagement with the Healthcare startup I developed A weekly capacity forecast" as a named component of the operating cadence you built, alongside RACI and the decision log, carrying on average 3-4 concurrent streams during the gated sprint cycle',NULL,'2026-09-30T03:33:06.670Z',1.0,'e789cd9436cdf7f4f542b69132a9fc4fceb4b94b','2026-10-01 15:56:17',NULL);
+INSERT INTO "evidence" VALUES('ev:ans:run-munaofq1:3','USER_ENTERED','match_desk','run-munaofq1','followup 3','For the HVAC Services Firm engagement, what dates should appear, how should the client be named for confidentiality, what''s a one-line description of the engagement scope, and how many stakeholder interviews or discovery sessions did you run?','MKT · CAP: Ran a two-site catchment and new-territory analysis for a [industry] operator''s proposed Ventura branch, measuring drive-time overlap and setting the monthly cost ceiling the site had to clear.
+SYS: Delivered the engagement through a decision system I built: intake form to structured client profile, source-tagged evidence, pre-set go/no-go criteria and a phase-gated scan list.',NULL,'2026-09-30T03:33:06.670Z',1.0,'7fe66030712a0ba25f6d6619c71a50a92762877e','2026-10-01 15:56:17',NULL);
+INSERT INTO "evidence" VALUES('ev:eng:run-munaofq1:hvac','USER_ENTERED','match_desk','run-munaofq1','engagement details hvac','For the HVAC Services Firm engagement, what dates should appear, how should the client be named for confidentiality, what''s a one-line description of the engagement scope, and how many stakeholder interviews or discovery sessions did you run?','client: HVAC Services Firm (Confidential); commitment: pro bono; end: 2026-09; location: Santa Clarita, CA; start: 2026-08; subtitle: Consultant - Principal Analyst GTM Expansion',NULL,'2026-09-30T03:33:06.670Z',1.0,'b2dcfa870739f5b4cba75da6566e903b4f0a014f','2026-10-01 15:56:17',NULL);
+INSERT INTO "evidence" VALUES('ev:ans:run-munaofq1:4','USER_ENTERED','match_desk','run-munaofq1','followup 4','The posting names Gong, Clari, 6sense, Looker, Asana, and Clay as part of the GTM tech stack — do you have hands-on or business-user experience with any of these?','I have worked with Gong as a user at TEKsystems in both roles for call recording and smart transcription which would provide follow up tasks and summarize meetings while saving the call transcription. I have not used 6 sense but have used 6 sense adjacent tools that are worth listing like Clay, Apollo, Exporium AI and am currently bringing a product from 0 - 1 for my own consulting business that includes an AI native intelligence layer that gauges buyer intent signals. For data visualization I have historically used Excel, "Native Salesforce Dashboard Component" (add to technologies for ) for data visualization on a shared layout. Also Add in Demandbase',NULL,'2026-09-30T03:33:06.670Z',1.0,'ad42fa8ddfb70b4ff133ab4186a66641cfc35169','2026-10-01 15:56:17',NULL);
+INSERT INTO "evidence" VALUES('ev:edit:run-munaofq1:None','USER_ENTERED','match_desk','run-munaofq1','sheet edit',NULL,'Presented business architecture, GTM strategy, and SBIR application to CRO, COO, and Chief Clinical Officer, gating 17 items to funding lock.',NULL,'2026-09-30T03:33:06.670Z',1.0,'cf1b386f2ed38a68d74c8d2ebd559cf5ec60b1f6','2026-10-01 15:56:17',NULL);
+INSERT INTO "evidence" VALUES('ev:edit:run-munaofq1:102','USER_ENTERED','match_desk','run-munaofq1','sheet edit',NULL,'Built a custom CRM with GTM and prospecting connectors, automating weekly contact enrichment and account-research agents two-way synced to GitHub.',NULL,'2026-09-30T03:33:06.670Z',1.0,'7bd709352a759595c0ba3e4167c19a11b56ef99f','2026-10-01 15:56:17',NULL);
+INSERT INTO "evidence" VALUES('ev:edit:run-munaofq1:None:h5dadbd5b64','USER_ENTERED','match_desk','run-munaofq1','sheet edit',NULL,'Presented business architecture, GTM strategy, and SBIR application package to CRO, COO, and Chief Clinical Officer, gating 17 items to funding lock.',NULL,'2026-09-30T03:33:06.670Z',1.0,'5dadbd5b64b2fc6e2a33320d9e839928a9bc35f2','2026-10-01 15:56:17',NULL);
+INSERT INTO "evidence" VALUES('ev:edit:run-munaofq1:103','USER_ENTERED','match_desk','run-munaofq1','sheet edit',NULL,'Diagnosed data-sync failures from null values and missing governance rules, then enforced sync constraints via 60 automated tests.',NULL,'2026-09-30T03:33:06.670Z',1.0,'12e7d4d440ad1867876cea6672d3098c89566559','2026-10-01 15:56:17',NULL);
+INSERT INTO "evidence" VALUES('ev:edit:run-munaofq1:93','USER_ENTERED','match_desk','run-munaofq1','sheet edit',NULL,'Reconciled founder''s four-pillar vision and three build memos into one staged roadmap: 12 recommendations, 4 stage gates, 8 board decisions.',NULL,'2026-09-30T03:33:06.670Z',1.0,'724168f0426f8a9f85bc8c977697dc43dc9662c9','2026-10-01 15:56:17',NULL);
+INSERT INTO "evidence" VALUES('ev:phrase:run-munaofq1:gong','USER_ENTERED','match_desk','run-munaofq1','technologies entry',NULL,'Gong',NULL,'2026-09-30T07:42:13',1.0,'bc33e2815600c37716ce166e0340a56fb9be4438','2026-10-01 15:56:17',NULL);
+INSERT INTO "evidence" VALUES('ev:phrase:run-munaofq1:clay','USER_ENTERED','match_desk','run-munaofq1','technologies entry',NULL,'Clay',NULL,'2026-09-30T07:42:13',1.0,'e00d5664a78ecb0f1aa16f333cbd424389227f8e','2026-10-01 15:56:17',NULL);
+INSERT INTO "evidence" VALUES('ev:phrase:run-munaofq1:explorium-ai','USER_ENTERED','match_desk','run-munaofq1','technologies entry',NULL,'Explorium AI',NULL,'2026-09-30T07:42:13',1.0,'a37a770f9bc8221d79a453687962e020416ddbb0','2026-10-01 15:56:17',NULL);
+INSERT INTO "evidence" VALUES('ev:phrase:run-munaofq1:salesforce-dashboards','USER_ENTERED','match_desk','run-munaofq1','technologies entry',NULL,'Salesforce Dashboards',NULL,'2026-09-30T07:42:13',1.0,'ffddb3f2dfa319c60410a2776ae7f15ef4c79821','2026-10-01 15:56:17',NULL);
+INSERT INTO "evidence" VALUES('ev:phrase:run-munaofq1:demandbase','USER_ENTERED','match_desk','run-munaofq1','technologies entry',NULL,'Demandbase',NULL,'2026-09-30T07:42:13',1.0,'f95db74078f016f9fcb3652b3cb3c3441a1460dd','2026-10-01 15:56:17',NULL);
+INSERT INTO "evidence" VALUES('ev:eng:run-mulpf4ef:hvac','USER_ENTERED','match_desk','run-mulpf4ef','engagement details hvac',NULL,'client: HVAC Services Firm (Confidential); commitment: pro bono; end: 2026-09; location: Santa Clarita, CA; start: 2026-08; subtitle: Consultant - Principal Analyst GTM Expansion',NULL,'2026-09-30T07:42:13',1.0,'b2dcfa870739f5b4cba75da6566e903b4f0a014f','2026-10-01 15:56:17',NULL);
+INSERT INTO "evidence" VALUES('ev:phrase:run-munaofq1:salesforce-dashboards-native-components','USER_ENTERED','match_desk','run-munaofq1','technologies entry',NULL,'Salesforce Dashboards (native components)',NULL,'2026-10-01T11:54:44',1.0,'1fb649e626ba0f4d6e47e4074fb2ff408e3659f9','2026-10-01 15:56:17',NULL);
 CREATE TABLE expertise_areas (
   id INTEGER PRIMARY KEY, area TEXT NOT NULL, area_sort INTEGER, text TEXT NOT NULL, tags TEXT, sort INTEGER
 );
@@ -5174,6 +5351,13 @@ INSERT INTO "feedback" VALUES(9,'run-mukrbv3p',NULL,'drop',NULL,'2026-09-28 07:1
 INSERT INTO "feedback" VALUES(10,'run-mukrbv3p',112,'drop',NULL,'2026-09-28 07:12:00','o0ypidu2q4y2ifvr6etf','bullet_rejected');
 INSERT INTO "feedback" VALUES(11,'run-mukrbv3p',NULL,'swap',NULL,'2026-09-28 07:12:00','ta1jvoqq7weqlkzepk4t','bullet_swapped');
 INSERT INTO "feedback" VALUES(12,'run-mukrbv3p',15,'swap',NULL,'2026-09-28 07:12:00','y2pq4f47rgk0774hsg43','bullet_swapped');
+INSERT INTO "feedback" VALUES(13,'run-mukxfmkr',48,'swap',NULL,'2026-09-30 11:42:13','j26scjf7qo3iyco2igy1','bullet_swapped');
+INSERT INTO "feedback" VALUES(14,'run-munaofq1',NULL,'edit','Presented business architecture, GTM strategy, and SBIR application to CRO, COO, and Chief Clinical Officer, gating 17 items to funding lock.','2026-09-30 11:42:13','95jk78m0z27yhqk925fq','bullet_edited');
+INSERT INTO "feedback" VALUES(15,'run-munaofq1',102,'edit','Built a custom CRM with GTM and prospecting connectors, automating weekly contact enrichment and account-research agents two-way synced to GitHub.','2026-09-30 11:42:13','d5u6cpq53lrlv00kto09','bullet_edited');
+INSERT INTO "feedback" VALUES(16,'run-munaofq1',NULL,'edit','Presented business architecture, GTM strategy, and SBIR application package to CRO, COO, and Chief Clinical Officer, gating 17 items to funding lock.','2026-09-30 11:42:13','eyvk3sej8gfhfr4yh4a0','bullet_edited');
+INSERT INTO "feedback" VALUES(17,'run-munaofq1',103,'edit','Diagnosed data-sync failures from null values and missing governance rules, then enforced sync constraints via 60 automated tests.','2026-09-30 11:42:13','j96l1ggylexupaa3b98j','bullet_edited');
+INSERT INTO "feedback" VALUES(18,'run-munaofq1',93,'drop',NULL,'2026-09-30 11:42:13','ki0iizuikvd0sloja5lc','bullet_rejected');
+INSERT INTO "feedback" VALUES(19,'run-munaofq1',93,'edit','Reconciled founder''s four-pillar vision and three build memos into one staged roadmap: 12 recommendations, 4 stage gates, 8 board decisions.','2026-09-30 11:42:13','nomomaq7455cew72qiwt','bullet_edited');
 CREATE TABLE followups (
   id INTEGER PRIMARY KEY, jd_id TEXT REFERENCES job_descriptions(id),
   gate INTEGER NOT NULL,                 -- 1 = baseline gate, 2 = per-JD gate
@@ -5209,6 +5393,12 @@ INSERT INTO "followups" VALUES(25,'run-mukrbv3p',2,'For the confidential HVAC Se
 INSERT INTO "followups" VALUES(26,'run-mukrbv3p',2,'In your New York Life role, did you work with clients on complex financial products like business banking, credit cards, or wealth management, and can you quantify the size or type of client portfolio you advised?','No, but I did conduct competitive research for other roles. I have been in competitor research and analysis since the onset of my career. Analyzed alternative products /services and relative ROI to strengthen value propositions and identify gaps/ develop frameworks around metrics that tell the story of the data (ie CPM in advertising in print, readership and audience reach). Also reverse engineered this process to characterize my ICP','market-research',NULL,'2026-09-28 07:12:00','2026-09-28 07:12:00','453be625f6fc1406b41210ded55ee84d','experience',NULL,'ev:ans:run-mukrbv3p:1');
 INSERT INTO "followups" VALUES(27,'run-mukrbv3p',2,'During your TEKsystems Data Analytics & Insights role, did you present findings or recommendations directly to senior/executive-level stakeholders at Fortune 500 clients, and if so, how many stakeholders or what titles were typically in the room?','On my largest deal with Universal I was speaking directly with the Senior Director of Architecture and occasionally the VP of Data & AI to present metrics on qualified Architects for each of the digital transformation workstreams to push back on pricing and show the scarcity in the job market derived these from LinkedIn Recruiter insights and advanced Boolean searches refined over time. Typically I would Speak with Senior Directors to VP level.','executive-communication',NULL,'2026-09-28 07:12:00','2026-09-28 07:12:00','fdaf5003a7bd4bd72b3eb3e9a89a6f2b','experience',NULL,'ev:ans:run-mukrbv3p:2');
 INSERT INTO "followups" VALUES(28,'run-mukrbv3p',2,'Beyond media/ad metrics, have you synthesized broader consumer or audience behavior insights (e.g., demographic shifts, purchasing trends, macroeconomic factors) in any client-facing analysis, and can you describe a specific example?','I used research agents within AI tools to scrape macroeconomic data on advertising mediums and their pricing vs effectiveness in order to develop a strategy around targeting ICP''s. Print and radio was closely linked and proclivity to buy an ad in a print magazine that is purchased in-stadium was higher in a given distance range and decreased the further away a business was. I took these into account as factors to consider when sourcing my leads and determined that based on the current state of advertising (digital presence and web/SEO being the major shift in where money is spent) it was most effective to target buyers who could fund the advertisement using co-op dollars or channel partners. At TEKsystems, I analyzed CRM opportunities by keywords to gauge shifts in demand for experiences with emerging technologies and created/ delivered a data analytics and insights playbook which was presented to SVPs in a company sized at approximately 12,000 employees globally. I also analyzed hiring trends and noticed that from a macroeconomic perspective COVID greatly impacted number of requirements open to remote candidates and noted incremental shifts as employers adapted to the post-pandemic state of the workplace','audience-measurement',NULL,'2026-09-28 07:12:00','2026-09-28 07:12:00','34cd1145c25b4c68c46fae37bda866eb','experience',NULL,'ev:ans:run-mukrbv3p:3');
+INSERT INTO "followups" VALUES(29,'run-munaofq1',2,'In your TEKsystems Data Analytics & Insights role, did you own or influence formal revenue operations processes (like shared sales/marketing metrics or process alignment) rather than staffing and account growth alone?','At TEKsystems I owned shared sales metrics in the form of weekly generated, monthly, and yearly revenue generated by my Department (Data Analytics), and team (2 recruiters) and was responsible for influencing processes and aligning personnel to closeable business which I determined based on a weighted set of criteria and taking into account new business opportunity. Typically I weighted that criteria by influence over the process (exclusive business, repeat buyers especially), and scope of work (we had multiple engagement models and managed service engagements were high revenue drivers). To evaluate this criteria I worked cross-functionally with local business office Directors, our Head of Delivery for Enterprise Applications, Data Analytics, & Insights (EADAI), and regional market salespeople ranging from Account Managers to Managed Services, Cloud partner, and Business Sector Business Development Managers. I would derive reports from salesforce on closed won business and do win-loss reviews with my team. We were also held to shared sales incentives as a Department. Reported up to the Head of Delivery for EADAI','marketing-sales-alignment',NULL,'2026-09-30 11:42:13','2026-09-30 11:42:13','ae4e7bbe205a314a54593369b5db84de','experience',NULL,'ev:ans:run-munaofq1:0');
+INSERT INTO "followups" VALUES(30,'run-munaofq1',2,'For the executive round table and board-ready deliverables at the healthcare AI client, which specific executive titles (CRO, VP Sales, CEO, founder) reviewed or acted on them?','The CEO was the final signature on board-ready recommendations. She acted on them as well in the form of getting IP, designing an RACI Matrix, and implementing delegation and escalation protocols. This matrix when combined with a business architecture roadmap and 90 day sprint  to secure capital through a federal funding route I identified known as SBIR, governed by the NIH, which awards this to start-ups where our product was on track to be aligned to qualify for D2P2 funding (Direct-to-phase-2) which could raise up to $2 million in capital. The CEO signed off on this business decision. The Chief Risk Officer who owns control-layer verification and PHI boundary who I presented the business architecture blueprint, the Go-to-Market Strategy, and presentation with supporting memorandums, the Capital & Funding Strategy Sprint specifications and a Gap register and claims dashboard which applied RACI and gated 17-items to funding lock by filing which supported in detail who owns what and which of that was unsupported and in need of stipulation, a macro & base rate research annex and clinical pattern engine after market research (viability tests), feasibility recommendation and dashboard which comprised of a trigger set and decision log with 12 recommendations and 4 gates, as well as an SBIR application package which governed the funding route lock which was a 1:1 in matching the criteria. The COO and Chief Clinical officer both reviewed and acted on them in different capacities. presented via multiple presentations and with a producible pitch deck before a counsel round table as a fractional chief strategist','executive-selling',NULL,'2026-09-30 11:42:13','2026-09-30 11:42:13','264a1c920394c064349a915e76ad88fd','experience',NULL,'ev:ans:run-munaofq1:1');
+INSERT INTO "followups" VALUES(31,'run-munaofq1',2,'Beyond the weekly capacity forecast in your operating cadence work, have you sequenced deliverables across multiple sprints or engagements based on team capacity?','Partnered with a Principal Business Development Manager to set bill rates and price resource plans for Global Services RFP responses. Largest resource plan was scoped for 7 fractional Solution Architects on 7 different digital transformation workstreams. Sourced and staffed 8 solution architects across 8 workstreams on a 12–18 month renewable managed services engagement worth $1M annually. For my engagement with the Healthcare startup I developed A weekly capacity forecast" as a named component of the operating cadence you built, alongside RACI and the decision log, carrying on average 3-4 concurrent streams during the gated sprint cycle','capacity-planning',NULL,'2026-09-30 11:42:13','2026-09-30 11:42:13','9df4796ef84e53dfda77affee77eecbe','experience',NULL,'ev:ans:run-munaofq1:2');
+INSERT INTO "followups" VALUES(32,'run-munaofq1',2,'For the HVAC Services Firm engagement, what dates should appear, how should the client be named for confidentiality, what''s a one-line description of the engagement scope, and how many stakeholder interviews or discovery sessions did you run?','MKT · CAP: Ran a two-site catchment and new-territory analysis for a [industry] operator''s proposed Ventura branch, measuring drive-time overlap and setting the monthly cost ceiling the site had to clear.
+SYS: Delivered the engagement through a decision system I built: intake form to structured client profile, source-tagged evidence, pre-set go/no-go criteria and a phase-gated scan list.','primary-research',NULL,'2026-09-30 11:42:13','2026-09-30 11:42:13','e5514fd6598c79365b40c5128bf62f2d','engagement','hvac','ev:ans:run-munaofq1:3');
+INSERT INTO "followups" VALUES(33,'run-munaofq1',2,'The posting names Gong, Clari, 6sense, Looker, Asana, and Clay as part of the GTM tech stack — do you have hands-on or business-user experience with any of these?','I have worked with Gong as a user at TEKsystems in both roles for call recording and smart transcription which would provide follow up tasks and summarize meetings while saving the call transcription. I have not used 6 sense but have used 6 sense adjacent tools that are worth listing like Clay, Apollo, Exporium AI and am currently bringing a product from 0 - 1 for my own consulting business that includes an AI native intelligence layer that gauges buyer intent signals. For data visualization I have historically used Excel, "Native Salesforce Dashboard Component" (add to technologies for ) for data visualization on a shared layout. Also Add in Demandbase','data-solutions',NULL,'2026-09-30 11:42:13','2026-09-30 11:42:13','e1240401ca45a9394062ccbcb7a658e3','technology',NULL,'ev:ans:run-munaofq1:4');
 CREATE TABLE generated_resumes (
   id INTEGER PRIMARY KEY, jd_id TEXT REFERENCES job_descriptions(id), version TEXT,
   json TEXT NOT NULL, html_path TEXT, pdf_path TEXT, created_at TEXT DEFAULT (datetime('now'))
@@ -5347,6 +5537,184 @@ INSERT INTO "generation_events" VALUES(115,'run-mukrbv3p','run-mukrbv3p','role',
 INSERT INTO "generation_events" VALUES(116,'run-mukrbv3p','run-mukrbv3p','summary','summary','Advisory analyst translating competitive data into board-ready strategy and go-to-market decisions. Benchmarked 15 competitors and modeled category growth from $760M to $5.9B by 2035 to size raises and exit paths. Built executive-facing collateral including battlecards and an eight-document round table, and set unit-economic gates guiding channel strategy.','["ach:lim-competitive-venture-odds", "ach:lim-market-sizing-exit-paths", "ach:lim-collateral", "ach:lim-unit-economic-gates", "ach:lim-thought-partner"]','bullets@5,summary@1,tailor@6,tighten@2','match-desk','shown','2026-09-28 07:12:00','run-mukrbv3p:summary:ae2fbff53f');
 INSERT INTO "generation_events" VALUES(117,'run-mukrbv3p','run-mukrbv3p','tagline','tagline','Marketing, Advertising, Product, Services, & Sales GTM Engineer | Business Strategy | Advertising Analytics & Market Intelligence Advisor | GTM and Sales/Marketing Execution Specialist | Systems Thinker | AI Adoption Enthusiast','["tagline:marketing-advertising-product-services-sales-gtm:text", "tagline:business-strategy:text", "tagline:gtm-and-sales-marketing-execution-specialist:text", "tagline:systems-thinker:text", "tagline:ai-adoption-enthusiast:text"]','bullets@5,summary@1,tailor@6,tighten@2','match-desk','shown','2026-09-28 07:12:00','run-mukrbv3p:tagline:9b186119ac');
 INSERT INTO "generation_events" VALUES(118,'run-mukrbv3p','run-mukrbv3p','technologies','technologies','Tableau (beginner), Google Tag Manager, Miro, Microsoft Excel (VLOOKUPs, INDEX-MATCH-MATCH, XLOOKUP), Office-Place Collaboration Tools (Slack, MS Teams, Webex, Google Meet, Zoom), LinkedIn (Sales Navigator, Recruiter), Marketo, Salesforce (Classic, Lightning), ZoomInfo, Apollo.io, Squarespace, HubSpot, Canva, Trello, Microsoft Copilot, Claude & Claude Code (Sonnet 5.x / Opus 5 / Fable 5), OpenAI (GPT-5.6, Sol, Terra, Luna), GitHub, Model Context Protocol (MCP) Servers, GCP, Visual Studio & VS Code, Microsoft Stack, Notion','["tool:tableau:name", "tool:google-tag-manager:name", "tool:miro:name", "tool:microsoft-excel:name", "tool:office-place-collaboration-tools:name", "tool:linkedin:name", "tool:marketo:name", "tool:salesforce:name", "tool:zoominfo:name", "tool:apollo-io:name", "tool:squarespace:name", "tool:hubspot:name", "tool:canva:name", "tool:trello:name", "tool:microsoft-copilot:name", "tool:claude:name", "tool:openai:name", "tool:github:name", "tool:model-context-protocol:name", "tool:gcp:name", "tool:visual-studio:name", "tool:microsoft-stack:name"]','bullets@5,summary@1,tailor@6,tighten@2','match-desk','shown','2026-09-28 07:12:00','run-mukrbv3p:technologies:a0bf34ff77');
+INSERT INTO "generation_events" VALUES(119,'run-mulpf4ef','run-mulpf4ef','cert','cert:0','Data Analytics & Insights: Data Insights — TEKsystems','["cred:data-analytics-insights-data-insights:name", "cred:data-analytics-insights-data-insights:issuer"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:cert:0:b98f203362');
+INSERT INTO "generation_events" VALUES(120,'run-mulpf4ef','run-mulpf4ef','cert','cert:1','Claude 101 Certification — Anthropic','["cred:claude-101:name", "cred:claude-101:issuer"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:cert:1:317baed382');
+INSERT INTO "generation_events" VALUES(121,'run-mulpf4ef','run-mulpf4ef','cert','cert:2','Claude Code 101 Certification — Anthropic','["cred:claude-code-101:name", "cred:claude-code-101:issuer"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:cert:2:78195e13af');
+INSERT INTO "generation_events" VALUES(122,'run-mulpf4ef','run-mulpf4ef','cert','cert:3','Claude for CoWork — Anthropic','["cred:claude-for-cowork:name", "cred:claude-for-cowork:issuer", "cred:claude-for-cowork:status"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:cert:3:8bde306e91');
+INSERT INTO "generation_events" VALUES(123,'run-mulpf4ef','run-mulpf4ef','core','core:AI & Data','AI governance & output verification, Claude (Opus 5, Sonnet 5, Fable 5), OpenAI / ChatGPT, Microsoft Copilot, prompt engineering, GenAI & machine learning, Claude Code, data analytics, Tableau','["core:ai-data:ai-governance-output-verification:text", "core:ai-data:claude-opus-5-sonnet-5-fable-5:text", "core:ai-data:openai-chatgpt:text", "core:ai-data:microsoft-copilot:text", "core:ai-data:prompt-engineering:text", "core:ai-data:genai-machine-learning:text", "core:ai-data:claude-code:text", "core:ai-data:data-analytics:text", "core:ai-data:tableau:text"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:core:AI & Data:f2b21d1555');
+INSERT INTO "generation_events" VALUES(124,'run-mulpf4ef','run-mulpf4ef','core','core:Funding & Commercial Mechanics','managed services & RFP response, Restricted & tax-advantaged funding mechanisms (co-op, MDF, 501(c)(3)), non-dilutive federal grant strategy (SBIR), board & trustee engagement','["core:funding-commercial-mechanics:managed-services-rfp-response:text", "core:funding-commercial-mechanics:restricted-tax-advantaged-funding-mechanisms-co-:text", "core:funding-commercial-mechanics:non-dilutive-federal-grant-strategy-sbir:text", "core:funding-commercial-mechanics:board-trustee-engagement:text"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:core:Funding & Commercial Mechanics:496e3430ce');
+INSERT INTO "generation_events" VALUES(125,'run-mulpf4ef','run-mulpf4ef','core','core:Go-To-Market & Revenue','revenue forecasting & KPI tracking, client retention, GTM strategy, market segmentation, product positioning & messaging, value proposition development, customer discovery, pipeline management, contract negotiation, proposal development, solution selling, account mapping','["core:go-to-market-revenue:revenue-forecasting-kpi-tracking:text", "core:go-to-market-revenue:client-retention:text", "core:go-to-market-revenue:gtm-strategy:text", "core:go-to-market-revenue:market-segmentation:text", "core:go-to-market-revenue:product-positioning-messaging:text", "core:go-to-market-revenue:value-proposition-development:text", "core:go-to-market-revenue:customer-discovery:text", "core:go-to-market-revenue:pipeline-management:text", "core:go-to-market-revenue:contract-negotiation:text", "core:go-to-market-revenue:proposal-development:text", "core:go-to-market-revenue:solution-selling:text", "core:go-to-market-revenue:account-mapping:text"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:core:Go-To-Market & Revenue:9ea3551264');
+INSERT INTO "generation_events" VALUES(126,'run-mulpf4ef','run-mulpf4ef','core','core:Research & Analysis','financial forecasting (P&L), business process improvement, barriers-to-entry assessment, Market landscape analysis, competitive intelligence, decision-tree modeling, unit economics (CAC, payback, churn, TTFV), scenario planning','["core:research-analysis:financial-forecasting-p-l:text", "core:research-analysis:business-process-improvement:text", "core:research-analysis:barriers-to-entry-assessment:text", "core:research-analysis:market-landscape-analysis:text", "core:research-analysis:competitive-intelligence:text", "core:research-analysis:decision-tree-modeling:text", "core:research-analysis:unit-economics-cac-payback-churn-ttfv:text", "core:research-analysis:scenario-planning:text"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:core:Research & Analysis:4681b95f1e');
+INSERT INTO "generation_events" VALUES(127,'run-mulpf4ef','run-mulpf4ef','core','core:Tools & Platforms','Miro, Trello, Canva, Salesforce CRM, ZoomInfo, LinkedIn Sales Navigator, Microsoft Excel & Office Suite','["core:tools-platforms:miro:text", "core:tools-platforms:trello:text", "core:tools-platforms:canva:text", "core:tools-platforms:salesforce-crm:text", "core:tools-platforms:zoominfo:text", "core:tools-platforms:linkedin-sales-navigator:text", "core:tools-platforms:microsoft-excel-office-suite:text"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:core:Tools & Platforms:8622719966');
+INSERT INTO "generation_events" VALUES(128,'run-mulpf4ef','run-mulpf4ef','education','education:0','University of Maine Business School | B.S., Double Major in Finance and Marketing | Spring 2018','["edu:umaine:school", "edu:umaine:degree", "edu:umaine:date"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:education:0:843ac8627e');
+INSERT INTO "generation_events" VALUES(129,'run-mulpf4ef','run-mulpf4ef','eng','eng:healthcare','Healthcare Technology Start-Up (Confidential) | New York, NY | July 2026 – Present','["eng:healthcare:client", "eng:healthcare:location", "eng:healthcare:start", "eng:healthcare:end", "eng:healthcare:commitment", "eng:healthcare:subtitle"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:eng:healthcare:af9acfd8a7');
+INSERT INTO "generation_events" VALUES(130,'run-mulpf4ef','run-mulpf4ef','eng','eng:healthcare:0','Built the multi-tenant, role-scoped client engagement tracker that runs the advisory practice using Claude Code — including 60 automated tests asserting cross-client data isolation — with no prior engineering background.','["ach:lim-claude-code-tracker", "metric:lim-claude-code-tracker:automated-tests"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:eng:healthcare:0:c6bbb6c186');
+INSERT INTO "generation_events" VALUES(131,'run-mulpf4ef','run-mulpf4ef','eng','eng:healthcare:1','Produced the customer- and investor-facing collateral the company now sells with: pitch deck, competitive battlecards, partner negotiation sheets, and an eight-document executive round table with per-presentation talking points.','["ach:lim-collateral", "metric:lim-collateral:round-table-documents"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:eng:healthcare:1:ccb52f177c');
+INSERT INTO "generation_events" VALUES(132,'run-mulpf4ef','run-mulpf4ef','eng','eng:healthcare:2','Set the unit-economic gates the motion is now measured against: blended CAC under $900, payback under 12 months, monthly churn under 5%, time-to-first-value under 7 days.','["ach:lim-unit-economic-gates", "metric:lim-unit-economic-gates:blended-cac-cap", "metric:lim-unit-economic-gates:monthly-churn-cap", "metric:lim-unit-economic-gates:payback-cap", "metric:lim-unit-economic-gates:ttfv-cap"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:eng:healthcare:2:8eb7d55dfe');
+INSERT INTO "generation_events" VALUES(133,'run-mulpf4ef','run-mulpf4ef','eng','eng:healthcare:3','Own go-to-market for an AI compliance product sold into independent clinical practices — segmentation, positioning, pricing tiers ($99/$249), channel strategy, and the sequencing that determines which motion gets funded first.','["ach:lim-gtm-ownership", "metric:lim-gtm-ownership:pricing-tiers"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:eng:healthcare:3:180ae27640');
+INSERT INTO "generation_events" VALUES(134,'run-mulpf4ef','run-mulpf4ef','eng','eng:healthcare:4','Mapped a $0.76B category projected to reach $5.9B by 2035 (22.8% CAGR), benchmarked five direct comparables across four structural models, and built a decision tree of four exit paths with base-rate odds attached — including the cautionary comparable that won regulatory clearance and still failed on commercialization.','["ach:lim-market-sizing-exit-paths", "metric:lim-market-sizing-exit-paths:cagr", "metric:lim-market-sizing-exit-paths:category-size-2025", "metric:lim-market-sizing-exit-paths:category-size-2035"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:eng:healthcare:4:ed06d6a007');
+INSERT INTO "generation_events" VALUES(135,'run-mulpf4ef','run-mulpf4ef','eng','eng:healthcare:5','Applied scenario planning and second- and third-order consequence analysis across business, technology, regulatory, and organizational exposure — surfacing downstream consequences before commitments locked in.','["ach:lim-scenario-planning"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:eng:healthcare:5:95069a2d73');
+INSERT INTO "generation_events" VALUES(136,'run-mulpf4ef','run-mulpf4ef','eng','eng:healthcare:6','Concluded that distribution — not product — decides the outcome, redirecting GTM toward malpractice-carrier and professional-association channel partnerships after modeling that a direct human sales motion cannot carry a 12–18 month CAC payback at those price points.','["ach:lim-distribution-pivot", "metric:lim-distribution-pivot:cac-payback-modeled"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:eng:healthcare:6:04dd004b95');
+INSERT INTO "generation_events" VALUES(137,'run-mulpf4ef','run-mulpf4ef','eng','eng:healthcare:7','Designed and launched a 30–40 interview customer discovery sprint to size real addressable demand — screener, interview guide, scoring rubric, and 150-practice candidate universe built from scratch — classifying prospects by platform dependence against a pre-agreed threshold that fires a documented kill/pivot decision instead of a debate.','["ach:lim-customer-discovery-sprint", "metric:lim-customer-discovery-sprint:account-universe", "metric:lim-customer-discovery-sprint:interviews"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:eng:healthcare:7:853c8eb07e');
+INSERT INTO "generation_events" VALUES(138,'run-mulpf4ef','run-mulpf4ef','eng','eng:healthcare:8','Ran financial forecasting (P&L, tool-stack cost model, Year-1 ARR band) and barriers-to-entry analysis to price strategic alternatives before capital committed; recommended a ~$2.15M non-dilutive federal funding route over an equity raise, tied to a dated decision gate.','["ach:lim-non-dilutive-capital", "metric:lim-non-dilutive-capital:non-dilutive-route"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:eng:healthcare:8:e8d38f1c0d');
+INSERT INTO "generation_events" VALUES(139,'run-mulpf4ef','run-mulpf4ef','eng','eng:hvac','HVAC Services Firm (Confidential) | Santa Clarita, CA | August 2026 – September 2026','["eng:hvac:client", "eng:hvac:location", "eng:hvac:start", "eng:hvac:end", "eng:hvac:commitment", "eng:hvac:subtitle"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:eng:hvac:1802b8d0be');
+INSERT INTO "generation_events" VALUES(140,'run-mulpf4ef','run-mulpf4ef','eng','eng:hvac:0','Analyzed a proposed expansion site for an HVAC services firm and delivered a feasibility roadmap and governance framework built on a cost-ceiling approach, giving leadership a structured basis for evaluating the expansion decision beyond the initial feasibility dashboard.','["ach:art-run-mukn8dul-0"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:eng:hvac:0:0ee8c21245');
+INSERT INTO "generation_events" VALUES(141,'run-mulpf4ef','run-mulpf4ef','eng','eng:hvac:1','Built a feasibility dashboard with kill/pivot triggers for an HVAC firm''s market-overlap expansion, using cost-ceilings to curb cannibalization and protect profit.','["ach:art-run-muhfveal-0"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:eng:hvac:1:149c7e177a');
+INSERT INTO "generation_events" VALUES(142,'run-mulpf4ef','run-mulpf4ef','expertise','expertise','AI Adoption Strategies for Sales Enablement and Business Growth • Change Readiness & Stakeholder Alignment • CPM, CPA & ROI Business Cases • Business Process Improvement • Revenue Forecasting & KPI Management • Sales Team Coaching & Performance Management • AI & Data Platform Solution Selling • Prompt Engineering & AI-Enabled Workflow • Strategic Partnerships & Channel • Media & Sponsorship Sales • Operating Cadence Design (RACI, Decision Logs) • Business Analysis & Advisory • Funding-Source Diagnostics (Co-Op, MDF, Sponsorship, 501(c)(3)) • Go-To-Market Strategy • Lead Generation & Prospecting • Contract & Proposal Development','["expertise:ai-adoption-strategies-for-sales-enablement-and-:text", "expertise:change-readiness-stakeholder-alignment:text", "expertise:cpm-cpa-roi-business-cases:text", "expertise:business-process-improvement:text", "expertise:revenue-forecasting-kpi-management:text", "expertise:sales-team-coaching-performance-management:text", "expertise:ai-data-platform-solution-selling:text", "expertise:prompt-engineering-ai-enabled-workflow:text", "expertise:strategic-partnerships-channel:text", "expertise:media-sponsorship-sales:text", "expertise:operating-cadence-design-raci-decision-logs:text", "expertise:business-analysis-advisory:text", "expertise:funding-source-diagnostics-co-op-mdf-sponsorship:text", "expertise:go-to-market-strategy:text", "expertise:lead-generation-prospecting:text", "expertise:contract-proposal-development:text"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:expertise:c869b10dd4');
+INSERT INTO "generation_events" VALUES(143,'run-mulpf4ef','run-mulpf4ef','role','role:demanddrive','Sales Development Representative / Inside Sales Rep | demandDrive (Amazon Business & RealPage) | 2018 – 2021','["role:demanddrive:title", "role:demanddrive:employer", "role:demanddrive:start", "role:demanddrive:end", "role:demanddrive:context"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:demanddrive:f2905cce4e');
+INSERT INTO "generation_events" VALUES(144,'run-mulpf4ef','run-mulpf4ef','role','role:demanddrive:0','Authored a territory-realignment and post-close operations model adopted company-wide, credited with 150% growth in the Amazon Key for Business launch.','["ach:dd-territory-proposal", "metric:dd-territory-proposal:launch-growth"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:demanddrive:0:d3a983509c');
+INSERT INTO "generation_events" VALUES(145,'run-mulpf4ef','run-mulpf4ef','role','role:demanddrive:1','Delivered 200% of first-month quota (12 meetings vs. 6) on a net-new client engagement; named MVP of the Month.','["ach:dd-200-quota", "metric:dd-200-quota:first-month-quota-attainment"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:demanddrive:1:6d0c062412');
+INSERT INTO "generation_events" VALUES(146,'run-mulpf4ef','run-mulpf4ef','role','role:hc_ai_strategy','Business Consultant - GTM Engineer & Strategic Advisor | Strategic Market Insights (self-employed) | July 2026 – Present','["role:liminal:title", "role:liminal:employer", "role:liminal:start", "role:liminal:end", "role:liminal:context"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:hc_ai_strategy:b1e0fda2b7');
+INSERT INTO "generation_events" VALUES(147,'run-mulpf4ef','run-mulpf4ef','role','role:hc_ai_strategy:0','Onboarded a healthcare tech startup''s team to a gated tracking system, giving the CEO approval oversight on dev expenses and fractional work hours.','["ach:lim-operating-cadence"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:hc_ai_strategy:0:842216f819');
+INSERT INTO "generation_events" VALUES(148,'run-mulpf4ef','run-mulpf4ef','role','role:hc_ai_strategy:1','Authored the launch-readiness assessment that reset the execution sequence, converting five organizational gaps into a dated plan with named owners.','["ach:lim-readiness-assessment", "metric:lim-readiness-assessment:gaps-closed-into-plan"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:hc_ai_strategy:1:9087b276f0');
+INSERT INTO "generation_events" VALUES(149,'run-mulpf4ef','run-mulpf4ef','role','role:hc_ai_strategy:2','Built the practice''s multi-tenant client engagement tracker with Claude Code, with 60 automated tests enforcing cross-client data isolation.','["ach:lim-claude-code-tracker", "metric:lim-claude-code-tracker:automated-tests"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:hc_ai_strategy:2:e05b78ea3a');
+INSERT INTO "generation_events" VALUES(150,'run-mulpf4ef','run-mulpf4ef','role','role:hc_ai_strategy:3','Diagnosed data-sync failures caused by null values and missing governance rules, then enforced sync governance constraints through 60 automated tests.','["ach:art-run-muhbu38f-1"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:hc_ai_strategy:3:589cc0f334');
+INSERT INTO "generation_events" VALUES(151,'run-mulpf4ef','run-mulpf4ef','role','role:hc_ai_strategy:4','Ran weekly forecasting cadence via a central dashboard tracking sequenced GTM gates and owners, resolving blockers with the team.','["ach:art-run-muhghrt2-3"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:hc_ai_strategy:4:4f4d113870');
+INSERT INTO "generation_events" VALUES(152,'run-mulpf4ef','run-mulpf4ef','role','role:hc_ai_strategy:5','Blocked a proposed EHR data migration as an uncompensated asset transfer, defining the NDA-to-BAA sequence that protected the client''s data asset.','["ach:lim-data-rights"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:hc_ai_strategy:5:3309faa158');
+INSERT INTO "generation_events" VALUES(153,'run-mulpf4ef','run-mulpf4ef','role','role:hc_ai_strategy:6','Produced the collateral the client sells with: pitch deck, competitive battlecards, partner negotiation sheets, and an eight-document executive round table.','["ach:lim-collateral", "metric:lim-collateral:round-table-documents"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:hc_ai_strategy:6:ab58999341');
+INSERT INTO "generation_events" VALUES(154,'run-mulpf4ef','run-mulpf4ef','role','role:massdot','Marketing and Communications Intern | Massachusetts Department of Transportation, EZ Pass Services | May 2016 – September 2016','["role:massdot:title", "role:massdot:employer", "role:massdot:start", "role:massdot:end", "role:massdot:context"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:massdot:20ac36c565');
+INSERT INTO "generation_events" VALUES(155,'run-mulpf4ef','run-mulpf4ef','role','role:massdot:0','Promoted EZ Pass adoption to Massachusetts residents and visitors, processing sign-ups through the transition to a toll-booth-free I-95.','["ach:massdot-adoption"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:massdot:0:ff24b0494f');
+INSERT INTO "generation_events" VALUES(156,'run-mulpf4ef','run-mulpf4ef','role','role:psp','Advertising Sales Director - Pro-Division | Professional Sports Publications | March 2026 – August 2026','["role:psp:title", "role:psp:employer", "role:psp:start", "role:psp:end", "role:psp:context"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:psp:93fab17f6a');
+INSERT INTO "generation_events" VALUES(157,'run-mulpf4ef','run-mulpf4ef','role','role:psp:0','Modeled a $10.98 blended CPM against 1.32M reach and a $2,849 cost-per-acquisition benchmark to price a $14,500 buy on outcome economics.','["ach:psp-cpm-business-case", "metric:psp-cpm-business-case:blended-cpm", "metric:psp-cpm-business-case:category-cpa-benchmark", "metric:psp-cpm-business-case:combined-reach", "metric:psp-cpm-business-case:placement-price"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:psp:0:19094594b0');
+INSERT INTO "generation_events" VALUES(158,'run-mulpf4ef','run-mulpf4ef','role','role:psp:1','Closed 5 signed NFL and MLB team-media partnerships, all paid in full at signing, including 2 accounts with no prior purchase history.','["ach:psp-closed-deals", "metric:psp-closed-deals:net-new-accounts", "metric:psp-closed-deals:signed-deals"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:psp:1:f42f5e57e7');
+INSERT INTO "generation_events" VALUES(159,'run-mulpf4ef','run-mulpf4ef','role','role:psp:2','Qualified every prospect against the budget that can fund it — co-op, MDF, sponsorship, and 501(c)(3) dollars — opening 2 net-new accounts.','["ach:psp-funding-source-qualification", "metric:psp-funding-source-qualification:verticals-applied"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:psp:2:6c0f733dfa');
+INSERT INTO "generation_events" VALUES(160,'run-mulpf4ef','run-mulpf4ef','role','role:psp:3','Identified key decision-makers with ZoomInfo, LinkedIn Sales Navigator, and AI-assisted account mapping using OpenAI and Claude models.','["ach:psp-decision-makers-ai"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:psp:3:266cebbc64');
+INSERT INTO "generation_events" VALUES(161,'run-mulpf4ef','run-mulpf4ef','role','role:psp:4','Analyzed competitor products and services against ROI benchmarks, building metrics frameworks (CPM, readership, audience reach) to strengthen positioning.','["ach:art-run-mukrbv3p-1"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:psp:4:76fcc7177b');
+INSERT INTO "generation_events" VALUES(162,'run-mulpf4ef','run-mulpf4ef','role','role:tek_lead','Specialized Lead - Data Analytics & Insights | TEKsystems | 2024 – November 2025','["role:tek_lead:title", "role:tek_lead:employer", "role:tek_lead:start", "role:tek_lead:end", "role:tek_lead:context"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:tek_lead:099b92f461');
+INSERT INTO "generation_events" VALUES(163,'run-mulpf4ef','run-mulpf4ef','role','role:tek_lead:0','Sourced and staffed 8 solution architects across 8 workstreams on a 12-18 month renewable managed services engagement worth $1M annually.','["ach:tekl-universal-poc", "metric:tekl-universal-poc:expansion-value"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:tek_lead:0:2d3bddfda4');
+INSERT INTO "generation_events" VALUES(164,'run-mulpf4ef','run-mulpf4ef','role','role:tek_lead:1','Scoped and positioned AI, data, and cloud solutions — graph, Adobe Enterprise Suite, Azure, computer vision — translating capability into commercial terms.','["ach:tekl-solution-scoping"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:tek_lead:1:90d2bdc24d');
+INSERT INTO "generation_events" VALUES(165,'run-mulpf4ef','run-mulpf4ef','role','role:tek_lead:2','Packaged the vertical model into an enablement proposal for Disney Advertising Sales, mapping pipeline stages to first-party data and measurement problems.','["ach:tekl-disney-enablement"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:tek_lead:2:4c788c2ea0');
+INSERT INTO "generation_events" VALUES(166,'run-mulpf4ef','run-mulpf4ef','role','role:tek_lead:3','Lifted lead-to-opportunity conversion from 12% to 28% and CRM field completion from 55% to 89% with rebuilt discovery frameworks and CRM standards.','["ach:tekl-verticalization-lift", "metric:tekl-verticalization-lift:crm-field-completion", "metric:tekl-verticalization-lift:lead-to-opp-conversion"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:tek_lead:3:004d5370f8');
+INSERT INTO "generation_events" VALUES(167,'run-mulpf4ef','run-mulpf4ef','role','role:tek_recruiter','Enterprise Recruiter – Global Services Division | TEKsystems | 2021 – 2024','["role:tek_recruiter:title", "role:tek_recruiter:employer", "role:tek_recruiter:start", "role:tek_recruiter:end", "role:tek_recruiter:context"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:tek_recruiter:27bc76260d');
+INSERT INTO "generation_events" VALUES(168,'run-mulpf4ef','run-mulpf4ef','role','role:tek_recruiter:0','Partnered with Nike''s global supply chain team on in-season optimization, delivering an AI-powered document system.','["ach:tekr-nike"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:tek_recruiter:0:63624f6857');
+INSERT INTO "generation_events" VALUES(169,'run-mulpf4ef','run-mulpf4ef','role','role:tek_recruiter:1','Opened net-new managed services accounts at Wayfair and Disney''s ESPN and Entertainment Technology organization from cold.','["ach:tekr-wayfair-disney", "metric:tekr-wayfair-disney:net-new-enterprise-logos"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:tek_recruiter:1:836e392a33');
+INSERT INTO "generation_events" VALUES(170,'run-mulpf4ef','run-mulpf4ef','role','role:tek_recruiter:2','Generated $750K+ in annual revenue and won the company-wide sales contest in first full year against a national field.','["ach:tekr-750k", "metric:tekr-750k:annual-revenue"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:tek_recruiter:2:8c18845d92');
+INSERT INTO "generation_events" VALUES(171,'run-mulpf4ef','run-mulpf4ef','role','role:tek_recruiter:3','Produced more than half the revenue on Vertex Pharmaceuticals, the firm''s largest regional growth account, and expanded into two new groups.','["ach:tekr-vertex", "metric:tekr-vertex:new-groups-opened", "metric:tekr-vertex:share-of-account-revenue"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:role:tek_recruiter:3:18e6159981');
+INSERT INTO "generation_events" VALUES(172,'run-mulpf4ef','run-mulpf4ef','tagline','tagline','AI Adoption Enthusiast | Marketing, Advertising, Product, Services, & Sales GTM Engineer | Systems Thinker | Process Engineer | Business Strategy | GTM and Sales/Marketing Execution Specialist | Sales Professional (End to End Sales)','["tagline:ai-adoption-enthusiast:text", "tagline:marketing-advertising-product-services-sales-gtm:text", "tagline:systems-thinker:text", "tagline:process-engineer:text", "tagline:business-strategy:text", "tagline:gtm-and-sales-marketing-execution-specialist:text", "tagline:sales-professional-end-to-end-sales:text"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:tagline:cf786637e4');
+INSERT INTO "generation_events" VALUES(173,'run-mulpf4ef','run-mulpf4ef','technologies','technologies','Miro, Office-Place Collaboration Tools (Slack, MS Teams, Webex, Google Meet, Zoom), Google Tag Manager, Canva, Trello, Microsoft Copilot, Claude & Claude Code (Sonnet 5.x / Opus 5 / Fable 5), OpenAI (GPT-5.6, Sol, Terra, Luna), Model Context Protocol (MCP) Servers, Tableau (beginner), Microsoft Excel (VLOOKUPs, INDEX-MATCH-MATCH, XLOOKUP), Notion, Marketo, Salesforce (Classic, Lightning), LinkedIn (Sales Navigator, Recruiter), ZoomInfo, Apollo.io, Squarespace, HubSpot, GitHub, GCP, Visual Studio & VS Code, Microsoft Stack','["tool:miro:name", "tool:office-place-collaboration-tools:name", "tool:google-tag-manager:name", "tool:canva:name", "tool:trello:name", "tool:microsoft-copilot:name", "tool:claude:name", "tool:openai:name", "tool:model-context-protocol:name", "tool:tableau:name", "tool:microsoft-excel:name", "tool:marketo:name", "tool:salesforce:name", "tool:linkedin:name", "tool:zoominfo:name", "tool:apollo-io:name", "tool:squarespace:name", "tool:hubspot:name", "tool:github:name", "tool:gcp:name", "tool:visual-studio:name", "tool:microsoft-stack:name"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mulpf4ef:technologies:89f510444d');
+INSERT INTO "generation_events" VALUES(174,'run-mumb08tz','run-mumb08tz','cert','cert:0','Data Analytics & Insights: Data Insights — TEKsystems','["cred:data-analytics-insights-data-insights:name", "cred:data-analytics-insights-data-insights:issuer"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:cert:0:b98f203362');
+INSERT INTO "generation_events" VALUES(175,'run-mumb08tz','run-mumb08tz','cert','cert:1','Claude 101 Certification — Anthropic','["cred:claude-101:name", "cred:claude-101:issuer"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:cert:1:317baed382');
+INSERT INTO "generation_events" VALUES(176,'run-mumb08tz','run-mumb08tz','cert','cert:2','Claude Code 101 Certification — Anthropic','["cred:claude-code-101:name", "cred:claude-code-101:issuer"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:cert:2:78195e13af');
+INSERT INTO "generation_events" VALUES(177,'run-mumb08tz','run-mumb08tz','cert','cert:3','Claude for CoWork — Anthropic','["cred:claude-for-cowork:name", "cred:claude-for-cowork:issuer", "cred:claude-for-cowork:status"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:cert:3:8bde306e91');
+INSERT INTO "generation_events" VALUES(178,'run-mumb08tz','run-mumb08tz','core','core:AI & Data','AI governance & output verification, GenAI & machine learning, Claude (Opus 5, Sonnet 5, Fable 5), OpenAI / ChatGPT, Microsoft Copilot, prompt engineering, data analytics, Tableau, Claude Code','["core:ai-data:ai-governance-output-verification:text", "core:ai-data:genai-machine-learning:text", "core:ai-data:claude-opus-5-sonnet-5-fable-5:text", "core:ai-data:openai-chatgpt:text", "core:ai-data:microsoft-copilot:text", "core:ai-data:prompt-engineering:text", "core:ai-data:data-analytics:text", "core:ai-data:tableau:text", "core:ai-data:claude-code:text"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:core:AI & Data:9181e85f68');
+INSERT INTO "generation_events" VALUES(179,'run-mumb08tz','run-mumb08tz','core','core:Funding & Commercial Mechanics','managed services & RFP response, non-dilutive federal grant strategy (SBIR), Restricted & tax-advantaged funding mechanisms (co-op, MDF, 501(c)(3)), board & trustee engagement','["core:funding-commercial-mechanics:managed-services-rfp-response:text", "core:funding-commercial-mechanics:non-dilutive-federal-grant-strategy-sbir:text", "core:funding-commercial-mechanics:restricted-tax-advantaged-funding-mechanisms-co-:text", "core:funding-commercial-mechanics:board-trustee-engagement:text"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:core:Funding & Commercial Mechanics:4bce3d81ed');
+INSERT INTO "generation_events" VALUES(180,'run-mumb08tz','run-mumb08tz','core','core:Go-To-Market & Revenue','revenue forecasting & KPI tracking, GTM strategy, pipeline management, client retention, market segmentation, product positioning & messaging, value proposition development, customer discovery, contract negotiation, proposal development, solution selling, account mapping','["core:go-to-market-revenue:revenue-forecasting-kpi-tracking:text", "core:go-to-market-revenue:gtm-strategy:text", "core:go-to-market-revenue:pipeline-management:text", "core:go-to-market-revenue:client-retention:text", "core:go-to-market-revenue:market-segmentation:text", "core:go-to-market-revenue:product-positioning-messaging:text", "core:go-to-market-revenue:value-proposition-development:text", "core:go-to-market-revenue:customer-discovery:text", "core:go-to-market-revenue:contract-negotiation:text", "core:go-to-market-revenue:proposal-development:text", "core:go-to-market-revenue:solution-selling:text", "core:go-to-market-revenue:account-mapping:text"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:core:Go-To-Market & Revenue:b3ffecd4ad');
+INSERT INTO "generation_events" VALUES(181,'run-mumb08tz','run-mumb08tz','core','core:Research & Analysis','financial forecasting (P&L), business process improvement, competitive intelligence, barriers-to-entry assessment, Market landscape analysis, decision-tree modeling, unit economics (CAC, payback, churn, TTFV), scenario planning','["core:research-analysis:financial-forecasting-p-l:text", "core:research-analysis:business-process-improvement:text", "core:research-analysis:competitive-intelligence:text", "core:research-analysis:barriers-to-entry-assessment:text", "core:research-analysis:market-landscape-analysis:text", "core:research-analysis:decision-tree-modeling:text", "core:research-analysis:unit-economics-cac-payback-churn-ttfv:text", "core:research-analysis:scenario-planning:text"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:core:Research & Analysis:16b649acbb');
+INSERT INTO "generation_events" VALUES(182,'run-mumb08tz','run-mumb08tz','core','core:Tools & Platforms','Canva, Salesforce CRM, Miro, ZoomInfo, LinkedIn Sales Navigator, Microsoft Excel & Office Suite, Trello','["core:tools-platforms:canva:text", "core:tools-platforms:salesforce-crm:text", "core:tools-platforms:miro:text", "core:tools-platforms:zoominfo:text", "core:tools-platforms:linkedin-sales-navigator:text", "core:tools-platforms:microsoft-excel-office-suite:text", "core:tools-platforms:trello:text"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:core:Tools & Platforms:4e12fd5d86');
+INSERT INTO "generation_events" VALUES(183,'run-mumb08tz','run-mumb08tz','education','education:0','University of Maine Business School | B.S., Double Major in Finance and Marketing | Spring 2018','["edu:umaine:school", "edu:umaine:degree", "edu:umaine:date"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:education:0:843ac8627e');
+INSERT INTO "generation_events" VALUES(184,'run-mumb08tz','run-mumb08tz','eng','eng:healthcare','Healthcare Technology Start-Up (Confidential) | New York, NY | July 2026 – Present','["eng:healthcare:client", "eng:healthcare:location", "eng:healthcare:start", "eng:healthcare:end", "eng:healthcare:commitment", "eng:healthcare:subtitle"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:eng:healthcare:af9acfd8a7');
+INSERT INTO "generation_events" VALUES(185,'run-mumb08tz','run-mumb08tz','eng','eng:healthcare:0','Own go-to-market for an AI compliance product sold into independent clinical practices — segmentation, positioning, pricing tiers ($99/$249), channel strategy, and the sequencing that determines which motion gets funded first.','["ach:lim-gtm-ownership", "metric:lim-gtm-ownership:pricing-tiers"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:eng:healthcare:0:180ae27640');
+INSERT INTO "generation_events" VALUES(186,'run-mumb08tz','run-mumb08tz','eng','eng:healthcare:1','Built the multi-tenant, role-scoped client engagement tracker that runs the advisory practice using Claude Code — including 60 automated tests asserting cross-client data isolation — with no prior engineering background.','["ach:lim-claude-code-tracker", "metric:lim-claude-code-tracker:automated-tests"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:eng:healthcare:1:c6bbb6c186');
+INSERT INTO "generation_events" VALUES(187,'run-mumb08tz','run-mumb08tz','eng','eng:healthcare:2','Produced the customer- and investor-facing collateral the company now sells with: pitch deck, competitive battlecards, partner negotiation sheets, and an eight-document executive round table with per-presentation talking points.','["ach:lim-collateral", "metric:lim-collateral:round-table-documents"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:eng:healthcare:2:ccb52f177c');
+INSERT INTO "generation_events" VALUES(188,'run-mumb08tz','run-mumb08tz','eng','eng:healthcare:3','Concluded that distribution — not product — decides the outcome, redirecting GTM toward malpractice-carrier and professional-association channel partnerships after modeling that a direct human sales motion cannot carry a 12–18 month CAC payback at those price points.','["ach:lim-distribution-pivot", "metric:lim-distribution-pivot:cac-payback-modeled"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:eng:healthcare:3:04dd004b95');
+INSERT INTO "generation_events" VALUES(189,'run-mumb08tz','run-mumb08tz','eng','eng:healthcare:4','Set the unit-economic gates the motion is now measured against: blended CAC under $900, payback under 12 months, monthly churn under 5%, time-to-first-value under 7 days.','["ach:lim-unit-economic-gates", "metric:lim-unit-economic-gates:blended-cac-cap", "metric:lim-unit-economic-gates:monthly-churn-cap", "metric:lim-unit-economic-gates:payback-cap", "metric:lim-unit-economic-gates:ttfv-cap"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:eng:healthcare:4:8eb7d55dfe');
+INSERT INTO "generation_events" VALUES(190,'run-mumb08tz','run-mumb08tz','eng','eng:healthcare:5','Ran financial forecasting (P&L, tool-stack cost model, Year-1 ARR band) and barriers-to-entry analysis to price strategic alternatives before capital committed; recommended a ~$2.15M non-dilutive federal funding route over an equity raise, tied to a dated decision gate.','["ach:lim-non-dilutive-capital", "metric:lim-non-dilutive-capital:non-dilutive-route"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:eng:healthcare:5:e8d38f1c0d');
+INSERT INTO "generation_events" VALUES(191,'run-mumb08tz','run-mumb08tz','eng','eng:healthcare:6','Designed and launched a 30–40 interview customer discovery sprint to size real addressable demand — screener, interview guide, scoring rubric, and 150-practice candidate universe built from scratch — classifying prospects by platform dependence against a pre-agreed threshold that fires a documented kill/pivot decision instead of a debate.','["ach:lim-customer-discovery-sprint", "metric:lim-customer-discovery-sprint:account-universe", "metric:lim-customer-discovery-sprint:interviews"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:eng:healthcare:6:853c8eb07e');
+INSERT INTO "generation_events" VALUES(192,'run-mumb08tz','run-mumb08tz','eng','eng:healthcare:7','Mapped a $0.76B category projected to reach $5.9B by 2035 (22.8% CAGR), benchmarked five direct comparables across four structural models, and built a decision tree of four exit paths with base-rate odds attached — including the cautionary comparable that won regulatory clearance and still failed on commercialization.','["ach:lim-market-sizing-exit-paths", "metric:lim-market-sizing-exit-paths:cagr", "metric:lim-market-sizing-exit-paths:category-size-2025", "metric:lim-market-sizing-exit-paths:category-size-2035"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:eng:healthcare:7:ed06d6a007');
+INSERT INTO "generation_events" VALUES(193,'run-mumb08tz','run-mumb08tz','eng','eng:healthcare:8','Applied scenario planning and second- and third-order consequence analysis across business, technology, regulatory, and organizational exposure — surfacing downstream consequences before commitments locked in.','["ach:lim-scenario-planning"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:eng:healthcare:8:95069a2d73');
+INSERT INTO "generation_events" VALUES(194,'run-mumb08tz','run-mumb08tz','eng','eng:hvac','HVAC Services Firm (Confidential) | Santa Clarita, CA | August 2026 – September 2026','["eng:hvac:client", "eng:hvac:location", "eng:hvac:start", "eng:hvac:end", "eng:hvac:commitment", "eng:hvac:subtitle"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:eng:hvac:1802b8d0be');
+INSERT INTO "generation_events" VALUES(195,'run-mumb08tz','run-mumb08tz','eng','eng:hvac:0','Built a feasibility dashboard with kill/pivot triggers for an HVAC firm''s market-overlap expansion, using cost-ceilings to curb cannibalization and protect profit.','["ach:art-run-muhfveal-0"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:eng:hvac:0:149c7e177a');
+INSERT INTO "generation_events" VALUES(196,'run-mumb08tz','run-mumb08tz','eng','eng:hvac:1','Analyzed a proposed expansion site for an HVAC services firm and delivered a feasibility roadmap and governance framework built on a cost-ceiling approach, giving leadership a structured basis for evaluating the expansion decision beyond the initial feasibility dashboard.','["ach:art-run-mukn8dul-0"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:eng:hvac:1:0ee8c21245');
+INSERT INTO "generation_events" VALUES(197,'run-mumb08tz','run-mumb08tz','expertise','expertise','AI Adoption Strategies for Sales Enablement and Business Growth • Change Readiness & Stakeholder Alignment • Pipeline Development & CRM Discipline • Revenue Forecasting & KPI Management • Sales Team Coaching & Performance Management • Strategic Partnerships & Channel • Go-To-Market Strategy • Business Process Improvement • CPM, CPA & ROI Business Cases • Hiring, Onboarding & Seller Ramp • AI & Data Platform Solution Selling • Lead Generation & Prospecting • Prompt Engineering & AI-Enabled Workflow • Market Segmentation & Positioning • Executive & Board-Level Communication • Buy-vs-Build & Competitive Analysis','["expertise:ai-adoption-strategies-for-sales-enablement-and-:text", "expertise:change-readiness-stakeholder-alignment:text", "expertise:pipeline-development-crm-discipline:text", "expertise:revenue-forecasting-kpi-management:text", "expertise:sales-team-coaching-performance-management:text", "expertise:strategic-partnerships-channel:text", "expertise:go-to-market-strategy:text", "expertise:business-process-improvement:text", "expertise:cpm-cpa-roi-business-cases:text", "expertise:hiring-onboarding-seller-ramp:text", "expertise:ai-data-platform-solution-selling:text", "expertise:lead-generation-prospecting:text", "expertise:prompt-engineering-ai-enabled-workflow:text", "expertise:market-segmentation-positioning:text", "expertise:executive-board-level-communication:text", "expertise:buy-vs-build-competitive-analysis:text"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:expertise:212be1d86f');
+INSERT INTO "generation_events" VALUES(198,'run-mumb08tz','run-mumb08tz','role','role:demanddrive','Sales Development Representative / Inside Sales Rep | demandDrive (Amazon Business & RealPage) | 2018 – 2021','["role:demanddrive:title", "role:demanddrive:employer", "role:demanddrive:start", "role:demanddrive:end", "role:demanddrive:context"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:demanddrive:f2905cce4e');
+INSERT INTO "generation_events" VALUES(199,'run-mumb08tz','run-mumb08tz','role','role:demanddrive:0','Authored a territory-realignment and post-close operations model adopted company-wide, credited with 150% growth in the Amazon Key for Business launch.','["ach:dd-territory-proposal", "metric:dd-territory-proposal:launch-growth"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:demanddrive:0:d3a983509c');
+INSERT INTO "generation_events" VALUES(200,'run-mumb08tz','run-mumb08tz','role','role:demanddrive:1','Delivered 200% of first-month quota (12 meetings vs. 6) on a net-new client engagement; named MVP of the Month.','["ach:dd-200-quota", "metric:dd-200-quota:first-month-quota-attainment"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:demanddrive:1:6d0c062412');
+INSERT INTO "generation_events" VALUES(201,'run-mumb08tz','run-mumb08tz','role','role:hc_ai_strategy','Business Consultant - GTM Engineer & Strategic Advisor | Strategic Market Insights (self-employed) | July 2026 – Present','["role:liminal:title", "role:liminal:employer", "role:liminal:start", "role:liminal:end", "role:liminal:context"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:hc_ai_strategy:b1e0fda2b7');
+INSERT INTO "generation_events" VALUES(202,'run-mumb08tz','run-mumb08tz','role','role:hc_ai_strategy:0','Built the practice''s multi-tenant client engagement tracker with Claude Code, with 60 automated tests enforcing cross-client data isolation.','["ach:lim-claude-code-tracker", "metric:lim-claude-code-tracker:automated-tests"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:hc_ai_strategy:0:e05b78ea3a');
+INSERT INTO "generation_events" VALUES(203,'run-mumb08tz','run-mumb08tz','role','role:hc_ai_strategy:1','Authored the launch-readiness assessment that reset the execution sequence, converting five organizational gaps into a dated plan with named owners.','["ach:lim-readiness-assessment", "metric:lim-readiness-assessment:gaps-closed-into-plan"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:hc_ai_strategy:1:9087b276f0');
+INSERT INTO "generation_events" VALUES(204,'run-mumb08tz','run-mumb08tz','role','role:hc_ai_strategy:2','Own go-to-market for the client''s AI compliance product sold to independent clinical practices — segmentation, positioning, $99/$249 tiers, and channel strategy.','["ach:lim-gtm-ownership", "metric:lim-gtm-ownership:pricing-tiers"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:hc_ai_strategy:2:291bfa5a70');
+INSERT INTO "generation_events" VALUES(205,'run-mumb08tz','run-mumb08tz','role','role:hc_ai_strategy:3','Onboarded a healthcare tech startup''s team to a gated tracking system, giving the CEO approval oversight on dev expenses and fractional work hours.','["ach:lim-operating-cadence"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:hc_ai_strategy:3:842216f819');
+INSERT INTO "generation_events" VALUES(206,'run-mumb08tz','run-mumb08tz','role','role:hc_ai_strategy:4','Produced the collateral the client sells with: pitch deck, competitive battlecards, partner negotiation sheets, and an eight-document executive round table.','["ach:lim-collateral", "metric:lim-collateral:round-table-documents"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:hc_ai_strategy:4:ab58999341');
+INSERT INTO "generation_events" VALUES(207,'run-mumb08tz','run-mumb08tz','role','role:hc_ai_strategy:5','Ran weekly forecasting cadence via a central dashboard tracking sequenced GTM gates and owners, resolving blockers with the team.','["ach:art-run-muhghrt2-3"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:hc_ai_strategy:5:4f4d113870');
+INSERT INTO "generation_events" VALUES(208,'run-mumb08tz','run-mumb08tz','role','role:hc_ai_strategy:6','Built a custom CRM from scratch with GTM and prospecting connectors, automated weekly contact enrichment, and account-research agents two-way synced to GitHub.','["ach:art-run-muhbu38f-0"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:hc_ai_strategy:6:0c4558e771');
+INSERT INTO "generation_events" VALUES(209,'run-mumb08tz','run-mumb08tz','role','role:massdot','Marketing and Communications Intern | Massachusetts Department of Transportation, EZ Pass Services | May 2016 – September 2016','["role:massdot:title", "role:massdot:employer", "role:massdot:start", "role:massdot:end", "role:massdot:context"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:massdot:20ac36c565');
+INSERT INTO "generation_events" VALUES(210,'run-mumb08tz','run-mumb08tz','role','role:massdot:0','Promoted EZ Pass adoption to Massachusetts residents and visitors, processing sign-ups through the transition to a toll-booth-free I-95.','["ach:massdot-adoption"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:massdot:0:ff24b0494f');
+INSERT INTO "generation_events" VALUES(211,'run-mumb08tz','run-mumb08tz','role','role:psp','Advertising Sales Director - Pro-Division | Professional Sports Publications | March 2026 – August 2026','["role:psp:title", "role:psp:employer", "role:psp:start", "role:psp:end", "role:psp:context"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:psp:93fab17f6a');
+INSERT INTO "generation_events" VALUES(212,'run-mumb08tz','run-mumb08tz','role','role:psp:0','Added ~125 net-new qualified prospects per week to Salesforce through targeted account research and stakeholder mapping.','["ach:psp-125-leads", "metric:psp-125-leads:qualified-leads-per-week"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:psp:0:729d5e1c87');
+INSERT INTO "generation_events" VALUES(213,'run-mumb08tz','run-mumb08tz','role','role:psp:1','Built and maintained a ~$115K active proposal pipeline through a diagnostic, discovery-first approach rather than a pitch-led one.','["ach:psp-pipeline-discovery", "metric:psp-pipeline-discovery:active-pipeline"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:psp:1:6dc8468d2a');
+INSERT INTO "generation_events" VALUES(214,'run-mumb08tz','run-mumb08tz','role','role:psp:2','Mined macroeconomic ad-pricing data via AI research agents to map proximity-driven print/radio buying patterns and refocus targeting on co-op-funded buyers.','["ach:art-run-mukrbv3p-4"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:psp:2:5f85153582');
+INSERT INTO "generation_events" VALUES(215,'run-mumb08tz','run-mumb08tz','role','role:psp:3','Modeled a $10.98 blended CPM against 1.32M reach and a $2,849 cost-per-acquisition benchmark to price a $14,500 buy on outcome economics.','["ach:psp-cpm-business-case", "metric:psp-cpm-business-case:blended-cpm", "metric:psp-cpm-business-case:category-cpa-benchmark", "metric:psp-cpm-business-case:combined-reach", "metric:psp-cpm-business-case:placement-price"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:psp:3:19094594b0');
+INSERT INTO "generation_events" VALUES(216,'run-mumb08tz','run-mumb08tz','role','role:psp:4','Closed 5 signed NFL and MLB team-media partnerships, all paid in full at signing, including 2 accounts with no prior purchase history.','["ach:psp-closed-deals", "metric:psp-closed-deals:net-new-accounts", "metric:psp-closed-deals:signed-deals"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:psp:4:f42f5e57e7');
+INSERT INTO "generation_events" VALUES(217,'run-mumb08tz','run-mumb08tz','role','role:tek_lead','Specialized Lead - Data Analytics & Insights | TEKsystems | 2024 – November 2025','["role:tek_lead:title", "role:tek_lead:employer", "role:tek_lead:start", "role:tek_lead:end", "role:tek_lead:context"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:tek_lead:099b92f461');
+INSERT INTO "generation_events" VALUES(218,'run-mumb08tz','run-mumb08tz','role','role:tek_lead:0','Lifted lead-to-opportunity conversion from 12% to 28% and CRM field completion from 55% to 89% with rebuilt discovery frameworks and CRM standards.','["ach:tekl-verticalization-lift", "metric:tekl-verticalization-lift:crm-field-completion", "metric:tekl-verticalization-lift:lead-to-opp-conversion"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:tek_lead:0:004d5370f8');
+INSERT INTO "generation_events" VALUES(219,'run-mumb08tz','run-mumb08tz','role','role:tek_lead:1','Led a team of up to 5 direct reports inside a 30-person practice, coaching performance through daily process reviews and 1:1 metric sessions.','["ach:tekl-coaching", "metric:tekl-coaching:direct-reports", "metric:tekl-coaching:practice-size"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:tek_lead:1:c5dd7ef6d4');
+INSERT INTO "generation_events" VALUES(220,'run-mumb08tz','run-mumb08tz','role','role:tek_lead:2','Built the Media & Entertainment vertical GTM motion — discovery frameworks, opportunity taxonomy, CRM tagging — around CDPs, clean rooms, and ad measurement.','["ach:tekl-me-vertical-gtm"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:tek_lead:2:6e336c9b64');
+INSERT INTO "generation_events" VALUES(221,'run-mumb08tz','run-mumb08tz','role','role:tek_lead:3','Scoped and positioned AI, data, and cloud solutions — graph, Adobe Enterprise Suite, Azure, computer vision — translating capability into commercial terms.','["ach:tekl-solution-scoping"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:tek_lead:3:90d2bdc24d');
+INSERT INTO "generation_events" VALUES(222,'run-mumb08tz','run-mumb08tz','role','role:tek_recruiter','Enterprise Recruiter – Global Services Division | TEKsystems | 2021 – 2024','["role:tek_recruiter:title", "role:tek_recruiter:employer", "role:tek_recruiter:start", "role:tek_recruiter:end", "role:tek_recruiter:context"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:tek_recruiter:27bc76260d');
+INSERT INTO "generation_events" VALUES(223,'run-mumb08tz','run-mumb08tz','role','role:tek_recruiter:0','Partnered with Nike''s global supply chain team on in-season optimization, delivering an AI-powered document system.','["ach:tekr-nike"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:tek_recruiter:0:63624f6857');
+INSERT INTO "generation_events" VALUES(224,'run-mumb08tz','run-mumb08tz','role','role:tek_recruiter:1','Sourced, screened, and onboarded enterprise technical talent at scale across four years of professional recruiting.','["ach:tekr-recruiting-talent", "metric:tekr-recruiting-talent:years-recruiting"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:tek_recruiter:1:586b14615a');
+INSERT INTO "generation_events" VALUES(225,'run-mumb08tz','run-mumb08tz','role','role:tek_recruiter:2','Generated $750K+ in annual revenue and won the company-wide sales contest in first full year against a national field.','["ach:tekr-750k", "metric:tekr-750k:annual-revenue"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:tek_recruiter:2:8c18845d92');
+INSERT INTO "generation_events" VALUES(226,'run-mumb08tz','run-mumb08tz','role','role:tek_recruiter:3','Opened net-new managed services accounts at Wayfair and Disney''s ESPN and Entertainment Technology organization from cold.','["ach:tekr-wayfair-disney", "metric:tekr-wayfair-disney:net-new-enterprise-logos"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:role:tek_recruiter:3:836e392a33');
+INSERT INTO "generation_events" VALUES(227,'run-mumb08tz','run-mumb08tz','tagline','tagline','Process Engineer | AI Adoption Enthusiast | Marketing, Advertising, Product, Services, & Sales GTM Engineer | GTM and Sales/Marketing Execution Specialist | Systems Thinker | Sales Professional (End to End Sales) | Business Strategy','["tagline:process-engineer:text", "tagline:ai-adoption-enthusiast:text", "tagline:marketing-advertising-product-services-sales-gtm:text", "tagline:gtm-and-sales-marketing-execution-specialist:text", "tagline:systems-thinker:text", "tagline:sales-professional-end-to-end-sales:text", "tagline:business-strategy:text"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:tagline:5b7482eb78');
+INSERT INTO "generation_events" VALUES(228,'run-mumb08tz','run-mumb08tz','technologies','technologies','Salesforce (Classic, Lightning), Miro, LinkedIn (Sales Navigator, Recruiter), Canva, Tableau (beginner), HubSpot, Microsoft Excel (VLOOKUPs, INDEX-MATCH-MATCH, XLOOKUP), Office-Place Collaboration Tools (Slack, MS Teams, Webex, Google Meet, Zoom), Notion, Google Tag Manager, ZoomInfo, Apollo.io, Squarespace, Microsoft Copilot, Claude & Claude Code (Sonnet 5.x / Opus 5 / Fable 5), OpenAI (GPT-5.6, Sol, Terra, Luna), Model Context Protocol (MCP) Servers, Marketo, Trello, GitHub, GCP, Visual Studio & VS Code, Microsoft Stack','["tool:salesforce:name", "tool:miro:name", "tool:linkedin:name", "tool:canva:name", "tool:tableau:name", "tool:hubspot:name", "tool:microsoft-excel:name", "tool:office-place-collaboration-tools:name", "tool:google-tag-manager:name", "tool:zoominfo:name", "tool:apollo-io:name", "tool:squarespace:name", "tool:microsoft-copilot:name", "tool:claude:name", "tool:openai:name", "tool:model-context-protocol:name", "tool:marketo:name", "tool:trello:name", "tool:github:name", "tool:gcp:name", "tool:visual-studio:name", "tool:microsoft-stack:name"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-mumb08tz:technologies:d72515c1ac');
+INSERT INTO "generation_events" VALUES(229,'run-munaofq1','run-munaofq1','cert','cert:0','Data Analytics & Insights: Data Insights — TEKsystems','["cred:data-analytics-insights-data-insights:name", "cred:data-analytics-insights-data-insights:issuer"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:cert:0:b98f203362');
+INSERT INTO "generation_events" VALUES(230,'run-munaofq1','run-munaofq1','cert','cert:1','Claude 101 Certification — Anthropic','["cred:claude-101:name", "cred:claude-101:issuer"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:cert:1:317baed382');
+INSERT INTO "generation_events" VALUES(231,'run-munaofq1','run-munaofq1','cert','cert:2','Claude Code 101 Certification — Anthropic','["cred:claude-code-101:name", "cred:claude-code-101:issuer"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:cert:2:78195e13af');
+INSERT INTO "generation_events" VALUES(232,'run-munaofq1','run-munaofq1','cert','cert:3','Claude for CoWork — Anthropic','["cred:claude-for-cowork:name", "cred:claude-for-cowork:issuer", "cred:claude-for-cowork:status"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:cert:3:8bde306e91');
+INSERT INTO "generation_events" VALUES(233,'run-munaofq1','run-munaofq1','core','core:AI & Data','Claude (Opus 5, Sonnet 5, Fable 5), OpenAI / ChatGPT, Microsoft Copilot, prompt engineering, AI governance & output verification, data analytics, Tableau, GenAI & machine learning, Claude Code','["core:ai-data:claude-opus-5-sonnet-5-fable-5:text", "core:ai-data:openai-chatgpt:text", "core:ai-data:microsoft-copilot:text", "core:ai-data:prompt-engineering:text", "core:ai-data:ai-governance-output-verification:text", "core:ai-data:data-analytics:text", "core:ai-data:tableau:text", "core:ai-data:genai-machine-learning:text", "core:ai-data:claude-code:text"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:core:AI & Data:5dacdb9a5b');
+INSERT INTO "generation_events" VALUES(234,'run-munaofq1','run-munaofq1','core','core:Funding & Commercial Mechanics','managed services & RFP response, Restricted & tax-advantaged funding mechanisms (co-op, MDF, 501(c)(3)), non-dilutive federal grant strategy (SBIR), board & trustee engagement','["core:funding-commercial-mechanics:managed-services-rfp-response:text", "core:funding-commercial-mechanics:restricted-tax-advantaged-funding-mechanisms-co-:text", "core:funding-commercial-mechanics:non-dilutive-federal-grant-strategy-sbir:text", "core:funding-commercial-mechanics:board-trustee-engagement:text"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:core:Funding & Commercial Mechanics:496e3430ce');
+INSERT INTO "generation_events" VALUES(235,'run-munaofq1','run-munaofq1','core','core:Go-To-Market & Revenue','client retention, revenue forecasting & KPI tracking, GTM strategy, customer discovery, pipeline management, solution selling, value proposition development, proposal development, market segmentation, product positioning & messaging, contract negotiation, account mapping','["core:go-to-market-revenue:client-retention:text", "core:go-to-market-revenue:revenue-forecasting-kpi-tracking:text", "core:go-to-market-revenue:gtm-strategy:text", "core:go-to-market-revenue:customer-discovery:text", "core:go-to-market-revenue:pipeline-management:text", "core:go-to-market-revenue:solution-selling:text", "core:go-to-market-revenue:value-proposition-development:text", "core:go-to-market-revenue:proposal-development:text", "core:go-to-market-revenue:market-segmentation:text", "core:go-to-market-revenue:product-positioning-messaging:text", "core:go-to-market-revenue:contract-negotiation:text", "core:go-to-market-revenue:account-mapping:text"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:core:Go-To-Market & Revenue:d9176cd809');
+INSERT INTO "generation_events" VALUES(236,'run-munaofq1','run-munaofq1','core','core:Research & Analysis','Market landscape analysis, financial forecasting (P&L), business process improvement, barriers-to-entry assessment, competitive intelligence, decision-tree modeling, unit economics (CAC, payback, churn, TTFV), scenario planning','["core:research-analysis:market-landscape-analysis:text", "core:research-analysis:financial-forecasting-p-l:text", "core:research-analysis:business-process-improvement:text", "core:research-analysis:barriers-to-entry-assessment:text", "core:research-analysis:competitive-intelligence:text", "core:research-analysis:decision-tree-modeling:text", "core:research-analysis:unit-economics-cac-payback-churn-ttfv:text", "core:research-analysis:scenario-planning:text"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:core:Research & Analysis:bafb0e13d1');
+INSERT INTO "generation_events" VALUES(237,'run-munaofq1','run-munaofq1','core','core:Tools & Platforms','Salesforce CRM, ZoomInfo, LinkedIn Sales Navigator, Trello, Microsoft Excel & Office Suite, Miro, Canva','["core:tools-platforms:salesforce-crm:text", "core:tools-platforms:zoominfo:text", "core:tools-platforms:linkedin-sales-navigator:text", "core:tools-platforms:trello:text", "core:tools-platforms:microsoft-excel-office-suite:text", "core:tools-platforms:miro:text", "core:tools-platforms:canva:text"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:core:Tools & Platforms:e93e983543');
+INSERT INTO "generation_events" VALUES(238,'run-munaofq1','run-munaofq1','education','education:0','University of Maine Business School | B.S., Double Major in Finance and Marketing | Spring 2018','["edu:umaine:school", "edu:umaine:degree", "edu:umaine:date"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:education:0:843ac8627e');
+INSERT INTO "generation_events" VALUES(239,'run-munaofq1','run-munaofq1','eng','eng:healthcare','Healthcare Technology Start-Up (Confidential) | New York, NY | July 2026 – Present','["eng:healthcare:client", "eng:healthcare:location", "eng:healthcare:start", "eng:healthcare:end", "eng:healthcare:commitment", "eng:healthcare:subtitle"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:eng:healthcare:af9acfd8a7');
+INSERT INTO "generation_events" VALUES(240,'run-munaofq1','run-munaofq1','eng','eng:healthcare:0','Own go-to-market for an AI compliance product sold into independent clinical practices — segmentation, positioning, pricing tiers ($99/$249), channel strategy, and the sequencing that determines which motion gets funded first.','["ach:lim-gtm-ownership", "metric:lim-gtm-ownership:pricing-tiers"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:eng:healthcare:0:180ae27640');
+INSERT INTO "generation_events" VALUES(241,'run-munaofq1','run-munaofq1','eng','eng:healthcare:1','Built the multi-tenant, role-scoped client engagement tracker that runs the advisory practice using Claude Code — including 60 automated tests asserting cross-client data isolation — with no prior engineering background.','["ach:lim-claude-code-tracker", "metric:lim-claude-code-tracker:automated-tests"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:eng:healthcare:1:c6bbb6c186');
+INSERT INTO "generation_events" VALUES(242,'run-munaofq1','run-munaofq1','eng','eng:healthcare:2','Designed and launched a 30–40 interview customer discovery sprint to size real addressable demand — screener, interview guide, scoring rubric, and 150-practice candidate universe built from scratch — classifying prospects by platform dependence against a pre-agreed threshold that fires a documented kill/pivot decision instead of a debate.','["ach:lim-customer-discovery-sprint", "metric:lim-customer-discovery-sprint:account-universe", "metric:lim-customer-discovery-sprint:interviews"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:eng:healthcare:2:853c8eb07e');
+INSERT INTO "generation_events" VALUES(243,'run-munaofq1','run-munaofq1','eng','eng:healthcare:3','Concluded that distribution — not product — decides the outcome, redirecting GTM toward malpractice-carrier and professional-association channel partnerships after modeling that a direct human sales motion cannot carry a 12–18 month CAC payback at those price points.','["ach:lim-distribution-pivot", "metric:lim-distribution-pivot:cac-payback-modeled"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:eng:healthcare:3:04dd004b95');
+INSERT INTO "generation_events" VALUES(244,'run-munaofq1','run-munaofq1','eng','eng:healthcare:4','Set the unit-economic gates the motion is now measured against: blended CAC under $900, payback under 12 months, monthly churn under 5%, time-to-first-value under 7 days.','["ach:lim-unit-economic-gates", "metric:lim-unit-economic-gates:blended-cac-cap", "metric:lim-unit-economic-gates:monthly-churn-cap", "metric:lim-unit-economic-gates:payback-cap", "metric:lim-unit-economic-gates:ttfv-cap"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:eng:healthcare:4:8eb7d55dfe');
+INSERT INTO "generation_events" VALUES(245,'run-munaofq1','run-munaofq1','eng','eng:healthcare:5','Produced the customer- and investor-facing collateral the company now sells with: pitch deck, competitive battlecards, partner negotiation sheets, and an eight-document executive round table with per-presentation talking points.','["ach:lim-collateral", "metric:lim-collateral:round-table-documents"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:eng:healthcare:5:ccb52f177c');
+INSERT INTO "generation_events" VALUES(246,'run-munaofq1','run-munaofq1','eng','eng:healthcare:6','Mapped a $0.76B category projected to reach $5.9B by 2035 (22.8% CAGR), benchmarked five direct comparables across four structural models, and built a decision tree of four exit paths with base-rate odds attached — including the cautionary comparable that won regulatory clearance and still failed on commercialization.','["ach:lim-market-sizing-exit-paths", "metric:lim-market-sizing-exit-paths:cagr", "metric:lim-market-sizing-exit-paths:category-size-2025", "metric:lim-market-sizing-exit-paths:category-size-2035"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:eng:healthcare:6:ed06d6a007');
+INSERT INTO "generation_events" VALUES(247,'run-munaofq1','run-munaofq1','eng','eng:healthcare:7','Ran financial forecasting (P&L, tool-stack cost model, Year-1 ARR band) and barriers-to-entry analysis to price strategic alternatives before capital committed; recommended a ~$2.15M non-dilutive federal funding route over an equity raise, tied to a dated decision gate.','["ach:lim-non-dilutive-capital", "metric:lim-non-dilutive-capital:non-dilutive-route"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:eng:healthcare:7:e8d38f1c0d');
+INSERT INTO "generation_events" VALUES(248,'run-munaofq1','run-munaofq1','eng','eng:healthcare:8','Applied scenario planning and second- and third-order consequence analysis across business, technology, regulatory, and organizational exposure — surfacing downstream consequences before commitments locked in.','["ach:lim-scenario-planning"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:eng:healthcare:8:95069a2d73');
+INSERT INTO "generation_events" VALUES(249,'run-munaofq1','run-munaofq1','eng','eng:hvac','HVAC Services Firm (Confidential) | Santa Clarita, CA | August 2026 – September 2026','["eng:hvac:client", "eng:hvac:location", "eng:hvac:start", "eng:hvac:end", "eng:hvac:commitment", "eng:hvac:subtitle"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:eng:hvac:1802b8d0be');
+INSERT INTO "generation_events" VALUES(250,'run-munaofq1','run-munaofq1','eng','eng:hvac:0','Designed and built the engagement''s decision system end-to-end: an intake form converting raw inputs into a structured client profile, source-tagged evidence tracking, pre-set go/no-go criteria, and a phase-gated scan list sequencing the full analysis.','[]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:eng:hvac:0:5e2cdeaa5c');
+INSERT INTO "generation_events" VALUES(251,'run-munaofq1','run-munaofq1','eng','eng:hvac:1','Ran a two-site catchment and new-territory analysis for a services operator''s proposed branch expansion, mapping drive-time overlap against existing sites and setting the monthly cost ceiling the location had to clear to justify the investment.','[]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:eng:hvac:1:b672c71110');
+INSERT INTO "generation_events" VALUES(252,'run-munaofq1','run-munaofq1','eng','eng:hvac:2','Built a feasibility dashboard with kill/pivot triggers for an HVAC firm''s market-overlap expansion, using cost-ceilings to curb cannibalization and protect profit.','["ach:art-run-muhfveal-0"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:eng:hvac:2:149c7e177a');
+INSERT INTO "generation_events" VALUES(253,'run-munaofq1','run-munaofq1','eng','eng:hvac:3','Analyzed a proposed expansion site for an HVAC services firm and delivered a feasibility roadmap and governance framework built on a cost-ceiling approach, giving leadership a structured basis for evaluating the expansion decision beyond the initial feasibility dashboard.','["ach:art-run-mukn8dul-0"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:eng:hvac:3:0ee8c21245');
+INSERT INTO "generation_events" VALUES(254,'run-munaofq1','run-munaofq1','expertise','expertise','Go-To-Market Strategy • Business Analysis & Advisory • Consultative & Diagnostic Discovery • Revenue Forecasting & KPI Management • Pipeline Development & CRM Discipline • Executive & Board-Level Communication • Change Readiness & Stakeholder Alignment • Market Segmentation & Positioning • Strategic Account Planning & Expansion • AI & Data Platform Solution Selling • Prompt Engineering & AI-Enabled Workflow • Business Process Improvement • Operating Cadence Design (RACI, Decision Logs) • Buy-vs-Build & Competitive Analysis • Primary Research & Customer Discovery • Unit Economics & Revenue Modeling','["expertise:go-to-market-strategy:text", "expertise:business-analysis-advisory:text", "expertise:consultative-diagnostic-discovery:text", "expertise:revenue-forecasting-kpi-management:text", "expertise:pipeline-development-crm-discipline:text", "expertise:executive-board-level-communication:text", "expertise:change-readiness-stakeholder-alignment:text", "expertise:market-segmentation-positioning:text", "expertise:strategic-account-planning-expansion:text", "expertise:ai-data-platform-solution-selling:text", "expertise:prompt-engineering-ai-enabled-workflow:text", "expertise:business-process-improvement:text", "expertise:operating-cadence-design-raci-decision-logs:text", "expertise:buy-vs-build-competitive-analysis:text", "expertise:primary-research-customer-discovery:text", "expertise:unit-economics-revenue-modeling:text"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:expertise:00411a3b7e');
+INSERT INTO "generation_events" VALUES(255,'run-munaofq1','run-munaofq1','role','role:demanddrive','Sales Development Representative / Inside Sales Rep | demandDrive (Amazon Business & RealPage) | 2018 – 2021','["role:demanddrive:title", "role:demanddrive:employer", "role:demanddrive:start", "role:demanddrive:end", "role:demanddrive:context"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:demanddrive:f2905cce4e');
+INSERT INTO "generation_events" VALUES(256,'run-munaofq1','run-munaofq1','role','role:demanddrive:0','Authored a territory-realignment and post-close operations model adopted company-wide, credited with 150% growth in the Amazon Key for Business launch.','["ach:dd-territory-proposal", "metric:dd-territory-proposal:launch-growth"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:demanddrive:0:d3a983509c');
+INSERT INTO "generation_events" VALUES(257,'run-munaofq1','run-munaofq1','role','role:demanddrive:1','Delivered 200% of first-month quota (12 meetings vs. 6) on a net-new client engagement; named MVP of the Month.','["ach:dd-200-quota", "metric:dd-200-quota:first-month-quota-attainment"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:demanddrive:1:6d0c062412');
+INSERT INTO "generation_events" VALUES(258,'run-munaofq1','run-munaofq1','role','role:hc_ai_strategy','Business Consultant - GTM Engineer & Strategic Advisor | Strategic Market Insights (self-employed) | July 2026 – Present','["role:liminal:title", "role:liminal:employer", "role:liminal:start", "role:liminal:end", "role:liminal:context"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:hc_ai_strategy:b1e0fda2b7');
+INSERT INTO "generation_events" VALUES(259,'run-munaofq1','run-munaofq1','role','role:hc_ai_strategy:0','Presented business architecture, GTM strategy, and the SBIR application package to the CRO, COO, and Chief Clinical Officer, gating 17 items to funding lock.','[]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:hc_ai_strategy:0:b8b44ce5c7');
+INSERT INTO "generation_events" VALUES(260,'run-munaofq1','run-munaofq1','role','role:hc_ai_strategy:1','Identified an SBIR federal funding route through NIH, aligning the product for D2P2 qualification to unlock up to $2M in capital with CEO sign-off.','[]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:hc_ai_strategy:1:e013f3debf');
+INSERT INTO "generation_events" VALUES(261,'run-munaofq1','run-munaofq1','role','role:hc_ai_strategy:2','Designed a RACI matrix and delegation/escalation protocols with CEO sign-off, governing IP decisions and board-ready recommendations.','[]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:hc_ai_strategy:2:7eb580d3e3');
+INSERT INTO "generation_events" VALUES(262,'run-munaofq1','run-munaofq1','role','role:hc_ai_strategy:3','Built the practice''s multi-tenant client engagement tracker with Claude Code, with 60 automated tests enforcing cross-client data isolation.','["ach:lim-claude-code-tracker", "metric:lim-claude-code-tracker:automated-tests"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:hc_ai_strategy:3:e05b78ea3a');
+INSERT INTO "generation_events" VALUES(263,'run-munaofq1','run-munaofq1','role','role:hc_ai_strategy:4','Built a custom CRM from scratch with GTM and prospecting connectors, automated weekly contact enrichment, and account-research agents two-way synced to GitHub.','["ach:art-run-muhbu38f-0"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:hc_ai_strategy:4:0c4558e771');
+INSERT INTO "generation_events" VALUES(264,'run-munaofq1','run-munaofq1','role','role:hc_ai_strategy:5','Own go-to-market for the client''s AI compliance product sold to independent clinical practices — segmentation, positioning, $99/$249 tiers, and channel strategy.','["ach:lim-gtm-ownership", "metric:lim-gtm-ownership:pricing-tiers"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:hc_ai_strategy:5:291bfa5a70');
+INSERT INTO "generation_events" VALUES(265,'run-munaofq1','run-munaofq1','role','role:hc_ai_strategy:6','Ran weekly forecasting cadence via a central dashboard tracking sequenced GTM gates and owners, resolving blockers with the team.','["ach:art-run-muhghrt2-3"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:hc_ai_strategy:6:4f4d113870');
+INSERT INTO "generation_events" VALUES(266,'run-munaofq1','run-munaofq1','role','role:hc_ai_strategy:7','Authored the launch-readiness assessment that reset the execution sequence, converting five organizational gaps into a dated plan with named owners.','["ach:lim-readiness-assessment", "metric:lim-readiness-assessment:gaps-closed-into-plan"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:hc_ai_strategy:7:9087b276f0');
+INSERT INTO "generation_events" VALUES(267,'run-munaofq1','run-munaofq1','role','role:hc_ai_strategy:8','Reconciled the client founder''s four-pillar vision and three build memos into one staged roadmap: 12 recommendations, 4 stage gates, 8 board decisions.','["ach:lim-feasibility-roadmap", "metric:lim-feasibility-roadmap:recommendations", "metric:lim-feasibility-roadmap:stage-gates"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:hc_ai_strategy:8:9f2535a22b');
+INSERT INTO "generation_events" VALUES(268,'run-munaofq1','run-munaofq1','role','role:hc_ai_strategy:9','Built a weekly capacity forecast, RACI, and decision log for the operating cadence, tracking 3–4 concurrent streams through gated sprint cycles.','["ach:lim-operating-cadence"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:hc_ai_strategy:9:e311e24fa2');
+INSERT INTO "generation_events" VALUES(269,'run-munaofq1','run-munaofq1','role','role:massdot','Marketing and Communications Intern | Massachusetts Department of Transportation, EZ Pass Services | May 2016 – September 2016','["role:massdot:title", "role:massdot:employer", "role:massdot:start", "role:massdot:end", "role:massdot:context"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:massdot:20ac36c565');
+INSERT INTO "generation_events" VALUES(270,'run-munaofq1','run-munaofq1','role','role:massdot:0','Promoted EZ Pass adoption to Massachusetts residents and visitors, processing sign-ups through the transition to a toll-booth-free I-95.','["ach:massdot-adoption"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:massdot:0:ff24b0494f');
+INSERT INTO "generation_events" VALUES(271,'run-munaofq1','run-munaofq1','role','role:nyl','Financial Services Professional | New York Life Insurance Company | December 2025 – March 2026','["role:nyl:title", "role:nyl:employer", "role:nyl:start", "role:nyl:end", "role:nyl:context"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:nyl:ef82b61274');
+INSERT INTO "generation_events" VALUES(272,'run-munaofq1','run-munaofq1','role','role:nyl:0','Conducted needs-based assessments on long-term financial, beneficiary, and legacy objectives in estate- and tax-planning terms.','["ach:nyl-needs-assessment"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:nyl:0:ca479a4893');
+INSERT INTO "generation_events" VALUES(273,'run-munaofq1','run-munaofq1','role','role:nyl:1','Developed a referral-based book of business through networking, community involvement, and constituent introductions.','["ach:nyl-referral-book"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:nyl:1:cb43534fe0');
+INSERT INTO "generation_events" VALUES(274,'run-munaofq1','run-munaofq1','role','role:psp','Advertising Sales Director - Pro-Division | Professional Sports Publications | March 2026 – August 2026','["role:psp:title", "role:psp:employer", "role:psp:start", "role:psp:end", "role:psp:context"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:psp:93fab17f6a');
+INSERT INTO "generation_events" VALUES(275,'run-munaofq1','run-munaofq1','role','role:psp:0','Built and maintained a ~$115K active proposal pipeline through a diagnostic, discovery-first approach rather than a pitch-led one.','["ach:psp-pipeline-discovery", "metric:psp-pipeline-discovery:active-pipeline"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:psp:0:6dc8468d2a');
+INSERT INTO "generation_events" VALUES(276,'run-munaofq1','run-munaofq1','role','role:psp:1','Added ~125 net-new qualified prospects per week to Salesforce through targeted account research and stakeholder mapping.','["ach:psp-125-leads", "metric:psp-125-leads:qualified-leads-per-week"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:psp:1:729d5e1c87');
+INSERT INTO "generation_events" VALUES(277,'run-munaofq1','run-munaofq1','role','role:psp:2','Mined macroeconomic ad-pricing data via AI research agents to map proximity-driven print/radio buying patterns and refocus targeting on co-op-funded buyers.','["ach:art-run-mukrbv3p-4"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:psp:2:5f85153582');
+INSERT INTO "generation_events" VALUES(278,'run-munaofq1','run-munaofq1','role','role:psp:3','Identified key decision-makers with ZoomInfo, LinkedIn Sales Navigator, and AI-assisted account mapping using OpenAI and Claude models.','["ach:psp-decision-makers-ai"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:psp:3:266cebbc64');
+INSERT INTO "generation_events" VALUES(279,'run-munaofq1','run-munaofq1','role','role:psp:4','Modeled a $10.98 blended CPM against 1.32M reach and a $2,849 cost-per-acquisition benchmark to price a $14,500 buy on outcome economics.','["ach:psp-cpm-business-case", "metric:psp-cpm-business-case:blended-cpm", "metric:psp-cpm-business-case:category-cpa-benchmark", "metric:psp-cpm-business-case:combined-reach", "metric:psp-cpm-business-case:placement-price"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:psp:4:19094594b0');
+INSERT INTO "generation_events" VALUES(280,'run-munaofq1','run-munaofq1','role','role:tek_lead','Specialized Lead - Data Analytics & Insights | TEKsystems | 2024 – November 2025','["role:tek_lead:title", "role:tek_lead:employer", "role:tek_lead:start", "role:tek_lead:end", "role:tek_lead:context"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:tek_lead:099b92f461');
+INSERT INTO "generation_events" VALUES(281,'run-munaofq1','run-munaofq1','role','role:tek_lead:0','Ran Salesforce-based win-loss reviews and aligned with business office Directors, Delivery leadership, and regional sales teams under shared department incentives.','[]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:tek_lead:0:3c01a69722');
+INSERT INTO "generation_events" VALUES(282,'run-munaofq1','run-munaofq1','role','role:tek_lead:1','Influenced deal prioritization by weighting opportunities on exclusivity, repeat-buyer status, and engagement scope to align personnel to closeable business.','[]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:tek_lead:1:995a73df1b');
+INSERT INTO "generation_events" VALUES(283,'run-munaofq1','run-munaofq1','role','role:tek_lead:2','Owned weekly, monthly, and yearly revenue metrics for the Data Analytics department and two-recruiter team, reporting to Delivery leadership.','[]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:tek_lead:2:6f3f0c51bc');
+INSERT INTO "generation_events" VALUES(284,'run-munaofq1','run-munaofq1','role','role:tek_lead:3','Sourced and staffed 8 solution architects across 8 digital transformation workstreams on a 12–18 month renewable managed services engagement worth over $1M annually.','[]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:tek_lead:3:64dcff9f52');
+INSERT INTO "generation_events" VALUES(285,'run-munaofq1','run-munaofq1','role','role:tek_lead:4','Lifted lead-to-opportunity conversion from 12% to 28% and CRM field completion from 55% to 89% with rebuilt discovery frameworks and CRM standards.','["ach:tekl-verticalization-lift", "metric:tekl-verticalization-lift:crm-field-completion", "metric:tekl-verticalization-lift:lead-to-opp-conversion"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:tek_lead:4:004d5370f8');
+INSERT INTO "generation_events" VALUES(286,'run-munaofq1','run-munaofq1','role','role:tek_lead:5','Scoped and positioned AI, data, and cloud solutions — graph, Adobe Enterprise Suite, Azure, computer vision — translating capability into commercial terms.','["ach:tekl-solution-scoping"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:tek_lead:5:90d2bdc24d');
+INSERT INTO "generation_events" VALUES(287,'run-munaofq1','run-munaofq1','role','role:tek_lead:6','Led discovery directly with Southern Company Gas''s Center of Excellence on data science, machine learning, and data governance.','["ach:tekl-southern-gas-discovery"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:tek_lead:6:af59815150');
+INSERT INTO "generation_events" VALUES(288,'run-munaofq1','run-munaofq1','role','role:tek_lead:7','Analyzed CRM opportunity keywords to track emerging-tech demand shifts and delivered a data analytics insights playbook to SVPs at a 12,000-employee firm.','["ach:art-run-mukrbv3p-5"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:tek_lead:7:9cc00129af');
+INSERT INTO "generation_events" VALUES(289,'run-munaofq1','run-munaofq1','role','role:tek_recruiter','Enterprise Recruiter – Global Services Division | TEKsystems | 2021 – 2024','["role:tek_recruiter:title", "role:tek_recruiter:employer", "role:tek_recruiter:start", "role:tek_recruiter:end", "role:tek_recruiter:context"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:tek_recruiter:27bc76260d');
+INSERT INTO "generation_events" VALUES(290,'run-munaofq1','run-munaofq1','role','role:tek_recruiter:0','Produced more than half the revenue on Vertex Pharmaceuticals, the firm''s largest regional growth account, and expanded into two new groups.','["ach:tekr-vertex", "metric:tekr-vertex:new-groups-opened", "metric:tekr-vertex:share-of-account-revenue"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:tek_recruiter:0:18e6159981');
+INSERT INTO "generation_events" VALUES(291,'run-munaofq1','run-munaofq1','role','role:tek_recruiter:1','Tracked hiring-trend shifts in remote-work requirements through COVID, identifying incremental employer adaptation in the post-pandemic workplace.','["ach:art-run-mukrbv3p-6"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:tek_recruiter:1:c9112722af');
+INSERT INTO "generation_events" VALUES(292,'run-munaofq1','run-munaofq1','role','role:tek_recruiter:2','Opened net-new managed services accounts at Wayfair and Disney''s ESPN and Entertainment Technology organization from cold.','["ach:tekr-wayfair-disney", "metric:tekr-wayfair-disney:net-new-enterprise-logos"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:tek_recruiter:2:836e392a33');
+INSERT INTO "generation_events" VALUES(293,'run-munaofq1','run-munaofq1','role','role:tek_recruiter:3','Generated $750K+ in annual revenue and won the company-wide sales contest in first full year against a national field.','["ach:tekr-750k", "metric:tekr-750k:annual-revenue"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:role:tek_recruiter:3:8c18845d92');
+INSERT INTO "generation_events" VALUES(294,'run-munaofq1','run-munaofq1','summary','summary','Revenue and go-to-market operator translating business objectives into documented processes, requirements, and measurable KPIs. Authored a launch-readiness assessment converting five organizational gaps into a dated plan with named owners, reconciled competing stakeholder visions into a staged roadmap with 12 recommendations and 4 stage gates, and built the operating cadence with RACI, escalation thresholds, and a decision log.','["ach:lim-readiness-assessment", "metric:lim-readiness-assessment:gaps-closed-into-plan", "ach:lim-feasibility-roadmap", "metric:lim-feasibility-roadmap:recommendations", "metric:lim-feasibility-roadmap:stage-gates", "ach:lim-operating-cadence"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:summary:c9c528962b');
+INSERT INTO "generation_events" VALUES(295,'run-munaofq1','run-munaofq1','tagline','tagline','GTM and Sales/Marketing Execution Specialist | Business Strategy | Systems Thinker | Process Engineer | AI Strategy & Workflow Automation Leader | Marketing, Advertising, Product, Services, & Sales GTM Engineer','["tagline:gtm-and-sales-marketing-execution-specialist:text", "tagline:business-strategy:text", "tagline:systems-thinker:text", "tagline:process-engineer:text", "tagline:marketing-advertising-product-services-sales-gtm:text"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:tagline:8a4959f482');
+INSERT INTO "generation_events" VALUES(296,'run-munaofq1','run-munaofq1','technologies','technologies','Gong, Clay, Apollo, Exploriom AI, Excel, Salesforce Dashboard Component, Salesforce, Demandbase, Salesforce (Classic, Lightning), Tableau (beginner), Office-Place Collaboration Tools (Slack, MS Teams, Webex, Google Meet, Zoom), Google Tag Manager, Marketo, HubSpot, Apollo.io, Claude & Claude Code (Sonnet 5.x / Opus 5 / Fable 5), Model Context Protocol (MCP) Servers, Miro, Microsoft Copilot, OpenAI (GPT-5.6, Sol, Terra, Luna), GCP, Microsoft Excel (VLOOKUPs, INDEX-MATCH-MATCH, XLOOKUP), Microsoft Stack, LinkedIn (Sales Navigator, Recruiter), ZoomInfo, Notion, Trello, GitHub, Visual Studio & VS Code, Squarespace, Canva','["tool:salesforce:name", "tool:tableau:name", "tool:office-place-collaboration-tools:name", "tool:google-tag-manager:name", "tool:marketo:name", "tool:hubspot:name", "tool:apollo-io:name", "tool:claude:name", "tool:model-context-protocol:name", "tool:miro:name", "tool:microsoft-copilot:name", "tool:openai:name", "tool:gcp:name", "tool:microsoft-excel:name", "tool:microsoft-stack:name", "tool:linkedin:name", "tool:zoominfo:name", "tool:trello:name", "tool:github:name", "tool:visual-studio:name", "tool:squarespace:name", "tool:canva:name"]','bullets@6,summary@1,tailor@7,tighten@2','match-desk','shown','2026-09-30 11:42:13','run-munaofq1:technologies:a15a3b8ef5');
 CREATE TABLE jd_requirements (
   id INTEGER PRIMARY KEY, jd_id TEXT NOT NULL REFERENCES job_descriptions(id),
   tag_id TEXT REFERENCES tags(id), phrase TEXT, weight REAL DEFAULT 1.0, covered INTEGER
@@ -5568,6 +5936,119 @@ INSERT INTO "jd_requirements" VALUES(246,'run-mukrbv3p','media-ad-sales',NULL,2.
 INSERT INTO "jd_requirements" VALUES(247,'run-mukrbv3p','stakeholder-alignment',NULL,3.0,NULL);
 INSERT INTO "jd_requirements" VALUES(248,'run-mukrbv3p','strategic-partnerships',NULL,3.0,NULL);
 INSERT INTO "jd_requirements" VALUES(249,'run-mukrbv3p','team-coaching',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(476,'run-mukxfmkr','audience-measurement',NULL,1.0,NULL);
+INSERT INTO "jd_requirements" VALUES(477,'run-mukxfmkr','board-advisory',NULL,2.4,NULL);
+INSERT INTO "jd_requirements" VALUES(478,'run-mukxfmkr','campaign-development',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(479,'run-mukxfmkr','competitive-analysis',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(480,'run-mukxfmkr','content-brand',NULL,2.8,NULL);
+INSERT INTO "jd_requirements" VALUES(481,'run-mukxfmkr','cross-platform',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(482,'run-mukxfmkr','customer-success',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(483,'run-mukxfmkr','data-solutions',NULL,2.8,NULL);
+INSERT INTO "jd_requirements" VALUES(484,'run-mukxfmkr','enablement-collateral',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(485,'run-mukxfmkr','entity-ip-structure',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(486,'run-mukxfmkr','feasibility-roadmap',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(487,'run-mukxfmkr','forecasting',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(488,'run-mukxfmkr','gtm-strategy',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(489,'run-mukxfmkr','healthcare-regulatory',NULL,2.8,NULL);
+INSERT INTO "jd_requirements" VALUES(490,'run-mukxfmkr','hiring-onboarding',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(491,'run-mukxfmkr','institutional-partnerships',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(492,'run-mukxfmkr','managed-services-sales',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(493,'run-mukxfmkr','market-research',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(494,'run-mukxfmkr','market-segmentation',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(495,'run-mukxfmkr','operating-cadence',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(496,'run-mukxfmkr','pipeline-management',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(497,'run-mukxfmkr','positioning-messaging',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(498,'run-mukxfmkr','process-improvement',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(499,'run-mukxfmkr','readiness-assessment',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(500,'run-mukxfmkr','risk-governance',NULL,0.6,NULL);
+INSERT INTO "jd_requirements" VALUES(501,'run-mukxfmkr','stakeholder-alignment',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(502,'run-mukxfmkr','strategic-partnerships',NULL,2.8,NULL);
+INSERT INTO "jd_requirements" VALUES(503,'run-mukxfmkr','team-coaching',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(504,'run-mulpf4ef','ai-in-workflow',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(505,'run-mulpf4ef','ai-ml-solutions',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(506,'run-mulpf4ef','audience-measurement',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(507,'run-mulpf4ef','campaign-development',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(508,'run-mulpf4ef','cpm-cpa-modeling',NULL,1.0,NULL);
+INSERT INTO "jd_requirements" VALUES(509,'run-mulpf4ef','cross-platform',NULL,2.0,NULL);
+INSERT INTO "jd_requirements" VALUES(510,'run-mulpf4ef','customer-success',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(511,'run-mulpf4ef','enablement-collateral',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(512,'run-mulpf4ef','feasibility-roadmap',NULL,2.4,NULL);
+INSERT INTO "jd_requirements" VALUES(513,'run-mulpf4ef','forecasting',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(514,'run-mulpf4ef','funding-source-diagnostics',NULL,1.0,NULL);
+INSERT INTO "jd_requirements" VALUES(515,'run-mulpf4ef','launch-sequencing',NULL,1.0,NULL);
+INSERT INTO "jd_requirements" VALUES(516,'run-mulpf4ef','managed-services-sales',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(517,'run-mulpf4ef','media-ad-sales',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(518,'run-mulpf4ef','operating-cadence',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(519,'run-mulpf4ef','process-improvement',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(520,'run-mulpf4ef','proof-of-value',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(521,'run-mulpf4ef','readiness-assessment',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(522,'run-mulpf4ef','risk-governance',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(523,'run-mulpf4ef','stakeholder-alignment',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(524,'run-mulpf4ef','strategic-partnerships',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(525,'run-mulpf4ef','team-coaching',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(526,'run-mumb08tz','ai-in-workflow',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(527,'run-mumb08tz','ai-ml-solutions',NULL,1.44,NULL);
+INSERT INTO "jd_requirements" VALUES(528,'run-mumb08tz','audience-measurement',NULL,2.4,NULL);
+INSERT INTO "jd_requirements" VALUES(529,'run-mumb08tz','capital-strategy',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(530,'run-mumb08tz','channel-partnerships',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(531,'run-mumb08tz','competitive-analysis',NULL,1.0,NULL);
+INSERT INTO "jd_requirements" VALUES(532,'run-mumb08tz','content-brand',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(533,'run-mumb08tz','cpm-cpa-modeling',NULL,0.6,NULL);
+INSERT INTO "jd_requirements" VALUES(534,'run-mumb08tz','crm-discipline',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(535,'run-mumb08tz','customer-success',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(536,'run-mumb08tz','data-solutions',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(537,'run-mumb08tz','enablement-collateral',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(538,'run-mumb08tz','entity-ip-structure',NULL,2.8,NULL);
+INSERT INTO "jd_requirements" VALUES(539,'run-mumb08tz','executive-selling',NULL,1.0,NULL);
+INSERT INTO "jd_requirements" VALUES(540,'run-mumb08tz','forecasting',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(541,'run-mumb08tz','gtm-strategy',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(542,'run-mumb08tz','hiring-onboarding',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(543,'run-mumb08tz','managed-services-sales',NULL,2.4,NULL);
+INSERT INTO "jd_requirements" VALUES(544,'run-mumb08tz','market-segmentation',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(545,'run-mumb08tz','performance-management',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(546,'run-mumb08tz','pipeline-management',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(547,'run-mumb08tz','process-improvement',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(548,'run-mumb08tz','prospecting',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(549,'run-mumb08tz','quota-attainment',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(550,'run-mumb08tz','readiness-assessment',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(551,'run-mumb08tz','risk-governance',NULL,1.0,NULL);
+INSERT INTO "jd_requirements" VALUES(552,'run-mumb08tz','stakeholder-alignment',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(553,'run-mumb08tz','strategic-partnerships',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(554,'run-mumb08tz','team-coaching',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(555,'run-munaofq1','account-expansion',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(556,'run-munaofq1','ai-in-workflow',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(557,'run-munaofq1','ai-ml-solutions',NULL,2.04,NULL);
+INSERT INTO "jd_requirements" VALUES(558,'run-munaofq1','audience-measurement',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(559,'run-munaofq1','building-with-ai',NULL,0.84,NULL);
+INSERT INTO "jd_requirements" VALUES(560,'run-munaofq1','capacity-planning',NULL,1.2,NULL);
+INSERT INTO "jd_requirements" VALUES(561,'run-munaofq1','closing',NULL,1.0,NULL);
+INSERT INTO "jd_requirements" VALUES(562,'run-munaofq1','cloud-infrastructure',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(563,'run-munaofq1','crm-discipline',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(564,'run-munaofq1','customer-success',NULL,2.4,NULL);
+INSERT INTO "jd_requirements" VALUES(565,'run-munaofq1','data-solutions',NULL,2.24,NULL);
+INSERT INTO "jd_requirements" VALUES(566,'run-munaofq1','demand-generation',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(567,'run-munaofq1','discovery',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(568,'run-munaofq1','donor-relations',NULL,1.0,NULL);
+INSERT INTO "jd_requirements" VALUES(569,'run-munaofq1','executive-selling',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(570,'run-munaofq1','feasibility-roadmap',NULL,2.0,NULL);
+INSERT INTO "jd_requirements" VALUES(571,'run-munaofq1','forecasting',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(572,'run-munaofq1','gtm-strategy',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(573,'run-munaofq1','launch-sequencing',NULL,2.0,NULL);
+INSERT INTO "jd_requirements" VALUES(574,'run-munaofq1','managed-services-sales',NULL,1.4,NULL);
+INSERT INTO "jd_requirements" VALUES(575,'run-munaofq1','market-research',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(576,'run-munaofq1','market-segmentation',NULL,2.0,NULL);
+INSERT INTO "jd_requirements" VALUES(577,'run-munaofq1','marketing-sales-alignment',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(578,'run-munaofq1','operating-cadence',NULL,1.5,NULL);
+INSERT INTO "jd_requirements" VALUES(579,'run-munaofq1','pipeline-management',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(580,'run-munaofq1','primary-research',NULL,1.5,NULL);
+INSERT INTO "jd_requirements" VALUES(581,'run-munaofq1','process-improvement',NULL,2.8,NULL);
+INSERT INTO "jd_requirements" VALUES(582,'run-munaofq1','proposal-development',NULL,2.4,NULL);
+INSERT INTO "jd_requirements" VALUES(583,'run-munaofq1','prospecting',NULL,2.8,NULL);
+INSERT INTO "jd_requirements" VALUES(584,'run-munaofq1','quota-attainment',NULL,0.84,NULL);
+INSERT INTO "jd_requirements" VALUES(585,'run-munaofq1','readiness-assessment',NULL,1.7,NULL);
+INSERT INTO "jd_requirements" VALUES(586,'run-munaofq1','stakeholder-alignment',NULL,3.0,NULL);
+INSERT INTO "jd_requirements" VALUES(587,'run-munaofq1','team-coaching',NULL,1.0,NULL);
+INSERT INTO "jd_requirements" VALUES(588,'run-munaofq1','territory-design',NULL,2.0,NULL);
 CREATE TABLE job_descriptions (
   id         TEXT PRIMARY KEY,           -- jd_<timestamp> or artifact doc id
   company    TEXT, title TEXT,
@@ -5999,10 +6480,257 @@ We''re excited to meet people who share our values and want to build the future 
 Benefits found in job post
 
 Vision insurance, 401(k), Commuter benefits','2026-09-28 07:12:00','artifact');
+INSERT INTO "job_descriptions" VALUES('run-mukxfmkr','The Vertex Companies LLC','Principal - GTM Strategy','About the job
+Description
+
+Company Description
+
+The Vertex Companies, LLC (VERTEX) is a global $180M professional services firm that integrates strategic advisory, project management, and dispute resolution services for organizations facing complex challenges in a world of risk. We embody our core values of embracing lifelong learning, operating with urgency, maximizing value, and driving collaboration to better outcomes for our clients, colleagues, and communities. Join us if you are looking for a career that offers you a chance to love what you do and deliver meaningful impact.
+
+Job Description
+
+We are seeking a highly strategic and analytically driven Go-to-Market (GTM) strategist at the Principal level to lead design and operationalize how The Vertex Companies brings its most complex, high-value services to market. This role is focused on shaping where and how the firm competes—through thoughtful market segmentation, clear positioning, and structured commercial approaches that enable consistent execution.
+
+Working closely with the Chief Commercial Officer, senior leadership, and practice leaders, this individual will play a key role in building the frameworks, insights, and messaging needed to support scalable, repeatable growth. The ideal candidate combines strong strategic thinking with a hands-on approach to developing practical tools and solutions that teams can use in the field.
+
+Core Responsibilities
+
+GTM Strategy & Market Insights
+
+Support the development and refinement of the firm’s go-to-market strategy across priority industries and service lines.
+Conduct market segmentation and client prioritization to identify high-value opportunities and “right-to-win” areas.
+Contribute to defining “where to play” and “how to win” through data-driven analysis and market insights.
+Ensure alignment between market opportunities, service positioning, and overall brand narrative.
+
+Offering & Solution Development
+
+Partner with practice leaders to translate technical expertise into clearly defined, market-ready offerings.
+Help structure integrated solutions that connect advisory, project management, and dispute/claims services across the project lifecycle.
+Develop repeatable solution frameworks and commercial packages that support consistent selling and delivery.
+
+Messaging & Commercial Enablement
+
+Support the development of clear, compelling messaging and positioning that enables value-based selling.
+Collaborate with marketing on campaigns, thought leadership, and client-facing content.
+Create practical tools, playbooks, and frameworks that help teams articulate value and engage clients effectively.
+
+Pipeline Insights & Performance Analysis
+
+Define and track key GTM metrics, including pipeline composition, service adoption, and market penetration.
+Analyze pipeline and market data to identify trends, gaps, and areas for growth.
+Partner with sales leadership to provide insights that improve focus, targeting, and funnel efficiency.
+
+GTM Processes & Operating Model
+
+Help build and refine scalable GTM processes, playbooks, and operating rhythms.
+Support alignment across marketing, sales, and practice teams to ensure a consistent go-to-market approach.
+Contribute to the evolution of a more structured and proactive commercial model.
+
+Qualifications & Competencies
+
+Requires a Bachelor’s degree and 12+ years of experience in go-to-market strategy, commercial strategy, or strategic planning within consulting or professional services industries.
+Strong experience in market segmentation, positioning, and growth strategy development.
+Demonstrated ability to translate complex services into clear, differentiated offerings.
+Experience working in technical or complex industries such as construction, engineering, healthcare, energy, or higher education preferred.
+Strong analytical and problem-solving skills with a data-driven mindset.
+Ability to work cross-functionally and influence stakeholders across marketing, sales, and practice teams.
+Experience developing GTM frameworks, playbooks, or commercial tools that support execution.
+
+Additional Information
+
+At VERTEX, we invest in top talent with a highly competitive total compensation package designed to reward performance and support long-term success. Total compensation includes a base salary and a performance-based discretionary bonus program. Our comprehensive benefits package offers multiple healthcare and dental plan options, as well as company-paid Life Insurance, Short-Term Disability, and Long-Term Disability coverage—ensuring peace of mind for you and your family.
+
+We offer a 401(k) plan with immediate matching and full vesting, empowering employees to build financial security from day one. Additional benefits include Flexible Spending Accounts, a robust Employee Assistance Program, and a suite of exclusive perks that enhance everyday life.
+
+Time away matters—so we provide a generous paid time off program, including vacation, sick time, and paid holidays (with prorated options for eligible part-time employees).
+
+At VERTEX, growth never stops. Our signature “Lifetime of Learning” program offers tuition reimbursement and personalized support for employees pursuing advanced education—helping you sharpen your skills and accelerate your career.','2026-09-30 11:42:13','artifact');
+INSERT INTO "job_descriptions" VALUES('run-mulpf4ef','Stream','Senior AI Strategist','About the job
+About Stream Companies
+
+Stream Companies is a full-service, fully integrated advertising agency built for brands that want to move forward. Founded in 1997 and headquartered in Malvern, Pennsylvania, we partner with clients to launch, position, and manage brands through both full-service relationships and project-based work.
+
+We operate with an entrepreneurial mindset—collaborative, curious, and always pushing what’s next. By combining strategic planning, creative development, media planning and buying, digital, interactive, television, production, and co-op management with cutting-edge technology, we deliver integrated solutions designed for today’s marketing challenges.
+
+About The Role
+
+We are seeking a strategic, execution-oriented leader to help shape how our agency uses AI and automation to transform the way work gets done. The Senior AI Strategist will identify high-impact opportunities across the business, redesign workflows, drive adoption, and help scale practical AI-enabled solutions that improve efficiency, quality, and business performance. This leader will work cross-functionally to turn emerging ideas into repeatable capabilities that support our teams, clients, and long-term growth.
+
+What You''ll Do
+
+Identify, prioritize, and lead high-impact AI and automation opportunities across the agency, with a focus on improving the way work is delivered across core digital services such as SEO, Paid Search, Paid Social, reporting, creative production, and client communication. 
+Partner with functional leaders and subject matter experts to understand how digital and media workflows operate today and where AI or automation can improve speed, consistency, quality, and scalability. 
+Redesign workflows with AI and automation embedded from the start, creating more efficient and resilient ways of working across teams. 
+Lead AI initiatives from concept through pilot, rollout, adoption, and scaled implementation, ensuring each effort has clear ownership, measurable outcomes, and a practical execution plan. 
+Define automation opportunities within project management and workflow systems, including how teams should use platform capabilities, embedded automations, and the platform’s AI functionality to improve execution, visibility, and coordination. 
+Define and track success metrics for major initiatives, including efficiency gains, time savings, output quality, adoption, and business impact. 
+Build strong cross-functional partnerships across operations, innovation, product, systems, data, and department leadership to align priorities and drive execution. 
+Help establish the agency’s operating model for AI, including roles, responsibilities, governance practices, and decision-making frameworks that support sustainable adoption. 
+Develop strategies for internal agents, automations, and connected workflows that reduce manual coordination and create repeatable operational advantage. 
+Work alongside Stream’s Learning & Development team to create and scale training programs, playbooks, and enablement resources that help teams confidently adopt new tools and processes. 
+Evaluate emerging technologies and AI opportunities through both a strategic and practical lens, balancing innovation, feasibility, user adoption, and business value. 
+Support quality assurance, governance, and responsible use practices so AI-enabled outputs meet internal standards and client expectations. 
+Serve as a visible leader and change agent who can influence stakeholders, navigate resistance, and build momentum around new ways of working. 
+
+Qualifications
+
+3+ years of experience in automation, AI strategy, digital transformation, operations, workflow redesign, or a related leadership role in a complex business environment. 
+Strong understanding of digital marketing and media services, with working knowledge of key channels and workflows such as SEO, Paid Search, Paid Social, analytics, reporting, or related performance marketing functions. 
+Demonstrated ability to translate business needs into scalable process improvements, operating models, and technology-enabled solutions. 
+Experience leading cross-functional initiatives that require stakeholder alignment, change management, and adoption across multiple teams. 
+Experience working within project management and workflow systems such as ClickUp to support process design, execution, visibility, and cross-functional collaboration. 
+Proven success moving ideas from concept to execution, including pilots, rollout planning, training, and scaled implementation. 
+Technical fluency in AI, automation, systems integration, workflow platforms, and enterprise tools, with the ability to assess what is possible and guide implementation partners effectively. 
+Strong business and operational acumen, with the ability to connect new ways of working to measurable performance outcomes. 
+Experience creating documentation, training programs, playbooks, or enablement resources that help teams adopt new processes and technologies. 
+Excellent communication, facilitation, and influencing skills, with the ability to work effectively with senior leaders as well as frontline subject matter experts. 
+Comfort operating in fast-moving, ambiguous environments where the right structure, governance, and execution model still need to be built.','2026-09-30 11:42:13','artifact');
+INSERT INTO "job_descriptions" VALUES('run-mumb08tz','ezCater ','Director of sales operations and enablement','ezCater is the #1 food tech platform for workplaces in the US. The company makes it easy for any organization to manage its food needs and order from over 125,000 restaurants nationwide. For workplaces, ezCater provides flexible and scalable solutions for everything from employee meal programs to one-off meetings, all backed by 24/7 service and business-grade reliability. For restaurant partners, ezCater helps grow their business by bringing them new high-value customers and large orders.
+
+We are looking for an experienced, dynamic Director to lead our Sales Operations and Enablement team and build the operational backbone of our go-to-market engine -  spanning go-to-market planning, target setting and management, sales commission management, sales process optimization, and sales enablement and training. Reporting to the Chief Growth Officer, this leader will collaborate with executive leadership, sales leaders, finance, analytics, and marketing to enhance sales productivity and selling effectiveness, and to accelerate revenue growth.
+
+Success in this role will be measured by tangible improvements across the sales engine: sharper commissions and forecast accuracy, stronger pipeline visibility and quality, higher seller productivity, deeper CRM adoption, faster new-hire ramp time, more effective enablement programs, and clear, measurable ROI from sales technology and AI investments.
+
+We are looking for a self-starter who is passionate about their work, detail-oriented, and analytical, with a demonstrated ability to navigate ambiguity in a high-growth environment and proactively solve problems with limited oversight.
+
+What You''ll Do: 
+
+Responsible for the overall efficiency and effectiveness of the sales organization and champions close working relationships with key stakeholders to ensure the sales organization is successful
+Strong background and experience in sales strategy development, sales operations management, people leadership and a proven track record of driving profitable revenue growth
+Build and lead a high-performing Sales Operations and Enablement team -  recruiting top talent, developing managers and individual contributors alike, and creating a culture where people do their best work and grow their careers
+Establish and drive improvements in planning, reporting and target assignment 
+Design sales commission plans and manage commission calculations, administration and tracking with commission management software such as CaptivateIQ
+Partner with Sales leadership to define monthly targets, sales forecast and operational cadence to track key performance metrics.
+Implement comprehensive pipeline reporting from top of funnel to customer value realization, account development and retention, in partnership with sales analytics 
+Identify and deploy AI-powered tools and opportunities for automation that improve sales reporting, forecasting, and seller productivity, while enabling reps to sell more effectively and measuring adoption and business impact.
+Lead cross functional initiatives to transform and streamline processes to drive improved sales productivity and velocity
+Be a key stakeholder in CRM design, implementation, change management and overall CRM adoption
+Design and oversee training programs that enhance the skills and knowledge of the sales team
+Identify, deploy and provide reporting feedback on sales plays and pipeline excellence to stimulate demand across all market segments
+Drive the adoption of winning sales behaviors by reinforcing our sales methodology, usage of digital tools, providing onboarding enablement for new hires, and maintaining current sales content and assets
+Collaborate with marketing and product teams to create and maintain sales materials
+What You Have: 
+
+10+ years proven experience as Sales Operations leader with demonstrated success developing, leading, and scaling a Sales Operations function at a high-growth company, ideally in the tech industry
+Experience leading market segmentation and Go-To-Market strategy development in partnership with marketing and sales teams
+Proficient with CRM development, management and forecasting. Skilled at using Salesforce.com, Tableau and Sigma, including data integrations and implementations
+Organized, with excellent attention to detail and the ability to work in a fast-paced and change driven environment
+Proven success leading and managing annual, quarterly and monthly planning (territories, quota, headcount)
+Experience building, managing & coaching high performing teams
+Excellent problem solving and collaboration skills, a motivated self-starter that is proactive and action-oriented
+Demonstrates sound business judgment, strong written and verbal communication skills and a proven ability to influence senior leaders 
+Ability to operate successfully in a lean, fast-paced environment, and to create sales processes that can scale quickly
+In-depth experience in two-sided marketplace, B2B technology platforms, or B2B solutions strongly preferred
+Ability to travel up to 5 days per quarter for Together Weeks, team gatherings and other events, when applicable.
+The national total target cash compensation range for this position, including base salary and bonus target, is $206,127-$289,991 annually.*
+
+*Please note: Final offer amounts are determined by multiple factors, including prior experience, expertise and region & may vary from the amount above. This range does not represent additional compensation benefits (such as equity, 401K or medical, dental or vision insurance).
+
+ 
+ezCater does not sponsor applicants for work visas or legal permanent residence.
+
+ 
+
+What You’ll Get from Us:
+
+You’ll get a terrifically compelling experience in an innovative, high performing environment. You’ll get to work with engaged and passionate colleagues on challenging and impactful projects. You will have opportunities to grow in your career, and work in a place that values work/life harmony. 
+
+Oh, and you’ll get all this: Market competitive salary, stock options that you’ll help make worth a lot, 12 paid holidays, flexible PTO, 401K with ezCater match, health/dental/FSA, long-term disability insurance, mental health and family planning resources, remote-hybrid work from our awesome Boston office OR your home OR a mixture of both home and office, a tremendous amount of responsibility and autonomy, wicked awesome co-workers, employee meal program (and many more goodies) when you’re in our office, and knowing that you helped transform the food for work space.
+
+ezCater is an equal opportunity employer. We embrace humans of every background, appearance, race, religion, color, national origin, gender, gender identity, sexual orientation, age, marital status, veteran status, and disability status. At the same time, we do not employ jerks, even brilliant ones. Following a conditional offer of employment, ezCater may require a background check.','2026-09-30 11:42:13','artifact');
+INSERT INTO "job_descriptions" VALUES('run-munaofq1','Union Square Consulting','Strategic Lead','The role
+
+The Strategic Lead is the day-to-day GTM strategy and business analysis lead on Union Square Consulting engagements, translating customer business objectives into documented processes, actionable requirements, and measurable outcomes.
+
+ 
+
+Why this role exists
+
+Union Square Consulting is a GTM Strategy and Revenue Operations consulting rm for growth-stage B2B digital companies with $100M to $500M in revenue. Our engagements sit at the intersection of strategy and systems: customers don''t just need Salesforce configured, they need someone who understands their revenue process well enough to tell them what to configure and why. The Strategic Lead lls that gap. They work alongside the Engagement Manager and Systems Lead to ensure that every technical build traces back to a business objective, and that customers can see the connection between what''s being built and the revenue outcomes they care about.
+
+ 
+
+What you''ll own
+
+GTM strategy execution. You are the functional lead on each engagement. You translate the customer''s business objectives into specific process improvements, system requirements, and measurable KPIs. You work across the GTM Efficiency Pyramid: Fundamentals (ICPs, territory planning, segmentation), Adoption (sales methodology, process in systems, lead management), Optimization (forecasting, pipeline analytics, health scoring), and Amplification (AI-assisted processes, advanced attribution, predictive models).
+
+Process documentation. Before anything gets built, you document the current state and future state of the customer''s processes. These documents are what the Systems Lead builds from and what the customer uses for internal alignment and training. You produce workflow diagrams, process maps, decision trees, and requirements speciation’s. Post-call follow-up emails, internal summaries, and decision log entries are drafted by an internal AI assistant (Relay) and reviewed by the Engagement Manager, giving you a consistent written record of customer conversations to build from.
+
+ 
+
+Business analysis and requirements definition. You own the "what" and "why" of every engagement workstream. You conduct discovery sessions with customer stakeholders, synthesize their needs, dene acceptance criteria, and write the requirements that become Asana tasks. For Tier 2 and Tier 3 work, your process documentation and requirements definition are required before the Systems Lead starts building.
+
+ 
+
+User Acceptance Testing (UAT) ownership. You dene test scenarios based on the process documentation, coordinate UAT with the customer, and validate that what was built matches the requirements. You''re the quality gate between "technically works" and "works the way the customer''s team will actually use it."
+
+ 
+
+Revenue metrics and reporting design. You dene what the customer should be measuring (pipeline velocity, conversion rates, forecast accuracy, customer health scores, expansion revenue) and work with the Systems Lead to build the reports, dashboards, and executive scorecards that surface those metrics.
+
+ 
+
+GTM insights and continuous improvement. You run the ongoing insights process across your engagements: analyzing revenue data and operational metrics to uncover areas for improvement, identifying where the customer should double down on what''s working, and translating those findings into process and technology changes. This isn''t a one-time Diagnostic exercise. You monitor the numbers between Diagnostics, surface trends and anomalies, and recommend adjustments to keep the customer''s GTM execution aligned with their targets.
+
+ 
+
+GTM Diagnostic participation. During quarterly Diagnostics, you conduct stakeholder interviews alongside the Engagement Manager, analyze findings, and contribute to the Diagnostic artifacts: heatmaps, maturity assessments, and the leadership readout. You bring the business-context lens, identifying gaps between the customer''s stated GTM strategy and what their data and processes actually show. GTM Roadmap initiative development. Working within the strategic direction set by the Director of Strategy (or SVP of Delivery), you develop and rene the 3-5 quarterly initiatives on the Roadmap: scoping deliverables, writing initiative briefs, coordinating with the Systems Lead on feasibility, and working with the Engagement Manager to sequence work within sprint capacity. You ensure each initiative connects to a strategic objective and is sized appropriately.
+
+ 
+
+UI/UX and experience design. You design the user-facing experience for Salesforce workflows: page layouts, record types, path configurations, and guided processes. You ensure that the systems the team builds are not just functional but usable by the customer''s revenue team.
+
+ 
+
+Executive-facing deliverables. You produce presentation-quality materials for customer leadership: strategy decks, initiative summaries, metrics reviews, and readout presentations. These aren''t internal working docs; they''re materials a VP of Sales or CRO would present to their own leadership.
+
+ 
+
+Must-have qualifications
+
+● 5-7 years of experience in GTM strategy, revenue operations, business analysis, or management consulting for B2B SaaS companies
+
+● Deep understanding of B2B revenue processes: pipeline generation, pipeline management, customer success, renewals, and expansion
+
+● 3+ years of direct experience at 1-2 B2B SaaS companies working on revenue operations or GTM processes (not just consulting about them)
+
+● Strong familiarity with revenue metrics frameworks: MRR, ARR, ACV, TCV, pipeline velocity, win rates, customer health scoring
+
+● Experience with sales methodologies (MEDDPICC, Challenger, SPIN, or similar)
+
+● Experience with data visualization or BI tools (PowerBI, Tableau, Looker, or similar)
+
+● Experience using AI-assisted workflows for research, analysis, or deliverable preparation
+
+● Ability to produce presentation-quality deliverables: strategy decks, process documentation, initiative briefs, and metrics summaries that a CRO or VP of Sales would present to their leadership
+
+● Strong analytical instinct: you look at a CRM dataset and see the story, the gaps, and the questions worth asking
+
+● Experience defining requirements and acceptance criteria for system implementations
+
+● Comfortable leading discovery sessions and working with stakeholders across levels (individual contributors through C-suite)
+
+● Familiarity with Salesforce from a business-user and reporting perspective (you don''t need to build Flows, but you need to know what''s possible)
+
+● Strong written and verbal communication: proactive, structured, and clear without being formal
+
+ 
+
+Nice-to-have
+
+● HubSpot experience (Marketing Hub, Sales Hub, or Operations Hub)
+
+● Background in management consulting or professional services delivery
+
+● Salesforce certifications (Admin or Business Analyst)
+
+● Experience designing or running QBRs, pipeline councils, or executive reporting cadences
+
+● Familiarity with the broader GTM tech stack from a business-user and workflow perspective: data enrichment (Clay, ZoomInfo), call intelligence (Gong, Clari, Chorus), sales automation (Outreach, Apollo), marketing automation (HubSpot Marketing Hub, Salesforce Marketing Cloud), forecasting (Clari, Anaplan), prospect routing (Chili Piper), and intent tracking (6sense, Bombora, Demand base)','2026-09-30 11:42:13','artifact');
 CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT);
 INSERT INTO "meta" VALUES('length_band','{"source": "R1_base_2026", "n": 21, "min": 79, "p10": 97, "p25": 119, "median": 143, "p75": 158, "p90": 167, "max": 212, "hard_ceiling": 170}');
 INSERT INTO "meta" VALUES('longform_band','{"source": "Section C of the source template", "n": 9, "min": 170, "median": 228, "max": 340, "hard_ceiling": 340}');
-INSERT INTO "meta" VALUES('ingested_at','2026-09-28T03:12:00');
+INSERT INTO "meta" VALUES('ingested_at','2026-10-01T11:56:17');
 CREATE TABLE outcomes (                      -- tier 4: what happened after a resume went out
   id INTEGER PRIMARY KEY, run_id TEXT, jd_id TEXT REFERENCES job_descriptions(id), resume_version TEXT,
   applied_at TEXT, response TEXT,        -- pending | no_response | screen | interview | offer | rejected
@@ -6015,6 +6743,8 @@ INSERT INTO "prompt_versions" VALUES('bullets@5','bullets','5',NULL,'2026-09-28 
 INSERT INTO "prompt_versions" VALUES('summary@1','summary','1',NULL,'2026-09-28 07:12:00');
 INSERT INTO "prompt_versions" VALUES('tailor@6','tailor','6',NULL,'2026-09-28 07:12:00');
 INSERT INTO "prompt_versions" VALUES('tighten@2','tighten','2',NULL,'2026-09-28 07:12:00');
+INSERT INTO "prompt_versions" VALUES('bullets@6','bullets','6',NULL,'2026-09-30 11:42:13');
+INSERT INTO "prompt_versions" VALUES('tailor@7','tailor','7',NULL,'2026-09-30 11:42:13');
 CREATE TABLE raw_bullets (
   id        INTEGER PRIMARY KEY,
   source_id TEXT NOT NULL REFERENCES sources(id),
@@ -6429,25 +7159,25 @@ CREATE TABLE sources (
   headline    TEXT,
   ingested_at TEXT DEFAULT (datetime('now'))
 , authored_at TEXT, source_type TEXT);
-INSERT INTO "sources" VALUES('R1_base_2026','Career Finder Folder\Tim King Resume 2026 .docx','a267263fe50a70e376169b3832eb1934','General baseline (Resume 1 — bullet standard)','docx',NULL,'2026-09-28 07:12:00','2026-08-13T18:24:00','HISTORICAL_RESUME');
-INSERT INTO "sources" VALUES('R2_base_2026_preliminal','Career Finder Folder\Resumes\Tim King Resume 2026 .docx','57a633a9264614df70d46f1ba1dce772','General baseline (pre-Liminal)','docx',NULL,'2026-09-28 07:12:00','2026-08-09T08:09:00','HISTORICAL_RESUME');
-INSERT INTO "sources" VALUES('R3_fundraising','Career Finder Folder\Resumes\Tim King Fundraising Resume 2026 .docx','f93265fe3f3db5149195dc969905576e','Educational & nonprofit fundraising / advancement','docx',NULL,'2026-09-28 07:12:00','2026-08-09T06:19:00','HISTORICAL_RESUME');
-INSERT INTO "sources" VALUES('R4_openai_client_partner_me','Career Finder Folder\Resumes\Tim_King_Resume_OpenAI_Client_Partner_Media & Entertainment-TK.docx','f3d6cbe1cfc0456de4f3ae90726069fd','OpenAI — Client Partner, Media & Entertainment','docx','MEDIA & ENTERTAINMENT ADVERTISING SALES · STRATEGIC PARTNERSHIPS · NEW BUSINESS','2026-09-28 07:12:00','2026-08-11T20:25:00','HISTORICAL_RESUME');
-INSERT INTO "sources" VALUES('R5_luminance_commercial_director','Career Finder Folder\Resumes\Tim_King_Resume_Luminance_Commercial_Director.docx','4e6d4a19501db3c9bc00933ea26f8875','Luminance — Commercial Director (enterprise AI sales leadership)','docx','ENTERPRISE SALES LEADERSHIP · AI & TECHNOLOGY SOLUTIONS · NEW BUSINESS','2026-09-28 07:12:00','2026-08-11T18:26','HISTORICAL_RESUME');
-INSERT INTO "sources" VALUES('R6_admarketplace_director','Career Finder Folder\Resumes\Tim_King_Resume_adMarketplace_Director_Advertiser_Sales.docx','80bba217fbcb61eadfbfa704b1e943ee','adMarketplace — Director, Advertiser Sales','docx','PERFORMANCE MEDIA & ADTECH SALES · SEARCH INTENT · NEW BUSINESS','2026-09-28 07:12:00','2026-08-14T00:13:44','HISTORICAL_RESUME');
-INSERT INTO "sources" VALUES('R7_fox_weather_director','Career Finder Folder\Resumes\Tim_King_Resume_FOX_Weather_Director_Ad_Sales.pdf','140a2751af99df1521ee993163294d94','FOX Weather — Director, Ad Sales','pdf_resume','MEDIA & SPONSORSHIP SALES · INTEGRATED CROSS-PLATFORM PARTNERSHIPS · REVENUE LEADERSHIP','2026-09-28 07:12:00','2026-08-11T17:34','HISTORICAL_RESUME');
-INSERT INTO "sources" VALUES('R8_bairesdev_vp_sales','Business Advisory Services\Timothy King Resume - BairesDev VP Sales.docx','40eff717426450d3445d6f4fc4839c14','BairesDev — VP Sales (IT services)','docx',NULL,'2026-09-28 07:12:00','2026-09-03T06:26:47','HISTORICAL_RESUME');
-INSERT INTO "sources" VALUES('R9_knit_growth_marketing','Business Advisory Services\Timothy King Resume - Knit Growth Marketing.docx','a8599a105de187fda7761efd71946be9','Knit — Growth Marketing','docx',NULL,'2026-09-28 07:12:00','2026-08-26T20:27:44','HISTORICAL_RESUME');
-INSERT INTO "sources" VALUES('R10_mri_simmons_audience','Business Advisory Services\Timothy King Resume - MRI-Simmons Audience Activation.docx','4ba9ce0a2a45f7b53a353edf9b2e1256','MRI-Simmons — Audience Activation (data sales)','docx',NULL,'2026-09-28 07:12:00','2026-08-26T20:34:27','HISTORICAL_RESUME');
-INSERT INTO "sources" VALUES('R11_magellan_measurement','Business Advisory Services\Timothy King Resume - Magellan AI Measurement Growth.docx','337829b3f94678053bf2620e40b29e76','Magellan AI — Measurement Growth','docx',NULL,'2026-09-28 07:12:00','2026-08-26T06:20:34','HISTORICAL_RESUME');
-INSERT INTO "sources" VALUES('R12_meridian_gtm','Business Advisory Services\Timothy King Resume - Meridian GTM.docx','f31ddebc9616247bfb9764cf70809315','Meridian — GTM','docx',NULL,'2026-09-28 07:12:00','2026-08-26T06:00:08','HISTORICAL_RESUME');
-INSERT INTO "sources" VALUES('R13_samba_platform_sales','Business Advisory Services\Timothy King Resume - Samba Platform Sales.docx','371007a551ebc3009079728d568e9094','Samba TV — Platform / Data Partnerships Sales','docx',NULL,'2026-09-28 07:12:00','2026-08-26T20:46:38','HISTORICAL_RESUME');
-INSERT INTO "sources" VALUES('R14_smartly_agency_partnerships','Business Advisory Services\Timothy King Resume - Smartly Agency Partnerships.docx','620209e57cb2768f4ba3e0526fdc2d25','Smartly — Agency Partnerships (player-coach)','docx',NULL,'2026-09-28 07:12:00','2026-08-26T20:38:36','HISTORICAL_RESUME');
-INSERT INTO "sources" VALUES('R15_versant_transformation','Business Advisory Services\Timothy King Resume - Versant Transformation Enablement.docx','f0f6a601dc046ad644a56114a6e9fc65','Versant — Transformation & Enablement','docx',NULL,'2026-09-28 07:12:00','2026-09-03T06:39:53','HISTORICAL_RESUME');
-INSERT INTO "sources" VALUES('R16_admarketplace_adv_success','Business Advisory Services\Timothy King Resume - adMarketplace Advertiser Success.docx','12c7eafb90c7f48982463722d7ec347d','adMarketplace — Advertiser Success','docx',NULL,'2026-09-28 07:12:00','2026-08-26T06:27:00','HISTORICAL_RESUME');
-INSERT INTO "sources" VALUES('S17_liminal_summary','Career Finder Folder\Liminal_Chief_of_Strategy_Summary.md.pdf','0d4892d96e98b3359cb8ed6c42c114e5','Liminal work summary (pre-written bullets)','pdf_liminal',NULL,'2026-09-28 07:12:00','2026-08-13T20:15','HISTORICAL_RESUME');
-INSERT INTO "sources" VALUES('S18_linkedin','Career Finder Folder\Resume Optimization Tool\sources\linkedin_2026-09-25.md','b594acde2a787aae7c79a2f4a4b77ffa','LinkedIn public profile (captured 2026-09-25)','linkedin_md','Sales Professional | Marketing, Advertising, Product, Services, & Sales GTM Strategist Providing Advisory Services | Systems Thinker | Process Engineer | AI Adoption Enthusiast','2026-09-28 07:12:00','2026-09-25','PUBLIC_PROFILE');
-INSERT INTO "sources" VALUES('S19_source_template','Career Finder Folder\Resume Optimization Tool\sources\TIM KING SOURCE RESUME.docx','f8f7d2b8b639644701b6d5fdc9656a9a','Source template (default layout since 2026-09-27; Sections A–D)','docx_template',NULL,'2026-09-28 07:12:00','2026-09-26T20:40:00','MASTER_RESUME');
+INSERT INTO "sources" VALUES('R1_base_2026','Career Finder Folder\Tim King Resume 2026 .docx','a267263fe50a70e376169b3832eb1934','General baseline (Resume 1 — bullet standard)','docx',NULL,'2026-10-01 15:56:17','2026-08-13T18:24:00','HISTORICAL_RESUME');
+INSERT INTO "sources" VALUES('R2_base_2026_preliminal','Career Finder Folder\Resumes\Tim King Resume 2026 .docx','57a633a9264614df70d46f1ba1dce772','General baseline (pre-Liminal)','docx',NULL,'2026-10-01 15:56:17','2026-08-09T08:09:00','HISTORICAL_RESUME');
+INSERT INTO "sources" VALUES('R3_fundraising','Career Finder Folder\Resumes\Tim King Fundraising Resume 2026 .docx','f93265fe3f3db5149195dc969905576e','Educational & nonprofit fundraising / advancement','docx',NULL,'2026-10-01 15:56:17','2026-08-09T06:19:00','HISTORICAL_RESUME');
+INSERT INTO "sources" VALUES('R4_openai_client_partner_me','Career Finder Folder\Resumes\Tim_King_Resume_OpenAI_Client_Partner_Media & Entertainment-TK.docx','f3d6cbe1cfc0456de4f3ae90726069fd','OpenAI — Client Partner, Media & Entertainment','docx','MEDIA & ENTERTAINMENT ADVERTISING SALES · STRATEGIC PARTNERSHIPS · NEW BUSINESS','2026-10-01 15:56:17','2026-08-11T20:25:00','HISTORICAL_RESUME');
+INSERT INTO "sources" VALUES('R5_luminance_commercial_director','Career Finder Folder\Resumes\Tim_King_Resume_Luminance_Commercial_Director.docx','4e6d4a19501db3c9bc00933ea26f8875','Luminance — Commercial Director (enterprise AI sales leadership)','docx','ENTERPRISE SALES LEADERSHIP · AI & TECHNOLOGY SOLUTIONS · NEW BUSINESS','2026-10-01 15:56:17','2026-08-11T18:26','HISTORICAL_RESUME');
+INSERT INTO "sources" VALUES('R6_admarketplace_director','Career Finder Folder\Resumes\Tim_King_Resume_adMarketplace_Director_Advertiser_Sales.docx','80bba217fbcb61eadfbfa704b1e943ee','adMarketplace — Director, Advertiser Sales','docx','PERFORMANCE MEDIA & ADTECH SALES · SEARCH INTENT · NEW BUSINESS','2026-10-01 15:56:17','2026-08-14T00:13:44','HISTORICAL_RESUME');
+INSERT INTO "sources" VALUES('R7_fox_weather_director','Career Finder Folder\Resumes\Tim_King_Resume_FOX_Weather_Director_Ad_Sales.pdf','140a2751af99df1521ee993163294d94','FOX Weather — Director, Ad Sales','pdf_resume','MEDIA & SPONSORSHIP SALES · INTEGRATED CROSS-PLATFORM PARTNERSHIPS · REVENUE LEADERSHIP','2026-10-01 15:56:17','2026-08-11T17:34','HISTORICAL_RESUME');
+INSERT INTO "sources" VALUES('R8_bairesdev_vp_sales','Business Advisory Services\Timothy King Resume - BairesDev VP Sales.docx','40eff717426450d3445d6f4fc4839c14','BairesDev — VP Sales (IT services)','docx',NULL,'2026-10-01 15:56:17','2026-09-03T06:26:47','HISTORICAL_RESUME');
+INSERT INTO "sources" VALUES('R9_knit_growth_marketing','Business Advisory Services\Timothy King Resume - Knit Growth Marketing.docx','a8599a105de187fda7761efd71946be9','Knit — Growth Marketing','docx',NULL,'2026-10-01 15:56:17','2026-08-26T20:27:44','HISTORICAL_RESUME');
+INSERT INTO "sources" VALUES('R10_mri_simmons_audience','Business Advisory Services\Timothy King Resume - MRI-Simmons Audience Activation.docx','4ba9ce0a2a45f7b53a353edf9b2e1256','MRI-Simmons — Audience Activation (data sales)','docx',NULL,'2026-10-01 15:56:17','2026-08-26T20:34:27','HISTORICAL_RESUME');
+INSERT INTO "sources" VALUES('R11_magellan_measurement','Business Advisory Services\Timothy King Resume - Magellan AI Measurement Growth.docx','337829b3f94678053bf2620e40b29e76','Magellan AI — Measurement Growth','docx',NULL,'2026-10-01 15:56:17','2026-08-26T06:20:34','HISTORICAL_RESUME');
+INSERT INTO "sources" VALUES('R12_meridian_gtm','Business Advisory Services\Timothy King Resume - Meridian GTM.docx','f31ddebc9616247bfb9764cf70809315','Meridian — GTM','docx',NULL,'2026-10-01 15:56:17','2026-08-26T06:00:08','HISTORICAL_RESUME');
+INSERT INTO "sources" VALUES('R13_samba_platform_sales','Business Advisory Services\Timothy King Resume - Samba Platform Sales.docx','371007a551ebc3009079728d568e9094','Samba TV — Platform / Data Partnerships Sales','docx',NULL,'2026-10-01 15:56:17','2026-08-26T20:46:38','HISTORICAL_RESUME');
+INSERT INTO "sources" VALUES('R14_smartly_agency_partnerships','Business Advisory Services\Timothy King Resume - Smartly Agency Partnerships.docx','620209e57cb2768f4ba3e0526fdc2d25','Smartly — Agency Partnerships (player-coach)','docx',NULL,'2026-10-01 15:56:17','2026-08-26T20:38:36','HISTORICAL_RESUME');
+INSERT INTO "sources" VALUES('R15_versant_transformation','Business Advisory Services\Timothy King Resume - Versant Transformation Enablement.docx','f0f6a601dc046ad644a56114a6e9fc65','Versant — Transformation & Enablement','docx',NULL,'2026-10-01 15:56:17','2026-09-03T06:39:53','HISTORICAL_RESUME');
+INSERT INTO "sources" VALUES('R16_admarketplace_adv_success','Business Advisory Services\Timothy King Resume - adMarketplace Advertiser Success.docx','12c7eafb90c7f48982463722d7ec347d','adMarketplace — Advertiser Success','docx',NULL,'2026-10-01 15:56:17','2026-08-26T06:27:00','HISTORICAL_RESUME');
+INSERT INTO "sources" VALUES('S17_liminal_summary','Career Finder Folder\Liminal_Chief_of_Strategy_Summary.md.pdf','0d4892d96e98b3359cb8ed6c42c114e5','Liminal work summary (pre-written bullets)','pdf_liminal',NULL,'2026-10-01 15:56:17','2026-08-13T20:15','HISTORICAL_RESUME');
+INSERT INTO "sources" VALUES('S18_linkedin','Career Finder Folder\Resume Optimization Tool\sources\linkedin_2026-09-25.md','b594acde2a787aae7c79a2f4a4b77ffa','LinkedIn public profile (captured 2026-09-25)','linkedin_md','Sales Professional | Marketing, Advertising, Product, Services, & Sales GTM Strategist Providing Advisory Services | Systems Thinker | Process Engineer | AI Adoption Enthusiast','2026-10-01 15:56:17','2026-09-25','PUBLIC_PROFILE');
+INSERT INTO "sources" VALUES('S19_source_template','Career Finder Folder\Resume Optimization Tool\sources\TIM KING SOURCE RESUME.docx','f8f7d2b8b639644701b6d5fdc9656a9a','Source template (default layout since 2026-09-27; Sections A–D)','docx_template',NULL,'2026-10-01 15:56:17','2026-09-26T20:40:00','MASTER_RESUME');
 CREATE TABLE summaries (
   id INTEGER PRIMARY KEY, source_id TEXT REFERENCES sources(id), tags TEXT, text TEXT NOT NULL,
   origin TEXT DEFAULT 'curated', status TEXT DEFAULT 'accepted'
@@ -6580,6 +7310,12 @@ INSERT INTO "technologies" VALUES(20,'Microsoft Excel (VLOOKUPs, INDEX-MATCH-MAT
 INSERT INTO "technologies" VALUES(21,'Microsoft Stack','Productivity','["cloud-infrastructure"]',21,'template','tool:microsoft-stack:name');
 INSERT INTO "technologies" VALUES(22,'Office-Place Collaboration Tools (Slack, MS Teams, Webex, Google Meet, Zoom)','Productivity','["stakeholder-alignment", "operating-cadence"]',22,'template','tool:office-place-collaboration-tools:name');
 INSERT INTO "technologies" VALUES(23,'Notion','Learned','["process-improvement"]',100,'artifact',NULL);
+INSERT INTO "technologies" VALUES(24,'Gong','Learned','["data-solutions"]',101,'artifact',NULL);
+INSERT INTO "technologies" VALUES(25,'Clay','Learned','["data-solutions"]',102,'artifact',NULL);
+INSERT INTO "technologies" VALUES(26,'Explorium AI','Learned','["data-solutions"]',103,'artifact',NULL);
+INSERT INTO "technologies" VALUES(27,'Salesforce Dashboards','Learned','["data-solutions"]',104,'artifact',NULL);
+INSERT INTO "technologies" VALUES(28,'Demandbase','Learned','[]',105,'artifact',NULL);
+INSERT INTO "technologies" VALUES(29,'Salesforce Dashboards (native components)','Learned','["data-solutions"]',106,'artifact',NULL);
 CREATE VIEW current_bullets AS
   SELECT b.*, a.role_key, a.confidence FROM bullets b JOIN achievements a ON a.id = b.achievement_id
   WHERE b.superseded_by IS NULL AND b.status = 'accepted';

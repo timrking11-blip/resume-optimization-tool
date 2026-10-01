@@ -1365,7 +1365,9 @@ def cmd_learn(args):
                                     "observed_at": run.get("finalized") or run.get("created"), "section": "engagement_details", "engagement_key": f["engagement_key"]})
         for fb in run.get("feedback", []):
             if fb.get("action") == "edit" and fb.get("edited_text"):
-                ev_rows.append({"id": f"ev:edit:{jid}:{fb.get('achievement_id') or fb.get('bullet_id')}", "source_type": "USER_ENTERED", "channel": "match_desk",
+                # a new (not yet banked) bullet has no id, so fall back to the edited text's hash: two edits must never share an id
+                ref = fb.get("achievement_id") or fb.get("bullet_id") or "h" + CL.sha1(fb["edited_text"])[:10]
+                ev_rows.append({"id": f"ev:edit:{jid}:{ref}", "source_type": "USER_ENTERED", "channel": "match_desk",
                                 "source_ref": jid, "locator": "sheet edit", "question": None, "quote": fb["edited_text"], "observed_at": fb.get("created") or run.get("finalized"),
                                 "section": "experience"})
         # tier 4: application outcome, stored against the resume version, never used to re-weight anything
