@@ -1,6 +1,6 @@
 {
  "schema": "rot-library/3",
- "exported_at": "2026-10-01T12:00:02",
+ "exported_at": "2026-10-10T08:25:20",
  "tiers": {
   "1": "Evidence: what actually happened",
   "2": "Derived knowledge: what the system infers",
@@ -452,11 +452,11 @@
    "valid_to": "2025-11",
    "as_of": null,
    "evidence": {
-    "n": 1,
+    "n": 2,
     "source_types": [
      "USER_ENTERED"
     ],
-    "latest": "2026-09-28T05:02:57.168Z"
+    "latest": "2026-10-10T04:03:23.215Z"
    },
    "numbers": [
     "12000"
@@ -695,6 +695,284 @@
    "numbers": [
     "2"
    ]
+  },
+  {
+   "id": "ach:art-run-mv1ury8y-0",
+   "kind": "achievement",
+   "subject": "role:psp",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Partnered with multiple university VPs of Advancement on alumni and donor engagement, positioning ticket assets as a tool to deepen alumni connection.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2026-03",
+   "valid_to": "2026-08",
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-10-10T04:03:23.215Z"
+   },
+   "numbers": [
+    "1"
+   ]
+  },
+  {
+   "id": "ach:art-run-mv1ury8y-1",
+   "kind": "achievement",
+   "subject": "role:psp",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Proposed a CPA model to a university showing one enrolled student would cover the full cost of the advertisement while building brand awareness.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2026-03",
+   "valid_to": "2026-08",
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-10-10T04:03:23.215Z"
+   },
+   "numbers": [
+    "1"
+   ]
+  },
+  {
+   "id": "ach:art-run-mv1ury8y-2",
+   "kind": "achievement",
+   "subject": "role:demanddrive",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Ran a sequenced Marketo campaign targeting competitor-aligned audiences, driving inbound demand and more qualified meetings through pain-point messaging.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2018",
+   "valid_to": "2021",
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-10-10T04:03:23.215Z"
+   },
+   "numbers": []
+  },
+  {
+   "id": "ach:art-run-mv1ury8y-3",
+   "kind": "achievement",
+   "subject": "role:tek_lead",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Created a Data Analytics and Insights Playbook giving BD and outbound sales reps market context and pre-qualification questions to sharpen requirements.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2024",
+   "valid_to": "2025-11",
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-10-10T04:03:23.215Z"
+   },
+   "numbers": [
+    "12000"
+   ]
+  },
+  {
+   "id": "ach:art-run-mv1ury8y-5",
+   "kind": "achievement",
+   "subject": "role:hc_ai_strategy",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Implemented a staged build model with named ownership, so healthcare compliance and regulatory SMEs signed off on technical builds tied to regulatory protocols.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2026-07",
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-10-10T04:03:23.215Z"
+   },
+   "numbers": []
+  },
+  {
+   "id": "ach:art-run-mv1vk7pl-0",
+   "kind": "achievement",
+   "subject": "role:hc_ai_strategy",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Advised a healthcare technology start-up on IP ownership and equity tradeoffs across two funding routes: venture capital and government-funded SBIR research grants.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2026-07",
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-10-10T04:15:16.589Z"
+   },
+   "numbers": [
+    "2"
+   ]
+  },
+  {
+   "id": "ach:art-run-mv1vk7pl-1",
+   "kind": "achievement",
+   "subject": "role:hc_ai_strategy",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Advised an HVAC services firm on market expansion, researching geographic territory overlap and shifting strategy to a cost-ceiling approach based on expansion overlap.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2026-07",
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-10-10T04:15:16.589Z"
+   },
+   "numbers": []
+  },
+  {
+   "id": "ach:art-run-mv2c0wcj-0",
+   "kind": "achievement",
+   "subject": "role:tek_lead",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Built an IT network across data, AI, BI, MarTech, solutions architecture, and data science that produced multiple referral-sourced deals at Southern Company Gas.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2024",
+   "valid_to": "2025-11",
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-10-10T12:04:15.684Z"
+   },
+   "numbers": []
+  },
+  {
+   "id": "ach:art-run-mv2c0wcj-1",
+   "kind": "achievement",
+   "subject": "role:hc_ai_strategy",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Leverage an IT-industry network across data, AI, and MarTech to open new opportunities as a GTM Engineer and Strategic Advisor.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2026-07",
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-10-10T12:04:15.684Z"
+   },
+   "numbers": []
+  },
+  {
+   "id": "ach:art-run-mv2c0wcj-2",
+   "kind": "achievement",
+   "subject": "role:tek_lead",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Led monthly 1:1s with solution architects on Universal Parks & Experiences' managed services deal, surfacing workstream gaps and fixes with Customer Success and BD.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2024",
+   "valid_to": "2025-11",
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-10-10T12:04:15.684Z"
+   },
+   "numbers": [
+    "1",
+    "3"
+   ]
+  },
+  {
+   "id": "ach:art-run-mv2c0wcj-3",
+   "kind": "achievement",
+   "subject": "role:tek_lead",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Onboarded 3 Data Science and ML consultants to a Southern Company Gas flex services engagement, then ran monthly 1:1s to keep delivery on track.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2024",
+   "valid_to": "2025-11",
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-10-10T12:04:15.684Z"
+   },
+   "numbers": [
+    "1",
+    "3"
+   ]
+  },
+  {
+   "id": "ach:art-run-mv2c0wcj-4",
+   "kind": "achievement",
+   "subject": "role:psp",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Produced pitch decks for university, building materials and supply, and automotive prospects, using reach, engagement, CPA, and CPM metrics to justify ad spend.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2026-03",
+   "valid_to": "2026-08",
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-10-10T12:04:15.684Z"
+   },
+   "numbers": []
   },
   {
    "id": "ach:dd-200-quota",
@@ -3584,19 +3862,21 @@
    "value": "Healthcare Technology Start-Up (Confidential)",
    "unit": null,
    "text": "Healthcare Technology Start-Up (Confidential)",
-   "confidence": 0.9,
+   "confidence": 1.0,
    "status": "active",
    "valid_from": null,
    "valid_to": null,
    "as_of": null,
    "evidence": {
-    "n": 1,
+    "n": 2,
     "source_types": [
-     "MASTER_RESUME"
+     "MASTER_RESUME",
+     "USER_ENTERED"
     ],
-    "latest": "2026-09-26T20:40:00"
+    "latest": "2026-10-10T04:03:23.215Z"
    },
    "numbers": [
+    "7",
     "2026"
    ]
   },
@@ -3608,19 +3888,21 @@
    "value": "Part Time",
    "unit": null,
    "text": "Healthcare Technology Start-Up (Confidential): commitment = Part Time",
-   "confidence": 0.9,
+   "confidence": 1.0,
    "status": "active",
    "valid_from": null,
    "valid_to": null,
    "as_of": null,
    "evidence": {
-    "n": 1,
+    "n": 2,
     "source_types": [
-     "MASTER_RESUME"
+     "MASTER_RESUME",
+     "USER_ENTERED"
     ],
-    "latest": "2026-09-26T20:40:00"
+    "latest": "2026-10-10T04:03:23.215Z"
    },
    "numbers": [
+    "7",
     "2026"
    ]
   },
@@ -3632,19 +3914,21 @@
    "value": "New York, NY",
    "unit": null,
    "text": "Healthcare Technology Start-Up (Confidential): location = New York, NY",
-   "confidence": 0.9,
+   "confidence": 1.0,
    "status": "active",
    "valid_from": null,
    "valid_to": null,
    "as_of": null,
    "evidence": {
-    "n": 1,
+    "n": 2,
     "source_types": [
-     "MASTER_RESUME"
+     "MASTER_RESUME",
+     "USER_ENTERED"
     ],
-    "latest": "2026-09-26T20:40:00"
+    "latest": "2026-10-10T04:03:23.215Z"
    },
    "numbers": [
+    "7",
     "2026"
    ]
   },
@@ -3656,17 +3940,18 @@
    "value": "2026-07",
    "unit": null,
    "text": "Healthcare Technology Start-Up (Confidential): start = 2026-07",
-   "confidence": 0.9,
+   "confidence": 1.0,
    "status": "active",
    "valid_from": null,
    "valid_to": null,
    "as_of": null,
    "evidence": {
-    "n": 1,
+    "n": 2,
     "source_types": [
-     "MASTER_RESUME"
+     "MASTER_RESUME",
+     "USER_ENTERED"
     ],
-    "latest": "2026-09-26T20:40:00"
+    "latest": "2026-10-10T04:03:23.215Z"
    },
    "numbers": [
     "7",
@@ -3681,19 +3966,23 @@
    "value": "Principal Business Strategist – GTM Plan, Business Architectural Roadmap, Blueprint to Obtain Necessary Funding – Healthcare FinTech Start-Up",
    "unit": null,
    "text": "Healthcare Technology Start-Up (Confidential): subtitle = Principal Business Strategist – GTM Plan, Business Architectural Roadmap, Blueprint to Obtain Necessary Funding – Healthcare FinTech Start-Up",
-   "confidence": 0.9,
+   "confidence": 1.0,
    "status": "active",
    "valid_from": null,
    "valid_to": null,
    "as_of": null,
    "evidence": {
-    "n": 1,
+    "n": 2,
     "source_types": [
-     "MASTER_RESUME"
+     "MASTER_RESUME",
+     "USER_ENTERED"
     ],
-    "latest": "2026-09-26T20:40:00"
+    "latest": "2026-10-10T04:03:23.215Z"
    },
-   "numbers": []
+   "numbers": [
+    "7",
+    "2026"
+   ]
   },
   {
    "id": "eng:hvac:client",
@@ -7393,6 +7682,28 @@
    "numbers": []
   },
   {
+   "id": "tagline:technical-storyteller-for-ai-data-solutions:text",
+   "kind": "tagline",
+   "subject": "tagline:technical-storyteller-for-ai-data-solutions",
+   "predicate": "text",
+   "value": "Technical Storyteller for AI & Data Solutions",
+   "unit": null,
+   "text": "Technical Storyteller for AI & Data Solutions",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": null,
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-10-10T08:25:20"
+   },
+   "numbers": []
+  },
+  {
    "id": "tool:apollo-io:name",
    "kind": "tool",
    "subject": "tool:apollo-io",
@@ -10598,10 +10909,10 @@
      "score_adj": 0
     },
     {
-     "id": 163,
+     "id": 180,
      "kind": "learned",
      "angle": "gate2",
-     "text": "Sourced and staffed 8 solution architects across 8 digital transformation workstreams on a 12–18 month renewable managed services engagement worth $1M annually.",
+     "text": "Sourced and staffed 8 solution architects across 8 workstreams on a 12-18 month renewable managed services engagement worth $1M annually.",
      "score_adj": 0
     }
    ]
@@ -11356,10 +11667,17 @@
      "score_adj": 0
     },
     {
-     "id": 162,
+     "id": 179,
      "kind": "learned",
      "angle": "gate2",
-     "text": "Built a weekly capacity forecast, RACI, and decision log for the operating cadence, tracking 3–4 concurrent streams through gated sprint cycles.",
+     "text": "Mapped stakeholder intervention and sign-off criteria for a startup client, defining who owned gates and approvals across the engagement.",
+     "score_adj": 0
+    },
+    {
+     "id": 181,
+     "kind": "learned",
+     "angle": "gate2",
+     "text": "Onboarded a healthcare tech startup's team to a gated tracking system, giving the CEO approval oversight on dev expenses and fractional work hours.",
      "score_adj": 0
     }
    ]
@@ -11918,6 +12236,13 @@
      "angle": null,
      "text": "Analyzed CRM opportunity keywords to track emerging-tech demand shifts and delivered a data analytics insights playbook to SVPs at a 12,000-employee firm.",
      "score_adj": 0
+    },
+    {
+     "id": 182,
+     "kind": "learned",
+     "angle": "gate2",
+     "text": "Presented the Data Analytics and Insights Playbook at a 12,000-employee company's Delivery Conference as a sales enablement resource for cross-functional selling.",
+     "score_adj": 0
     }
    ]
   },
@@ -12142,6 +12467,313 @@
      "score_adj": 0
     }
    ]
+  },
+  {
+   "id": "art-run-mv1ury8y-0",
+   "role": "psp",
+   "confidence": "asserted",
+   "tags": {
+    "donor-relations": 1.0,
+    "institutional-partnerships": 1.0,
+    "sports-media": 1.0,
+    "executive-communication": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mv1ury8y-0"
+   ],
+   "texts": [
+    {
+     "id": 164,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Partnered with multiple university VPs of Advancement on alumni and donor engagement, positioning ticket assets as a tool to deepen alumni connection.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-mv1ury8y-1",
+   "role": "psp",
+   "confidence": "asserted",
+   "tags": {
+    "cpm-cpa-modeling": 1.0,
+    "proposal-development": 1.0,
+    "media-ad-sales": 1.0,
+    "unit-economics": 1.0,
+    "donor-relations": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mv1ury8y-1"
+   ],
+   "texts": [
+    {
+     "id": 165,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Proposed a CPA model to a university showing one enrolled student would cover the full cost of the advertisement while building brand awareness.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-mv1ury8y-2",
+   "role": "demanddrive",
+   "confidence": "asserted",
+   "tags": {
+    "demand-generation": 1.0,
+    "campaign-development": 1.0,
+    "competitive-analysis": 1.0,
+    "positioning-messaging": 1.0,
+    "qualification": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mv1ury8y-2"
+   ],
+   "texts": [
+    {
+     "id": 166,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Ran a sequenced Marketo campaign targeting competitor-aligned audiences, driving inbound demand and more qualified meetings through pain-point messaging.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-mv1ury8y-3",
+   "role": "tek_lead",
+   "confidence": "asserted",
+   "tags": {
+    "enablement-collateral": 1.0,
+    "qualification": 1.0,
+    "marketing-sales-alignment": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mv1ury8y-3"
+   ],
+   "texts": [
+    {
+     "id": 167,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Created a Data Analytics and Insights Playbook giving BD and outbound sales reps market context and pre-qualification questions to sharpen requirements.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-mv1ury8y-5",
+   "role": "hc_ai_strategy",
+   "confidence": "asserted",
+   "tags": {
+    "healthcare-regulatory": 1.0,
+    "risk-governance": 1.0,
+    "stakeholder-alignment": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mv1ury8y-5"
+   ],
+   "texts": [
+    {
+     "id": 168,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Implemented a staged build model with named ownership, so healthcare compliance and regulatory SMEs signed off on technical builds tied to regulatory protocols.",
+     "score_adj": 0
+    },
+    {
+     "id": 169,
+     "kind": "variant",
+     "angle": "longform",
+     "text": "Implemented a staged delivery model with ownership attached to each stage, ensuring subject-matter experts in healthcare compliance and regulation owned the sign-off on technical builds, so every build aligned with the regulatory protocols it had to satisfy.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-mv1vk7pl-0",
+   "role": "hc_ai_strategy",
+   "confidence": "asserted",
+   "tags": {
+    "entity-ip-structure": 1.0,
+    "funding-source-diagnostics": 1.0,
+    "capital-strategy": 1.0,
+    "board-advisory": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mv1vk7pl-0"
+   ],
+   "texts": [
+    {
+     "id": 170,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Advised a healthcare technology start-up on IP ownership and equity tradeoffs across two funding routes: venture capital and government-funded SBIR research grants.",
+     "score_adj": 0
+    },
+    {
+     "id": 171,
+     "kind": "variant",
+     "angle": "longform",
+     "text": "Advised a healthcare technology start-up on IP ownership and equity tradeoffs while it weighed two funding routes: venture capital and government-funded research through SBIR grants, clarifying what each route meant for ownership.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-mv1vk7pl-1",
+   "role": "hc_ai_strategy",
+   "confidence": "asserted",
+   "tags": {
+    "market-research": 1.0,
+    "territory-design": 1.0,
+    "gtm-strategy": 1.0,
+    "feasibility-roadmap": 1.0,
+    "market-sizing": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mv1vk7pl-1"
+   ],
+   "texts": [
+    {
+     "id": 172,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Advised an HVAC services firm on market expansion, researching geographic territory overlap and shifting strategy to a cost-ceiling approach based on expansion overlap.",
+     "score_adj": 0
+    },
+    {
+     "id": 173,
+     "kind": "variant",
+     "angle": "longform",
+     "text": "Advised an HVAC services firm seeking to expand its market presence by researching territory overlap geo-locationally. The analysis moved the firm's expansion plan toward a cost-ceiling approach, with investment limits set by where expansion territories overlapped.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-mv2c0wcj-0",
+   "role": "tek_lead",
+   "confidence": "asserted",
+   "tags": {
+    "referral-network": 1.0,
+    "managed-services-sales": 1.0,
+    "new-business": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mv2c0wcj-0"
+   ],
+   "texts": [
+    {
+     "id": 174,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Built an IT network across data, AI, BI, MarTech, solutions architecture, and data science that produced multiple referral-sourced deals at Southern Company Gas.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-mv2c0wcj-1",
+   "role": "hc_ai_strategy",
+   "confidence": "asserted",
+   "tags": {
+    "referral-network": 1.0,
+    "gtm-strategy": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mv2c0wcj-1"
+   ],
+   "texts": [
+    {
+     "id": 175,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Leverage an IT-industry network across data, AI, and MarTech to open new opportunities as a GTM Engineer and Strategic Advisor.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-mv2c0wcj-2",
+   "role": "tek_lead",
+   "confidence": "asserted",
+   "tags": {
+    "customer-success": 1.0,
+    "managed-services-sales": 1.0,
+    "account-management": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mv2c0wcj-2"
+   ],
+   "texts": [
+    {
+     "id": 176,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Led monthly 1:1s with solution architects on Universal Parks & Experiences' managed services deal, surfacing workstream gaps and fixes with Customer Success and BD.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-mv2c0wcj-3",
+   "role": "tek_lead",
+   "confidence": "asserted",
+   "tags": {
+    "customer-success": 1.0,
+    "ai-ml-solutions": 1.0,
+    "hiring-onboarding": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mv2c0wcj-3"
+   ],
+   "texts": [
+    {
+     "id": 177,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Onboarded 3 Data Science and ML consultants to a Southern Company Gas flex services engagement, then ran monthly 1:1s to keep delivery on track.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-mv2c0wcj-4",
+   "role": "psp",
+   "confidence": "asserted",
+   "tags": {
+    "content-brand": 1.0,
+    "enablement-collateral": 1.0,
+    "cpm-cpa-modeling": 1.0,
+    "audience-measurement": 1.0,
+    "media-ad-sales": 1.0,
+    "proposal-development": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mv2c0wcj-4"
+   ],
+   "texts": [
+    {
+     "id": 178,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Produced pitch decks for university, building materials and supply, and automotive prospects, using reach, engagement, CPA, and CPM metrics to justify ad spend.",
+     "score_adj": 0
+    }
+   ]
   }
  ],
  "tagline_phrases": [
@@ -12240,6 +12872,13 @@
    "text": "Advertising Analytics & Market Intelligence Advisor",
    "tags": [],
    "sort": 101,
+   "origin": "claude-proposed",
+   "claim_id": null
+  },
+  {
+   "text": "Technical Storyteller for AI & Data Solutions",
+   "tags": [],
+   "sort": 102,
    "origin": "claude-proposed",
    "claim_id": null
   }
@@ -12933,7 +13572,9 @@
     "lim-collateral",
     "lim-non-dilutive-capital",
     "lim-scenario-planning",
-    "lim-claude-code-tracker"
+    "lim-claude-code-tracker",
+    "art-run-mv1ury8y-5",
+    "art-run-mv1vk7pl-0"
    ]
   },
   {
@@ -12960,7 +13601,8 @@
     "art-run-muhfveal-0",
     "art-run-mukn8dul-0",
     "art-run-munaofq1-8",
-    "art-run-munaofq1-9"
+    "art-run-munaofq1-9",
+    "art-run-mv1vk7pl-1"
    ]
   }
  ],
@@ -13645,7 +14287,11 @@
     "art-run-munaofq1-4",
     "art-run-munaofq1-5",
     "art-run-munaofq1-8",
-    "art-run-munaofq1-9"
+    "art-run-munaofq1-9",
+    "art-run-mv1ury8y-5",
+    "art-run-mv1vk7pl-0",
+    "art-run-mv1vk7pl-1",
+    "art-run-mv2c0wcj-1"
    ],
    "psp": [
     "psp-closed-deals",
@@ -13663,7 +14309,10 @@
     "psp-net-revenue",
     "art-run-mukrbv3p-1",
     "art-run-mukrbv3p-2",
-    "art-run-mukrbv3p-4"
+    "art-run-mukrbv3p-4",
+    "art-run-mv1ury8y-0",
+    "art-run-mv1ury8y-1",
+    "art-run-mv2c0wcj-4"
    ],
    "tek_lead": [
     "tekl-coaching",
@@ -13680,7 +14329,11 @@
     "art-run-mukrbv3p-5",
     "art-run-munaofq1-0",
     "art-run-munaofq1-1",
-    "art-run-munaofq1-2"
+    "art-run-munaofq1-2",
+    "art-run-mv1ury8y-3",
+    "art-run-mv2c0wcj-0",
+    "art-run-mv2c0wcj-2",
+    "art-run-mv2c0wcj-3"
    ],
    "tek_recruiter": [
     "tekr-750k",
@@ -13693,7 +14346,8 @@
    "demanddrive": [
     "dd-territory-proposal",
     "dd-200-quota",
-    "art-run-muhfveal-1"
+    "art-run-muhfveal-1",
+    "art-run-mv1ury8y-2"
    ],
    "nyl": [
     "nyl-referral-book",
