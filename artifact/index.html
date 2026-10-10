@@ -242,8 +242,8 @@ details.how summary{cursor:pointer}
         <p class="syncnote" id="restoreNote" aria-live="polite" hidden></p>
         <label class="f" for="recent" id="recentWrap" hidden>Saved postings<select id="recent"><option value="">Open a saved posting…</option></select></label>
         <div class="row2">
-          <label class="f" for="company">Company<input type="text" id="company" placeholder="auto-detected"></label>
-          <label class="f" for="role">Role title<input type="text" id="role" placeholder="auto-detected"></label>
+          <label class="f" for="company">Company<input type="text" id="company" placeholder="filled from the posting"></label>
+          <label class="f" for="role">Role title<input type="text" id="role" placeholder="filled from the posting"></label>
         </div>
         <label class="f" for="jd">Posting text<textarea id="jd" spellcheck="false"></textarea></label>
         <div class="row">
@@ -667,7 +667,7 @@ const PROMPT_VERSIONS=E.prompts.VERSIONS;
 async function doMatch(){
   const jd=$("#jd").value.trim();
   if(jd.length<80){ $("#jdHint").textContent="Paste the full posting (at least a few lines) to match against."; return; }
-  $("#jdHint").textContent="";
+  $("#jdHint").textContent=""; autoHeader();
   S.ctl1?.abort(); S.ctl2?.abort();
   if(S.pendingLib){ S.lib=S.pendingLib; S.pendingLib=null; renderStats(); }
   resetPosting();
@@ -699,8 +699,8 @@ async function claudeTailor(){
     if(ctl.signal.aborted) return;
     if(r && typeof r==="object"){
       const t=E.prompts.parseTailor(S, r);
-      if(t.company && !$("#company").value) $("#company").value=t.company;
-      if(t.title && !$("#role").value) $("#role").value=t.title;
+      if(t.company && autoFilled("#company")){ $("#company").value=t.company; $("#company").dataset.auto="1"; }
+      if(t.title && autoFilled("#role")){ $("#role").value=t.title; $("#role").dataset.auto="1"; }
       S.req=t.req; S.uncatalogued=t.uncatalogued;
       if(t.tagline) S.tagline=t.tagline;
       if(t.compOrder) S.compOrder=t.compOrder;
@@ -1095,6 +1095,13 @@ document.addEventListener("pointerdown", ()=>{ S.touched=true; }, {capture:true}
 $("#finalBtn").onclick=doFinal;
 $("#quickQBtn").onclick=()=>useQuickQuestions("Quick questions from the gap analysis. Claude's version was skipped.");
 ["#jd","#company","#role"].forEach(sel=>$(sel).addEventListener("input", ()=>{ S.touched=true; persist(); }));
+/* Company and Role title as the posting states them, filled as it is pasted; a field you typed in is never overwritten */
+function autoHeader(){ const h=RotCore.util.postingHeader($("#jd").value);
+  for(const [sel,v] of [["#company",h.company],["#role",h.title]]){ const el=$(sel), auto=el.dataset.auto==="1";
+    if(v && (!el.value.trim() || auto)){ el.value=v; el.dataset.auto="1"; } else if(!v && auto){ el.value=""; } } }
+function autoFilled(sel){ return !$(sel).value.trim() || $(sel).dataset.auto==="1"; }
+let hdrTimer=null; $("#jd").addEventListener("input", ()=>{ clearTimeout(hdrTimer); hdrTimer=setTimeout(()=>{ autoHeader(); persist(); }, 300); });
+["#company","#role"].forEach(sel=>$(sel).addEventListener("input", e=>{ e.target.dataset.auto=""; }));   // typed by you: never overwritten
 const toolTimers={};
 $("#questions").addEventListener("input", e=>{
   S.touched=true; persist();
@@ -1181,7 +1188,7 @@ function restoreState(st){
   if(!st || st.v!==1 || !S.lib) return false;
   S.ctl1?.abort(); S.ctl2?.abort(); S.ctlQ?.abort();
   S.runId=st.runId||null; S.jd=st.jd||"";
-  $("#jd").value=st.jdDraft ?? st.jd ?? ""; $("#company").value=st.company||""; $("#role").value=st.title||"";
+  $("#jd").value=st.jdDraft ?? st.jd ?? ""; $("#company").value=st.company||""; $("#role").value=st.title||""; $("#company").dataset.auto=$("#role").dataset.auto="";
   S.req=st.req||{}; S.uncatalogued=st.uncatalogued||[]; S.phase=st.phase||(Object.keys(S.req).length?"draft":"idle");
   S.excluded=new Set(st.excluded||[]); S.pinned=new Set(st.pinned||[]); S.locked=st.locked?clone(st.locked):null;
   S.textChoice=st.textChoice||{}; S.edits=st.edits?{...st.edits}:{};

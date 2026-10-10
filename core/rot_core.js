@@ -8,7 +8,7 @@
   root.RotCore = api;
 })(typeof globalThis !== "undefined" ? globalThis : this, function () {
 "use strict";
-const VERSION = "1.2.0";
+const VERSION = "1.3.0";
 const SCHEMAS = { bank: "rot-library/3", model: "rot-resume/2", template: "rot-docx-template/1", backup: "cch-backup/1", taxonomy: "rot-taxonomy/1" };
 
 /* ------------------------------ util ------------------------------ */
@@ -26,6 +26,58 @@ function splitList(s, seps){
     if(depth===0 && seps.includes(ch)){ if(cur.trim()) out.push(cur.trim()); cur=""; } else cur+=ch; }
   if(cur.trim()) out.push(cur.trim());
   return out;
+}
+/* The company and role title a posting states near its top, read deterministically so both fields fill as soon as a posting is
+   pasted (Claude, when on, may still correct them). Handles labeled fields ("Company: …", "Job title: …"), "Title at Company",
+   "Company is hiring a Title", "Title | Company | Location", "Title - Company", a title line followed by "Company · Location",
+   LinkedIn's "Company / Title / Location" stack, and "About Company" / "At Company, we" for the company. Either may come back "". */
+const ROLE_WORD=/\b(director|manager|head|lead|vp|svp|evp|vice president|chief|officer|president|executive|specialist|strategist|analyst|engineer|architect|consultant|coordinator|associate|representative|rep|sdr|bdr|partner|advisor|adviser|administrator|owner|designer|developer|scientist|marketer|recruiter|principal|supervisor|generalist|producer|editor|writer|planner|buyer|controller|accountant|counsel|intern|cmo|cro|cfo|coo|ceo|cto|gm)\b/i;
+const NOT_COMPANY=/\b(remote|hybrid|on-?site|in-office|full[- ]time|part[- ]time|contract|temporary|internship|permanent|freelance|united states|usa|anywhere|apply|applicants?|posted|reposted|ago|salary|per year|promoted|actively|linkedin|indeed|glassdoor|save|share|we|our|you|your|they)\b|\$|^\d/i;
+const LOC_RE=/\b[A-Z][A-Za-z.]+(?: [A-Z][A-Za-z.]+)*, [A-Z]{2}\b/;
+const HEAD_LINE=/^(about (the )?(role|job|position|team|you|us|opportunity|this role)|the role|overview|job (description|summary|details)|responsibilities|requirements|qualifications|what you|who you are|benefits|description)\b/i;
+const CO_SUFFIX=/(\b(inc|llc|ltd|limited|corp|corporation|co|gmbh|plc|labs?|technologies|software|holdings|ventures|capital|bank)\b\.?|\.(ai|io|com))$/i;
+const TITLE_TAIL=/\b(sales|marketing|operations|partnerships?|growth|revenue|product|engineering|finance|strategy|enterprise|mid-?market|smb|commercial|channel|media|retail|customer|success|support|analytics|data|platform|brand|content|demand|field|global|emea|apac|americas|east|west|central|new business|accounts?|advertis\w*|agency|digital|go-to-market|gtm|team)\b/i;
+const cleanField = s => String(s||"").replace(/\s+/g," ").replace(/^[\s"'“”‘’•·|:–—-]+|[\s"'“”‘’•·|:.,;–—-]+$/g,"").trim();
+function headerCompany(s){ s=cleanField(s); return s && s.length<=60 && s.split(" ").length<=7 && /[A-Za-z]/.test(s) && !NOT_COMPANY.test(s) && !LOC_RE.test(s) && !HEAD_LINE.test(s) && !ROLE_WORD.test(s) ? s : ""; }
+function headerTitle(raw){
+  const r=String(raw||"").trim(); if(!r || /[.!?]$/.test(r) || /[.!?]\s+[A-Z]/.test(r)) return "";
+  const s=cleanField(r.replace(/\s*\((?:remote|hybrid|on-?site|full[- ]time|part[- ]time|contract)[^)]*\)\s*$/i,""));
+  return s && s.length<=90 && s.split(" ").length<=12 && ROLE_WORD.test(s) && !/\b(you|we|our|your|will|are)\b/i.test(s) && !HEAD_LINE.test(s) ? s : "";
+}
+/* one line as "Title", "Title at Company", "Title | Company | Location" or "Title - Company" */
+function headerLine(line){
+  const l=line.replace(/\s*\((?:remote|hybrid|on-?site|full[- ]time|part[- ]time|contract)[^)]*\)\s*$/i,"");
+  const at=/^(.+?)\s+(?:at|@)\s+(.+)$/.exec(l);
+  if(at && headerTitle(at[1])) return {title:headerTitle(at[1]), company:headerCompany(at[2].split(/\s+[·•|]\s+|\s+[–—-]\s+|,\s+/)[0])};
+  const parts=l.split(/\s+[|·•]\s+/), dash=parts[0].split(/\s+[–—-]\s+/);
+  let t=parts[0], c="";
+  if(dash.length>1){ const rest=dash.slice(1).join(" - ");   // a dash either names the employer or continues the title ("Director, GTM — Advertiser Partnerships")
+    if(CO_SUFFIX.test(rest) || (!TITLE_TAIL.test(rest) && !ROLE_WORD.test(rest) && headerCompany(rest))){ t=dash[0]; c=headerCompany(rest); } }
+  const title=headerTitle(t); if(!title) return null;
+  if(!c) for(const p of parts.slice(1).reverse()){ const x=headerCompany(p); if(x){ c=x; break; } }
+  return {title, company:c};
+}
+function postingHeader(text){
+  const L=String(text||"").split(/\r?\n/).map(l=>l.replace(/\s+/g," ").trim()).filter(Boolean).slice(0,30), top=L.slice(0,8);
+  let company="", title="", m;
+  for(const l of L){
+    if(!title && (m=/^(?:job title|position title|title|position|role)\s*[:：]\s*(.+)$/i.exec(l))) title=cleanField(m[1]);
+    if(!company && (m=/^(?:company(?: name)?|employer|organi[sz]ation|hiring company)\s*[:：]\s*(.+)$/i.exec(l))) company=cleanField(m[1]);
+  }
+  if(!company || !title) for(const l of top){
+    m=/^(.+?)\s+(?:is|are)\s+(?:now\s+)?(?:hiring|looking for|seeking)\s+(?:an?\s+|our\s+(?:next\s+|first\s+)?)?(.+?)(?:\s+(?:to|who|in|for|with|that)\b.*|[.!:].*)?$/i.exec(l);
+    if(m){ if(!company) company=headerCompany(m[1]); if(!title) title=headerTitle(m[2]); break; }
+  }
+  let ti=-1;
+  if(!title) for(let i=0;i<top.length;i++){ const r=headerLine(top[i]); if(r){ title=r.title; if(!company) company=r.company; ti=i; break; } }
+  if(!company && ti>=0){
+    if(top[ti+1]) company=headerCompany(top[ti+1].split(/\s+[·•|]\s+|\s+[–—-]\s+/)[0]);   // "Company · City, ST · Full-time" under the title
+    if(!company && ti>0) company=headerCompany(top[ti-1]);                                  // LinkedIn: the company above the title
+  }
+  if(!company) for(const l of L){ if(HEAD_LINE.test(l)) continue; m=/^about\s+(.{2,40})$/i.exec(l); if(m && (company=headerCompany(m[1]))) break; }
+  if(!company && (m=/\bAt ([A-Z][\w&.'’-]*(?: [A-Z][\w&.'’-]*){0,4}),\s+(?:we|our)\b/.exec(L.join("\n")))) company=headerCompany(m[1]);
+  if(!title && (m=/\b(?:hiring|seeking|looking for)\s+(?:an?|our)\s+(?:(?:new|next|first)\s+)?([A-Z][^.,;\n]{3,60}?)\s+(?:to|who|in|for|with|that)\b/.exec(L.join("\n")))) title=headerTitle(m[1]);
+  return {company, title};
 }
 /* Template sections (TIM KING SOURCE RESUME.docx): A = tagline, B = areas-of-expertise line, C = consulting
    engagements (long-form bullets), D = core competencies. A question's "section" says which store its answer feeds. */
@@ -948,7 +1000,7 @@ const SC_EXPLAIN = "The posting is read for the skills it asks for; each gets a 
 
 return {
   VERSION, SCHEMAS, createEngine,
-  util: { esc, escRe, MONTHS, fmtDate, REQ_HINT, uniq, norm, splitList, PHRASE_SECTIONS, TOOL_LEXICON, isSkip, cleanBullet, cleanPhrase, splitAnswer, splitPhrases, shortRole, sectionOf, placeKey },
+  util: { esc, escRe, MONTHS, fmtDate, REQ_HINT, uniq, norm, splitList, postingHeader, PHRASE_SECTIONS, TOOL_LEXICON, isSkip, cleanBullet, cleanPhrase, splitAnswer, splitPhrases, shortRole, sectionOf, placeKey },
   scorecard: { growth: scGrowth, potential: scPotential, headroom: scHeadroom, toolsNamed: scToolsNamed, contributions: scContributions, pct: scPct, EXPLAIN: SC_EXPLAIN },
   qa: { NUMBER_WORDS, numberTokens, FIRST_PERSON, qaLine, blocking, answerQuotes },
   score: { coverage, matchScore, tagWeight, rankByTags },

@@ -475,13 +475,18 @@ async function doMatch(){
   const jd=$("#jd").value.trim();
   if(!bank().roles.length){ toast("Add at least one role with a few accomplishments first."); Hub.show("evidence"); return; }
   if(jd.length<80){ $("#jdHint").textContent="Paste the full posting (at least a few lines) to match against."; return; }
-  $("#jdHint").textContent=""; D.ctl1?.abort(); D.ctlQ?.abort();
+  $("#jdHint").textContent=""; autoHeader(); D.ctl1?.abort(); D.ctlQ?.abort();
   resetPosting();
   Object.assign(D,{locked:null, jd, req:E.extractRequirements(jd), uncatalogued:[], phase:"draft", runId:"run-"+Date.now().toString(36)});
   $("#restoreNote").hidden=true; $("#syncNote").textContent="";
   recompute(); markBefore(); persist(true);
   if(D.sample) claudeTailor(); else useQuickQuestions("Claude isn't available in this view, so these questions come from the gap analysis.");
 }
+/* Company and Role title as the posting states them, filled as it is pasted; a field you typed in is never overwritten */
+function autoHeader(){ const h=RotCore.util.postingHeader($("#jd").value);
+  for(const [sel,v] of [["#company",h.company],["#role",h.title]]){ const el=$(sel), auto=el.dataset.auto==="1";
+    if(v && (!el.value.trim() || auto)){ el.value=v; el.dataset.auto="1"; } else if(!v && auto){ el.value=""; } } }
+const autoFilled = sel => !$(sel).value.trim() || $(sel).dataset.auto==="1";
 function useQuickQuestions(note){
   D.ctl1?.abort(); D.questions=withPotential(E.templateQuestions(D)); $("#qStatus").textContent=note||""; $("#quickQBtn").hidden=true; $("#claude1Status").hidden=true; renderQuestions(); persist(true);
 }
@@ -499,8 +504,8 @@ async function claudeTailor(){
     if(ctl.signal.aborted) return;
     if(r && typeof r==="object"){
       const t=E.prompts.parseTailor(D, r);
-      if(t.company && !$("#company").value) $("#company").value=t.company;
-      if(t.title && !$("#role").value) $("#role").value=t.title;
+      if(t.company && autoFilled("#company")){ $("#company").value=t.company; $("#company").dataset.auto="1"; }
+      if(t.title && autoFilled("#role")){ $("#role").value=t.title; $("#role").dataset.auto="1"; }
       D.req=t.req; D.uncatalogued=t.uncatalogued; if(t.compOrder) D.compOrder=t.compOrder;
       recompute(); markBefore();
       const qs=withPotential(printableQuestions(t.questions));
@@ -816,7 +821,7 @@ function restoreState(st){
   if(!st || st.v!==1) return false;
   D.ctl1?.abort(); D.ctlQ?.abort();
   D.runId=st.runId||null; D.jd=st.jd||"";
-  $("#jd").value=st.jdDraft ?? st.jd ?? ""; $("#company").value=st.company||""; $("#role").value=st.title||"";
+  $("#jd").value=st.jdDraft ?? st.jd ?? ""; $("#company").value=st.company||""; $("#role").value=st.title||""; $("#company").dataset.auto=$("#role").dataset.auto="";
   D.req=st.req||{}; D.uncatalogued=st.uncatalogued||[]; D.phase=st.phase||(Object.keys(D.req).length?"draft":"idle");
   D.excluded=new Set(st.excluded||[]); D.pinned=new Set(st.pinned||[]); D.locked=st.locked?clone(st.locked):null;
   D.textChoice=st.textChoice||{}; D.edits=st.edits?{...st.edits}:{};
@@ -916,6 +921,8 @@ Hub.register({id:"match", label:"Match a posting", order:2,
     $("#polishAllBtn").onclick=()=>{ readAnswers(); const ixs=D.questions.map((q,ix)=>ix).filter(ix=>!isSkip(D.questions[ix].answer)); convertQuestions(ixs, `Claude is polishing ${ixs.length} answer${ixs.length>1?"s":""}…`); };
     $("#recent").addEventListener("change", e=>{ const id=e.target.value; e.target.value=""; if(id) openSaved(id); });
     ["#jd","#company","#role"].forEach(sel=>$(sel).addEventListener("input", ()=>persist()));
+    let hdrTimer=null; $("#jd").addEventListener("input", ()=>{ clearTimeout(hdrTimer); hdrTimer=setTimeout(()=>{ autoHeader(); persist(); }, 300); });
+    ["#company","#role"].forEach(sel=>$(sel).addEventListener("input", e=>{ e.target.dataset.auto=""; }));   // typed by you: never overwritten
     const toolTimers={};
     $("#questions").addEventListener("input", e=>{
       persist(); const L=bank();

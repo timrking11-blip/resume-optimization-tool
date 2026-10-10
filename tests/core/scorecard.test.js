@@ -17,7 +17,7 @@ function exampleEngine() {
 }
 
 test("the core carries the scorecard and the Hub alias points at it", () => {
-  assert.equal(R.VERSION, "1.2.0");
+  assert.match(R.VERSION, /^1\.([2-9]|\d{2,})\./, "1.2 or later: the scorecard is in the core");
   assert.deepEqual(require(path.join(ROOT, "hub", "scorecard.js")), S);
   assert.equal(engine().E.prompts.VERSIONS.tailor, "tailor@7");
 });

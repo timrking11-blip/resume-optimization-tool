@@ -27,7 +27,7 @@ test("a backup round-trips through the store", () => {
 });
 
 test("the page's fallback layout is the neutral layout", () => {
-  const m = HUB_JS.match(/const NEUTRAL_LAYOUT = (\{.*\});\n/);
+  const m = HUB_JS.match(/const NEUTRAL_LAYOUT = (\{.*\});\r?\n/);   // a Windows checkout may carry CRLF
   assert.ok(m, "NEUTRAL_LAYOUT constant");
   const page = JSON.parse(m[1]), file = JSON.parse(fs.readFileSync(path.join(ROOT, "core", "layouts", "neutral-1.json"), "utf8"));
   assert.deepEqual(page.sections, file.sections);
