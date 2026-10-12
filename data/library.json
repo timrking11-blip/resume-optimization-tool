@@ -1,6 +1,6 @@
 {
  "schema": "rot-library/3",
- "exported_at": "2026-10-10T08:25:20",
+ "exported_at": "2026-10-12T12:46:57",
  "tiers": {
   "1": "Evidence: what actually happened",
   "2": "Derived knowledge: what the system infers",
@@ -973,6 +973,162 @@
     "latest": "2026-10-10T12:04:15.684Z"
    },
    "numbers": []
+  },
+  {
+   "id": "ach:art-run-mv2dzupk-0",
+   "kind": "achievement",
+   "subject": "role:tek_lead",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Qualified a Southern Gas Company opportunity iteratively with BANT, weighing budget, current and future needs, and urgent timelines for a flex services CoE build-out.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2024",
+   "valid_to": "2025-11",
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-10-10T13:11:28.517Z"
+   },
+   "numbers": []
+  },
+  {
+   "id": "ach:art-run-mv2dzupk-1",
+   "kind": "achievement",
+   "subject": "role:tek_lead",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Interviewed candidates for a third-party data services client, screening technical aptitude and start-up fit, and closed the deal through a hiring-manager feedback loop.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2024",
+   "valid_to": "2025-11",
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-10-10T13:11:28.517Z"
+   },
+   "numbers": []
+  },
+  {
+   "id": "ach:art-run-mv2dzupk-2",
+   "kind": "achievement",
+   "subject": "role:tek_lead",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Interviewed newly onboarded recruiters alongside the Head of Delivery, assessing sales acumen, process, critical thinking, and cross-functional situation management.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2024",
+   "valid_to": "2025-11",
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-10-10T13:11:28.517Z"
+   },
+   "numbers": []
+  },
+  {
+   "id": "ach:art-run-mv2dzupk-3",
+   "kind": "achievement",
+   "subject": "role:tek_lead",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Ran team workshops on using internal and external tools to improve the quality of prospecting lists for assigned requirements.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2024",
+   "valid_to": "2025-11",
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-10-10T13:11:28.517Z"
+   },
+   "numbers": []
+  },
+  {
+   "id": "ach:art-run-mv2dzupk-4",
+   "kind": "achievement",
+   "subject": "role:tek_lead",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Bridged the managed services Architectural committee and Customer Success for Universal Parks & Experiences, partnering with Business Development on product specs.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2024",
+   "valid_to": "2025-11",
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-10-10T13:11:28.517Z"
+   },
+   "numbers": []
+  },
+  {
+   "id": "ach:art-run-mv2dzupk-5",
+   "kind": "achievement",
+   "subject": "role:hc_ai_strategy",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Advised on data agreements and post-discovery NDAs to protect IP and data rights in a proposed partnership, leading to a decision to decline over replication risk.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2026-07",
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-10-10T13:11:28.517Z"
+   },
+   "numbers": []
+  },
+  {
+   "id": "ach:art-run-mv2dzupk-6",
+   "kind": "achievement",
+   "subject": "role:hc_ai_strategy",
+   "predicate": "accomplished",
+   "value": null,
+   "unit": null,
+   "text": "Recommended an SBIR-funded route over VC that met capital needs and limited equity dilution, yielding a gated 90-day sprint proposal toward funding lock.",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": "2026-07",
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-10-10T13:11:28.517Z"
+   },
+   "numbers": [
+    "90"
+   ]
   },
   {
    "id": "ach:dd-200-quota",
@@ -7637,6 +7793,28 @@
    "numbers": []
   },
   {
+   "id": "tagline:revenue-workflow-adoption-consultant:text",
+   "kind": "tagline",
+   "subject": "tagline:revenue-workflow-adoption-consultant",
+   "predicate": "text",
+   "value": "Revenue Workflow & Adoption Consultant",
+   "unit": null,
+   "text": "Revenue Workflow & Adoption Consultant",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": null,
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-10-12T12:46:57"
+   },
+   "numbers": []
+  },
+  {
    "id": "tagline:sales-professional-end-to-end-sales:text",
    "kind": "tagline",
    "subject": "tagline:sales-professional-end-to-end-sales",
@@ -7655,6 +7833,28 @@
      "MASTER_RESUME"
     ],
     "latest": "2026-09-26T20:40:00"
+   },
+   "numbers": []
+  },
+  {
+   "id": "tagline:systems-thinker-process-engineer:text",
+   "kind": "tagline",
+   "subject": "tagline:systems-thinker-process-engineer",
+   "predicate": "text",
+   "value": "Systems Thinker | Process Engineer",
+   "unit": null,
+   "text": "Systems Thinker | Process Engineer",
+   "confidence": 1.0,
+   "status": "active",
+   "valid_from": null,
+   "valid_to": null,
+   "as_of": null,
+   "evidence": {
+    "n": 1,
+    "source_types": [
+     "USER_ENTERED"
+    ],
+    "latest": "2026-10-12T12:46:57"
    },
    "numbers": []
   },
@@ -10909,10 +11109,10 @@
      "score_adj": 0
     },
     {
-     "id": 180,
+     "id": 192,
      "kind": "learned",
      "angle": "gate2",
-     "text": "Sourced and staffed 8 solution architects across 8 workstreams on a 12-18 month renewable managed services engagement worth $1M annually.",
+     "text": "Sourced and staffed 8 solution architects across 8 digital transformation workstreams on a 12–18 month renewable managed services engagement worth $1M annually.",
      "score_adj": 0
     }
    ]
@@ -11418,7 +11618,7 @@
      "kind": "canonical",
      "angle": null,
      "text": "Promoted EZ Pass adoption to Massachusetts residents and visitors, processing sign-ups through the transition to a toll-booth-free I-95.",
-     "score_adj": 0
+     "score_adj": -0.6
     }
    ]
   },
@@ -11674,10 +11874,17 @@
      "score_adj": 0
     },
     {
-     "id": 181,
+     "id": 190,
      "kind": "learned",
      "angle": "gate2",
-     "text": "Onboarded a healthcare tech startup's team to a gated tracking system, giving the CEO approval oversight on dev expenses and fractional work hours.",
+     "text": "Mapped stakeholder intervention and sign-off criteria for a startup client, defining who owned gates and approvals across the engagement.",
+     "score_adj": 0
+    },
+    {
+     "id": 191,
+     "kind": "learned",
+     "angle": "gate2",
+     "text": "Built a weekly capacity forecast, RACI, and decision log for the operating cadence, tracking 3–4 concurrent streams through gated sprint cycles.",
      "score_adj": 0
     }
    ]
@@ -12774,6 +12981,170 @@
      "score_adj": 0
     }
    ]
+  },
+  {
+   "id": "art-run-mv2dzupk-0",
+   "role": "tek_lead",
+   "confidence": "asserted",
+   "tags": {
+    "qualification": 1.0,
+    "discovery": 1.0,
+    "managed-services-sales": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mv2dzupk-0"
+   ],
+   "texts": [
+    {
+     "id": 183,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Qualified a Southern Gas Company opportunity iteratively with BANT, weighing budget, current and future needs, and urgent timelines for a flex services CoE build-out.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-mv2dzupk-1",
+   "role": "tek_lead",
+   "confidence": "asserted",
+   "tags": {
+    "primary-research": 1.0,
+    "qualification": 1.0,
+    "hiring-onboarding": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mv2dzupk-1"
+   ],
+   "texts": [
+    {
+     "id": 184,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Interviewed candidates for a third-party data services client, screening technical aptitude and start-up fit, and closed the deal through a hiring-manager feedback loop.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-mv2dzupk-2",
+   "role": "tek_lead",
+   "confidence": "asserted",
+   "tags": {
+    "hiring-onboarding": 1.0,
+    "qualification": 1.0,
+    "primary-research": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mv2dzupk-2"
+   ],
+   "texts": [
+    {
+     "id": 185,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Interviewed newly onboarded recruiters alongside the Head of Delivery, assessing sales acumen, process, critical thinking, and cross-functional situation management.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-mv2dzupk-3",
+   "role": "tek_lead",
+   "confidence": "asserted",
+   "tags": {
+    "enablement-collateral": 1.0,
+    "prospecting": 1.0,
+    "team-coaching": 1.0,
+    "primary-research": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mv2dzupk-3"
+   ],
+   "texts": [
+    {
+     "id": 186,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Ran team workshops on using internal and external tools to improve the quality of prospecting lists for assigned requirements.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-mv2dzupk-4",
+   "role": "tek_lead",
+   "confidence": "asserted",
+   "tags": {
+    "strategic-partnerships": 1.0,
+    "customer-success": 1.0,
+    "stakeholder-alignment": 1.0,
+    "managed-services-sales": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mv2dzupk-4"
+   ],
+   "texts": [
+    {
+     "id": 187,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Bridged the managed services Architectural committee and Customer Success for Universal Parks & Experiences, partnering with Business Development on product specs.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-mv2dzupk-5",
+   "role": "hc_ai_strategy",
+   "confidence": "asserted",
+   "tags": {
+    "data-rights": 1.0,
+    "partner-negotiation": 1.0,
+    "risk-governance": 1.0,
+    "entity-ip-structure": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mv2dzupk-5"
+   ],
+   "texts": [
+    {
+     "id": 188,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Advised on data agreements and post-discovery NDAs to protect IP and data rights in a proposed partnership, leading to a decision to decline over replication risk.",
+     "score_adj": 0
+    }
+   ]
+  },
+  {
+   "id": "art-run-mv2dzupk-6",
+   "role": "hc_ai_strategy",
+   "confidence": "asserted",
+   "tags": {
+    "capital-strategy": 1.0,
+    "funding-source-diagnostics": 1.0,
+    "feasibility-roadmap": 1.0
+   },
+   "metrics": [],
+   "claim_ids": [
+    "ach:art-run-mv2dzupk-6"
+   ],
+   "texts": [
+    {
+     "id": 189,
+     "kind": "canonical",
+     "angle": null,
+     "text": "Recommended an SBIR-funded route over VC that met capital needs and limited equity dilution, yielding a gated 90-day sprint proposal toward funding lock.",
+     "score_adj": 0
+    }
+   ]
   }
  ],
  "tagline_phrases": [
@@ -12879,6 +13250,20 @@
    "text": "Technical Storyteller for AI & Data Solutions",
    "tags": [],
    "sort": 102,
+   "origin": "claude-proposed",
+   "claim_id": null
+  },
+  {
+   "text": "Systems Thinker | Process Engineer",
+   "tags": [],
+   "sort": 103,
+   "origin": "claude-proposed",
+   "claim_id": null
+  },
+  {
+   "text": "Revenue Workflow & Adoption Consultant",
+   "tags": [],
+   "sort": 104,
    "origin": "claude-proposed",
    "claim_id": null
   }
@@ -14291,7 +14676,9 @@
     "art-run-mv1ury8y-5",
     "art-run-mv1vk7pl-0",
     "art-run-mv1vk7pl-1",
-    "art-run-mv2c0wcj-1"
+    "art-run-mv2c0wcj-1",
+    "art-run-mv2dzupk-5",
+    "art-run-mv2dzupk-6"
    ],
    "psp": [
     "psp-closed-deals",
@@ -14333,7 +14720,12 @@
     "art-run-mv1ury8y-3",
     "art-run-mv2c0wcj-0",
     "art-run-mv2c0wcj-2",
-    "art-run-mv2c0wcj-3"
+    "art-run-mv2c0wcj-3",
+    "art-run-mv2dzupk-0",
+    "art-run-mv2dzupk-1",
+    "art-run-mv2dzupk-2",
+    "art-run-mv2dzupk-3",
+    "art-run-mv2dzupk-4"
    ],
    "tek_recruiter": [
     "tekr-750k",

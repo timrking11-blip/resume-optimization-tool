@@ -777,6 +777,142 @@
       "evidence": [
         "ev:ans:run-mv2c0wcj:4"
       ]
+    },
+    {
+      "id": "art-run-mv2dzupk-0",
+      "role": "tek_lead",
+      "canonical": "Qualified a Southern Gas Company opportunity iteratively with BANT, weighing budget, current and future needs, and urgent timelines for a flex services CoE build-out.",
+      "tags": {
+        "qualification": 1.0,
+        "discovery": 1.0,
+        "managed-services-sales": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-mv2dzupk",
+      "metrics": [],
+      "patterns": [],
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-mv2dzupk:0"
+      ]
+    },
+    {
+      "id": "art-run-mv2dzupk-1",
+      "role": "tek_lead",
+      "canonical": "Interviewed candidates for a third-party data services client, screening technical aptitude and start-up fit, and closed the deal through a hiring-manager feedback loop.",
+      "tags": {
+        "primary-research": 1.0,
+        "qualification": 1.0,
+        "hiring-onboarding": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-mv2dzupk",
+      "metrics": [],
+      "patterns": [],
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-mv2dzupk:1"
+      ]
+    },
+    {
+      "id": "art-run-mv2dzupk-2",
+      "role": "tek_lead",
+      "canonical": "Interviewed newly onboarded recruiters alongside the Head of Delivery, assessing sales acumen, process, critical thinking, and cross-functional situation management.",
+      "tags": {
+        "hiring-onboarding": 1.0,
+        "qualification": 1.0,
+        "primary-research": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-mv2dzupk",
+      "metrics": [],
+      "patterns": [],
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-mv2dzupk:1"
+      ]
+    },
+    {
+      "id": "art-run-mv2dzupk-3",
+      "role": "tek_lead",
+      "canonical": "Ran team workshops on using internal and external tools to improve the quality of prospecting lists for assigned requirements.",
+      "tags": {
+        "enablement-collateral": 1.0,
+        "prospecting": 1.0,
+        "team-coaching": 1.0,
+        "primary-research": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-mv2dzupk",
+      "metrics": [],
+      "patterns": [],
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-mv2dzupk:1"
+      ]
+    },
+    {
+      "id": "art-run-mv2dzupk-4",
+      "role": "tek_lead",
+      "canonical": "Bridged the managed services Architectural committee and Customer Success for Universal Parks & Experiences, partnering with Business Development on product specs.",
+      "tags": {
+        "strategic-partnerships": 1.0,
+        "customer-success": 1.0,
+        "stakeholder-alignment": 1.0,
+        "managed-services-sales": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-mv2dzupk",
+      "metrics": [],
+      "patterns": [],
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-mv2dzupk:2"
+      ]
+    },
+    {
+      "id": "art-run-mv2dzupk-5",
+      "role": "liminal",
+      "canonical": "Advised on data agreements and post-discovery NDAs to protect IP and data rights in a proposed partnership, leading to a decision to decline over replication risk.",
+      "tags": {
+        "data-rights": 1.0,
+        "partner-negotiation": 1.0,
+        "risk-governance": 1.0,
+        "entity-ip-structure": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-mv2dzupk",
+      "metrics": [],
+      "patterns": [],
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-mv2dzupk:3"
+      ]
+    },
+    {
+      "id": "art-run-mv2dzupk-6",
+      "role": "liminal",
+      "canonical": "Recommended an SBIR-funded route over VC that met capital needs and limited equity dilution, yielding a gated 90-day sprint proposal toward funding lock.",
+      "tags": {
+        "capital-strategy": 1.0,
+        "funding-source-diagnostics": 1.0,
+        "feasibility-roadmap": 1.0
+      },
+      "confidence": "asserted",
+      "origin": "artifact",
+      "notes": "Learned from Match Desk run run-mv2dzupk",
+      "metrics": [],
+      "patterns": [],
+      "variants": {},
+      "evidence": [
+        "ev:ans:run-mv2dzupk:4"
+      ]
     }
   ],
   "bullets": [
@@ -1149,6 +1285,26 @@
       "status": "accepted",
       "evidence": [
         "ev:phrase:run-mv2c0wcj:technical-storyteller-for-ai-data-solutions"
+      ]
+    },
+    {
+      "text": "Systems Thinker | Process Engineer",
+      "tags": [],
+      "origin": "claude-proposed",
+      "created": "2026-10-12T12:46:57",
+      "status": "accepted",
+      "evidence": [
+        "ev:phrase:run-mv2dzupk:systems-thinker-process-engineer"
+      ]
+    },
+    {
+      "text": "Revenue Workflow & Adoption Consultant",
+      "tags": [],
+      "origin": "claude-proposed",
+      "created": "2026-10-12T12:46:57",
+      "status": "accepted",
+      "evidence": [
+        "ev:phrase:run-mv2dzupk:revenue-workflow-adoption-consultant"
       ]
     }
   ],
