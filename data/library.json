@@ -1,6 +1,6 @@
 {
  "schema": "rot-library/3",
- "exported_at": "2026-10-12T12:46:57",
+ "exported_at": "2026-10-14T00:38:20",
  "tiers": {
   "1": "Evidence: what actually happened",
   "2": "Derived knowledge: what the system infers",
@@ -11109,10 +11109,10 @@
      "score_adj": 0
     },
     {
-     "id": 192,
+     "id": 194,
      "kind": "learned",
      "angle": "gate2",
-     "text": "Sourced and staffed 8 solution architects across 8 digital transformation workstreams on a 12–18 month renewable managed services engagement worth $1M annually.",
+     "text": "Sourced and staffed 8 solution architects across 8 workstreams on a 12-18 month renewable managed services engagement worth $1M annually.",
      "score_adj": 0
     }
    ]
@@ -11881,10 +11881,17 @@
      "score_adj": 0
     },
     {
-     "id": 191,
+     "id": 193,
      "kind": "learned",
      "angle": "gate2",
-     "text": "Built a weekly capacity forecast, RACI, and decision log for the operating cadence, tracking 3–4 concurrent streams through gated sprint cycles.",
+     "text": "Mapped stakeholder intervention and sign-off criteria for a startup client, defining who owned gates and approvals across the engagement.",
+     "score_adj": 0
+    },
+    {
+     "id": 195,
+     "kind": "learned",
+     "angle": "gate2",
+     "text": "Onboarded a healthcare tech startup's team to a gated tracking system, giving the CEO approval oversight on dev expenses and fractional work hours.",
      "score_adj": 0
     }
    ]

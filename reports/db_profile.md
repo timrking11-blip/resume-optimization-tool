@@ -1,12 +1,12 @@
 # Data Profile: resume.db
-Generated 2026-10-12 by `rot.py profile`.
+Generated 2026-10-14 by `rot.py profile`.
 
 ## The four tiers
 
 | Tier | Tables | Rows |
 |---|---|---|
 | 1. Evidence: what actually happened | `evidence`, `sources`, `raw_bullets`, `followups` | 1267 |
-| 2. Derived knowledge: what the system infers | `claims`, `claim_evidence`, `claim_relations`, `claim_confidence_history`, `achievements`, `achievement_tags`, `achievement_evidence`, `bullets`, `tags`, `competencies`, `technologies`, `certifications`, `education`, `tagline_phrases`, `core_competencies`, `engagements`, `engagement_achievements`, `roles`, `summaries`, `job_descriptions`, `jd_requirements` | 5316 |
+| 2. Derived knowledge: what the system infers | `claims`, `claim_evidence`, `claim_relations`, `claim_confidence_history`, `achievements`, `achievement_tags`, `achievement_evidence`, `bullets`, `tags`, `competencies`, `technologies`, `certifications`, `education`, `tagline_phrases`, `core_competencies`, `engagements`, `engagement_achievements`, `roles`, `summaries`, `job_descriptions`, `jd_requirements` | 5319 |
 | 3. Generation: what was written | `generation_events`, `prompt_versions`, `generated_resumes` | 558 |
 | 4. Feedback: what happened afterwards | `feedback`, `outcomes` | 20 |
 
@@ -42,7 +42,7 @@ Disputed claims: **0**
 | `sources` | 19 | one resume version / capture |
 | `raw_bullets` | 372 | one bullet as written in one source |
 | `achievements` | 99 | one real accomplishment |
-| `bullets` | 192 | one bare-bone rendering of an achievement (all versions) |
+| `bullets` | 195 | one bare-bone rendering of an achievement (all versions) |
 | `tags` | 84 | one niche skill/keyword |
 | `achievement_tags` | 388 | achievement × tag (one-to-many) |
 | `achievement_evidence` | 395 | achievement × raw bullet |
@@ -58,7 +58,7 @@ Disputed claims: **0**
 | `followups` | 47 | one gate question |
 | `feedback` | 20 | one keep/reject/edit |
 
-Current (non-superseded, accepted) bullets: **154**.
+Current (non-superseded, accepted) bullets: **155**.
 
 ## Bullet length vs. the Resume 1 standard
 
