@@ -112,7 +112,7 @@ python rot.py build --version v5                       # baseline -> out/baselin
 python rot.py check out/baseline_v5.json               # QA: every line traced, numbers only from evidence, nothing disputed
 python rot.py claims role:psp                          # a subject's claims with their evidence and relations
 python rot.py build --jd path/to/jd.txt --version v1   # tailored resume
-python rot.py export                                   # data/library.json + data/dump.sql
+python rot.py export                                   # data/library.json + sync/library_parts (db parts + manifest) + data/dump.sql
 python rot.py learn learnings.json                     # merge the artifact's learnings
 python rot.py profile                                  # reports/db_profile.md
 python rot.py sync-prepare [--all]                     # from sync/dump (ArtifactData out_dir) -> sync/pending.json
@@ -124,7 +124,7 @@ The Match Desk saves your working state as you go: the posting, company and titl
 - **Where it's saved:** instantly in the browser, and in your private area of the page database (`data/users/<you>/workspace`).
 - **On open:** the page reopens exactly where you left off. The sample posting only appears on a first-ever visit. Sessions saved before the template change open with the template's tagline and expertise line.
 - **Past postings:** **Saved postings** reopens any earlier posting. **New posting** starts a blank one, and nothing is lost.
-- **Syncs don't reload the page.** The hourly sync updates the bullet bank through the page database (`library/current`) and never republishes the page. A newer bank applies on open, before you start working. Otherwise it waits for your next posting.
+- **Syncs don't reload the page.** The hourly sync updates the bullet bank through the page database (manifest `library/current` + parts `library/part-<i>`, each under the 262,144-byte document limit) and never republishes the page. A newer bank applies on open, before you start working. Otherwise it waits for your next posting.
 - **Synced answers show polished.** Once a posting's answers are synced, reopening it shows their polished bank versions, using the sync's `synced_map`.
 
 ## The learning loop

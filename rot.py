@@ -1317,9 +1317,43 @@ def cmd_export(args):
     with open(ROOT / "data/dump.sql", "w", encoding="utf-8") as f:
         for line in con.iterdump():
             f.write(line + "\n")
+    parts = write_library_parts(lib)
     print(f"exported data/library.json ({len(s)//1024} KB, {len(out_ach)} achievements, "
           f"{sum(len(a['texts']) for a in out_ach)} bullets, {len(claims_out)} claims, {len(lib['tagline_phrases'])} tagline phrases, "
-          f"{len(engagements)} engagements) and data/dump.sql")
+          f"{len(engagements)} engagements), {parts} database part(s) in sync/library_parts and data/dump.sql")
+
+
+# The page database holds at most 262,144 bytes per document, and the bank outgrew one document on 2026-10-12.
+# The bank goes up as compact JSON text cut into parts (library/part-<i>), each kept well under the limit once
+# encoded, plus a manifest at library/current. The page joins the parts only when every part carries the
+# manifest's exported_at, so a sync caught mid-write is never applied.
+DB_DOC_LIMIT = 262_144
+DB_PART_BUDGET = 200_000
+
+
+def write_library_parts(lib):
+    s = json.dumps(lib, ensure_ascii=False, separators=(",", ":"))
+    pdir = ROOT / "sync" / "library_parts"
+    pdir.mkdir(parents=True, exist_ok=True)
+    for old in pdir.glob("*.json"):
+        old.unlink()
+    enc = lambda doc: json.dumps(doc, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    chunks, i, step = [], 0, 150_000
+    while i < len(s):
+        n = min(step, len(s) - i)
+        while len(enc({"exported_at": lib["exported_at"], "i": len(chunks), "chunk": s[i:i + n]})) > DB_PART_BUDGET:
+            n = int(n * 0.9)
+        chunks.append(s[i:i + n])
+        i += n
+    for k, c in enumerate(chunks):
+        (pdir / f"part-{k}.json").write_bytes(enc({"exported_at": lib["exported_at"], "i": k, "chunk": c}))
+    manifest = {"schema": "rot-library-parts/1", "exported_at": lib["exported_at"], "parts": len(chunks),
+                "bytes": len(s.encode("utf-8")), "sha256": hashlib.sha256(s.encode("utf-8")).hexdigest()}
+    (pdir / "manifest.json").write_bytes(enc(manifest))
+    for f in pdir.glob("*.json"):
+        if f.stat().st_size > DB_DOC_LIMIT:
+            sys.exit(f"{f.name} is {f.stat().st_size} bytes, over the page database's {DB_DOC_LIMIT}-byte document limit")
+    return len(chunks)
 
 
 # ---------------------------------------------------------------- learning loop
@@ -1915,6 +1949,9 @@ def cmd_sync_apply(args):
     out = {"mark_synced": {"jd_runs": pend["runs"], "bullet_inbox": pend["inbox"], "feedback": pend["feedback"]},
            "synced_map": gate2_map,
            "learned": res, "skipped_unpolished": skipped, "pdfs": pdfs, "commit": commit,
+           "library_docs": [{"doc_id": f.stem, "file_path": str(f)} for f in sorted((SYNC_DIR / "library_parts").glob("part-*.json"),
+                                                                                   key=lambda f: int(f.stem.split("-")[1]))]
+                           + [{"doc_id": "current", "file_path": str(SYNC_DIR / "library_parts" / "manifest.json")}],
            "synced_at": dt.datetime.now().astimezone().isoformat(timespec="seconds")}
     jdump(out, SYNC_DIR / "last_result.json")
     print(json.dumps(out, indent=1))

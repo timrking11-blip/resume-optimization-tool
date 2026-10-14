@@ -1278,12 +1278,23 @@ function newPosting(){
   recompute(); renderQuestions(); setStep(1); persist(true); loadRecent(); $("#jd").focus();
 }
 /* Bank updates from the hourly sync arrive through the database, so the page itself is never republished
-   underneath you. A newer bank is applied only before you start working; otherwise it waits for your next posting. */
+   underneath you. A newer bank is applied only before you start working; otherwise it waits for your next posting.
+   The bank is larger than one database document, so library/current is a manifest and the bank itself is cut into
+   library/part-<i>; it is joined only when every part carries the manifest's exported_at (never half a sync). */
 async function loadBankFromDb(){
   try{
     const d=await S.db.doc("library/current").get();
     if(!d.exists) return false;
-    const lib=clone(d.data());
+    const man=d.data();
+    if(String(man.exported_at||"") <= String(S.lib.exported_at||"")) return false;
+    let lib;
+    if(man.achievements) lib=clone(man);   // a bank small enough for one document
+    else{
+      const n=+man.parts||0; if(!n) return false;
+      const parts=await Promise.all(Array.from({length:n}, (_,i)=>S.db.doc("library/part-"+i).get()));
+      if(parts.some(p=>!p.exists || p.data().exported_at!==man.exported_at)) return false;   // mid-sync: the next open picks it up
+      lib=JSON.parse(parts.map(p=>p.data().chunk).join(""));
+    }
     if(!lib.achievements || String(lib.exported_at||"") <= String(S.lib.exported_at||"")) return false;
     if(!lib.tagline_phrases || !lib.claims) return false;   // a bank from before the evidence layer can't drive this page
     if(!S.touched){ S.lib=lib; renderStats(); return true; }
